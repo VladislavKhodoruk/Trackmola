@@ -11,11 +11,9 @@ const initialState: State = {
 
 const trackMolaReducer = createReducer(
   initialState,
-  on(trackMolaActions.getData, (state) => {
-    return {
-      ...state,
-    };
-  })
+  on(trackMolaActions.getData, (state) => ({
+    ...state,
+  }))
 );
 
 export function reducer(state: State | undefined, action: Action) {

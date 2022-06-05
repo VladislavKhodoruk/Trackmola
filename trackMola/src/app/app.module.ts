@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { trackMolaEffects } from './store/trackMola.effects';
+import { TrackMolaEffects } from './store/trackMola.effects';
 import { reducer } from './store/trackMola.reducer';
 
 @NgModule({
@@ -21,7 +21,7 @@ import { reducer } from './store/trackMola.reducer';
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([trackMolaEffects]),
+    EffectsModule.forRoot([TrackMolaEffects]),
     StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
