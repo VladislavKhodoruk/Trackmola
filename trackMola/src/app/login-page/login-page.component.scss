@@ -1,0 +1,23 @@
+.form {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+  border: #ccc 1px dotted;
+}
+
+.form-control {
+  display: block;
+  color: #888;
+  margin-bottom: 0.8rem;
+
+  &.invalid {
+    color: var(--primary-color);
+    input {
+      border-color: var(--primary-color);
+    }
+  }
+
+  .validation {
+    color: var(--primary-color);
+  }
+}
