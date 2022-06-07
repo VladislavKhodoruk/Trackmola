@@ -12,6 +12,15 @@ interface ProviderData {
   uid: string;
 }
 
+export interface AuthorizationResponse {
+  idToken: string;
+  email: string;
+  refreshToken: string;
+  expiresIn: string;
+  localId: string;
+  registered: boolean;
+}
+
 export interface FireBaseResponse {
   apiKey: string;
   appName: string;

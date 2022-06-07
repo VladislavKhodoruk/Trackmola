@@ -1,8 +1,14 @@
+import { Observable } from 'rxjs';
+import { loginStart } from './../store/authrorization.actions';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { TrackMolaState } from 'src/app/store/trackMola.state';
 import { User } from '../../common/interfaces';
 import { AuthService } from '../../common/services/auth.services';
+import { loading } from 'src/app/store/common.actions';
+import { getErrorMessage, getLoading } from 'src/app/store/common.selectors';
 
 @Component({
   selector: 'app-login-page',
@@ -11,8 +17,14 @@ import { AuthService } from '../../common/services/auth.services';
 })
 export class LoginPageComponent implements OnInit {
   form!: FormGroup;
+  loading!: Observable<boolean>;
+  errorMessage!: Observable<string>;
 
-  constructor(public auth: AuthService, private router: Router) {}
+  constructor(
+    public auth: AuthService,
+    private store: Store<TrackMolaState>,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -22,16 +34,17 @@ export class LoginPageComponent implements OnInit {
         Validators.required,
       ]),
     });
+    this.loading = this.store.select(getLoading);
+    this.errorMessage = this.store.select(getErrorMessage);
   }
   submit(): void {
     if (this.form.invalid) {
       return;
     }
     const formValues: User = this.form.value;
-    const user: User = {
-      email: formValues.email,
-      password: formValues.password,
-    };
-    void this.auth.login(user);
+    const email = formValues.email;
+    const password = formValues.password;
+    this.store.dispatch(loading({ status: true }));
+    this.store.dispatch(loginStart({ email, password }));
   }
 }

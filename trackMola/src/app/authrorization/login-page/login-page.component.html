@@ -38,10 +38,14 @@
       >
     </div>
   </div>
-  <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+  <div class="alert alert-danger" *ngIf="errorMessage | async as error">
     {{ error }}
   </div>
-  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="form.invalid || (loading | async)"
+  >
     Login
   </button>
 </form>

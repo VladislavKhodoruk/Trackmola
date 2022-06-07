@@ -14,6 +14,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './common/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthrorizationEffects } from './authrorization/store/authrorization.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +23,7 @@ import { BrowserModule } from '@angular/platform-browser';
     SharedModule,
     BrowserModule,
     AppRoutingModule,
+    EffectsModule.forRoot([AuthrorizationEffects]),
     StoreModule.forRoot(trackMolaReducer),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
