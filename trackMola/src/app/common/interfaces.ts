@@ -32,10 +32,3 @@ export interface FireBaseResponse {
 export interface FireStoreResponce {
   type: string;
 }
-
-export enum TypeUser {
-  Employee = 'Employee',
-  Manager = 'Manager',
-  CTO = 'CTO',
-  Admin = 'Admin',
-}

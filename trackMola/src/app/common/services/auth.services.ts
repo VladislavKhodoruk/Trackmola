@@ -1,11 +1,5 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Injectable, NgZone } from '@angular/core';
-import {
-  FireBaseResponse,
-  FireStoreResponce,
-  TypeUser,
-  User,
-} from '../interfaces';
+import { Injectable } from '@angular/core';
+import { FireBaseResponse, FireStoreResponce, User } from '../interfaces';
 import { Subject } from 'rxjs';
 
 import {
@@ -19,13 +13,12 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root',
 })
 export class AuthService {
-  userData: FireBaseResponse | undefined;
+  userData!: FireBaseResponse;
   public error$: Subject<string> = new Subject<string>();
   constructor(
     public angularFirestore: AngularFirestore,
     public angularFireAuth: AngularFireAuth,
-    public router: Router,
-    public ngZone: NgZone
+    public router: Router
   ) {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
@@ -44,21 +37,9 @@ export class AuthService {
         const userRef: AngularFirestoreDocument<FireStoreResponce> =
           this.angularFirestore.doc(`users/${result.user!.uid}`);
         userRef.get().subscribe((response) => {
-          const userInfo: FireStoreResponce = response.data()!;
-          switch (userInfo.type) {
-            case TypeUser.Employee:
-              void this.router.navigate(['employee']);
-              break;
-            case TypeUser.Manager:
-              void this.router.navigate(['manager']);
-              break;
-            case TypeUser.CTO:
-              void this.router.navigate(['cto']);
-              break;
-            case TypeUser.Admin:
-              void this.router.navigate(['admin']);
-              break;
-          }
+          const userInfo: FireStoreResponce =
+            response.data() as FireStoreResponce;
+          void this.router.navigate([`${userInfo.type}`]);
         });
       })
       .catch((error: Error) => {
@@ -69,7 +50,7 @@ export class AuthService {
   isAuthenticated(): boolean {
     if (localStorage.getItem('user')) {
       const userData: FireBaseResponse = JSON.parse(
-        localStorage.getItem('user')!
+        localStorage.getItem('user') as string
       );
       const expDate = new Date(userData.stsTokenManager.expirationTime);
       if (new Date() > expDate) {
