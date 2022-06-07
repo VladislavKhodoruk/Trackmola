@@ -1,6 +1,5 @@
+import { trackMolaReducer } from './store/trackMola.state';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -13,26 +12,17 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TrackMolaEffects } from './store/trackMola.effects';
-import { reducer } from './store/trackMola.reducer';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './common/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  declarations: [AppComponent, LoginPageComponent],
+  declarations: [AppComponent],
   imports: [
     SharedModule,
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     AppRoutingModule,
-    StoreModule.forRoot({ trackMola: reducer }),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
-    EffectsModule.forRoot([TrackMolaEffects]),
+    StoreModule.forRoot(trackMolaReducer),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
