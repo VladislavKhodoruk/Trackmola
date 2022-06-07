@@ -23,14 +23,15 @@ export class LoginPageComponent implements OnInit {
       ]),
     });
   }
-  submit() {
+  submit(): void {
     if (this.form.invalid) {
       return;
     }
+    const formValues: User = this.form.value;
     const user: User = {
-      email: this.form.value.email,
-      password: this.form.value.password,
+      email: formValues.email,
+      password: formValues.password,
     };
-    this.auth.login(user);
+    void this.auth.login(user);
   }
 }

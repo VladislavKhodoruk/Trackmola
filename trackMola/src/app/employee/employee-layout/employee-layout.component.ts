@@ -11,6 +11,6 @@ export class EmployeeLayoutComponent {
 
   logout(event: Event) {
     event.preventDefault();
-    this.auth.logout();
+    void this.auth.logout();
   }
 }

@@ -4,25 +4,11 @@ import { NgModule } from '@angular/core';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { EmployeeLayoutComponent } from './employee-layout/employee-layout.component';
 import { SharedModule } from '../common/shared.module';
-import { AuthGuard } from '../common/services/auth.guard';
+import { EmployeeRoutes } from './employee.router';
 
 @NgModule({
   declarations: [DashboardPageComponent, EmployeeLayoutComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: EmployeeLayoutComponent,
-        canActivate: [AuthGuard],
-        children: [
-          { path: '', redirectTo: '/employee/dashboard', pathMatch: 'full' },
-          { path: 'dashboard', component: DashboardPageComponent },
-        ],
-      },
-    ]),
-  ],
+  imports: [CommonModule, SharedModule, RouterModule.forChild(EmployeeRoutes)],
   exports: [RouterModule],
 })
 export class EmployeeModule {}

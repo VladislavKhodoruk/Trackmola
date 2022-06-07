@@ -1,5 +1,11 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../interfaces';
+import {
+  FireBaseResponse,
+  FireStoreResponce,
+  TypeUser,
+  User,
+} from '../interfaces';
 import { Subject } from 'rxjs';
 
 import {
@@ -13,7 +19,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   providedIn: 'root',
 })
 export class AuthService {
-  userData: unknown;
+  userData: FireBaseResponse | undefined;
   public error$: Subject<string> = new Subject<string>();
   constructor(
     public angularFirestore: AngularFirestore,
@@ -23,7 +29,7 @@ export class AuthService {
   ) {
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
-        this.userData = user;
+        this.userData = JSON.parse(JSON.stringify(user));
         localStorage.setItem('user', JSON.stringify(this.userData));
       } else {
         localStorage.clear();
@@ -35,38 +41,39 @@ export class AuthService {
     return this.angularFireAuth
       .signInWithEmailAndPassword(user.email, user.password)
       .then((result) => {
-        const userRef: AngularFirestoreDocument<any> =
+        const userRef: AngularFirestoreDocument<FireStoreResponce> =
           this.angularFirestore.doc(`users/${result.user!.uid}`);
-
         userRef.get().subscribe((response) => {
-          switch (response.data().type) {
-            case 'Employee':
-              this.router.navigate(['employee']);
+          const userInfo: FireStoreResponce = response.data()!;
+          switch (userInfo.type) {
+            case TypeUser.Employee:
+              void this.router.navigate(['employee']);
               break;
-            case 'Manager':
-              this.router.navigate(['manager']);
+            case TypeUser.Manager:
+              void this.router.navigate(['manager']);
               break;
-            case 'CTO':
-              this.router.navigate(['cto']);
+            case TypeUser.CTO:
+              void this.router.navigate(['cto']);
               break;
-            case 'Admin':
-              this.router.navigate(['admin']);
+            case TypeUser.Admin:
+              void this.router.navigate(['admin']);
               break;
           }
         });
       })
-      .catch((error) => {
+      .catch((error: Error) => {
         this.error$.next(error.message);
       });
   }
 
   isAuthenticated(): boolean {
     if (localStorage.getItem('user')) {
-      const expDate = new Date(
-        JSON.parse(localStorage.getItem('user')!).stsTokenManager.expirationTime
+      const userData: FireBaseResponse = JSON.parse(
+        localStorage.getItem('user')!
       );
+      const expDate = new Date(userData.stsTokenManager.expirationTime);
       if (new Date() > expDate) {
-        this.logout();
+        void this.logout();
         return false;
       }
       return true;
@@ -77,7 +84,7 @@ export class AuthService {
   logout() {
     return this.angularFireAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['/']);
+      void this.router.navigate(['/']);
     });
   }
 }
