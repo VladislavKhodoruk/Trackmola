@@ -3,6 +3,7 @@ export class User {
     public email: string,
     public token: string,
     public localId: string,
-    public expirationDate: Date
+    public expirationDate: Date,
+    public typeUser?: string
   ) {}
 }

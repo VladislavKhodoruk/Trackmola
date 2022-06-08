@@ -1,9 +1,14 @@
 import { Store } from '@ngrx/store';
-import { loginStart, loginSuccess, logout } from './authrorization.actions';
+import {
+  getType,
+  loginStart,
+  loginSuccess,
+  logout,
+} from './authrorization.actions';
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 
-import { catchError, exhaustMap, map, of, tap } from 'rxjs';
+import { catchError, exhaustMap, map, mergeMap, of, tap } from 'rxjs';
 import { AuthService } from 'src/app/common/services/auth.services';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
 import { errorMessage, loading } from 'src/app/store/common.actions';
@@ -20,7 +25,7 @@ export class AuthrorizationEffects {
             this.store.dispatch(loading({ status: false }));
             this.store.dispatch(errorMessage({ message: '' }));
             const user = this.authService.createUser(data);
-            return loginSuccess({ user });
+            return getType({ user: user });
           })
         )
       ),
@@ -33,12 +38,28 @@ export class AuthrorizationEffects {
     )
   );
 
+  getType$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getType),
+      mergeMap((action) => {
+        const userId = action.user.localId;
+        const user = action.user;
+        return this.authService.getUserInfo(userId).pipe(
+          map((data) => {
+            const type = this.authService.getType(data);
+            return loginSuccess({ user, typeUser: type });
+          })
+        );
+      })
+    )
+  );
+
   loginRedirect$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(loginSuccess),
-        tap(() => {
-          void this.router.navigate(['employee']);
+        tap((data) => {
+          void this.router.navigate([`${data.typeUser}`]);
         })
       ),
     { dispatch: false }

@@ -4,6 +4,7 @@ import { User } from 'src/app/common/models';
 export const LOGIN_START = 'login start';
 export const LOGIN_SUCCESS = 'login success';
 export const LOGIN_FAIL = 'login fail';
+export const GET_TYPE = 'get type';
 export const LOGOUT = 'logout';
 
 export const loginStart = createAction(
@@ -13,7 +14,9 @@ export const loginStart = createAction(
 
 export const loginSuccess = createAction(
   LOGIN_SUCCESS,
-  props<{ user: User | null }>()
+  props<{ user: User; typeUser: string }>()
 );
+
+export const getType = createAction(GET_TYPE, props<{ user: User }>());
 
 export const logout = createAction(LOGOUT);
