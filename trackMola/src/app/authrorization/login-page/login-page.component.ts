@@ -2,11 +2,9 @@ import { Observable } from 'rxjs';
 import { loginStart } from './../store/authrorization.actions';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
 import { User } from '../../common/interfaces';
-import { AuthService } from '../../common/services/auth.services';
 import { loading } from 'src/app/store/common.actions';
 import { getErrorMessage, getLoading } from 'src/app/store/common.selectors';
 
@@ -20,11 +18,7 @@ export class LoginPageComponent implements OnInit {
   loading!: Observable<boolean>;
   errorMessage!: Observable<string>;
 
-  constructor(
-    public auth: AuthService,
-    private store: Store<TrackMolaState>,
-    private router: Router
-  ) {}
+  constructor(private store: Store<TrackMolaState>) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({

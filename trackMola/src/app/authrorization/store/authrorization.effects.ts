@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/common/services/auth.services';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
 import { errorMessage, loading } from 'src/app/store/common.actions';
 import { Router } from '@angular/router';
+import { FireStoreResponce } from 'src/app/common/interfaces';
 
 @Injectable()
 export class AuthrorizationEffects {
@@ -26,15 +27,15 @@ export class AuthrorizationEffects {
             this.store.dispatch(errorMessage({ message: '' }));
             const user = this.authService.createUser(data);
             return getType({ user: user });
+          }),
+          catchError((error) => {
+            this.store.dispatch(loading({ status: false }));
+            const message = error.error.error.message;
+            this.store.dispatch(errorMessage({ message: message }));
+            return of();
           })
         )
-      ),
-      catchError((error) => {
-        this.store.dispatch(loading({ status: false }));
-        const message = error.error.error.message;
-        this.store.dispatch(errorMessage({ message: message }));
-        return of();
-      })
+      )
     )
   );
 
@@ -45,9 +46,9 @@ export class AuthrorizationEffects {
         const userId = action.user.localId;
         const user = action.user;
         return this.authService.getUserInfo(userId).pipe(
-          map((data) => {
-            const type = this.authService.getType(data);
-            return loginSuccess({ user, typeUser: type });
+          map((data: FireStoreResponce) => {
+            const userInfo = this.authService.createUserInfo(data);
+            return loginSuccess({ user, userInfo: userInfo });
           })
         );
       })
@@ -59,7 +60,7 @@ export class AuthrorizationEffects {
       this.actions$.pipe(
         ofType(loginSuccess),
         tap((data) => {
-          void this.router.navigate([`${data.typeUser}`]);
+          void this.router.navigate([`${data.userInfo['type']}`]);
         })
       ),
     { dispatch: false }
@@ -70,7 +71,6 @@ export class AuthrorizationEffects {
       this.actions$.pipe(
         ofType(logout),
         map(() => {
-          this.authService.logout();
           void this.router.navigate(['/']);
         })
       ),

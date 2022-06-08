@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { UserInfo } from 'src/app/common/interfaces';
 import { User } from 'src/app/common/models';
 
 export const LOGIN_START = 'login start';
@@ -14,7 +15,7 @@ export const loginStart = createAction(
 
 export const loginSuccess = createAction(
   LOGIN_SUCCESS,
-  props<{ user: User; typeUser: string }>()
+  props<{ user: User; userInfo: UserInfo }>()
 );
 
 export const getType = createAction(GET_TYPE, props<{ user: User }>());

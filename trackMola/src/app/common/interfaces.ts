@@ -38,6 +38,17 @@ export interface FireBaseResponse {
   uid: string;
 }
 
+export interface UserInfo {
+  [key: string]: string;
+}
+
+export interface UserFields {
+  [key: string]: { stringValue: string };
+}
+
 export interface FireStoreResponce {
-  type: string;
+  createTime: string;
+  fields: UserFields;
+  name: string;
+  updateTime: string;
 }

@@ -1,20 +1,19 @@
 import {
   AuthorizationResponse,
-  FireBaseResponse,
   FireStoreResponce,
+  UserFields,
+  UserInfo,
 } from './../interfaces';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models';
-import { AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  angularFirestore: any;
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string): Observable<AuthorizationResponse> {
@@ -24,30 +23,31 @@ export class AuthService {
     );
   }
 
-  getUserInfo(uid: string) {
+  getUserInfo(uid: string): Observable<any> {
     return this.http.get(
       `https://firestore.googleapis.com/v1/projects/${environment.firebaseConfig.projectId}/databases/(default)/documents/users/${uid}`
     );
   }
 
-  getType(test: any) {
-    return test.fields!.type.stringValue;
+  createUserInfo(data: FireStoreResponce) {
+    const userInfo: UserInfo = {};
+    const userFields: UserFields = data.fields;
+    for (const key in userFields) {
+      userInfo[key] = userFields[key].stringValue;
+    }
+    return userInfo;
   }
 
   createUser(data: AuthorizationResponse) {
     const expirationDate = new Date(
       new Date().getTime() + +data.expiresIn * 1000
     );
-    const authorizedUser = new User(
+    const user = new User(
       data.email,
       data.idToken,
       data.localId,
       expirationDate
     );
-    return authorizedUser;
-  }
-
-  logout() {
-    localStorage.removeItem('userData');
+    return user;
   }
 }
