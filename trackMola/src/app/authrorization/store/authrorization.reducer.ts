@@ -15,7 +15,7 @@ const authrorizationReducer = createReducer(
 );
 
 export function AuthrorizationReducer(
-  state: AuthrorizationState | undefined,
+  state: AuthrorizationState,
   action: Action
 ) {
   return authrorizationReducer(state, action);

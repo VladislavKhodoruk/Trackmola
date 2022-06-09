@@ -26,12 +26,16 @@ export class AuthrorizationEffects {
             this.store.dispatch(loading({ status: false }));
             this.store.dispatch(errorMessage({ message: '' }));
             const user = this.authService.createUser(data);
-            return getType({ user: user });
+            return getType({ user });
           }),
           catchError((error) => {
             this.store.dispatch(loading({ status: false }));
-            const message = error.error.error.message;
-            this.store.dispatch(errorMessage({ message: message }));
+            const {
+              error: {
+                error: { message },
+              },
+            } = error;
+            this.store.dispatch(errorMessage({ message }));
             return of();
           })
         )
@@ -59,8 +63,8 @@ export class AuthrorizationEffects {
     () =>
       this.actions$.pipe(
         ofType(loginSuccess),
-        tap((data) => {
-          void this.router.navigate([`${data.userInfo['type']}`]);
+        tap((data): void => {
+          this.router.navigate([`${data.userInfo['type']}`]);
         })
       ),
     { dispatch: false }
@@ -70,8 +74,8 @@ export class AuthrorizationEffects {
     () =>
       this.actions$.pipe(
         ofType(logout),
-        map(() => {
-          void this.router.navigate(['/']);
+        tap((): void => {
+          this.router.navigate(['/']);
         })
       ),
     { dispatch: false }

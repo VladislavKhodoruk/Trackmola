@@ -24,8 +24,9 @@ export class AuthService {
   }
 
   getUserInfo(uid: string): Observable<any> {
+    const ulr = 'https://firestore.googleapis.com/v1/projects';
     return this.http.get(
-      `https://firestore.googleapis.com/v1/projects/${environment.firebaseConfig.projectId}/databases/(default)/documents/users/${uid}`
+      `${ulr}/${environment.firebaseConfig.projectId}/databases/(default)/documents/users/${uid}`
     );
   }
 
