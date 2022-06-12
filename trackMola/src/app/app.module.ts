@@ -7,10 +7,17 @@ import { environment } from 'src/environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './common/shared.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthrorizationEffects } from './authrorization/store/authrorization.effects';
+import { AuthrorizationEffects } from './pages/authrorization/store/authrorization.effects';
+import { SharedModule } from './shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { AuthorizationService } from './pages/authrorization/services/authorization.service';
+import { AuthrorizationGuard } from './pages/authrorization/authrorization.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,8 +29,12 @@ import { AuthrorizationEffects } from './authrorization/store/authrorization.eff
     StoreModule.forRoot(trackMolaReducer),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [AuthorizationService, AuthrorizationGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
