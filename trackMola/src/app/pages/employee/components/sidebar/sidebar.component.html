@@ -1,0 +1,40 @@
+<nav class="navbar">
+  <img
+    class="navbar__logo"
+    src="assets/img/sidebar/DatamolaLogo.svg"
+    alt="Datamola"
+  />
+  <ul class="list navbar__list">
+    <li class="item list__item" *ngFor="let item of navigationItems">
+      <a
+        class="item__link"
+        routerLinkActive="active"
+        [routerLink]="['/employee', item.routeLink]"
+      >
+        <fa-icon class="item__icon" [icon]="item.icon" size="lg"></fa-icon>
+        <span class="item__label">{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+  <div class="navbar__container">
+    <div class="item navbar__user">
+      <a
+        class="item__link"
+        routerLinkActive="active"
+        [routerLink]="['/employee', 'profile']"
+      >
+        <img class="navbar__photo" src="{{ photo }}" alt="photo" />
+      </a>
+      <p></p>
+    </div>
+    <div class="item navbar__logout">
+      <fa-icon
+        class="item__icon"
+        [icon]="faRightFromBracket"
+        size="lg"
+        (click)="logout($event)"
+      ></fa-icon
+      ><span class="item__label" (click)="logout($event)">Logout</span>
+    </div>
+  </div>
+</nav>
