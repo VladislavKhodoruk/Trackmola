@@ -1,11 +1,11 @@
-import { CommonState } from './common.state';
-import { COMMON_NAME } from './common.selectors';
-import { CommonReducer } from './common.reducer';
+import { SharedReducer } from './shared/shared.reducer';
+import { SHARED_NAME } from './shared/shared.selectors';
+import { SharedState } from './shared/shared.state';
 
 export interface TrackMolaState {
-  [COMMON_NAME]: CommonState;
+  [SHARED_NAME]: SharedState;
 }
 
 export const trackMolaReducer = {
-  [COMMON_NAME]: CommonReducer,
+  [SHARED_NAME]: SharedReducer,
 };
