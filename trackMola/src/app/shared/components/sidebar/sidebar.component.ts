@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { NavigationItem } from '../../interfaces/interfaces';
-import { navigationItems } from '../../variables/variables';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,14 +9,10 @@ import { navigationItems } from '../../variables/variables';
 })
 export class SidebarComponent {
   @Input() photo!: string | null;
+  @Input() navItems!: NavigationItem[] | null;
   @Output() logoutEmmiter = new EventEmitter();
 
   faRightFromBracket = faRightFromBracket;
-  navigationItems: NavigationItem[];
-
-  constructor() {
-    this.navigationItems = navigationItems;
-  }
 
   logout(event: Event) {
     event.preventDefault();
