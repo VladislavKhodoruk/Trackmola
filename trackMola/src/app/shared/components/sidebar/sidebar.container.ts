@@ -14,7 +14,7 @@ import { getUserPhoto } from '../../../pages/employee/store/employee.selectors';
   ></app-sidebar>`,
 })
 export class SidebarContainer {
-  userPhoto$: Observable<string | undefined>;
+  userPhoto$: Observable<string>;
 
   constructor(private store: Store<TrackMolaState>) {
     this.userPhoto$ = this.store.select(getUserPhoto);

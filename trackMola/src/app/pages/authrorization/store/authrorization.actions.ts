@@ -15,7 +15,7 @@ export const getUserType = createAction(GET_USER_TYPE);
 
 export const loginSuccess = createAction(
   LOGIN_SUCCESS,
-  props<{ userType?: string | null }>()
+  props<{ userType: string }>()
 );
 
 export const logout = createAction(LOGOUT);

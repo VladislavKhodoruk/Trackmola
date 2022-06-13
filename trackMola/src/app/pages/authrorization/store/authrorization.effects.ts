@@ -15,6 +15,7 @@ import { AuthorizationService } from '../services/authorization.service';
 import { Router } from '@angular/router';
 import { UsersService } from '../../../shared/services/users.service';
 import { FirebaseCodeError } from '../interfaces/interface';
+import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
 
 @Injectable()
 export class AuthrorizationEffects {
@@ -47,7 +48,10 @@ export class AuthrorizationEffects {
       switchMap(() =>
         this.usersService.currentUserProfile$.pipe(
           take(1),
-          map((user) => loginSuccess({ userType: user?.type }))
+          map((data) => {
+            const user: ProfileUser = data!;
+            return loginSuccess({ userType: user.type });
+          })
         )
       )
     )

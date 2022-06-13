@@ -1,5 +1,5 @@
 export interface AuthrorizationState {
-  userType?: string | null;
+  userType: string | null;
 }
 
 export const initialState: AuthrorizationState = {

@@ -8,6 +8,7 @@ import {
   query,
   updateDoc,
 } from '@angular/fire/firestore';
+import { User } from 'firebase/auth';
 
 import { from, Observable, of, switchMap } from 'rxjs';
 import { AuthorizationService } from '../../pages/authrorization/services/authorization.service';
@@ -19,13 +20,13 @@ import { ProfileUser } from '../interfaces/interfaces';
 export class UsersService {
   get currentUserProfile$(): Observable<ProfileUser | null> {
     return this.authorizationService.currentUser$.pipe(
-      switchMap((user) => {
-        if (!user?.uid) {
+      switchMap((data: User | null) => {
+        if (!data?.uid) {
           return of(null);
         }
 
-        const ref = doc(this.firestore, 'users', user?.uid);
-        return docData(ref);
+        const ref = doc(this.firestore, 'users', data.uid);
+        return docData(ref) as Observable<ProfileUser>;
       })
     );
   }
@@ -41,11 +42,15 @@ export class UsersService {
     private authorizationService: AuthorizationService
   ) {}
 
-  updateUser(user: ProfileUser): Observable<any> {
-    if (!user?.uid) {
-      return of(null);
-    }
-    const ref = doc(this.firestore, 'users', user?.uid);
-    return from(updateDoc(ref, { ...user }));
+  updateUser(user: ProfileUser): Observable<void | null> {
+    return this.authorizationService.currentUser$.pipe(
+      switchMap((data: User | null) => {
+        if (!data?.uid) {
+          return of(null);
+        }
+        const ref = doc(this.firestore, 'users', data.uid);
+        return from(updateDoc(ref, { ...user }));
+      })
+    );
   }
 }

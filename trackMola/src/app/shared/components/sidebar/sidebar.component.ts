@@ -11,7 +11,7 @@ import { navigationItems } from '../../variables/variables';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  @Input() photo!: string | undefined | null;
+  @Input() photo!: string | null;
   @Output() logoutEmmiter = new EventEmitter();
 
   faRightFromBracket = faRightFromBracket;
