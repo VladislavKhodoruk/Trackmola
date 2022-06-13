@@ -5,8 +5,7 @@ import {
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
 import { from } from 'rxjs';
-
-import { FirebaseCodeErrorEnum } from '../enums/enum';
+import { ErrorAuthMessage, FirebaseCodeError } from '../enums/enum';
 
 @Injectable({
   providedIn: 'root',
@@ -22,17 +21,17 @@ export class AuthorizationService {
 
   authorizationError(code: string) {
     switch (code) {
-      case FirebaseCodeErrorEnum.InvalidEmail:
-        return 'Invalid email';
+      case FirebaseCodeError.InvalidEmail:
+        return ErrorAuthMessage.InvalidEmail;
 
-      case FirebaseCodeErrorEnum.WrongPassword:
-        return 'Wrong password';
+      case FirebaseCodeError.WrongPassword:
+        return ErrorAuthMessage.WrongPassword;
 
-      case FirebaseCodeErrorEnum.UserNotFound:
-        return 'User not found';
+      case FirebaseCodeError.UserNotFound:
+        return ErrorAuthMessage.UserNotFound;
 
       default:
-        return 'Error unknown';
+        return ErrorAuthMessage.Unknown;
     }
   }
 
