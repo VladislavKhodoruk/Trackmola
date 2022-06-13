@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ProfileUser } from 'src/app/shared/interfaces';
+import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
 import { EmployeeState } from './employee.state';
 
 export const EMPLOYEE_STATE_NAME = 'employee';

@@ -11,7 +11,7 @@ import {
 
 import { from, Observable, of, switchMap } from 'rxjs';
 import { AuthorizationService } from '../../pages/authrorization/services/authorization.service';
-import { ProfileUser } from '../interfaces';
+import { ProfileUser } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',

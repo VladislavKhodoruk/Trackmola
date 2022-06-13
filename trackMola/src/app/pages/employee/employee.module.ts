@@ -5,12 +5,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { EmployeeRoutes } from './employee.router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ReportComponent } from './components/report/report.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ActivityComponent } from './components/activity/activity.component';
-import { SidebarContainer } from './components/sidebar/sidebar.container';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { EmployeeReducer } from './store/employee.reducer';
@@ -21,8 +19,6 @@ import { EmployeeEffects } from './store/employee.effects';
   declarations: [
     DashboardComponent,
     LayoutComponent,
-    SidebarContainer,
-    SidebarComponent,
     ProfileComponent,
     ReportComponent,
     ProjectsComponent,

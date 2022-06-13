@@ -1,4 +1,4 @@
-import { ProfileUser } from 'src/app/shared/interfaces';
+import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
 
 export interface EmployeeState {
   user: ProfileUser | null;

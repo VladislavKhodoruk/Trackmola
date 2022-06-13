@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { ProfileUser } from 'src/app/shared/interfaces';
+import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
 export const GET_USER_DATA = 'get user data';
 export const GET_USER_DATA_SUCCESS = 'get user success';
 
