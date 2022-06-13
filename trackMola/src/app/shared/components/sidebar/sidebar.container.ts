@@ -3,11 +3,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { logout } from 'src/app/pages/authrorization/store/authrorization.actions';
 import { getUserData } from 'src/app/pages/employee/store/employee.actions';
+import { getNavigationElems } from 'src/app/store/shared/shared.selectors';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
-import {
-  getNavigationElems,
-  getUserPhoto,
-} from '../../../pages/employee/store/employee.selectors';
+import { getUserPhoto } from '../../../pages/employee/store/employee.selectors';
 import { NavigationItem } from '../../interfaces/interfaces';
 
 @Component({
