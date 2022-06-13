@@ -4,7 +4,7 @@
     background-color: $blue;
     min-height: 100vh;
     min-width: 100%;
-    &__form {
+    &-form {
       max-width: 30rem;
       margin: 0 auto;
       padding: 20vh 0;
@@ -12,14 +12,14 @@
   }
 
   .form {
-    &__title {
+    &-title {
       font: $font-h2;
       color: $white;
       text-align: center;
       text-transform: uppercase;
       margin-block-end: $offset-m;
     }
-    &__control {
+    &-control {
       margin: $offset 0 0 0;
       height: 4rem;
       width: 100%;
@@ -42,7 +42,7 @@
       }
     }
 
-    &__button {
+    &-button {
       margin: $offset 0;
     }
   }
