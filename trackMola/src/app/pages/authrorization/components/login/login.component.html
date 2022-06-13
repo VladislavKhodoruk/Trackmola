@@ -1,13 +1,13 @@
 <main class="authrorization">
   <form
-    class="form authrorization__form"
+    class="form authrorization-form"
     [formGroup]="form"
     (ngSubmit)="submit()"
   >
-    <h2 class="form__title">authrorization</h2>
+    <h2 class="form-title">authrorization</h2>
 
     <input
-      class="form__control"
+      class="form-control"
       [class.invalid]="form.get('email')!.touched && form.get('email')!.invalid"
       type="email"
       id="email"
@@ -16,7 +16,7 @@
     />
     <div
       *ngIf="form.get('email')!.touched && form.get('email')!.invalid"
-      class="form__control-validation"
+      class="form-control-validation"
     >
       <small *ngIf="form.get('email')!.errors!['required']"
         >This field is required</small
@@ -25,7 +25,7 @@
     </div>
 
     <input
-      class="form__control"
+      class="form-control"
       [class.invalid]="
         form.get('password')!.touched && form.get('password')!.invalid
       "
@@ -35,7 +35,7 @@
       formControlName="password"
     />
     <div
-      class="form__control-validation"
+      class="form-control-validation"
       *ngIf="form.get('password')!.touched && form.get('password')!.invalid"
     >
       <small *ngIf="form.get('password')!.errors!['required']"
@@ -53,7 +53,7 @@
     </div>
     <button
       type="submit"
-      class="form__button button"
+      class="form-button button"
       [disabled]="form.invalid || loading"
     >
       Login
