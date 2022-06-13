@@ -49,8 +49,11 @@ export class AuthrorizationEffects {
         this.usersService.currentUserProfile$.pipe(
           take(1),
           map((data) => {
-            const user: ProfileUser = data!;
-            return loginSuccess({ userType: user.type });
+            if (data) {
+              const user: ProfileUser = data;
+              return loginSuccess({ userType: user.type });
+            }
+            return loginSuccess({ userType: '' });
           })
         )
       )

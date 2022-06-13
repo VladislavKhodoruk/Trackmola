@@ -8,6 +8,11 @@ const getEmployeeState =
   createFeatureSelector<EmployeeState>(EMPLOYEE_STATE_NAME);
 
 export const getUserPhoto = createSelector(getEmployeeState, (state) => {
-  const usetInfo: ProfileUser = state.user!;
-  return usetInfo?.photo;
+  if (state) {
+    if (state.user) {
+      const usetInfo: ProfileUser = state.user;
+      return usetInfo.photo;
+    }
+  }
+  return '';
 });

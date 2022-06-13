@@ -17,7 +17,7 @@ export class AuthrorizationGuard implements CanActivate {
       map((currentUser) => !!currentUser),
       tap((isAuthorized) => {
         if (!isAuthorized) {
-          this.router.navigate(['']);
+          this.router.navigate(['/authrorization']);
         }
       })
     );
