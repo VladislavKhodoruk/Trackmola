@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   faCalendarDays,
   faDiagramProject,
@@ -7,7 +7,6 @@ import {
   faTableColumns,
 } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
-import { logout } from 'src/app/pages/authrorization/store/authrorization.actions';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
 
 @Component({
@@ -17,6 +16,8 @@ import { TrackMolaState } from 'src/app/store/trackMola.state';
 })
 export class SidebarComponent {
   @Input() photo!: string | undefined | null;
+  @Output() logoutEmmiter = new EventEmitter();
+
   faRightFromBracket = faRightFromBracket;
   navigationItems = [
     {
@@ -44,6 +45,6 @@ export class SidebarComponent {
 
   logout(event: Event) {
     event.preventDefault();
-    this.store.dispatch(logout());
+    this.logoutEmmiter.emit();
   }
 }

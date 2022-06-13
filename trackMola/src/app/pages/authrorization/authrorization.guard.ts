@@ -11,11 +11,7 @@ export class AuthrorizationGuard implements CanActivate {
     private authorization: AuthorizationService,
     private router: Router
   ) {}
-  canActivate():
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  canActivate(): Observable<boolean | UrlTree> {
     return this.authorization.currentUser$.pipe(
       take(1),
       map((currentUser) => !!currentUser),

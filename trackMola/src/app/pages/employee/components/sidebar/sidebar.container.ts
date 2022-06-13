@@ -8,16 +8,17 @@ import { getUserPhoto } from '../../store/employee.selectors';
 
 @Component({
   selector: 'app-sidebar-container',
-  template: '<app-sidebar [photo]="this.userPhoto$ | async"></app-sidebar>',
+  template:
+    '<app-sidebar [photo]="this.userPhoto$ | async" (logoutEmmiter)="onLogout()"></app-sidebar>',
 })
 export class SidebarContainer {
   userPhoto$: Observable<string | undefined>;
+
   constructor(private store: Store<TrackMolaState>) {
     this.userPhoto$ = this.store.select(getUserPhoto);
   }
 
-  logout(event: Event) {
-    event.preventDefault();
+  onLogout() {
     this.store.dispatch(logout());
   }
 }
