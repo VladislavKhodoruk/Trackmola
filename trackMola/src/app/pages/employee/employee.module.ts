@@ -2,7 +2,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LayoutComponent } from './components/layout/layout.component';
 import { EmployeeRoutes } from './employee.router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -18,7 +17,6 @@ import { EmployeeEffects } from './store/employee.effects';
 @NgModule({
   declarations: [
     DashboardComponent,
-    LayoutComponent,
     ProfileComponent,
     ReportComponent,
     ProjectsComponent,

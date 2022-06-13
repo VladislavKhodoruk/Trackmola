@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
-import { Store } from '@ngrx/store';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
 import { NavigationItem } from '../../interfaces/interfaces';
 import { navigationItems } from '../../variables/variables';
 
@@ -17,7 +15,7 @@ export class SidebarComponent {
   faRightFromBracket = faRightFromBracket;
   navigationItems: NavigationItem[];
 
-  constructor(private store: Store<TrackMolaState>) {
+  constructor() {
     this.navigationItems = navigationItems;
   }
 

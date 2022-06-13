@@ -9,7 +9,7 @@
       <a
         class="sidebar-list-item-link"
         routerLinkActive="active"
-        routerLink="{{ item.routeLink }}"
+        [routerLink]="['employee', item.routeLink]"
       >
         <fa-icon
           class="sidebar-list-item-icon"
@@ -25,7 +25,7 @@
       <a
         class="sidebar-list-item-link"
         routerLinkActive="active"
-        [routerLink]="['profile']"
+        [routerLink]="['employee', 'profile']"
       >
         <img class="sidebar-photo" src="{{ photo }}" alt="photo" />
       </a>

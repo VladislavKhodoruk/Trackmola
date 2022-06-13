@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div class="container">
+  <app-sidebar-container
+    *ngIf="!router.url.includes('authrorization')"
+  ></app-sidebar-container>
+
+  <main class="main">
+    <router-outlet></router-outlet>
+  </main>
+</div>

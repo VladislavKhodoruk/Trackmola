@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { ActivityComponent } from './components/activity/activity.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LayoutComponent } from './components/layout/layout.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ReportComponent } from './components/report/report.component';
@@ -9,7 +8,6 @@ import { ReportComponent } from './components/report/report.component';
 export const EmployeeRoutes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
 
     children: [
       { path: '', redirectTo: '/employee/dashboard', pathMatch: 'full' },
