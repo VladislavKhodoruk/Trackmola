@@ -4,3 +4,11 @@ export enum UserType {
   Manager = 'manager',
   Admin = 'admin',
 }
+
+export enum StateName {
+  Dashboard = 'dashboard',
+  Activity = 'activity',
+  Profile = 'profile',
+  Projects = 'projects',
+  Reports = 'reports',
+}
