@@ -28,4 +28,4 @@ import { ManagerActivityComponent } from './components/manager-activity/manager-
   ],
   exports: [RouterModule],
 })
-export class ActivitydModule {}
+export class ActivityModule {}

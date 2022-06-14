@@ -1,13 +1,33 @@
 import { Routes } from '@angular/router';
-import { AuthrorizationGuard } from './pages/authrorization/authrorization.guard';
 
 export const AppRoutes: Routes = [
   { path: '', redirectTo: 'authrorization', pathMatch: 'full' },
   {
-    path: 'employee',
+    path: 'dashboard',
     loadChildren: () =>
-      import('./pages/employee/employee.module').then((x) => x.EmployeeModule),
-    canActivate: [AuthrorizationGuard],
+      import('./pages/dashboard/dashboard.module').then(
+        (x) => x.DashboardModule
+      ),
+  },
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./pages/profile/profile.module').then((x) => x.ProfileModule),
+  },
+  {
+    path: 'activity',
+    loadChildren: () =>
+      import('./pages/activity/activity.module').then((x) => x.ActivityModule),
+  },
+  {
+    path: 'projects',
+    loadChildren: () =>
+      import('./pages/projects/projects.module').then((x) => x.ProjectsModule),
+  },
+  {
+    path: 'report',
+    loadChildren: () =>
+      import('./pages/report/report.module').then((x) => x.ReportModule),
   },
   {
     path: 'authrorization',

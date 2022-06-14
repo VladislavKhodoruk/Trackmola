@@ -64,8 +64,9 @@ export class AuthrorizationEffects {
     () =>
       this.actions$.pipe(
         ofType(loginSuccess),
-        tap(({ userType }): void => {
-          this.router.navigate([userType]);
+        tap(({ userType }): boolean => {
+          this.router.navigate(['dashboard']);
+          return true;
         })
       ),
     { dispatch: false }

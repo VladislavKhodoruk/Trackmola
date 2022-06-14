@@ -11,6 +11,10 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { CtoDashboardComponent } from './components/cto-dashboard/cto-dashboard.component';
 import { ManagerDashboardComponent } from './components/manager-dashboard/manager-dashboard.component';
 import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
+import { AdminGuard } from 'src/app/shared/guards/admin.guard';
+import { CtoGuard } from 'src/app/shared/guards/cto.guard';
+import { EmployeeGuard } from 'src/app/shared/guards/employee.guard';
+import { ManagerGuard } from 'src/app/shared/guards/manager.guard';
 
 @NgModule({
   declarations: [
@@ -27,5 +31,6 @@ import { EmployeeDashboardComponent } from './components/employee-dashboard/empl
     RouterModule.forChild(DashboardRoutes),
   ],
   exports: [RouterModule],
+  providers: [AdminGuard, CtoGuard, EmployeeGuard, ManagerGuard],
 })
 export class DashboardModule {}

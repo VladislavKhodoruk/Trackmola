@@ -10,5 +10,5 @@ export enum StateName {
   Activity = 'activity',
   Profile = 'profile',
   Projects = 'projects',
-  Reports = 'reports',
+  Report = 'report',
 }
