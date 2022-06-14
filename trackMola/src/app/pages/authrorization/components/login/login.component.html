@@ -1,0 +1,62 @@
+<main class="authrorization">
+  <form
+    class="form authrorization-form"
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+  >
+    <h2 class="form-title">authrorization</h2>
+
+    <input
+      class="form-control"
+      [class.invalid]="form.get('email')!.touched && form.get('email')!.invalid"
+      type="email"
+      id="email"
+      placeholder="Email"
+      formControlName="email"
+    />
+    <div
+      *ngIf="form.get('email')!.touched && form.get('email')!.invalid"
+      class="form-control-validation"
+    >
+      <small *ngIf="form.get('email')!.errors!['required']"
+        >This field is required</small
+      >
+      <small *ngIf="form.get('email')!.errors!['email']">Error email</small>
+    </div>
+
+    <input
+      class="form-control"
+      [class.invalid]="
+        form.get('password')!.touched && form.get('password')!.invalid
+      "
+      type="password"
+      id="password"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <div
+      class="form-control-validation"
+      *ngIf="form.get('password')!.touched && form.get('password')!.invalid"
+    >
+      <small *ngIf="form.get('password')!.errors!['required']"
+        >This field is required</small
+      >
+      <small *ngIf="form.get('password')!.errors!['minlength']"
+        >Password less
+        {{ form.get("password")!.errors!["minlength"].requiredLength }}
+        symbols</small
+      >
+    </div>
+
+    <div class="alert alert-danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <button
+      type="submit"
+      class="form-button button"
+      [disabled]="form.invalid || loading"
+    >
+      Login
+    </button>
+  </form>
+</main>

@@ -1,0 +1,61 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: $offset-l 0px;
+    isolation: isolate;
+    width: $sideBar-width;
+    height: 100vh;
+    max-height: 100vh;
+    background: $white;
+    border-right: $sidebar-border-right;
+    &-logo {
+      width: $logo-width;
+    }
+    &-list {
+      @include flex-сenter;
+      flex-direction: column;
+      width: 100%;
+      gap: $offset-m;
+      &-item {
+        width: 100%;
+        &-link {
+          @include flex-сenter;
+          flex-direction: column;
+          gap: $offset-xs;
+          width: 100%;
+          color: $icon-label-color;
+          box-sizing: content-box;
+          &:hover {
+            color: $icon-hover-color;
+            border-right: $sidebar-border-right-hover;
+          }
+        }
+      }
+    }
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: $offset-s;
+      width: 100%;
+    }
+    &-photo {
+      border-radius: 100%;
+      width: $photo-width;
+      height: $photo-height;
+    }
+    &-logout {
+      @include flex-сenter;
+      gap: $offset;
+      cursor: pointer;
+    }
+  }
+  .active {
+    color: $icon-hover-color;
+    border-right: $sidebar-border-right-hover;
+  }
+}
