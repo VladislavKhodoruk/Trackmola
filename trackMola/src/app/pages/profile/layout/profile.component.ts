@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserType } from 'src/app/shared/enums/enum';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-profile',
@@ -8,11 +9,9 @@ import { UserType } from 'src/app/shared/enums/enum';
 })
 export class ProfileComponent {
   @Input() userType!: string | null;
-  @Output() logoutEmmiter = new EventEmitter();
-  employee = UserType.Employee;
-  cto = UserType.CTO;
-  manager = UserType.Manager;
-  admin = UserType.Admin;
+  @Output() logoutEmmiter = new EventEmitter<void>();
+  faRightFromBracket = faRightFromBracket;
+  types = UserType;
 
   logout(event: Event) {
     event.preventDefault();

@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
   @Input() loading!: boolean | null;
   @Input() errorMessage!: string | null;
 
-  @Output() startLoading = new EventEmitter();
+  @Output() startLoading = new EventEmitter<void>();
   @Output() loginStart = new EventEmitter<AuthorizationForm>();
   form!: FormGroup;
 

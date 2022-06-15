@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EffectsModule } from '@ngrx/effects';
-import { authorizationEffects } from './pages/authorization/store/authorization.effects';
+import { AuthorizationEffects } from './pages/authorization/store/authorization.effects';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -25,7 +25,7 @@ import { IsAuthentificated } from './shared/guards/IsAuthentificated.guard';
     SharedModule,
     BrowserModule,
     AppRoutingModule,
-    EffectsModule.forRoot([authorizationEffects, SharedEffects]),
+    EffectsModule.forRoot([AuthorizationEffects, SharedEffects]),
     StoreModule.forRoot(trackMolaReducer),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),

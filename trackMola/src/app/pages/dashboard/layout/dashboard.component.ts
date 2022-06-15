@@ -8,8 +8,5 @@ import { UserType } from 'src/app/shared/enums/enum';
 })
 export class DashboardComponent {
   @Input() userType!: string | null;
-  employee = UserType.Employee;
-  cto = UserType.CTO;
-  manager = UserType.Manager;
-  admin = UserType.Admin;
+  types = UserType;
 }

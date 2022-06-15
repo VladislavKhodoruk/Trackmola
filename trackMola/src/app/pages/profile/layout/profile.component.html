@@ -1,6 +1,8 @@
+<button (click)="logout($event)">Log out</button>
+
 <container-element [ngSwitch]="userType">
-  <app-employee-profile *ngSwitchCase="employee"></app-employee-profile>
-  <app-cto-profile *ngSwitchCase="cto"></app-cto-profile>
-  <app-admin-profile *ngSwitchCase="admin"></app-admin-profile>
-  <app-manager-profile *ngSwitchCase="manager"></app-manager-profile>
+  <app-employee-profile *ngSwitchCase="[types.Employee]"></app-employee-profile>
+  <app-cto-profile *ngSwitchCase="[types.CTO]"></app-cto-profile>
+  <app-admin-profile *ngSwitchCase="[types.Admin]"></app-admin-profile>
+  <app-manager-profile *ngSwitchCase="[types.Manager]"></app-manager-profile>
 </container-element>

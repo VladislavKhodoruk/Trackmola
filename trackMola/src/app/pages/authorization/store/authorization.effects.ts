@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 import { FirebaseCodeError } from '../interfaces/interface';
 
 @Injectable()
-export class authorizationEffects {
+export class AuthorizationEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loginStart),
