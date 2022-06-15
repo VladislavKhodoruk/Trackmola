@@ -1,7 +1,3 @@
-export interface AuthrorizationState {
-  userType: string | null;
-}
+export interface AuthrorizationState {}
 
-export const initialState: AuthrorizationState = {
-  userType: null,
-};
+export const initialState: AuthrorizationState = {};

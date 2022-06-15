@@ -11,6 +11,8 @@ import { AdminReportComponent } from './components/admin-report/admin-report.com
 import { CtoReportComponent } from './components/cto-report/cto-report.component';
 import { ManagerReportComponent } from './components/manager-report/manager-report.component';
 import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
+import { ReportContainer } from './layout/report.container';
+import { ReportComponent } from './layout/report.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { EmployeeReportComponent } from './components/employee-report/employee-r
     CtoReportComponent,
     ManagerReportComponent,
     EmployeeReportComponent,
+    ReportComponent,
+    ReportContainer,
   ],
   imports: [
     CommonModule,

@@ -9,7 +9,7 @@
       <a
         class="sidebar-list-item-link"
         routerLinkActive="active"
-        [routerLink]="['employee', item.routeLink]"
+        [routerLink]="[item.routeLink]"
       >
         <fa-icon
           class="sidebar-list-item-icon"
@@ -25,21 +25,14 @@
       <a
         class="sidebar-list-item-link"
         routerLinkActive="active"
-        [routerLink]="['employee', 'profile']"
+        [routerLink]="['profile']"
       >
-        <img class="sidebar-photo" src="{{ photo }}" alt="photo" />
+        <img
+          class="sidebar-photo"
+          src="{{ photo ? photo : defaultPhoto }}"
+          alt="photo"
+        />
       </a>
-    </div>
-    <div class="sidebar-list-item sidebar-logout">
-      <fa-icon
-        class="sidebar-list-item-icon"
-        [icon]="faRightFromBracket"
-        size="lg"
-        (click)="logout($event)"
-      ></fa-icon
-      ><span class="sidebar-list-item-label" (click)="logout($event)"
-        >Logout</span
-      >
     </div>
   </div>
 </nav>

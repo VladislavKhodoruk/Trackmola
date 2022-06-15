@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
+import { ProjectsContainer } from './layout/projects.container';
 
 export const ProjectsRoutes: Routes = [
   {
     path: '',
-
-    children: [],
+    component: ProjectsContainer,
   },
 ];

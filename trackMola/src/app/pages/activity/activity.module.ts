@@ -11,6 +11,8 @@ import { EmployeeActivityComponent } from './components/employee-activity/employ
 import { CtoActivityComponent } from './components/cto-activity/cto-activity.component';
 import { AdminActivityComponent } from './components/admin-activity/admin-activity.component';
 import { ManagerActivityComponent } from './components/manager-activity/manager-activity.component';
+import { ActivityContainer } from './layout/activity.container';
+import { ActivityComponent } from './layout/activity.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { ManagerActivityComponent } from './components/manager-activity/manager-
     CtoActivityComponent,
     AdminActivityComponent,
     ManagerActivityComponent,
+    ActivityContainer,
+    ActivityComponent,
   ],
   imports: [
     CommonModule,

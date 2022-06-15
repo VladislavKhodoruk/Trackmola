@@ -1,0 +1,6 @@
+<container-element [ngSwitch]="userType">
+  <app-employee-dashboard *ngSwitchCase="employee"></app-employee-dashboard>
+  <app-cto-dashboard *ngSwitchCase="cto"></app-cto-dashboard>
+  <app-admin-dashboard *ngSwitchCase="admin"></app-admin-dashboard>
+  <app-manager-dashboard *ngSwitchCase="manager"></app-manager-dashboard>
+</container-element>

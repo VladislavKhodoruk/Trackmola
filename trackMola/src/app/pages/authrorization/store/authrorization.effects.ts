@@ -1,21 +1,18 @@
 import { Store } from '@ngrx/store';
-import {
-  getUserType,
-  loginStart,
-  loginSuccess,
-  logout,
-} from './authrorization.actions';
+import { loginStart, loginSuccess, logout } from './authrorization.actions';
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 
-import { catchError, map, of, tap, Observable, switchMap, take } from 'rxjs';
+import { catchError, map, of, tap, Observable, switchMap } from 'rxjs';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
-import { errorMessage, loading } from 'src/app/store/shared/shared.actions';
+import {
+  errorMessage,
+  getUserData,
+  loading,
+} from 'src/app/store/shared/shared.actions';
 import { AuthorizationService } from '../services/authorization.service';
 import { Router } from '@angular/router';
-import { UsersService } from '../../../shared/services/users.service';
 import { FirebaseCodeError } from '../interfaces/interface';
-import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
 
 @Injectable()
 export class AuthrorizationEffects {
@@ -27,7 +24,7 @@ export class AuthrorizationEffects {
           map(() => {
             this.store.dispatch(loading({ status: false }));
             this.store.dispatch(errorMessage({ message: '', loaded: true }));
-            return getUserType();
+            return loginSuccess();
           }),
           catchError((error: FirebaseCodeError) => {
             this.store.dispatch(loading({ status: false }));
@@ -42,30 +39,12 @@ export class AuthrorizationEffects {
     )
   );
 
-  getUserType$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getUserType),
-      switchMap(() =>
-        this.usersService.currentUserProfile$.pipe(
-          take(1),
-          map((data) => {
-            if (data) {
-              const user: ProfileUser = data;
-              return loginSuccess({ userType: user.type });
-            }
-            return loginSuccess({ userType: '' });
-          })
-        )
-      )
-    )
-  );
-
-  loginRedirect$ = createEffect(
+  getUserData$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(loginSuccess),
-        tap(({ userType }): boolean => {
-          this.router.navigate(['dashboard']);
+        tap((): boolean => {
+          this.store.dispatch(getUserData());
           return true;
         })
       ),
@@ -88,7 +67,6 @@ export class AuthrorizationEffects {
     private actions$: Actions,
     private authorizationService: AuthorizationService,
     private store: Store<TrackMolaState>,
-    private usersService: UsersService,
     private router: Router
   ) {}
 }

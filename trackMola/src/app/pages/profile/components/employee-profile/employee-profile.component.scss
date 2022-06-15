@@ -1,0 +1,10 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+  .logout {
+    @include flex-сenter;
+    gap: $offset;
+    width: max-content;
+    cursor: pointer;
+  }
+}

@@ -11,6 +11,8 @@ import { AdminProfileComponent } from './components/admin-profile/admin-profile.
 import { CtoProfileComponent } from './components/cto-profile/cto-profile.component';
 import { EmployeeProfileComponent } from './components/employee-profile/employee-profile.component';
 import { ManagerProfileComponent } from './components/manager-profile/manager-profile.component';
+import { ProfileComponent } from './layout/profile.component';
+import { ProfileContainer } from './layout/profile.container';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { ManagerProfileComponent } from './components/manager-profile/manager-pr
     CtoProfileComponent,
     EmployeeProfileComponent,
     ManagerProfileComponent,
+    ProfileContainer,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

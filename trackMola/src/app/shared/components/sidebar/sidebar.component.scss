@@ -48,11 +48,6 @@
       width: $photo-width;
       height: $photo-height;
     }
-    &-logout {
-      @include flex-сenter;
-      gap: $offset;
-      cursor: pointer;
-    }
   }
   .active {
     color: $icon-hover-color;

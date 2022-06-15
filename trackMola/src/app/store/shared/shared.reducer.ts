@@ -1,7 +1,8 @@
-import { loading, errorMessage } from './shared.actions';
+import { loading, errorMessage, getUserDataSuccess } from './shared.actions';
 
 import { Action, createReducer, on } from '@ngrx/store';
 import { initialState, SharedState } from './shared.state';
+import { logout } from 'src/app/pages/authrorization/store/authrorization.actions';
 
 const sharedReducer = createReducer(
   initialState,
@@ -16,6 +17,14 @@ const sharedReducer = createReducer(
       loaded: action.loaded,
       errorMessage: action.message,
     },
+  })),
+  on(getUserDataSuccess, (state, action) => ({
+    ...state,
+    user: { ...action.data },
+  })),
+  on(logout, (state) => ({
+    ...state,
+    user: null,
   }))
 );
 

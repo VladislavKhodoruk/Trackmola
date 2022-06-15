@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngrx/store';
+import { logout } from 'src/app/pages/authrorization/store/authrorization.actions';
+import { TrackMolaState } from 'src/app/store/trackMola.state';
 
 @Component({
   selector: 'app-employee-profile',
   templateUrl: './employee-profile.component.html',
-  styleUrls: ['./employee-profile.component.scss']
+  styleUrls: ['./employee-profile.component.scss'],
 })
-export class EmployeeProfileComponent implements OnInit {
+export class EmployeeProfileComponent {
+  faRightFromBracket = faRightFromBracket;
 
-  constructor() { }
+  constructor(private store: Store<TrackMolaState>) {}
 
-  ngOnInit(): void {
+  onLogout() {
+    this.store.dispatch(logout());
   }
-
 }

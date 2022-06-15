@@ -9,6 +9,7 @@ import { AuthrorizationReducer } from './store/authrorization.reducer';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
+import { AuthorizationService } from './services/authorization.service';
 
 @NgModule({
   declarations: [LoginComponent, LoginContainer],
@@ -20,6 +21,6 @@ import { RouterModule } from '@angular/router';
     RouterModule.forChild(AuthrorizationRoutes),
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [AuthorizationService],
 })
 export class AuthorizationModule {}

@@ -11,6 +11,8 @@ import { ManagerProjectsComponent } from './components/manager-projects/manager-
 import { CtoProjectsComponent } from './components/cto-projects/cto-projects.component';
 import { EmployeeProjectsComponent } from './components/employee-projects/employee-projects.component';
 import { AdminProjectsComponent } from './components/admin-projects/admin-projects.component';
+import { ProjectsComponent } from './layout/projects.component';
+import { ProjectsContainer } from './layout/projects.container';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { AdminProjectsComponent } from './components/admin-projects/admin-projec
     CtoProjectsComponent,
     EmployeeProjectsComponent,
     AdminProjectsComponent,
+    ProjectsContainer,
+    ProjectsComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,8 @@
+import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
+
 export interface SharedState {
   loadingStatus: LoadingStatus;
+  user: ProfileUser | null;
 }
 
 export interface LoadingStatus {
@@ -14,4 +17,5 @@ export const initialState: SharedState = {
     loaded: false,
     errorMessage: '',
   },
+  user: null,
 };

@@ -1,5 +1,4 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { getEmployeeState } from 'src/app/pages/employee/store/employee.selectors';
 import { UserType } from 'src/app/shared/enums/enum';
 import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
 import { navigationItems } from 'src/app/shared/constants/constants';
@@ -19,13 +18,35 @@ export const getErrorMessage = createSelector(
   (state) => state.loadingStatus.errorMessage
 );
 
-export const getNavigationElems = createSelector(getEmployeeState, (state) => {
+export const getNavigationElems = createSelector(getSharedState, (state) => {
   if (state && state.user) {
     const usetInfo: ProfileUser = state.user;
     switch (usetInfo.type) {
       case UserType.Employee:
         return navigationItems;
+      case UserType.CTO:
+        return navigationItems;
+      case UserType.Manager:
+        return navigationItems;
+      case UserType.Admin:
+        return navigationItems;
     }
   }
   return null;
+});
+
+export const getUserPhoto = createSelector(getSharedState, (state) => {
+  if (state && state.user) {
+    const usetInfo: ProfileUser = state.user;
+    return usetInfo.photo;
+  }
+  return '';
+});
+
+export const getUserType = createSelector(getSharedState, (state) => {
+  if (state && state.user) {
+    const usetInfo: ProfileUser = state.user;
+    return usetInfo.type;
+  }
+  return '';
 });
