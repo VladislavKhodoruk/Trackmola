@@ -1,6 +1,6 @@
 <container-element [ngSwitch]="userType">
-  <app-employee-report *ngSwitchCase="[types.Employee]"></app-employee-report>
-  <app-cto-report *ngSwitchCase="[types.CTO]"></app-cto-report>
-  <app-admin-report *ngSwitchCase="[types.Admin]"></app-admin-report>
-  <app-manager-report *ngSwitchCase="[types.Manager]"></app-manager-report>
+  <app-employee-report *ngSwitchCase="types.Employee"></app-employee-report>
+  <app-cto-report *ngSwitchCase="types.CTO"></app-cto-report>
+  <app-admin-report *ngSwitchCase="types.Admin"></app-admin-report>
+  <app-manager-report *ngSwitchCase="types.Manager"></app-manager-report>
 </container-element>
