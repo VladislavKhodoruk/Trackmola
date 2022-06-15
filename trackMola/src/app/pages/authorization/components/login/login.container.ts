@@ -8,7 +8,7 @@ import {
 } from 'src/app/store/shared/shared.selectors';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
 import { AuthorizationForm } from '../../interfaces/interface';
-import { loginStart } from '../../store/authrorization.actions';
+import { loginStart } from '../../store/authorization.actions';
 
 @Component({
   template: `<app-login

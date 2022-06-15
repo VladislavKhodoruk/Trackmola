@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { loginStart, loginSuccess, logout } from './authrorization.actions';
+import { loginStart, loginSuccess, logout } from './authorization.actions';
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 import { FirebaseCodeError } from '../interfaces/interface';
 
 @Injectable()
-export class AuthrorizationEffects {
+export class authorizationEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loginStart),

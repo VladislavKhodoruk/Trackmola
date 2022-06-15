@@ -6,7 +6,7 @@ import { AuthorizationService } from './services/authorization.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthrorizationGuard implements CanActivate {
+export class authorizationGuard implements CanActivate {
   constructor(
     private authorization: AuthorizationService,
     private router: Router
@@ -17,7 +17,7 @@ export class AuthrorizationGuard implements CanActivate {
       map((currentUser) => !!currentUser),
       tap((isAuthorized) => {
         if (!isAuthorized) {
-          this.router.navigate(['/authrorization']);
+          this.router.navigate(['/authorization']);
         }
       })
     );

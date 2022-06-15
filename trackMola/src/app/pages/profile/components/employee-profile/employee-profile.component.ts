@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
-import { logout } from 'src/app/pages/authrorization/store/authrorization.actions';
+import { logout } from 'src/app/pages/authorization/store/authorization.actions';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
 
 @Component({

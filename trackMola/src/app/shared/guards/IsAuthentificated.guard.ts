@@ -16,7 +16,7 @@ export class IsAuthentificated implements CanActivate {
         if (type) {
           return true;
         }
-        this.router.navigate(['/authorization']);
+        this.router.navigate(['authorization']);
         return false;
       })
     );

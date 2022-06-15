@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthrorizationEffects } from './pages/authrorization/store/authrorization.effects';
+import { authorizationEffects } from './pages/authorization/store/authorization.effects';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,6 +17,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { SharedEffects } from './store/shared/shared.effects';
+import { IsAuthentificated } from './shared/guards/IsAuthentificated.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,7 @@ import { SharedEffects } from './store/shared/shared.effects';
     SharedModule,
     BrowserModule,
     AppRoutingModule,
-    EffectsModule.forRoot([AuthrorizationEffects, SharedEffects]),
+    EffectsModule.forRoot([authorizationEffects, SharedEffects]),
     StoreModule.forRoot(trackMolaReducer),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
@@ -33,7 +34,7 @@ import { SharedEffects } from './store/shared/shared.effects';
     provideStorage(() => getStorage()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [IsAuthentificated],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
