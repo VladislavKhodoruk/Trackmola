@@ -6,10 +6,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: $offset-l 0px;
-    isolation: isolate;
+    padding: $offset-l 0;
     width: $sideBar-width;
     height: 100vh;
+    width: $sideBar-width;
     max-height: 100vh;
     background: $white;
     border-right: $sidebar-border-right;
@@ -21,19 +21,36 @@
       @include flex-сenter;
       flex-direction: column;
       width: 100%;
-      gap: $offset-m;
+      gap: $offset-xl;
       &-item {
         width: 100%;
         &-link {
           @include flex-сenter;
           flex-direction: column;
-          gap: $offset-xs;
           width: 100%;
           color: $icon-label-color;
           box-sizing: content-box;
           &:hover {
             color: $icon-hover-color;
             border-right: $sidebar-border-right-hover;
+          }
+        }
+        &-icon {
+          color: $gray;
+          &-active {
+            color: $icon-hover-color;
+          }
+        }
+        &-label {
+          color: $gray2;
+          &-active {
+            color: $icon-hover-color;
+          }
+        }
+        &-active {
+          border-right: $sidebar-border-right-hover;
+          &-profile {
+            outline: $sidebar-profile-hover;
           }
         }
       }
@@ -44,20 +61,27 @@
       gap: $offset-s;
       width: 100%;
     }
-    &-photo {
-      width: $photo-width;
-      height: $photo-height;
-      border-radius: 100%;
-      object-fit: cover;
+    &-profile {
+      @include profile-photo;
+      cursor: pointer;
       &:hover {
-        border: $sidebar-photo-hover;
+        outline: $sidebar-profile-hover;
+      }
+      &-active {
+        outline: $sidebar-profile-hover;
       }
     }
   }
-  .active {
-    border-right: $sidebar-border-right-hover;
-    &-photo {
-      border: $sidebar-photo-hover;
+  .cursor {
+    cursor: pointer;
+  }
+
+  @media only screen and (max-height: 768px) {
+    * {
+      font-size: 12px;
+    }
+    .sidebar-list {
+      gap: $offset-m;
     }
   }
 }

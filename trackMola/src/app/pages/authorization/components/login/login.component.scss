@@ -1,13 +1,13 @@
 :host {
   @import "vars/variables.scss";
+  @import "mixins.scss";
   .authorization {
+    @include flex-сenter;
     background-color: $blue;
     min-height: 100vh;
     min-width: 100%;
     &-form {
       max-width: 30rem;
-      margin: 0 auto;
-      padding: 20vh 0;
     }
   }
 
