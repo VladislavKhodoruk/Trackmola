@@ -1,5 +1,3 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-
 export interface ProfileUser {
   type: string;
   name: string;
@@ -14,6 +12,6 @@ export interface ProfileUser {
 
 export interface NavigationItem {
   routeLink: string;
-  icon: IconDefinition;
+  icon: any;
   label: string;
 }

@@ -11,28 +11,22 @@
         routerLinkActive="active"
         [routerLink]="[item.routeLink]"
       >
-        <fa-icon
+        <ic-icon
           class="sidebar-list-item-icon"
+          width="2rem"
+          height="2rem"
           [icon]="item.icon"
-          size="lg"
-        ></fa-icon>
+        ></ic-icon>
         <span class="sidebar-list-item-label">{{ item.label }}</span>
       </a>
     </li>
   </ul>
-  <div class="sidebar-container">
-    <div class="sidebar-list-item sidebar-user">
-      <a
-        class="sidebar-list-item-link"
-        routerLinkActive="active"
-        [routerLink]="['profile']"
-      >
-        <img
-          class="sidebar-photo"
-          src="{{ photo || defaultPhoto }}"
-          alt="photo"
-        />
-      </a>
-    </div>
-  </div>
+
+  <img
+    class="sidebar-photo"
+    src="{{ photo || defaultPhoto }}"
+    alt="photo"
+    routerLinkActive="active-photo"
+    [routerLink]="['profile']"
+  />
 </nav>

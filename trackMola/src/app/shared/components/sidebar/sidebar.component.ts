@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { NavigationItem } from '../../interfaces/interfaces';
 
 @Component({
@@ -12,6 +11,4 @@ export class SidebarComponent {
   @Input() navItems!: NavigationItem[] | null;
 
   defaultPhoto = 'assets/img/user.png';
-
-  faRightFromBracket = faRightFromBracket;
 }
