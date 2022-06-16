@@ -78,7 +78,7 @@
 
   @media only screen and (max-height: 768px) {
     * {
-      font-size: 12px;
+      font-size: $font-size-s;
     }
     .sidebar-list {
       gap: $offset-m;
