@@ -1,32 +1,39 @@
 <nav class="sidebar">
   <img
     class="sidebar-logo"
+    [class.cursor]="!router.url.includes('dashboard')"
     src="assets/img/sidebar/DatamolaLogo.svg"
+    [routerLink]="!router.url.includes('dashboard') ? ['dashboard'] : []"
     alt="Datamola"
   />
   <ul class="sidebar-list">
     <li class="sidebar-list-item" *ngFor="let item of navItems">
       <a
         class="sidebar-list-item-link"
-        routerLinkActive="active"
+        routerLinkActive="sidebar-list-item-active"
         [routerLink]="[item.routeLink]"
       >
         <ic-icon
           class="sidebar-list-item-icon"
-          width="2rem"
-          height="2rem"
+          width="3rem"
+          height="3rem"
           [icon]="item.icon"
+          routerLinkActive="sidebar-list-item-icon-active"
         ></ic-icon>
-        <span class="sidebar-list-item-label">{{ item.label }}</span>
+        <span
+          class="sidebar-list-item-label"
+          routerLinkActive="sidebar-list-item-label-active"
+          >{{ item.label }}</span
+        >
       </a>
     </li>
   </ul>
 
   <img
-    class="sidebar-photo"
+    class="sidebar-profile"
+    routerLinkActive="sidebar-profile-active"
+    [routerLink]="['profile']"
     src="{{ photo || defaultPhoto }}"
     alt="photo"
-    routerLinkActive="active-photo"
-    [routerLink]="['profile']"
   />
 </nav>
