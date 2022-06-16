@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavigationItem } from '../../interfaces/interfaces';
 
 @Component({
@@ -11,4 +12,6 @@ export class SidebarComponent {
   @Input() navItems!: NavigationItem[] | null;
 
   defaultPhoto = 'assets/img/user.png';
+
+  constructor(public router: Router) {}
 }

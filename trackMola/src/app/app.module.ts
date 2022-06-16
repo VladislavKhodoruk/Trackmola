@@ -18,12 +18,14 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { SharedEffects } from './store/shared/shared.effects';
 import { IsAuthentificated } from './shared/guards/IsAuthentificated.guard';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     SharedModule,
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     EffectsModule.forRoot([AuthorizationEffects, SharedEffects]),
     StoreModule.forRoot(trackMolaReducer),
