@@ -1,3 +1,5 @@
+import { IconifyIcon } from '@iconify/types';
+
 export interface ProfileUser {
   type: string;
   name: string;
@@ -12,6 +14,6 @@ export interface ProfileUser {
 
 export interface NavigationItem {
   routeLink: string;
-  icon: any;
+  icon: IconifyIcon;
   label: string;
 }
