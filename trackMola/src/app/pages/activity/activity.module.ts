@@ -2,7 +2,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ActivityRoutes } from './activity.router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { ACTIVITY_STATE_NAME } from './store/activity.selectors';
@@ -25,7 +24,6 @@ import { ActivityComponent } from './layout/activity.component';
   ],
   imports: [
     CommonModule,
-    SharedModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(ACTIVITY_STATE_NAME, ActivityReducer),
     RouterModule.forChild(ActivityRoutes),

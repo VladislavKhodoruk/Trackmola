@@ -2,7 +2,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReportRoutes } from './report.router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PREPORT_STATE_NAME } from './store/report.selectors';
@@ -25,7 +24,6 @@ import { ReportComponent } from './layout/report.component';
   ],
   imports: [
     CommonModule,
-    SharedModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(PREPORT_STATE_NAME, ReportReducer),
     RouterModule.forChild(ReportRoutes),

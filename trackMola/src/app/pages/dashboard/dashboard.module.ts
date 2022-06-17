@@ -2,7 +2,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { DashboardRoutes } from './dashboard.router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DASHBOARD_STATE_NAME } from './store/dashboard.selectors';
@@ -25,7 +24,6 @@ import { DashboardComponent } from './layout/dashboard.component';
   ],
   imports: [
     CommonModule,
-    SharedModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(DASHBOARD_STATE_NAME, DashboardReducer),
     RouterModule.forChild(DashboardRoutes),
