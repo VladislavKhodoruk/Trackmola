@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthorizationEffects } from './pages/authorization/store/authorization.effects';
-import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -18,13 +17,25 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { SharedEffects } from './store/shared/shared.effects';
 import { IsAuthentificated } from './shared/guards/IsAuthentificated.guard';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconModule } from '@visurel/iconify-angular';
+import { SidebarModule } from './shared/components/sidebar/sidebar.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    SharedModule,
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
+    HttpClientModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    IconModule,
+    SidebarModule,
     EffectsModule.forRoot([AuthorizationEffects, SharedEffects]),
     StoreModule.forRoot(trackMolaReducer),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),

@@ -3,3 +3,10 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin profile-photo {
+  width: $photo-width;
+  height: $photo-height;
+  border-radius: 100%;
+  object-fit: cover;
+}

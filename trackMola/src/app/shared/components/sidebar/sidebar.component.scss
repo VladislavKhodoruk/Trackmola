@@ -6,33 +6,51 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: $offset-l 0px;
-    isolation: isolate;
+    padding: $offset-l 0;
     width: $sideBar-width;
     height: 100vh;
+    width: $sideBar-width;
     max-height: 100vh;
     background: $white;
     border-right: $sidebar-border-right;
     &-logo {
-      width: $logo-width;
+      width: 3rem;
+      height: 4rem;
     }
     &-list {
       @include flex-сenter;
       flex-direction: column;
       width: 100%;
-      gap: $offset-m;
+      gap: $offset-xl;
       &-item {
         width: 100%;
         &-link {
           @include flex-сenter;
           flex-direction: column;
-          gap: $offset-xs;
           width: 100%;
           color: $icon-label-color;
           box-sizing: content-box;
           &:hover {
             color: $icon-hover-color;
             border-right: $sidebar-border-right-hover;
+          }
+        }
+        &-icon {
+          color: $gray;
+          &-active {
+            color: $icon-hover-color;
+          }
+        }
+        &-label {
+          color: $gray2;
+          &-active {
+            color: $icon-hover-color;
+          }
+        }
+        &-active {
+          border-right: $sidebar-border-right-hover;
+          &-profile {
+            outline: $sidebar-profile-hover;
           }
         }
       }
@@ -43,14 +61,27 @@
       gap: $offset-s;
       width: 100%;
     }
-    &-photo {
-      border-radius: 100%;
-      width: $photo-width;
-      height: $photo-height;
+    &-profile {
+      @include profile-photo;
+      cursor: pointer;
+      &:hover {
+        outline: $sidebar-profile-hover;
+      }
+      &-active {
+        outline: $sidebar-profile-hover;
+      }
     }
   }
-  .active {
-    color: $icon-hover-color;
-    border-right: $sidebar-border-right-hover;
+  .cursor {
+    cursor: pointer;
+  }
+
+  @media only screen and (max-height: 768px) {
+    * {
+      font-size: $font-size-s;
+    }
+    .sidebar-list {
+      gap: $offset-m;
+    }
   }
 }
