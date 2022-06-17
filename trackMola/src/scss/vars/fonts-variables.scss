@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Averia+Sans+Libre&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap');
 
 $font-size: 1rem;
 $font-size-xs: calc($font-size * 0.5);
@@ -8,4 +9,17 @@ $font-size-l: calc($font-size * 2);
 $font-size-xl: calc($font-size * 3);
 
 $font-h2: 400 $font-size-xl "Averia Sans Libre", sans-serif;
+// Font Variables
+$Noto: 'Noto Sans',sans-serif;
+$font-h2: 400 3rem "Averia Sans Libre", sans-serif;
 $font-form-element: 400 1.25rem "Open Sans", sans-serif;
+
+$font-main: 400 1rem $Noto;
+$font-current: 300 1.125rem $Noto;
+$font-currentSmall: 300 0.875rem $Noto;
+$font-calendar: 500 1.5rem $Noto;
+$font-blocks: 500 1.25rem $Noto;
+$font-buttonSmall: 500 1rem $Noto;
+$font-buttonMiddle: 500 1.125rem $Noto;
+$font-title: 600 2rem $Noto;
+$font-titleBIg: 600 2.5rem $Noto;
