@@ -25,3 +25,5 @@ export const navigationItems = [
     label: 'Projects',
   },
 ];
+
+export const defaultPhotoUrl = 'assets/img/user.png';
