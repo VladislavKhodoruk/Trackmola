@@ -18,7 +18,7 @@
   .form {
     &-title {
       margin-block-end: $offset-m;
-      font: $font-h2;
+      font: $font-authorization-title;
       text-align: center;
       text-transform: uppercase;
     }
@@ -28,7 +28,6 @@
       &-validation {
         padding: 0 1rem;
         margin-top: $offset-xs;
-        font: $font-form-element;
         color: $warning;
       }
     }

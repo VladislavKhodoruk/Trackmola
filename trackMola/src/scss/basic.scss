@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   font-size: 16px;
+  font: $font-main;
 }
 
 body {
@@ -64,7 +65,7 @@ input:-webkit-autofill:active {
   outline: none;
   border: none;
   border-radius: $border-radius-m;
-  font: $font-form-element;
+  font: $font-buttonMiddle;
   color: $white;
   cursor: pointer;
   &-primary {
