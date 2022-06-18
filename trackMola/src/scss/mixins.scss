@@ -5,8 +5,8 @@
 }
 
 @mixin profile-photo {
-  width: $photo-width;
-  height: $photo-height;
+  width: 4rem;
+  height: 4rem;
   border-radius: 100%;
   object-fit: cover;
 }
