@@ -7,71 +7,95 @@
     align-items: center;
     justify-content: space-between;
     padding: $offset-l 0;
-    width: $sideBar-width;
+    width: 7.5rem;
     height: 100vh;
-    width: $sideBar-width;
     max-height: 100vh;
-    background: $white;
-    border-right: $sidebar-border-right;
+    border-right: $border-sidebar;
+    background-color: $white;
+
     &-logo {
       width: 3rem;
       height: 4rem;
     }
+
     &-list {
       @include flex-сenter;
       flex-direction: column;
-      width: 100%;
       gap: $offset-xl;
+      width: 100%;
+
       &-item {
         width: 100%;
+
         &-link {
           @include flex-сenter;
           flex-direction: column;
           width: 100%;
-          color: $icon-label-color;
           box-sizing: content-box;
+          color: $gray2;
+
           &:hover {
-            color: $icon-hover-color;
-            border-right: $sidebar-border-right-hover;
+            border-right: $border-sidebar-active;
+            color: $primary;
           }
         }
+
         &-icon {
           color: $gray;
+
           &-active {
-            color: $icon-hover-color;
+            color: $primary;
+          }
+
+          &:hover {
+            color: $primary;
           }
         }
+
         &-label {
           color: $gray2;
+
           &-active {
-            color: $icon-hover-color;
+            color: $primary;
+          }
+
+          &:hover {
+            text-decoration: underline 0.125rem $primary;
+            text-underline-offset: 0.06rem;
           }
         }
+
         &-active {
-          border-right: $sidebar-border-right-hover;
+          border-right: $border-sidebar-active;
+
           &-profile {
-            outline: $sidebar-profile-hover;
+            outline: $border-sidebar-active;
           }
         }
       }
     }
+
     &-container {
       display: flex;
       flex-direction: column;
       gap: $offset-s;
       width: 100%;
     }
+
     &-profile {
       @include profile-photo;
       cursor: pointer;
+
       &:hover {
-        outline: $sidebar-profile-hover;
+        outline: 0.15rem solid $primary;
       }
+
       &-active {
-        outline: $sidebar-profile-hover;
+        outline: $border-sidebar-active !important;
       }
     }
   }
+
   .cursor {
     cursor: pointer;
   }
@@ -80,6 +104,7 @@
     * {
       font-size: $font-size-s;
     }
+
     .sidebar-list {
       gap: $offset-m;
     }
