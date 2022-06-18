@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Averia+Sans+Libre&display=swap");
 
-$font-h2: 400 3rem "Averia Sans Libre", sans-serif;
+$font-size: 1rem;
+$font-size-xs: calc($font-size * 0.5);
+$font-size-s: calc($font-size * 0.8);
+$font-size-m: calc($font-size * 1.5);
+$font-size-l: calc($font-size * 2);
+$font-size-xl: calc($font-size * 3);
+
+$font-h2: 400 $font-size-xl "Averia Sans Libre", sans-serif;
 $font-form-element: 400 1.25rem "Open Sans", sans-serif;
