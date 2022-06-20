@@ -1,49 +1,40 @@
 :host {
-  @import "vars/variables.scss";
   @import "mixins.scss";
   .authorization {
     @include flex-сenter;
-    background-color: $blue;
     min-height: 100vh;
     min-width: 100%;
     &-form {
       max-width: 30rem;
     }
+    background: linear-gradient(
+      180deg,
+      rgba(115, 83, 208, 0) 0%,
+      rgba(115, 83, 208, 0.15) 100%
+    );
   }
 
   .form {
     &-title {
-      font: $font-h2;
-      color: $white;
+      margin-block-end: var(--offset-m);
+      font: var(--font-authorization-title);
       text-align: center;
       text-transform: uppercase;
-      margin-block-end: $offset-m;
     }
     &-control {
-      margin: $offset 0 0 0;
-      height: 4rem;
+      margin-top: var(--offset);
       width: 100%;
-      border: unset;
-      border-radius: 2rem;
-      background-color: $white;
-      outline: none;
-      padding: 0 2rem;
-      color: #444444;
-      font: $font-form-element;
-      box-shadow: 0 0 2rem 0 rgb(5 20 50 / 50%);
-      &.invalid {
-        border: solid $offset-xs $danger-color;
-      }
       &-validation {
-        margin-top: $offset-xs;
-        padding: 0 2rem;
-        color: $danger-color;
-        font: $font-form-element;
+        padding: 0 var(--offset);
+        margin-top: var(--offset-xs);
+        color: var(--warning);
       }
     }
 
     &-button {
-      margin: $offset 0;
+      margin: var(--offset) 0;
+      width: 100%;
+      text-transform: uppercase;
     }
   }
 }

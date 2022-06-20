@@ -7,8 +7,10 @@
     <h2 class="form-title">authorization</h2>
 
     <input
-      class="form-control"
-      [class.invalid]="form.get('email')!.touched && form.get('email')!.invalid"
+      class="input form-control"
+      [class.input-warning]="
+        form.get('email')!.touched && form.get('email')!.invalid
+      "
       type="email"
       id="email"
       placeholder="Email"
@@ -25,8 +27,8 @@
     </div>
 
     <input
-      class="form-control"
-      [class.invalid]="
+      class="input form-control"
+      [class.input-warning]="
         form.get('password')!.touched && form.get('password')!.invalid
       "
       type="password"
@@ -48,12 +50,12 @@
       >
     </div>
 
-    <div class="alert alert-danger" *ngIf="errorMessage">
+    <div class="error" *ngIf="errorMessage">
       {{ errorMessage }}
     </div>
     <button
       type="submit"
-      class="form-button button"
+      class="button button-primary form-button"
       [disabled]="form.invalid || loading"
     >
       Login

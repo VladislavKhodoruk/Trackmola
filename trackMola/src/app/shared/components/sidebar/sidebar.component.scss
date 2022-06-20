@@ -6,82 +6,107 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: $offset-l 0;
-    width: $sideBar-width;
+    padding: var(--offset-l) 0;
+    width: 7.5rem;
     height: 100vh;
-    width: $sideBar-width;
     max-height: 100vh;
-    background: $white;
-    border-right: $sidebar-border-right;
+    border-right: $border-sidebar;
+    background-color: var(--white);
+
     &-logo {
       width: 3rem;
       height: 4rem;
     }
+
     &-list {
       @include flex-сenter;
       flex-direction: column;
+      gap: var(--offset-xl);
       width: 100%;
-      gap: $offset-xl;
+
       &-item {
         width: 100%;
+
         &-link {
           @include flex-сenter;
           flex-direction: column;
           width: 100%;
-          color: $icon-label-color;
           box-sizing: content-box;
+          color: var(--gray2);
+
           &:hover {
-            color: $icon-hover-color;
-            border-right: $sidebar-border-right-hover;
+            border-right: $border-sidebar-active;
+            color: var(--primary);
           }
         }
+
         &-icon {
-          color: $gray;
+          color: var(--gray);
+
           &-active {
-            color: $icon-hover-color;
+            color: var(--primary);
+          }
+
+          &:hover {
+            color: var(--primary);
           }
         }
+
         &-label {
-          color: $gray2;
+          color: var(--gray2);
+
           &-active {
-            color: $icon-hover-color;
+            color: var(--primary);
+          }
+
+          &:hover {
+            text-decoration: underline 0.125rem var(--primary);
+            text-underline-offset: 0.1rem;
           }
         }
+
         &-active {
-          border-right: $sidebar-border-right-hover;
+          border-right: $border-sidebar-active;
+
           &-profile {
-            outline: $sidebar-profile-hover;
+            outline: $border-sidebar-active;
           }
         }
       }
     }
+
     &-container {
       display: flex;
       flex-direction: column;
-      gap: $offset-s;
+      gap: var(--offset-s);
       width: 100%;
     }
+
     &-profile {
       @include profile-photo;
       cursor: pointer;
+
       &:hover {
-        outline: $sidebar-profile-hover;
+        outline: 0.15rem solid var(--primary);
       }
+
       &-active {
-        outline: $sidebar-profile-hover;
+        outline: $border-sidebar-active !important;
       }
     }
   }
+
   .cursor {
     cursor: pointer;
   }
 
   @media only screen and (max-height: 768px) {
     * {
-      font-size: $font-size-s;
+      font-size: 0.8rem;
     }
+
     .sidebar-list {
-      gap: $offset-m;
+      gap: var(--offset-m);
     }
   }
 }

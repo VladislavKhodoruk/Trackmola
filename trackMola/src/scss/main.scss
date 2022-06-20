@@ -1,2 +1,128 @@
-@import "basic";
-@import "mixins";
+@import "vars/variables";
+@import "mixins.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font: var(--font-main);
+}
+
+html {
+  @include color-variables($base-colors);
+  @include var-range(--offset, $offset);
+  @include var-range(--border, $border);
+  @include var-range(--border-radius, $border-radius);
+  --font-authorization-title: 400 2.5rem "Averia Sans Libre", sans-serif;
+  --font-main: 400 1rem "Noto Sans", sans-serif;
+  --font-current: 300 1.125rem "Noto Sans", sans-serif;
+  --font-currentSmall: 300 0.875rem "Noto Sans", sans-serif;
+  --font-calendar: 500 1.5rem "Noto Sans", sans-serif;
+  --font-blocks: 500 1.25rem "Noto Sans", sans-serif;
+  --font-buttonSmall: 500 1rem "Noto Sans", sans-serif;
+  --font-buttonMiddle: 500 1.125rem "Noto Sans", sans-serif;
+  --font-title: 600 2rem "Noto Sans", sans-serif;
+  --font-titleBIg: 600 2.5rem "Noto Sans", sans-serif;
+}
+
+body {
+  font-size: 1rem;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--offset);
+  height: 4rem;
+  outline: none;
+  border: $border-input;
+  border-radius: var(--border-radius-m);
+  background-color: var(--white);
+  color: var(--gray2);
+
+  &::placeholder {
+    color: var(--gray2);
+  }
+  &:focus {
+    box-shadow: $border-input-select;
+    color: var(--black);
+  }
+  &:hover {
+    box-shadow: $border-input-select;
+  }
+  &-warning {
+    border: $border-input-warning;
+  }
+}
+
+.button {
+  @include flex-сenter;
+  padding: 0 var(--offset);
+  height: 4rem;
+  outline: none;
+  border: none;
+  border-radius: var(--border-radius-m);
+  font: var(--font-buttonMiddle);
+  color: var(--white);
+  cursor: pointer;
+  &-primary {
+    background-color: var(--primary);
+    &:hover {
+      background-color: var(--primary-hover);
+    }
+    &:disabled {
+      background-color: var(--primary-disabled);
+    }
+  }
+  &-secondary {
+    border: $border-button;
+    background-color: var(--white);
+    color: var(--primary);
+
+    &:hover {
+      border-color: var(--primary-hover);
+      color: var(--primary-hover);
+    }
+    &:disabled {
+      border-color: var(--primary-disabled);
+      color: var(--primary-disabled);
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  padding: 0.7rem;
+  margin: var(--offset) 0;
+  opacity: 0.9;
+  background-color: var(--warning);
+  color: var(--white);
+}
+
+.sidebar-list-item-icon path,
+.sidebar-list-item-icon g {
+  stroke-width: 1;
+}
