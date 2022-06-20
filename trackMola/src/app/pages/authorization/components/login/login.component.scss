@@ -25,7 +25,7 @@
       margin-top: var(--offset);
       width: 100%;
       &-validation {
-        padding: 0 1rem;
+        padding: 0 var(--offset);
         margin-top: var(--offset-xs);
         color: var(--warning);
       }

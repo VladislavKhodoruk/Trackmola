@@ -21,6 +21,7 @@
   #{$variable}: $value;
   #{$variable}-xs: calc(var(#{$variable}) / 4);
   #{$variable}-s: calc(var(#{$variable}) / 2);
+  #{$variable}-d: calc(var(#{$variable}) * 0.75);
   #{$variable}-m: calc(var(#{$variable}) * 1.5);
   #{$variable}-l: calc(var(#{$variable}) * 2);
   #{$variable}-xl: calc(var(#{$variable}) * 4);
