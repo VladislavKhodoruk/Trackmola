@@ -1,3 +1,4 @@
+import { ButtonModule } from './../../shared/components/button/button.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ import { IconModule } from '@visurel/iconify-angular';
   imports: [
     CommonModule,
     IconModule,
+    ButtonModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(PREPORT_STATE_NAME, ReportReducer),
     RouterModule.forChild(ReportRoutes),

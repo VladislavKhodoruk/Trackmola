@@ -33,9 +33,4 @@
       left: -1rem;
     }
   }
-
-  .button-report {
-    @include flex(center, space-between, var(--offset));
-    font: var(--font-typography);
-  }
 }
