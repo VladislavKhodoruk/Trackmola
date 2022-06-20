@@ -1,5 +1,4 @@
 :host {
-  @import "vars/variables.scss";
   @import "mixins.scss";
   .authorization {
     @include flex-сenter;
@@ -17,23 +16,23 @@
 
   .form {
     &-title {
-      margin-block-end: $offset-m;
-      font: $font-authorization-title;
+      margin-block-end: var(--offset-m);
+      font: var(--font-authorization-title);
       text-align: center;
       text-transform: uppercase;
     }
     &-control {
-      margin-top: $offset;
+      margin-top: var(--offset);
       width: 100%;
       &-validation {
         padding: 0 1rem;
-        margin-top: $offset-xs;
-        color: $warning;
+        margin-top: var(--offset-xs);
+        color: var(--warning);
       }
     }
 
     &-button {
-      margin: $offset 0;
+      margin: var(--offset) 0;
       width: 100%;
       text-transform: uppercase;
     }

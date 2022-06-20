@@ -1,19 +1,12 @@
-$border: 0.06rem;
-$border-m: 0.125rem;
-$border-l: 0.25rem;
+$border: 0.25rem;
 
-$border-radius: 0.625rem;
-$border-radius-xs: 0.25rem;
-$border-radius-s: 0.5rem;
-$border-radius-m: 0.75rem;
-$border-radius-l: 0.875rem;
-$border-radius-xl: 1rem;
+$border-radius: 0.5rem;
 
-$border-input: $border solid $gray;
+$border-input: var(--border-xs) solid var(--gray);
 $border-input-select: 0px 0px 0.4rem rgba(87, 74, 249, 0.25);
-$border-input-warning: $border solid $warning;
+$border-input-warning: var(--border) solid var(--warning);
 
-$border-button: $border-m solid $primary;
+$border-button: var(--border-s) solid var(--primary);
 
-$border-sidebar: $border-l solid $gray;
-$border-sidebar-active: $border-l solid $primary;
+$border-sidebar: var(--border) solid var(--gray);
+$border-sidebar-active: var(--border) solid var(--primary);

@@ -1,25 +1,27 @@
-$white: #ffffff;
-$primary: #7353d0;
-$primary-hover: #6247b1;
-$primary-disabled: #886dd7;
-$secondary: #bfc9d9;
-$blue: #23325a;
-$gray: #dde1f2;
-$gray2: #808689;
-$black: #222222;
-$green: #7ae582;
-$orange: #e26a43;
-$warning: #f65436;
-$light-orange: #ffb55e;
-$red-apple: #e71d36;
-$aqua: #2ec4b6;
-$marine: #25a18e;
-$galaxy: #5f0a87;
-$violet: #a45c84;
-$yellow: #fbd304;
-$yellow2: #f4bf4a;
-$rose: #fa7ec1;
-$ocean: #045585;
-$flowers: #db0492;
-$mint: #04e4cc;
-$powder: #fca4ac;
+$base-colors: (
+  white: #ffffff,
+  primary: #7353d0,
+  primary-hover: #6247b1,
+  primary-disabled: #886dd7,
+  secondary: #bfc9d9,
+  blue: #23325a,
+  gray: #dde1f2,
+  gray2: #808689,
+  black: #222222,
+  green: #7ae582,
+  orange: #e26a43,
+  warning: #f65436,
+  light-orange: #ffb55e,
+  red-apple: #e71d36,
+  aqua: #2ec4b6,
+  marine: #25a18e,
+  galaxy: #5f0a87,
+  violet: #a45c84,
+  yellow: #fbd304,
+  yellow2: #f4bf4a,
+  rose: #fa7ec1,
+  ocean: #045585,
+  flowers: #db0492,
+  mint: #04e4cc,
+  powder: #fca4ac,
+);

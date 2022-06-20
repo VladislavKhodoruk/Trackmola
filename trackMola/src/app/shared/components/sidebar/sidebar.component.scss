@@ -6,12 +6,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: $offset-l 0;
+    padding: var(--offset-l) 0;
     width: 7.5rem;
     height: 100vh;
     max-height: 100vh;
     border-right: $border-sidebar;
-    background-color: $white;
+    background-color: var(--white);
 
     &-logo {
       width: 3rem;
@@ -21,7 +21,7 @@
     &-list {
       @include flex-сenter;
       flex-direction: column;
-      gap: $offset-xl;
+      gap: var(--offset-xl);
       width: 100%;
 
       &-item {
@@ -32,36 +32,36 @@
           flex-direction: column;
           width: 100%;
           box-sizing: content-box;
-          color: $gray2;
+          color: var(--gray2);
 
           &:hover {
             border-right: $border-sidebar-active;
-            color: $primary;
+            color: var(--primary);
           }
         }
 
         &-icon {
-          color: $gray;
+          color: var(--gray);
 
           &-active {
-            color: $primary;
+            color: var(--primary);
           }
 
           &:hover {
-            color: $primary;
+            color: var(--primary);
           }
         }
 
         &-label {
-          color: $gray2;
+          color: var(--gray2);
 
           &-active {
-            color: $primary;
+            color: var(--primary);
           }
 
           &:hover {
-            text-decoration: underline 0.125rem $primary;
-            text-underline-offset: 0.06rem;
+            text-decoration: underline 0.125rem var(--primary);
+            text-underline-offset: 0.1rem;
           }
         }
 
@@ -78,7 +78,7 @@
     &-container {
       display: flex;
       flex-direction: column;
-      gap: $offset-s;
+      gap: var(--offset-s);
       width: 100%;
     }
 
@@ -87,7 +87,7 @@
       cursor: pointer;
 
       &:hover {
-        outline: 0.15rem solid $primary;
+        outline: 0.15rem solid var(--primary);
       }
 
       &-active {
@@ -102,11 +102,11 @@
 
   @media only screen and (max-height: 768px) {
     * {
-      font-size: $font-size-s;
+      font-size: 0.8rem;
     }
 
     .sidebar-list {
-      gap: $offset-m;
+      gap: var(--offset-m);
     }
   }
 }

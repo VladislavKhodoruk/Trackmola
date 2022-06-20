@@ -10,3 +10,18 @@
   border-radius: 100%;
   object-fit: cover;
 }
+
+@mixin color-variables($colors) {
+  @each $name, $color in $colors {
+    --#{"" + $name}: #{$color};
+  }
+}
+
+@mixin var-range($variable, $value) {
+  #{$variable}: $value;
+  #{$variable}-xs: calc(var(#{$variable}) / 4);
+  #{$variable}-s: calc(var(#{$variable}) / 2);
+  #{$variable}-m: calc(var(#{$variable}) * 1.5);
+  #{$variable}-l: calc(var(#{$variable}) * 2);
+  #{$variable}-xl: calc(var(#{$variable}) * 4);
+}
