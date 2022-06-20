@@ -24,6 +24,7 @@ html {
   --font-buttonMiddle: 500 1.125rem "Noto Sans", sans-serif;
   --font-title: 600 2rem "Noto Sans", sans-serif;
   --font-titleBIg: 600 2.5rem "Noto Sans", sans-serif;
+  --font-typography: 500 1.125rem "Noto Sans", sans-serif;
 }
 
 body {
@@ -76,7 +77,7 @@ input:-webkit-autofill:active {
 }
 
 .button {
-  @include flex-сenter;
+  @include flex(center, center);
   padding: 0 var(--offset);
   height: 4rem;
   outline: none;
