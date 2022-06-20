@@ -1,0 +1,23 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+  table {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  table,
+  th {
+    border: $border-table;
+    border-collapse: collapse;
+  }
+
+  th {
+    width: calc(100% / 7);
+    height: 3rem;
+
+    font-size: var(--font-calendar);
+
+    color: #969696;
+  }
+}

@@ -50,3 +50,7 @@ export const getUserType = createSelector(getSharedState, (state) => {
   }
   return '';
 });
+
+export const getDate = createSelector(getSharedState, (state) => state.date);
+
+export const allTasks = createSelector(getSharedState, (state) => state.tasks);

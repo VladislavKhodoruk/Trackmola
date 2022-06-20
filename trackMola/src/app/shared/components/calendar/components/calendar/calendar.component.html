@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let nameDay of namesDaysWeek">
+        {{ nameDay | slice: 0:3 | uppercase }}
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let week of currentWeeks">
+      <td *ngFor="let day of week.days">
+        <app-calendar-item
+          [day]="day"
+          [selected]="day.value.getTime() === date?.getTime()"
+          (click)="onChangeDate(day.value)"
+        ></app-calendar-item>
+      </td>
+    </tr>
+  </tbody>
+</table>
