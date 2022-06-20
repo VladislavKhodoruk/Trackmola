@@ -1,0 +1,13 @@
+:host {
+  .report {
+    &-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: var(--offset-l) 1.75rem;
+    }
+    &-title {
+      font: var(--font-titleBIg);
+    }
+  }
+}

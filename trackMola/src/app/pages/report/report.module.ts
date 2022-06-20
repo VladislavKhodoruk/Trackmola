@@ -12,6 +12,8 @@ import { ManagerReportComponent } from './components/manager-report/manager-repo
 import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
 import { ReportContainer } from './layout/report.container';
 import { ReportComponent } from './layout/report.component';
+import { ReportHeaderComponent } from './components/report-header/report-header.component';
+import { IconModule } from '@visurel/iconify-angular';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,11 @@ import { ReportComponent } from './layout/report.component';
     EmployeeReportComponent,
     ReportComponent,
     ReportContainer,
+    ReportHeaderComponent,
   ],
   imports: [
     CommonModule,
+    IconModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(PREPORT_STATE_NAME, ReportReducer),
     RouterModule.forChild(ReportRoutes),
