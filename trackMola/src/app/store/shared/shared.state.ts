@@ -1,3 +1,4 @@
+import { setMidnightTime } from 'src/app/shared/helpers/helpers';
 import {
   FirstAndLastDayOfWeek,
   ProfileUser,
@@ -32,6 +33,6 @@ export const initialState: SharedState = {
     errorMessage: '',
   },
   user: null,
-  date: new Date(),
+  date: setMidnightTime(new Date()),
   tasks: [],
 };
