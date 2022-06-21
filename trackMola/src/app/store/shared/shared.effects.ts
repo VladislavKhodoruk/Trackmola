@@ -24,12 +24,12 @@ export class SharedEffects {
         this.usersService.currentUserProfile$.pipe(
           take(1),
           map((data) => {
-            this.store.dispatch(loading({ status: false }));
-            this.store.dispatch(errorMessage({ message: '', loaded: true }));
+            this.store$.dispatch(loading({ status: false }));
+            this.store$.dispatch(errorMessage({ message: '', loaded: true }));
             return getUserDataSuccess({ data: data! });
           }),
           catchError(() => {
-            this.store.dispatch(loading({ status: false }));
+            this.store$.dispatch(loading({ status: false }));
             return of();
           })
         )
@@ -65,7 +65,7 @@ export class SharedEffects {
     private actions$: Actions,
     private usersService: UsersService,
     private tasksService: TasksService,
-    private store: Store<TrackMolaState>,
+    private store$: Store<TrackMolaState>,
     private router: Router
   ) {}
 }

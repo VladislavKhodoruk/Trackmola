@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import {
   nextWeek,
   previousWeek,
@@ -12,6 +11,7 @@ import {
 } from 'src/app/store/shared/shared.selectors';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
 import { ONE_WEEK_IN_SECONDS } from '../../constants/constants';
+import { setMidnightTime } from '../../helpers/helpers';
 import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
 
 @Component({
@@ -24,26 +24,21 @@ import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
   ></app-navigatinon-calendar>`,
 })
 export class NavigatinonCalendarContainer {
-  firstDayOfWeek$: Observable<Date | null>;
-  lastDayOfWeek$: Observable<Date | null>;
+  firstDayOfWeek$ = this.store$.select(getFirstDayOfWeek);
+  lastDayOfWeek$ = this.store$.select(getLastDayOfWeek);
 
-  constructor(private store: Store<TrackMolaState>) {
-    this.store.dispatch(
+  constructor(private store$: Store<TrackMolaState>) {
+    this.store$.dispatch(
       setFirstAndLastDayOfWeek({
         firstAndLastDayOfWeek: this.getFirstAndLastDayOfWeek(new Date()),
       })
     );
-    this.firstDayOfWeek$ = this.store.select(getFirstDayOfWeek);
-    this.lastDayOfWeek$ = this.store.select(getLastDayOfWeek);
   }
 
   getFirstAndLastDayOfWeek(date: Date): FirstAndLastDayOfWeek {
-    const myDate = new Date(date);
+    const myDate = setMidnightTime(date);
     const dayOfWeek = myDate.getDay();
     const myMonday = myDate.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
-    myDate.setUTCHours(0);
-    myDate.setUTCMinutes(0);
-    myDate.setUTCSeconds(0);
     return {
       firstDay: new Date(myDate.setDate(myMonday)),
       lastDay: new Date(myDate.setDate(myMonday + 6)),
@@ -51,7 +46,7 @@ export class NavigatinonCalendarContainer {
   }
 
   onPreviousWeek() {
-    this.store.dispatch(
+    this.store$.dispatch(
       previousWeek({
         value: ONE_WEEK_IN_SECONDS,
       })
@@ -59,7 +54,7 @@ export class NavigatinonCalendarContainer {
   }
 
   onNextWeek() {
-    this.store.dispatch(
+    this.store$.dispatch(
       nextWeek({
         value: ONE_WEEK_IN_SECONDS,
       })

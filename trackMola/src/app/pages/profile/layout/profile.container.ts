@@ -13,13 +13,11 @@ import { logout } from '../../authorization/store/authorization.actions';
   ></app-profile>`,
 })
 export class ProfileContainer {
-  userType$: Observable<string>;
+  userType$ = this.store$.select(getUserType);
 
-  constructor(private store: Store<TrackMolaState>) {
-    this.userType$ = this.store.select(getUserType);
-  }
+  constructor(private store$: Store<TrackMolaState>) {}
 
   onLogout() {
-    this.store.dispatch(logout());
+    this.store$.dispatch(logout());
   }
 }

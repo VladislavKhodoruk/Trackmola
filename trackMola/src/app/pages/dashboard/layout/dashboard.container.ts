@@ -11,8 +11,6 @@ import { TrackMolaState } from 'src/app/store/trackMola.state';
   ></app-dashboard>`,
 })
 export class DashboardContainer {
-  userType$: Observable<string>;
-  constructor(private store: Store<TrackMolaState>) {
-    this.userType$ = this.store.select(getUserType);
-  }
+  userType$ = this.store$.select(getUserType);
+  constructor(private store$: Store<TrackMolaState>) {}
 }
