@@ -45,7 +45,7 @@ export class NavigatinonCalendarContainer {
     };
   }
 
-  onPreviousWeek() {
+  onPreviousWeek(): void {
     this.store$.dispatch(
       previousWeek({
         value: ONE_WEEK_IN_SECONDS,
@@ -53,7 +53,7 @@ export class NavigatinonCalendarContainer {
     );
   }
 
-  onNextWeek() {
+  onNextWeek(): void {
     this.store$.dispatch(
       nextWeek({
         value: ONE_WEEK_IN_SECONDS,

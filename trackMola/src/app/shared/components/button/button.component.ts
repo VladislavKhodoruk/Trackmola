@@ -20,7 +20,7 @@ export class ButtonComponent {
 
   iconCheck = check;
 
-  onButtonClick(event: Event) {
+  onButtonClick(event: Event): void {
     this.buttonClick.emit(event);
   }
 }
