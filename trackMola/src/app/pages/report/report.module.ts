@@ -15,6 +15,7 @@ import { ReportContainer } from './layout/report.container';
 import { ReportComponent } from './layout/report.component';
 import { ReportHeaderComponent } from './components/report-header/report-header.component';
 import { IconModule } from '@visurel/iconify-angular';
+import { CalendarModule } from 'src/app/shared/components/calendar/calendar.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { IconModule } from '@visurel/iconify-angular';
     EffectsModule.forFeature([]),
     StoreModule.forFeature(PREPORT_STATE_NAME, ReportReducer),
     RouterModule.forChild(ReportRoutes),
+    CalendarModule,
   ],
   exports: [RouterModule],
 })

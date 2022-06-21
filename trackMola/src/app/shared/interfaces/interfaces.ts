@@ -17,3 +17,13 @@ export interface NavigationItem {
   icon: IconifyIcon;
   label: string;
 }
+
+export interface Day {
+  value: Date;
+  isTasks: boolean;
+  duration: number;
+}
+
+export interface Week {
+  days: Day[];
+}

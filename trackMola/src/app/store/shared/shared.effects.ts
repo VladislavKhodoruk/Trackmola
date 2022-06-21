@@ -3,12 +3,15 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, of, switchMap, take, tap } from 'rxjs';
+import { TasksService } from 'src/app/shared/services/tasks.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import {
   errorMessage,
   getUserData,
   getUserDataSuccess,
   loading,
+  getAllTasks,
+  getAllTasksSuccess,
 } from 'src/app/store/shared/shared.actions';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
 
@@ -45,9 +48,23 @@ export class SharedEffects {
       ),
     { dispatch: false }
   );
+
+  getAllTasks$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAllTasks),
+      switchMap(() =>
+        this.tasksService.getTasks().pipe(
+          take(1),
+          map((data) => getAllTasksSuccess({ tasks: data }))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private usersService: UsersService,
+    private tasksService: TasksService,
     private store: Store<TrackMolaState>,
     private router: Router
   ) {}
