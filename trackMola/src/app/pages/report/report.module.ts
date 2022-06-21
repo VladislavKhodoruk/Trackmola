@@ -13,9 +13,9 @@ import { ManagerReportComponent } from './components/manager-report/manager-repo
 import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
 import { ReportContainer } from './layout/report.container';
 import { ReportComponent } from './layout/report.component';
-import { ReportHeaderComponent } from './components/report-header/report-header.component';
 import { IconModule } from '@visurel/iconify-angular';
 import { CalendarModule } from 'src/app/shared/components/calendar/calendar.module';
+import { NavigatinonCalendarModule } from 'src/app/shared/components/navigatinon-calendar/navigatinon-calendar.module';
 
 @NgModule({
   declarations: [
@@ -25,11 +25,11 @@ import { CalendarModule } from 'src/app/shared/components/calendar/calendar.modu
     EmployeeReportComponent,
     ReportComponent,
     ReportContainer,
-    ReportHeaderComponent,
   ],
   imports: [
     CommonModule,
     IconModule,
+    NavigatinonCalendarModule,
     ButtonModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(PREPORT_STATE_NAME, ReportReducer),
