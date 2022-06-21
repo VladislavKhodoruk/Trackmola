@@ -1,4 +1,10 @@
-import { loading, errorMessage, getUserDataSuccess } from './shared.actions';
+import {
+  loading,
+  errorMessage,
+  getUserDataSuccess,
+  changeDate,
+  getAllTasksSuccess,
+} from './shared.actions';
 
 import { Action, createReducer, on } from '@ngrx/store';
 import { initialState, SharedState } from './shared.state';
@@ -25,6 +31,14 @@ const sharedReducer = createReducer(
   on(logout, (state) => ({
     ...state,
     user: null,
+  })),
+  on(changeDate, (state, action) => ({
+    ...state,
+    date: action.date,
+  })),
+  on(getAllTasksSuccess, (state, action) => ({
+    ...state,
+    tasks: action.tasks,
   }))
 );
 

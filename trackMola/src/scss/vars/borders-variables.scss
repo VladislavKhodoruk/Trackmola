@@ -10,3 +10,9 @@ $border-button: var(--border-s) solid var(--primary);
 
 $border-sidebar: var(--border) solid var(--gray);
 $border-sidebar-active: var(--border) solid var(--primary);
+
+$border-table: var(--border-xxs) solid var(--gray);
+$border-table-select: var(--border-xxs) solid var(--blue1);
+
+$border-radius-table-bar: 0 0 var(--offset-s) var(--offset-s);
+$border-radius-table-tooltip: var(--offset) var(--offset) var(--offset) 0 ;

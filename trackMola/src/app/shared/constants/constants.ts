@@ -27,3 +27,25 @@ export const navigationItems = [
 ];
 
 export const defaultPhotoUrl = 'assets/img/user.png';
+
+export const ONE_DAY_IN_SECONDS = 86400000;
+
+export const NAMES_OF_THE_DAYS_OF_THE_WEEK = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
+
+export const ONE_DIVISION_CALENDAR_BAR = 0.7;
+
+export const MAXIMUM_VALUE_BAR = 5.625;
+
+export const NUMBER_OF_DAYS_IN_A_WEEK = 7;
+
+export const MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY = 8;
+
+export const CLASS_DURATION_MORE_THAN_EIGHT = 'more';

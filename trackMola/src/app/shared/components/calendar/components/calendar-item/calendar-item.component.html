@@ -1,0 +1,15 @@
+<div class="calendar-item" [class.selected]="selected">
+  <div class="calendar-container">
+    <div *ngIf="day.isTasks" class="calendar-bar">
+      <div
+        class="calendar-bar-progress"
+        [style.height.rem]="timeBar"
+        [ngClass]="more"
+      ></div>
+    </div>
+    <div *ngIf="day.isTasks" class="tooltip">
+      <div class="tooltip-text">{{ day.duration }}h</div>
+    </div>
+  </div>
+  <div class="calendar-number">{{ day.value | date: "d" }}</div>
+</div>
