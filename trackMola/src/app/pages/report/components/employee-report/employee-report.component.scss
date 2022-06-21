@@ -1,13 +1,22 @@
 :host {
+  @import "mixins.scss";
   .report {
-    &-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: var(--offset-l) 1.75rem;
+    @include flex(flex-start, flex-start, var(--offset-l));
+    margin: var(--offset-l) 1.75rem;
+    flex-direction: column;
+
+    &-header {
+      @include flex(center, space-between);
+      width: 100%;
+      &-title {
+        font: var(--font-titleBIg);
+      }
+      &-container {
+        @include flex(center, center, 5rem);
+      }
     }
-    &-title {
-      font: var(--font-titleBIg);
+    &-calendar {
+      width: 100%;
     }
   }
 }

@@ -1,5 +1,20 @@
-<div class="report-container">
-  <h2 class="report-title">My report</h2>
-  <app-report-header></app-report-header>
+<div class="report">
+  <div class="report-header">
+    <h2 class="report-header-title">My report</h2>
+    <div class="report-header-container">
+      <app-navigatinon-calendar-container></app-navigatinon-calendar-container>
+      <app-button
+        type="submit"
+        [buttonClass]="'button-primary'"
+        label="Send report for approval"
+        [disabled]="false"
+        [icon]="iconCheck"
+        iconWidth="2rem"
+        iconHeight="2rem"
+        (buttonClick)="submitReport($event)"
+      >
+      </app-button>
+    </div>
+  </div>
+  <app-calendar-container class="report-calendar"></app-calendar-container>
 </div>
-<app-calendar-container></app-calendar-container>

@@ -11,7 +11,7 @@
     height: 1.75rem;
     border-radius: $border-radius-table-tooltip;
 
-    @include flex-сenter;
+    @include flex(center, center);
 
     font-size: var(--font-blocks);
     
