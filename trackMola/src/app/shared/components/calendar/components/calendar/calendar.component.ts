@@ -25,6 +25,7 @@ import {
 export class CalendarComponent implements OnChanges, OnDestroy {
   @Input() date!: Date | null;
   @Input() allTasks!: TaskTrack[] | null;
+  @Input() firstDayOfWeek!: Date | null;
 
   @Output() changeDate = new EventEmitter<Date>();
 
@@ -39,6 +40,9 @@ export class CalendarComponent implements OnChanges, OnDestroy {
         return;
       }
       this.generateWeeks(this.date);
+    }
+    if (changes['firstDayOfWeek']) {
+      this.generateWeeks(this.firstDayOfWeek);
     }
   }
 
