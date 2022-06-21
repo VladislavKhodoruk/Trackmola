@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IconifyIcon } from '@iconify/types';
 import check from '@iconify/icons-tabler/check';
 
 @Component({
@@ -6,9 +7,20 @@ import check from '@iconify/icons-tabler/check';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
 })
-export class ButtonComponent implements OnInit {
-  iconCheck = check;
-  constructor() {}
+export class ButtonComponent {
+  @Input() type = 'button';
+  @Input() buttonClass!: string;
+  @Input() label!: string;
+  @Input() disabled!: boolean | null;
+  @Input() icon!: IconifyIcon;
+  @Input() iconWidth!: string;
+  @Input() iconHeight!: string;
 
-  ngOnInit(): void {}
+  @Output() buttonClick: EventEmitter<Event> = new EventEmitter<Event>();
+
+  iconCheck = check;
+
+  onButtonClick(event: Event) {
+    this.buttonClick.emit(event);
+  }
 }

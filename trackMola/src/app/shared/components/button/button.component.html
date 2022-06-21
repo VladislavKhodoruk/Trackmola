@@ -1,4 +1,16 @@
-<button class="button button-primary">
-  <ic-icon class="icon" width="2rem" height="2rem" [icon]="iconCheck"></ic-icon>
-  <span>Send report for approval</span>
+<button
+  class="button"
+  [ngClass]="buttonClass"
+  [type]="type"
+  [disabled]="disabled"
+  (click)="onButtonClick($event)"
+>
+  <ic-icon
+    *ngIf="icon"
+    class="button-icon"
+    [width]="iconWidth"
+    [height]="iconHeight"
+    [icon]="icon"
+  ></ic-icon>
+  {{ label }}
 </button>
