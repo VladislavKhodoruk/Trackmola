@@ -24,8 +24,8 @@ import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
   ></app-navigatinon-calendar>`,
 })
 export class NavigatinonCalendarContainer {
-  firstDayOfWeek$ = this.store$.select(getFirstDayOfWeek);
-  lastDayOfWeek$ = this.store$.select(getLastDayOfWeek);
+  readonly firstDayOfWeek$ = this.store$.select(getFirstDayOfWeek);
+  readonly lastDayOfWeek$ = this.store$.select(getLastDayOfWeek);
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(
@@ -35,7 +35,7 @@ export class NavigatinonCalendarContainer {
     );
   }
 
-  getFirstAndLastDayOfWeek(date: Date): FirstAndLastDayOfWeek {
+  private getFirstAndLastDayOfWeek(date: Date): FirstAndLastDayOfWeek {
     const myDate = setMidnightTime(date);
     const dayOfWeek = myDate.getDay();
     const myMonday = myDate.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
@@ -45,7 +45,7 @@ export class NavigatinonCalendarContainer {
     };
   }
 
-  onPreviousWeek(): void {
+  public onPreviousWeek(): void {
     this.store$.dispatch(
       previousWeek({
         value: ONE_WEEK_IN_SECONDS,
@@ -53,7 +53,7 @@ export class NavigatinonCalendarContainer {
     );
   }
 
-  onNextWeek(): void {
+  public onNextWeek(): void {
     this.store$.dispatch(
       nextWeek({
         value: ONE_WEEK_IN_SECONDS,

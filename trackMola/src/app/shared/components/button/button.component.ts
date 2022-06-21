@@ -18,9 +18,9 @@ export class ButtonComponent {
 
   @Output() buttonClick: EventEmitter<Event> = new EventEmitter<Event>();
 
-  iconCheck = check;
+  readonly iconCheck = check;
 
-  onButtonClick(event: Event): void {
+  public onButtonClick(event: Event): void {
     this.buttonClick.emit(event);
   }
 }

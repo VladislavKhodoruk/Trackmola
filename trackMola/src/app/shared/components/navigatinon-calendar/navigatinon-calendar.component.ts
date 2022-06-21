@@ -14,13 +14,13 @@ export class NavigatinonCalendarComponent {
   @Output() movePreviousWeek = new EventEmitter<void>();
   @Output() moveNextWeek = new EventEmitter<void>();
 
-  iconArrowNarrowLeft = arrowNarrowLeft;
-  iconArrowNarrowRight = arrowNarrowRight;
+  readonly iconArrowNarrowLeft = arrowNarrowLeft;
+  readonly iconArrowNarrowRight = arrowNarrowRight;
 
-  previousWeek(event: Event): void {
+  public previousWeek(event: Event): void {
     this.movePreviousWeek.emit();
   }
-  nextWeek(event: Event): void {
+  public nextWeek(event: Event): void {
     this.moveNextWeek.emit();
   }
 }
