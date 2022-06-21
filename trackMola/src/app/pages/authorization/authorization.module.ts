@@ -12,6 +12,7 @@ import { AuthorizationReducer } from './store/authorization.reducer';
 import { AUTH_STATE_NAME } from './store/authorization.selector';
 import { authorizationRoutes } from './authorization.router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'src/app/shared/components/button/button.module';
 
 @NgModule({
   declarations: [LoginComponent, LoginContainer],
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    ButtonModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(AUTH_STATE_NAME, AuthorizationReducer),
     RouterModule.forChild(authorizationRoutes),
