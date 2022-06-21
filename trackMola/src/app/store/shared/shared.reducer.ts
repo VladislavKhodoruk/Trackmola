@@ -5,6 +5,8 @@ import {
   changeDate,
   getAllTasksSuccess,
   setFirstAndLastDayOfWeek,
+  nextWeek,
+  previousWeek,
 } from './shared.actions';
 
 import { Action, createReducer, on } from '@ngrx/store';
@@ -44,7 +46,39 @@ const sharedReducer = createReducer(
   on(setFirstAndLastDayOfWeek, (state, action) => ({
     ...state,
     firstAndLastDayOfWeek: action.firstAndLastDayOfWeek,
-  }))
+  })),
+  on(nextWeek, (state, action) => {
+    if (state.firstAndLastDayOfWeek) {
+      const firstDay = state.firstAndLastDayOfWeek['firstDay'];
+      const lastDay = state.firstAndLastDayOfWeek['lastDay'];
+      return {
+        ...state,
+        firstAndLastDayOfWeek: {
+          firstDay: new Date(firstDay.getTime() + action.value),
+          lastDay: new Date(lastDay.getTime() + action.value),
+        },
+      };
+    }
+    return {
+      ...state,
+    };
+  }),
+  on(previousWeek, (state, action) => {
+    if (state.firstAndLastDayOfWeek) {
+      const firstDay = state.firstAndLastDayOfWeek['firstDay'];
+      const lastDay = state.firstAndLastDayOfWeek['lastDay'];
+      return {
+        ...state,
+        firstAndLastDayOfWeek: {
+          firstDay: new Date(firstDay.getTime() - action.value),
+          lastDay: new Date(lastDay.getTime() - action.value),
+        },
+      };
+    }
+    return {
+      ...state,
+    };
+  })
 );
 
 export function SharedReducer(state: SharedState | undefined, action: Action) {

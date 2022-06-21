@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { setFirstAndLastDayOfWeek } from 'src/app/store/shared/shared.actions';
+import {
+  nextWeek,
+  previousWeek,
+  setFirstAndLastDayOfWeek,
+} from 'src/app/store/shared/shared.actions';
 import {
   getFirstDayOfWeek,
   getLastDayOfWeek,
 } from 'src/app/store/shared/shared.selectors';
 import { TrackMolaState } from 'src/app/store/trackMola.state';
+import { ONE_WEEK_IN_SECONDS } from '../../constants/constants';
 import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
 
 @Component({
@@ -46,15 +51,18 @@ export class NavigatinonCalendarContainer {
   }
 
   onPreviousWeek() {
-    console.log('prevWeek');
     this.store.dispatch(
-      setFirstAndLastDayOfWeek({
-        firstAndLastDayOfWeek: this.getFirstAndLastDayOfWeek(new Date()),
+      previousWeek({
+        value: ONE_WEEK_IN_SECONDS,
       })
     );
   }
 
   onNextWeek() {
-    console.log('nextWeek');
+    this.store.dispatch(
+      nextWeek({
+        value: ONE_WEEK_IN_SECONDS,
+      })
+    );
   }
 }
