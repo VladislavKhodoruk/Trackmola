@@ -14,6 +14,8 @@ import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
   template: `<app-navigatinon-calendar
     [firstDayOfWeek]="firstDayOfWeek$ | async"
     [lastDayOfWeek]="lastDayOfWeek$ | async"
+    (movePreviousWeek)="onPreviousWeek()"
+    (moveNextWeek)="onNextWeek()"
   ></app-navigatinon-calendar>`,
 })
 export class NavigatinonCalendarContainer {
@@ -41,5 +43,18 @@ export class NavigatinonCalendarContainer {
       firstDay: new Date(myDate.setDate(myMonday)),
       lastDay: new Date(myDate.setDate(myMonday + 6)),
     };
+  }
+
+  onPreviousWeek() {
+    console.log('prevWeek');
+    this.store.dispatch(
+      setFirstAndLastDayOfWeek({
+        firstAndLastDayOfWeek: this.getFirstAndLastDayOfWeek(new Date()),
+      })
+    );
+  }
+
+  onNextWeek() {
+    console.log('nextWeek');
   }
 }
