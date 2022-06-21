@@ -1,6 +1,9 @@
 :host {
   @import "vars/variables.scss";
   @import "mixins.scss";
+  $item-height: 6.625rem;
+  $item-padding: var(--offset-s);
+  
   .tooltip {
     visibility: hidden;
     margin-left: var(--offset-d);
@@ -18,9 +21,9 @@
   }
 
   .calendar-item {
-    padding: var(--offset-s);
+    padding: $item-padding;
     width: 100%;
-    height: 6.625rem;
+    height: $item-height;
     border: $border-table;
 
     display: flex;
@@ -54,7 +57,7 @@
     position: relative;
 
     width: var(--offset-s);
-    height: 5.625rem;
+    height: calc($item-height - $item-padding * 2);
     border-radius: $border-radius-table-bar;
 
     background-color: var(--gray);

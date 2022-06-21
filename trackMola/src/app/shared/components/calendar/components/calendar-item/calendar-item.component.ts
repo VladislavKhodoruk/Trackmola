@@ -23,10 +23,10 @@ export class CalendarItemComponent implements OnChanges {
     if (changes['day']) {
       if (this.day?.duration <= MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY) {
         this.timeBar = this.day.duration * ONE_DIVISION_CALENDAR_BAR;
-      } else {
-        this.timeBar = MAXIMUM_VALUE_BAR;
-        this.more = CLASS_DURATION_MORE_THAN_EIGHT;
+        return;
       }
+      this.timeBar = MAXIMUM_VALUE_BAR;
+      this.more = CLASS_DURATION_MORE_THAN_EIGHT;
     }
   }
 }
