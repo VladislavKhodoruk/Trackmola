@@ -4,6 +4,7 @@ import {
   getUserDataSuccess,
   changeDate,
   getAllTasksSuccess,
+  setFirstAndLastDayOfWeek,
 } from './shared.actions';
 
 import { Action, createReducer, on } from '@ngrx/store';
@@ -39,6 +40,10 @@ const sharedReducer = createReducer(
   on(getAllTasksSuccess, (state, action) => ({
     ...state,
     tasks: action.tasks,
+  })),
+  on(setFirstAndLastDayOfWeek, (state, action) => ({
+    ...state,
+    firstAndLastDayOfWeek: action.firstAndLastDayOfWeek,
   }))
 );
 

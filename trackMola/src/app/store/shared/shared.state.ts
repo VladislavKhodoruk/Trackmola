@@ -1,10 +1,14 @@
-import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
+import {
+  FirstAndLastDayOfWeek,
+  ProfileUser,
+} from 'src/app/shared/interfaces/interfaces';
 
 export interface SharedState {
   loadingStatus: LoadingStatus;
   user: ProfileUser | null;
   date: Date;
   tasks: TaskTrack[];
+  firstAndLastDayOfWeek?: FirstAndLastDayOfWeek;
 }
 
 export interface LoadingStatus {
