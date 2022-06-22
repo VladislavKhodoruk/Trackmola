@@ -38,6 +38,12 @@ export const AppRoutes: Routes = [
     canActivate: [AuthorizationGuard, IsAuthentificated],
   },
   {
+    path: 'team',
+    loadChildren: () =>
+      import('./pages/team/team.module').then((x) => x.TeamModule),
+    canActivate: [AuthorizationGuard, IsAuthentificated],
+  },
+  {
     path: 'authorization',
     loadChildren: () =>
       import('./pages/authorization/authorization.module').then(
