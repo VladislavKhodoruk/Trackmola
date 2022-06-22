@@ -1,7 +1,7 @@
 :host {
   @import "mixins.scss";
   .authorization {
-    @include flex-сenter;
+    @include flex(center, center);
     min-height: 100vh;
     min-width: 100%;
     &-form {
@@ -29,12 +29,6 @@
         margin-top: var(--offset-xs);
         color: var(--warning);
       }
-    }
-
-    &-button {
-      margin: var(--offset) 0;
-      width: 100%;
-      text-transform: uppercase;
     }
   }
 }

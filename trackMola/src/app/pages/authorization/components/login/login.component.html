@@ -53,12 +53,12 @@
     <div class="error" *ngIf="errorMessage">
       {{ errorMessage }}
     </div>
-    <button
+
+    <app-button
       type="submit"
-      class="button button-primary form-button"
+      [buttonClass]="'button-primary button-authorization'"
+      label="Login"
       [disabled]="form.invalid || loading"
-    >
-      Login
-    </button>
+    ></app-button>
   </form>
 </main>

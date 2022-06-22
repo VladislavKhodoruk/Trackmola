@@ -1,0 +1,55 @@
+:host {
+  @import "mixins.scss";
+  @import "vars/variables";
+  .button {
+    @include flex(center, center, var(--offset));
+    padding: 0 var(--offset);
+    height: 4rem;
+    outline: none;
+    border: none;
+    border-radius: var(--border-radius-m);
+    font: var(--font-buttonMiddle);
+    color: var(--white);
+    cursor: pointer;
+    &-primary {
+      background-color: var(--primary);
+      &:hover {
+        background-color: var(--primary-hover);
+      }
+      &:disabled {
+        background-color: var(--primary-disabled);
+      }
+    }
+    &-secondary {
+      border: $border-button;
+      background-color: var(--white);
+      color: var(--primary);
+
+      &:hover {
+        border-color: var(--primary-hover);
+        color: var(--primary-hover);
+      }
+      &:disabled {
+        border-color: var(--primary-disabled);
+        color: var(--primary-disabled);
+      }
+    }
+    &-icon {
+      display: flex;
+    }
+    &-authorization {
+      margin: var(--offset) 0;
+      width: 100%;
+      text-transform: uppercase;
+    }
+    &-navigation-icon {
+      height: 2.25rem;
+      width: 2.25rem;
+      border-radius: var(--border-radius);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

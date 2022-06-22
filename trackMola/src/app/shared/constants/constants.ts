@@ -29,6 +29,7 @@ export const navigationItems = [
 export const defaultPhotoUrl = 'assets/img/user.png';
 
 export const ONE_DAY_IN_SECONDS = 86400000;
+export const ONE_WEEK_IN_SECONDS = ONE_DAY_IN_SECONDS * 7;
 
 export const NAMES_OF_THE_DAYS_OF_THE_WEEK = [
   'Monday',

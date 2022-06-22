@@ -1,4 +1,8 @@
-<button (click)="logout($event)">Log out (check for commit)</button>
+<app-button
+  [buttonClass]="'button-primary'"
+  label="Log out"
+  (buttonClick)="logout($event)"
+></app-button>
 
 <container-element [ngSwitch]="userType">
   <app-employee-profile *ngSwitchCase="types.Employee"></app-employee-profile>

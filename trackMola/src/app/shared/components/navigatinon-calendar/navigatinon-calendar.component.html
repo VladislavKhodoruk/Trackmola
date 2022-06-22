@@ -1,0 +1,28 @@
+<div class="report-week">
+  <app-button
+    [buttonClass]="'button-secondary button-navigation-icon'"
+    [icon]="iconArrowNarrowLeft"
+    iconWidth="1.5rem"
+    iconHeight="1.5rem"
+    (buttonClick)="previousWeek($event)"
+  ></app-button>
+  <span class="report-week-interval">
+    Week {{ firstDayOfWeek | date: "dd MMM" }} -
+    {{ lastDayOfWeek | date: "dd MMM" }}
+  </span>
+  <div class="photos">
+    <img class="photo-manager" src="assets/img/user.png" alt="photo" />
+    <img
+      class="photo-manager photo-manager-second"
+      src="assets/img/user.png"
+      alt="photo"
+    />
+  </div>
+  <app-button
+    [buttonClass]="'button-secondary button-navigation-icon'"
+    [icon]="iconArrowNarrowRight"
+    iconWidth="1.5rem"
+    iconHeight="1.5rem"
+    (buttonClick)="nextWeek($event)"
+  ></app-button>
+</div>

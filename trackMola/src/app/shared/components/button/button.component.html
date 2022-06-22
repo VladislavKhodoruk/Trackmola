@@ -1,0 +1,16 @@
+<button
+  class="button"
+  [ngClass]="buttonClass"
+  [type]="type"
+  [disabled]="disabled"
+  (click)="onButtonClick($event)"
+>
+  <ic-icon
+    *ngIf="icon"
+    class="button-icon"
+    [width]="iconWidth"
+    [height]="iconHeight"
+    [icon]="icon"
+  ></ic-icon>
+  {{ label }}
+</button>

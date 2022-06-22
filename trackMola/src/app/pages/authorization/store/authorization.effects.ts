@@ -22,16 +22,16 @@ export class AuthorizationEffects {
       switchMap((action) =>
         this.authorizationService.login(action.email, action.password).pipe(
           map(() => {
-            this.store.dispatch(loading({ status: false }));
-            this.store.dispatch(errorMessage({ message: '', loaded: true }));
+            this.store$.dispatch(loading({ status: false }));
+            this.store$.dispatch(errorMessage({ message: '', loaded: true }));
             return loginSuccess();
           }),
           catchError((error: FirebaseCodeError) => {
-            this.store.dispatch(loading({ status: false }));
+            this.store$.dispatch(loading({ status: false }));
             const message = this.authorizationService.authorizationError(
               error.code
             );
-            this.store.dispatch(errorMessage({ message, loaded: false }));
+            this.store$.dispatch(errorMessage({ message, loaded: false }));
             return of();
           })
         )
@@ -44,7 +44,7 @@ export class AuthorizationEffects {
       this.actions$.pipe(
         ofType(loginSuccess),
         tap((): boolean => {
-          this.store.dispatch(getUserData());
+          this.store$.dispatch(getUserData());
           return true;
         })
       ),
@@ -66,7 +66,7 @@ export class AuthorizationEffects {
   constructor(
     private actions$: Actions,
     private authorizationService: AuthorizationService,
-    private store: Store<TrackMolaState>,
+    private store$: Store<TrackMolaState>,
     private router: Router
   ) {}
 }

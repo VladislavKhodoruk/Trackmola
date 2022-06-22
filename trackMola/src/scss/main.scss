@@ -42,6 +42,7 @@ html {
   --font-buttonMiddle: 500 1.125rem "Noto Sans", sans-serif;
   --font-title: 600 2rem "Noto Sans", sans-serif;
   --font-titleBIg: 600 2.5rem "Noto Sans", sans-serif;
+  --font-typography: 500 1.125rem "Noto Sans", sans-serif;
   height: 100%;
 }
 
@@ -93,45 +94,6 @@ input:-webkit-autofill:active {
   }
   &-warning {
     border: $border-input-warning;
-  }
-}
-
-.button {
-  @include flex-сenter;
-  padding: 0 var(--offset);
-  height: 4rem;
-  outline: none;
-  border: none;
-  border-radius: var(--border-radius-m);
-  font: var(--font-buttonMiddle);
-  color: var(--white);
-  cursor: pointer;
-  &-primary {
-    background-color: var(--primary);
-    &:hover {
-      background-color: var(--primary-hover);
-    }
-    &:disabled {
-      background-color: var(--primary-disabled);
-    }
-  }
-  &-secondary {
-    border: $border-button;
-    background-color: var(--white);
-    color: var(--primary);
-
-    &:hover {
-      border-color: var(--primary-hover);
-      color: var(--primary-hover);
-    }
-    &:disabled {
-      border-color: var(--primary-disabled);
-      color: var(--primary-disabled);
-    }
-  }
-
-  &:disabled {
-    cursor: not-allowed;
   }
 }
 

@@ -3,7 +3,7 @@
   @import "mixins.scss";
   $item-height: 6.625rem;
   $item-padding: var(--offset-s);
-  
+
   .tooltip {
     visibility: hidden;
     margin-left: var(--offset-d);
@@ -11,10 +11,10 @@
     height: 1.75rem;
     border-radius: $border-radius-table-tooltip;
 
-    @include flex-сenter;
+    @include flex(center, center);
 
     font-size: var(--font-blocks);
-    
+
     color: var(--white);
 
     background-color: var(--primary);
@@ -46,6 +46,7 @@
 
   .selected {
     border: $border-table-select;
+    box-shadow: 0 0 0.5rem var(--selected-day);
   }
 
   .calendar-container {
@@ -61,7 +62,6 @@
     border-radius: $border-radius-table-bar;
 
     background-color: var(--gray);
-
 
     &-progress {
       position: absolute;

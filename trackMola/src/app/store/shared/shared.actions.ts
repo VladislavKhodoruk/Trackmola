@@ -1,5 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
+import {
+  FirstAndLastDayOfWeek,
+  ProfileUser,
+} from 'src/app/shared/interfaces/interfaces';
 import { TaskTrack } from './shared.state';
 
 export const LOADING = 'loading';
@@ -9,6 +12,9 @@ export const GET_USER_DATA_SUCCESS = 'get user success';
 export const CHANGE_DATE = 'change date';
 export const GET_ALL_TASKS = 'get all tasks';
 export const GET_ALL_TASKS_SUCCESS = 'get all tasks success';
+export const SET_FIRST_AND_LAST_DAY_WEEK = 'set first and last day of week';
+export const NEXT_WEEK = 'next week';
+export const PREVIOUS_WEEK = 'previous week';
 
 export const loading = createAction(LOADING, props<{ status: boolean }>());
 export const errorMessage = createAction(
@@ -23,6 +29,18 @@ export const getUserDataSuccess = createAction(
 );
 
 export const changeDate = createAction(CHANGE_DATE, props<{ date: Date }>());
+
+export const setFirstAndLastDayOfWeek = createAction(
+  SET_FIRST_AND_LAST_DAY_WEEK,
+  props<{ firstAndLastDayOfWeek: FirstAndLastDayOfWeek }>()
+);
+
+export const nextWeek = createAction(NEXT_WEEK, props<{ value: number }>());
+export const previousWeek = createAction(
+  PREVIOUS_WEEK,
+  props<{ value: number }>()
+);
+
 export const getAllTasks = createAction(GET_ALL_TASKS);
 
 export const getAllTasksSuccess = createAction(

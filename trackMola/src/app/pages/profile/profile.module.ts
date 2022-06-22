@@ -12,6 +12,7 @@ import { EmployeeProfileComponent } from './components/employee-profile/employee
 import { ManagerProfileComponent } from './components/manager-profile/manager-profile.component';
 import { ProfileComponent } from './layout/profile.component';
 import { ProfileContainer } from './layout/profile.container';
+import { ButtonModule } from 'src/app/shared/components/button/button.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProfileContainer } from './layout/profile.container';
   ],
   imports: [
     CommonModule,
+    ButtonModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(PROFILE_STATE_NAME, ProfileReducer),
     RouterModule.forChild(ProfileRoutes),

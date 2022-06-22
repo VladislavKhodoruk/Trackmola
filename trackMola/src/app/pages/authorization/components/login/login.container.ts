@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { loading } from 'src/app/store/shared/shared.actions';
 import {
   getErrorMessage,
@@ -19,17 +18,15 @@ import { loginStart } from '../../store/authorization.actions';
   ></app-login>`,
 })
 export class LoginContainer {
-  loading$: Observable<boolean>;
-  errorMessage$: Observable<string>;
-  constructor(private store: Store<TrackMolaState>) {
-    this.loading$ = this.store.select(getLoading);
-    this.errorMessage$ = this.store.select(getErrorMessage);
-  }
+  loading$ = this.store$.select(getLoading);
+  errorMessage$ = this.store$.select(getErrorMessage);
+
+  constructor(private store$: Store<TrackMolaState>) {}
 
   onStartLoading() {
-    this.store.dispatch(loading({ status: true }));
+    this.store$.dispatch(loading({ status: true }));
   }
   onLoginStart({ email, password }: AuthorizationForm) {
-    this.store.dispatch(loginStart({ email, password }));
+    this.store$.dispatch(loginStart({ email, password }));
   }
 }

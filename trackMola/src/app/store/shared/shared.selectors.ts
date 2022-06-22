@@ -1,6 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { UserType } from 'src/app/shared/enums/enum';
-import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
+import {
+  FirstAndLastDayOfWeek,
+  ProfileUser,
+} from 'src/app/shared/interfaces/interfaces';
 import { navigationItems } from 'src/app/shared/constants/constants';
 import { SharedState } from './shared.state';
 
@@ -50,6 +53,21 @@ export const getUserType = createSelector(getSharedState, (state) => {
   }
   return '';
 });
+
+export const getFirstAndLastDayOfWeek = createSelector(
+  getSharedState,
+  (state) => state.firstAndLastDayOfWeek
+);
+
+export const getFirstDayOfWeek = createSelector(
+  getFirstAndLastDayOfWeek,
+  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek?.firstDay
+);
+
+export const getLastDayOfWeek = createSelector(
+  getFirstAndLastDayOfWeek,
+  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek?.lastDay
+);
 
 export const getDate = createSelector(getSharedState, (state) => state.date);
 

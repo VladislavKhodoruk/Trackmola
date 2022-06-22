@@ -1,12 +1,13 @@
-@mixin flex-сenter {
+@mixin flex($align, $justify, $gap: 0) {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
 }
 
-@mixin profile-photo {
-  width: 4rem;
-  height: 4rem;
+@mixin profile-photo($width, $height) {
+  width: $width;
+  height: $height;
   border-radius: 100%;
   object-fit: cover;
 }
