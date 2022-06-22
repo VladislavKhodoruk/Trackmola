@@ -34,14 +34,14 @@ export class CalendarComponent implements OnChanges, OnDestroy {
   namesDaysWeek = NAMES_OF_THE_DAYS_OF_THE_WEEK;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['allTasks']) {
+    if (changes.allTasks) {
       if (this.date?.getDay() === 0) {
         this.generateWeeks(this.date, 2, 0);
         return;
       }
       this.generateWeeks(this.date);
     }
-    if (changes['firstDayOfWeek']) {
+    if (changes.firstDayOfWeek) {
       this.generateWeeks(this.firstDayOfWeek);
     }
   }

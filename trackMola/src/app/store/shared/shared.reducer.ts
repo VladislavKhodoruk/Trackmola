@@ -15,11 +15,11 @@ import { logout } from 'src/app/pages/authorization/store/authorization.actions'
 
 const sharedReducer = createReducer(
   initialState,
-  on(loading, (state, action) => ({
+  on(loading, (state: SharedState, action) => ({
     ...state,
     loadingStatus: { ...state.loadingStatus, loading: action.status },
   })),
-  on(errorMessage, (state, action) => ({
+  on(errorMessage, (state: SharedState, action) => ({
     ...state,
     loadingStatus: {
       ...state.loadingStatus,
@@ -27,30 +27,30 @@ const sharedReducer = createReducer(
       errorMessage: action.message,
     },
   })),
-  on(getUserDataSuccess, (state, action) => ({
+  on(getUserDataSuccess, (state: SharedState, action) => ({
     ...state,
     user: { ...action.data },
   })),
-  on(logout, (state) => ({
+  on(logout, (state: SharedState) => ({
     ...state,
     user: null,
   })),
-  on(changeDate, (state, action) => ({
+  on(changeDate, (state: SharedState, action) => ({
     ...state,
     date: action.date,
   })),
-  on(getAllTasksSuccess, (state, action) => ({
+  on(getAllTasksSuccess, (state: SharedState, action) => ({
     ...state,
     tasks: action.tasks,
   })),
-  on(setFirstAndLastDayOfWeek, (state, action) => ({
+  on(setFirstAndLastDayOfWeek, (state: SharedState, action) => ({
     ...state,
     firstAndLastDayOfWeek: action.firstAndLastDayOfWeek,
   })),
-  on(nextWeek, (state, action) => {
+  on(nextWeek, (state: SharedState, action) => {
     if (state.firstAndLastDayOfWeek) {
-      const firstDay = state.firstAndLastDayOfWeek['firstDay'];
-      const lastDay = state.firstAndLastDayOfWeek['lastDay'];
+      const firstDay = state.firstAndLastDayOfWeek.firstDay;
+      const lastDay = state.firstAndLastDayOfWeek.lastDay;
       return {
         ...state,
         firstAndLastDayOfWeek: {
@@ -63,10 +63,10 @@ const sharedReducer = createReducer(
       ...state,
     };
   }),
-  on(previousWeek, (state, action) => {
+  on(previousWeek, (state: SharedState, action) => {
     if (state.firstAndLastDayOfWeek) {
-      const firstDay = state.firstAndLastDayOfWeek['firstDay'];
-      const lastDay = state.firstAndLastDayOfWeek['lastDay'];
+      const firstDay = state.firstAndLastDayOfWeek.firstDay;
+      const lastDay = state.firstAndLastDayOfWeek.lastDay;
       return {
         ...state,
         firstAndLastDayOfWeek: {

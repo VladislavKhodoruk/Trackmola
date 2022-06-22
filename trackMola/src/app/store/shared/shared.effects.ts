@@ -1,3 +1,4 @@
+import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -24,9 +25,10 @@ export class SharedEffects {
         this.usersService.currentUserProfile$.pipe(
           take(1),
           map((data) => {
+            const profileUser: ProfileUser = data as ProfileUser;
             this.store$.dispatch(loading({ status: false }));
             this.store$.dispatch(errorMessage({ message: '', loaded: true }));
-            return getUserDataSuccess({ data: data! });
+            return getUserDataSuccess({ data: profileUser });
           }),
           catchError(() => {
             this.store$.dispatch(loading({ status: false }));

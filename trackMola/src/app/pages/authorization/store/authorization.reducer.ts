@@ -1,10 +1,10 @@
-import { authorizationState, initialState } from './authorization.state';
+import { AuthorizationState, initialState } from './authorization.state';
 import { Action, createReducer } from '@ngrx/store';
 
 const authorizationReducer = createReducer(initialState);
 
 export function AuthorizationReducer(
-  state: authorizationState,
+  state: AuthorizationState,
   action: Action
 ) {
   return authorizationReducer(state, action);
