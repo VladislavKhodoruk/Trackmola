@@ -1,17 +1,18 @@
-
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 @include mat.core();
 
 $trackMola-primary: mat.define-palette(mat.$indigo-palette);
 $trackMola-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 $trackMola-warn: mat.define-palette(mat.$red-palette);
-$trackMola-theme: mat.define-light-theme((
-  color: (
-    primary: $trackMola-primary,
-    accent: $trackMola-accent,
-    warn: $trackMola-warn,
+$trackMola-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $trackMola-primary,
+      accent: $trackMola-accent,
+      warn: $trackMola-warn,
+    ),
   )
-));
+);
 
 @include mat.all-component-themes($trackMola-theme);
 
@@ -41,9 +42,12 @@ html {
   --font-buttonMiddle: 500 1.125rem "Noto Sans", sans-serif;
   --font-title: 600 2rem "Noto Sans", sans-serif;
   --font-titleBIg: 600 2.5rem "Noto Sans", sans-serif;
+  height: 100%;
 }
 
 body {
+  height: 100%;
+  margin: 0;
   font-size: 1rem;
   background-color: var(--white);
   color: var(--black);
@@ -143,6 +147,3 @@ input:-webkit-autofill:active {
 .sidebar-list-item-icon g {
   stroke-width: 1;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
