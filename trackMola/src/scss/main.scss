@@ -1,3 +1,21 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+$trackMola-primary: mat.define-palette(mat.$indigo-palette);
+$trackMola-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$trackMola-warn: mat.define-palette(mat.$red-palette);
+$trackMola-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $trackMola-primary,
+      accent: $trackMola-accent,
+      warn: $trackMola-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($trackMola-theme);
+
 @import "vars/variables";
 @import "mixins.scss";
 
@@ -25,9 +43,12 @@ html {
   --font-title: 600 2rem "Noto Sans", sans-serif;
   --font-titleBIg: 600 2.5rem "Noto Sans", sans-serif;
   --font-typography: 500 1.125rem "Noto Sans", sans-serif;
+  height: 100%;
 }
 
 body {
+  height: 100%;
+  margin: 0;
   font-size: 1rem;
   background-color: var(--white);
   color: var(--black);

@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IconModule } from '@visurel/iconify-angular';
 import { SidebarModule } from './shared/components/sidebar/sidebar.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,6 +45,7 @@ import { SidebarModule } from './shared/components/sidebar/sidebar.module';
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),
     provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule,
   ],
   providers: [IsAuthentificated],
   bootstrap: [AppComponent],
