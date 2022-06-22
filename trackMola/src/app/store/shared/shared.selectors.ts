@@ -56,32 +56,17 @@ export const getUserType = createSelector(getSharedState, (state) => {
 
 export const getFirstAndLastDayOfWeek = createSelector(
   getSharedState,
-  (state) => {
-    if (state.firstAndLastDayOfWeek) {
-      return state.firstAndLastDayOfWeek;
-    }
-    return null;
-  }
+  (state) => state.firstAndLastDayOfWeek
 );
 
 export const getFirstDayOfWeek = createSelector(
   getFirstAndLastDayOfWeek,
-  (firstAndLastDayOfWeek) => {
-    if (firstAndLastDayOfWeek) {
-      return firstAndLastDayOfWeek['firstDay'];
-    }
-    return null;
-  }
+  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek?.firstDay
 );
 
 export const getLastDayOfWeek = createSelector(
   getFirstAndLastDayOfWeek,
-  (firstAndLastDayOfWeek) => {
-    if (firstAndLastDayOfWeek) {
-      return firstAndLastDayOfWeek['lastDay'];
-    }
-    return null;
-  }
+  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek?.lastDay
 );
 
 export const getDate = createSelector(getSharedState, (state) => state.date);
