@@ -1,0 +1,17 @@
+:host {
+  @import "mixins.scss";
+  .container-input {
+    @include flex(center, center);
+    width: 21.5rem;
+    max-width: 21.5rem;
+  }
+  .input-search {
+    width: 100%;
+    padding-right: 3rem;
+  }
+  .icon-search {
+    margin-left: -2.5rem;
+    color: var(--gray2);
+    cursor: pointer;
+  }
+}
