@@ -11,4 +11,5 @@ export enum StateName {
   Profile = 'profile',
   Projects = 'projects',
   Report = 'report',
+  Team = 'team',
 }

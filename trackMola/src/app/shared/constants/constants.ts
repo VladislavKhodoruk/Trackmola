@@ -3,7 +3,7 @@ import chartDonut3 from '@iconify/icons-tabler/chart-donut-3';
 import fileTime from '@iconify/icons-tabler/file-time';
 import puzzleIcon from '@iconify/icons-tabler/puzzle';
 
-export const navigationItems = [
+export const navigationBasicItems = [
   {
     routeLink: 'dashboard',
     icon: layoutDashboard,
@@ -23,6 +23,14 @@ export const navigationItems = [
     routeLink: 'projects',
     icon: puzzleIcon,
     label: 'Projects',
+  },
+];
+
+export const navigationTeam = [
+  {
+    routeLink: 'team',
+    icon: puzzleIcon,
+    label: 'Team',
   },
 ];
 

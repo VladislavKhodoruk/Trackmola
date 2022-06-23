@@ -4,7 +4,10 @@ import {
   FirstAndLastDayOfWeek,
   ProfileUser,
 } from 'src/app/shared/interfaces/interfaces';
-import { navigationItems } from 'src/app/shared/constants/constants';
+import {
+  navigationBasicItems,
+  navigationTeam,
+} from 'src/app/shared/constants/constants';
 import { SharedState } from './shared.state';
 
 export const SHARED_NAME = 'shared';
@@ -26,13 +29,13 @@ export const getNavigationElems = createSelector(getSharedState, (state) => {
     const usetInfo: ProfileUser = state.user;
     switch (usetInfo.type) {
       case UserType.Employee:
-        return navigationItems;
+        return navigationBasicItems;
       case UserType.CTO:
-        return navigationItems;
+        return [...navigationBasicItems, ...navigationTeam];
       case UserType.Manager:
-        return navigationItems;
+        return [...navigationBasicItems, ...navigationTeam];
       case UserType.Admin:
-        return navigationItems;
+        return [...navigationBasicItems, ...navigationTeam];
     }
   }
   return null;
@@ -56,17 +59,17 @@ export const getUserType = createSelector(getSharedState, (state) => {
 
 export const getFirstAndLastDayOfWeek = createSelector(
   getSharedState,
-  (state) => state.firstAndLastDayOfWeek
+  (state) => state.firstAndLastDayOfWeek as FirstAndLastDayOfWeek
 );
 
 export const getFirstDayOfWeek = createSelector(
   getFirstAndLastDayOfWeek,
-  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek!.firstDay
+  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek.firstDay
 );
 
 export const getLastDayOfWeek = createSelector(
   getFirstAndLastDayOfWeek,
-  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek!.lastDay
+  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek.lastDay
 );
 
 export const getDate = createSelector(getSharedState, (state) => state.date);

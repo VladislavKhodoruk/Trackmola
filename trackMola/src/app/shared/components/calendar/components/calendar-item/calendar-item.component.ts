@@ -20,7 +20,7 @@ export class CalendarItemComponent implements OnChanges {
   more = '';
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['day']) {
+    if (changes.day) {
       if (this.day?.duration <= MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY) {
         this.timeBar = this.day.duration * ONE_DIVISION_CALENDAR_BAR;
         return;
