@@ -12,6 +12,10 @@ import { EmployeeProjectsComponent } from './components/employee-projects/employ
 import { AdminProjectsComponent } from './components/admin-projects/admin-projects.component';
 import { ProjectsComponent } from './layout/projects.component';
 import { ProjectsContainer } from './layout/projects.container';
+import { ProjectsListComponent } from './components/projects-list/projects-list.component';
+import { ProjectsListContainer } from './components/projects-list/projects-list.container';
+import { InputSearchComponent } from './components/projects-list/input-search/input-search.component';
+import { IconModule } from '@visurel/iconify-angular';
 
 @NgModule({
   declarations: [
@@ -21,9 +25,13 @@ import { ProjectsContainer } from './layout/projects.container';
     AdminProjectsComponent,
     ProjectsContainer,
     ProjectsComponent,
+    ProjectsListComponent,
+    ProjectsListContainer,
+    InputSearchComponent,
   ],
   imports: [
     CommonModule,
+    IconModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(PROJECTS_STATE_NAME, ProjectsReducer),
     RouterModule.forChild(ProjectsRoutes),
