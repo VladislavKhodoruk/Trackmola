@@ -1,0 +1,25 @@
+:host {
+  @import "mixins.scss";
+  .projects-list {
+    @include flex(flex-start, center, 1rem);
+    flex-direction: column;
+    padding: 0px;
+    width: 21.5rem;
+    max-width: 21.5rem;
+    height: 55rem;
+    max-height: 55rem;
+    overflow-y: scroll;
+  }
+  &-item {
+    @include flex(flex-start, center, var(--offset-d));
+    flex-direction: column;
+    padding: var(--offset) var(--offset-l);
+    width: 100%;
+    height: 8.5rem;
+    background-color: var(--white);
+    &:hover {
+      box-shadow: 0 0 var(--offset-s) rgba(87, 74, 249, 0.25);
+      border-radius: var(--border-radius);
+    }
+  }
+}
