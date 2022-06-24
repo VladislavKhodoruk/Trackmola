@@ -1,7 +1,7 @@
 :host {
   @import "mixins.scss";
   .container-input {
-    @include flex(center, center);
+    @include flex(center, flex-start);
     width: 21.5rem;
     max-width: 21.5rem;
   }
