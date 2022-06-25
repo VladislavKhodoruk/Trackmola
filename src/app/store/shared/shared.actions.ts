@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import {
   FirstAndLastDayOfWeek,
   ProfileUser,
-} from 'src/app/shared/interfaces/interfaces';
+} from '@shared/interfaces/interfaces';
 import { TaskTrack } from './shared.state';
 
 export const LOADING = 'loading';

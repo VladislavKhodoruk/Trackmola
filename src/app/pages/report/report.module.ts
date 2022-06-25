@@ -14,8 +14,8 @@ import { EmployeeReportComponent } from './components/employee-report/employee-r
 import { ReportContainer } from './layout/report.container';
 import { ReportComponent } from './layout/report.component';
 import { IconModule } from '@visurel/iconify-angular';
-import { CalendarModule } from 'src/app/shared/components/calendar/calendar.module';
-import { NavigatinonCalendarModule } from 'src/app/shared/components/navigatinon-calendar/navigatinon-calendar.module';
+import { CalendarModule } from '@shared/components/calendar/calendar.module';
+import { NavigatinonCalendarModule } from '@shared/components/navigatinon-calendar/navigatinon-calendar.module';
 
 @NgModule({
   declarations: [

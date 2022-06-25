@@ -11,7 +11,7 @@ import {
 import { User } from 'firebase/auth';
 
 import { from, Observable, of, switchMap } from 'rxjs';
-import { AuthorizationService } from 'src/app/pages/authorization/services/authorization.service';
+import { AuthorizationService } from '@pages/authorization/services/authorization.service';
 import { ProfileUser } from '../interfaces/interfaces';
 
 @Injectable({

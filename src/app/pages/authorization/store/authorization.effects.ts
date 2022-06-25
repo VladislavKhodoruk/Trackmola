@@ -4,12 +4,12 @@ import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 
 import { catchError, map, of, tap, Observable, switchMap } from 'rxjs';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
+import { TrackMolaState } from '@store/trackMola.state';
 import {
   errorMessage,
   getUserData,
   loading,
-} from 'src/app/store/shared/shared.actions';
+} from '@store/shared/shared.actions';
 import { AuthorizationService } from '../services/authorization.service';
 import { Router } from '@angular/router';
 import { FirebaseCodeError } from '../interfaces/interface';

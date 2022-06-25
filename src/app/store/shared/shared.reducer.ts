@@ -11,7 +11,7 @@ import {
 
 import { Action, createReducer, on } from '@ngrx/store';
 import { initialState, SharedState } from './shared.state';
-import { logout } from 'src/app/pages/authorization/store/authorization.actions';
+import { logout } from '@pages/authorization/store/authorization.actions';
 
 const sharedReducer = createReducer(
   initialState,

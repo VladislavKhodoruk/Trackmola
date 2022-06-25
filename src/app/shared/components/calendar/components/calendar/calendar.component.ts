@@ -8,13 +8,13 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { TaskTrack } from 'src/app/store/shared/shared.state';
-import { Day, Week } from 'src/app/shared/interfaces/interfaces';
+import { TaskTrack } from '@store/shared/shared.state';
+import { Day, Week } from '@shared/interfaces/interfaces';
 import {
   NAMES_OF_THE_DAYS_OF_THE_WEEK,
   NUMBER_OF_DAYS_IN_A_WEEK,
   ONE_DAY_IN_SECONDS,
-} from 'src/app/shared/constants/constants';
+} from '@shared/constants/constants';
 
 @Component({
   selector: 'app-calendar',

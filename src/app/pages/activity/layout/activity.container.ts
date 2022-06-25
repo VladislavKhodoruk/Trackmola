@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getUserType } from 'src/app/store/shared/shared.selectors';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
+import { getUserType } from '@store/shared/shared.selectors';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-activity-container',

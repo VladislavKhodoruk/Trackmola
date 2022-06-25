@@ -4,8 +4,8 @@ import {
   MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY,
   MAXIMUM_VALUE_BAR,
   ONE_DIVISION_CALENDAR_BAR,
-} from 'src/app/shared/constants/constants';
-import { Day } from 'src/app/shared/interfaces/interfaces';
+} from '@shared/constants/constants';
+import { Day } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-calendar-item',

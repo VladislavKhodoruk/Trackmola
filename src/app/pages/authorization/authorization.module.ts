@@ -12,7 +12,7 @@ import { AuthorizationReducer } from './store/authorization.reducer';
 import { AUTH_STATE_NAME } from './store/authorization.selector';
 import { authorizationRoutes } from './authorization.router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule } from 'src/app/shared/components/button/button.module';
+import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [LoginComponent, LoginContainer],

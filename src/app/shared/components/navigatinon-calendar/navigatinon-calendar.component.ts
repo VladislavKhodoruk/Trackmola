@@ -18,9 +18,11 @@ export class NavigatinonCalendarComponent {
   readonly iconArrowNarrowRight = arrowNarrowRight;
 
   public previousWeek(event: Event): void {
+    event.preventDefault();
     this.movePreviousWeek.emit();
   }
   public nextWeek(event: Event): void {
+    event.preventDefault();
     this.moveNextWeek.emit();
   }
 }
