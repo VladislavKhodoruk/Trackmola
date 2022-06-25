@@ -4,12 +4,12 @@ import {
   nextWeek,
   previousWeek,
   setFirstAndLastDayOfWeek,
-} from 'src/app/store/shared/shared.actions';
+} from '@store/shared/shared.actions';
 import {
   getFirstDayOfWeek,
   getLastDayOfWeek,
-} from 'src/app/store/shared/shared.selectors';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
+} from '@store/shared/shared.selectors';
+import { TrackMolaState } from '@store/trackMola.state';
 import { ONE_WEEK_IN_SECONDS } from '../../constants/constants';
 import { setMidnightTime } from '../../helpers/helpers';
 import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { changeDate, getAllTasks } from 'src/app/store/shared/shared.actions';
+import { changeDate, getAllTasks } from '@store/shared/shared.actions';
 import {
   allTasks,
   getDate,
   getFirstDayOfWeek,
-} from 'src/app/store/shared/shared.selectors';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
+} from '@store/shared/shared.selectors';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-calendar-container',

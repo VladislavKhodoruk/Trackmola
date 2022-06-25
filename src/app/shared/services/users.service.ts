@@ -11,7 +11,7 @@ import {
 import { User } from 'firebase/auth';
 
 import { from, Observable, of, switchMap } from 'rxjs';
-import { AuthorizationService } from 'src/app/pages/authorization/services/authorization.service';
+import { AuthorizationService } from '@pages/authorization/services/authorization.service';
 import { ProfileUser } from '../interfaces/interfaces';
 
 @Injectable({
@@ -19,16 +19,12 @@ import { ProfileUser } from '../interfaces/interfaces';
 })
 export class UsersService {
   get currentUserProfile$(): Observable<ProfileUser | null> {
-    return this.authorizationService.currentUser$.pipe(
-      switchMap((data: User | null) => {
-        if (!data?.uid) {
-          return of(null);
-        }
-
-        const ref = doc(this.firestore, 'users', data.uid);
-        return docData(ref) as Observable<ProfileUser>;
-      })
+    const ref = doc(
+      this.firestore,
+      'users',
+      localStorage.getItem('AuthUserId')
     );
+    return docData(ref) as Observable<ProfileUser>;
   }
 
   get allUsers$(): Observable<ProfileUser[]> {

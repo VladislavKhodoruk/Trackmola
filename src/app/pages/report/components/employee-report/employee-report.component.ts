@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import check from '@iconify/icons-tabler/check';
 
 @Component({
@@ -6,10 +6,10 @@ import check from '@iconify/icons-tabler/check';
   templateUrl: './employee-report.component.html',
   styleUrls: ['./employee-report.component.scss'],
 })
-export class EmployeeReportComponent implements OnInit {
+export class EmployeeReportComponent {
   iconCheck = check;
 
-  ngOnInit(): void {}
-
-  submitReport(event: Event) {}
+  submitReport(event: Event) {
+    event.preventDefault();
+  }
 }

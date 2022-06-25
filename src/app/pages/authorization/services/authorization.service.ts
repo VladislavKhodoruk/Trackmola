@@ -36,6 +36,7 @@ export class AuthorizationService {
   }
 
   logout() {
+    localStorage.clear();
     return from(this.auth.signOut());
   }
 }

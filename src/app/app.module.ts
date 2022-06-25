@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
-
+import { environment } from 'environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EffectsModule } from '@ngrx/effects';
@@ -16,7 +15,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { SharedEffects } from './store/shared/shared.effects';
-import { IsAuthentificated } from './shared/guards/IsAuthentificated.guard';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -47,7 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
   ],
-  providers: [IsAuthentificated],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
