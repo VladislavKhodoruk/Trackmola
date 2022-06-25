@@ -16,23 +16,6 @@ export const getErrorMessage = createSelector(
   (state) => state.loadingStatus.errorMessage
 );
 
-export const getUserPhoto = createSelector(getSharedState, (state) => {
-  if (state && state.user) {
-    const usetInfo: ProfileUser = state.user;
-    return usetInfo.photo;
-  }
-
-  return '';
-});
-
-export const getUserType = createSelector(getSharedState, (state) => {
-  if (state && state.user) {
-    const usetInfo: ProfileUser = state.user;
-    return usetInfo.type;
-  }
-  return '';
-});
-
 export const getFirstAndLastDayOfWeek = createSelector(
   getSharedState,
   (state) => state.firstAndLastDayOfWeek
