@@ -1,6 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { SharedState } from './shared.state';
-import { ProfileUser } from '@shared/interfaces/interfaces';
 
 export const SHARED_NAME = 'shared';
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import searchIcon from '@iconify/icons-tabler/search';
 
 @Component({
@@ -6,8 +6,6 @@ import searchIcon from '@iconify/icons-tabler/search';
   templateUrl: './input-search.component.html',
   styleUrls: ['./input-search.component.scss'],
 })
-export class InputSearchComponent implements OnInit {
+export class InputSearchComponent {
   icon = searchIcon;
-  constructor() {}
-  ngOnInit(): void {}
 }

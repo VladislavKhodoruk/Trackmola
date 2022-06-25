@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Project } from '@pages/projects/interfaces/interfaces';
 
 @Component({
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
-  styleUrls: ['./projects-list.component.scss']
+  styleUrls: ['./projects-list.component.scss'],
 })
-export class ProjectsListComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class ProjectsListComponent {
+  @Input() myProjects!: Project[];
 }

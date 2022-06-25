@@ -1,5 +1,11 @@
+import { Project, Task } from '../interfaces/interfaces';
+
 export interface ProjectsState {
-  [key: string]: string;
+  myProjects?: Project[];
+  allTasksInProjects?: Task[];
 }
 
-export const projectsState: ProjectsState = {};
+export const projectsState: ProjectsState = {
+  myProjects: [],
+  allTasksInProjects: [],
+};
