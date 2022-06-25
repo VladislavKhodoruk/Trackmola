@@ -17,7 +17,7 @@ import { ProjectsListContainer } from './components/projects-list/projects-list.
 import { InputSearchComponent } from './components/projects-list/input-search/input-search.component';
 import { IconModule } from '@visurel/iconify-angular';
 import { ProjectItemComponent } from './components/projects-list/project-item/project-item.component';
-import { ProjectsItemContainer } from './components/projects-list/project-item/projects-item.container';
+import { ProjectItemContainer } from './components/projects-list/project-item/project-item.container';
 import { ProjectsEffects } from './store/projects.effects';
 
 @NgModule({
@@ -32,7 +32,7 @@ import { ProjectsEffects } from './store/projects.effects';
     ProjectsListContainer,
     InputSearchComponent,
     ProjectItemComponent,
-    ProjectsItemContainer,
+    ProjectItemContainer,
   ],
   imports: [
     CommonModule,

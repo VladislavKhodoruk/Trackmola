@@ -8,7 +8,7 @@ import { getAllTasksInProject } from '@pages/projects/store/projects.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
-  selector: 'app-projects-item-container',
+  selector: 'app-project-item-container',
   template: `<app-project-item
     class="projects-list-item"
     [(project)]="this.project"
@@ -16,7 +16,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-project-item>`,
   styleUrls: ['./project-item.component.scss'],
 })
-export class ProjectsItemContainer implements OnInit {
+export class ProjectItemContainer implements OnInit {
   @Input() project!: Project;
   tasksInProject$: Observable<Task[]>;
 

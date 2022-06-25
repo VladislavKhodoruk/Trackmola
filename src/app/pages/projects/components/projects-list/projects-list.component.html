@@ -2,9 +2,9 @@
   <app-input-search></app-input-search>
   <ul class="projects-list">
     <li [style.width]="'100%'" *ngFor="let project of myProjects">
-      <app-projects-item-container
+      <app-project-item-container
         [project]="project"
-      ></app-projects-item-container>
+      ></app-project-item-container>
     </li>
   </ul>
 </section>
