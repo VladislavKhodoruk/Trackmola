@@ -1,7 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Project, UserProfileInProject } from '../interfaces/interfaces';
-import { Task } from '../interfaces/interfaces';
+import {
+  Project,
+  UserProfileInProject,
+  Task,
+} from '@pages/projects/interfaces/interfaces';
 
 export const GET_PROJECTS = 'get projects';
 export const GET_PROJECTS_SUCCESS = 'get projects success';

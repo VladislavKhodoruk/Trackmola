@@ -1,4 +1,8 @@
-import { Project, Task, UserProfileInProject } from '../interfaces/interfaces';
+import {
+  Project,
+  Task,
+  UserProfileInProject,
+} from '@pages/projects/interfaces/interfaces';
 
 export interface ProjectsState {
   myProjects: Project[];

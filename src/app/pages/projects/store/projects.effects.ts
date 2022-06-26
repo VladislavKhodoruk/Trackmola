@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProjectsService } from '@shared/services/projects.service';
 import { map, mergeMap, switchMap, take } from 'rxjs';
-import { UserProfileInProject } from '../interfaces/interfaces';
+import { UserProfileInProject } from '@pages/projects/interfaces/interfaces';
+
 import {
   getProjects,
   getProjectsSuccess,

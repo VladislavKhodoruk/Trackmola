@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TrackMolaState } from '@store/trackMola.state';
-import { clearProjectStore } from '../store/projects.actions';
+import { clearProjectStore } from '@pages/projects/store/projects.actions';
 
 @Component({
   selector: 'app-projects-container',

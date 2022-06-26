@@ -9,10 +9,9 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 import { AuthorizationService } from '@pages/authorization/services/authorization.service';
+import { ProfileUser } from '@shared/interfaces/interfaces';
 import { User } from 'firebase/auth';
 import { from, Observable, of, switchMap } from 'rxjs';
-
-import { ProfileUser } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { setMidnightTime } from '@shared/helpers/helpers';
+import { FirstAndLastDayOfWeek } from '@shared/interfaces/interfaces';
 import {
   nextWeek,
   previousWeek,
@@ -13,9 +15,7 @@ import { TrackMolaState } from '@store/trackMola.state';
 import {
   defaultPhotoUrl,
   ONE_WEEK_IN_SECONDS,
-} from '../../constants/constants';
-import { setMidnightTime } from '../../helpers/helpers';
-import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
+} from '@shared/constants/constants';
 
 @Component({
   selector: 'app-navigatinon-calendar-container',

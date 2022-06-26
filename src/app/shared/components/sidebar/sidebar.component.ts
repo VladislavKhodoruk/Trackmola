@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { defaultPhotoUrl } from '../../constants/constants';
-import { NavigationItem } from '../../interfaces/interfaces';
+import { defaultPhotoUrl } from '@shared/constants/constants';
+import { NavigationItem } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-sidebar',
