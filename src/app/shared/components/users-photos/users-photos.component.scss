@@ -1,0 +1,12 @@
+:host {
+  @import "mixins.scss";
+  .photos {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .photo-manager {
+    position: relative;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+}

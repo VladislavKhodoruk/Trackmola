@@ -1,0 +1,14 @@
+<div *ngIf="photos.length" class="photos">
+  <img
+    *ngFor="let photo of photos; index as i"
+    class="photo-manager"
+    [ngStyle]="{
+      'z-index': i,
+      'right.rem': -i,
+      'width.rem': [size],
+      'height.rem': [size]
+    }"
+    src="{{ photo || defaultPhoto }}"
+    alt="photo"
+  />
+</div>
