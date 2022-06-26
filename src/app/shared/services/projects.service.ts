@@ -8,7 +8,12 @@ import {
 
 import { Observable } from 'rxjs';
 import { where } from 'firebase/firestore';
-import { Project, Task } from '@pages/projects/interfaces/interfaces';
+import {
+  Project,
+  Task,
+  UserProfileInProject,
+} from '@pages/projects/interfaces/interfaces';
+import { ProfileUser } from '@shared/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +34,11 @@ export class ProjectsService {
     const ref = collection(this.firestore, 'taskTrack');
     const queryAll = query(ref, where('projectId', '==', project));
     return collectionData(queryAll) as Observable<Task[]>;
+  }
+
+  usersInProject$(team): Observable<UserProfileInProject[]> {
+    const ref = collection(this.firestore, 'users');
+    const queryAll = query(ref, where('id', 'in', team));
+    return collectionData(queryAll) as Observable<UserProfileInProject[]>;
   }
 }
