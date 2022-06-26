@@ -7,7 +7,7 @@ import { Project, Task } from '@pages/projects/interfaces/interfaces';
   styleUrls: ['./project-item.component.scss'],
 })
 export class ProjectItemComponent {
-  @Input() project!: Project;
-  @Input() tasksInProject!: Task[];
-  @Input() usersPhotoInProject!: Task[];
+  @Input() readonly project!: Project;
+  @Input() readonly tasksInProject!: Task[];
+  @Input() readonly usersPhotoInProject!: Task[];
 }

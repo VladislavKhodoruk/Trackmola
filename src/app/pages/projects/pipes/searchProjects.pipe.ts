@@ -9,8 +9,19 @@ export class SearchProjectsPipe implements PipeTransform {
     if (!search.trim()) {
       return projects;
     }
-    return projects.filter((project) =>
-      project.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-    );
+    return projects.filter((project) => {
+      const compareName = project.name
+        .toLocaleLowerCase()
+        .includes(search.toLocaleLowerCase());
+
+      const compareDescriprion = project.description
+        .toLocaleLowerCase()
+        .includes(search.toLocaleLowerCase());
+
+      if (compareName || compareDescriprion) {
+        return true;
+      }
+      return false;
+    });
   }
 }

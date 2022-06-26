@@ -1,24 +1,26 @@
 :host {
   @import "mixins.scss";
-  .projects-list-section {
-    @include flex(flex-start, flex-start, var(--offset-m));
-    flex-direction: column;
-  }
+
   .projects-list {
     @include flex(flex-start, flex-start, var(--offset-m));
     flex-direction: column;
     padding-bottom: var(--offset);
-    width: calc(21.5rem + var(--offset-s) + 0.625rem);
-    max-width: calc(21.5rem + var(--offset-s) + 0.625rem);
+    width: calc(21.5rem + var(--offset-s) + var(--offset-b));
+    max-width: calc(21.5rem + var(--offset-s) + var(--offset-b));
     height: max-content;
     max-height: 20rem;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 
+    &-section {
+      @include flex(flex-start, flex-start, var(--offset-m));
+      flex-direction: column;
+    }
+
     &-item {
       width: 100%;
       &-selected {
-        box-shadow: 0 4px var(--offset-l) -4px rgba(123, 97, 255, 0.25);
+        box-shadow: 0 var(--offset-xs) var(--offset-l) -var(--offset-xs) rgba(123, 97, 255, 0.25);
       }
     }
 
@@ -31,9 +33,5 @@
       background-color: var(--gray4);
       border-radius: var(--border-radius-l);
     }
-  }
-
-  &:hover {
-    box-shadow: 0 4px var(--offset-l) -4px rgba(123, 97, 255, 0.25);
   }
 }

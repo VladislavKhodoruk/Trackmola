@@ -8,17 +8,17 @@ import {
   query,
   updateDoc,
 } from '@angular/fire/firestore';
-import { User } from 'firebase/auth';
-
-import { from, Observable, of, switchMap } from 'rxjs';
 import { AuthorizationService } from '@pages/authorization/services/authorization.service';
+import { User } from 'firebase/auth';
+import { from, Observable, of, switchMap } from 'rxjs';
+
 import { ProfileUser } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  get currentUserProfile$(): Observable<ProfileUser | null> {
+  public get currentUserProfile$(): Observable<ProfileUser | null> {
     const ref = doc(
       this.firestore,
       'users',
@@ -27,7 +27,7 @@ export class UsersService {
     return docData(ref) as Observable<ProfileUser>;
   }
 
-  get allUsers$(): Observable<ProfileUser[]> {
+  public get allUsers$(): Observable<ProfileUser[]> {
     const ref = collection(this.firestore, 'users');
     const queryAll = query(ref);
     return collectionData(queryAll) as Observable<ProfileUser[]>;
@@ -38,7 +38,7 @@ export class UsersService {
     private authorizationService: AuthorizationService
   ) {}
 
-  updateUser(user: ProfileUser): Observable<void | null> {
+  public updateUser(user: ProfileUser): Observable<void | null> {
     return this.authorizationService.currentUser$.pipe(
       switchMap((data: User | null) => {
         if (!data?.uid) {

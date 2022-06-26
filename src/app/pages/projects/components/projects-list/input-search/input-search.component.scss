@@ -1,5 +1,6 @@
 :host {
   @import "mixins.scss";
+
   .container-input {
     @include flex(center, flex-start);
     width: 21.5rem;
@@ -9,6 +10,7 @@
     width: 100%;
     padding-right: 3rem;
   }
+
   .icon-search {
     margin-left: -2.5rem;
     color: var(--gray2);

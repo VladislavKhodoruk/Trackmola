@@ -8,11 +8,11 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-employee-projects-container',
   template: `<app-employee-projects
-    [selectedProject]="this.selectedProject$ | async"
+    [selectedProject]="selectedProject$ | async"
   ></app-employee-projects>`,
 })
 export class EmployeeProjectsContainer {
-  selectedProject$ = this.store$.select(getSelectedProject);
+  readonly selectedProject$ = this.store$.select(getSelectedProject);
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(getProjects());

@@ -1,10 +1,9 @@
 <div *ngIf="photos.length" class="photos">
   <img
     *ngFor="let photo of photos; index as i"
-    class="photo-manager"
+    class="photos-photo"
     [ngStyle]="{
       'z-index': i,
-      'right.rem': -i,
       'width.rem': [size],
       'height.rem': [size]
     }"

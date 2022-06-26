@@ -8,6 +8,7 @@ import { Project } from '@pages/projects/interfaces/interfaces';
   styleUrls: ['./employee-projects.component.scss'],
 })
 export class EmployeeProjectsComponent {
-  @Input() selectedProject!: Project;
+  @Input() readonly selectedProject!: Project;
+
   readonly iconAngleRight = angleRight;
 }

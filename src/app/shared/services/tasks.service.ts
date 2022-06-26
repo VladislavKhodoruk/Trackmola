@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { collectionData } from '@angular/fire/firestore';
+import { TaskTrack } from '@store/shared/shared.state';
 import { collection, Firestore, getFirestore, query } from 'firebase/firestore';
 import { Observable } from 'rxjs';
-import { TaskTrack } from '@store/shared/shared.state';
 
 @Injectable({
   providedIn: 'root',

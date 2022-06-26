@@ -1,6 +1,6 @@
-import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
 import chartDonut3 from '@iconify/icons-tabler/chart-donut-3';
 import fileTime from '@iconify/icons-tabler/file-time';
+import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
 import puzzleIcon from '@iconify/icons-tabler/puzzle';
 
 export const navigationBasicItems = [

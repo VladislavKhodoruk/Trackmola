@@ -7,7 +7,7 @@ import { defaultPhotoUrl } from '@shared/constants/constants';
   styleUrls: ['./users-photos.component.scss'],
 })
 export class UsersPhotosComponent {
-  @Input() photos!: string[];
-  @Input() size: number;
-  defaultPhoto = defaultPhotoUrl;
+  @Input() readonly photos!: string[];
+  @Input() readonly size: number;
+  readonly defaultPhoto = defaultPhotoUrl;
 }

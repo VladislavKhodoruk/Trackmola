@@ -12,20 +12,20 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-projects-list-container',
   template: `<app-projects-list
-    [myProjects]="this.myProjects$ | async"
-    [searchText]="this.searchText$ | async"
-    [selectedProject]="this.selectedProject$ | async"
+    [myProjects]="myProjects$ | async"
+    [searchText]="searchText$ | async"
+    [selectedProject]="selectedProject$ | async"
     (selectProjectEmitter)="onSelectProject($event)"
   ></app-projects-list>`,
 })
 export class ProjectsListContainer {
-  myProjects$ = this.store$.select(getMyProgects);
+  readonly myProjects$ = this.store$.select(getMyProgects);
+  readonly searchText$ = this.store$.select(getSearchValue);
   selectedProject$ = this.store$.select(getSelectedProject);
-  searchText$ = this.store$.select(getSearchValue);
 
   constructor(private store$: Store<TrackMolaState>) {}
 
-  onSelectProject(project: Project) {
+  public onSelectProject(project: Project): void {
     this.store$.dispatch(setSelectedProject({ project }));
   }
 }

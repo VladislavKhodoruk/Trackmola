@@ -8,8 +8,8 @@ import { loginStart } from '../../store/authorization.actions';
 
 @Component({
   template: `<app-login
-    [loading]="this.loading$ | async"
-    [errorMessage]="this.errorMessage$ | async"
+    [loading]="loading$ | async"
+    [errorMessage]="errorMessage$ | async"
     (startLoading)="onStartLoading()"
     (loginStart)="onLoginStart($event)"
   ></app-login>`,

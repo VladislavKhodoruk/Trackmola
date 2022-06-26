@@ -18,6 +18,7 @@ export const projectsState: ProjectsState = {
     fullName: '',
     manager: '',
     team: [],
+    description: '',
   },
   searchValue: '',
 };

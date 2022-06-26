@@ -14,7 +14,7 @@ import {
 
 @Injectable()
 export class ProjectsEffects {
-  getProjects$ = createEffect(() =>
+  public getProjects$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getProjects),
       switchMap(() =>
@@ -26,7 +26,7 @@ export class ProjectsEffects {
     )
   );
 
-  getTasksInProject$ = createEffect(() =>
+  public getTasksInProject$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getTasksInProject),
       mergeMap((action) =>
@@ -38,7 +38,7 @@ export class ProjectsEffects {
     )
   );
 
-  getUsersInProject$ = createEffect(() =>
+  public getUsersInProject$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getUsersProfileInProject),
       mergeMap((action) =>

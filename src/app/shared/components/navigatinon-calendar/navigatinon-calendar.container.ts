@@ -31,7 +31,13 @@ export class NavigatinonCalendarContainer {
   readonly firstDayOfWeek$ = this.store$.select(getFirstDayOfWeek);
   readonly lastDayOfWeek$ = this.store$.select(getLastDayOfWeek);
 
-  readonly managersPhoto = [defaultPhotoUrl, defaultPhotoUrl, defaultPhotoUrl];
+  readonly managersPhoto = [
+    defaultPhotoUrl,
+    defaultPhotoUrl,
+    defaultPhotoUrl,
+    defaultPhotoUrl,
+    defaultPhotoUrl,
+  ];
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(

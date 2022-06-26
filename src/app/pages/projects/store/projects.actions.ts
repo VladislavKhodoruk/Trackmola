@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { Project, UserProfileInProject } from '../interfaces/interfaces';
 import { Task } from '../interfaces/interfaces';
 
@@ -31,6 +32,7 @@ export const getTasksInProject = createAction(
   GET_TASKS_IN_PROJECT,
   props<{ id: string }>()
 );
+
 export const getTasksInProjectSuccess = createAction(
   GET_TASKS_IN_PROJECT_SUCCESS,
   props<{ data: Task[] }>()

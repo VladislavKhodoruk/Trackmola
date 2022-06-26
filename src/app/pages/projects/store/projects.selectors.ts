@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StateName } from '@shared/enums/enum';
+import { StateName, TaskStatus } from '@shared/enums/enum';
 import { ProjectsState } from './projects.state';
 
 export const PROJECTS_STATE_NAME = StateName.Projects;
@@ -15,9 +15,15 @@ export const getMyProgects = createSelector(
 export const getAllTasksInProject = (props: { project: string }) =>
   createSelector(getProjectsState, (state) =>
     state.allTasksInProjects.filter((task) => {
-      if (task.projectId === props.project && task.status === 'in progress') {
-        return task;
+      const projectCompare = task.projectId === props.project;
+      const statusCompare =
+        task.status === TaskStatus.InProgress ||
+        task.status === TaskStatus.Open;
+
+      if (projectCompare && statusCompare) {
+        return true;
       }
+      return false;
     })
   );
 

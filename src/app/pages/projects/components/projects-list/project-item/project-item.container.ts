@@ -19,8 +19,8 @@ import { TrackMolaState } from '@store/trackMola.state';
   template: `<app-project-item
     class="projects-list-item"
     [(project)]="this.project"
-    [tasksInProject]="this.tasksInProject$ | async"
-    [usersPhotoInProject]="this.usersPhotoInProject$ | async"
+    [tasksInProject]="tasksInProject$ | async"
+    [usersPhotoInProject]="usersPhotoInProject$ | async"
   ></app-project-item>`,
   styleUrls: ['./project-item.component.scss'],
 })

@@ -8,10 +8,11 @@ import { clearProjectStore } from '../store/projects.actions';
   template: '<app-projects [userType]="this.userType"></app-projects>',
 })
 export class ProjectsContainer implements OnDestroy {
-  userType = localStorage.getItem('AuthUserType');
+  readonly userType = localStorage.getItem('AuthUserType');
+
   constructor(private store$: Store<TrackMolaState>) {}
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.store$.dispatch(clearProjectStore());
   }
 }

@@ -23,11 +23,13 @@ const projectsReducer = createReducer(
       if (task.projectId !== action.id) {
         return true;
       }
+      return false;
     }),
     userInProjects: state.userInProjects.filter((user) => {
       if (user.projectId !== action.id) {
         return true;
       }
+      return false;
     }),
   })),
   on(getTasksInProjectSuccess, (state: ProjectsState, action) => ({

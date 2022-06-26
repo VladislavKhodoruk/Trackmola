@@ -11,21 +11,21 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-input-search-container',
   template: `<app-input-search
-    [searchText]="this.searchText$ | async"
+    [searchText]="searchText$ | async"
     (searchEmitter)="onSearch($event)"
     (focusEmitter)="onFocus()"
   ></app-input-search>`,
 })
 export class InputSearchContainer {
-  searchText$ = this.store$.select(getSearchValue);
+  readonly searchText$ = this.store$.select(getSearchValue);
 
   constructor(private store$: Store<TrackMolaState>) {}
 
-  onSearch(value: string) {
+  public onSearch(value: string): void {
     this.store$.dispatch(setSearchValue({ value }));
   }
 
-  onFocus() {
+  public onFocus(): void {
     this.store$.dispatch(deleteSelectedProject());
   }
 }

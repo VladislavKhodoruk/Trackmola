@@ -7,13 +7,13 @@ import { Project } from '@pages/projects/interfaces/interfaces';
   styleUrls: ['./projects-list.component.scss'],
 })
 export class ProjectsListComponent {
-  @Input() myProjects!: Project[];
-  @Input() selectedProject!: Project;
-  @Input() searchText: string;
+  @Input() readonly myProjects!: Project[];
+  @Input() readonly selectedProject!: Project;
+  @Input() readonly searchText: string;
 
-  @Output() selectProjectEmitter = new EventEmitter<Project>();
+  @Output() readonly selectProjectEmitter = new EventEmitter<Project>();
 
-  public selectProject(project: Project) {
+  public selectProject(project: Project): void {
     this.selectProjectEmitter.emit(project);
   }
 }

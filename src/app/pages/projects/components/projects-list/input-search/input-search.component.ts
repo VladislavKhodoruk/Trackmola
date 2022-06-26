@@ -12,13 +12,13 @@ export class InputSearchComponent {
   @Output() searchEmitter = new EventEmitter<string>();
   @Output() focusEmitter = new EventEmitter<void>();
 
-  icon = searchIcon;
+  readonly iconSearch = searchIcon;
 
-  public search() {
+  public search(): void {
     this.searchEmitter.emit(this.searchText);
   }
 
-  public focus() {
+  public focus(): void {
     this.focusEmitter.emit();
   }
 }
