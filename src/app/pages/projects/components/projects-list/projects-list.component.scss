@@ -8,7 +8,7 @@
     width: calc(21.5rem + var(--offset-s) + var(--offset-b));
     max-width: calc(21.5rem + var(--offset-s) + var(--offset-b));
     height: max-content;
-    max-height: 20rem;
+    max-height: 55rem;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 
@@ -19,8 +19,12 @@
 
     &-item {
       width: 100%;
+      max-width: 21.5rem;
+      border-radius: var(--border-radius);
+
       &-selected {
-        box-shadow: 0 var(--offset-xs) var(--offset-l) -var(--offset-xs) rgba(123, 97, 255, 0.25);
+        box-shadow: 0 var(--offset-xs) var(--offset-l) var(--offset-xs)
+          rgba(123, 97, 255, 0.25);
       }
     }
 

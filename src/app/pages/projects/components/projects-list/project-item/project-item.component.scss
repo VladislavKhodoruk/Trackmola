@@ -5,18 +5,15 @@
     @include flex(flex-start, center, var(--offset-d));
     flex-direction: column;
     padding: var(--offset) var(--offset-m);
-    width: calc(100%);
+    width: 100%;
     max-width: 21.5rem;
     height: 8.5rem;
     border-radius: var(--border-radius);
     border: var(--border-xxs) solid var(--gray);
-    box-shadow: 0px var(--offset-xs) var(--offset-b) rgba(0, 0, 0, 0.1);
     background-color: var(--white);
     scroll-snap-align: start;
     cursor: pointer;
-    &:hover {
-      box-shadow: 0 var(--offset-xs) var(--offset-l) -var(--offset-xs) rgba(123, 97, 255, 0.25);
-    }
+
     &-header {
       @include flex(flex-start, space-between);
       width: 100%;
@@ -27,10 +24,12 @@
         font: var(--font-blocks);
       }
     }
+
     &-name {
       font: var(--font-main);
       font-size: 1.25rem;
     }
+
     &-description {
       font: var(--font-main);
       font-size: 1.25rem;
