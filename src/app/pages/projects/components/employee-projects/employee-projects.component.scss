@@ -1,8 +1,26 @@
 :host {
   @import "mixins.scss";
-  .projects-header-title {
-    font: var(--font-title);
+  .projects-header {
+    @include flex(center, flex-start, 1.25rem);
+
+    &-title {
+      font: var(--font-title);
+    }
+    &-item {
+      @include flex(center, flex-start, 1.25rem);
+      &-title {
+        padding: 0 0.625rem;
+        border: var(--border-s) solid var(--rose);
+        border-radius: var(--border-radius-l);
+        font: var(--font-blocks);
+      }
+      &-name {
+        font: var(--font-main);
+        font-size: 1.25rem;
+      }
+    }
   }
+
   .projects-container {
     @include flex(flex-start, flex-start, 1.75rem);
     margin-top: 2.5rem;

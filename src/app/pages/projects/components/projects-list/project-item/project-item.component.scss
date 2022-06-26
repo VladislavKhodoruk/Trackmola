@@ -37,17 +37,4 @@
       color: var(--gray2);
     }
   }
-
-  .photos {
-    display: flex;
-  }
-  .photo-manager {
-    @include profile-photo(2rem, 2rem);
-    position: relative;
-    z-index: 0;
-    &-second {
-      z-index: 1;
-      right: -1rem;
-    }
-  }
 }

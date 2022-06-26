@@ -10,6 +10,7 @@ import arrowNarrowRight from '@iconify/icons-tabler/arrow-narrow-right';
 export class NavigatinonCalendarComponent {
   @Input() firstDayOfWeek?: Date | null;
   @Input() lastDayOfWeek?: Date | null;
+  @Input() managersPhoto?: string[];
 
   @Output() movePreviousWeek = new EventEmitter<void>();
   @Output() moveNextWeek = new EventEmitter<void>();

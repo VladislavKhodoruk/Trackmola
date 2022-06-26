@@ -10,7 +10,10 @@ import {
   getLastDayOfWeek,
 } from '@store/shared/shared.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
-import { ONE_WEEK_IN_SECONDS } from '../../constants/constants';
+import {
+  defaultPhotoUrl,
+  ONE_WEEK_IN_SECONDS,
+} from '../../constants/constants';
 import { setMidnightTime } from '../../helpers/helpers';
 import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
 
@@ -19,6 +22,7 @@ import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
   template: `<app-navigatinon-calendar
     [firstDayOfWeek]="firstDayOfWeek$ | async"
     [lastDayOfWeek]="lastDayOfWeek$ | async"
+    [managersPhoto]="managersPhoto"
     (movePreviousWeek)="onPreviousWeek()"
     (moveNextWeek)="onNextWeek()"
   ></app-navigatinon-calendar>`,
@@ -26,6 +30,8 @@ import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
 export class NavigatinonCalendarContainer {
   readonly firstDayOfWeek$ = this.store$.select(getFirstDayOfWeek);
   readonly lastDayOfWeek$ = this.store$.select(getLastDayOfWeek);
+
+  readonly managersPhoto = [defaultPhotoUrl, defaultPhotoUrl, defaultPhotoUrl];
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(

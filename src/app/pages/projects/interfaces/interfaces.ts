@@ -1,4 +1,5 @@
 export interface Project {
+  [x: string]: any;
   id: string;
   name: string;
   fullName: string;
@@ -14,4 +15,14 @@ export interface Task {
   duration: number;
   status: string;
   userId: string;
+}
+export interface UserProfileInProject {
+  type: string;
+  name: string;
+  photo: string;
+  email: string;
+  position: string;
+  location: string;
+  qualification: string;
+  projectId: string;
 }

@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { getProjects } from '@pages/projects/store/projects.actions';
-import { TrackMolaState } from '@store/trackMola.state';
+import { Component, Input } from '@angular/core';
+import angleRight from '@iconify/icons-uil/angle-right';
+import { Project } from '@pages/projects/interfaces/interfaces';
 
 @Component({
   selector: 'app-employee-projects',
@@ -9,7 +8,6 @@ import { TrackMolaState } from '@store/trackMola.state';
   styleUrls: ['./employee-projects.component.scss'],
 })
 export class EmployeeProjectsComponent {
-  constructor(private store$: Store<TrackMolaState>) {
-    this.store$.dispatch(getProjects());
-  }
+  @Input() selectedProject!: Project;
+  readonly iconAngleRight = angleRight;
 }

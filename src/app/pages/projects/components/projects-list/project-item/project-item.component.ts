@@ -9,4 +9,5 @@ import { Project, Task } from '@pages/projects/interfaces/interfaces';
 export class ProjectItemComponent {
   @Input() project!: Project;
   @Input() tasksInProject!: Task[];
+  @Input() usersPhotoInProject!: Task[];
 }

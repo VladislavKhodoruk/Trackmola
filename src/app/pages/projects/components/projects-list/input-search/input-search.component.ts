@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import searchIcon from '@iconify/icons-tabler/search';
 
 @Component({
@@ -7,5 +7,18 @@ import searchIcon from '@iconify/icons-tabler/search';
   styleUrls: ['./input-search.component.scss'],
 })
 export class InputSearchComponent {
+  @Input() searchText: string;
+
+  @Output() searchEmitter = new EventEmitter<string>();
+  @Output() focusEmitter = new EventEmitter<void>();
+
   icon = searchIcon;
+
+  public search() {
+    this.searchEmitter.emit(this.searchText);
+  }
+
+  public focus() {
+    this.focusEmitter.emit();
+  }
 }

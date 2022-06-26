@@ -10,14 +10,12 @@
     Week {{ firstDayOfWeek | date: "dd MMM" }} -
     {{ lastDayOfWeek | date: "dd MMM" }}
   </span>
-  <div class="photos">
-    <img class="photo-manager" src="assets/img/user.png" alt="photo" />
-    <img
-      class="photo-manager photo-manager-second"
-      src="assets/img/user.png"
-      alt="photo"
-    />
-  </div>
+  <app-users-photos
+    *ngIf="managersPhoto.length"
+    [photos]="managersPhoto"
+    size="3"
+  ></app-users-photos>
+
   <app-button
     [buttonClass]="'button-secondary button-navigation-icon'"
     [icon]="iconArrowNarrowRight"

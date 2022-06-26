@@ -1,10 +1,12 @@
 <section class="projects-list-section">
-  <app-input-search></app-input-search>
+  <app-input-search-container></app-input-search-container>
   <ul class="projects-list">
-    <li [style.width]="'100%'" *ngFor="let project of myProjects">
-      <app-project-item-container
-        [project]="project"
-      ></app-project-item-container>
-    </li>
+    <app-project-item-container
+      class="projects-list-item"
+      [class.projects-list-item-selected]="selectedProject.id === project.id"
+      *ngFor="let project of myProjects | searchProjects: searchText"
+      [project]="project"
+      (click)="selectProject(project)"
+    ></app-project-item-container>
   </ul>
 </section>

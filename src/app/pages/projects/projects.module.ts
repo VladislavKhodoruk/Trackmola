@@ -19,24 +19,34 @@ import { IconModule } from '@visurel/iconify-angular';
 import { ProjectItemComponent } from './components/projects-list/project-item/project-item.component';
 import { ProjectItemContainer } from './components/projects-list/project-item/project-item.container';
 import { ProjectsEffects } from './store/projects.effects';
+import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
+import { EmployeeProjectsContainer } from './components/employee-projects/employee-projects.container';
+import { InputSearchContainer } from './components/projects-list/input-search/input-search.container';
+import { FormsModule } from '@angular/forms';
+import { SearchProjectsPipe } from './pipes/searchProjects.pipe';
 
 @NgModule({
   declarations: [
     ManagerProjectsComponent,
     CtoProjectsComponent,
     EmployeeProjectsComponent,
+    EmployeeProjectsContainer,
     AdminProjectsComponent,
     ProjectsContainer,
     ProjectsComponent,
     ProjectsListComponent,
     ProjectsListContainer,
     InputSearchComponent,
+    InputSearchContainer,
     ProjectItemComponent,
     ProjectItemContainer,
+    SearchProjectsPipe,
   ],
   imports: [
     CommonModule,
+    FormsModule,
     IconModule,
+    UsersPhotosModule,
     EffectsModule.forFeature([ProjectsEffects]),
     StoreModule.forFeature(PROJECTS_STATE_NAME, ProjectsReducer),
     RouterModule.forChild(ProjectsRoutes),

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Project } from '@pages/projects/interfaces/interfaces';
 
 @Component({
@@ -8,4 +8,12 @@ import { Project } from '@pages/projects/interfaces/interfaces';
 })
 export class ProjectsListComponent {
   @Input() myProjects!: Project[];
+  @Input() selectedProject!: Project;
+  @Input() searchText: string;
+
+  @Output() selectProjectEmitter = new EventEmitter<Project>();
+
+  public selectProject(project: Project) {
+    this.selectProjectEmitter.emit(project);
+  }
 }

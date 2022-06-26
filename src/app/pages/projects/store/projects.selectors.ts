@@ -20,3 +20,24 @@ export const getAllTasksInProject = (props: { project: string }) =>
       }
     })
   );
+
+export const getUsersPhotoInProject = (props: { project: string }) =>
+  createSelector(getProjectsState, (state) =>
+    state.userInProjects
+      .filter((profile) => {
+        if (profile.projectId === props.project) {
+          return profile;
+        }
+      })
+      .map((profile) => profile.photo)
+  );
+
+export const getSelectedProject = createSelector(
+  getProjectsState,
+  (state) => state.selectedProject
+);
+
+export const getSearchValue = createSelector(
+  getProjectsState,
+  (state) => state.searchValue
+);
