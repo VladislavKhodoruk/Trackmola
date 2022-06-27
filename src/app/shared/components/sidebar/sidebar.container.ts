@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getNavigationElems } from '@shared/helpers/helpers';
+import { getNavigationElems } from '@shared/constants/constants';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({

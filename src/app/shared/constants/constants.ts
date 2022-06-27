@@ -2,8 +2,10 @@ import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
 import chartDonut3 from '@iconify/icons-tabler/chart-donut-3';
 import fileTime from '@iconify/icons-tabler/file-time';
 import puzzleIcon from '@iconify/icons-tabler/puzzle';
+import { UserType } from '@shared/enums/enum';
+import { NavigationItem } from '@shared/interfaces/interfaces';
 
-export const navigationBasicItems = [
+const navigationBasicItems: NavigationItem[] = [
   {
     routeLink: 'dashboard',
     icon: layoutDashboard,
@@ -26,13 +28,24 @@ export const navigationBasicItems = [
   },
 ];
 
-export const navigationTeam = [
-  {
-    routeLink: 'team',
-    icon: puzzleIcon,
-    label: 'Team',
-  },
-];
+const navigationTeam: NavigationItem = {
+  routeLink: 'team',
+  icon: puzzleIcon,
+  label: 'Team',
+};
+
+export const getNavigationElems = (userType: string): NavigationItem[] => {
+  switch (userType) {
+    case UserType.Employee:
+      return navigationBasicItems;
+    case UserType.CTO:
+      return [...navigationBasicItems, navigationTeam];
+    case UserType.Manager:
+      return [...navigationBasicItems, navigationTeam];
+    case UserType.Admin:
+      return [...navigationBasicItems, navigationTeam];
+  }
+};
 
 export const defaultPhotoUrl = 'assets/img/user.png';
 
