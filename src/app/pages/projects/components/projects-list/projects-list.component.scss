@@ -8,21 +8,23 @@
     $shadow-y: var(--offset-d);
     $shadow-left: var(--offset-l);
     $shadow-right: var(--offset);
-    $shadow-selected: 0 var(--offset-xs) $shadow-left
-      calc(var(--offset-xs) * -1) rgba(123, 97, 255, 0.25);
+    $shadow-selected: 0 var(--offset-xs) #{$shadow-left} calc(
+        var(--offset-xs) * -1
+      ) rgba(123, 97, 255, 0.25);
 
     @include flex(flex-start, flex-start, var(--offset-m));
     flex-direction: column;
-    padding-bottom: var(--offset);
-    width: calc($width-project + $width-scroll + $shadow-left + $shadow-right);
+    width: calc(
+      #{$width-project} + #{$width-scroll} + #{$shadow-left} + #{$shadow-right}
+    );
     max-width: calc(
-      $width-project + $width-scroll + $shadow-left + $shadow-right
+      #{$width-project} + #{$width-scroll} + #{$shadow-left} + #{$shadow-right}
     );
     height: 20rem;
     max-height: 20rem;
-    padding: $shadow-y $shadow-right $shadow-y $shadow-left;
-    margin: calc($shadow-y * -1) calc($shadow-right * -1) calc($shadow-y * -1)
-      calc($shadow-left * -1);
+    padding: #{$shadow-y} #{$shadow-right} #{$shadow-y} #{$shadow-left};
+    margin: calc(#{$shadow-y} * -1) calc(#{$shadow-right} * -1)
+      calc(#{$shadow-y} * -1) calc(#{$shadow-left} * -1);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 
@@ -37,12 +39,12 @@
       border-radius: var(--border-radius);
 
       &-selected {
-        box-shadow: $shadow-selected;
+        box-shadow: #{$shadow-selected};
       }
     }
 
     &::-webkit-scrollbar {
-      width: $width-scroll;
+      width: #{$width-scroll};
       background-color: var(--white);
     }
 
