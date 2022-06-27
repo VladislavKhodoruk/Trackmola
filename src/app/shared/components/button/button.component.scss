@@ -35,7 +35,7 @@
       }
     }
     &-icon {
-      display: flex;
+      @include flex(flex-start, flex-start);
     }
     &-authorization {
       margin: var(--offset) 0;

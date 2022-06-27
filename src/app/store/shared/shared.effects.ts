@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, map, of, switchMap, take, tap } from 'rxjs';
 import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import {
   errorMessage,
+  getAllTasks,
+  getAllTasksSuccess,
   getUserData,
   getUserDataSuccess,
   loading,
-  getAllTasks,
-  getAllTasksSuccess,
 } from '@store/shared/shared.actions';
 import { TrackMolaState } from '@store/trackMola.state';
+import { catchError, map, of, switchMap, take, tap } from 'rxjs';
 
 @Injectable()
 export class SharedEffects {

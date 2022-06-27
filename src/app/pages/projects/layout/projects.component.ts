@@ -7,6 +7,6 @@ import { UserType } from '@shared/enums/enum';
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent {
-  @Input() userType!: string | null;
-  types = UserType;
+  @Input() readonly userType!: string | null;
+  readonly types = UserType;
 }

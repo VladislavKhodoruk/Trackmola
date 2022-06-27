@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { logout } from '@pages/authorization/store/authorization.actions';
 import { TrackMolaState } from '@store/trackMola.state';
-import { logout } from '../../authorization/store/authorization.actions';
 
 @Component({
   selector: 'app-profile-container',
   template: `<app-profile
     [userType]="this.userType"
-    (logoutEmmiter)="onLogout()"
+    (logout)="onLogout()"
   ></app-profile>`,
 })
 export class ProfileContainer {

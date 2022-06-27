@@ -3,7 +3,7 @@
   [ngClass]="buttonClass"
   [type]="type"
   [disabled]="disabled"
-  (click)="onButtonClick($event)"
+  (click)="buttonClick.emit($event)"
 >
   <ic-icon
     *ngIf="icon"

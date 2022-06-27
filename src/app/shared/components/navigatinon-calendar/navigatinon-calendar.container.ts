@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { setMidnightTime } from '@shared/helpers/helpers';
+import { FirstAndLastDayOfWeek } from '@shared/interfaces/interfaces';
 import {
   nextWeek,
   previousWeek,
@@ -10,22 +12,32 @@ import {
   getLastDayOfWeek,
 } from '@store/shared/shared.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
-import { ONE_WEEK_IN_SECONDS } from '../../constants/constants';
-import { setMidnightTime } from '../../helpers/helpers';
-import { FirstAndLastDayOfWeek } from '../../interfaces/interfaces';
+import {
+  DEFAULT_PHOTO_URL,
+  ONE_WEEK_IN_SECONDS,
+} from '@shared/constants/constants';
 
 @Component({
   selector: 'app-navigatinon-calendar-container',
   template: `<app-navigatinon-calendar
     [firstDayOfWeek]="firstDayOfWeek$ | async"
     [lastDayOfWeek]="lastDayOfWeek$ | async"
-    (movePreviousWeek)="onPreviousWeek()"
-    (moveNextWeek)="onNextWeek()"
+    [managersPhoto]="managersPhoto"
+    (previousWeek)="onPreviousWeek()"
+    (nextWeek)="onNextWeek()"
   ></app-navigatinon-calendar>`,
 })
 export class NavigatinonCalendarContainer {
   readonly firstDayOfWeek$ = this.store$.select(getFirstDayOfWeek);
   readonly lastDayOfWeek$ = this.store$.select(getLastDayOfWeek);
+
+  readonly managersPhoto = [
+    DEFAULT_PHOTO_URL,
+    DEFAULT_PHOTO_URL,
+    DEFAULT_PHOTO_URL,
+    DEFAULT_PHOTO_URL,
+    DEFAULT_PHOTO_URL,
+  ];
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(

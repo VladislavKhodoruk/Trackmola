@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { getNavigationElems } from '@shared/constants/constants';
-import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-sidebar-container',
@@ -13,6 +11,4 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class SidebarContainer {
   userPhoto = localStorage.getItem('AuthUserPhoto');
   navigationItems = getNavigationElems(localStorage.getItem('AuthUserType'));
-
-  constructor(private store$: Store<TrackMolaState>) {}
 }

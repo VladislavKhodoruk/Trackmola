@@ -1,11 +1,11 @@
-import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
 import chartDonut3 from '@iconify/icons-tabler/chart-donut-3';
 import fileTime from '@iconify/icons-tabler/file-time';
+import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
 import puzzleIcon from '@iconify/icons-tabler/puzzle';
 import { UserType } from '@shared/enums/enum';
 import { NavigationItem } from '@shared/interfaces/interfaces';
 
-const navigationBasicItems: NavigationItem[] = [
+const NAVIGATION_BASIC_ITEMS: NavigationItem[] = [
   {
     routeLink: 'dashboard',
     icon: layoutDashboard,
@@ -28,7 +28,7 @@ const navigationBasicItems: NavigationItem[] = [
   },
 ];
 
-const navigationTeam: NavigationItem = {
+const NAVIGATION_TEAM: NavigationItem = {
   routeLink: 'team',
   icon: puzzleIcon,
   label: 'Team',
@@ -37,17 +37,17 @@ const navigationTeam: NavigationItem = {
 export const getNavigationElems = (userType: string): NavigationItem[] => {
   switch (userType) {
     case UserType.Employee:
-      return navigationBasicItems;
+      return NAVIGATION_BASIC_ITEMS;
     case UserType.CTO:
-      return [...navigationBasicItems, navigationTeam];
+      return [...NAVIGATION_BASIC_ITEMS, NAVIGATION_TEAM];
     case UserType.Manager:
-      return [...navigationBasicItems, navigationTeam];
+      return [...NAVIGATION_BASIC_ITEMS, NAVIGATION_TEAM];
     case UserType.Admin:
-      return [...navigationBasicItems, navigationTeam];
+      return [...NAVIGATION_BASIC_ITEMS, NAVIGATION_TEAM];
   }
 };
 
-export const defaultPhotoUrl = 'assets/img/user.png';
+export const DEFAULT_PHOTO_URL = 'assets/img/user.png';
 
 export const ONE_DAY_IN_SECONDS = 86400000;
 export const ONE_WEEK_IN_SECONDS = ONE_DAY_IN_SECONDS * 7;

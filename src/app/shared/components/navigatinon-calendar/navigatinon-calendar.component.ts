@@ -10,19 +10,11 @@ import arrowNarrowRight from '@iconify/icons-tabler/arrow-narrow-right';
 export class NavigatinonCalendarComponent {
   @Input() firstDayOfWeek?: Date | null;
   @Input() lastDayOfWeek?: Date | null;
+  @Input() managersPhoto?: string[];
 
-  @Output() movePreviousWeek = new EventEmitter<void>();
-  @Output() moveNextWeek = new EventEmitter<void>();
+  @Output() previousWeek = new EventEmitter<void>();
+  @Output() nextWeek = new EventEmitter<void>();
 
   readonly iconArrowNarrowLeft = arrowNarrowLeft;
   readonly iconArrowNarrowRight = arrowNarrowRight;
-
-  public previousWeek(event: Event): void {
-    event.preventDefault();
-    this.movePreviousWeek.emit();
-  }
-  public nextWeek(event: Event): void {
-    event.preventDefault();
-    this.moveNextWeek.emit();
-  }
 }

@@ -3,6 +3,7 @@ import {
   FirstAndLastDayOfWeek,
   ProfileUser,
 } from '@shared/interfaces/interfaces';
+
 import { TaskTrack } from './shared.state';
 
 export const LOADING = 'loading';

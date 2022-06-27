@@ -1,0 +1,15 @@
+:host {
+  @import "mixins.scss";
+  .photos {
+    @include flex(flex-start, flex-start);
+    flex-direction: row-reverse;
+    margin-right: var(--offset);
+
+    &-photo {
+      position: relative;
+      margin-right: calc(var(--offset) * -1);
+      border-radius: 100%;
+      object-fit: cover;
+    }
+  }
+}

@@ -10,9 +10,9 @@ import {
   getUserData,
   loading,
 } from '@store/shared/shared.actions';
-import { AuthorizationService } from '../services/authorization.service';
+import { AuthorizationService } from '@pages/authorization/services/authorization.service';
 import { Router } from '@angular/router';
-import { FirebaseCodeError } from '../interfaces/interface';
+import { FirebaseCodeError } from '@pages/authorization/interfaces/interface';
 
 @Injectable()
 export class AuthorizationEffects {

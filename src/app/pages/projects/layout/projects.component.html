@@ -1,5 +1,7 @@
 <container-element [ngSwitch]="userType">
-  <app-employee-projects *ngSwitchCase="types.Employee"></app-employee-projects>
+  <app-employee-projects-container
+    *ngSwitchCase="types.Employee"
+  ></app-employee-projects-container>
   <app-cto-projects *ngSwitchCase="types.CTO"></app-cto-projects>
   <app-admin-projects *ngSwitchCase="types.Admin"></app-admin-projects>
   <app-manager-projects *ngSwitchCase="types.Manager"></app-manager-projects>
