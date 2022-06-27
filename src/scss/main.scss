@@ -54,6 +54,10 @@ body {
   color: var(--black);
 }
 
+h2 {
+  margin-bottom: var(--offset-xs);
+}
+
 a {
   text-decoration: none;
   cursor: pointer;
