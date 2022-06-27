@@ -1,6 +1,6 @@
 import {
-  navigationBasicItems,
-  navigationTeam,
+  NAVIGATION_BASIC_ITEMS,
+  NAVIGATION_TEAM,
 } from '@shared/constants/constants';
 import { UserType } from '@shared/enums/enum';
 
@@ -16,12 +16,12 @@ export function setMidnightTime(date: Date) {
 export function getNavigationElems(userType: string) {
   switch (userType) {
     case UserType.Employee:
-      return navigationBasicItems;
+      return NAVIGATION_BASIC_ITEMS;
     case UserType.CTO:
-      return [...navigationBasicItems, ...navigationTeam];
+      return [...NAVIGATION_BASIC_ITEMS, ...NAVIGATION_TEAM];
     case UserType.Manager:
-      return [...navigationBasicItems, ...navigationTeam];
+      return [...NAVIGATION_BASIC_ITEMS, ...NAVIGATION_TEAM];
     case UserType.Admin:
-      return [...navigationBasicItems, ...navigationTeam];
+      return [...NAVIGATION_BASIC_ITEMS, ...NAVIGATION_TEAM];
   }
 }

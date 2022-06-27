@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { defaultPhotoUrl } from '@shared/constants/constants';
+import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
 
 @Component({
   selector: 'app-users-photos',
@@ -9,5 +9,5 @@ import { defaultPhotoUrl } from '@shared/constants/constants';
 export class UsersPhotosComponent {
   @Input() readonly photos!: string[];
   @Input() readonly size: number;
-  readonly defaultPhoto = defaultPhotoUrl;
+  readonly defaultPhoto = DEFAULT_PHOTO_URL;
 }

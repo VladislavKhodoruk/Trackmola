@@ -3,7 +3,7 @@ import fileTime from '@iconify/icons-tabler/file-time';
 import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
 import puzzleIcon from '@iconify/icons-tabler/puzzle';
 
-export const navigationBasicItems = [
+export const NAVIGATION_BASIC_ITEMS = [
   {
     routeLink: 'dashboard',
     icon: layoutDashboard,
@@ -26,7 +26,7 @@ export const navigationBasicItems = [
   },
 ];
 
-export const navigationTeam = [
+export const NAVIGATION_TEAM = [
   {
     routeLink: 'team',
     icon: puzzleIcon,
@@ -34,7 +34,7 @@ export const navigationTeam = [
   },
 ];
 
-export const defaultPhotoUrl = 'assets/img/user.png';
+export const DEFAULT_PHOTO_URL = 'assets/img/user.png';
 
 export const ONE_DAY_IN_SECONDS = 86400000;
 export const ONE_WEEK_IN_SECONDS = ONE_DAY_IN_SECONDS * 7;

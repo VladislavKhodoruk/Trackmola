@@ -13,7 +13,7 @@ import {
 } from '@store/shared/shared.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 import {
-  defaultPhotoUrl,
+  DEFAULT_PHOTO_URL,
   ONE_WEEK_IN_SECONDS,
 } from '@shared/constants/constants';
 
@@ -32,11 +32,11 @@ export class NavigatinonCalendarContainer {
   readonly lastDayOfWeek$ = this.store$.select(getLastDayOfWeek);
 
   readonly managersPhoto = [
-    defaultPhotoUrl,
-    defaultPhotoUrl,
-    defaultPhotoUrl,
-    defaultPhotoUrl,
-    defaultPhotoUrl,
+    DEFAULT_PHOTO_URL,
+    DEFAULT_PHOTO_URL,
+    DEFAULT_PHOTO_URL,
+    DEFAULT_PHOTO_URL,
+    DEFAULT_PHOTO_URL,
   ];
 
   constructor(private store$: Store<TrackMolaState>) {

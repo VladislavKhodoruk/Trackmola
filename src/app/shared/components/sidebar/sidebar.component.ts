@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { defaultPhotoUrl } from '@shared/constants/constants';
+import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
 import { NavigationItem } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -12,7 +12,7 @@ export class SidebarComponent {
   @Input() photo!: string | null;
   @Input() navItems!: NavigationItem[] | null;
 
-  defaultPhoto = defaultPhotoUrl;
+  defaultPhoto = DEFAULT_PHOTO_URL;
 
   constructor(public router: Router) {}
 }
