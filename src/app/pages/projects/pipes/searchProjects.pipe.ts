@@ -18,10 +18,7 @@ export class SearchProjectsPipe implements PipeTransform {
         .toLocaleLowerCase()
         .includes(search.toLocaleLowerCase());
 
-      if (compareName || compareDescriprion) {
-        return true;
-      }
-      return false;
+      return compareName || compareDescriprion;
     });
   }
 }

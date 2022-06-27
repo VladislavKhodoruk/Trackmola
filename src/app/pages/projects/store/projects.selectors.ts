@@ -20,10 +20,7 @@ export const getAllTasksInProject = (props: { project: string }) =>
         task.status === TaskStatus.InProgress ||
         task.status === TaskStatus.Open;
 
-      if (projectCompare && statusCompare) {
-        return true;
-      }
-      return false;
+      return projectCompare && statusCompare;
     })
   );
 
@@ -31,9 +28,8 @@ export const getUsersPhotoInProject = (props: { project: string }) =>
   createSelector(getProjectsState, (state) =>
     state.userInProjects
       .filter((profile) => {
-        if (profile.projectId === props.project) {
-          return profile;
-        }
+        const projectCompare = profile.projectId === props.project;
+        return projectCompare;
       })
       .map((profile) => profile.photo)
   );

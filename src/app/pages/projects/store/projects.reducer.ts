@@ -20,16 +20,12 @@ const projectsReducer = createReducer(
   on(deleteProject, (state: ProjectsState, action) => ({
     ...state,
     allTasksInProjects: state.allTasksInProjects.filter((task) => {
-      if (task.projectId !== action.id) {
-        return true;
-      }
-      return false;
+      const compareProjectId = task.projectId !== action.id;
+      return compareProjectId;
     }),
     userInProjects: state.userInProjects.filter((user) => {
-      if (user.projectId !== action.id) {
-        return true;
-      }
-      return false;
+      const compareProjectId = user.projectId !== action.id;
+      return compareProjectId;
     }),
   })),
   on(getTasksInProjectSuccess, (state: ProjectsState, action) => ({
