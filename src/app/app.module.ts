@@ -15,7 +15,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { SharedEffects } from './store/shared/shared.effects';
-import { IsAuthentificated } from './shared/guards/IsAuthentificated.guard';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -46,7 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
   ],
-  providers: [IsAuthentificated],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

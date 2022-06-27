@@ -21,9 +21,10 @@ export class AuthorizationEffects {
       ofType(loginStart),
       switchMap((action) =>
         this.authorizationService.login(action.email, action.password).pipe(
-          map(() => {
+          map((data) => {
             this.store$.dispatch(loading({ status: false }));
             this.store$.dispatch(errorMessage({ message: '', loaded: true }));
+            localStorage.setItem('AuthUserId', data.user.uid);
             return loginSuccess();
           }),
           catchError((error: FirebaseCodeError) => {

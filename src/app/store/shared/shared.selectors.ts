@@ -1,10 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { UserType } from '@shared/enums/enum';
-import {
-  navigationBasicItems,
-  navigationTeam,
-} from '@shared/constants/constants';
 import { SharedState } from './shared.state';
+import { ProfileUser } from '@shared/interfaces/interfaces';
 
 export const SHARED_NAME = 'shared';
 
@@ -18,29 +14,6 @@ export const getLoading = createSelector(
 export const getErrorMessage = createSelector(
   getSharedState,
   (state) => state.loadingStatus.errorMessage
-);
-
-export const getNavigationElems = createSelector(getSharedState, (state) => {
-  switch (state.user.type) {
-    case UserType.Employee:
-      return navigationBasicItems;
-    case UserType.CTO:
-      return [...navigationBasicItems, ...navigationTeam];
-    case UserType.Manager:
-      return [...navigationBasicItems, ...navigationTeam];
-    case UserType.Admin:
-      return [...navigationBasicItems, ...navigationTeam];
-  }
-});
-
-export const getUserPhoto = createSelector(
-  getSharedState,
-  (state) => state.user.photo
-);
-
-export const getUserType = createSelector(
-  getSharedState,
-  (state) => state.user.type
 );
 
 export const getFirstAndLastDayOfWeek = createSelector(

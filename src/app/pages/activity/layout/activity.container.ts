@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getUserType } from '@store/shared/shared.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-activity-container',
-  template: '<app-activity [userType]="this.userType$ | async"></app-activity>',
+  template: '<app-activity [userType]="this.userType"></app-activity>',
 })
 export class ActivityContainer {
-  userType$ = this.store$.select(getUserType);
+  userType = localStorage.getItem('AuthUserType');
   constructor(private store$: Store<TrackMolaState>) {}
 }

@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {
-  getNavigationElems,
-  getUserPhoto,
-} from '@store/shared/shared.selectors';
+import { getNavigationElems } from '@shared/constants/constants';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-sidebar-container',
   template: `<app-sidebar
-    [photo]="this.userPhoto$ | async"
-    [navItems]="this.navigationItems$ | async"
+    [photo]="this.userPhoto"
+    [navItems]="this.navigationItems"
   ></app-sidebar>`,
 })
 export class SidebarContainer {
-  userPhoto$ = this.store$.select(getUserPhoto);
-  navigationItems$ = this.store$.select(getNavigationElems);
+  userPhoto = localStorage.getItem('AuthUserPhoto');
+  navigationItems = getNavigationElems(localStorage.getItem('AuthUserType'));
 
   constructor(private store$: Store<TrackMolaState>) {}
 }
