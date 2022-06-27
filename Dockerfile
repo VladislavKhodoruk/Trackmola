@@ -2,7 +2,7 @@
 FROM node:latest AS appBuild
 WORKDIR /app
 COPY . .
-RUN npm i && node ./node_modules/@angular/cli/bin/ng build --output-path dist/lavds45jlmhi1pgafg6v6lc8e5mwajnr --base-href /lavds45jlmhi1pgafg6v6lc8e5mwajnr/
+RUN npm i --force && node ./node_modules/@angular/cli/bin/ng build --output-path dist/lavds45jlmhi1pgafg6v6lc8e5mwajnr --base-href /lavds45jlmhi1pgafg6v6lc8e5mwajnr/
 
 # Copy to image
 FROM nginx:latest
