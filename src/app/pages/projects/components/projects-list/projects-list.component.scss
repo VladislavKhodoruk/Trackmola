@@ -1,5 +1,6 @@
 :host {
   @import "mixins.scss";
+  @import "vars/variables.scss";
 
   .projects-list {
     @include flex(flex-start, flex-start, var(--offset-m));
@@ -23,8 +24,7 @@
       border-radius: var(--border-radius);
 
       &-selected {
-        box-shadow: 0 var(--offset-xs) var(--offset-l) var(--offset-xs)
-          rgba(123, 97, 255, 0.25);
+        box-shadow: $border-projects-list-item-selected;
       }
     }
 
