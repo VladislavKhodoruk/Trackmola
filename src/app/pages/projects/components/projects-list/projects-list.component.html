@@ -6,7 +6,7 @@
       [class.projects-list-item-selected]="selectedProject.id === project.id"
       *ngFor="let project of myProjects | searchProjects: searchText"
       [project]="project"
-      (click)="selectProject(project)"
+      (click)="selectProject.emit(project)"
     ></app-project-item-container>
   </ul>
 </section>

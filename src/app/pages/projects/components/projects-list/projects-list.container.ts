@@ -15,7 +15,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [myProjects]="myProjects$ | async"
     [searchText]="searchText$ | async"
     [selectedProject]="selectedProject$ | async"
-    (selectProjectEmitter)="onSelectProject($event)"
+    (selectProject)="onSelectProject($event)"
   ></app-projects-list>`,
 })
 export class ProjectsListContainer {

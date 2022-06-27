@@ -4,8 +4,8 @@
     type="text"
     placeholder="Search..."
     [(ngModel)]="searchText"
-    (ngModelChange)="search()"
-    (focus)="focus()"
+    (ngModelChange)="search.emit(searchText)"
+    (focus)="focusEvent.emit()"
   />
   <ic-icon
     class="icon icon-search"

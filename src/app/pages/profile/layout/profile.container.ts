@@ -7,7 +7,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   selector: 'app-profile-container',
   template: `<app-profile
     [userType]="this.userType"
-    (logoutEmmiter)="onLogout()"
+    (logout)="onLogout()"
   ></app-profile>`,
 })
 export class ProfileContainer {

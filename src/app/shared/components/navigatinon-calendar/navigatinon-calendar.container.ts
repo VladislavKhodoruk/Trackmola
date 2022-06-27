@@ -23,8 +23,8 @@ import {
     [firstDayOfWeek]="firstDayOfWeek$ | async"
     [lastDayOfWeek]="lastDayOfWeek$ | async"
     [managersPhoto]="managersPhoto"
-    (movePreviousWeek)="onPreviousWeek()"
-    (moveNextWeek)="onNextWeek()"
+    (previousWeek)="onPreviousWeek()"
+    (nextWeek)="onNextWeek()"
   ></app-navigatinon-calendar>`,
 })
 export class NavigatinonCalendarContainer {

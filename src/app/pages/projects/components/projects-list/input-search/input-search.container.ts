@@ -12,8 +12,8 @@ import { TrackMolaState } from '@store/trackMola.state';
   selector: 'app-input-search-container',
   template: `<app-input-search
     [searchText]="searchText$ | async"
-    (searchEmitter)="onSearch($event)"
-    (focusEmitter)="onFocus()"
+    (search)="onSearch($event)"
+    (focusEvent)="onFocus()"
   ></app-input-search>`,
 })
 export class InputSearchContainer {

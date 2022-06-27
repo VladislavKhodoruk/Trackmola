@@ -11,9 +11,5 @@ export class ProjectsListComponent {
   @Input() readonly selectedProject!: Project;
   @Input() readonly searchText: string;
 
-  @Output() readonly selectProjectEmitter = new EventEmitter<Project>();
-
-  public selectProject(project: Project): void {
-    this.selectProjectEmitter.emit(project);
-  }
+  @Output() readonly selectProject = new EventEmitter<Project>();
 }

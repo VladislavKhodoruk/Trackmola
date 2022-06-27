@@ -9,16 +9,8 @@ import searchIcon from '@iconify/icons-tabler/search';
 export class InputSearchComponent {
   @Input() searchText: string;
 
-  @Output() searchEmitter = new EventEmitter<string>();
-  @Output() focusEmitter = new EventEmitter<void>();
+  @Output() search = new EventEmitter<string>();
+  @Output() focusEvent = new EventEmitter<void>();
 
   readonly iconSearch = searchIcon;
-
-  public search(): void {
-    this.searchEmitter.emit(this.searchText);
-  }
-
-  public focus(): void {
-    this.focusEmitter.emit();
-  }
 }
