@@ -1,8 +1,8 @@
-import { setMidnightTime } from 'src/app/shared/helpers/helpers';
+import { setMidnightTime } from '@shared/helpers/helpers';
 import {
   FirstAndLastDayOfWeek,
   ProfileUser,
-} from 'src/app/shared/interfaces/interfaces';
+} from '@shared/interfaces/interfaces';
 
 export interface SharedState {
   loadingStatus: LoadingStatus;

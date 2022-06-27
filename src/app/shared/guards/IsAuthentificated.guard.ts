@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { getUserType } from 'src/app/store/shared/shared.selectors';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
+import { getUserType } from '@store/shared/shared.selectors';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Injectable({
   providedIn: 'root',

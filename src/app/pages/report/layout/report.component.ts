@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UserType } from 'src/app/shared/enums/enum';
+import { UserType } from '@shared/enums/enum';
 
 @Component({
   selector: 'app-report',

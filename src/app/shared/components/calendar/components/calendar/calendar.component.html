@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th *ngFor="let nameDay of namesDaysWeek">
-        {{ nameDay | slice: 0:3 | uppercase }}
+        {{ nameDay | uppercase | slice: 0:3 }}
       </th>
     </tr>
   </thead>

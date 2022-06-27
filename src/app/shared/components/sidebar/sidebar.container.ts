@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import {
   getNavigationElems,
   getUserPhoto,
-} from 'src/app/store/shared/shared.selectors';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
+} from '@store/shared/shared.selectors';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-sidebar-container',
