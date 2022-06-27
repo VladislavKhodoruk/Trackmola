@@ -3,11 +3,11 @@
   .photos {
     @include flex(flex-start, flex-start);
     flex-direction: row-reverse;
-    margin-right: 1rem;
+    margin-right: var(--offset);
 
     &-photo {
       position: relative;
-      margin-right: -1rem;
+      margin-right: calc(var(--offset) * -1);
       border-radius: 100%;
       object-fit: cover;
     }

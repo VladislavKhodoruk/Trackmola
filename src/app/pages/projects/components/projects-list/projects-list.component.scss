@@ -10,7 +10,7 @@
     $shadow-right: var(--offset);
     $shadow-selected: 0 var(--offset-xs) #{$shadow-left} calc(
         var(--offset-xs) * -1
-      ) rgba(123, 97, 255, 0.25);
+      ) var(--shadow-project-selected);
 
     @include flex(flex-start, flex-start, var(--offset-m));
     flex-direction: column;

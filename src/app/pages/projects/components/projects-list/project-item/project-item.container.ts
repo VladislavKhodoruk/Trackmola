@@ -18,7 +18,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   selector: 'app-project-item-container',
   template: `<app-project-item
     class="projects-list-item"
-    [(project)]="this.project"
+    [(project)]="project"
     [tasksInProject]="tasksInProject$ | async"
     [usersPhotoInProject]="usersPhotoInProject$ | async"
   ></app-project-item>`,
