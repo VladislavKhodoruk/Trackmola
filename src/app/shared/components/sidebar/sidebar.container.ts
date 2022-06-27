@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { getNavigationElems } from '@shared/helpers/helpers';
+import { getNavigationElems } from '@shared/constants/constants';
 
 @Component({
   selector: 'app-sidebar-container',
