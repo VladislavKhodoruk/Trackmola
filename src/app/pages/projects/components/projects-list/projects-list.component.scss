@@ -5,6 +5,7 @@
   .projects-list {
     $width-project: 21.5rem;
     $width-scroll: var(--offset-s);
+    $shadow-y: var(--offset-d);
     $shadow-left: var(--offset-l);
     $shadow-right: var(--offset);
     $shadow-selected: 0 var(--offset-xs) $shadow-left
@@ -19,10 +20,9 @@
     );
     height: 20rem;
     max-height: 20rem;
-    padding-left: $shadow-left;
-    padding-right: $shadow-right;
-    margin-left: calc($shadow-left * -1);
-    margin-right: calc($shadow-right * -1);
+    padding: $shadow-y $shadow-right $shadow-y $shadow-left;
+    margin: calc($shadow-y * -1) calc($shadow-right * -1) calc($shadow-y * -1)
+      calc($shadow-left * -1);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 
