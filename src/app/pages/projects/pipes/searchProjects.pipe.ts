@@ -9,12 +9,12 @@ export class SearchProjectsPipe implements PipeTransform {
     if (!search.trim()) {
       return projects;
     }
-    return projects.filter((project) => {
-      const compareName = project.name
+    return projects.filter(({ name, description }) => {
+      const compareName = name
         .toLocaleLowerCase()
         .includes(search.toLocaleLowerCase());
 
-      const compareDescriprion = project.description
+      const compareDescriprion = description
         .toLocaleLowerCase()
         .includes(search.toLocaleLowerCase());
 

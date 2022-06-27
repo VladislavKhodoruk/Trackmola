@@ -9,16 +9,15 @@ const getProjectsState =
 
 export const getMyProgects = createSelector(
   getProjectsState,
-  (state) => state.myProjects
+  ({ myProjects }) => myProjects
 );
 
 export const getAllTasksInProject = (props: { project: string }) =>
   createSelector(getProjectsState, (state) =>
-    state.allTasksInProjects.filter((task) => {
-      const projectCompare = task.projectId === props.project;
+    state.allTasksInProjects.filter(({ projectId, status }) => {
+      const projectCompare = projectId === props.project;
       const statusCompare =
-        task.status === TaskStatus.InProgress ||
-        task.status === TaskStatus.Open;
+        status === TaskStatus.InProgress || status === TaskStatus.Open;
 
       return projectCompare && statusCompare;
     })
@@ -27,19 +26,19 @@ export const getAllTasksInProject = (props: { project: string }) =>
 export const getUsersPhotoInProject = (props: { project: string }) =>
   createSelector(getProjectsState, (state) =>
     state.userInProjects
-      .filter((profile) => {
-        const projectCompare = profile.projectId === props.project;
+      .filter(({ projectId }) => {
+        const projectCompare = projectId === props.project;
         return projectCompare;
       })
-      .map((profile) => profile.photo)
+      .map(({ photo }) => photo)
   );
 
 export const getSelectedProject = createSelector(
   getProjectsState,
-  (state) => state.selectedProject
+  ({ selectedProject }) => selectedProject
 );
 
 export const getSearchValue = createSelector(
   getProjectsState,
-  (state) => state.searchValue
+  ({ searchValue }) => searchValue
 );
