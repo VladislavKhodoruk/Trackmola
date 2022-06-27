@@ -9,7 +9,7 @@
     visibility: hidden;
     margin-left: var(--offset-d);
     width: 2.5rem;
-    height: 1.75rem;
+    height: var(--offset-xm);
     border-radius: $border-radius-table-tooltip;
     font-size: var(--font-blocks);
     color: var(--white);

@@ -22,7 +22,7 @@
   }
 
   .projects-container {
-    @include flex(flex-start, flex-start, 1.75rem);
+    @include flex(flex-start, flex-start, var(--offset-xm));
     margin-top: 2.5rem;
   }
 }
