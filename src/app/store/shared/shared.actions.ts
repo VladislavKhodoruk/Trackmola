@@ -13,6 +13,7 @@ export const GET_USER_DATA_SUCCESS = 'get user success';
 export const CHANGE_DATE = 'change date';
 export const GET_ALL_TASKS = 'get all tasks';
 export const GET_ALL_TASKS_SUCCESS = 'get all tasks success';
+export const GET_ALL_TASKS_UPDATE = 'get all tasks update';
 export const SET_FIRST_AND_LAST_DAY_WEEK = 'set first and last day of week';
 export const NEXT_WEEK = 'next week';
 export const PREVIOUS_WEEK = 'previous week';
@@ -47,4 +48,9 @@ export const getAllTasks = createAction(GET_ALL_TASKS);
 export const getAllTasksSuccess = createAction(
   GET_ALL_TASKS_SUCCESS,
   props<{ tasks: TaskTrack[] }>()
+);
+
+export const getAllTasksUpdate = createAction(
+  GET_ALL_TASKS_UPDATE,
+  props<{ task: TaskTrack }>()
 );

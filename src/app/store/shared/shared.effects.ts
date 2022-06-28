@@ -28,6 +28,7 @@ export class SharedEffects {
             this.store$.dispatch(errorMessage({ message: '', loaded: true }));
             localStorage.setItem('AuthUserType', data.type);
             localStorage.setItem('AuthUserPhoto', data.photo);
+            localStorage.setItem('AuthUserRole', data.qualification);
             return getUserDataSuccess({ data });
           }),
           catchError(() => {

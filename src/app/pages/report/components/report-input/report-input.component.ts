@@ -1,0 +1,269 @@
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
+import angleLeftB from '@iconify/icons-uil/angle-left-b';
+import plus from '@iconify/icons-tabler/plus';
+import minus from '@iconify/icons-tabler/minus';
+import check from '@iconify/icons-mdi/check';
+import microphoneIcon from '@iconify/icons-tabler/microphone';
+import {
+  COMMA,
+  DEFAULT_DURATION_VALUE,
+  DOT,
+  DURATION_STEP,
+  GREATER,
+  LESS,
+  MAX_DURATION_VALUE,
+  MIN_DURATION_STEP,
+  MIN_DURATION_VALUE,
+  ROLES,
+  TWO_DOTS,
+} from '@pages/report/constants/report-input-constans';
+import {
+  isInputOnlyNumber,
+  onRightIndex,
+} from '@pages/report/helpers/report-input-helpers';
+import { Task } from '@pages/report/interfaces/interfaces';
+import { Project } from '@pages/projects/interfaces/interfaces';
+import { TaskTrack } from '@store/shared/shared.state';
+import { Timestamp } from 'firebase/firestore';
+import { TasksService } from '@shared/services/tasks.service';
+
+@Component({
+  selector: 'app-report-input',
+  templateUrl: './report-input.component.html',
+  styleUrls: ['./report-input.component.scss'],
+})
+export class ReportInputComponent implements OnInit, OnChanges {
+  @Input() allProjects: Project[];
+  @Input() allTasks: Task[];
+  @Input() currentDate: string;
+  @Output() updateTaskTrack = new EventEmitter();
+
+  addTask: TaskTrack;
+
+  currentProjectId: string;
+  allProjectsName: string[];
+
+  filteredProjectsOptions: Observable<string[]>;
+  filteredTasksOptions: Observable<string[]>;
+  filteredRoleOptions!: Observable<string[]>;
+
+  form = new FormGroup({
+    project: new FormControl('', Validators.required),
+    task: new FormControl('', Validators.required),
+    comments: new FormControl(''),
+    role: new FormControl(
+      localStorage.getItem('AuthUserRole'),
+      Validators.required
+    ),
+    duration: new FormControl('1', Validators.required),
+  });
+
+  readonly iconAngleLeftB = angleLeftB;
+
+  readonly iconPlus = plus;
+  readonly iconMinus = minus;
+  readonly iconMinusWidth = '1.5rem';
+  readonly iconMinusHeight = '1.5rem';
+
+  readonly iconCheck = check;
+  readonly iconMicrophone = microphoneIcon;
+
+  status = '';
+  classStatusChecked = 'task-status-checked';
+  classStatusDone = '';
+  classStatusInProgress = '';
+
+  constructor(private tasksService: TasksService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.allProjects) {
+      this.allProjectsName = this.allProjects.map((project) => project.name);
+
+      this.filteredProjectsOptions = this.form
+        .get('project')
+        ?.valueChanges.pipe(
+          startWith(''),
+          map((value) => {
+            this.currentProjectId = this.allProjects?.find(
+              (project) => project.name === this.form.get('project').value
+            )?.id;
+            this.filteredTasksOptions = this.form
+              .get('task')
+              ?.valueChanges.pipe(
+                startWith(''),
+                map((i) => this.filterTasks(i || ''))
+              );
+            return this.filterOption(value || '', this.allProjectsName);
+          })
+        );
+
+      if (changes.allTasks) {
+        this.filteredTasksOptions = this.form.get('task')?.valueChanges.pipe(
+          startWith(''),
+          map((value) => this.filterTasks(value || ''))
+        );
+      }
+    }
+  }
+
+  ngOnInit(): void {
+    this.filteredRoleOptions = this.form.get('role')?.valueChanges.pipe(
+      startWith(''),
+      map((value) => this.filterOption(value || '', ROLES))
+    );
+  }
+
+  private filterOption(value: string, options: string[]): string[] {
+    const filterValue = value.toLowerCase();
+
+    return options.filter((option) =>
+      option.toLowerCase().includes(filterValue)
+    );
+  }
+
+  private filterTasks(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    const tasksArr = this.allTasks?.filter(
+      (task) =>
+        task.name.toLowerCase().includes(filterValue) &&
+        task.project === this.currentProjectId
+    );
+    return tasksArr.map((task) => task.name);
+  }
+
+  onCheckStatus(status: string): void {
+    switch (status) {
+      case this.status:
+        this.status = '';
+        this.classStatusDone = '';
+        this.classStatusInProgress = '';
+        break;
+      case 'done':
+        this.classStatusDone = this.classStatusChecked;
+        this.classStatusInProgress = '';
+        this.status = status;
+        break;
+      case 'in progress':
+        this.classStatusInProgress = this.classStatusChecked;
+        this.classStatusDone = '';
+        this.status = status;
+        break;
+    }
+  }
+
+  addTaskTrack() {
+    this.addTask = {
+      projectId: this.currentProjectId,
+      date: new Timestamp(new Date(this.currentDate).getTime() / 1000, 0),
+      task: this.form.get('task').value,
+      comments: this.form.get('comments').value,
+      duration: +this.form.get('duration').value,
+      userId: localStorage.getItem('AuthUserId'),
+    };
+    this.tasksService.setTaskTrack(this.addTask);
+    this.updateTaskTrack.emit(this.addTask);
+  }
+
+  onInputOnlyNumber(event: KeyboardEvent): boolean {
+    return isInputOnlyNumber(event);
+  }
+
+  durationMinus() {
+    const durationNumberValue = +this.form.get('duration')?.value;
+    const durationStringValue = this.form.get('duration')?.value;
+    if (!durationStringValue || durationStringValue === DOT) {
+      this.form.get('duration')?.setValue(MIN_DURATION_VALUE);
+      return;
+    }
+    if (durationNumberValue <= +MIN_DURATION_VALUE) {
+      return;
+    }
+    if (durationNumberValue === +DEFAULT_DURATION_VALUE) {
+      const valueInput = `${
+        Math.round(+this.form.get('duration')?.value) - MIN_DURATION_STEP
+      }`;
+      this.form.get('duration')?.setValue(valueInput);
+      return;
+    }
+    const valueInput = `${Math.round(durationNumberValue) - DURATION_STEP}`;
+    this.form.get('duration')?.setValue(valueInput);
+  }
+
+  durationPlus() {
+    const durationNumberValue = +this.form.get('duration')?.value;
+    const durationStringValue = this.form.get('duration')?.value;
+    if (!durationStringValue || durationStringValue === DOT) {
+      this.form.get('duration')?.setValue(DEFAULT_DURATION_VALUE);
+      return;
+    }
+
+    if (durationNumberValue >= +MAX_DURATION_VALUE) {
+      return;
+    }
+    if (durationNumberValue === MIN_DURATION_STEP) {
+      const valueInput = `${
+        +this.form.get('duration')?.value + MIN_DURATION_STEP
+      }`;
+      this.form.get('duration')?.setValue(valueInput);
+      return;
+    }
+    const valueInput = `${Math.round(durationNumberValue) + DURATION_STEP}`;
+    this.form.get('duration')?.setValue(valueInput);
+  }
+
+  onSetValue() {
+    if (this.form.get('duration')?.value) {
+      return;
+    }
+    this.form.get('duration')?.setValue(DEFAULT_DURATION_VALUE);
+  }
+
+  onSetRightValue(): void {
+    const durationStringValue = this.form.get('duration')?.value;
+    if (+this.form.get('duration')?.value > +MAX_DURATION_VALUE) {
+      this.form.get('duration')?.setValue(MAX_DURATION_VALUE);
+    }
+    if (
+      (durationStringValue.includes(DOT) &&
+        durationStringValue.includes(COMMA)) ||
+      (durationStringValue.includes(DOT) &&
+        durationStringValue.includes(GREATER)) ||
+      (durationStringValue.includes(DOT) &&
+        durationStringValue.includes(LESS)) ||
+      durationStringValue.includes(TWO_DOTS)
+    ) {
+      const nowValue = durationStringValue.slice(
+        0,
+        onRightIndex(durationStringValue.indexOf(DOT))
+      );
+      this.form.get('duration')?.setValue(nowValue);
+      return;
+    }
+
+    if (durationStringValue.includes(COMMA)) {
+      const rightValue = durationStringValue.replace(COMMA, DOT);
+      this.form.get('duration')?.setValue(rightValue);
+    }
+
+    if (durationStringValue.includes(LESS)) {
+      const rightValue = durationStringValue.replace(LESS, DOT);
+      this.form.get('duration')?.setValue(rightValue);
+    }
+
+    if (durationStringValue.includes(GREATER)) {
+      const rightValue = durationStringValue.replace(GREATER, DOT);
+      this.form.get('duration')?.setValue(rightValue);
+    }
+  }
+}

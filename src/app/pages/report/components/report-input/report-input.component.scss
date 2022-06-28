@@ -1,0 +1,292 @@
+@import "vars/variables.scss";
+@import "mixins.scss";
+
+:host {
+  .form-report {
+    padding: 3.5rem;
+
+    border: $border-form;
+    border-radius: var(--offset);
+
+    &-container {
+      display: flex;
+    }
+
+    &-side {
+      width: 50%;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-duration {
+      margin-right: var(--offset-s);
+
+      width: 7.25rem;
+      height: 3rem;
+
+      @include flex(center, center);
+
+      border: $border-input;
+      border-radius: var(--offset-d);
+
+      background-color: var(--white);
+
+      &-label {
+        margin-bottom: var(--offset-xs);
+      }
+
+      &-input {
+        width: 2.5rem;
+        height: 100%;
+
+        border: none;
+        outline: none;
+
+        font-size: 1.25rem;
+        color: var(--gray2);
+
+        text-align: center;
+      }
+
+      &-btn {
+        margin: 0;
+        padding: 0;
+        z-index: 1;
+
+        height: 100%;
+        width: 100%;
+
+        border: none;
+
+        color: var(--gray2);
+
+        background-color: var(--white);
+
+        cursor: pointer;
+
+        &-border-right {
+          border-radius: 0 var(--offset-d) var(--offset-d) 0;
+        }
+
+        &-border-left {
+          border-radius: var(--offset-d) 0 0 var(--offset-d);
+        }
+
+        ic-icon {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+
+        &:hover {
+          box-shadow: $border-input-select;
+        }
+      }
+    }
+
+    &-status {
+      margin: 0 var(--offset-s);
+    }
+
+    &-item {
+      margin-bottom: 1.25rem;
+
+      display: flex;
+      flex-direction: column;
+
+      &-label {
+        display: inline;
+        font-size: var(--font-main);
+        color: var(--black);
+
+        cursor: pointer;
+      }
+    }
+
+    &-comments-label {
+      margin-bottom: var(--offset-xs);
+      font: var(--font-main);
+    }
+
+    &-comments-input {
+      width: 100%;
+      height: 24rem;
+
+      padding: var(--offset-d) var(--offset);
+      resize: none;
+
+      border: $border-input;
+      border-radius: var(--offset-d);
+      outline: none;
+
+      font: var(--font-main);
+      color: var(--black);
+
+      &:hover {
+        box-shadow: $border-input-select;
+      }
+
+      &:focus-visible {
+        box-shadow: $border-input-select;
+      }
+    }
+
+    &-footer {
+      margin-top: 4.5rem;
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      &-voice {
+        margin: 0 var(--offset-l);
+      }
+    }
+  }
+
+  ::ng-deep {
+    .mat-form-field {
+      margin-top: var(--offset-xs);
+      margin-right: var(--offset);
+      padding: var(--offset-d) var(--offset);
+      width: 20.5rem;
+
+      border: $border-input;
+      border-radius: var(--border-radius-m);
+
+      font-size: var(--font-main);
+      line-height: 1;
+
+      &:hover {
+        box-shadow: $border-input-select;
+      }
+
+      &-warning {
+        border-color: var(--warning);
+      }
+
+      &-icon {
+        width: 1.5rem;
+        height: 1rem;
+        transform: rotate(-90deg);
+
+        cursor: pointer;
+
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin: auto;
+
+          path {
+            fill: var(--gray2);
+          }
+        }
+      }
+
+      .mat-form-field-wrapper {
+        padding: 0;
+      }
+
+      .mat-form-field-flex {
+        padding: 0;
+        background-color: var(--white);
+      }
+
+      .mat-form-field-appearance-fill .mat-form-field-flex {
+        padding: 0;
+        border-radius: var(--border-radius-m);
+      }
+
+      .mat-form-field-appearance-fill .mat-form-field-flex {
+        border-radius: none;
+        padding: 0;
+      }
+
+      .mat-form-field-infix {
+        padding: 0;
+        border-top: none;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mat-form-field-underline {
+        display: none;
+      }
+
+      .mat-input-element {
+        color: var(--gray2);
+      }
+    }
+
+    .mat-slide-toggle-bar {
+      width: 3rem;
+      height: 1.6rem;
+      border-radius: var(--offset-d);
+      background-color: var(--primary-50);
+    }
+
+    .mat-slide-toggle-thumb-container {
+      top: 3px;
+      left: 3px;
+    }
+
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+      background-color: var(--primary);
+    }
+
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+      background-color: var(--white);
+    }
+
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
+      transform: translate3d(1.25rem, 0, 0);
+    }
+
+    .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
+      background-color: var(--primary);
+    }
+
+    .mat-slide-toggle.mat-checked .mat-ripple-element {
+      background-color: var(--primary);
+    }
+
+    .mat-slide-toggle-content {
+      font: var(--font-main);
+    }
+  }
+}
+
+::ng-deep {
+  .cdk-overlay-pane {
+    margin-top: var(--offset-xs);
+    margin-left: -1.1rem;
+    width: 20.55rem !important;
+  }
+
+  .mat-autocomplete-panel {
+    max-height: 10rem !important;
+    border-radius: 0 0 var(--offset-d) var(--offset-d) !important;
+    background-color: var(--white);
+
+    box-shadow: $border-cdk-select  !important;
+  }
+
+  .mat-option {
+    height: 2.5rem !important;
+
+    border: $border-input;
+
+    color: var(--gray2);
+
+    &:hover {
+      background-color: var(--white) !important;
+      box-shadow: $border-input-select;
+    }
+  }
+
+  .mat-selected {
+    color: var(--primary) !important;
+  }
+}

@@ -3,6 +3,7 @@ import {
   FirstAndLastDayOfWeek,
   ProfileUser,
 } from '@shared/interfaces/interfaces';
+import { Timestamp } from 'firebase/firestore';
 
 export interface SharedState {
   loadingStatus: LoadingStatus;
@@ -20,10 +21,12 @@ export interface LoadingStatus {
 
 export interface TaskTrack {
   projectId: string;
-  date: Date;
+  date: Timestamp;
   task: string;
-  comments: string;
   duration: number;
+  userId?: string;
+  comments?: string;
+  status?: string;
 }
 
 export const initialState: SharedState = {
