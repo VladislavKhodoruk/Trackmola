@@ -1,10 +1,3 @@
-::ng-deep {
-  .center {
-    margin-left: 20px;
-    display: flex;
-  }
-}
-
 :host {
   @import "mixins.scss";
   .projects-activity {
@@ -18,9 +11,9 @@
     &-header {
       font: var(--font-title);
     }
-  }
-  .chart {
-    width: 100%;
-    height: 100%;
+    &-chart {
+      width: 100%;
+      height: 100%;
+    }
   }
 }

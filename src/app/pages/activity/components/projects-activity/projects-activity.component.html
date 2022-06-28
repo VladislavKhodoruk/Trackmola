@@ -1,4 +1,7 @@
 <section class="projects-activity">
   <h2 class="projects-activity-header">Projects activity</h2>
-  <div [chart]="chart" class="chart"></div>
+  <app-highcharts-chart
+    class="projects-activity-chart"
+    [options]="chartOptions"
+  ></app-highcharts-chart>
 </section>

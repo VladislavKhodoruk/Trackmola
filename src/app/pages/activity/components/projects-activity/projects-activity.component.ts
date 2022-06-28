@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Chart } from 'angular-highcharts';
 import { Options } from 'highcharts';
 
 @Component({
@@ -22,7 +21,6 @@ export class ProjectsActivityComponent {
       y: 0,
       style: {
         font: 'var(--font-titleBig)',
-        textAlign: 'center',
         color: 'var(--aqua)',
       },
     },
@@ -34,6 +32,7 @@ export class ProjectsActivityComponent {
       point: {
         valueSuffix: '%',
       },
+      enabled: false,
     },
     plotOptions: {
       pie: {
@@ -66,12 +65,6 @@ export class ProjectsActivityComponent {
       itemMarginTop: 50,
       itemStyle: {
         font: 'var(--font-current)',
-        display: 'flex',
-        gap: '10px',
-      },
-      labelFormatter: function () {
-        console.log(this);
-        return `<div class='center'>${this.name}</div>`;
       },
     },
 
@@ -79,5 +72,4 @@ export class ProjectsActivityComponent {
       enabled: false,
     },
   };
-  chart = new Chart(this.chartOptions);
 }
