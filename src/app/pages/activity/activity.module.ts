@@ -13,7 +13,7 @@ import { ManagerActivityComponent } from './components/manager-activity/manager-
 import { ActivityContainer } from './layout/activity.container';
 import { ActivityComponent } from './layout/activity.component';
 import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
-import { ChartModule } from 'angular-highcharts';
+import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { ChartModule } from 'angular-highcharts';
   ],
   imports: [
     CommonModule,
-    ChartModule,
+    HighchartsChartModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(ACTIVITY_STATE_NAME, ActivityReducer),
     RouterModule.forChild(ActivityRoutes),
