@@ -1,0 +1,26 @@
+::ng-deep {
+  .center {
+    margin-left: 20px;
+    display: flex;
+  }
+}
+
+:host {
+  @import "mixins.scss";
+  .projects-activity {
+    @include flex(flex-start, flex-start, var(--offset-l));
+    flex-direction: column;
+    width: 585px;
+    height: 591px;
+    border: 1px solid #dde1f2;
+    border-radius: 15px;
+    padding: var(--offset-m) var(--offset-l);
+    &-header {
+      font: var(--font-title);
+    }
+  }
+  .chart {
+    width: 100%;
+    height: 100%;
+  }
+}
