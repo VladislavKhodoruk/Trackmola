@@ -12,6 +12,7 @@ import { ManagerDashboardComponent } from './components/manager-dashboard/manage
 import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
 import { DashboardContainer } from './layout/dashboard.container';
 import { DashboardComponent } from './layout/dashboard.component';
+import { ActiveTasksListModule } from '@pages/dashboard/components/active-tasks-list/active-tasks-list-module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DashboardComponent } from './layout/dashboard.component';
     DashboardContainer,
   ],
   imports: [
+    ActiveTasksListModule,
     CommonModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(DASHBOARD_STATE_NAME, DashboardReducer),

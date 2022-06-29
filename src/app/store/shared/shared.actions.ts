@@ -43,7 +43,6 @@ export const previousWeek = createAction(
 );
 
 export const getAllTasks = createAction(GET_ALL_TASKS);
-
 export const getAllTasksSuccess = createAction(
   GET_ALL_TASKS_SUCCESS,
   props<{ tasks: TaskTrack[] }>()
