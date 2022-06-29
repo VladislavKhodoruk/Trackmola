@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { setMidnightTime } from '@shared/helpers/helpers';
-import { FirstAndLastDayOfWeek } from '@shared/interfaces/interfaces';
+import { getFirstAndLastDay } from '@shared/helpers/helpers';
 import {
   nextWeek,
   previousWeek,
-  setFirstAndLastDayOfWeek,
+  setFirstAndLastDay,
 } from '@store/shared/shared.actions';
 import {
   getFirstDayOfWeek,
@@ -41,20 +40,10 @@ export class NavigatinonCalendarContainer {
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(
-      setFirstAndLastDayOfWeek({
-        firstAndLastDayOfWeek: this.getFirstAndLastDayOfWeek(new Date()),
+      setFirstAndLastDay({
+        firstAndLastDay: getFirstAndLastDay(new Date(), 'week'),
       })
     );
-  }
-
-  private getFirstAndLastDayOfWeek(date: Date): FirstAndLastDayOfWeek {
-    const myDate = setMidnightTime(date);
-    const dayOfWeek = myDate.getDay();
-    const myMonday = myDate.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
-    return {
-      firstDay: new Date(myDate.setDate(myMonday)),
-      lastDay: new Date(myDate.setDate(myMonday + 6)),
-    };
   }
 
   public onPreviousWeek(): void {
