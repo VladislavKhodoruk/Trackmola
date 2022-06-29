@@ -14,6 +14,7 @@ import { ActivityContainer } from './layout/activity.container';
 import { ActivityComponent } from './layout/activity.component';
 import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
+import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HighchartsChartModule } from '@shared/components/highcharts-chart/highc
     ActivityContainer,
     ActivityComponent,
     ProjectsActivityComponent,
+    ProjectsActivityContainer,
   ],
   imports: [
     CommonModule,

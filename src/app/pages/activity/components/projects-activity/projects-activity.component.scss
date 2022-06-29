@@ -1,3 +1,9 @@
+::ng-deep {
+  .highcharts-legend-item .highcharts-point {
+    transform: translate(calc(var(--offset-d) * -1), 3px);
+  }
+}
+
 :host {
   @import "mixins.scss";
   .projects-activity {
