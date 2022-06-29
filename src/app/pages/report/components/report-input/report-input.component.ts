@@ -95,12 +95,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
               .get('task')
               ?.valueChanges.pipe(
                 startWith(''),
-                map((i) => {
-                  this.currentTaskId = this.allTasks?.find(
-                    (task) => task.name === this.form.get('task').value
-                  )?.taskId;
-                  return this.filterTasks(i || '');
-                })
+                map((i) => this.filterTasks(i || ''))
               );
             return this.filterOption(value || '', this.allProjectsName);
           })
@@ -165,7 +160,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     this.addTask = {
       projectId: this.currentProjectId,
       date: new Timestamp(new Date(this.currentDate).getTime() / 1000, 0),
-      task: this.currentTaskId,
+      task: this.form.get('task').value,
       comments: this.form.get('comments').value,
       duration: +this.form.get('duration').value,
       userId: localStorage.getItem('AuthUserId'),

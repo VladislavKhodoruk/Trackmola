@@ -134,9 +134,7 @@
     &-footer {
       margin-top: 4.5rem;
 
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+      @include flex(center, flex-end);
 
       &-voice {
         margin: 0 var(--offset-l);
@@ -206,9 +204,7 @@
         padding: 0;
         border-top: none;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex(center, space-between);
       }
 
       .mat-form-field-underline {
