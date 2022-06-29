@@ -15,19 +15,19 @@ export const getErrorMessage = createSelector(
   (state) => state.loadingStatus.errorMessage
 );
 
-export const getFirstAndLastDayOfWeek = createSelector(
+export const getFirstAndLastDay = createSelector(
   getSharedState,
-  (state) => state.firstAndLastDayOfWeek
+  (state) => state.firstAndLastDay
 );
 
 export const getFirstDayOfWeek = createSelector(
-  getFirstAndLastDayOfWeek,
-  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek.firstDay
+  getFirstAndLastDay,
+  (firstAndLastDay) => firstAndLastDay.start
 );
 
 export const getLastDayOfWeek = createSelector(
-  getFirstAndLastDayOfWeek,
-  (firstAndLastDayOfWeek) => firstAndLastDayOfWeek.lastDay
+  getFirstAndLastDay,
+  (firstAndLastDay) => firstAndLastDay.end
 );
 
 export const getDate = createSelector(getSharedState, (state) => state.date);

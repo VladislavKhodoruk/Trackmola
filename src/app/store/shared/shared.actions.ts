@@ -1,8 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import {
-  FirstAndLastDayOfWeek,
-  ProfileUser,
-} from '@shared/interfaces/interfaces';
+import { FirstAndLastDay, ProfileUser } from '@shared/interfaces/interfaces';
 
 import { TaskTrack } from './shared.state';
 
@@ -31,9 +28,9 @@ export const getUserDataSuccess = createAction(
 
 export const changeDate = createAction(CHANGE_DATE, props<{ date: Date }>());
 
-export const setFirstAndLastDayOfWeek = createAction(
+export const setFirstAndLastDay = createAction(
   SET_FIRST_AND_LAST_DAY_WEEK,
-  props<{ firstAndLastDayOfWeek: FirstAndLastDayOfWeek }>()
+  props<{ firstAndLastDay: FirstAndLastDay }>()
 );
 
 export const nextWeek = createAction(NEXT_WEEK, props<{ value: number }>());

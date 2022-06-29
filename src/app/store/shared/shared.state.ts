@@ -1,15 +1,12 @@
 import { setMidnightTime } from '@shared/helpers/helpers';
-import {
-  FirstAndLastDayOfWeek,
-  ProfileUser,
-} from '@shared/interfaces/interfaces';
+import { FirstAndLastDay, ProfileUser } from '@shared/interfaces/interfaces';
 
 export interface SharedState {
   loadingStatus: LoadingStatus;
   user: ProfileUser | null;
   date: Date;
   tasks: TaskTrack[];
-  firstAndLastDayOfWeek?: FirstAndLastDayOfWeek;
+  firstAndLastDay?: FirstAndLastDay;
 }
 
 export interface LoadingStatus {

@@ -9,7 +9,7 @@ import {
   loading,
   nextWeek,
   previousWeek,
-  setFirstAndLastDayOfWeek,
+  setFirstAndLastDay,
 } from './shared.actions';
 import { initialState, SharedState } from './shared.state';
 
@@ -43,19 +43,19 @@ const sharedReducer = createReducer(
     ...state,
     tasks: action.tasks,
   })),
-  on(setFirstAndLastDayOfWeek, (state: SharedState, action) => ({
+  on(setFirstAndLastDay, (state: SharedState, action) => ({
     ...state,
-    firstAndLastDayOfWeek: action.firstAndLastDayOfWeek,
+    firstAndLastDay: action.firstAndLastDay,
   })),
   on(nextWeek, (state: SharedState, action) => {
-    if (state.firstAndLastDayOfWeek) {
-      const firstDay = state.firstAndLastDayOfWeek.firstDay;
-      const lastDay = state.firstAndLastDayOfWeek.lastDay;
+    if (state.firstAndLastDay) {
+      const firstDay = new Date(state.firstAndLastDay.start);
+      const lastDay = new Date(state.firstAndLastDay.end);
       return {
         ...state,
-        firstAndLastDayOfWeek: {
-          firstDay: new Date(firstDay.getTime() + action.value),
-          lastDay: new Date(lastDay.getTime() + action.value),
+        firstAndLastDay: {
+          start: new Date(firstDay.getTime() + action.value).getTime(),
+          end: new Date(lastDay.getTime() + action.value).getTime(),
         },
       };
     }
@@ -64,14 +64,14 @@ const sharedReducer = createReducer(
     };
   }),
   on(previousWeek, (state: SharedState, action) => {
-    if (state.firstAndLastDayOfWeek) {
-      const firstDay = state.firstAndLastDayOfWeek.firstDay;
-      const lastDay = state.firstAndLastDayOfWeek.lastDay;
+    if (state.firstAndLastDay) {
+      const firstDay = new Date(state.firstAndLastDay.start);
+      const lastDay = new Date(state.firstAndLastDay.end);
       return {
         ...state,
-        firstAndLastDayOfWeek: {
-          firstDay: new Date(firstDay.getTime() - action.value),
-          lastDay: new Date(lastDay.getTime() - action.value),
+        firstAndLastDay: {
+          start: new Date(firstDay.getTime() - action.value).getTime(),
+          end: new Date(lastDay.getTime() - action.value).getTime(),
         },
       };
     }

@@ -28,6 +28,7 @@ export interface Week {
   days: Day[];
 }
 
-export interface FirstAndLastDayOfWeek {
-  [key: string]: Date;
+export interface FirstAndLastDay {
+  start: number;
+  end: number;
 }
