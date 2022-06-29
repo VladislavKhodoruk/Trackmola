@@ -3,10 +3,22 @@
 
 :host {
   .form-report {
+    position: relative;
+    overflow: hidden;
     padding: 3.5rem;
 
     border: $border-form;
     border-radius: var(--offset);
+
+    &-img {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      
+      width: 23rem;
+      height: 23rem;
+    }
 
     &-container {
       display: flex;
