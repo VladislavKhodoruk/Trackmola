@@ -20,6 +20,7 @@ export interface LoadingStatus {
 }
 
 export interface TaskTrack {
+  id?: string;
   projectId: string;
   date: Timestamp;
   task: string;

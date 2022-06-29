@@ -1,10 +1,8 @@
 import {
   Component,
-  EventEmitter,
   Input,
   OnChanges,
   OnInit,
-  Output,
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -15,17 +13,12 @@ import minus from '@iconify/icons-tabler/minus';
 import check from '@iconify/icons-mdi/check';
 import microphoneIcon from '@iconify/icons-tabler/microphone';
 import {
-  COMMA,
   DEFAULT_DURATION_VALUE,
-  DOT,
   DURATION_STEP,
-  GREATER,
-  LESS,
   MAX_DURATION_VALUE,
   MIN_DURATION_STEP,
   MIN_DURATION_VALUE,
   ROLES,
-  TWO_DOTS,
 } from '@pages/report/constants/report-input-constans';
 import {
   isInputOnlyNumber,
@@ -36,6 +29,7 @@ import { Project } from '@pages/projects/interfaces/interfaces';
 import { TaskTrack } from '@store/shared/shared.state';
 import { Timestamp } from 'firebase/firestore';
 import { TasksService } from '@shared/services/tasks.service';
+import { KeyCodeAllowedSymbol } from '@pages/report/enums/enum';
 
 @Component({
   selector: 'app-report-input',
@@ -46,11 +40,11 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() allProjects: Project[];
   @Input() allTasks: Task[];
   @Input() currentDate: string;
-  @Output() updateTaskTrack = new EventEmitter();
 
   addTask: TaskTrack;
 
   currentProjectId: string;
+  currentTaskId: string;
   allProjectsName: string[];
 
   filteredProjectsOptions: Observable<string[]>;
@@ -101,7 +95,12 @@ export class ReportInputComponent implements OnInit, OnChanges {
               .get('task')
               ?.valueChanges.pipe(
                 startWith(''),
-                map((i) => this.filterTasks(i || ''))
+                map((i) => {
+                  this.currentTaskId = this.allTasks?.find(
+                    (task) => task.name === this.form.get('task').value
+                  )?.taskId;
+                  return this.filterTasks(i || '');
+                })
               );
             return this.filterOption(value || '', this.allProjectsName);
           })
@@ -142,7 +141,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     return tasksArr.map((task) => task.name);
   }
 
-  onCheckStatus(status: string): void {
+  public onCheckStatus(status: string): void {
     switch (status) {
       case this.status:
         this.status = '';
@@ -162,27 +161,33 @@ export class ReportInputComponent implements OnInit, OnChanges {
     }
   }
 
-  addTaskTrack() {
+  addTaskTrack(): void {
     this.addTask = {
       projectId: this.currentProjectId,
       date: new Timestamp(new Date(this.currentDate).getTime() / 1000, 0),
-      task: this.form.get('task').value,
+      task: this.currentTaskId,
       comments: this.form.get('comments').value,
       duration: +this.form.get('duration').value,
       userId: localStorage.getItem('AuthUserId'),
     };
     this.tasksService.setTaskTrack(this.addTask);
-    this.updateTaskTrack.emit(this.addTask);
+    this.form.get('project').reset();
+    this.form.get('task').reset();
+    this.form.get('comments').reset();
+    this.form.get('duration').setValue(DEFAULT_DURATION_VALUE);
   }
 
   onInputOnlyNumber(event: KeyboardEvent): boolean {
     return isInputOnlyNumber(event);
   }
 
-  durationMinus() {
+  durationMinus(): void {
     const durationNumberValue = +this.form.get('duration')?.value;
     const durationStringValue = this.form.get('duration')?.value;
-    if (!durationStringValue || durationStringValue === DOT) {
+    if (
+      !durationStringValue ||
+      durationStringValue === KeyCodeAllowedSymbol.Dot
+    ) {
       this.form.get('duration')?.setValue(MIN_DURATION_VALUE);
       return;
     }
@@ -200,10 +205,13 @@ export class ReportInputComponent implements OnInit, OnChanges {
     this.form.get('duration')?.setValue(valueInput);
   }
 
-  durationPlus() {
+  durationPlus(): void {
     const durationNumberValue = +this.form.get('duration')?.value;
     const durationStringValue = this.form.get('duration')?.value;
-    if (!durationStringValue || durationStringValue === DOT) {
+    if (
+      !durationStringValue ||
+      durationStringValue === KeyCodeAllowedSymbol.Dot
+    ) {
       this.form.get('duration')?.setValue(DEFAULT_DURATION_VALUE);
       return;
     }
@@ -222,7 +230,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     this.form.get('duration')?.setValue(valueInput);
   }
 
-  onSetValue() {
+  onSetValue(): void {
     if (this.form.get('duration')?.value) {
       return;
     }
@@ -235,35 +243,70 @@ export class ReportInputComponent implements OnInit, OnChanges {
       this.form.get('duration')?.setValue(MAX_DURATION_VALUE);
     }
     if (
-      (durationStringValue.includes(DOT) &&
-        durationStringValue.includes(COMMA)) ||
-      (durationStringValue.includes(DOT) &&
-        durationStringValue.includes(GREATER)) ||
-      (durationStringValue.includes(DOT) &&
-        durationStringValue.includes(LESS)) ||
-      durationStringValue.includes(TWO_DOTS)
+      (durationStringValue.includes(KeyCodeAllowedSymbol.Dot) &&
+        durationStringValue.includes(KeyCodeAllowedSymbol.Comma)) ||
+      (durationStringValue.includes(KeyCodeAllowedSymbol.Dot) &&
+        durationStringValue.includes(KeyCodeAllowedSymbol.Greater)) ||
+      (durationStringValue.includes(KeyCodeAllowedSymbol.Dot) &&
+        durationStringValue.includes(KeyCodeAllowedSymbol.Less)) ||
+      durationStringValue.includes(KeyCodeAllowedSymbol.TwoDots)
     ) {
       const nowValue = durationStringValue.slice(
         0,
-        onRightIndex(durationStringValue.indexOf(DOT))
+        onRightIndex(durationStringValue.indexOf(KeyCodeAllowedSymbol.Dot))
       );
       this.form.get('duration')?.setValue(nowValue);
       return;
     }
 
-    if (durationStringValue.includes(COMMA)) {
-      const rightValue = durationStringValue.replace(COMMA, DOT);
+    if (durationStringValue.includes(KeyCodeAllowedSymbol.Comma)) {
+      const rightValue = durationStringValue.replace(
+        KeyCodeAllowedSymbol.Comma,
+        KeyCodeAllowedSymbol.Dot
+      );
       this.form.get('duration')?.setValue(rightValue);
     }
 
-    if (durationStringValue.includes(LESS)) {
-      const rightValue = durationStringValue.replace(LESS, DOT);
+    if (durationStringValue.includes(KeyCodeAllowedSymbol.Less)) {
+      const rightValue = durationStringValue.replace(
+        KeyCodeAllowedSymbol.Less,
+        KeyCodeAllowedSymbol.Dot
+      );
       this.form.get('duration')?.setValue(rightValue);
     }
 
-    if (durationStringValue.includes(GREATER)) {
-      const rightValue = durationStringValue.replace(GREATER, DOT);
+    if (durationStringValue.includes(KeyCodeAllowedSymbol.Greater)) {
+      const rightValue = durationStringValue.replace(
+        KeyCodeAllowedSymbol.Greater,
+        KeyCodeAllowedSymbol.Dot
+      );
       this.form.get('duration')?.setValue(rightValue);
     }
+  }
+
+  isProjects(): void {
+    const isProject = this.allProjects?.some(
+      (project) => project.name === this.form.get('project').value
+    );
+
+    if (isProject) {
+      return;
+    }
+
+    this.form.get('project').setValue('');
+  }
+
+  isTasks(): void {
+    const isTask = this.allTasks?.some(
+      (task) =>
+        task.name === this.form.get('task').value &&
+        task.project === this.currentProjectId
+    );
+
+    if (isTask) {
+      return;
+    }
+
+    this.form.get('task').setValue('');
   }
 }

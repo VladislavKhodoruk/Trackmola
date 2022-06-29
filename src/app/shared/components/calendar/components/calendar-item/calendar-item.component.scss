@@ -36,8 +36,7 @@
   }
 
   .selected {
-    border: $border-table-select;
-    box-shadow: 0 0 0.5rem var(--selected-day);
+    background: var(--calendar-item-selected);
   }
 
   .calendar-container {

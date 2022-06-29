@@ -7,18 +7,13 @@
             >Project *</label
           ></span
         >
-        <mat-form-field
-          [ngClass]="{
-            'mat-form-field-warning':
-              form.get('project')!.touched && form.get('project')!.invalid
-          }"
-          appearance="fill"
-        >
+        <mat-form-field appearance="fill">
           <input
             type="text"
             matInput
             formControlName="project"
             [matAutocomplete]="projects"
+            (blur)="isProjects()"
           />
           <ic-icon
             class="mat-form-field-icon"
@@ -42,18 +37,13 @@
             >Task *</label
           ></span
         >
-        <mat-form-field
-          [ngClass]="{
-            'mat-form-field-warning':
-              form.get('task')!.touched && form.get('task')!.invalid
-          }"
-          appearance="fill"
-        >
+        <mat-form-field appearance="fill">
           <input
             type="text"
             matInput
             formControlName="task"
             [matAutocomplete]="task"
+            (blur)="isTasks()"
           />
           <ic-icon
             class="mat-form-field-icon"
@@ -77,13 +67,7 @@
             >Role *</label
           ></span
         >
-        <mat-form-field
-          [ngClass]="{
-            'mat-form-field-warning':
-              form.get('role')!.touched && form.get('role')!.invalid
-          }"
-          appearance="fill"
-        >
+        <mat-form-field appearance="fill">
           <input
             type="text"
             placeholder="FE developer"

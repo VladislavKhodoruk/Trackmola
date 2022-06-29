@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { collectionData } from '@angular/fire/firestore';
-import { TaskTrack } from '@store/shared/shared.state';
+import { SharedState, TaskTrack } from '@store/shared/shared.state';
 import {
   collection,
   Firestore,
   getFirestore,
   query,
-  setDoc,
-  doc,
   addDoc,
+  onSnapshot,
+  doc,
+  deleteDoc,
+  setDoc,
 } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from '@pages/report/interfaces/interfaces';
+import { Action, Store } from '@ngrx/store';
+import { getAllTasks } from '../../store/shared/shared.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +29,7 @@ export class TasksService {
     const queryAll = query(ref);
     return collectionData(queryAll) as Observable<Task[]>;
   }
-  constructor() {
+  constructor(private sharedStore$: Store<SharedState>) {
     this.firestore = getFirestore();
   }
 
@@ -37,6 +41,29 @@ export class TasksService {
   }
 
   setTaskTrack(taskTrack: TaskTrack): void {
-    void addDoc(collection(this.firestore, 'taskTrack'), taskTrack);
+    const id = doc(collection(this.firestore, 'taskTrack'));
+    taskTrack.id = id.id;
+
+    void setDoc(id, taskTrack);
+
+    this.updateFirebaseData('taskTrack', getAllTasks());
+  }
+
+  updateFirebaseData(collectionName: string, func: Action) {
+    const ref = collection(this.firestore, collectionName);
+    const queryAllTasks = query(ref);
+
+    onSnapshot(
+      queryAllTasks,
+      { includeMetadataChanges: true },
+      (querySnapshot) => {
+        const tasks = [];
+        querySnapshot.forEach((respons) => {
+          tasks.push(respons.data());
+        });
+
+        this.sharedStore$.dispatch(func);
+      }
+    );
   }
 }

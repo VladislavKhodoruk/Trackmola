@@ -5,7 +5,6 @@ import {
   changeDate,
   errorMessage,
   getAllTasksSuccess,
-  getAllTasksUpdate,
   getUserDataSuccess,
   loading,
   nextWeek,
@@ -44,13 +43,6 @@ const sharedReducer = createReducer(
     ...state,
     tasks: action.tasks,
   })),
-  on(getAllTasksUpdate, (state: SharedState, action) => {
-    const addTaskTracks = state.tasks.concat(action.task);
-    return {
-      ...state,
-      tasks: addTaskTracks,
-    };
-  }),
   on(setFirstAndLastDayOfWeek, (state: SharedState, action) => ({
     ...state,
     firstAndLastDayOfWeek: action.firstAndLastDayOfWeek,

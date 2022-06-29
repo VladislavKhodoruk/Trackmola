@@ -5,9 +5,8 @@ import {
   getAllTasksData,
 } from '@pages/report/store/report.selectors';
 import { ReportState } from '@pages/report/store/report.state';
-import { getAllTasksUpdate } from '@store/shared/shared.actions';
 import { getDate } from '@store/shared/shared.selectors';
-import { SharedState, TaskTrack } from '@store/shared/shared.state';
+import { SharedState } from '@store/shared/shared.state';
 
 @Component({
   selector: 'app-report-input-container',
@@ -15,7 +14,6 @@ import { SharedState, TaskTrack } from '@store/shared/shared.state';
     [allProjects]="allProjects$ | async"
     [allTasks]="allTasks$ | async"
     [currentDate]="currentDate$ | async"
-    (updateTaskTrack)="onUpdateTaskTrack($event)"
   ></app-report-input>`,
 })
 export class ReportInputContainer {
@@ -27,8 +25,4 @@ export class ReportInputContainer {
     private reportStore$: Store<ReportState>,
     private sharedStore$: Store<SharedState>
   ) {}
-
-  onUpdateTaskTrack(taskTrack: TaskTrack) {
-    this.sharedStore$.dispatch(getAllTasksUpdate({ task: taskTrack }));
-  }
 }

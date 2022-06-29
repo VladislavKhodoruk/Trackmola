@@ -49,8 +49,3 @@ export const getAllTasksSuccess = createAction(
   GET_ALL_TASKS_SUCCESS,
   props<{ tasks: TaskTrack[] }>()
 );
-
-export const getAllTasksUpdate = createAction(
-  GET_ALL_TASKS_UPDATE,
-  props<{ task: TaskTrack }>()
-);

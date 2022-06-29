@@ -228,8 +228,8 @@
     }
 
     .mat-slide-toggle-thumb-container {
-      top: 3px;
-      left: 3px;
+      top: 0.2rem;
+      left: 0.2rem;
     }
 
     .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
@@ -255,6 +255,10 @@
     .mat-slide-toggle-content {
       font: var(--font-main);
     }
+
+    .mat-form-field-invalid .mat-input-element {
+      caret-color: var(--black);
+  }
   }
 }
 
