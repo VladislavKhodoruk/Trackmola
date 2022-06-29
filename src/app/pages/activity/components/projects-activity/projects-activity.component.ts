@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Component, Input, OnInit } from '@angular/core';
+import { Project } from '@pages/projects/interfaces/interfaces';
 import { Options } from 'highcharts';
 
 @Component({
@@ -9,10 +10,8 @@ import { Options } from 'highcharts';
 })
 export class ProjectsActivityComponent implements OnInit {
   @Input() myData: any;
-
+  @Input() activityProjects: Project[];
   chartOptions: Options;
-
-  constructor() {}
 
   ngOnInit(): void {
     this.chartOptions = {

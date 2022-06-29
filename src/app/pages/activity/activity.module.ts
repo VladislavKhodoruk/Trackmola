@@ -15,10 +15,13 @@ import { ActivityComponent } from './layout/activity.component';
 import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
+import { ActivityEffects } from './store/activity.effects';
+import { EmployeeActivityContainer } from './components/employee-activity/employee-activity.container';
 
 @NgModule({
   declarations: [
     EmployeeActivityComponent,
+    EmployeeActivityContainer,
     CtoActivityComponent,
     AdminActivityComponent,
     ManagerActivityComponent,
@@ -30,7 +33,7 @@ import { ProjectsActivityContainer } from './components/projects-activity/projec
   imports: [
     CommonModule,
     HighchartsChartModule,
-    EffectsModule.forFeature([]),
+    EffectsModule.forFeature([ActivityEffects]),
     StoreModule.forFeature(ACTIVITY_STATE_NAME, ActivityReducer),
     RouterModule.forChild(ActivityRoutes),
   ],
