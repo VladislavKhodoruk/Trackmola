@@ -34,3 +34,11 @@ export const getDate = createSelector(getSharedState, (state) => state.date);
 
 export const allTasks = createSelector(getSharedState, (state) => state.tasks);
 
+export const inProgressTasks = createSelector(allTasks, (state) =>
+  state.filter((i) => i.status === 'in progress')
+);
+
+export const getProjects = createSelector(
+  getSharedState,
+  (state) => state.projects
+);

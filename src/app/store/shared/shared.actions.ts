@@ -2,6 +2,7 @@ import { createAction, props } from '@ngrx/store';
 import {
   FirstAndLastDayOfWeek,
   ProfileUser,
+  Project,
 } from '@shared/interfaces/interfaces';
 
 import { TaskTrack } from './shared.state';
@@ -16,6 +17,10 @@ export const GET_ALL_TASKS_SUCCESS = 'get all tasks success';
 export const SET_FIRST_AND_LAST_DAY_WEEK = 'set first and last day of week';
 export const NEXT_WEEK = 'next week';
 export const PREVIOUS_WEEK = 'previous week';
+export const GET_PROJECT = 'get project ';
+export const GET_PROJECT_SUCCESS = 'get project success';
+export const GET_ALL_PROJECT = 'get all projects';
+export const GET_ALL_PROJECT_SUCCESS = 'get all projects success';
 
 export const loading = createAction(LOADING, props<{ status: boolean }>());
 export const errorMessage = createAction(
@@ -46,4 +51,10 @@ export const getAllTasks = createAction(GET_ALL_TASKS);
 export const getAllTasksSuccess = createAction(
   GET_ALL_TASKS_SUCCESS,
   props<{ tasks: TaskTrack[] }>()
+);
+
+export const getAllProjects = createAction(GET_ALL_PROJECT);
+export const getAllProjectsSuccess = createAction(
+  GET_ALL_PROJECT_SUCCESS,
+  props<{ project: Project[] | null }>()
 );

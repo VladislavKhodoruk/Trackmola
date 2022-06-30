@@ -6,6 +6,8 @@ import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import {
   errorMessage,
+  getAllProjects,
+  getAllProjectsSuccess,
   getAllTasks,
   getAllTasksSuccess,
   getUserData,
@@ -13,7 +15,8 @@ import {
   loading,
 } from '@store/shared/shared.actions';
 import { TrackMolaState } from '@store/trackMola.state';
-import { catchError, map, of, switchMap, take, tap } from 'rxjs';
+import { catchError, map, of, switchMap, take, tap, mergeMap } from 'rxjs';
+import { ProjectsService } from '@shared/services/projects.service';
 
 @Injectable()
 export class SharedEffects {
@@ -63,11 +66,24 @@ export class SharedEffects {
     )
   );
 
+  getAllProjects$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAllProjects),
+      mergeMap(() =>
+        this.project.projects$.pipe(
+          take(1),
+          map((data) => getAllProjectsSuccess({ project: data }))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private usersService: UsersService,
     private tasksService: TasksService,
     private store$: Store<TrackMolaState>,
-    private router: Router
+    private router: Router,
+    private project: ProjectsService
   ) {}
 }

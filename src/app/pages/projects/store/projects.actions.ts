@@ -19,7 +19,6 @@ export const SET_SEARCH_VALUE = 'set search value';
 export const CLEAR_PROJECT_STORE = 'clear project store';
 
 export const getProjects = createAction(GET_PROJECTS);
-
 export const getProjectsSuccess = createAction(
   GET_PROJECTS_SUCCESS,
   props<{ data: Project[] }>()

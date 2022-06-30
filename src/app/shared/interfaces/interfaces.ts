@@ -31,3 +31,12 @@ export interface Week {
 export interface FirstAndLastDayOfWeek {
   [key: string]: Date;
 }
+
+export interface Project {
+  id: string;
+  name: string;
+  fullName: string;
+  manager: string;
+  team: string[];
+  description: string;
+}

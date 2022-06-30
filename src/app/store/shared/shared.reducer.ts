@@ -4,6 +4,7 @@ import { logout } from '@pages/authorization/store/authorization.actions';
 import {
   changeDate,
   errorMessage,
+  getAllProjectsSuccess,
   getAllTasksSuccess,
   getUserDataSuccess,
   loading,
@@ -78,7 +79,11 @@ const sharedReducer = createReducer(
     return {
       ...state,
     };
-  })
+  }),
+  on(getAllProjectsSuccess, (state, action) => ({
+    ...state,
+    projects: action.project,
+  }))
 );
 
 export function SharedReducer(state: SharedState | undefined, action: Action) {

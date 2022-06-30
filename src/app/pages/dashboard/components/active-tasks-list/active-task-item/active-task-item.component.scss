@@ -1,0 +1,14 @@
+:host {
+  .task-wrappeer {
+    border: var(--offset-xxs) solid var(--gray);
+    border-radius: var(--offset-s);
+    display: flex;
+    .project-name {
+      font: var(--font-calendar);
+      border:2px solid var(--rose) ;
+    }
+    .task-name {
+      font: var(--font-calendar);
+    }
+  }
+}
