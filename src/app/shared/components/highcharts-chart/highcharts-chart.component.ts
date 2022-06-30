@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges } from '@angular/core';
-import { Chart, Options } from 'highcharts';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Chart, Options, SeriesOptionsType } from 'highcharts';
 
 @Component({
   selector: 'app-highcharts-chart',
@@ -8,9 +8,15 @@ import { Chart, Options } from 'highcharts';
 })
 export class HighchartsChartComponent implements OnChanges {
   @Input() options: Options;
+  @Input() data: SeriesOptionsType[];
   chart: Chart;
 
-  ngOnChanges(): void {
-    this.chart = new Chart('chart-container', this.options);
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.data) {
+      this.chart = new Chart('chart-container', {
+        ...this.options,
+        series: this.data,
+      });
+    }
   }
 }
