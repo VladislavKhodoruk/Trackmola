@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UserType } from 'src/app/shared/enums/enum';
+import { UserType } from '@shared/enums/enum';
 
 @Component({
   selector: 'app-projects',
@@ -7,6 +7,6 @@ import { UserType } from 'src/app/shared/enums/enum';
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent {
-  @Input() userType!: string | null;
-  types = UserType;
+  @Input() readonly userType!: string | null;
+  readonly types = UserType;
 }

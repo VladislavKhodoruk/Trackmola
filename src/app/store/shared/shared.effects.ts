@@ -1,20 +1,19 @@
-import { ProfileUser } from 'src/app/shared/interfaces/interfaces';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, map, of, switchMap, take, tap } from 'rxjs';
-import { TasksService } from 'src/app/shared/services/tasks.service';
-import { UsersService } from 'src/app/shared/services/users.service';
+import { TasksService } from '@shared/services/tasks.service';
+import { UsersService } from '@shared/services/users.service';
 import {
   errorMessage,
+  getAllTasks,
+  getAllTasksSuccess,
   getUserData,
   getUserDataSuccess,
   loading,
-  getAllTasks,
-  getAllTasksSuccess,
-} from 'src/app/store/shared/shared.actions';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
+} from '@store/shared/shared.actions';
+import { TrackMolaState } from '@store/trackMola.state';
+import { catchError, map, of, switchMap, take, tap } from 'rxjs';
 
 @Injectable()
 export class SharedEffects {
@@ -25,10 +24,11 @@ export class SharedEffects {
         this.usersService.currentUserProfile$.pipe(
           take(1),
           map((data) => {
-            const profileUser: ProfileUser = data as ProfileUser;
             this.store$.dispatch(loading({ status: false }));
             this.store$.dispatch(errorMessage({ message: '', loaded: true }));
-            return getUserDataSuccess({ data: profileUser });
+            localStorage.setItem('AuthUserType', data.type);
+            localStorage.setItem('AuthUserPhoto', data.photo);
+            return getUserDataSuccess({ data });
           }),
           catchError(() => {
             this.store$.dispatch(loading({ status: false }));

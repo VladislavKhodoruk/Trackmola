@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AuthorizationForm } from '../../interfaces/interface';
+import { AuthorizationForm } from '@pages/authorization/interfaces/interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({

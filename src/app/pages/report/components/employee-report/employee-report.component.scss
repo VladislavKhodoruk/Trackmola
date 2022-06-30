@@ -2,7 +2,7 @@
   @import "mixins.scss";
   .report {
     @include flex(flex-start, flex-start, var(--offset-l));
-    margin: var(--offset-l) 1.75rem;
+    margin-right: var(--offset-xm);
     flex-direction: column;
 
     &-header {

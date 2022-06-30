@@ -1,1 +1,17 @@
-<p>employee-projects works!</p>
+<header class="projects-header">
+  <h2 class="projects-header-title">Projects</h2>
+  <div class="projects-header-item" *ngIf="selectedProject.id">
+    <ic-icon
+      class="icon"
+      width="2rem"
+      height="2rem"
+      [icon]="iconAngleRight"
+    ></ic-icon>
+    <div class="projects-header-item-title">{{ selectedProject.name }}</div>
+    <div class="projects-header-item-name">{{ selectedProject.fullName }}</div>
+  </div>
+</header>
+
+<div class="projects-container">
+  <app-projects-list-container></app-projects-list-container>
+</div>

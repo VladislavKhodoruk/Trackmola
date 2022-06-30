@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UserType } from 'src/app/shared/enums/enum';
+import { UserType } from '@shared/enums/enum';
 
 @Component({
   selector: 'app-profile',
@@ -8,11 +8,6 @@ import { UserType } from 'src/app/shared/enums/enum';
 })
 export class ProfileComponent {
   @Input() userType!: string | null;
-  @Output() logoutEmmiter = new EventEmitter<void>();
+  @Output() logout = new EventEmitter<void>();
   types = UserType;
-
-  logout(event: Event) {
-    event.preventDefault();
-    this.logoutEmmiter.emit();
-  }
 }

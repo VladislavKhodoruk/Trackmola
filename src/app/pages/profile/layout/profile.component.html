@@ -1,7 +1,7 @@
 <app-button
   [buttonClass]="'button-primary'"
   label="Log out"
-  (buttonClick)="logout($event)"
+  (buttonClick)="logout.emit()"
 ></app-button>
 
 <container-element [ngSwitch]="userType">

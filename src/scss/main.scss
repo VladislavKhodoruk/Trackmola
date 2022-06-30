@@ -54,6 +54,10 @@ body {
   color: var(--black);
 }
 
+h2 {
+  margin-bottom: var(--offset-xs);
+}
+
 a {
   text-decoration: none;
   cursor: pointer;
@@ -72,8 +76,7 @@ input:-webkit-autofill:active {
 }
 
 .input {
-  display: flex;
-  align-items: center;
+  @include flex(center, flex-start);
   padding: 0 var(--offset);
   height: 4rem;
   outline: none;
@@ -108,4 +111,8 @@ input:-webkit-autofill:active {
 .sidebar-list-item-icon path,
 .sidebar-list-item-icon g {
   stroke-width: 1;
+}
+
+.icon {
+  @include flex(center, center);
 }

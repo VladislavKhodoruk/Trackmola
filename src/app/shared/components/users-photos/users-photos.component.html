@@ -1,0 +1,13 @@
+<div *ngIf="photos.length" class="photos">
+  <img
+    *ngFor="let photo of photos; index as i"
+    class="photos-photo"
+    [ngStyle]="{
+      'z-index': i,
+      'width.rem': [size],
+      'height.rem': [size]
+    }"
+    src="{{ photo || defaultPhoto }}"
+    alt="photo"
+  />
+</div>

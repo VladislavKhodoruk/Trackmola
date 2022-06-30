@@ -1,17 +1,17 @@
+import { Action, createReducer, on } from '@ngrx/store';
+import { logout } from '@pages/authorization/store/authorization.actions';
+
 import {
-  loading,
-  errorMessage,
-  getUserDataSuccess,
   changeDate,
+  errorMessage,
   getAllTasksSuccess,
-  setFirstAndLastDayOfWeek,
+  getUserDataSuccess,
+  loading,
   nextWeek,
   previousWeek,
+  setFirstAndLastDayOfWeek,
 } from './shared.actions';
-
-import { Action, createReducer, on } from '@ngrx/store';
 import { initialState, SharedState } from './shared.state';
-import { logout } from 'src/app/pages/authorization/store/authorization.actions';
 
 const sharedReducer = createReducer(
   initialState,

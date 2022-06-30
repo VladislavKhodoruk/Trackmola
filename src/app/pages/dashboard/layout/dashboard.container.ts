@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getUserType } from 'src/app/store/shared/shared.selectors';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-dashboard-container',
-  template: `<app-dashboard
-    [userType]="this.userType$ | async"
-  ></app-dashboard>`,
+  template: '<app-dashboard [userType]="this.userType"></app-dashboard>',
 })
 export class DashboardContainer {
-  userType$ = this.store$.select(getUserType);
+  userType = localStorage.getItem('AuthUserType');
   constructor(private store$: Store<TrackMolaState>) {}
 }

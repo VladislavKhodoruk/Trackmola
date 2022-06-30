@@ -13,3 +13,11 @@ export enum StateName {
   Report = 'report',
   Team = 'team',
 }
+
+export enum TaskStatus {
+  Open = 'open',
+  InProgress = 'in progress',
+  Done = 'done',
+  Closed = 'closed',
+  Unknown = 'unknown',
+}

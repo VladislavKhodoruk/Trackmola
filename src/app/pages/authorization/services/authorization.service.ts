@@ -5,7 +5,10 @@ import {
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
 import { from } from 'rxjs';
-import { ErrorAuthMessage, FirebaseCodeError } from '../enums/enum';
+import {
+  ErrorAuthMessage,
+  FirebaseCodeError,
+} from '@pages/authorization/enums/enum';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +39,7 @@ export class AuthorizationService {
   }
 
   logout() {
+    localStorage.clear();
     return from(this.auth.signOut());
   }
 }

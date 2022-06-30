@@ -4,15 +4,15 @@ import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 
 import { catchError, map, of, tap, Observable, switchMap } from 'rxjs';
-import { TrackMolaState } from 'src/app/store/trackMola.state';
+import { TrackMolaState } from '@store/trackMola.state';
 import {
   errorMessage,
   getUserData,
   loading,
-} from 'src/app/store/shared/shared.actions';
-import { AuthorizationService } from '../services/authorization.service';
+} from '@store/shared/shared.actions';
+import { AuthorizationService } from '@pages/authorization/services/authorization.service';
 import { Router } from '@angular/router';
-import { FirebaseCodeError } from '../interfaces/interface';
+import { FirebaseCodeError } from '@pages/authorization/interfaces/interface';
 
 @Injectable()
 export class AuthorizationEffects {
@@ -21,9 +21,10 @@ export class AuthorizationEffects {
       ofType(loginStart),
       switchMap((action) =>
         this.authorizationService.login(action.email, action.password).pipe(
-          map(() => {
+          map((data) => {
             this.store$.dispatch(loading({ status: false }));
             this.store$.dispatch(errorMessage({ message: '', loaded: true }));
+            localStorage.setItem('AuthUserId', data.user.uid);
             return loginSuccess();
           }),
           catchError((error: FirebaseCodeError) => {

@@ -12,7 +12,7 @@ import { EmployeeProfileComponent } from './components/employee-profile/employee
 import { ManagerProfileComponent } from './components/manager-profile/manager-profile.component';
 import { ProfileComponent } from './layout/profile.component';
 import { ProfileContainer } from './layout/profile.container';
-import { ButtonModule } from 'src/app/shared/components/button/button.module';
+import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [

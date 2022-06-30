@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { defaultPhotoUrl } from '../../constants/constants';
-import { NavigationItem } from '../../interfaces/interfaces';
+import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
+import { NavigationItem } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +12,7 @@ export class SidebarComponent {
   @Input() photo!: string | null;
   @Input() navItems!: NavigationItem[] | null;
 
-  defaultPhoto = defaultPhotoUrl;
+  defaultPhoto = DEFAULT_PHOTO_URL;
 
   constructor(public router: Router) {}
 }

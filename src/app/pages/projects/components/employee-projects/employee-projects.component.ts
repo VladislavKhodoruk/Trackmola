@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import angleRight from '@iconify/icons-uil/angle-right';
+import { Project } from '@pages/projects/interfaces/interfaces';
 
 @Component({
   selector: 'app-employee-projects',
   templateUrl: './employee-projects.component.html',
   styleUrls: ['./employee-projects.component.scss'],
 })
-export class EmployeeProjectsComponent implements OnInit {
-  constructor() {}
+export class EmployeeProjectsComponent {
+  @Input() readonly selectedProject!: Project;
 
-  ngOnInit(): void {}
+  readonly iconAngleRight = angleRight;
 }

@@ -1,0 +1,16 @@
+<div class="container-input">
+  <input
+    class="input input-search"
+    type="text"
+    placeholder="Search..."
+    [(ngModel)]="searchText"
+    (ngModelChange)="search.emit(searchText)"
+    (focus)="focusEvent.emit()"
+  />
+  <ic-icon
+    class="icon icon-search"
+    width="1.5rem"
+    height="1.5rem"
+    [icon]="iconSearch"
+  ></ic-icon>
+</div>
