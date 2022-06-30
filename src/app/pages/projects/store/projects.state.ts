@@ -1,28 +1,30 @@
 import {
   Project,
   Task,
+  TaskTrack,
   UserProfileInProject,
 } from '@pages/projects/interfaces/interfaces';
 
 export interface ProjectsState {
-  myProjects: Project[];
-  allTasksInProjects: Task[];
-  userInProjects: UserProfileInProject[];
-  selectedProject: Project;
+  projects?: Project[];
+  tasks?: TaskTrack[];
+  allTasksInProjects?: Task[];
+  userInProjects?: UserProfileInProject[];
+  selectedProject?: Project;
   searchValue: string;
 }
 
 export const projectsState: ProjectsState = {
-  myProjects: [],
   allTasksInProjects: [],
   userInProjects: [],
   selectedProject: {
     id: '',
-    name: '',
-    fullName: '',
-    manager: '',
-    team: [],
+    color: '',
     description: '',
+    fullName: '',
+    managersId: [''],
+    name: '',
+    taskId: [''],
   },
   searchValue: '',
 };

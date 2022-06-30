@@ -7,12 +7,12 @@ export const PROJECTS_STATE_NAME = StateName.Projects;
 const getProjectsState =
   createFeatureSelector<ProjectsState>(PROJECTS_STATE_NAME);
 
-export const getMyProgects = createSelector(
+export const getProjects = createSelector(
   getProjectsState,
-  ({ myProjects }) => myProjects
+  ({ projects }) => projects
 );
 
-export const getAllTasksInProject = (props: { project: string }) =>
+/* export const getAllTasksInProject = (props: { project: string }) =>
   createSelector(getProjectsState, (state) =>
     state.allTasksInProjects.filter(({ projectId, status }) => {
       const projectCompare = projectId === props.project;
@@ -31,7 +31,7 @@ export const getUsersPhotoInProject = (props: { project: string }) =>
         return projectCompare;
       })
       .map(({ photo }) => photo)
-  );
+  ); */
 
 export const getSelectedProject = createSelector(
   getProjectsState,

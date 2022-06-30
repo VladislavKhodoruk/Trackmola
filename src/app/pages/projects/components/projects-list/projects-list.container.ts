@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Project } from '@pages/projects/interfaces/interfaces';
 import { setSelectedProject } from '@pages/projects/store/projects.actions';
 import {
-  getMyProgects,
+  getProjects,
   getSearchValue,
   getSelectedProject,
 } from '@pages/projects/store/projects.selectors';
@@ -19,7 +19,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-projects-list>`,
 })
 export class ProjectsListContainer {
-  readonly myProjects$ = this.store$.select(getMyProgects);
+  readonly myProjects$ = this.store$.select(getProjects);
   readonly searchText$ = this.store$.select(getSearchValue);
   selectedProject$ = this.store$.select(getSelectedProject);
 

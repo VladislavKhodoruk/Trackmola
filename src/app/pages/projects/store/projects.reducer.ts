@@ -1,22 +1,25 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import {
-  clearProjectStore,
   deleteProject,
   deleteSelectedProject,
-  getProjectsSuccess,
-  getTasksInProjectSuccess,
-  getUsersProfileInProjectSuccess,
+  getTasksSuccess,
   setSearchValue,
   setSelectedProject,
+  getProjectsSuccess,
 } from './projects.actions';
 import { ProjectsState, projectsState } from './projects.state';
 
 const projectsReducer = createReducer(
   projectsState,
+  on(getTasksSuccess, (state: ProjectsState, action) => ({
+    ...state,
+    tasks: action.tasks,
+  })),
   on(getProjectsSuccess, (state: ProjectsState, action) => ({
     ...state,
-    myProjects: action.data,
+    projects: action.projects,
   })),
+
   on(deleteProject, (state: ProjectsState, action) => ({
     ...state,
     allTasksInProjects: state.allTasksInProjects.filter(({ projectId }) => {
@@ -27,14 +30,6 @@ const projectsReducer = createReducer(
       const compareProjectId = projectId !== action.id;
       return compareProjectId;
     }),
-  })),
-  on(getTasksInProjectSuccess, (state: ProjectsState, action) => ({
-    ...state,
-    allTasksInProjects: [...state.allTasksInProjects, ...action.data],
-  })),
-  on(getUsersProfileInProjectSuccess, (state: ProjectsState, action) => ({
-    ...state,
-    userInProjects: [...state.userInProjects, ...action.usersProfiles],
   })),
   on(setSelectedProject, (state: ProjectsState, action) => ({
     ...state,
@@ -47,8 +42,7 @@ const projectsReducer = createReducer(
   on(setSearchValue, (state: ProjectsState, action) => ({
     ...state,
     searchValue: action.value,
-  })),
-  on(clearProjectStore, () => projectsState)
+  }))
 );
 
 export function ProjectsReducer(state: ProjectsState, action: Action) {

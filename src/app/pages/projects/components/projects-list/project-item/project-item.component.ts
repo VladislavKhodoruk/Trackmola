@@ -8,6 +8,6 @@ import { Project, Task } from '@pages/projects/interfaces/interfaces';
 })
 export class ProjectItemComponent {
   @Input() readonly project!: Project;
-  @Input() readonly tasksInProject!: Task[];
-  @Input() readonly usersPhotoInProject!: Task[];
+  /*   @Input() readonly tasksInProject!: Task[];
+  @Input() readonly usersPhotoInProject!: Task[]; */
 }

@@ -1,12 +1,10 @@
 <div class="projects-list-item-header">
   <div class="projects-list-item-header-title">{{ project.name }}</div>
-  <app-users-photos
+  <!--   <app-users-photos
     *ngIf="usersPhotoInProject.length"
     [photos]="usersPhotoInProject"
     size="2"
-  ></app-users-photos>
+  ></app-users-photos> -->
 </div>
 <p class="projects-list-item-name">{{ project.fullName }}</p>
-<p class="projects-list-item-description">
-  {{ tasksInProject.length }} active tasks
-</p>
+<p class="projects-list-item-description">active tasks</p>

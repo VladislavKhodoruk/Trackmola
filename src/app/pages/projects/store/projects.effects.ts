@@ -1,64 +1,61 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProjectsService } from '@shared/services/projects.service';
-import { map, mergeMap, switchMap, take } from 'rxjs';
-import { UserProfileInProject } from '@pages/projects/interfaces/interfaces';
+import { ProjectsService } from '../services/projects.service';
+import { map, switchMap, take } from 'rxjs';
+import {
+  Task,
+  TaskTrack,
+  Project,
+} from '@pages/projects/interfaces/interfaces';
 
 import {
   getProjects,
   getProjectsSuccess,
-  getTasksInProject,
-  getTasksInProjectSuccess,
-  getUsersProfileInProject,
-  getUsersProfileInProjectSuccess,
+  getTasks,
+  getTasksSuccess,
 } from './projects.actions';
+import { TrackMolaState } from '@store/trackMola.state';
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class ProjectsEffects {
-  public getProjects$ = createEffect(() =>
+  public getTasks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getProjects),
+      ofType(getTasks),
       switchMap(() =>
-        this.projectsService.projects$.pipe(
-          take(1),
-          map((data) => getProjectsSuccess({ data }))
-        )
-      )
-    )
-  );
-
-  public getTasksInProject$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getTasksInProject),
-      mergeMap((action) =>
-        this.projectsService.tasksInProject$(action.id).pipe(
-          take(1),
-          map((data) => getTasksInProjectSuccess({ data }))
-        )
-      )
-    )
-  );
-
-  public getUsersInProject$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getUsersProfileInProject),
-      mergeMap((action) =>
-        this.projectsService.usersInProject$(action.team).pipe(
+        this.projectsService.tasks$.pipe(
           take(1),
           map((data) => {
-            const result: UserProfileInProject[] = data.map((profile) => {
-              profile.projectId = action.id;
-              return profile;
-            });
-            return getUsersProfileInProjectSuccess({ usersProfiles: result });
+            const tasks: TaskTrack[] = data;
+            console.log(tasks);
+            this.store$.dispatch(getProjects({ tasks }));
+            return getTasksSuccess({ tasks });
           })
         )
       )
     )
   );
 
+  public getProjects$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getProjects),
+      switchMap(({ tasks }) => {
+        const projectsId = tasks.map((task) => task.projectId);
+        return this.projectsService.getProjects$(projectsId).pipe(
+          take(1),
+          map((data) => {
+            const projects: Project[] = data;
+            console.log(projects);
+            return getProjectsSuccess({ projects });
+          })
+        );
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
-    private projectsService: ProjectsService
+    private projectsService: ProjectsService,
+    private store$: Store<TrackMolaState>
   ) {}
 }
