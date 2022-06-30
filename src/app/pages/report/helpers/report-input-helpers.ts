@@ -22,10 +22,4 @@ export function isInputOnlyNumber(event: KeyboardEvent): boolean {
   return false;
 }
 
-export function onRightIndex(index: number): number {
-  return index + 1;
-}
-
-export function isIncludes(str: string, nameSearch: string): boolean {
-  return str.includes(nameSearch);
-}
+export const onRightIndex = (index: number): number => index + 1;

@@ -13,14 +13,6 @@ import minus from '@iconify/icons-tabler/minus';
 import check from '@iconify/icons-mdi/check';
 import microphoneIcon from '@iconify/icons-tabler/microphone';
 import {
-  DEFAULT_DURATION_VALUE,
-  DURATION_STEP,
-  MAX_DURATION_VALUE,
-  MIN_DURATION_STEP,
-  MIN_DURATION_VALUE,
-  ROLES,
-} from '@pages/report/constants/report-input-constans';
-import {
   isInputOnlyNumber,
   onRightIndex,
 } from '@pages/report/helpers/report-input-helpers';
@@ -29,7 +21,11 @@ import { Project } from '@pages/projects/interfaces/interfaces';
 import { TaskTrack } from '@store/shared/shared.state';
 import { Timestamp } from 'firebase/firestore';
 import { TasksService } from '@shared/services/tasks.service';
-import { KeyCodeAllowedSymbol } from '@pages/report/enums/enum';
+import {
+  DurationValue,
+  KeyCodeAllowedSymbol,
+  Roles,
+} from '@pages/report/enums/enum';
 
 @Component({
   selector: 'app-report-input',
@@ -59,7 +55,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       localStorage.getItem('AuthUserRole'),
       Validators.required
     ),
-    duration: new FormControl('1', Validators.required),
+    duration: new FormControl(`${DurationValue.Default}`, Validators.required),
   });
 
   readonly iconAngleLeftB = angleLeftB;
@@ -113,7 +109,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.filteredRoleOptions = this.form.get('role')?.valueChanges.pipe(
       startWith(''),
-      map((value) => this.filterOption(value || '', ROLES))
+      map((value) => this.filterOption(value || '', [...Object.values(Roles)]))
     );
   }
 
@@ -169,7 +165,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     this.form.get('project').reset();
     this.form.get('task').reset();
     this.form.get('comments').reset();
-    this.form.get('duration').setValue(DEFAULT_DURATION_VALUE);
+    this.form.get('duration').setValue(DurationValue.Default);
   }
 
   onInputOnlyNumber(event: KeyboardEvent): boolean {
@@ -183,20 +179,22 @@ export class ReportInputComponent implements OnInit, OnChanges {
       !durationStringValue ||
       durationStringValue === KeyCodeAllowedSymbol.Dot
     ) {
-      this.form.get('duration')?.setValue(MIN_DURATION_VALUE);
+      this.form.get('duration')?.setValue(DurationValue.Min);
       return;
     }
-    if (durationNumberValue <= +MIN_DURATION_VALUE) {
+    if (durationNumberValue <= +DurationValue.Min) {
       return;
     }
-    if (durationNumberValue === +DEFAULT_DURATION_VALUE) {
+    if (durationNumberValue === +DurationValue.Default) {
       const valueInput = `${
-        Math.round(+this.form.get('duration')?.value) - MIN_DURATION_STEP
+        Math.round(+this.form.get('duration')?.value) - DurationValue.MinStep
       }`;
       this.form.get('duration')?.setValue(valueInput);
       return;
     }
-    const valueInput = `${Math.round(durationNumberValue) - DURATION_STEP}`;
+    const valueInput = `${
+      Math.round(durationNumberValue) - DurationValue.Step
+    }`;
     this.form.get('duration')?.setValue(valueInput);
   }
 
@@ -207,21 +205,23 @@ export class ReportInputComponent implements OnInit, OnChanges {
       !durationStringValue ||
       durationStringValue === KeyCodeAllowedSymbol.Dot
     ) {
-      this.form.get('duration')?.setValue(DEFAULT_DURATION_VALUE);
+      this.form.get('duration')?.setValue(DurationValue.Default);
       return;
     }
 
-    if (durationNumberValue >= +MAX_DURATION_VALUE) {
+    if (durationNumberValue >= +DurationValue.Max) {
       return;
     }
-    if (durationNumberValue === MIN_DURATION_STEP) {
+    if (durationNumberValue === DurationValue.MinStep) {
       const valueInput = `${
-        +this.form.get('duration')?.value + MIN_DURATION_STEP
+        +this.form.get('duration')?.value + DurationValue.MinStep
       }`;
       this.form.get('duration')?.setValue(valueInput);
       return;
     }
-    const valueInput = `${Math.round(durationNumberValue) + DURATION_STEP}`;
+    const valueInput = `${
+      Math.round(durationNumberValue) + DurationValue.Step
+    }`;
     this.form.get('duration')?.setValue(valueInput);
   }
 
@@ -229,13 +229,13 @@ export class ReportInputComponent implements OnInit, OnChanges {
     if (this.form.get('duration')?.value) {
       return;
     }
-    this.form.get('duration')?.setValue(DEFAULT_DURATION_VALUE);
+    this.form.get('duration')?.setValue(DurationValue.Default);
   }
 
   onSetRightValue(): void {
     const durationStringValue = this.form.get('duration')?.value;
-    if (+this.form.get('duration')?.value > +MAX_DURATION_VALUE) {
-      this.form.get('duration')?.setValue(MAX_DURATION_VALUE);
+    if (+this.form.get('duration')?.value > +DurationValue.Max) {
+      this.form.get('duration')?.setValue(DurationValue.Max);
     }
     if (
       (durationStringValue.includes(KeyCodeAllowedSymbol.Dot) &&

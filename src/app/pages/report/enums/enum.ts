@@ -18,3 +18,22 @@ export enum KeyCodeAllowedSymbol {
   Greater = '>',
   Less = '<',
 }
+
+export enum DurationValue {
+  Default = '1',
+  Max = '24',
+  Min = '0.5',
+  Step = 1,
+  MinStep = 0.5,
+}
+
+export enum Roles {
+  FE = 'FE Developer',
+  BE = 'BE Developer',
+  Designer = 'Designer',
+  PM = 'Project Manager',
+  Admin = 'Administrator',
+  CTO = 'CTO',
+  QA = 'QA',
+  Student = 'Student',
+}
