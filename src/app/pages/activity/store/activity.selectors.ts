@@ -7,7 +7,12 @@ export const ACTIVITY_STATE_NAME = StateName.Activity;
 const getActivityState =
   createFeatureSelector<ActivityState>(ACTIVITY_STATE_NAME);
 
-export const getActivityProjects = createSelector(
+export const getActivityTasks = createSelector(
   getActivityState,
   ({ tasks }) => tasks
+);
+
+export const getActivityProjects = createSelector(
+  getActivityState,
+  ({ projects }) => projects
 );

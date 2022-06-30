@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Component, Input, OnInit } from '@angular/core';
-import { Project } from '@pages/projects/interfaces/interfaces';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Project, Task } from '@pages/projects/interfaces/interfaces';
 import { Options } from 'highcharts';
 
 @Component({
@@ -8,12 +8,12 @@ import { Options } from 'highcharts';
   templateUrl: './projects-activity.component.html',
   styleUrls: ['./projects-activity.component.scss'],
 })
-export class ProjectsActivityComponent implements OnInit {
-  @Input() myData: any;
+export class ProjectsActivityComponent implements OnChanges {
   @Input() activityProjects: Project[];
+  @Input() activityTasks: Task[];
   chartOptions: Options;
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     this.chartOptions = {
       chart: {
         plotBackgroundColor: null,
@@ -65,7 +65,12 @@ export class ProjectsActivityComponent implements OnInit {
                 const point = target as any;
                 const percentage: number = point.percentage.toFixed(1);
                 point.series.chart.update({
-                  title: { text: `${percentage}%` },
+                  title: {
+                    text: `${percentage}%`,
+                    style: {
+                      color: point.color,
+                    },
+                  },
                 });
                 point.graphic
                   .attr({
@@ -96,7 +101,7 @@ export class ProjectsActivityComponent implements OnInit {
       series: [
         {
           type: 'pie',
-          data: this.myData,
+          data: this.dataForChart(this.activityProjects, this.activityTasks),
         },
       ],
 
@@ -116,5 +121,15 @@ export class ProjectsActivityComponent implements OnInit {
         enabled: false,
       },
     };
+  }
+
+  private dataForChart(project?: Project[], tasks?: Task[]) {
+    const projectsNames = project.map(({ name, id }) => ({ id, name }));
+    const projectsWithTasks = projectsNames.map(({ name, id }) => {
+      const tasksInProject = tasks.filter((task) => task.projectId === id);
+      const percent = (tasksInProject.length / tasks.length) * 100;
+      return [name, percent];
+    });
+    return projectsWithTasks;
   }
 }

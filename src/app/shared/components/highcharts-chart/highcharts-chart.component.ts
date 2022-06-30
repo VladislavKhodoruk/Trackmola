@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Chart, Options } from 'highcharts';
 
 @Component({
@@ -6,11 +6,11 @@ import { Chart, Options } from 'highcharts';
   templateUrl: './highcharts-chart.component.html',
   styleUrls: ['./highcharts-chart.component.scss'],
 })
-export class HighchartsChartComponent implements OnInit {
+export class HighchartsChartComponent implements OnChanges {
   @Input() options: Options;
   chart: Chart;
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.chart = new Chart('chart-container', this.options);
   }
 }
