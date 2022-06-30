@@ -1,15 +1,17 @@
 import { IconifyIcon } from '@iconify/types';
 
 export interface ProfileUser {
-  type: string;
-  name: string;
-  photo: string;
+  id: string;
   email: string;
-  position: string;
   location: string;
+  birthday: Date;
+  fullName: string;
+  photo: string;
+  position: string;
   qualification: string;
-  rate: string;
+  role: string;
   startDate: Date;
+  timeZone: string;
 }
 
 export interface NavigationItem {

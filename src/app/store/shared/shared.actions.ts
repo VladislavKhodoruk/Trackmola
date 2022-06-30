@@ -26,7 +26,7 @@ export const errorMessage = createAction(
 export const getUserData = createAction(GET_USER_DATA);
 export const getUserDataSuccess = createAction(
   GET_USER_DATA_SUCCESS,
-  props<{ data: ProfileUser }>()
+  props<{ profileUser: ProfileUser }>()
 );
 
 export const changeDate = createAction(CHANGE_DATE, props<{ date: Date }>());

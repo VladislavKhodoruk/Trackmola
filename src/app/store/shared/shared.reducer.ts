@@ -29,7 +29,7 @@ const sharedReducer = createReducer(
   })),
   on(getUserDataSuccess, (state: SharedState, action) => ({
     ...state,
-    user: { ...action.data },
+    user: { ...action.profileUser },
   })),
   on(logout, (state: SharedState) => ({
     ...state,
