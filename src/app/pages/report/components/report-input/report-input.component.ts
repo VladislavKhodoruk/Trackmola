@@ -37,8 +37,6 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() allTasks: Task[];
   @Input() currentDate: string;
 
-  addTask: TaskTrack;
-
   currentProjectId: string;
   currentTaskId: string;
   allProjectsName: string[];
@@ -91,7 +89,12 @@ export class ReportInputComponent implements OnInit, OnChanges {
               .get('task')
               ?.valueChanges.pipe(
                 startWith(''),
-                map((i) => this.filterTasks(i || ''))
+                map((i) => {
+                  this.currentTaskId = this.allTasks?.find(
+                    (task) => task.name === this.form.get('task').value
+                  )?.id;
+                  return this.filterTasks(i || '');
+                })
               );
             return this.filterOption(value || '', this.allProjectsName);
           })
@@ -127,7 +130,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     const tasksArr = this.allTasks?.filter(
       (task) =>
         task.name.toLowerCase().includes(filterValue) &&
-        task.project === this.currentProjectId
+        task.projectId === this.currentProjectId
     );
     return tasksArr.map((task) => task.name);
   }
@@ -153,15 +156,16 @@ export class ReportInputComponent implements OnInit, OnChanges {
   }
 
   addTaskTrack(): void {
-    this.addTask = {
+    const addTask: TaskTrack = {
       projectId: this.currentProjectId,
       date: new Timestamp(new Date(this.currentDate).getTime() / 1000, 0),
-      task: this.form.get('task').value,
+      taskId: this.currentTaskId,
       comments: this.form.get('comments').value,
       duration: +this.form.get('duration').value,
       userId: localStorage.getItem('AuthUserId'),
+      status: this.status,
     };
-    this.tasksService.setTaskTrack(this.addTask);
+    this.tasksService.setTaskTrack(addTask);
     this.form.get('project').reset();
     this.form.get('task').reset();
     this.form.get('comments').reset();
@@ -295,7 +299,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     const isTask = this.allTasks?.some(
       (task) =>
         task.name === this.form.get('task').value &&
-        task.project === this.currentProjectId
+        task.projectId === this.currentProjectId
     );
 
     if (isTask) {

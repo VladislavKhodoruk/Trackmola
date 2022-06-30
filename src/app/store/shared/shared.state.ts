@@ -23,7 +23,7 @@ export interface TaskTrack {
   id?: string;
   projectId: string;
   date: Timestamp;
-  task: string;
+  taskId: string;
   duration: number;
   userId?: string;
   comments?: string;

@@ -56,7 +56,7 @@ export class SharedEffects {
     this.actions$.pipe(
       ofType(getAllTasks),
       switchMap(() =>
-        this.tasksService.getTasks().pipe(
+        this.tasksService.getTasksTrack().pipe(
           take(1),
           map((data) => getAllTasksSuccess({ tasks: data }))
         )
