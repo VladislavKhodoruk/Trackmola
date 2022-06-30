@@ -12,6 +12,7 @@ node {
     deploy_repo_name = "20_docker_deploy"
     deploy_script_name = "manage_containers_swarm.sh"
 
+
     currentBuild.result = 'SUCCESS'
     //notifyBuild('STARTED')
 
