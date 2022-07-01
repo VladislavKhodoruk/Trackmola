@@ -6,6 +6,7 @@ import {
   setSearchValue,
   setSelectedProject,
   getProjectsSuccess,
+  getActiveTasksInProjectSuccess,
 } from './projects.actions';
 import { ProjectsState, projectsState } from './projects.state';
 
@@ -19,17 +20,18 @@ const projectsReducer = createReducer(
     ...state,
     projects: action.projects,
   })),
-
+  on(getActiveTasksInProjectSuccess, (state: ProjectsState, action) => ({
+    ...state,
+    activeTasksInProjects: [...state.activeTasksInProjects, ...action.tasks],
+  })),
   on(deleteProject, (state: ProjectsState, action) => ({
     ...state,
-    allTasksInProjects: state.allTasksInProjects.filter(({ projectId }) => {
-      const compareProjectId = projectId !== action.id;
-      return compareProjectId;
-    }),
-    userInProjects: state.userInProjects.filter(({ projectId }) => {
-      const compareProjectId = projectId !== action.id;
-      return compareProjectId;
-    }),
+    activeTasksInProjects: state.activeTasksInProjects.filter(
+      ({ projectId }) => {
+        const compareProjectId = projectId !== action.id;
+        return compareProjectId;
+      }
+    ),
   })),
   on(setSelectedProject, (state: ProjectsState, action) => ({
     ...state,

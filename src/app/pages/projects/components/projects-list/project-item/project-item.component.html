@@ -1,5 +1,10 @@
 <div class="projects-list-item-header">
-  <div class="projects-list-item-header-title">{{ project.name }}</div>
+  <div
+    class="projects-list-item-header-title"
+    [ngStyle]="{ 'border-color': [project.color] }"
+  >
+    {{ project.name }}
+  </div>
   <!--   <app-users-photos
     *ngIf="usersPhotoInProject.length"
     [photos]="usersPhotoInProject"
@@ -7,4 +12,6 @@
   ></app-users-photos> -->
 </div>
 <p class="projects-list-item-name">{{ project.fullName }}</p>
-<p class="projects-list-item-description">active tasks</p>
+<p class="projects-list-item-description">
+  {{ tasksInProject.length }} active tasks
+</p>

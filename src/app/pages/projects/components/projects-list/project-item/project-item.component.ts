@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Project, Task } from '@pages/projects/interfaces/interfaces';
+import { Project, TaskTrack } from '@pages/projects/interfaces/interfaces';
 
 @Component({
   selector: 'app-project-item',
@@ -8,6 +8,5 @@ import { Project, Task } from '@pages/projects/interfaces/interfaces';
 })
 export class ProjectItemComponent {
   @Input() readonly project!: Project;
-  /*   @Input() readonly tasksInProject!: Task[];
-  @Input() readonly usersPhotoInProject!: Task[]; */
+  @Input() readonly tasksInProject!: TaskTrack[];
 }

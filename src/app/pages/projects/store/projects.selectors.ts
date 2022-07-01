@@ -12,6 +12,14 @@ export const getProjects = createSelector(
   ({ projects }) => projects
 );
 
+export const getActiveTasksInProjects = (props: { projectId: string }) =>
+  createSelector(getProjectsState, (state) =>
+    state.activeTasksInProjects.filter(({ projectId }) => {
+      const projectCompare = projectId === props.projectId;
+      return projectCompare;
+    })
+  );
+
 /* export const getAllTasksInProject = (props: { project: string }) =>
   createSelector(getProjectsState, (state) =>
     state.allTasksInProjects.filter(({ projectId, status }) => {

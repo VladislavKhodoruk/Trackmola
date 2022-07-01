@@ -33,3 +33,8 @@ export interface Week {
 export interface FirstAndLastDayOfWeek {
   [key: string]: Date;
 }
+
+export interface FirstAndLastDay {
+  start: number;
+  end: number;
+}

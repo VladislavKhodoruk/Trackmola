@@ -1,15 +1,14 @@
 import { createAction, props } from '@ngrx/store';
-import {
-  Project,
-  UserProfileInProject,
-  Task,
-  TaskTrack,
-} from '@pages/projects/interfaces/interfaces';
+import { Project, TaskTrack } from '@pages/projects/interfaces/interfaces';
+import { FirstAndLastDay } from '@shared/interfaces/interfaces';
 
 export const GET_TASKS = 'get tasks';
 export const GET_TASKS_SUCCESS = 'get tasks success';
 export const GET_PROJECTS = 'get projects';
 export const GET_PROJECTS_SUCCESS = 'get projects success';
+export const GET_ACTIVE_TASKS_IN_PROJECT = 'get active tasks in project';
+export const GET_ACTIVE_TASKS_IN_PROJECT_SUCCESS =
+  'get active tasks in project success';
 
 export const DELETE_PROJECT = 'delete project';
 
@@ -18,7 +17,10 @@ export const DELETE_SELECTED_PROJECT = 'delete selected project';
 export const SET_SEARCH_VALUE = 'set search value';
 export const CLEAR_PROJECT_STORE = 'clear project store';
 
-export const getTasks = createAction(GET_TASKS);
+export const getTasks = createAction(
+  GET_TASKS,
+  props<{ period: FirstAndLastDay }>()
+);
 
 export const getTasksSuccess = createAction(
   GET_TASKS_SUCCESS,
@@ -33,6 +35,16 @@ export const getProjects = createAction(
 export const getProjectsSuccess = createAction(
   GET_PROJECTS_SUCCESS,
   props<{ projects: Project[] }>()
+);
+
+export const getActiveTasksInProject = createAction(
+  GET_ACTIVE_TASKS_IN_PROJECT,
+  props<{ projectId: string; period: FirstAndLastDay }>()
+);
+
+export const getActiveTasksInProjectSuccess = createAction(
+  GET_ACTIVE_TASKS_IN_PROJECT_SUCCESS,
+  props<{ tasks: TaskTrack[] }>()
 );
 
 export const deleteProject = createAction(

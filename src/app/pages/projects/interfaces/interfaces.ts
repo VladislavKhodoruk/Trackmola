@@ -25,14 +25,3 @@ export interface TaskTrack {
   taskId: string;
   userId: string;
 }
-
-export interface UserProfileInProject {
-  type: string;
-  name: string;
-  photo: string;
-  email: string;
-  position: string;
-  location: string;
-  qualification: string;
-  projectId: string;
-}
