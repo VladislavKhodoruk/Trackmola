@@ -6,7 +6,7 @@ import {
   getAllTasksSuccess,
   getAllProjects,
   getAllProjectsSuccess,
-} from './report.actions';
+} from '@pages/report/store/report.actions';
 import { map, switchMap, take } from 'rxjs';
 import { ProjectsService } from '@shared/services/projects.service';
 
@@ -18,7 +18,10 @@ export class ReportEffects {
       switchMap(() =>
         this.tasksService.allTasks$.pipe(
           take(1),
-          map((data) => getAllTasksSuccess({ allTasks: data }))
+          map((data) => {
+            const allTasks = data;
+            return getAllTasksSuccess({ allTasks });
+          })
         )
       )
     )
