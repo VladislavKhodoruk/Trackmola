@@ -12,12 +12,13 @@ import {
   getProjectsSuccess,
   getTasks,
   getTasksSuccess,
-  getUsersPhotoInProject,
-  getUsersPhotoInProjectSuccess,
+  getAllUsers,
+  getAllUsersSuccess,
 } from './projects.actions';
 import { TrackMolaState } from '@store/trackMola.state';
 import { Store } from '@ngrx/store';
 import { FirstAndLastDay } from '@shared/interfaces/interfaces';
+import { UsersService } from '@shared/services/users.service';
 
 @Injectable()
 export class ProjectsEffects {
@@ -58,13 +59,11 @@ export class ProjectsEffects {
     this.actions$.pipe(
       ofType(getActiveTasksInProject),
       mergeMap((data) => {
-        console.log(data);
         const firstAndLastDay: FirstAndLastDay = data.period;
         const projectId: Project['id'] = data.projectId;
         return this.projectsPageService
           .getActiveTasksInProjects$(projectId, firstAndLastDay)
           .pipe(
-            take(1),
             map((response) => {
               const activeTasksInProject: TaskTrack[] = response;
               return getActiveTasksInProjectSuccess({
@@ -76,29 +75,22 @@ export class ProjectsEffects {
     )
   );
 
-  public getUsersPhotoInProject$ = createEffect(() =>
+  public getAllUsers$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getUsersPhotoInProject),
-      take(1),
-      mergeMap(({ tasks }) => {
-        console.log(tasks);
-        return this.projectsPageService.getUsersInfoInProject$(tasks).pipe(
+      ofType(getAllUsers),
+      switchMap(() =>
+        this.usersService.users$.pipe(
           take(1),
-          map((response) => {
-            const users: User[] = response;
-            console.log(users);
-            return getUsersPhotoInProjectSuccess({
-              usersPhoto: [''],
-            });
-          })
-        );
-      })
+          map((data) => getAllUsersSuccess({ usersInfo: data }))
+        )
+      )
     )
   );
 
   constructor(
     private actions$: Actions,
     private projectsPageService: ProjectsPageService,
+    private usersService: UsersService,
     private store$: Store<TrackMolaState>
   ) {}
 }

@@ -7,7 +7,9 @@ import {
   setSelectedProject,
   getProjectsSuccess,
   getActiveTasksInProjectSuccess,
+  getAllUsersSuccess,
 } from './projects.actions';
+
 import { ProjectsState, projectsState } from './projects.state';
 
 const projectsReducer = createReducer(
@@ -23,6 +25,10 @@ const projectsReducer = createReducer(
   on(getActiveTasksInProjectSuccess, (state: ProjectsState, action) => ({
     ...state,
     activeTasksInProjects: [...state.activeTasksInProjects, ...action.tasks],
+  })),
+  on(getAllUsersSuccess, (state: ProjectsState, action) => ({
+    ...state,
+    users: action.usersInfo,
   })),
   on(deleteProject, (state: ProjectsState, action) => ({
     ...state,

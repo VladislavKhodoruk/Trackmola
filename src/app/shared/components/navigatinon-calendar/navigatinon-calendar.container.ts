@@ -22,7 +22,7 @@ import {
   template: `<app-navigatinon-calendar
     [firstDayOfWeek]="firstDayOfWeek$ | async"
     [lastDayOfWeek]="lastDayOfWeek$ | async"
-    [managersPhoto]="managersPhoto"
+    [usersInProject]="usersInProject$"
     (previousWeek)="onPreviousWeek()"
     (nextWeek)="onNextWeek()"
   ></app-navigatinon-calendar>`,
@@ -31,12 +31,10 @@ export class NavigatinonCalendarContainer {
   readonly firstDayOfWeek$ = this.store$.select(getFirstDayOfWeek);
   readonly lastDayOfWeek$ = this.store$.select(getLastDayOfWeek);
 
-  readonly managersPhoto = [
-    DEFAULT_PHOTO_URL,
-    DEFAULT_PHOTO_URL,
-    DEFAULT_PHOTO_URL,
-    DEFAULT_PHOTO_URL,
-    DEFAULT_PHOTO_URL,
+  readonly usersInProject$ = [
+    { photo: DEFAULT_PHOTO_URL },
+    { photo: DEFAULT_PHOTO_URL },
+    { photo: DEFAULT_PHOTO_URL },
   ];
 
   constructor(private store$: Store<TrackMolaState>) {

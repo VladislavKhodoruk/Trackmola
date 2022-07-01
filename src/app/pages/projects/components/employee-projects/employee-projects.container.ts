@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getTasks } from '@pages/projects/store/projects.actions';
+import { getAllUsers, getTasks } from '@pages/projects/store/projects.actions';
 import { getSelectedProject } from '@pages/projects/store/projects.selectors';
 import { getFirstAndLastDay } from '@shared/helpers/helpers';
 
@@ -19,5 +19,7 @@ export class EmployeeProjectsContainer {
     this.store$.dispatch(
       getTasks({ period: getFirstAndLastDay(new Date(), 'week') })
     );
+
+    this.store$.dispatch(getAllUsers());
   }
 }

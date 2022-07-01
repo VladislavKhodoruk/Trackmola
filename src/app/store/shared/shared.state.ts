@@ -1,3 +1,4 @@
+import { User } from '@pages/projects/interfaces/interfaces';
 import { setMidnightTime } from '@shared/helpers/helpers';
 import {
   FirstAndLastDayOfWeek,
@@ -11,6 +12,7 @@ export interface SharedState {
   date: Date;
   tasksTrack: TaskTrack[];
   firstAndLastDayOfWeek?: FirstAndLastDayOfWeek;
+  usersInProjects: User[];
 }
 
 export interface LoadingStatus {
@@ -39,4 +41,5 @@ export const initialState: SharedState = {
   user: null,
   date: setMidnightTime(new Date()),
   tasksTrack: [],
+  usersInProjects: [],
 };

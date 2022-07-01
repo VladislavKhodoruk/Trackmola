@@ -8,14 +8,16 @@ import { FirstAndLastDay } from '@shared/interfaces/interfaces';
 
 export const GET_TASKS = 'get tasks';
 export const GET_TASKS_SUCCESS = 'get tasks success';
+
 export const GET_PROJECTS = 'get projects';
 export const GET_PROJECTS_SUCCESS = 'get projects success';
+
 export const GET_ACTIVE_TASKS_IN_PROJECT = 'get active tasks in project';
 export const GET_ACTIVE_TASKS_IN_PROJECT_SUCCESS =
   'get active tasks in project success';
-export const GET_USERS_PHOTO_IN_PROJECT = 'get users photo in project';
-export const GET_USERS_PHOTO_IN_PROJECT_SUCCESS =
-  'get users photo in project success';
+
+export const GET_ALL_USERS = 'get users';
+export const GET_ALL_USERS_SUCCESS = 'get users success';
 
 export const DELETE_PROJECT = 'delete project';
 
@@ -54,14 +56,11 @@ export const getActiveTasksInProjectSuccess = createAction(
   props<{ tasks: TaskTrack[] }>()
 );
 
-export const getUsersPhotoInProject = createAction(
-  GET_USERS_PHOTO_IN_PROJECT,
-  props<{ tasks: any }>()
-);
+export const getAllUsers = createAction(GET_ALL_USERS);
 
-export const getUsersPhotoInProjectSuccess = createAction(
-  GET_USERS_PHOTO_IN_PROJECT_SUCCESS,
-  props<{ usersPhoto: User['photo'][] }>()
+export const getAllUsersSuccess = createAction(
+  GET_ALL_USERS_SUCCESS,
+  props<{ usersInfo: User[] }>()
 );
 
 export const deleteProject = createAction(

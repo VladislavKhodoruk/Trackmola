@@ -14,7 +14,7 @@ import {
   loading,
 } from '@store/shared/shared.actions';
 import { TrackMolaState } from '@store/trackMola.state';
-import { catchError, map, of, switchMap, take, tap } from 'rxjs';
+import { catchError, map, of, switchMap, take, tap, mergeMap } from 'rxjs';
 
 @Injectable()
 export class SharedEffects {

@@ -11,8 +11,8 @@
     {{ lastDayOfWeek | date: "dd MMM" }}
   </span>
   <app-users-photos
-    *ngIf="managersPhoto.length"
-    [photos]="managersPhoto"
+    *ngIf="usersInProject.length"
+    [users]="usersInProject"
     size="3"
   ></app-users-photos>
 

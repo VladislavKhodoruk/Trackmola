@@ -1,4 +1,8 @@
-import { Project, TaskTrack } from '@pages/projects/interfaces/interfaces';
+import {
+  Project,
+  TaskTrack,
+  User,
+} from '@pages/projects/interfaces/interfaces';
 
 export interface ProjectsState {
   projects?: Project[];
@@ -6,6 +10,7 @@ export interface ProjectsState {
   activeTasksInProjects?: TaskTrack[];
   selectedProject?: Project;
   searchValue: string;
+  users?: User[];
 }
 
 export const projectsState: ProjectsState = {

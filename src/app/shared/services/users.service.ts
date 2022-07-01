@@ -7,10 +7,12 @@ import {
   Firestore,
   query,
   updateDoc,
+  where,
 } from '@angular/fire/firestore';
 import { AuthorizationService } from '@pages/authorization/services/authorization.service';
 import { ProfileUser } from '@shared/interfaces/interfaces';
-import { User } from 'firebase/auth';
+import { User as UserFirebase } from 'firebase/auth';
+import { User } from '@pages/projects/interfaces/interfaces';
 import { from, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
@@ -39,7 +41,7 @@ export class UsersService {
 
   public updateUser(user: ProfileUser): Observable<void | null> {
     return this.authorizationService.currentUser$.pipe(
-      switchMap((data: User | null) => {
+      switchMap((data: UserFirebase | null) => {
         if (!data?.uid) {
           return of(null);
         }
@@ -47,5 +49,10 @@ export class UsersService {
         return from(updateDoc(ref, { ...user }));
       })
     );
+  }
+
+  public get users$(): Observable<User[]> {
+    const ref = collection(this.firestore, 'users');
+    return collectionData(ref) as Observable<User[]>;
   }
 }

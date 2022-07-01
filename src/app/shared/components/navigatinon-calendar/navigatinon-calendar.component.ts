@@ -1,3 +1,4 @@
+import { User } from '@pages/projects/interfaces/interfaces';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import arrowNarrowLeft from '@iconify/icons-tabler/arrow-narrow-left';
 import arrowNarrowRight from '@iconify/icons-tabler/arrow-narrow-right';
@@ -10,7 +11,7 @@ import arrowNarrowRight from '@iconify/icons-tabler/arrow-narrow-right';
 export class NavigatinonCalendarComponent {
   @Input() firstDayOfWeek?: Date | null;
   @Input() lastDayOfWeek?: Date | null;
-  @Input() managersPhoto?: string[];
+  @Input() usersInProject?: User[];
 
   @Output() previousWeek = new EventEmitter<void>();
   @Output() nextWeek = new EventEmitter<void>();

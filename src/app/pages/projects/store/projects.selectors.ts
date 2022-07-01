@@ -12,18 +12,20 @@ export const getProjects = createSelector(
   ({ projects }) => projects
 );
 
-export const getActiveTasksInProjects = createSelector(
-  getProjectsState,
-  ({ activeTasksInProjects }) => activeTasksInProjects
-);
-
-/* export const getActiveTasksInProjects = (props: { projectId: string }) =>
+export const getActiveTasksInProjects = (props: { projectId: string }) =>
   createSelector(getProjectsState, (state) =>
-    state.activeTasksInProjects.filter(({ projectId }) => {
-      const projectCompare = projectId === props.projectId;
-      return projectCompare;
-    })
-  ); */
+    state.activeTasksInProjects.filter(
+      ({ projectId }) => projectId === props.projectId
+    )
+  );
+
+export const getUsersInProjects = (props: { projectId: string }) =>
+  createSelector(getProjectsState, (state) => {
+    const usersInProjects = state.activeTasksInProjects
+      .filter(({ projectId }) => projectId === props.projectId)
+      .map((task) => task.userId);
+    return state.users.filter(({ id }) => usersInProjects.includes(id));
+  });
 
 export const getSelectedProject = createSelector(
   getProjectsState,

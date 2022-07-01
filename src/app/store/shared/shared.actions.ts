@@ -3,6 +3,7 @@ import {
   FirstAndLastDayOfWeek,
   ProfileUser,
 } from '@shared/interfaces/interfaces';
+import { User } from '@pages/projects/interfaces/interfaces';
 
 import { TaskTrack } from './shared.state';
 
@@ -49,3 +50,4 @@ export const getAllTasksTrackSuccess = createAction(
   GET_ALL_TASKS_TRACK_SUCCESS,
   props<{ tasksTrack: TaskTrack[] }>()
 );
+
