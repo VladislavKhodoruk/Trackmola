@@ -1,0 +1,188 @@
+<form class="form-report" [formGroup]="form" (ngSubmit)="addTaskTrack()">
+  <img class="form-report-img" src="assets/img/report-image.svg" alt="images" />
+  <div class="form-report-container">
+    <div class="form-report-side">
+      <div class="form-report-item">
+        <span
+          ><label class="form-report-item-label" for="project"
+            >Project *</label
+          ></span
+        >
+        <mat-form-field appearance="fill">
+          <input
+            type="text"
+            matInput
+            formControlName="project"
+            [matAutocomplete]="projects"
+            (blur)="isProjects()"
+          />
+          <ic-icon
+            class="mat-form-field-icon"
+            [icon]="iconAngleLeftB"
+          ></ic-icon>
+
+          <mat-autocomplete #projects="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredProjectsOptions | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div class="form-report-item">
+        <span
+          ><label class="form-report-item-label" for="project"
+            >Task *</label
+          ></span
+        >
+        <mat-form-field appearance="fill">
+          <input
+            type="text"
+            matInput
+            formControlName="task"
+            [matAutocomplete]="task"
+            (blur)="isTasks()"
+          />
+          <ic-icon
+            class="mat-form-field-icon"
+            [icon]="iconAngleLeftB"
+          ></ic-icon>
+
+          <mat-autocomplete #task="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredTasksOptions | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div class="form-report-item">
+        <span
+          ><label class="form-report-item-label" for="project"
+            >Role *</label
+          ></span
+        >
+        <mat-form-field appearance="fill">
+          <input
+            type="text"
+            placeholder="FE developer"
+            matInput
+            formControlName="role"
+            [matAutocomplete]="role"
+          />
+          <ic-icon
+            class="mat-form-field-icon"
+            [icon]="iconAngleLeftB"
+          ></ic-icon>
+
+          <mat-autocomplete #role="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredRoleOptions | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div class="form-report-item">
+        <label
+          class="form-report-item-label form-report-duration-label"
+          for="duration"
+          >Duration * h</label
+        >
+        <div class="form-report-container">
+          <div class="form-report-duration">
+            <button
+              class="form-report-duration-btn form-report-duration-btn-border-left"
+              type="button"
+              (mousedown)="durationMinus()"
+            >
+              <ic-icon
+                class="form-report-btn-icon"
+                [icon]="iconMinus"
+                width="1.5rem"
+                height="1.5rem"
+              ></ic-icon>
+            </button>
+            <input
+              class="form-report-duration-input"
+              id="duration"
+              name="project"
+              type="text"
+              maxlength="4"
+              formControlName="duration"
+              (keydown)="onInputOnlyNumber($event)"
+              (blur)="onSetValue()"
+              (input)="onSetRightValue()"
+            />
+            <button
+              class="form-report-duration-btn form-report-duration-btn-border-right"
+              type="button"
+              (mousedown)="durationPlus()"
+            >
+              <ic-icon
+                [icon]="iconPlus"
+                width="1.5rem"
+                height="1.5rem"
+              ></ic-icon>
+            </button>
+          </div>
+          <div class="form-report-status">
+            <app-button
+              [icon]="iconCheck"
+              [buttonClass]="['task-status', classStatusDone]"
+              [iconClass]="'task-status-icon'"
+              label="done"
+              (click)="onCheckStatus('done')"
+            ></app-button>
+          </div>
+          <div class="form-report-status">
+            <app-button
+              [icon]="iconCheck"
+              [buttonClass]="['task-status', classStatusInProgress]"
+              [iconClass]="'task-status-icon'"
+              label="in progress"
+              (click)="onCheckStatus('in progress')"
+            ></app-button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-report-side">
+      <label class="form-report-comments-label" for="role">Comments</label>
+      <textarea
+        class="form-report-comments-input"
+        id="role"
+        name="project"
+        type="text"
+        formControlName="comments"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="form-report-footer">
+    <mat-slide-toggle>Unpaid day</mat-slide-toggle>
+    <app-button
+      class="form-report-footer-voice"
+      [buttonClass]="'button-primary button-s'"
+      type="button"
+      [icon]="iconMicrophone"
+      iconWidth="1.5rem"
+      iconHeight="1.5rem"
+    ></app-button>
+    <app-button
+      [buttonClass]="'button-primary button-m'"
+      type="submit"
+      label="Add"
+      [disabled]="form.invalid"
+    ></app-button>
+  </div>
+</form>
