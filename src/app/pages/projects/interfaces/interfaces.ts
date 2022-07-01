@@ -25,3 +25,17 @@ export interface TaskTrack {
   taskId: string;
   userId: string;
 }
+
+export interface User {
+  birthday: Date;
+  email: string;
+  fullname: string;
+  id: string;
+  location: string;
+  photo: string;
+  position: string;
+  qualification: string;
+  role: string;
+  startDate: Date;
+  timeZone: string;
+}

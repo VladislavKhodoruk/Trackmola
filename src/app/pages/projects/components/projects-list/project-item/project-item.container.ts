@@ -5,6 +5,7 @@ import { Project, TaskTrack } from '@pages/projects/interfaces/interfaces';
 import {
   deleteProject,
   getActiveTasksInProject,
+  getUsersPhotoInProject,
 } from '@pages/projects/store/projects.actions';
 
 import { TrackMolaState } from '@store/trackMola.state';
@@ -16,25 +17,29 @@ import { getFirstAndLastDay } from '@shared/helpers/helpers';
   template: `<app-project-item
     class="projects-list-item"
     [(project)]="project"
-    [tasksInProject]="tasksInProject$ | async"
+    [activeTasksInProjects]="activeTasksInProjects$ | async"
+    (getActiveTasksInProject)="getActiveTasksInProject($event)"
   ></app-project-item>`,
   styleUrls: ['./project-item.component.scss'],
 })
 export class ProjectItemContainer implements OnInit, OnDestroy {
   @Input() project!: Project;
-  tasksInProject$: Observable<TaskTrack[]>;
+  readonly activeTasksInProjects$ = this.store$.select(
+    getActiveTasksInProjects
+  );
+
+  photoUsersInProject$: Observable<TaskTrack['userId'][]>;
 
   constructor(private store$: Store<TrackMolaState>) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getActiveTasksInProject(data) {
     this.store$.dispatch(
       getActiveTasksInProject({
-        projectId: this.project.id,
-        period: getFirstAndLastDay(new Date(), 'week'),
+        projectId: data.projectId,
+        period: data.period,
       })
-    );
-    this.tasksInProject$ = this.store$.select(
-      getActiveTasksInProjects({ projectId: this.project.id })
     );
   }
 

@@ -1,5 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { Project, TaskTrack } from '@pages/projects/interfaces/interfaces';
+import {
+  Project,
+  TaskTrack,
+  User,
+} from '@pages/projects/interfaces/interfaces';
 import { FirstAndLastDay } from '@shared/interfaces/interfaces';
 
 export const GET_TASKS = 'get tasks';
@@ -9,6 +13,9 @@ export const GET_PROJECTS_SUCCESS = 'get projects success';
 export const GET_ACTIVE_TASKS_IN_PROJECT = 'get active tasks in project';
 export const GET_ACTIVE_TASKS_IN_PROJECT_SUCCESS =
   'get active tasks in project success';
+export const GET_USERS_PHOTO_IN_PROJECT = 'get users photo in project';
+export const GET_USERS_PHOTO_IN_PROJECT_SUCCESS =
+  'get users photo in project success';
 
 export const DELETE_PROJECT = 'delete project';
 
@@ -45,6 +52,16 @@ export const getActiveTasksInProject = createAction(
 export const getActiveTasksInProjectSuccess = createAction(
   GET_ACTIVE_TASKS_IN_PROJECT_SUCCESS,
   props<{ tasks: TaskTrack[] }>()
+);
+
+export const getUsersPhotoInProject = createAction(
+  GET_USERS_PHOTO_IN_PROJECT,
+  props<{ tasks: any }>()
+);
+
+export const getUsersPhotoInProjectSuccess = createAction(
+  GET_USERS_PHOTO_IN_PROJECT_SUCCESS,
+  props<{ usersPhoto: User['photo'][] }>()
 );
 
 export const deleteProject = createAction(

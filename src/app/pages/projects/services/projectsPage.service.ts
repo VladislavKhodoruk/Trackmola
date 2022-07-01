@@ -1,3 +1,4 @@
+import { User } from 'firebase/auth';
 import { Injectable } from '@angular/core';
 import {
   collection,
@@ -51,5 +52,12 @@ export class ProjectsPageService {
       where('date', '<', lastDay)
     );
     return collectionData(queryAll) as Observable<TaskTrack[]>;
+  }
+
+  public getUsersInfoInProject$(tasks: TaskTrack[]): Observable<User[]> {
+    const ref = collection(this.firestore, 'users');
+    const usersId = tasks.map((task) => task.userId);
+    const queryAll = query(ref, where('id', 'in', usersId));
+    return collectionData(queryAll) as Observable<User[]>;
   }
 }

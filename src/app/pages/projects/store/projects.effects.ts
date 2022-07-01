@@ -1,3 +1,4 @@
+import { User } from 'firebase/auth';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProjectsPageService } from '../services/projectsPage.service';
@@ -11,6 +12,8 @@ import {
   getProjectsSuccess,
   getTasks,
   getTasksSuccess,
+  getUsersPhotoInProject,
+  getUsersPhotoInProjectSuccess,
 } from './projects.actions';
 import { TrackMolaState } from '@store/trackMola.state';
 import { Store } from '@ngrx/store';
@@ -55,6 +58,7 @@ export class ProjectsEffects {
     this.actions$.pipe(
       ofType(getActiveTasksInProject),
       mergeMap((data) => {
+        console.log(data);
         const firstAndLastDay: FirstAndLastDay = data.period;
         const projectId: Project['id'] = data.projectId;
         return this.projectsPageService
@@ -68,6 +72,26 @@ export class ProjectsEffects {
               });
             })
           );
+      })
+    )
+  );
+
+  public getUsersPhotoInProject$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getUsersPhotoInProject),
+      take(1),
+      mergeMap(({ tasks }) => {
+        console.log(tasks);
+        return this.projectsPageService.getUsersInfoInProject$(tasks).pipe(
+          take(1),
+          map((response) => {
+            const users: User[] = response;
+            console.log(users);
+            return getUsersPhotoInProjectSuccess({
+              usersPhoto: [''],
+            });
+          })
+        );
       })
     )
   );

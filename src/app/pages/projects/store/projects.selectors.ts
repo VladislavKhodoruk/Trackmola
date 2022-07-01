@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StateName, TaskStatus } from '@shared/enums/enum';
+import { StateName } from '@shared/enums/enum';
 import { ProjectsState } from './projects.state';
 
 export const PROJECTS_STATE_NAME = StateName.Projects;
@@ -12,33 +12,17 @@ export const getProjects = createSelector(
   ({ projects }) => projects
 );
 
-export const getActiveTasksInProjects = (props: { projectId: string }) =>
+export const getActiveTasksInProjects = createSelector(
+  getProjectsState,
+  ({ activeTasksInProjects }) => activeTasksInProjects
+);
+
+/* export const getActiveTasksInProjects = (props: { projectId: string }) =>
   createSelector(getProjectsState, (state) =>
     state.activeTasksInProjects.filter(({ projectId }) => {
       const projectCompare = projectId === props.projectId;
       return projectCompare;
     })
-  );
-
-/* export const getAllTasksInProject = (props: { project: string }) =>
-  createSelector(getProjectsState, (state) =>
-    state.allTasksInProjects.filter(({ projectId, status }) => {
-      const projectCompare = projectId === props.project;
-      const statusCompare =
-        status === TaskStatus.InProgress || status === TaskStatus.Open;
-
-      return projectCompare && statusCompare;
-    })
-  );
-
-export const getUsersPhotoInProject = (props: { project: string }) =>
-  createSelector(getProjectsState, (state) =>
-    state.userInProjects
-      .filter(({ projectId }) => {
-        const projectCompare = projectId === props.project;
-        return projectCompare;
-      })
-      .map(({ photo }) => photo)
   ); */
 
 export const getSelectedProject = createSelector(
