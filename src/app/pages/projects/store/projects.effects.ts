@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProjectsService } from '../services/projects.service';
+import { ProjectsPageService } from '../services/projectsPage.service';
 import { map, switchMap, take, mergeMap } from 'rxjs';
-import {
-  Task,
-  TaskTrack,
-  Project,
-} from '@pages/projects/interfaces/interfaces';
+import { TaskTrack, Project } from '@pages/projects/interfaces/interfaces';
 
 import {
   getActiveTasksInProject,
@@ -27,7 +23,7 @@ export class ProjectsEffects {
       ofType(getTasks),
       switchMap(({ period }) => {
         const firstAndLastDay: FirstAndLastDay = period;
-        return this.projectsService.getTasks$(firstAndLastDay).pipe(
+        return this.projectsPageService.getTasks$(firstAndLastDay).pipe(
           take(1),
           map((data) => {
             const tasks: TaskTrack[] = data;
@@ -44,7 +40,7 @@ export class ProjectsEffects {
       ofType(getProjects),
       switchMap(({ tasks }) => {
         const projectsId = tasks.map((task) => task.projectId);
-        return this.projectsService.getProjects$(projectsId).pipe(
+        return this.projectsPageService.getProjects$(projectsId).pipe(
           take(1),
           map((data) => {
             const projects: Project[] = data;
@@ -58,14 +54,15 @@ export class ProjectsEffects {
   public getActiveTasksInProject$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getActiveTasksInProject),
-      mergeMap(({ projectId, period }) => {
-        const firstAndLastDay: FirstAndLastDay = period;
-        return this.projectsService
+      mergeMap((data) => {
+        const firstAndLastDay: FirstAndLastDay = data.period;
+        const projectId: Project['id'] = data.projectId;
+        return this.projectsPageService
           .getActiveTasksInProjects$(projectId, firstAndLastDay)
           .pipe(
             take(1),
-            map((data) => {
-              const activeTasksInProject: TaskTrack[] = data;
+            map((response) => {
+              const activeTasksInProject: TaskTrack[] = response;
               return getActiveTasksInProjectSuccess({
                 tasks: activeTasksInProject,
               });
@@ -77,7 +74,7 @@ export class ProjectsEffects {
 
   constructor(
     private actions$: Actions,
-    private projectsService: ProjectsService,
+    private projectsPageService: ProjectsPageService,
     private store$: Store<TrackMolaState>
   ) {}
 }

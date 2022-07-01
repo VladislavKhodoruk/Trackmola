@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectsService {
+export class ProjectsPageService {
   constructor(private firestore: Firestore) {}
 
   public getTasks$(firstAndLastDay?: FirstAndLastDay): Observable<TaskTrack[]> {
