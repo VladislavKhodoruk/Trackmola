@@ -1,0 +1,52 @@
+<div
+  class="box"
+  style="--size-report: {{ sizeReportTimeChart }}"
+  [class.box-full]="weekReportTime >= numberOfHoursInWorkingWeek"
+>
+  <div>
+    <div class="box-text-hours">
+      <span
+        *ngIf="weekReportTime < numberOfHoursInWorkingWeek"
+        class="box-text-hours-left"
+        >{{ weekLeftTime }}h</span
+      ><span
+        *ngIf="weekReportTime < numberOfHoursInWorkingWeek"
+        class="box-text-hours-slash"
+        >/</span
+      ><span
+        class="box-text-hours-reported"
+        [style.fontSize.rem]="
+          weekReportTime >= numberOfHoursInWorkingWeek ? 3.75 : 2.5
+        "
+        [style.color]="
+          weekReportTime >= numberOfHoursInWorkingWeek
+            ? 'var(--primary-hover)'
+            : 'var(--primary)'
+        "
+        >{{ weekReportTime }}h</span
+      >
+    </div>
+    <div class="box-text-explanation">
+      <span
+        *ngIf="weekReportTime < numberOfHoursInWorkingWeek"
+        class="box-text-explanation-left"
+        >Left</span
+      >
+      <span
+        *ngIf="weekReportTime < numberOfHoursInWorkingWeek"
+        class="box-text-explanation-reported"
+        >Reported</span
+      >
+      <span
+        *ngIf="weekReportTime >= numberOfHoursInWorkingWeek"
+        [style.color]="
+          weekReportTime >= numberOfHoursInWorkingWeek
+            ? 'var(--primary-hover)'
+            : 'var(--primary)'
+        "
+        class="box-text-explanation-reported"
+        >Daily goal done!</span
+      >
+    </div>
+  </div>
+</div>

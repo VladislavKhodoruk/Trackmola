@@ -120,7 +120,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     const filterValue = value.toLowerCase();
 
     return options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
+      option?.toLowerCase().includes(filterValue)
     );
   }
 
