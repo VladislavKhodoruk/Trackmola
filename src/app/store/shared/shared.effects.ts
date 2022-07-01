@@ -7,8 +7,8 @@ import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import {
   errorMessage,
-  getAllTasks,
-  getAllTasksSuccess,
+  getAllTasksTrack,
+  getAllTasksTrackSuccess,
   getUserData,
   getUserDataSuccess,
   loading,
@@ -30,6 +30,7 @@ export class SharedEffects {
             this.store$.dispatch(errorMessage({ message: '', loaded: true }));
             localStorage.setItem('AuthUserType', profileUser.role);
             localStorage.setItem('AuthUserPhoto', profileUser.photo);
+            localStorage.setItem('AuthUserRole', profileUser.qualification);
             return getUserDataSuccess({ profileUser });
           }),
           catchError(() => {
@@ -55,11 +56,11 @@ export class SharedEffects {
 
   getAllTasks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getAllTasks),
+      ofType(getAllTasksTrack),
       switchMap(() =>
-        this.tasksService.getTasks().pipe(
+        this.tasksService.getTasksTrack().pipe(
           take(1),
-          map((data) => getAllTasksSuccess({ tasks: data }))
+          map((data) => getAllTasksTrackSuccess({ tasksTrack: data }))
         )
       )
     )

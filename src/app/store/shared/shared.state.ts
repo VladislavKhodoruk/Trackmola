@@ -3,12 +3,13 @@ import {
   FirstAndLastDayOfWeek,
   ProfileUser,
 } from '@shared/interfaces/interfaces';
+import { Timestamp } from 'firebase/firestore';
 
 export interface SharedState {
   loadingStatus: LoadingStatus;
   user: ProfileUser | null;
   date: Date;
-  tasks: TaskTrack[];
+  tasksTrack: TaskTrack[];
   firstAndLastDayOfWeek?: FirstAndLastDayOfWeek;
 }
 
@@ -19,11 +20,14 @@ export interface LoadingStatus {
 }
 
 export interface TaskTrack {
+  id?: string;
   projectId: string;
-  date: Date;
-  task: string;
-  comments: string;
+  date: Timestamp;
+  taskId: string;
   duration: number;
+  userId?: string;
+  comments?: string;
+  status?: string;
 }
 
 export const initialState: SharedState = {
@@ -34,5 +38,5 @@ export const initialState: SharedState = {
   },
   user: null,
   date: setMidnightTime(new Date()),
-  tasks: [],
+  tasksTrack: [],
 };

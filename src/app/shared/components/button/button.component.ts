@@ -9,12 +9,13 @@ import check from '@iconify/icons-tabler/check';
 })
 export class ButtonComponent {
   @Input() type = 'button';
-  @Input() buttonClass!: string;
+  @Input() buttonClass!: string | string[];
   @Input() label!: string;
   @Input() disabled!: boolean | null;
   @Input() icon!: IconifyIcon;
   @Input() iconWidth!: string;
   @Input() iconHeight!: string;
+  @Input() iconClass!: string | string[];
 
   @Output() buttonClick: EventEmitter<Event> = new EventEmitter<Event>();
 

@@ -4,7 +4,7 @@ import { logout } from '@pages/authorization/store/authorization.actions';
 import {
   changeDate,
   errorMessage,
-  getAllTasksSuccess,
+  getAllTasksTrackSuccess,
   getUserDataSuccess,
   loading,
   nextWeek,
@@ -39,9 +39,9 @@ const sharedReducer = createReducer(
     ...state,
     date: action.date,
   })),
-  on(getAllTasksSuccess, (state: SharedState, action) => ({
+  on(getAllTasksTrackSuccess, (state: SharedState, action) => ({
     ...state,
-    tasks: action.tasks,
+    tasksTrack: action.tasksTrack,
   })),
   on(setFirstAndLastDayOfWeek, (state: SharedState, action) => ({
     ...state,

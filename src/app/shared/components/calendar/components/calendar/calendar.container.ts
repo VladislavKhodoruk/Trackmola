@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { changeDate, getAllTasks } from '@store/shared/shared.actions';
+import { changeDate, getAllTasksTrack } from '@store/shared/shared.actions';
 import {
-  allTasks,
+  allTasksTrack,
   getDate,
   getFirstDayOfWeek,
 } from '@store/shared/shared.selectors';
@@ -19,11 +19,11 @@ import { TrackMolaState } from '@store/trackMola.state';
 })
 export class CalendarContainer {
   date$ = this.store$.select(getDate);
-  allTasks$ = this.store$.select(allTasks);
+  allTasks$ = this.store$.select(allTasksTrack);
   firstDayOfWeek$ = this.store$.select(getFirstDayOfWeek);
 
   constructor(private store$: Store<TrackMolaState>) {
-    this.store$.dispatch(getAllTasks());
+    this.store$.dispatch(getAllTasksTrack());
   }
 
   onChangeDate(day: Date): void {
