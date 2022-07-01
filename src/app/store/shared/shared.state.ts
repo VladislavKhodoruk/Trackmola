@@ -9,7 +9,7 @@ export interface SharedState {
   loadingStatus: LoadingStatus;
   user: ProfileUser | null;
   date: Date;
-  tasks: TaskTrack[];
+  tasksTrack: TaskTrack[];
   firstAndLastDayOfWeek?: FirstAndLastDayOfWeek;
 }
 
@@ -38,5 +38,5 @@ export const initialState: SharedState = {
   },
   user: null,
   date: setMidnightTime(new Date()),
-  tasks: [],
+  tasksTrack: [],
 };

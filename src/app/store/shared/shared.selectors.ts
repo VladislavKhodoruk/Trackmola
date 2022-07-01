@@ -32,4 +32,7 @@ export const getLastDayOfWeek = createSelector(
 
 export const getDate = createSelector(getSharedState, (state) => state.date);
 
-export const allTasks = createSelector(getSharedState, (state) => state.tasks);
+export const allTasksTrack = createSelector(
+  getSharedState,
+  (state) => state.tasksTrack
+);

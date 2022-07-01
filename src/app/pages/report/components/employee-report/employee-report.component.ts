@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import check from '@iconify/icons-tabler/check';
 import { Store } from '@ngrx/store';
-import { getAllTasks, getAllTasksSuccess } from '@store/shared/shared.actions';
+import { getAllTasksTrack } from '@store/shared/shared.actions';
 import { SharedState } from '@store/shared/shared.state';
 import {
   collection,
@@ -31,6 +31,8 @@ export class EmployeeReportComponent implements OnInit {
   ngOnInit(): void {
     const ref = collection(this.firestore, 'taskTrack');
 
-    onSnapshot(query(ref), () => this.sharedStore$.dispatch(getAllTasks()));
+    onSnapshot(query(ref), () =>
+      this.sharedStore$.dispatch(getAllTasksTrack())
+    );
   }
 }

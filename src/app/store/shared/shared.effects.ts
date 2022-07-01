@@ -6,8 +6,8 @@ import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import {
   errorMessage,
-  getAllTasks,
-  getAllTasksSuccess,
+  getAllTasksTrack,
+  getAllTasksTrackSuccess,
   getUserData,
   getUserDataSuccess,
   loading,
@@ -54,11 +54,11 @@ export class SharedEffects {
 
   getAllTasks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getAllTasks),
+      ofType(getAllTasksTrack),
       switchMap(() =>
         this.tasksService.getTasksTrack().pipe(
           take(1),
-          map((data) => getAllTasksSuccess({ tasks: data }))
+          map((data) => getAllTasksTrackSuccess({ tasksTrack: data }))
         )
       )
     )
