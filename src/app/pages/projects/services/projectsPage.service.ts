@@ -1,4 +1,3 @@
-import { User } from 'firebase/auth';
 import { Injectable } from '@angular/core';
 import {
   collection,
@@ -6,7 +5,6 @@ import {
   Firestore,
   query,
 } from '@angular/fire/firestore';
-import { TaskStatus } from '@shared/enums/enum';
 import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 import { where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
