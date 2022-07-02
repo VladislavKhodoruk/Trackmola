@@ -9,7 +9,7 @@ import {
   loading,
   nextWeek,
   previousWeek,
-  setFirstAndLastDayOfWeek,
+  setPeriod,
 } from './shared.actions';
 import { initialState, SharedState } from './shared.state';
 
@@ -43,40 +43,30 @@ const sharedReducer = createReducer(
     ...state,
     tasksTrack: action.tasksTrack,
   })),
-  on(setFirstAndLastDayOfWeek, (state: SharedState, action) => ({
+  on(setPeriod, (state: SharedState, action) => ({
     ...state,
-    firstAndLastDayOfWeek: action.firstAndLastDayOfWeek,
+    period: action.period,
   })),
   on(nextWeek, (state: SharedState, action) => {
-    if (state.firstAndLastDayOfWeek) {
-      const firstDay = state.firstAndLastDayOfWeek.firstDay;
-      const lastDay = state.firstAndLastDayOfWeek.lastDay;
-      return {
-        ...state,
-        firstAndLastDayOfWeek: {
-          firstDay: new Date(firstDay.getTime() + action.value),
-          lastDay: new Date(lastDay.getTime() + action.value),
-        },
-      };
-    }
+    const firstDay = state.period.start;
+    const lastDay = state.period.end;
     return {
       ...state,
+      period: {
+        start: firstDay + action.value,
+        end: lastDay + action.value,
+      },
     };
   }),
   on(previousWeek, (state: SharedState, action) => {
-    if (state.firstAndLastDayOfWeek) {
-      const firstDay = state.firstAndLastDayOfWeek.firstDay;
-      const lastDay = state.firstAndLastDayOfWeek.lastDay;
-      return {
-        ...state,
-        firstAndLastDayOfWeek: {
-          firstDay: new Date(firstDay.getTime() - action.value),
-          lastDay: new Date(lastDay.getTime() - action.value),
-        },
-      };
-    }
+    const firstDay = state.period.start;
+    const lastDay = state.period.end;
     return {
       ...state,
+      period: {
+        start: firstDay - action.value,
+        end: lastDay - action.value,
+      },
     };
   })
 );

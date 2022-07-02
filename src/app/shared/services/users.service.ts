@@ -7,31 +7,29 @@ import {
   Firestore,
   query,
   updateDoc,
-  where,
 } from '@angular/fire/firestore';
 import { AuthorizationService } from '@pages/authorization/services/authorization.service';
-import { ProfileUser } from '@shared/interfaces/interfaces';
+import { User } from '@shared/interfaces/interfaces';
 import { User as UserFirebase } from 'firebase/auth';
-import { User } from '@pages/projects/interfaces/interfaces';
 import { from, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  public get currentUserProfile$(): Observable<ProfileUser | null> {
+  public get currentUserProfile$(): Observable<User | null> {
     const ref = doc(
       this.firestore,
       'users',
       localStorage.getItem('AuthUserId')
     );
-    return docData(ref) as Observable<ProfileUser>;
+    return docData(ref) as Observable<User>;
   }
 
-  public get allUsers$(): Observable<ProfileUser[]> {
+  public get allUsers$(): Observable<User[]> {
     const ref = collection(this.firestore, 'users');
     const queryAll = query(ref);
-    return collectionData(queryAll) as Observable<ProfileUser[]>;
+    return collectionData(queryAll) as Observable<User[]>;
   }
 
   constructor(
@@ -39,7 +37,7 @@ export class UsersService {
     private authorizationService: AuthorizationService
   ) {}
 
-  public updateUser(user: ProfileUser): Observable<void | null> {
+  public updateUser(user: User): Observable<void | null> {
     return this.authorizationService.currentUser$.pipe(
       switchMap((data: UserFirebase | null) => {
         if (!data?.uid) {

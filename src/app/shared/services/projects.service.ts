@@ -5,7 +5,8 @@ import {
   Firestore,
   query,
 } from '@angular/fire/firestore';
-import { Project } from '@pages/projects/interfaces/interfaces';
+import { Project } from '@shared/interfaces/interfaces';
+
 import { where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 

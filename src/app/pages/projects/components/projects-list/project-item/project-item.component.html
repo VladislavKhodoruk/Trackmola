@@ -6,12 +6,12 @@
     {{ project.name }}
   </div>
   <app-users-photos
-    *ngIf="usersInProject.length"
+    *ngIf="usersInProject"
     [users]="usersInProject"
     size="2"
   ></app-users-photos>
 </div>
 <p class="projects-list-item-name">{{ project.fullName }}</p>
 <p class="projects-list-item-description">
-  {{ activeTasksInProject.length }} active tasks
+  {{ activeTasksInProject ? activeTasksInProject.length : 0 }} active tasks
 </p>

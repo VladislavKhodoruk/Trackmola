@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { getAllUsers, getTasks } from '@pages/projects/store/projects.actions';
+import {
+  getAllUsers,
+  clearProjectStore,
+  getProjects,
+  getAllTasks,
+} from '@pages/projects/store/projects.actions';
 import { getSelectedProject } from '@pages/projects/store/projects.selectors';
-import { getFirstAndLastDay } from '@shared/helpers/helpers';
+import { getPeriod } from '@shared/helpers/helpers';
 
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -12,14 +17,18 @@ import { TrackMolaState } from '@store/trackMola.state';
     [selectedProject]="selectedProject$ | async"
   ></app-employee-projects>`,
 })
-export class EmployeeProjectsContainer {
+export class EmployeeProjectsContainer implements OnDestroy {
   readonly selectedProject$ = this.store$.select(getSelectedProject);
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(
-      getTasks({ period: getFirstAndLastDay(new Date(), 'week') })
+      getAllTasks({ period: getPeriod(new Date(), 'week') })
     );
-
     this.store$.dispatch(getAllUsers());
+    this.store$.dispatch(getProjects());
+  }
+
+  ngOnDestroy(): void {
+    this.store$.dispatch(clearProjectStore());
   }
 }

@@ -6,9 +6,8 @@ import {
   Firestore,
   query,
 } from '@angular/fire/firestore';
-import { Project, TaskTrack } from '@pages/projects/interfaces/interfaces';
 import { TaskStatus } from '@shared/enums/enum';
-import { FirstAndLastDay } from '@shared/interfaces/interfaces';
+import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 import { where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
@@ -18,32 +17,30 @@ import { Observable } from 'rxjs';
 export class ProjectsPageService {
   constructor(private firestore: Firestore) {}
 
-  public getTasks$(firstAndLastDay?: FirstAndLastDay): Observable<TaskTrack[]> {
+  public getAllTasks$(period?: Period): Observable<TaskTrack[]> {
     const ref = collection(this.firestore, 'taskTrack');
-    const firstDay = new Date(firstAndLastDay.start);
-    const lastDay = new Date(firstAndLastDay.end);
+    const firstDay = new Date(period.start);
+    const lastDay = new Date(period.end);
     const queryAll = query(
       ref,
-      where('userId', '==', localStorage.AuthUserId),
       where('date', '>', firstDay),
       where('date', '<', lastDay)
     );
     return collectionData(queryAll) as Observable<TaskTrack[]>;
   }
 
-  public getProjects$(projectsId: Project['id'][]): Observable<Project[]> {
+  public get projects$(): Observable<Project[]> {
     const ref = collection(this.firestore, 'projects');
-    const queryAll = query(ref, where('id', 'in', projectsId));
-    return collectionData(queryAll) as Observable<Project[]>;
+    return collectionData(ref) as Observable<Project[]>;
   }
 
   public getActiveTasksInProjects$(
     projectId: Project['id'],
-    firstAndLastDay?: FirstAndLastDay
+    period?: Period
   ): Observable<TaskTrack[]> {
     const ref = collection(this.firestore, 'taskTrack');
-    const firstDay = new Date(firstAndLastDay.start);
-    const lastDay = new Date(firstAndLastDay.end);
+    const firstDay = new Date(period.start);
+    const lastDay = new Date(period.end);
     const queryAll = query(
       ref,
       where('projectId', '==', projectId),
@@ -52,12 +49,5 @@ export class ProjectsPageService {
       where('date', '<', lastDay)
     );
     return collectionData(queryAll) as Observable<TaskTrack[]>;
-  }
-
-  public getUsersInfoInProject$(tasks: TaskTrack[]): Observable<User[]> {
-    const ref = collection(this.firestore, 'users');
-    const usersId = tasks.map((task) => task.userId);
-    const queryAll = query(ref, where('id', 'in', usersId));
-    return collectionData(queryAll) as Observable<User[]>;
   }
 }

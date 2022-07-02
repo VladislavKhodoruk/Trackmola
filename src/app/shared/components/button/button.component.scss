@@ -63,8 +63,8 @@
   }
 
   .task-status {
-    padding: 0 0.5rem; 
-    
+    padding: 0 0.5rem;
+
     height: 2rem;
 
     @include flex(center, center);
@@ -104,6 +104,10 @@
   .task-status-checked .task-status-icon {
     display: flex;
     margin-right: 0.25rem;
-    color: var(--white); 
+    color: var(--white);
+  }
+
+  .icon {
+    display: flex;
   }
 }

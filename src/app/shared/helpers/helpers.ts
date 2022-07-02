@@ -1,4 +1,4 @@
-import { FirstAndLastDay } from '@shared/interfaces/interfaces';
+import { Period } from '@shared/interfaces/interfaces';
 
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);
@@ -9,10 +9,7 @@ export function setMidnightTime(date: Date) {
   return currentDate;
 }
 
-export function getFirstAndLastDay(
-  date: Date,
-  type?: 'week' | 'month'
-): FirstAndLastDay {
+export function getPeriod(date: Date, type?: 'week' | 'month'): Period {
   switch (type) {
     case 'week': {
       const dayOfWeek = date.getDay();

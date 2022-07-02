@@ -4,7 +4,7 @@ import { changeDate, getAllTasksTrack } from '@store/shared/shared.actions';
 import {
   allTasksTrack,
   getDate,
-  getFirstDayOfWeek,
+  getFirstDay,
 } from '@store/shared/shared.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -13,14 +13,14 @@ import { TrackMolaState } from '@store/trackMola.state';
   template: `<app-calendar
     [date]="date$ | async"
     [allTasks]="allTasks$ | async"
-    [firstDayOfWeek]="firstDayOfWeek$ | async"
+    [firstDay]="firstDay$ | async"
     (changeDate)="onChangeDate($event)"
   ></app-calendar>`,
 })
 export class CalendarContainer {
   date$ = this.store$.select(getDate);
   allTasks$ = this.store$.select(allTasksTrack);
-  firstDayOfWeek$ = this.store$.select(getFirstDayOfWeek);
+  firstDay$ = this.store$.select(getFirstDay);
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(getAllTasksTrack());

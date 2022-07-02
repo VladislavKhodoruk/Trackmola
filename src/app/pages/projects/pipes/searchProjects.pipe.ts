@@ -1,4 +1,4 @@
-import { Project } from '@pages/projects/interfaces/interfaces';
+import { Project } from '@shared/interfaces/interfaces';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({

@@ -7,8 +7,8 @@
     (buttonClick)="previousWeek.emit()"
   ></app-button>
   <span class="report-week-interval">
-    Week {{ firstDayOfWeek | date: "dd MMM" }} -
-    {{ lastDayOfWeek | date: "dd MMM" }}
+    Week {{ firstDay | date: "dd MMM" }} -
+    {{ lastDay | date: "dd MMM" }}
   </span>
   <app-users-photos
     *ngIf="usersInProject.length"

@@ -1,5 +1,47 @@
 import { IconifyIcon } from '@iconify/types';
 
+export interface Project {
+  id: string;
+  color: string;
+  description: string;
+  fullName: string;
+  managersId: string[];
+  name: string;
+  taskId: string[];
+}
+
+export interface Task {
+  id: string;
+  archived: boolean;
+  name: string;
+  projectId: string;
+}
+
+export interface TaskTrack {
+  comments: string;
+  date: Date;
+  duration: number;
+  id: string;
+  projectId: string;
+  status: string;
+  taskId: string;
+  userId: string;
+}
+
+export interface User {
+  birthday: Date;
+  email: string;
+  fullName: string;
+  id: string;
+  location: string;
+  photo: string;
+  position: string;
+  qualification: string;
+  role: string;
+  startDate: Date;
+  timeZone: string;
+}
+
 export interface ProfileUser {
   id: string;
   email: string;
@@ -30,11 +72,7 @@ export interface Week {
   days: Day[];
 }
 
-export interface FirstAndLastDayOfWeek {
-  [key: string]: Date;
-}
-
-export interface FirstAndLastDay {
+export interface Period {
   start: number;
   end: number;
 }

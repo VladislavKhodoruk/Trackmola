@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { ProfileUser } from '@shared/interfaces/interfaces';
+import { User } from '@shared/interfaces/interfaces';
 import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import {
@@ -14,7 +14,7 @@ import {
   loading,
 } from '@store/shared/shared.actions';
 import { TrackMolaState } from '@store/trackMola.state';
-import { catchError, map, of, switchMap, take, tap, mergeMap } from 'rxjs';
+import { catchError, map, of, switchMap, take, tap } from 'rxjs';
 
 @Injectable()
 export class SharedEffects {
@@ -25,7 +25,7 @@ export class SharedEffects {
         this.usersService.currentUserProfile$.pipe(
           take(1),
           map((data) => {
-            const profileUser: ProfileUser = data;
+            const profileUser: User = data;
             this.store$.dispatch(loading({ status: false }));
             this.store$.dispatch(errorMessage({ message: '', loaded: true }));
             localStorage.setItem('AuthUserType', profileUser.role);

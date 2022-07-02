@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Project } from '@pages/projects/interfaces/interfaces';
+import { Project } from '@shared/interfaces/interfaces';
 import { setSelectedProject } from '@pages/projects/store/projects.actions';
 import {
-  getProjects,
+  getMyProjects,
   getSearchValue,
   getSelectedProject,
 } from '@pages/projects/store/projects.selectors';
@@ -19,7 +19,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-projects-list>`,
 })
 export class ProjectsListContainer {
-  readonly myProjects$ = this.store$.select(getProjects);
+  readonly myProjects$ = this.store$.select(getMyProjects);
   readonly searchText$ = this.store$.select(getSearchValue);
   selectedProject$ = this.store$.select(getSelectedProject);
 

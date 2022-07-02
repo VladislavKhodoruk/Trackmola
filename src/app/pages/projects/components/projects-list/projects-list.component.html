@@ -3,7 +3,9 @@
   <ul class="projects-list">
     <app-project-item-container
       class="projects-list-item"
-      [class.projects-list-item-selected]="selectedProject.id === project.id"
+      [class.projects-list-item-selected]="
+        selectedProject && selectedProject.id === project.id
+      "
       *ngFor="let project of myProjects | searchProjects: searchText"
       [project]="project"
       (click)="selectProject.emit(project)"
