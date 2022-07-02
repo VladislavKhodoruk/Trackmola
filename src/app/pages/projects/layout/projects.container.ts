@@ -7,7 +7,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   template: '<app-projects [userType]="this.userType"></app-projects>',
 })
 export class ProjectsContainer {
-  readonly userType = localStorage.getItem('AuthUserType');
+  readonly userType: string = localStorage.getItem('AuthUserType');
 
   constructor(private store$: Store<TrackMolaState>) {}
 }

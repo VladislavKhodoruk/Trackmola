@@ -6,25 +6,23 @@ import {
   User,
 } from '@shared/interfaces/interfaces';
 
-export const GET_ALL_TASKS = 'get all tasks';
-export const GET_ALL_TASKS_SUCCESS = 'get all tasks success';
+export const GET_ALL_TASKS = '[Projects Page] get all tasks';
+export const GET_ALL_TASKS_SUCCESS = '[Projects Page] get all tasks success';
 
-export const GET_PROJECTS = 'get projects';
-export const GET_PROJECTS_SUCCESS = 'get projects success';
+export const GET_ALL_PROJECTS = '[Projects Page] get all projects';
+export const GET_ALL_PROJECTS_SUCCESS =
+  '[Projects Page] get all projects success';
 
-export const GET_ACTIVE_TASKS_IN_PROJECT = 'get active tasks in project';
-export const GET_ACTIVE_TASKS_IN_PROJECT_SUCCESS =
-  'get active tasks in project success';
+export const GET_ALL_USERS = '[Projects Page] get users';
+export const GET_ALL_USERS_SUCCESS = '[Projects Page] get users success';
 
-export const GET_ALL_USERS = 'get users';
-export const GET_ALL_USERS_SUCCESS = 'get users success';
+export const SET_SELECTED_PROJECT = '[Projects Page] set selected project';
+export const DELETE_SELECTED_PROJECT =
+  '[Projects Page] delete selected project';
 
-export const SET_SELECTED_PROJECT = 'set selected project';
-export const DELETE_SELECTED_PROJECT = 'delete selected project';
+export const SET_SEARCH_VALUE = '[Projects Page] set search value';
 
-export const SET_SEARCH_VALUE = 'set search value';
-
-export const CLEAR_PROJECT_STORE = 'clear project store';
+export const CLEAR_PROJECT_STORE = '[Projects Page] clear project store';
 
 export const getAllTasks = createAction(
   GET_ALL_TASKS,
@@ -36,10 +34,10 @@ export const getAllTasksSuccess = createAction(
   props<{ tasks: TaskTrack[] }>()
 );
 
-export const getProjects = createAction(GET_PROJECTS);
+export const getAllProjects = createAction(GET_ALL_PROJECTS);
 
-export const getProjectsSuccess = createAction(
-  GET_PROJECTS_SUCCESS,
+export const getAllProjectsSuccess = createAction(
+  GET_ALL_PROJECTS_SUCCESS,
   props<{ projects: Project[] }>()
 );
 
@@ -47,7 +45,7 @@ export const getAllUsers = createAction(GET_ALL_USERS);
 
 export const getAllUsersSuccess = createAction(
   GET_ALL_USERS_SUCCESS,
-  props<{ usersInfo: User[] }>()
+  props<{ users: User[] }>()
 );
 
 export const setSelectedProject = createAction(

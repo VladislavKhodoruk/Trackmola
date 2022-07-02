@@ -13,7 +13,9 @@ export const getMyProjects = createSelector(getProjectsState, (state) => {
       .filter(({ userId }) => userId === localStorage.AuthUserId)
       .map((task) => task.projectId);
 
-    return state.projects.filter((project) => myProjects.includes(project.id));
+    return state.allProjects.filter((project) =>
+      myProjects.includes(project.id)
+    );
   }
 });
 

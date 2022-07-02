@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
 export class ProjectsPageService {
   constructor(private firestore: Firestore) {}
 
-  public getAllTasks$(period?: Period): Observable<TaskTrack[]> {
+  public getAllTasks$(period: Period): Observable<TaskTrack[]> {
     const ref = collection(this.firestore, 'taskTrack');
     const firstDay = new Date(period.start);
     const lastDay = new Date(period.end);
@@ -29,25 +29,8 @@ export class ProjectsPageService {
     return collectionData(queryAll) as Observable<TaskTrack[]>;
   }
 
-  public get projects$(): Observable<Project[]> {
+  public get allProjects$(): Observable<Project[]> {
     const ref = collection(this.firestore, 'projects');
     return collectionData(ref) as Observable<Project[]>;
-  }
-
-  public getActiveTasksInProjects$(
-    projectId: Project['id'],
-    period?: Period
-  ): Observable<TaskTrack[]> {
-    const ref = collection(this.firestore, 'taskTrack');
-    const firstDay = new Date(period.start);
-    const lastDay = new Date(period.end);
-    const queryAll = query(
-      ref,
-      where('projectId', '==', projectId),
-      where('status', '==', TaskStatus.InProgress),
-      where('date', '>', firstDay),
-      where('date', '<', lastDay)
-    );
-    return collectionData(queryAll) as Observable<TaskTrack[]>;
   }
 }

@@ -3,7 +3,7 @@ import {
   deleteSelectedProject,
   setSearchValue,
   setSelectedProject,
-  getProjectsSuccess,
+  getAllProjectsSuccess,
   getAllUsersSuccess,
   clearProjectStore,
   getAllTasksSuccess,
@@ -17,13 +17,13 @@ const projectsReducer = createReducer(
     ...state,
     allTasks: action.tasks,
   })),
-  on(getProjectsSuccess, (state: ProjectsState, action) => ({
+  on(getAllProjectsSuccess, (state: ProjectsState, action) => ({
     ...state,
-    projects: action.projects,
+    allProjects: action.projects,
   })),
   on(getAllUsersSuccess, (state: ProjectsState, action) => ({
     ...state,
-    users: action.usersInfo,
+    users: action.users,
   })),
   on(setSelectedProject, (state: ProjectsState, action) => ({
     ...state,

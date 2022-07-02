@@ -21,7 +21,7 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class ProjectsListContainer {
   readonly myProjects$ = this.store$.select(getMyProjects);
   readonly searchText$ = this.store$.select(getSearchValue);
-  selectedProject$ = this.store$.select(getSelectedProject);
+  readonly selectedProject$ = this.store$.select(getSelectedProject);
 
   constructor(private store$: Store<TrackMolaState>) {}
 

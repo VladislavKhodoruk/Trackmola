@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProjectsPageService } from '../services/projectsPage.service';
 import { map, switchMap, take } from 'rxjs';
-import { Project, TaskTrack } from '@shared/interfaces/interfaces';
+import { Project, TaskTrack, User } from '@shared/interfaces/interfaces';
 
 import {
   getAllTasks,
   getAllTasksSuccess,
-  getProjects,
-  getProjectsSuccess,
+  getAllProjects,
+  getAllProjectsSuccess,
   getAllUsers,
   getAllUsersSuccess,
 } from './projects.actions';
@@ -32,15 +32,15 @@ export class ProjectsEffects {
     )
   );
 
-  public getProjects$ = createEffect(() =>
+  public getAllProjects$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getProjects),
+      ofType(getAllProjects),
       switchMap(() =>
-        this.projectsPageService.projects$.pipe(
+        this.projectsPageService.allProjects$.pipe(
           take(1),
           map((data) => {
             const projects: Project[] = data;
-            return getProjectsSuccess({ projects });
+            return getAllProjectsSuccess({ projects });
           })
         )
       )
@@ -53,7 +53,10 @@ export class ProjectsEffects {
       switchMap(() =>
         this.usersService.users$.pipe(
           take(1),
-          map((data) => getAllUsersSuccess({ usersInfo: data }))
+          map((data) => {
+            const users: User[] = data;
+            return getAllUsersSuccess({ users });
+          })
         )
       )
     )

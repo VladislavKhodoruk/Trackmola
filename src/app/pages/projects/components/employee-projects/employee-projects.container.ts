@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import {
   getAllUsers,
   clearProjectStore,
-  getProjects,
+  getAllProjects,
   getAllTasks,
 } from '@pages/projects/store/projects.actions';
 import { getSelectedProject } from '@pages/projects/store/projects.selectors';
@@ -25,7 +25,7 @@ export class EmployeeProjectsContainer implements OnDestroy {
       getAllTasks({ period: getPeriod(new Date(), 'week') })
     );
     this.store$.dispatch(getAllUsers());
-    this.store$.dispatch(getProjects());
+    this.store$.dispatch(getAllProjects());
   }
 
   ngOnDestroy(): void {
