@@ -112,7 +112,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.filteredRoleOptions = this.form.get('role')?.valueChanges.pipe(
       startWith(''),
-      map((value) => this.filterOption(value || '', [...Object.values(Roles)]))
+      map((value) => this.filterOption(value || '', Object.values(Roles)))
     );
   }
 
@@ -120,7 +120,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     const filterValue = value.toLowerCase();
 
     return options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
+      option?.toLowerCase().includes(filterValue)
     );
   }
 
