@@ -39,4 +39,11 @@ export class ProjectsService {
     const queryAll = query(ref, where('id', 'in', team));
     return collectionData(queryAll) as Observable<UserProfileInProject[]>;
   }
+
+  getCurrentProject$(projectId): Observable<Project> {
+    const projects = collection(this.firestore, 'projects');
+    const queryAll = query(projects, where('id', '==', projectId));
+    return collectionData(queryAll) as unknown as Observable<Project>;
+  }
+
 }
