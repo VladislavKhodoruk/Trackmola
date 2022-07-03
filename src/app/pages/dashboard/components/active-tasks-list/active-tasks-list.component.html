@@ -1,5 +1,5 @@
 <h2 class="active-tasks">Active tasks</h2>
-<div *ngFor="let task of allTasks">
+<div *ngFor="let task of newAllTasks" class="active-tasks-list">
   <app-active-task-item [currentTask]="task"></app-active-task-item>
 </div>
 <button (click)="get()">pressssss</button>

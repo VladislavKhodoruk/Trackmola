@@ -39,4 +39,12 @@ export interface Project {
   manager: string;
   team: string[];
   description: string;
+  color?: string;
+}
+
+export interface Tasks {
+  archived: boolean;
+  id: string;
+  name: string;
+  projectId: string;
 }

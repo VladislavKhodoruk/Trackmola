@@ -9,6 +9,7 @@ import { TaskTrack } from '@store/shared/shared.state';
 export class ActiveTaskItemComponent implements OnChanges {
   @Input() currentTask!: TaskTrack;
   task: TaskTrack;
+  color = '#0d33eb';
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.currentTask) {

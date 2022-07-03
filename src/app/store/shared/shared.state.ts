@@ -23,10 +23,13 @@ export interface LoadingStatus {
 export interface TaskTrack {
   projectId: string;
   date: Date;
-  task: string;
   comments: string;
   duration: number;
   status?: string;
+  id?: string;
+  taskId?: string;
+  userId?: string;
+  projectColor?: string;
 }
 
 export const initialState: SharedState = {

@@ -3,12 +3,34 @@
     border: var(--offset-xxs) solid var(--gray);
     border-radius: var(--offset-s);
     display: flex;
+    max-width: 59rem;
+    padding: var(--offset-d) var(--offset) var(--offset-d) var(--offset);
+    margin-bottom: var(--offset);
+
     .project-name {
       font: var(--font-calendar);
-      border:2px solid var(--rose) ;
+      border: 2px solid var(--rose) ;
+      border-radius: var(--offset-m);
+      padding: 0 var(--offset-d) 0 var(--offset-d);
     }
+
     .task-name {
       font: var(--font-calendar);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
+
+    .task-status {
+      border: 2px solid var(--primary);
+      border-radius: var(--offset-m);
+      font: var(--font-buttonSmall);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      padding: var(--offset-s) var(--offset-s) var(--offset-s) var(--offset-l);
+      position: relative;
+    }
+
   }
 }

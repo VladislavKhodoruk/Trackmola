@@ -70,7 +70,7 @@ export class SharedEffects {
     this.actions$.pipe(
       ofType(getAllProjects),
       mergeMap(() =>
-        this.project.projects$.pipe(
+        this.project.getAllProjects$().pipe(
           take(1),
           map((data) => getAllProjectsSuccess({ project: data }))
         )
