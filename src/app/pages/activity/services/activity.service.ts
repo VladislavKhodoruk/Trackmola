@@ -5,8 +5,7 @@ import {
   Firestore,
   query,
 } from '@angular/fire/firestore';
-import { Project, Task } from '@pages/projects/interfaces/interfaces';
-import { FirstAndLastDay } from '@shared/interfaces/interfaces';
+import { Period, Project, Task } from '@shared/interfaces/interfaces';
 import { where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
@@ -16,10 +15,10 @@ import { Observable } from 'rxjs';
 export class ActivityService {
   constructor(private firestore: Firestore) {}
 
-  public getTasks$(firstAndLastDay?: FirstAndLastDay): Observable<Task[]> {
+  public getTasks$(period?: Period): Observable<Task[]> {
     const ref = collection(this.firestore, 'taskTrack');
-    const firstDay = new Date(firstAndLastDay.start);
-    const lastDay = new Date(firstAndLastDay.end);
+    const firstDay: Date = new Date(period.start);
+    const lastDay: Date = new Date(period.end);
     const queryAll = query(
       ref,
       where('userId', '==', localStorage.AuthUserId),
@@ -30,7 +29,7 @@ export class ActivityService {
   }
 
   public getProjectsInTasks$(tasks: Task[]): Observable<Project[]> {
-    const projects = tasks.map((item) => item.projectId);
+    const projects: Project['id'][] = tasks.map((item) => item.projectId);
     const ref = collection(this.firestore, 'projects');
     const queryAll = query(ref, where('id', 'in', projects));
     return collectionData(queryAll) as Observable<Project[]>;

@@ -2,6 +2,9 @@
   .highcharts-legend-item .highcharts-point {
     transform: translate(calc(var(--offset-d) * -1), 3px);
   }
+  .highcharts-legend-item:hover {
+    cursor: pointer;
+  }
 }
 
 :host {
@@ -9,9 +12,9 @@
   .projects-activity {
     @include flex(flex-start, flex-start, var(--offset-l));
     flex-direction: column;
-    width: 585px;
-    height: 591px;
-    border: 1px solid #dde1f2;
+    width: 36.5rem;
+    height: 37rem;
+    border: var(--border-xs) solid var(--gray);
     border-radius: 15px;
     padding: var(--offset-m) var(--offset-l);
     &-header {

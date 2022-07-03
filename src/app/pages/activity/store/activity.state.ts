@@ -1,17 +1,14 @@
-import { Project, Task } from '@pages/projects/interfaces/interfaces';
-import { getFirstAndLastDay } from '@shared/helpers/helpers';
+import { getPeriod } from '@shared/helpers/helpers';
+import { Period, Project, Task } from '@shared/interfaces/interfaces';
 
 export interface ActivityState {
-  period: {
-    start: number;
-    end: number;
-  };
+  period: Period;
   tasks: Task[];
   projects: Project[];
 }
 
 export const activityState: ActivityState = {
-  period: getFirstAndLastDay(new Date(), 'month'),
+  period: getPeriod(new Date(), 'week'),
   tasks: [],
   projects: [],
 };

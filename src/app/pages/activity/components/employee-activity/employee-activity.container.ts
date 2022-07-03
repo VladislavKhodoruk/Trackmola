@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getActivityTasks } from '@pages/activity/store/activity.actions';
-import { getFirstAndLastDay } from '@shared/helpers/helpers';
+import { getPeriod } from '@shared/helpers/helpers';
 
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -12,7 +12,7 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class EmployeeActivityContainer {
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(
-      getActivityTasks(getFirstAndLastDay(new Date(), 'month'))
+      getActivityTasks({ period: getPeriod(new Date(), 'week') })
     );
   }
 }

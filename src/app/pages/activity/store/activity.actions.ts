@@ -1,26 +1,30 @@
 import { createAction, props } from '@ngrx/store';
-import { Project, Task } from '@pages/projects/interfaces/interfaces';
+import { Task, Project, Period } from '@shared/interfaces/interfaces';
 
-export const GET_ACTIVITY_TASKS = 'get tasks for activity';
-export const GET_ACTIVITY_TASKS_SUCCESS = 'get tasks for activity success';
-export const GET_ACTIVITY_PROJECTS = 'get projects for activity';
+export const GET_ACTIVITY_TASKS = '[Activity page] get tasks for activity';
+export const GET_ACTIVITY_TASKS_SUCCESS =
+  '[Activity page] get tasks for activity success';
+export const GET_ACTIVITY_PROJECTS =
+  '[Activity page] get projects for activity';
 export const GET_ACTIVITY_PROJECTS_SUCCESS =
-  'get projects for activity success';
+  '[Activity page] get projects for activity success';
 
 export const getActivityTasks = createAction(
   GET_ACTIVITY_TASKS,
-  props<{ start: number; end: number }>()
+  props<{ period: Period }>()
 );
+
 export const getActivityTasksSuccess = createAction(
   GET_ACTIVITY_TASKS_SUCCESS,
-  props<{ data: Task[] }>()
+  props<{ tasks: Task[] }>()
 );
+
 export const getActivityProjects = createAction(
   GET_ACTIVITY_PROJECTS,
-  props<{ data: Task[] }>()
+  props<{ tasks: Task[] }>()
 );
 
 export const getActivityProjectsSuccess = createAction(
   GET_ACTIVITY_PROJECTS_SUCCESS,
-  props<{ data: Project[] }>()
+  props<{ projects: Project[] }>()
 );

@@ -9,11 +9,11 @@ const activityReducer = createReducer(
   activityState,
   on(getActivityTasksSuccess, (state: ActivityState, action) => ({
     ...state,
-    tasks: action.data,
+    tasks: action.tasks,
   })),
   on(getActivityProjectsSuccess, (state: ActivityState, action) => ({
     ...state,
-    projects: action.data,
+    projects: action.projects,
   }))
 );
 
