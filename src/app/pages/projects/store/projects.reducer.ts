@@ -1,40 +1,29 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import {
-  clearProjectStore,
-  deleteProject,
   deleteSelectedProject,
-  getProjectsSuccess,
-  getTasksInProjectSuccess,
-  getUsersProfileInProjectSuccess,
   setSearchValue,
   setSelectedProject,
+  getAllProjectsSuccess,
+  getAllUsersSuccess,
+  clearProjectStore,
+  getAllTasksSuccess,
 } from './projects.actions';
+
 import { ProjectsState, projectsState } from './projects.state';
 
 const projectsReducer = createReducer(
   projectsState,
-  on(getProjectsSuccess, (state: ProjectsState, action) => ({
+  on(getAllTasksSuccess, (state: ProjectsState, action) => ({
     ...state,
-    myProjects: action.data,
+    allTasks: action.tasks,
   })),
-  on(deleteProject, (state: ProjectsState, action) => ({
+  on(getAllProjectsSuccess, (state: ProjectsState, action) => ({
     ...state,
-    allTasksInProjects: state.allTasksInProjects.filter(({ projectId }) => {
-      const compareProjectId = projectId !== action.id;
-      return compareProjectId;
-    }),
-    userInProjects: state.userInProjects.filter(({ projectId }) => {
-      const compareProjectId = projectId !== action.id;
-      return compareProjectId;
-    }),
+    allProjects: action.projects,
   })),
-  on(getTasksInProjectSuccess, (state: ProjectsState, action) => ({
+  on(getAllUsersSuccess, (state: ProjectsState, action) => ({
     ...state,
-    allTasksInProjects: [...state.allTasksInProjects, ...action.data],
-  })),
-  on(getUsersProfileInProjectSuccess, (state: ProjectsState, action) => ({
-    ...state,
-    userInProjects: [...state.userInProjects, ...action.usersProfiles],
+    users: action.users,
   })),
   on(setSelectedProject, (state: ProjectsState, action) => ({
     ...state,
@@ -48,7 +37,9 @@ const projectsReducer = createReducer(
     ...state,
     searchValue: action.value,
   })),
-  on(clearProjectStore, () => projectsState)
+  on(clearProjectStore, () => ({
+    ...projectsState,
+  }))
 );
 
 export function ProjectsReducer(state: ProjectsState, action: Action) {

@@ -1,56 +1,61 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProjectsService } from '@shared/services/projects.service';
-import { map, mergeMap, switchMap, take } from 'rxjs';
-import { UserProfileInProject } from '@pages/projects/interfaces/interfaces';
+import { ProjectsPageService } from '../services/projectsPage.service';
+import { map, switchMap, take } from 'rxjs';
+import { Project, TaskTrack, User } from '@shared/interfaces/interfaces';
 
 import {
-  getProjects,
-  getProjectsSuccess,
-  getTasksInProject,
-  getTasksInProjectSuccess,
-  getUsersProfileInProject,
-  getUsersProfileInProjectSuccess,
+  getAllTasks,
+  getAllTasksSuccess,
+  getAllProjects,
+  getAllProjectsSuccess,
+  getAllUsers,
+  getAllUsersSuccess,
 } from './projects.actions';
+
+import { UsersService } from '@shared/services/users.service';
 
 @Injectable()
 export class ProjectsEffects {
-  public getProjects$ = createEffect(() =>
+  public getAllTasks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getProjects),
-      switchMap(() =>
-        this.projectsService.projects$.pipe(
-          take(1),
-          map((data) => getProjectsSuccess({ data }))
-        )
-      )
-    )
-  );
-
-  public getTasksInProject$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getTasksInProject),
-      mergeMap((action) =>
-        this.projectsService.tasksInProject$(action.id).pipe(
-          take(1),
-          map((data) => getTasksInProjectSuccess({ data }))
-        )
-      )
-    )
-  );
-
-  public getUsersInProject$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getUsersProfileInProject),
-      mergeMap((action) =>
-        this.projectsService.usersInProject$(action.team).pipe(
+      ofType(getAllTasks),
+      switchMap(({ period }) =>
+        this.projectsPageService.getAllTasks$(period).pipe(
           take(1),
           map((data) => {
-            const result: UserProfileInProject[] = data.map((profile) => {
-              profile.projectId = action.id;
-              return profile;
-            });
-            return getUsersProfileInProjectSuccess({ usersProfiles: result });
+            const tasks: TaskTrack[] = data;
+            return getAllTasksSuccess({ tasks });
+          })
+        )
+      )
+    )
+  );
+
+  public getAllProjects$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAllProjects),
+      switchMap(() =>
+        this.projectsPageService.allProjects$.pipe(
+          take(1),
+          map((data) => {
+            const projects: Project[] = data;
+            return getAllProjectsSuccess({ projects });
+          })
+        )
+      )
+    )
+  );
+
+  public getAllUsers$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAllUsers),
+      switchMap(() =>
+        this.usersService.users$.pipe(
+          take(1),
+          map((data) => {
+            const users: User[] = data;
+            return getAllUsersSuccess({ users });
           })
         )
       )
@@ -59,6 +64,7 @@ export class ProjectsEffects {
 
   constructor(
     private actions$: Actions,
-    private projectsService: ProjectsService
+    private projectsPageService: ProjectsPageService,
+    private usersService: UsersService
   ) {}
 }

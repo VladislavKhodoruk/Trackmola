@@ -1,6 +1,7 @@
 $base-colors: (
   white: #ffffff,
   primary: #7353d0,
+  primary-50: #B9A9E8,
   primary-hover: #6247b1,
   primary-disabled: #886dd7,
   primary-max: #392968,
@@ -30,4 +31,5 @@ $base-colors: (
   powder: #fca4ac,
   selected-day: #d0f1e5,
   shadow-project-selected: rgba(123, 97, 255, 0.25),
+  calendar-item-selected: linear-gradient(180deg, rgba(115, 83, 208, 0) 0%, rgba(87, 41, 218, 0.22) 100%),
 );

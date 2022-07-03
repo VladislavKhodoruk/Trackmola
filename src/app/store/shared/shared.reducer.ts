@@ -4,12 +4,12 @@ import { logout } from '@pages/authorization/store/authorization.actions';
 import {
   changeDate,
   errorMessage,
-  getAllTasksSuccess,
+  getAllTasksTrackSuccess,
   getUserDataSuccess,
   loading,
   nextWeek,
   previousWeek,
-  setFirstAndLastDay,
+  setPeriod,
 } from './shared.actions';
 import { initialState, SharedState } from './shared.state';
 
@@ -29,7 +29,7 @@ const sharedReducer = createReducer(
   })),
   on(getUserDataSuccess, (state: SharedState, action) => ({
     ...state,
-    user: { ...action.data },
+    user: { ...action.profileUser },
   })),
   on(logout, (state: SharedState) => ({
     ...state,
@@ -39,44 +39,34 @@ const sharedReducer = createReducer(
     ...state,
     date: action.date,
   })),
-  on(getAllTasksSuccess, (state: SharedState, action) => ({
+  on(getAllTasksTrackSuccess, (state: SharedState, action) => ({
     ...state,
-    tasks: action.tasks,
+    tasksTrack: action.tasksTrack,
   })),
-  on(setFirstAndLastDay, (state: SharedState, action) => ({
+  on(setPeriod, (state: SharedState, action) => ({
     ...state,
-    firstAndLastDay: action.firstAndLastDay,
+    period: action.period,
   })),
   on(nextWeek, (state: SharedState, action) => {
-    if (state.firstAndLastDay) {
-      const firstDay = new Date(state.firstAndLastDay.start);
-      const lastDay = new Date(state.firstAndLastDay.end);
-      return {
-        ...state,
-        firstAndLastDay: {
-          start: new Date(firstDay.getTime() + action.value).getTime(),
-          end: new Date(lastDay.getTime() + action.value).getTime(),
-        },
-      };
-    }
+    const firstDay = state.period.start;
+    const lastDay = state.period.end;
     return {
       ...state,
+      period: {
+        start: firstDay + action.value,
+        end: lastDay + action.value,
+      },
     };
   }),
   on(previousWeek, (state: SharedState, action) => {
-    if (state.firstAndLastDay) {
-      const firstDay = new Date(state.firstAndLastDay.start);
-      const lastDay = new Date(state.firstAndLastDay.end);
-      return {
-        ...state,
-        firstAndLastDay: {
-          start: new Date(firstDay.getTime() - action.value).getTime(),
-          end: new Date(lastDay.getTime() - action.value).getTime(),
-        },
-      };
-    }
+    const firstDay = state.period.start;
+    const lastDay = state.period.end;
     return {
       ...state,
+      period: {
+        start: firstDay - action.value,
+        end: lastDay - action.value,
+      },
     };
   })
 );
