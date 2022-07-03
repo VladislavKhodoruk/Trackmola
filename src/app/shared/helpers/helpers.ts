@@ -1,14 +1,5 @@
 import { Period } from '@shared/interfaces/interfaces';
 
-export function setMidnightTime(date: Date) {
-  const currentDate = new Date(date);
-  currentDate.setUTCHours(0);
-  currentDate.setUTCMinutes(0);
-  currentDate.setUTCSeconds(0);
-  currentDate.setUTCMilliseconds(0);
-  return currentDate;
-}
-
 export function getPeriod(date: Date, type?: 'week' | 'month'): Period {
   switch (type) {
     case 'week': {
