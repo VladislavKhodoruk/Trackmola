@@ -54,13 +54,11 @@ export class TasksService {
     const now = new Date();
     const period: Period = getPeriod(now, 'week');
 
-    const userId = localStorage.getItem('AuthUserId');
-
     const queryWeekTasks = query(
       ref,
       where('date', '>', new Date(period.start)),
       where('date', '<', new Date(period.end)),
-      where('userId', '==', userId)
+      where('userId', '==', localStorage.getItem('AuthUserId'))
     );
 
     return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;

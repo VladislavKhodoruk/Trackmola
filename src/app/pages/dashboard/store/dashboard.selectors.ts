@@ -9,5 +9,5 @@ const getDashboardState =
 
 export const getWeekReportTime = createSelector(
   getDashboardState,
-  (state) => state.weekReportTime
+  ({ weekReportTime }) => weekReportTime
 );
