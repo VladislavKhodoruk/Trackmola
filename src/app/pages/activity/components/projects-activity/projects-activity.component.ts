@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BASIC_OPTIONS_ACTIVITY_CHART_PIE } from '@pages/activity/constants/constants';
-import { Project, Task } from '@shared/interfaces/interfaces';
+import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 import { Options, SeriesOptionsType } from 'highcharts';
 
 @Component({
@@ -8,37 +8,33 @@ import { Options, SeriesOptionsType } from 'highcharts';
   templateUrl: './projects-activity.component.html',
   styleUrls: ['./projects-activity.component.scss'],
 })
-export class ProjectsActivityComponent implements OnChanges {
+export class ProjectsActivityComponent {
   @Input() activityProjects: Project[];
-  @Input() activityTasks: Task[];
+  @Input() activityTasks: TaskTrack[];
 
   readonly basicOptions: Options = BASIC_OPTIONS_ACTIVITY_CHART_PIE;
 
-  seriesData: SeriesOptionsType[];
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (
-      (changes.activityProjects || changes.activityTasks) &&
-      this.activityProjects.length &&
-      this.activityTasks.length
-    ) {
-      this.seriesData = [
+  protected get seriesData(): SeriesOptionsType[] {
+    if (this.activityProjects.length && this.activityTasks.length) {
+      return [
         {
           type: 'pie',
           data: this.dataForChart(this.activityProjects, this.activityTasks),
         },
       ];
     }
+    return [];
   }
 
   private dataForChart(
     project?: Project[],
-    tasks?: Task[]
+    tasks?: TaskTrack[]
   ): [string, number][] {
     const projectsNames: { id: Project['id']; name: Project['name'] }[] =
       project.map(({ name, id }) => ({ id, name }));
+
     return projectsNames.map(({ name, id }) => {
-      const tasksInProject: Task[] = tasks.filter(
+      const tasksInProject: TaskTrack[] = tasks.filter(
         ({ projectId }) => projectId === id
       );
       const percent: number = tasksInProject.length / tasks.length;
