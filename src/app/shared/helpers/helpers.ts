@@ -5,7 +5,11 @@ export function getPeriod(date: Date, type?: 'week' | 'month'): Period {
     case 'week': {
       const dayOfWeek = date.getDay();
       const startDay = date.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
-      const startDate = new Date(date.getFullYear(), date.getMonth(), startDay);
+      const startDate = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        startDay - 7
+      );
       const endDate = new Date(
         date.getFullYear(),
         date.getMonth(),
