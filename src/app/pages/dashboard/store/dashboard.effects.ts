@@ -19,7 +19,7 @@ export class DashboardEffects {
               (result, item) => (result += item.duration),
               0
             );
-            return getWeekReportTimeSuccess({ weekReportTime: weekReportTime });
+            return getWeekReportTimeSuccess({ weekReportTime });
           })
         )
       )

@@ -4,9 +4,9 @@ import { getWeekReportTimeSuccess } from './dashboard.actions';
 
 const dashboardReducer = createReducer(
   dashboardState,
-  on(getWeekReportTimeSuccess, (state: DashboardState, action) => ({
+  on(getWeekReportTimeSuccess, (state: DashboardState, { weekReportTime }) => ({
     ...state,
-    weekReportTime: action.weekReportTime,
+    weekReportTime,
   }))
 );
 

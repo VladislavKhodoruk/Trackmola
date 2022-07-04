@@ -14,7 +14,7 @@ export class WorkingHoursChartComponent implements OnChanges {
 
   weekLeftTime: number;
   sizeReportTimeChart: number;
-  numberOfHoursInWorkingWeek = DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK;
+  numberOfHoursInWorkingWeek: number = DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.weekReportTime) {
