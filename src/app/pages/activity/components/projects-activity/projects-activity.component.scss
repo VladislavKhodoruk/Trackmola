@@ -15,7 +15,7 @@
     width: 36.5rem;
     height: 37rem;
     border: var(--border-xs) solid var(--gray);
-    border-radius: 15px;
+    border-radius: var(--border-radius-l);
     padding: var(--offset-m) var(--offset-l);
     &-header {
       font: var(--font-title);
