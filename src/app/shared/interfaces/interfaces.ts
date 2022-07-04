@@ -1,15 +1,59 @@
 import { IconifyIcon } from '@iconify/types';
 
-export interface ProfileUser {
-  type: string;
+export interface Project {
+  id: string;
+  colorProject: string;
+  description: string;
+  fullName: string;
+  managersId: string[];
   name: string;
-  photo: string;
+  taskId: string[];
+}
+
+export interface Task {
+  id: string;
+  archived: boolean;
+  name: string;
+  projectId: string;
+}
+
+export interface TaskTrack {
+  comments: string;
+  date: Date;
+  duration: number;
+  id: string;
+  projectId: string;
+  status: string;
+  taskId: string;
+  userId: string;
+}
+
+export interface User {
+  birthday: Date;
   email: string;
-  position: string;
+  fullName: string;
+  id: string;
   location: string;
+  photo: string;
+  position: string;
   qualification: string;
-  rate: string;
+  role: string;
   startDate: Date;
+  timeZone: string;
+}
+
+export interface ProfileUser {
+  id: string;
+  email: string;
+  location: string;
+  birthday: Date;
+  fullName: string;
+  photo: string;
+  position: string;
+  qualification: string;
+  role: string;
+  startDate: Date;
+  timeZone: string;
 }
 
 export interface NavigationItem {
@@ -28,8 +72,9 @@ export interface Week {
   days: Day[];
 }
 
-export interface FirstAndLastDayOfWeek {
-  [key: string]: Date;
+export interface Period {
+  start: number;
+  end: number;
 }
 
 export interface Project {

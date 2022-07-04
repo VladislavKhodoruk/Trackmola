@@ -4,7 +4,7 @@
   .button {
     @include flex(center, center, var(--offset));
     padding: 0 var(--offset);
-    height: 4rem;
+    height: 3rem;
     outline: none;
     border: none;
     border-radius: var(--border-radius-m);
@@ -34,6 +34,15 @@
         color: var(--primary-disabled);
       }
     }
+
+    &-m {
+      padding: 0 3rem;
+    }
+
+    &-s {
+      padding: 0 0.75rem;
+    }
+
     &-icon {
       @include flex(flex-start, flex-start);
     }
@@ -51,5 +60,54 @@
     &:disabled {
       cursor: not-allowed;
     }
+  }
+
+  .task-status {
+    padding: 0 0.5rem;
+
+    height: 2rem;
+
+    @include flex(center, center);
+
+    border: none;
+    border-radius: var(--border-radius-l);
+
+    font-size: var(--font-main);
+    color: var(--primary);
+
+    cursor: pointer;
+
+    user-select: none;
+
+    &:hover {
+      background-color: var(--gray4);
+    }
+
+    &-icon {
+      display: none;
+    }
+
+    &-checked {
+      color: var(--white);
+      background-color: var(--primary);
+
+      &:hover {
+        background-color: var(--primary-hover);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.75;
+    }
+  }
+
+  .task-status-checked .task-status-icon {
+    display: flex;
+    margin-right: 0.25rem;
+    color: var(--white);
+  }
+
+  .icon {
+    display: flex;
   }
 }

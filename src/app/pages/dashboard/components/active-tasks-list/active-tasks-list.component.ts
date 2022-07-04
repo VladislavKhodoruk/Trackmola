@@ -33,11 +33,11 @@ export class ActiveTasksListComponent implements OnChanges {
     if (changes.allTasks || changes.allProjects) {
       this.newAllTasks = this.allTasks.map((i) => ({
         projectId: searchName(i.projectId, this.allProjects),
-        projectColor: searchProjectColor(i.projectId, this.allProjects),
         taskId: this.serv$.getTaskName(i.taskId),
         userId: i.userId,
         status: i.status,
         date: i.date,
+        duration: i.duration,
       }));
     }
   }
@@ -45,3 +45,6 @@ export class ActiveTasksListComponent implements OnChanges {
     console.log(this.newAllTasks, this.allTasks);
   }
 }
+
+
+// projectColor: searchProjectColor(i.projectId, this.allProjects),

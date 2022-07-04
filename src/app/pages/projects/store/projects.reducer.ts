@@ -1,54 +1,45 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import {
-  clearProjectStore,
-  deleteProject,
   deleteSelectedProject,
-  getProjectsSuccess,
-  getTasksInProjectSuccess,
-  getUsersProfileInProjectSuccess,
   setSearchValue,
   setSelectedProject,
+  getAllProjectsSuccess,
+  getAllUsersSuccess,
+  clearProjectStore,
+  getAllTasksSuccess,
 } from './projects.actions';
+
 import { ProjectsState, projectsState } from './projects.state';
 
 const projectsReducer = createReducer(
   projectsState,
-  on(getProjectsSuccess, (state: ProjectsState, action) => ({
+  on(getAllTasksSuccess, (state: ProjectsState, { tasks }) => ({
     ...state,
-    myProjects: action.data,
+    allTasks: tasks,
   })),
-  on(deleteProject, (state: ProjectsState, action) => ({
+  on(getAllProjectsSuccess, (state: ProjectsState, { projects }) => ({
     ...state,
-    allTasksInProjects: state.allTasksInProjects.filter(({ projectId }) => {
-      const compareProjectId = projectId !== action.id;
-      return compareProjectId;
-    }),
-    userInProjects: state.userInProjects.filter(({ projectId }) => {
-      const compareProjectId = projectId !== action.id;
-      return compareProjectId;
-    }),
+    allProjects: projects,
   })),
-  on(getTasksInProjectSuccess, (state: ProjectsState, action) => ({
+  on(getAllUsersSuccess, (state: ProjectsState, { users }) => ({
     ...state,
-    allTasksInProjects: [...state.allTasksInProjects, ...action.data],
+    users,
   })),
-  on(getUsersProfileInProjectSuccess, (state: ProjectsState, action) => ({
+  on(setSelectedProject, (state: ProjectsState, { project }) => ({
     ...state,
-    userInProjects: [...state.userInProjects, ...action.usersProfiles],
-  })),
-  on(setSelectedProject, (state: ProjectsState, action) => ({
-    ...state,
-    selectedProject: action.project,
+    selectedProject: project,
   })),
   on(deleteSelectedProject, (state: ProjectsState) => ({
     ...state,
     selectedProject: projectsState.selectedProject,
   })),
-  on(setSearchValue, (state: ProjectsState, action) => ({
+  on(setSearchValue, (state: ProjectsState, { value }) => ({
     ...state,
-    searchValue: action.value,
+    searchValue: value,
   })),
-  on(clearProjectStore, () => projectsState)
+  on(clearProjectStore, () => ({
+    ...projectsState,
+  }))
 );
 
 export function ProjectsReducer(state: ProjectsState, action: Action) {

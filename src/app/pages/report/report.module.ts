@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { ReportRoutes } from './report.router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { PREPORT_STATE_NAME } from './store/report.selectors';
+import { REPORT_STATE_NAME } from './store/report.selectors';
 import { ReportReducer } from './store/report.reducer';
 import { AdminReportComponent } from './components/admin-report/admin-report.component';
 import { CtoReportComponent } from './components/cto-report/cto-report.component';
@@ -14,8 +14,10 @@ import { ReportContainer } from './layout/report.container';
 import { ReportComponent } from './layout/report.component';
 import { IconModule } from '@visurel/iconify-angular';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
-import { NavigatinonCalendarModule } from '@shared/components/navigatinon-calendar/navigatinon-calendar.module';
+import { NavigationCalendarModule } from '@shared/components/navigatinon-calendar/navigation-calendar.module';
 import { ButtonModule } from '@shared/components/button/button.module';
+import { ReportInputModule } from './components/report-input/report-input.module';
+import { ReportEffects } from './store/report.effects';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,13 @@ import { ButtonModule } from '@shared/components/button/button.module';
   imports: [
     CommonModule,
     IconModule,
-    NavigatinonCalendarModule,
+    NavigationCalendarModule,
     ButtonModule,
-    EffectsModule.forFeature([]),
-    StoreModule.forFeature(PREPORT_STATE_NAME, ReportReducer),
+    EffectsModule.forFeature([ReportEffects]),
+    StoreModule.forFeature(REPORT_STATE_NAME, ReportReducer),
     RouterModule.forChild(ReportRoutes),
     CalendarModule,
+    ReportInputModule,
   ],
   exports: [RouterModule],
 })
