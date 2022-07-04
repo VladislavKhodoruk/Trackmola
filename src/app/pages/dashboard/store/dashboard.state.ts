@@ -1,5 +1,7 @@
 export interface DashboardState {
-  [key: string]: string;
+  weekReportTime: number;
 }
 
-export const dashboardState: DashboardState = {};
+export const dashboardState: DashboardState = {
+  weekReportTime: 0,
+};

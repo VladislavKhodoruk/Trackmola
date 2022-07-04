@@ -12,6 +12,8 @@ import {
 } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from '@pages/report/interfaces/interfaces';
+import { getPeriod } from '@shared/helpers/helpers';
+import { Period } from '@shared/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -44,5 +46,21 @@ export class TasksService {
     taskTrack.id = refTaskTrack.id;
 
     setDoc(refTaskTrack, taskTrack);
+  }
+
+  get getWeekTasks$(): Observable<TaskTrack[]> {
+    const ref = collection(this.firestore, 'taskTrack');
+
+    const now = new Date();
+    const period: Period = getPeriod(now, 'week');
+
+    const queryWeekTasks = query(
+      ref,
+      where('date', '>', new Date(period.start)),
+      where('date', '<', new Date(period.end)),
+      where('userId', '==', localStorage.getItem('AuthUserId'))
+    );
+
+    return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
   }
 }

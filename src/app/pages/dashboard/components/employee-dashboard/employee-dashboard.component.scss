@@ -1,0 +1,23 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+
+  .working-hours {
+    padding: var(--offset) var(--offset-l);
+
+    width: 32rem;
+    height: 28rem;
+
+    border: $border-input;
+    border-radius: var(--border-radius-l);
+
+    &-title {
+      margin-bottom: var(--offset);
+      font: var(--font-title);
+    }
+
+    &-main {
+      padding: 0 var(--offset-ml);
+    }
+  }
+}
