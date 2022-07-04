@@ -18,10 +18,7 @@ export class ReportEffects {
       switchMap(() =>
         this.tasksService.allTasks$.pipe(
           take(1),
-          map((data) => {
-            const allTasks = data;
-            return getAllTasksSuccess({ allTasks });
-          })
+          map((allTasks) => getAllTasksSuccess({ allTasks }))
         )
       )
     )
@@ -33,7 +30,7 @@ export class ReportEffects {
       switchMap(() =>
         this.projectsService.allProjects$.pipe(
           take(1),
-          map((data) => getAllProjectsSuccess({ allProjects: data }))
+          map((allProjects) => getAllProjectsSuccess({ allProjects }))
         )
       )
     )

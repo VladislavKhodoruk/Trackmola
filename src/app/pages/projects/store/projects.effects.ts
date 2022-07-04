@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProjectsPageService } from '../services/projectsPage.service';
 import { map, switchMap, take } from 'rxjs';
-import { Project, TaskTrack, User } from '@shared/interfaces/interfaces';
 
 import {
   getAllTasks,
@@ -23,10 +22,7 @@ export class ProjectsEffects {
       switchMap(({ period }) =>
         this.projectsPageService.getAllTasks$(period).pipe(
           take(1),
-          map((data) => {
-            const tasks: TaskTrack[] = data;
-            return getAllTasksSuccess({ tasks });
-          })
+          map((tasks) => getAllTasksSuccess({ tasks }))
         )
       )
     )
@@ -38,10 +34,7 @@ export class ProjectsEffects {
       switchMap(() =>
         this.projectsPageService.allProjects$.pipe(
           take(1),
-          map((data) => {
-            const projects: Project[] = data;
-            return getAllProjectsSuccess({ projects });
-          })
+          map((projects) => getAllProjectsSuccess({ projects }))
         )
       )
     )
@@ -53,10 +46,7 @@ export class ProjectsEffects {
       switchMap(() =>
         this.usersService.users$.pipe(
           take(1),
-          map((data) => {
-            const users: User[] = data;
-            return getAllUsersSuccess({ users });
-          })
+          map((users) => getAllUsersSuccess({ users }))
         )
       )
     )

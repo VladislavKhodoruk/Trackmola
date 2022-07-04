@@ -13,29 +13,29 @@ import { ProjectsState, projectsState } from './projects.state';
 
 const projectsReducer = createReducer(
   projectsState,
-  on(getAllTasksSuccess, (state: ProjectsState, action) => ({
+  on(getAllTasksSuccess, (state: ProjectsState, { tasks }) => ({
     ...state,
-    allTasks: action.tasks,
+    allTasks: tasks,
   })),
-  on(getAllProjectsSuccess, (state: ProjectsState, action) => ({
+  on(getAllProjectsSuccess, (state: ProjectsState, { projects }) => ({
     ...state,
-    allProjects: action.projects,
+    allProjects: projects,
   })),
-  on(getAllUsersSuccess, (state: ProjectsState, action) => ({
+  on(getAllUsersSuccess, (state: ProjectsState, { users }) => ({
     ...state,
-    users: action.users,
+    users,
   })),
-  on(setSelectedProject, (state: ProjectsState, action) => ({
+  on(setSelectedProject, (state: ProjectsState, { project }) => ({
     ...state,
-    selectedProject: action.project,
+    selectedProject: project,
   })),
   on(deleteSelectedProject, (state: ProjectsState) => ({
     ...state,
     selectedProject: projectsState.selectedProject,
   })),
-  on(setSearchValue, (state: ProjectsState, action) => ({
+  on(setSearchValue, (state: ProjectsState, { value }) => ({
     ...state,
-    searchValue: action.value,
+    searchValue: value,
   })),
   on(clearProjectStore, () => ({
     ...projectsState,
