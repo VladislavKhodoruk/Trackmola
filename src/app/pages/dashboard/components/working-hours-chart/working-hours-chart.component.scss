@@ -57,11 +57,19 @@
         color: var(--gray4);
       }
 
+      &-left:first-letter {
+        text-transform: uppercase;
+      }
+
       &-reported {
         margin-left: auto;
         font: var(--font-blocks);
         font-weight: 300;
         color: var(--primary);
+      }
+
+      &-reported:first-letter {
+        text-transform: uppercase;
       }
     }
   }
