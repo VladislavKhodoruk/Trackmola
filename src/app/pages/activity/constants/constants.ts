@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Options, Point } from 'highcharts';
 
-const ACTIVITY_CHART_PIE_COLORS = [
+const ACTIVITY_CHART_PIE_COLORS: string[] = [
   'var(--aqua)',
   'var(--rose)',
   'var(--galaxy)',

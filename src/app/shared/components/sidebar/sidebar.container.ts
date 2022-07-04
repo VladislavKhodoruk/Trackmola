@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { getNavigationElems } from '@shared/constants/constants';
+import { NavigationItem } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-sidebar-container',
@@ -9,6 +10,8 @@ import { getNavigationElems } from '@shared/constants/constants';
   ></app-sidebar>`,
 })
 export class SidebarContainer {
-  userPhoto = localStorage.getItem('AuthUserPhoto');
-  navigationItems = getNavigationElems(localStorage.getItem('AuthUserType'));
+  readonly userPhoto: string = localStorage.getItem('AuthUserPhoto');
+  readonly navigationItems: NavigationItem[] = getNavigationElems(
+    localStorage.getItem('AuthUserType')
+  );
 }
