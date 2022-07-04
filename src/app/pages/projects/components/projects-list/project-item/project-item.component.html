@@ -1,7 +1,7 @@
 <div class="projects-list-item-header">
   <div
     class="projects-list-item-header-title"
-    [ngStyle]="{ 'border-color': [project.color] }"
+    [ngStyle]="{ 'border-color': project.color }"
   >
     {{ project.name }}
   </div>
@@ -13,5 +13,5 @@
 </div>
 <p class="projects-list-item-name">{{ project.fullName }}</p>
 <p class="projects-list-item-description">
-  {{ activeTasksInProject?.length || 0 }} active tasks
+  {{ activeTasksInProject.length }} active tasks
 </p>
