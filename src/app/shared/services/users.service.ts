@@ -48,4 +48,9 @@ export class UsersService {
       })
     );
   }
+
+  public currentUserProfileById$(id: string): Observable<ProfileUser | null> {
+    const ref = doc(this.firestore, 'users', id);
+    return docData(ref) as Observable<ProfileUser>;
+  }
 }

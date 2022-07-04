@@ -8,6 +8,7 @@ import { TaskTrack } from '@store/shared/shared.state';
 })
 export class ActiveTaskItemComponent implements OnChanges {
   @Input() currentTask!: TaskTrack;
+  @Input() index!: number;
   task: TaskTrack;
   color = '#0d33eb';
 

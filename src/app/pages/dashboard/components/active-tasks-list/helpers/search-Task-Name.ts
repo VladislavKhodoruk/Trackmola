@@ -7,10 +7,12 @@ import { map } from 'rxjs';
 })
 export class SearchTaskName {
   constructor(private service: TasksService) {}
-  getTaskName(id) {
-    return this.service
+  getTaskName(id: string) {
+    let name: string;
+    this.service
       .getCurrentTaskById(id)
-      .pipe(map((data) => data.name + 'hello'))
-      .subscribe((x) => x);
+      .pipe(map((data) => data))
+      .subscribe((x) => console.log(x));
+    return name;
   }
 }

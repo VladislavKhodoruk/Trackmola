@@ -23,8 +23,8 @@ export interface LoadingStatus {
 export interface TaskTrack {
   projectId: string;
   date: Date;
-  comments: string;
-  duration: number;
+  comments?: string;
+  duration?: number;
   status?: string;
   id?: string;
   taskId?: string;

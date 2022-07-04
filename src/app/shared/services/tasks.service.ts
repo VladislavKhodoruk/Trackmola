@@ -27,9 +27,9 @@ export class TasksService {
     return collectionData(queryAllTasks) as Observable<TaskTrack[]>;
   }
 
-  public getCurrentTaskById(id): Observable<Tasks> {
+  public getCurrentTaskById(id: string): Observable<Tasks[]> {
     const ref = collection(this.firestore, 'tasks');
     const queryAll = query(ref, where('id', '==', id));
-    return collectionData(queryAll) as unknown as Observable<Tasks>;
+    return collectionData(queryAll) as Observable<Tasks[]>;
   }
 }

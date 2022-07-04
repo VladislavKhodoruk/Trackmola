@@ -12,6 +12,7 @@ import {
   searchProjectColor,
 } from '@pages/dashboard/components/active-tasks-list/helpers/search-Project-Name';
 import { SearchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-Task-Name';
+import { SearchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-User-Foto';
 
 @Component({
   selector: 'app-active-tasks-list',
@@ -23,24 +24,24 @@ export class ActiveTasksListComponent implements OnChanges {
   @Input() allTasks!: TaskTrack[];
   @Input() allProjects!: Project[];
   newAllTasks!: TaskTrack[];
-  constructor(private serv: SearchTaskName) {}
+  constructor(
+    private serv$: SearchTaskName,
+    private servicePhoto: SearchUserPhoto
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.allTasks || changes.allProjects) {
       this.newAllTasks = this.allTasks.map((i) => ({
         projectId: searchName(i.projectId, this.allProjects),
         projectColor: searchProjectColor(i.projectId, this.allProjects),
-        taskId: this.serv.getTaskName(i.taskId),
+        taskId: this.serv$.getTaskName(i.taskId),
         userId: i.userId,
-        date: i.date,
-        comments: i.comments,
-        duration: i.duration,
         status: i.status,
+        date: i.date,
       }));
     }
   }
-
   get() {
-    console.log(this.allTasks, this.newAllTasks, this.allProjects);
+    console.log(this.newAllTasks, this.allTasks);
   }
 }
