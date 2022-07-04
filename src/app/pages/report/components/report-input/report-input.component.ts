@@ -17,7 +17,7 @@ import {
   onRightIndex,
 } from '@pages/report/helpers/report-input-helpers';
 import { Task } from '@pages/report/interfaces/interfaces';
-import { Project } from '@pages/projects/interfaces/interfaces';
+import { Project } from '@shared/interfaces/interfaces';
 import { TaskTrack } from '@store/shared/shared.state';
 import { Timestamp } from 'firebase/firestore';
 import { TasksService } from '@shared/services/tasks.service';
@@ -112,7 +112,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.filteredRoleOptions = this.form.get('role')?.valueChanges.pipe(
       startWith(''),
-      map((value) => this.filterOption(value || '', [...Object.values(Roles)]))
+      map((value) => this.filterOption(value || '', Object.values(Roles)))
     );
   }
 
@@ -120,7 +120,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     const filterValue = value.toLowerCase();
 
     return options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
+      option?.toLowerCase().includes(filterValue)
     );
   }
 

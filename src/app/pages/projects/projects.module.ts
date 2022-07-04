@@ -15,7 +15,6 @@ import { ManagerProjectsComponent } from './components/manager-projects/manager-
 import { InputSearchComponent } from './components/projects-list/input-search/input-search.component';
 import { InputSearchContainer } from './components/projects-list/input-search/input-search.container';
 import { ProjectItemComponent } from './components/projects-list/project-item/project-item.component';
-import { ProjectItemContainer } from './components/projects-list/project-item/project-item.container';
 import { ProjectsListComponent } from './components/projects-list/projects-list.component';
 import { ProjectsListContainer } from './components/projects-list/projects-list.container';
 import { ProjectsComponent } from './layout/projects.component';
@@ -40,7 +39,6 @@ import { PROJECTS_STATE_NAME } from './store/projects.selectors';
     InputSearchComponent,
     InputSearchContainer,
     ProjectItemComponent,
-    ProjectItemContainer,
     SearchProjectsPipe,
   ],
   imports: [

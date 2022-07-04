@@ -1,13 +1,18 @@
 <header class="projects-header">
   <h2 class="projects-header-title">Projects</h2>
-  <div class="projects-header-item" *ngIf="selectedProject.id">
+  <div class="projects-header-item" *ngIf="selectedProject">
     <ic-icon
       class="icon"
       width="2rem"
       height="2rem"
       [icon]="iconAngleRight"
     ></ic-icon>
-    <div class="projects-header-item-title">{{ selectedProject.name }}</div>
+    <div
+      class="projects-header-item-title"
+      [ngStyle]="{ 'border-color': selectedProject.color }"
+    >
+      {{ selectedProject.name }}
+    </div>
     <div class="projects-header-item-name">{{ selectedProject.fullName }}</div>
   </div>
 </header>

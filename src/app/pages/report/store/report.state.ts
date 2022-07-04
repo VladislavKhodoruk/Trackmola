@@ -1,4 +1,4 @@
-import { Project } from '@pages/projects/interfaces/interfaces';
+import { Project } from '@shared/interfaces/interfaces';
 import { Task } from '@pages/report/interfaces/interfaces';
 
 export interface ReportState {

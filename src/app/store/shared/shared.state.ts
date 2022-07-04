@@ -1,16 +1,14 @@
-import { setMidnightTime } from '@shared/helpers/helpers';
-import {
-  FirstAndLastDayOfWeek,
-  ProfileUser,
-} from '@shared/interfaces/interfaces';
+import { getPeriod } from '@shared/helpers/helpers';
+import { Period, User } from '@shared/interfaces/interfaces';
 import { Timestamp } from 'firebase/firestore';
 
 export interface SharedState {
   loadingStatus: LoadingStatus;
-  user: ProfileUser | null;
+  user: User | null;
   date: Date;
   tasksTrack: TaskTrack[];
-  firstAndLastDayOfWeek?: FirstAndLastDayOfWeek;
+  period: Period;
+  usersInProjects: User[];
 }
 
 export interface LoadingStatus {
@@ -37,6 +35,12 @@ export const initialState: SharedState = {
     errorMessage: '',
   },
   user: null,
-  date: setMidnightTime(new Date()),
+  date: new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
+  ),
   tasksTrack: [],
+  usersInProjects: [],
+  period: getPeriod(new Date(), 'week'),
 };

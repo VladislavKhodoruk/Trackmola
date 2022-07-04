@@ -1,13 +1,13 @@
-<div *ngIf="photos.length" class="photos">
+<div *ngIf="users.length" class="photos">
   <img
-    *ngFor="let photo of photos; index as i"
+    *ngFor="let user of users; index as i"
     class="photos-photo"
     [ngStyle]="{
       'z-index': i,
       'width.rem': [size],
       'height.rem': [size]
     }"
-    src="{{ photo || defaultPhoto }}"
+    src="{{ user.photo || defaultPhoto }}"
     alt="photo"
   />
 </div>
