@@ -1,53 +1,51 @@
 import { createAction, props } from '@ngrx/store';
 import {
+  Period,
   Project,
-  UserProfileInProject,
-  Task,
-} from '@pages/projects/interfaces/interfaces';
+  TaskTrack,
+  User,
+} from '@shared/interfaces/interfaces';
 
-export const GET_PROJECTS = 'get projects';
-export const GET_PROJECTS_SUCCESS = 'get projects success';
-export const DELETE_PROJECT = 'delete project';
-export const GET_TASKS_IN_PROJECT = 'get tasks in project';
-export const GET_TASKS_IN_PROJECT_SUCCESS = 'get tasks in project success';
-export const GET_USERS_PROFILE_IN_PROJECT = 'get users profile in project';
-export const GET_USERS_PROFILE_IN_PROJECT_SUCCESS =
-  'get users profile in project success';
-export const SET_SELECTED_PROJECT = 'set selected project';
-export const DELETE_SELECTED_PROJECT = 'delete selected project';
-export const SET_SEARCH_VALUE = 'set search value';
-export const CLEAR_PROJECT_STORE = 'clear project store';
+export const GET_ALL_TASKS = '[Projects Page] get all tasks';
+export const GET_ALL_TASKS_SUCCESS = '[Projects Page] get all tasks success';
 
-export const getProjects = createAction(GET_PROJECTS);
+export const GET_ALL_PROJECTS = '[Projects Page] get all projects';
+export const GET_ALL_PROJECTS_SUCCESS =
+  '[Projects Page] get all projects success';
 
-export const getProjectsSuccess = createAction(
-  GET_PROJECTS_SUCCESS,
-  props<{ data: Project[] }>()
+export const GET_ALL_USERS = '[Projects Page] get users';
+export const GET_ALL_USERS_SUCCESS = '[Projects Page] get users success';
+
+export const SET_SELECTED_PROJECT = '[Projects Page] set selected project';
+export const DELETE_SELECTED_PROJECT =
+  '[Projects Page] delete selected project';
+
+export const SET_SEARCH_VALUE = '[Projects Page] set search value';
+
+export const CLEAR_PROJECT_STORE = '[Projects Page] clear project store';
+
+export const getAllTasks = createAction(
+  GET_ALL_TASKS,
+  props<{ period: Period }>()
 );
 
-export const deleteProject = createAction(
-  DELETE_PROJECT,
-  props<{ id: string }>()
+export const getAllTasksSuccess = createAction(
+  GET_ALL_TASKS_SUCCESS,
+  props<{ tasks: TaskTrack[] }>()
 );
 
-export const getTasksInProject = createAction(
-  GET_TASKS_IN_PROJECT,
-  props<{ id: string }>()
+export const getAllProjects = createAction(GET_ALL_PROJECTS);
+
+export const getAllProjectsSuccess = createAction(
+  GET_ALL_PROJECTS_SUCCESS,
+  props<{ projects: Project[] }>()
 );
 
-export const getTasksInProjectSuccess = createAction(
-  GET_TASKS_IN_PROJECT_SUCCESS,
-  props<{ data: Task[] }>()
-);
+export const getAllUsers = createAction(GET_ALL_USERS);
 
-export const getUsersProfileInProject = createAction(
-  GET_USERS_PROFILE_IN_PROJECT,
-  props<{ id: string; team: string[] }>()
-);
-
-export const getUsersProfileInProjectSuccess = createAction(
-  GET_USERS_PROFILE_IN_PROJECT_SUCCESS,
-  props<{ usersProfiles: UserProfileInProject[] }>()
+export const getAllUsersSuccess = createAction(
+  GET_ALL_USERS_SUCCESS,
+  props<{ users: User[] }>()
 );
 
 export const setSelectedProject = createAction(

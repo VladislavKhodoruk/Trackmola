@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { User } from '@shared/interfaces/interfaces';
 import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import {
@@ -24,12 +25,13 @@ export class SharedEffects {
         this.usersService.currentUserProfile$.pipe(
           take(1),
           map((data) => {
+            const profileUser: User = data;
             this.store$.dispatch(loading({ status: false }));
             this.store$.dispatch(errorMessage({ message: '', loaded: true }));
-            localStorage.setItem('AuthUserType', data.type);
-            localStorage.setItem('AuthUserPhoto', data.photo);
-            localStorage.setItem('AuthUserRole', data.qualification);
-            return getUserDataSuccess({ data });
+            localStorage.setItem('AuthUserType', profileUser.role);
+            localStorage.setItem('AuthUserPhoto', profileUser.photo);
+            localStorage.setItem('AuthUserRole', profileUser.qualification);
+            return getUserDataSuccess({ profileUser });
           }),
           catchError(() => {
             this.store$.dispatch(loading({ status: false }));

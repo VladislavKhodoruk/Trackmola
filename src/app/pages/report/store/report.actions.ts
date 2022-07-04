@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Project } from '@pages/projects/interfaces/interfaces';
+import { Project } from '@shared/interfaces/interfaces';
 import { Task } from '@pages/report/interfaces/interfaces';
 
 export const GET_ALL_TASKS_DATA = 'get all tasks data';

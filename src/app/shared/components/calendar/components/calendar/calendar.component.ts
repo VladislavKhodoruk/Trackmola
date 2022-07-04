@@ -9,7 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { TaskTrack } from '@store/shared/shared.state';
-import { Day, Week } from '@shared/interfaces/interfaces';
+import { Day, Period, Week } from '@shared/interfaces/interfaces';
 import {
   NAMES_OF_THE_DAYS_OF_THE_WEEK,
   NUMBER_OF_DAYS_IN_A_WEEK,
@@ -25,7 +25,7 @@ import {
 export class CalendarComponent implements OnChanges, OnDestroy {
   @Input() date!: Date | null;
   @Input() allTasks!: TaskTrack[] | null;
-  @Input() firstDayOfWeek!: Date | null;
+  @Input() firstDay!: Period['start'];
 
   @Output() changeDate = new EventEmitter<Date>();
 
@@ -41,8 +41,8 @@ export class CalendarComponent implements OnChanges, OnDestroy {
       }
       this.generateWeeks(this.date);
     }
-    if (changes.firstDayOfWeek) {
-      this.generateWeeks(this.firstDayOfWeek);
+    if (changes.firstDay) {
+      this.generateWeeks(new Date(this.firstDay));
     }
   }
 

@@ -1,4 +1,4 @@
-import { Project } from '@pages/projects/interfaces/interfaces';
+import { Project } from '@shared/interfaces/interfaces';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -14,11 +14,11 @@ export class SearchProjectsPipe implements PipeTransform {
         .toLocaleLowerCase()
         .includes(search.toLocaleLowerCase());
 
-      const compareDescriprion = description
+      const compareDescription = description
         .toLocaleLowerCase()
         .includes(search.toLocaleLowerCase());
 
-      return compareName || compareDescriprion;
+      return compareName || compareDescription;
     });
   }
 }

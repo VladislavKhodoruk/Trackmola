@@ -7,31 +7,24 @@ export const PROJECTS_STATE_NAME = StateName.Projects;
 const getProjectsState =
   createFeatureSelector<ProjectsState>(PROJECTS_STATE_NAME);
 
-export const getMyProgects = createSelector(
+export const getMyProjects = createSelector(getProjectsState, (state) => {
+  if (state.allTasks) {
+    const myProjects = state.allTasks
+      .filter(({ userId }) => userId === localStorage.AuthUserId)
+      .map((task) => task.projectId);
+
+    return state.allProjects.filter((project) =>
+      myProjects.includes(project.id)
+    );
+  }
+});
+
+export const getAllTasks = createSelector(
   getProjectsState,
-  ({ myProjects }) => myProjects
+  ({ allTasks }) => allTasks
 );
 
-export const getAllTasksInProject = (props: { project: string }) =>
-  createSelector(getProjectsState, (state) =>
-    state.allTasksInProjects.filter(({ projectId, status }) => {
-      const projectCompare = projectId === props.project;
-      const statusCompare =
-        status === TaskStatus.InProgress || status === TaskStatus.Open;
-
-      return projectCompare && statusCompare;
-    })
-  );
-
-export const getUsersPhotoInProject = (props: { project: string }) =>
-  createSelector(getProjectsState, (state) =>
-    state.userInProjects
-      .filter(({ projectId }) => {
-        const projectCompare = projectId === props.project;
-        return projectCompare;
-      })
-      .map(({ photo }) => photo)
-  );
+export const getUsers = createSelector(getProjectsState, ({ users }) => users);
 
 export const getSelectedProject = createSelector(
   getProjectsState,

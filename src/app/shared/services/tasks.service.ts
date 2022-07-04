@@ -12,10 +12,8 @@ import {
 } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from '@pages/report/interfaces/interfaces';
-import {
-  NUMBER_OF_DAYS_IN_A_WEEK,
-  ONE_DAY_IN_SECONDS,
-} from '@shared/constants/constants';
+import { getPeriod } from '@shared/helpers/helpers';
+import { Period } from '@shared/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -54,26 +52,14 @@ export class TasksService {
     const ref = collection(this.firestore, 'taskTrack');
 
     const now = new Date();
-    now.setHours(0);
-    now.setMinutes(0);
-    now.setSeconds(0);
-    now.setMilliseconds(0);
-
-    const firstDayOfWeek = new Date(
-      now.getTime() - ONE_DAY_IN_SECONDS * (now.getDay() - 1)
-    );
-
-    const lastDayOfWeek = new Date(
-      now.getTime() +
-        ONE_DAY_IN_SECONDS * (NUMBER_OF_DAYS_IN_A_WEEK - now.getDay())
-    );
+    const period: Period = getPeriod(now, 'week');
 
     const userId = localStorage.getItem('AuthUserId');
 
     const queryWeekTasks = query(
       ref,
-      where('date', '>', firstDayOfWeek),
-      where('date', '<', lastDayOfWeek),
+      where('date', '>', new Date(period.start)),
+      where('date', '<', new Date(period.end)),
       where('userId', '==', userId)
     );
 

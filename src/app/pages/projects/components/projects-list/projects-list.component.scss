@@ -34,9 +34,19 @@
     }
 
     &-item {
+      @include flex(flex-start, center, var(--offset-d));
+      flex-direction: column;
+      padding: var(--offset) var(--offset-m);
       width: 100%;
       max-width: 21.5rem;
+      height: 8.5rem;
       border-radius: var(--border-radius);
+      border: var(--border-xxs) solid var(--gray);
+      background-color: var(--white);
+      scroll-snap-align: start;
+      scroll-margin-top: var(--offset-d);
+      cursor: pointer;
+      width: 100%;
 
       &-selected {
         box-shadow: #{$shadow-selected};
