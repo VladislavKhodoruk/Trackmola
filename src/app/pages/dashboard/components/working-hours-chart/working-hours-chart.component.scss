@@ -4,7 +4,7 @@
 
   .box {
     --size-left: calc(((18/5) * var(--size-report) - 90)*1deg);
-    padding: 2.5rem;
+    padding: var(--offset-dl);
 
     width: 21rem;
     height: 21rem;
@@ -55,10 +55,10 @@
         margin-left: auto;
         font: var(--font-blocks);
         color: var(--gray4);
-      }
 
-      &-left:first-letter {
-        text-transform: uppercase;
+        &:first-letter {
+          text-transform: uppercase;
+        }
       }
 
       &-reported {
@@ -66,10 +66,10 @@
         font: var(--font-blocks);
         font-weight: 300;
         color: var(--primary);
-      }
 
-      &-reported:first-letter {
-        text-transform: uppercase;
+        &:first-letter {
+          text-transform: uppercase;
+        }
       }
     }
   }
