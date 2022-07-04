@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Project, Task } from '@shared/interfaces/interfaces';
 import { map, switchMap, take } from 'rxjs';
 
 import { ActivityService } from '../services/activity.service';
@@ -21,8 +20,7 @@ export class ActivityEffects {
       switchMap(({ period }) =>
         this.activityService.getTasks$(period).pipe(
           take(1),
-          map((data) => {
-            const tasks: Task[] = data;
+          map((tasks) => {
             this.store$.dispatch(getActivityProjects({ tasks }));
             return getActivityTasksSuccess({ tasks });
           })
@@ -37,10 +35,7 @@ export class ActivityEffects {
       switchMap(({ tasks }) =>
         this.activityService.getProjectsInTasks$(tasks).pipe(
           take(1),
-          map((data) => {
-            const projects: Project[] = data;
-            return getActivityProjectsSuccess({ projects });
-          })
+          map((projects) => getActivityProjectsSuccess({ projects }))
         )
       )
     )

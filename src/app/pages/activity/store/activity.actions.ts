@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Task, Project, Period } from '@shared/interfaces/interfaces';
+import { Project, Period, TaskTrack } from '@shared/interfaces/interfaces';
 
 export const GET_ACTIVITY_TASKS = '[Activity page] get tasks for activity';
 export const GET_ACTIVITY_TASKS_SUCCESS =
@@ -16,12 +16,12 @@ export const getActivityTasks = createAction(
 
 export const getActivityTasksSuccess = createAction(
   GET_ACTIVITY_TASKS_SUCCESS,
-  props<{ tasks: Task[] }>()
+  props<{ tasks: TaskTrack[] }>()
 );
 
 export const getActivityProjects = createAction(
   GET_ACTIVITY_PROJECTS,
-  props<{ tasks: Task[] }>()
+  props<{ tasks: TaskTrack[] }>()
 );
 
 export const getActivityProjectsSuccess = createAction(

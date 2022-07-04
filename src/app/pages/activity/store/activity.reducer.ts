@@ -7,13 +7,13 @@ import { ActivityState, activityState } from './activity.state';
 
 const activityReducer = createReducer(
   activityState,
-  on(getActivityTasksSuccess, (state: ActivityState, action) => ({
+  on(getActivityTasksSuccess, (state: ActivityState, { tasks }) => ({
     ...state,
-    tasks: action.tasks,
+    tasks,
   })),
-  on(getActivityProjectsSuccess, (state: ActivityState, action) => ({
+  on(getActivityProjectsSuccess, (state: ActivityState, { projects }) => ({
     ...state,
-    projects: action.projects,
+    projects,
   }))
 );
 

@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StateName, TaskStatus } from '@shared/enums/enum';
+import { StateName } from '@shared/enums/enum';
 import { ProjectsState } from './projects.state';
 
 export const PROJECTS_STATE_NAME = StateName.Projects;
@@ -10,7 +10,7 @@ const getProjectsState =
 export const getMyProjects = createSelector(getProjectsState, (state) => {
   if (state.allTasks) {
     const myProjects = state.allTasks
-      .filter(({ userId }) => userId === localStorage.AuthUserId)
+      .filter(({ userId }) => userId === localStorage.getItem('AuthUserId'))
       .map((task) => task.projectId);
 
     return state.allProjects.filter((project) =>

@@ -1,9 +1,9 @@
 import { getPeriod } from '@shared/helpers/helpers';
-import { Period, Project, Task } from '@shared/interfaces/interfaces';
+import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 export interface ActivityState {
   period: Period;
-  tasks: Task[];
+  tasks: TaskTrack[];
   projects: Project[];
 }
 
