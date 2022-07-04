@@ -1,5 +1,7 @@
 export interface ActivityState {
-  [key: string]: string;
+  weekReportTime: number;
 }
 
-export const activityState: ActivityState = {};
+export const activityState: ActivityState = {
+  weekReportTime: 0,
+};
