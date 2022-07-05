@@ -8,7 +8,7 @@ import {
   getSearchValue,
   getSelectedProject,
   getUsers,
-  getAllTasks,
+  getAllTaskTracks,
 } from '@pages/projects/store/projects.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -16,7 +16,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   selector: 'app-projects-list-container',
   template: `<app-projects-list
     [myProjects]="myProjects$ | async"
-    [allTasks]="allTasks$ | async"
+    [allTaskTracks]="allTaskTracks$ | async"
     [users]="users$ | async"
     [searchText]="searchText$ | async"
     [selectedProject]="selectedProject$ | async"
@@ -26,7 +26,8 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class ProjectsListContainer {
   readonly myProjects$: Observable<Project[]> =
     this.store$.select(getMyProjects);
-  readonly allTasks$: Observable<TaskTrack[]> = this.store$.select(getAllTasks);
+  readonly allTaskTracks$: Observable<TaskTrack[]> =
+    this.store$.select(getAllTaskTracks);
   readonly users$: Observable<User[]> = this.store$.select(getUsers);
   readonly searchText$: Observable<string> = this.store$.select(getSearchValue);
   readonly selectedProject$: Observable<Project> =

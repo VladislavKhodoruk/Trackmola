@@ -6,16 +6,16 @@ import {
   getAllProjectsSuccess,
   getAllUsersSuccess,
   clearProjectStore,
-  getAllTasksSuccess,
+  getAllTaskTracksSuccess,
 } from './projects.actions';
 
 import { ProjectsState, projectsState } from './projects.state';
 
 const projectsReducer = createReducer(
   projectsState,
-  on(getAllTasksSuccess, (state: ProjectsState, { tasks }) => ({
+  on(getAllTaskTracksSuccess, (state: ProjectsState, { tasks }) => ({
     ...state,
-    allTasks: tasks,
+    allTaskTracks: tasks,
   })),
   on(getAllProjectsSuccess, (state: ProjectsState, { projects }) => ({
     ...state,

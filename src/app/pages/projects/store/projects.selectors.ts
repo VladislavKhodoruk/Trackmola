@@ -8,8 +8,8 @@ const getProjectsState =
   createFeatureSelector<ProjectsState>(PROJECTS_STATE_NAME);
 
 export const getMyProjects = createSelector(getProjectsState, (state) => {
-  if (state.allTasks) {
-    const myProjects = state.allTasks
+  if (state.allTaskTracks) {
+    const myProjects = state.allTaskTracks
       .filter(({ userId }) => userId === localStorage.getItem('AuthUserId'))
       .map((task) => task.projectId);
 
@@ -19,9 +19,9 @@ export const getMyProjects = createSelector(getProjectsState, (state) => {
   }
 });
 
-export const getAllTasks = createSelector(
+export const getAllTaskTracks = createSelector(
   getProjectsState,
-  ({ allTasks }) => allTasks
+  ({ allTaskTracks }) => allTaskTracks
 );
 
 export const getUsers = createSelector(getProjectsState, ({ users }) => users);

@@ -10,11 +10,11 @@ import { Project, TaskTrack, User } from '@shared/interfaces/interfaces';
 export class ProjectItemComponent {
   @Input() readonly project: Project;
   @Input() readonly users: User[];
-  @Input() readonly allTasks: TaskTrack[];
+  @Input() readonly allTaskTracks: TaskTrack[];
 
   protected get activeTasksInProject(): TaskTrack[] {
-    if (this.project && this.allTasks.length) {
-      return this.allTasks.filter(({ projectId, status }) => {
+    if (this.project && this.allTaskTracks.length) {
+      return this.allTaskTracks.filter(({ projectId, status }) => {
         const compareProject = projectId === this.project.id;
         const compareStatus = status === TaskStatus.InProgress;
         return compareProject && compareStatus;
@@ -25,7 +25,7 @@ export class ProjectItemComponent {
 
   protected get usersInProject(): User[] | [] {
     if (this.project && this.users.length) {
-      const usersInProjects = this.allTasks
+      const usersInProjects = this.allTaskTracks
         .filter(({ projectId }) => projectId === this.project.id)
         .map((task) => task.userId);
 

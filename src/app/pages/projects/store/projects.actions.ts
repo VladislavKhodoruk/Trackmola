@@ -6,8 +6,9 @@ import {
   User,
 } from '@shared/interfaces/interfaces';
 
-export const GET_ALL_TASKS = '[Projects Page] get all tasks';
-export const GET_ALL_TASKS_SUCCESS = '[Projects Page] get all tasks success';
+export const GET_ALL_TASK_TRACKS = '[Projects Page] get all task tracks';
+export const GET_ALL_TASK_TRACKS_SUCCESS =
+  '[Projects Page] get all task tracks success';
 
 export const GET_ALL_PROJECTS = '[Projects Page] get all projects';
 export const GET_ALL_PROJECTS_SUCCESS =
@@ -24,13 +25,13 @@ export const SET_SEARCH_VALUE = '[Projects Page] set search value';
 
 export const CLEAR_PROJECT_STORE = '[Projects Page] clear project store';
 
-export const getAllTasks = createAction(
-  GET_ALL_TASKS,
+export const getAllTaskTracks = createAction(
+  GET_ALL_TASK_TRACKS,
   props<{ period: Period }>()
 );
 
-export const getAllTasksSuccess = createAction(
-  GET_ALL_TASKS_SUCCESS,
+export const getAllTaskTracksSuccess = createAction(
+  GET_ALL_TASK_TRACKS_SUCCESS,
   props<{ tasks: TaskTrack[] }>()
 );
 

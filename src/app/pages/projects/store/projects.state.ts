@@ -1,7 +1,7 @@
 import { Project, TaskTrack, User } from '@shared/interfaces/interfaces';
 
 export interface ProjectsState {
-  allTasks: TaskTrack[];
+  allTaskTracks: TaskTrack[];
   allProjects: Project[];
   users: User[];
   selectedProject?: Project;
@@ -9,7 +9,7 @@ export interface ProjectsState {
 }
 
 export const projectsState: ProjectsState = {
-  allTasks: [],
+  allTaskTracks: [],
   allProjects: [],
   users: [],
 };

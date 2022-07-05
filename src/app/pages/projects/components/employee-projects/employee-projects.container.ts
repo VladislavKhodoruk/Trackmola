@@ -4,7 +4,7 @@ import {
   getAllUsers,
   clearProjectStore,
   getAllProjects,
-  getAllTasks,
+  getAllTaskTracks,
 } from '@pages/projects/store/projects.actions';
 import { getSelectedProject } from '@pages/projects/store/projects.selectors';
 import { getPeriod } from '@shared/helpers/helpers';
@@ -22,7 +22,7 @@ export class EmployeeProjectsContainer implements OnDestroy {
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(
-      getAllTasks({ period: getPeriod(new Date(), 'week') })
+      getAllTaskTracks({ period: getPeriod(new Date(), 'week') })
     );
     this.store$.dispatch(getAllUsers());
     this.store$.dispatch(getAllProjects());

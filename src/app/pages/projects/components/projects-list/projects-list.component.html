@@ -9,7 +9,7 @@
       *ngFor="let project of myProjects | searchProjects: searchText"
       [project]="project"
       [users]="users"
-      [allTasks]="allTasks"
+      [allTaskTracks]="allTaskTracks"
       (click)="selectProject.emit(project)"
     ></app-project-item>
   </ul>

@@ -9,7 +9,7 @@ import { Project, User, TaskTrack } from '@shared/interfaces/interfaces';
 export class ProjectsListComponent {
   @Input() readonly myProjects: Project[];
   @Input() readonly users: User[];
-  @Input() readonly allTasks: TaskTrack[];
+  @Input() readonly allTaskTracks: TaskTrack[];
   @Input() readonly selectedProject!: Project;
   @Input() readonly searchText: string;
 

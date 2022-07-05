@@ -4,8 +4,8 @@ import { ProjectsPageService } from '../services/projectsPage.service';
 import { map, switchMap, take } from 'rxjs';
 
 import {
-  getAllTasks,
-  getAllTasksSuccess,
+  getAllTaskTracks,
+  getAllTaskTracksSuccess,
   getAllProjects,
   getAllProjectsSuccess,
   getAllUsers,
@@ -18,11 +18,11 @@ import { UsersService } from '@shared/services/users.service';
 export class ProjectsEffects {
   public getAllTasks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getAllTasks),
+      ofType(getAllTaskTracks),
       switchMap(({ period }) =>
         this.projectsPageService.getAllTasks$(period).pipe(
           take(1),
-          map((tasks) => getAllTasksSuccess({ tasks }))
+          map((tasks) => getAllTaskTracksSuccess({ tasks }))
         )
       )
     )
