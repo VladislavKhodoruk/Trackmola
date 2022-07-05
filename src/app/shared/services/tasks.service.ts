@@ -65,6 +65,17 @@ export class TasksService {
     return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
   }
 
+  get getActiveTasks$(): Observable<TaskTrack[]> {
+    const ref = collection(this.firestore, 'taskTrack');
+    const queryWeekTasks = query(
+      ref,
+      where('userId', '==', localStorage.getItem('AuthUserId')),
+      where('status', 'in', ['in progress', ''])
+    );
+
+    return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
+  }
+
   public getCurrentTaskById(id: string): Observable<Tasks[]> {
     const ref = collection(this.firestore, 'tasks');
     const queryAll = query(ref, where('id', '==', id));

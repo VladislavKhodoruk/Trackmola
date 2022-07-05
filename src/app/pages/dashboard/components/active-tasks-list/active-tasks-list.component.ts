@@ -7,9 +7,7 @@ import {
 } from '@angular/core';
 import { TaskTrack } from '@store/shared/shared.state';
 import { Project } from '@shared/interfaces/interfaces';
-import {
-  searchName,
-} from '@pages/dashboard/components/active-tasks-list/helpers/search-Project-Name';
+import { searchName } from '@pages/dashboard/components/active-tasks-list/helpers/search-Project-Name';
 import { SearchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-Task-Name';
 import { SearchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-User-Foto';
 

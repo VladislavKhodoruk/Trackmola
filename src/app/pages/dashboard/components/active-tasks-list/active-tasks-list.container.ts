@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TrackMolaState } from '@store/trackMola.state';
-import { getAllProjects } from '@store/shared/shared.actions';
+
 import { inProgressTasks } from '@store/shared/shared.selectors';
+import {
+  getActiveTasks,
+  getAllProjects,
+  getAllTasks,
+  getAllUsers,
+} from '@pages/dashboard/store/dashboard.actions';
 
 @Component({
   selector: 'active-tasks-list-container',
@@ -12,9 +18,10 @@ import { inProgressTasks } from '@store/shared/shared.selectors';
 })
 export class ActiveTasksListContainer {
   tasks$ = this.store$.select(inProgressTasks);
-  // projects$ = this.store$.select(getProjects);
   constructor(private store$: Store<TrackMolaState>) {
-    // this.store$.dispatch(getAllTasks());
     this.store$.dispatch(getAllProjects());
+    this.store$.dispatch(getAllTasks());
+    this.store$.dispatch(getAllUsers());
+    this.store$.dispatch(getActiveTasks());
   }
 }
