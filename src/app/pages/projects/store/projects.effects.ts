@@ -16,7 +16,7 @@ import { UsersService } from '@shared/services/users.service';
 
 @Injectable()
 export class ProjectsEffects {
-  public getAllTasks$ = createEffect(() =>
+  public getAllTaskTracks$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getAllTaskTracks),
       switchMap(({ period }) =>
