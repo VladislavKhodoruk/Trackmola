@@ -1,9 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { StateName } from '@shared/enums/enum';
 import { SharedState } from './shared.state';
 
-export const SHARED_NAME = 'shared';
-
-const getSharedState = createFeatureSelector<SharedState>(SHARED_NAME);
+const getSharedState = createFeatureSelector<SharedState>(StateName.Shared);
 
 export const getLoading = createSelector(
   getSharedState,
