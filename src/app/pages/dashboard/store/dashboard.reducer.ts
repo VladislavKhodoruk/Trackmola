@@ -3,7 +3,7 @@ import { DashboardState, dashboardState } from './dashboard.state';
 import {
   getActiveTasksSuccess,
   getAllProjectsSuccess,
-  getAllTasksSuccess,
+  getAllTasksSuccess, getAllTaskTracksSuccess,
   getAllUsersSuccess,
   getWeekReportTimeSuccess
 } from "./dashboard.actions";
@@ -17,12 +17,12 @@ const dashboardReducer = createReducer(
 
   on(getAllProjectsSuccess, (state: DashboardState, { allProjects }) => ({
     ...state,
-    allProjects,
+    allProjects: allProjects,
   })),
 
   on(getAllTasksSuccess, (state: DashboardState, { allTasks }) => ({
     ...state,
-    allTasks,
+    allTasks: allTasks,
   })),
 
   on(getAllUsersSuccess, (state: DashboardState, { allUsers }) => ({
@@ -32,7 +32,12 @@ const dashboardReducer = createReducer(
 
   on(getActiveTasksSuccess, (state: DashboardState, { activeTasks }) => ({
     ...state,
-    activeTasks,
+    activeTasks: activeTasks,
+  })),
+
+  on(getAllTaskTracksSuccess, (state: DashboardState, { allTaskTracks }) => ({
+    ...state,
+    allTaskTracks: allTaskTracks,
   }))
 );
 

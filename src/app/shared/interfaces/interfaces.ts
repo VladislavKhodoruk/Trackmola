@@ -93,3 +93,12 @@ export interface Tasks {
   name: string;
   projectId: string;
 }
+
+export interface ActiveTasks {
+  projectName?: string;
+  projectColor?: string;
+  taskName?: string;
+  status?: string | null;
+  date?: Date;
+  teamPhoto?: string[];
+}

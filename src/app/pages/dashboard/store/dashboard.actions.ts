@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
-import { Project, User } from '@shared/interfaces/interfaces';
-import { Task } from '@pages/report/interfaces/interfaces';
-import { TaskTrack } from "@store/shared/shared.state";
+import { Project, User } from "@shared/interfaces/interfaces";
+import { TaskTrack } from '@store/shared/shared.state';
+import { Task } from "@pages/report/interfaces/interfaces";
 
 export const GET_WEEK_REPORT_TIME = '[Dashboard page] get week report time';
 export const GET_WEEK_REPORT_TIME_SUCCESS =
@@ -17,6 +17,9 @@ export const PAGE_INIT_ACTION = '[Dashboard page] page init action ';
 export const GET_ACTIVE_TASKS = '[Dashboard page] get active tasks ';
 export const GET_ACTIVE_TASKS_SUCCESS =
   '[Dashboard page] get active tasks success';
+export const GET_ALL_TASK_TRACKS = '[Dashboard page] get all task tracks ';
+export const GET_ALL_TASK_TRACKS_SUCCESS =
+  '[Dashboard page] get all task tracks success';
 
 export const getWeekReportTime = createAction(GET_WEEK_REPORT_TIME);
 
@@ -46,6 +49,12 @@ export const getActiveTasks = createAction(GET_ACTIVE_TASKS);
 export const getActiveTasksSuccess = createAction(
   GET_ACTIVE_TASKS_SUCCESS,
   props<{ activeTasks: TaskTrack[] }>()
+);
+
+export const getAllTaskTracks = createAction(GET_ALL_TASK_TRACKS);
+export const getAllTaskTracksSuccess = createAction(
+  GET_ALL_TASK_TRACKS_SUCCESS,
+  props<{ allTaskTracks: TaskTrack[] }>()
 );
 
 export const dashboardPageInit = createAction(PAGE_INIT_ACTION);

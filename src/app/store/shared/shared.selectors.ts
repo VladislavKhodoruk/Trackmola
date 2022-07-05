@@ -31,11 +31,3 @@ export const allTasksTrack = createSelector(
   (state) => state.tasksTrack
 );
 
-export const inProgressTasks = createSelector(allTasksTrack, (state) =>
-  state.filter((i) => i.status === 'in progress' || i.status === '')
-);
-
-// export const getProjects = createSelector(
-//   getSharedState,
-//   (state) => state.projects
-// );

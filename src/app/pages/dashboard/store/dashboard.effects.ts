@@ -7,12 +7,12 @@ import {
   getAllProjects,
   getAllProjectsSuccess,
   getAllTasks,
-  getAllTasksSuccess,
+  getAllTasksSuccess, getAllTaskTracks, getAllTaskTracksSuccess,
   getAllUsers,
   getAllUsersSuccess,
   getWeekReportTime,
-  getWeekReportTimeSuccess,
-} from './dashboard.actions';
+  getWeekReportTimeSuccess
+} from "./dashboard.actions";
 import { map, switchMap, take } from 'rxjs';
 import { ProjectsService } from '@shared/services/projects.service';
 import { UsersService } from '@shared/services/users.service';
@@ -78,6 +78,18 @@ export class DashboardEffects {
         this.tasksService.getActiveTasks$.pipe(
           take(1),
           map((data) => getActiveTasksSuccess({ activeTasks: data }))
+        )
+      )
+    )
+  );
+
+  getAllTaskTracks$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAllTaskTracks),
+      switchMap(() =>
+        this.tasksService.allTaskTrack$.pipe(
+          take(1),
+          map((data) => getAllTaskTracksSuccess({ allTaskTracks: data }))
         )
       )
     )

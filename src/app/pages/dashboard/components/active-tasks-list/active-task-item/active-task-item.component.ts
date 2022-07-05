@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { TaskTrack } from '@store/shared/shared.state';
+import { ActiveTasks } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-active-task-item',
@@ -7,9 +7,9 @@ import { TaskTrack } from '@store/shared/shared.state';
   styleUrls: ['active-task-item.component.scss'],
 })
 export class ActiveTaskItemComponent implements OnChanges {
-  @Input() currentTask!: TaskTrack;
+  @Input() currentTask!: ActiveTasks;
   @Input() index!: number;
-  task: TaskTrack;
+  task: ActiveTasks;
   color = '#0d33eb';
 
   ngOnChanges(changes: SimpleChanges) {

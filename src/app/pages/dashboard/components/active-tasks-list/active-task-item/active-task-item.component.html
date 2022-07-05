@@ -1,13 +1,13 @@
 <article class="task-wrappeer">
-  <p class="project-name">
-    {{ task.projectId }}
+  <p class="project-name" [ngStyle]="{ 'border-color': task.projectColor }">
+    {{ task.projectName }}
   </p>
-  <p class="task-name">{{ task.taskId }}</p>
+  <p class="task-name">{{ task.taskName }}</p>
   <p class="task-status">{{ task.status }}</p>
   <div class="project-team-members">
-    <p>{{ task.userId }}</p>
+    <p *ngFor="let user of task.teamPhoto">
+      {{ user }}
+    </p>
   </div>
   <button class="add-active-task-to-report"></button>
 </article>
-
-// [ngStyle]=" 'border-color': task.projectColor }">
