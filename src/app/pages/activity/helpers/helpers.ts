@@ -1,3 +1,10 @@
+import {
+  NUMBER_OF_HOURS_IN_DAY,
+  NUMBER_OF_REST_HOURS_IN_DAY,
+  NUMBER_OF_REST_HOURS_IN_WEEK,
+  NUMBER_OF_REST_HOURS_IN_WEEK_WITHOUT_SUNDAY,
+} from '../constants/constants';
+
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);
   currentDate.setUTCHours(0);
@@ -8,18 +15,22 @@ export function setMidnightTime(date: Date) {
 }
 
 export function getRestTime(type?: 'week' | 'month'): number {
-  const date = setMidnightTime(new Date());
+  const date = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
+  );
   switch (type) {
     case 'week': {
       switch (date.getDay()) {
-        case 7: {
-          return 128;
+        case 0: {
+          return NUMBER_OF_REST_HOURS_IN_WEEK;
         }
         case 6: {
-          return 104;
+          return NUMBER_OF_REST_HOURS_IN_WEEK_WITHOUT_SUNDAY;
         }
         default: {
-          return 16 * (date.getDay() - 1);
+          return NUMBER_OF_REST_HOURS_IN_DAY * (date.getDay() - 1);
         }
       }
     }
@@ -28,15 +39,15 @@ export function getRestTime(type?: 'week' | 'month'): number {
       for (let i = 1; i <= date.getDate(); i++) {
         switch (new Date(date.getFullYear(), date.getMonth(), i).getDay()) {
           case 0: {
-            restMonthHours += 24;
+            restMonthHours += NUMBER_OF_HOURS_IN_DAY;
             break;
           }
           case 6: {
-            restMonthHours += 24;
+            restMonthHours += NUMBER_OF_HOURS_IN_DAY;
             break;
           }
           default: {
-            restMonthHours += 16;
+            restMonthHours += NUMBER_OF_REST_HOURS_IN_DAY;
             break;
           }
         }
@@ -47,21 +58,25 @@ export function getRestTime(type?: 'week' | 'month'): number {
 }
 
 export function getRestMonthDefaultHours(): number {
-  const date = setMidnightTime(new Date());
+  const date = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
+  );
   let restMonthDefaultHours = 0;
   const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
   for (let i = 1; i <= endDate.getDate(); i++) {
     switch (new Date(date.getFullYear(), date.getMonth(), i).getDay()) {
       case 0: {
-        restMonthDefaultHours += 24;
+        restMonthDefaultHours += NUMBER_OF_HOURS_IN_DAY;
         break;
       }
       case 6: {
-        restMonthDefaultHours += 24;
+        restMonthDefaultHours += NUMBER_OF_HOURS_IN_DAY;
         break;
       }
       default: {
-        restMonthDefaultHours += 16;
+        restMonthDefaultHours += NUMBER_OF_REST_HOURS_IN_DAY;
         break;
       }
     }
@@ -70,7 +85,13 @@ export function getRestMonthDefaultHours(): number {
 }
 
 export function getWorksMonthDefaultHours(): number {
-  const date = setMidnightTime(new Date());
+  const date = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
+  );
   const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-  return endDate.getDate() * 24 - getRestMonthDefaultHours();
+  return (
+    endDate.getDate() * NUMBER_OF_HOURS_IN_DAY - getRestMonthDefaultHours()
+  );
 }

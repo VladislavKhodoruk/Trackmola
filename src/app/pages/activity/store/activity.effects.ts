@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { TasksService } from '@shared/services/tasks.service';
 import {
   getWeekReportTime,
   getWeekReportTimeSuccess,
@@ -22,7 +21,7 @@ export class ActivityEffects {
     this.actions$.pipe(
       ofType(getWeekReportTime),
       switchMap(() =>
-        this.tasksService.getWeekTasks$.pipe(
+        this.activityService.getWeekTasks$.pipe(
           take(1),
           map((data) => {
             const weekReportTime = data.reduce(
@@ -66,7 +65,6 @@ export class ActivityEffects {
   constructor(
     private actions$: Actions,
     private activityService: ActivityService,
-    private tasksService: TasksService,
     private store$: Store<TrackMolaState>
   ) {}
 }

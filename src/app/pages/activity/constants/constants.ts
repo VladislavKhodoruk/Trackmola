@@ -115,6 +115,11 @@ export const BASIC_OPTIONS_ACTIVITY_CHART_PIE: Options = {
   },
 };
 
+export const NUMBER_OF_HOURS_IN_DAY = 24;
+export const NUMBER_OF_REST_HOURS_IN_DAY = 16;
+export const NUMBER_OF_REST_HOURS_IN_WEEK = 128;
+export const NUMBER_OF_REST_HOURS_IN_WEEK_WITHOUT_SUNDAY = 104;
+
 export const DEFAULT_HOURS_PER_WEEK = 40;
 export const DEFAULT_WEEK_OVERTIME = 3;
 export const DEFAULT_MONTH_OVERTIME = 12;
