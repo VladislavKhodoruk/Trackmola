@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { UsersService } from '@shared/services/users.service';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

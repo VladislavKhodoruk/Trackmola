@@ -9,7 +9,6 @@ import { TaskTrack } from '@store/shared/shared.state';
 import { Project } from '@shared/interfaces/interfaces';
 import {
   searchName,
-  searchProjectColor,
 } from '@pages/dashboard/components/active-tasks-list/helpers/search-Project-Name';
 import { SearchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-Task-Name';
 import { SearchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-User-Foto';
@@ -45,6 +44,5 @@ export class ActiveTasksListComponent implements OnChanges {
     console.log(this.newAllTasks, this.allTasks);
   }
 }
-
 
 // projectColor: searchProjectColor(i.projectId, this.allProjects),

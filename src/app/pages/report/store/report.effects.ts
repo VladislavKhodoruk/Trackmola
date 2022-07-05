@@ -18,9 +18,7 @@ export class ReportEffects {
       switchMap(() =>
         this.tasksService.allTasks$.pipe(
           take(1),
-          map((allTasks) => {
-            return getAllTasksSuccess({ allTasks });
-          })
+          map((allTasks) => getAllTasksSuccess({ allTasks }))
         )
       )
     )

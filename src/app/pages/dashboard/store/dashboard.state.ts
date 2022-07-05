@@ -1,5 +1,9 @@
 export interface DashboardState {
-  [key: string]: string;
+  weekReportTime: number;
+  activeTasks: Task[];
 }
 
-export const dashboardState: DashboardState = {};
+export const dashboardState: DashboardState = {
+  weekReportTime: 0,
+  activeTasks: [],
+};
