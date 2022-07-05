@@ -32,7 +32,7 @@ export const getAllTaskTracks = createAction(
 
 export const getAllTaskTracksSuccess = createAction(
   GET_ALL_TASK_TRACKS_SUCCESS,
-  props<{ tasks: TaskTrack[] }>()
+  props<{ taskTracks: TaskTrack[] }>()
 );
 
 export const getAllProjects = createAction(GET_ALL_PROJECTS);

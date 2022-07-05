@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 export class ProjectsPageService {
   constructor(private firestore: Firestore) {}
 
-  public getAllTasks$(period: Period): Observable<TaskTrack[]> {
+  public getAllTaskTracks$(period: Period): Observable<TaskTrack[]> {
     const ref = collection(this.firestore, 'taskTrack');
     const firstDay = new Date(period.start);
     const lastDay = new Date(period.end);

@@ -20,9 +20,9 @@ export class ProjectsEffects {
     this.actions$.pipe(
       ofType(getAllTaskTracks),
       switchMap(({ period }) =>
-        this.projectsPageService.getAllTasks$(period).pipe(
+        this.projectsPageService.getAllTaskTracks$(period).pipe(
           take(1),
-          map((tasks) => getAllTaskTracksSuccess({ tasks }))
+          map((taskTracks) => getAllTaskTracksSuccess({ taskTracks }))
         )
       )
     )

@@ -13,9 +13,9 @@ import { ProjectsState, projectsState } from './projects.state';
 
 const projectsReducer = createReducer(
   projectsState,
-  on(getAllTaskTracksSuccess, (state: ProjectsState, { tasks }) => ({
+  on(getAllTaskTracksSuccess, (state: ProjectsState, { taskTracks }) => ({
     ...state,
-    allTaskTracks: tasks,
+    allTaskTracks: taskTracks,
   })),
   on(getAllProjectsSuccess, (state: ProjectsState, { projects }) => ({
     ...state,
