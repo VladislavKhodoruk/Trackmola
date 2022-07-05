@@ -293,6 +293,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
     }
 
     this.form.get('project').setValue('');
+    this.form.get('task').setValue('');
   }
 
   isTasks(): void {

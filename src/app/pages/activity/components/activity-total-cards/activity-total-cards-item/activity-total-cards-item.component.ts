@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
 
 @Component({
@@ -6,18 +6,6 @@ import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
   templateUrl: './activity-total-cards-item.component.html',
   styleUrls: ['./activity-total-cards-item.component.scss'],
 })
-export class ActivityTotalCardsItemComponent implements OnInit, OnChanges {
+export class ActivityTotalCardsItemComponent {
   @Input() totalCardItem!: TotalCardItem;
-
-  progressBar: number;
-
-  constructor() { }
-  ngOnChanges(changes: SimpleChanges): void {
-    this.progressBar =
-      (this.totalCardItem?.value / this.totalCardItem?.numberWeekHours) * 100;
-  }
-
-  ngOnInit(): void {
-  }
-
 }

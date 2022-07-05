@@ -4,6 +4,7 @@ export interface TotalCardItem {
   img: string;
   backgoundColor: string;
   progressBarColor: string;
+  progressBarSize: number;
   numberWeekHours: number;
   numberMonthHours?: number;
 }

@@ -1,9 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import {
-  getRestMonthDefaultHours,
-  getRestTime,
-  getWorksMonthDefaultHours,
-} from '@pages/activity/helpers/helpers';
+  DEFAULT_HOURS_PER_WEEK,
+  getTotalCardItem,
+  OVERTIME_TOTAL_CARD,
+  REST_HOURS_TOTAL_CARD,
+  WORK_HOURS_TOTAL_CARD,
+} from '@pages/activity/constants/constants';
 import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
 
 @Component({
@@ -17,39 +19,15 @@ export class ActivityTotalCardsComponent implements OnChanges {
   overtime = 0;
   totalCardItems: TotalCardItem[];
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.weekReportTime > 40) {
-      this.overtime = this.weekReportTime - 40;
+  ngOnChanges(): void {
+    if (this.weekReportTime > DEFAULT_HOURS_PER_WEEK) {
+      this.overtime = this.weekReportTime - DEFAULT_HOURS_PER_WEEK;
     }
 
     this.totalCardItems = [
-      {
-        value: this.weekReportTime,
-        title: 'Work hours',
-        img: 'assets/img/activity/work-hours.svg',
-        backgoundColor: 'var(--white)',
-        progressBarColor: 'var(--primary)',
-        numberWeekHours: 40,
-        numberMonthHours: getWorksMonthDefaultHours(),
-      },
-      {
-        value: this.overtime,
-        title: 'Overtimes',
-        img: 'assets/img/activity/overtimes.svg',
-        backgoundColor: 'var(--white)',
-        progressBarColor: 'var(--blue1)',
-        numberWeekHours: 3,
-        numberMonthHours: 12,
-      },
-      {
-        value: getRestTime('week'),
-        title: 'Rest hours',
-        img: 'assets/img/activity/rest-hours.svg',
-        backgoundColor: 'var(--blue1)',
-        progressBarColor: 'var(--yellow3)',
-        numberWeekHours: 128,
-        numberMonthHours: getRestMonthDefaultHours(),
-      },
+      getTotalCardItem(WORK_HOURS_TOTAL_CARD, this.weekReportTime),
+      getTotalCardItem(OVERTIME_TOTAL_CARD, this.overtime),
+      REST_HOURS_TOTAL_CARD,
     ];
   }
 }

@@ -8,7 +8,7 @@
     width: 16.8rem;
     height: 25rem;
 
-    border-radius: 1rem;
+    border-radius: var(--border-radius-l);
     box-shadow: $border-radius-activity-total-cards;
 
     cursor: pointer;
@@ -36,6 +36,10 @@
     &-title {
       font: var(--font-blocks);
       color: var(--gray2);
+
+      &:first-letter {
+        text-transform: uppercase;
+      }
     }
 
     &-hours {
@@ -62,7 +66,7 @@
         height: 0.5rem;
 
         border: none;
-        border-radius: 3rem;
+        border-radius: var(--border-radius-xxl);
 
         background-color: var(--gray5);
 
@@ -71,7 +75,7 @@
           width: 80%;
 
           border: none;
-          border-radius: 3rem;
+          border-radius: var(--border-radius-xxl);
         }
       }
     }
