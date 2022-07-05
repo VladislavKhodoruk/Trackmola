@@ -9,7 +9,7 @@
       @include flex(center, space-between);
       width: 100%;
       &-title {
-        font: var(--font-titleBIg);
+        font: var(--font-titleBig);
       }
       &-container {
         @include flex(center, center, 5rem);

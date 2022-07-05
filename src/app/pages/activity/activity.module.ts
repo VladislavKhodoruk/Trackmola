@@ -12,19 +12,28 @@ import { AdminActivityComponent } from './components/admin-activity/admin-activi
 import { ManagerActivityComponent } from './components/manager-activity/manager-activity.component';
 import { ActivityContainer } from './layout/activity.container';
 import { ActivityComponent } from './layout/activity.component';
+import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
+import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
+import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
+import { ActivityEffects } from './store/activity.effects';
+import { EmployeeActivityContainer } from './components/employee-activity/employee-activity.container';
 
 @NgModule({
   declarations: [
     EmployeeActivityComponent,
+    EmployeeActivityContainer,
     CtoActivityComponent,
     AdminActivityComponent,
     ManagerActivityComponent,
     ActivityContainer,
     ActivityComponent,
+    ProjectsActivityComponent,
+    ProjectsActivityContainer,
   ],
   imports: [
     CommonModule,
-    EffectsModule.forFeature([]),
+    HighchartsChartModule,
+    EffectsModule.forFeature([ActivityEffects]),
     StoreModule.forFeature(ACTIVITY_STATE_NAME, ActivityReducer),
     RouterModule.forChild(ActivityRoutes),
   ],
