@@ -5,8 +5,8 @@ import {
   getAllTasksData,
 } from '@pages/report/store/report.selectors';
 import { ReportState } from '@pages/report/store/report.state';
-import { getDate } from '@store/shared/shared.selectors';
-import { SharedState } from '@store/shared/shared.state';
+import { getDate } from '@store/common/common.selectors';
+import { CommonState } from '@store/common/common.state';
 
 @Component({
   selector: 'app-report-input-container',
@@ -19,10 +19,10 @@ import { SharedState } from '@store/shared/shared.state';
 export class ReportInputContainer {
   allTasks$ = this.reportStore$.select(getAllTasksData);
   allProjects$ = this.reportStore$.select(getAllProjectsData);
-  currentDate$ = this.sharedStore$.select(getDate);
+  currentDate$ = this.commonStore$.select(getDate);
 
   constructor(
     private reportStore$: Store<ReportState>,
-    private sharedStore$: Store<SharedState>
+    private commonStore$: Store<CommonState>
   ) {}
 }

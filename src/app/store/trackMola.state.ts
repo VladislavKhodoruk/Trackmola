@@ -1,14 +1,14 @@
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { StateName } from '@shared/enums/enum';
-import { SharedReducer } from './shared/shared.reducer';
-import { SharedState } from './shared/shared.state';
+import { CommonReducer } from './common/common.reducer';
+import { CommonState } from './common/common.state';
 
 export interface TrackMolaState {
-  [StateName.Shared]: SharedState;
+  [StateName.Common]: CommonState;
   [StateName.Router]: RouterReducerState;
 }
 
 export const trackMolaReducer = {
-  [StateName.Shared]: SharedReducer,
+  [StateName.Common]: CommonReducer,
   [StateName.Router]: routerReducer,
 };

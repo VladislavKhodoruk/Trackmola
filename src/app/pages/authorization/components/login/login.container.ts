@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AuthorizationForm } from '@pages/authorization/interfaces/interface';
 import { loginStart } from '@pages/authorization/store/authorization.actions';
-import { loading } from '@store/shared/shared.actions';
-import { getErrorMessage, getLoading } from '@store/shared/shared.selectors';
+import { loading } from '@store/common/common.actions';
+import { getErrorMessage, getLoading } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({

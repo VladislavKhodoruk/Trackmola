@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collectionData } from '@angular/fire/firestore';
-import { TaskTrack } from '@store/shared/shared.state';
+import { TaskTrack } from '@store/common/common.state';
 import {
   collection,
   Firestore,

@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Period, User } from '@shared/interfaces/interfaces';
 
-import { TaskTrack } from './shared.state';
+import { TaskTrack } from './common.state';
 
 export const LOADING = 'loading';
 export const ERROR_MESSAGE = 'error message';

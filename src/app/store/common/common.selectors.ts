@@ -1,21 +1,21 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { StateName } from '@shared/enums/enum';
-import { SharedState } from './shared.state';
+import { CommonState } from './common.state';
 
-const getSharedState = createFeatureSelector<SharedState>(StateName.Shared);
+const getCommonState = createFeatureSelector<CommonState>(StateName.Common);
 
 export const getLoading = createSelector(
-  getSharedState,
+  getCommonState,
   (state) => state.loadingStatus.loading
 );
 
 export const getErrorMessage = createSelector(
-  getSharedState,
+  getCommonState,
   (state) => state.loadingStatus.errorMessage
 );
 
 export const getPeriod = createSelector(
-  getSharedState,
+  getCommonState,
   (state) => state.period
 );
 
@@ -23,9 +23,9 @@ export const getFirstDay = createSelector(getPeriod, (period) => period.start);
 
 export const getLastDay = createSelector(getPeriod, (period) => period.end);
 
-export const getDate = createSelector(getSharedState, (state) => state.date);
+export const getDate = createSelector(getCommonState, (state) => state.date);
 
 export const allTasksTrack = createSelector(
-  getSharedState,
+  getCommonState,
   (state) => state.tasksTrack
 );

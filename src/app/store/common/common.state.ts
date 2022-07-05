@@ -2,7 +2,7 @@ import { getPeriod } from '@shared/helpers/helpers';
 import { Period, User } from '@shared/interfaces/interfaces';
 import { Timestamp } from 'firebase/firestore';
 
-export interface SharedState {
+export interface CommonState {
   loadingStatus: LoadingStatus;
   user: User | null;
   date: Date;
@@ -28,7 +28,7 @@ export interface TaskTrack {
   status?: string;
 }
 
-export const initialState: SharedState = {
+export const initialState: CommonState = {
   loadingStatus: {
     loading: false,
     loaded: false,

@@ -6,7 +6,7 @@ export enum UserType {
 }
 
 export enum StateName {
-  Shared = 'shared',
+  Common = 'common',
   Router = 'router',
   Dashboard = 'dashboard',
   Activity = 'activity',

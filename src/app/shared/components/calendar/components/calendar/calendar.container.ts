@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { changeDate, getAllTasksTrack } from '@store/shared/shared.actions';
+import { changeDate, getAllTasksTrack } from '@store/common/common.actions';
 import {
   allTasksTrack,
   getDate,
   getFirstDay,
-} from '@store/shared/shared.selectors';
+} from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({

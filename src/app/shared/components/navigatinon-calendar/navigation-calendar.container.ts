@@ -5,8 +5,8 @@ import {
   nextWeek,
   previousWeek,
   setPeriod,
-} from '@store/shared/shared.actions';
-import { getFirstDay, getLastDay } from '@store/shared/shared.selectors';
+} from '@store/common/common.actions';
+import { getFirstDay, getLastDay } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 import {
   DEFAULT_PHOTO_URL,
