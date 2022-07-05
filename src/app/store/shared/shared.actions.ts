@@ -27,7 +27,7 @@ export const getUserDataSuccess = createAction(
   props<{ profileUser: User }>()
 );
 
-export const changeDate = createAction(CHANGE_DATE, props<{ date: Date }>());
+export const changeDate = createAction(CHANGE_DATE, props<{ date: number }>());
 
 export const setPeriod = createAction(SET_PERIOD, props<{ period: Period }>());
 

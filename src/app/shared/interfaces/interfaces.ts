@@ -63,7 +63,7 @@ export interface NavigationItem {
 }
 
 export interface Day {
-  value: Date;
+  value: number;
   isTasks: boolean;
   duration: number;
 }

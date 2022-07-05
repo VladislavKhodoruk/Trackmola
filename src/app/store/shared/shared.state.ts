@@ -5,7 +5,7 @@ import { Timestamp } from 'firebase/firestore';
 export interface SharedState {
   loadingStatus: LoadingStatus;
   user: User | null;
-  date: Date;
+  date: number;
   tasksTrack: TaskTrack[];
   period: Period;
   usersInProjects: User[];
@@ -39,7 +39,7 @@ export const initialState: SharedState = {
     new Date().getFullYear(),
     new Date().getMonth(),
     new Date().getDate()
-  ),
+  ).getTime(),
   tasksTrack: [],
   usersInProjects: [],
   period: getPeriod(new Date(), 'week'),

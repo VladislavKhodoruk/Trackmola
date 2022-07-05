@@ -1,9 +1,6 @@
-import {
-  NUMBER_OF_HOURS_IN_DAY,
-  NUMBER_OF_REST_HOURS_IN_DAY,
-  NUMBER_OF_REST_HOURS_IN_WEEK,
-  NUMBER_OF_REST_HOURS_IN_WEEK_WITHOUT_SUNDAY,
-} from '../constants/constants';
+import { HOURS_IN_DAY } from '../constants/constants';
+import { RestHours } from '../enums/enums';
+import { TotalCardItem } from '../interfaces/interfaces';
 
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);
@@ -24,13 +21,13 @@ export function getRestTime(type?: 'week' | 'month'): number {
     case 'week': {
       switch (date.getDay()) {
         case 0: {
-          return NUMBER_OF_REST_HOURS_IN_WEEK;
+          return RestHours.Week;
         }
         case 6: {
-          return NUMBER_OF_REST_HOURS_IN_WEEK_WITHOUT_SUNDAY;
+          return RestHours.WeekWithout;
         }
         default: {
-          return NUMBER_OF_REST_HOURS_IN_DAY * (date.getDay() - 1);
+          return RestHours.Day * (date.getDay() - 1);
         }
       }
     }
@@ -39,15 +36,15 @@ export function getRestTime(type?: 'week' | 'month'): number {
       for (let i = 1; i <= date.getDate(); i++) {
         switch (new Date(date.getFullYear(), date.getMonth(), i).getDay()) {
           case 0: {
-            restMonthHours += NUMBER_OF_HOURS_IN_DAY;
+            restMonthHours += HOURS_IN_DAY;
             break;
           }
           case 6: {
-            restMonthHours += NUMBER_OF_HOURS_IN_DAY;
+            restMonthHours += HOURS_IN_DAY;
             break;
           }
           default: {
-            restMonthHours += NUMBER_OF_REST_HOURS_IN_DAY;
+            restMonthHours += RestHours.Day;
             break;
           }
         }
@@ -68,15 +65,15 @@ export function getRestMonthDefaultHours(): number {
   for (let i = 1; i <= endDate.getDate(); i++) {
     switch (new Date(date.getFullYear(), date.getMonth(), i).getDay()) {
       case 0: {
-        restMonthDefaultHours += NUMBER_OF_HOURS_IN_DAY;
+        restMonthDefaultHours += HOURS_IN_DAY;
         break;
       }
       case 6: {
-        restMonthDefaultHours += NUMBER_OF_HOURS_IN_DAY;
+        restMonthDefaultHours += HOURS_IN_DAY;
         break;
       }
       default: {
-        restMonthDefaultHours += NUMBER_OF_REST_HOURS_IN_DAY;
+        restMonthDefaultHours += RestHours.Day;
         break;
       }
     }
@@ -91,7 +88,17 @@ export function getWorksMonthDefaultHours(): number {
     new Date().getDate()
   );
   const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-  return (
-    endDate.getDate() * NUMBER_OF_HOURS_IN_DAY - getRestMonthDefaultHours()
-  );
+  return endDate.getDate() * HOURS_IN_DAY - getRestMonthDefaultHours();
 }
+
+export const getTotalCardItem = (
+  totalCardItem: TotalCardItem,
+  value: number
+): TotalCardItem => {
+  totalCardItem.value = value;
+  totalCardItem.progressBarSize = (value / totalCardItem.numberWeekHours) * 100;
+  if (totalCardItem.progressBarSize > 100) {
+    totalCardItem.progressBarSize = 100;
+  }
+  return totalCardItem;
+};

@@ -1,11 +1,11 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import {
   DEFAULT_HOURS_PER_WEEK,
-  getTotalCardItem,
   OVERTIME_TOTAL_CARD,
   REST_HOURS_TOTAL_CARD,
   WORK_HOURS_TOTAL_CARD,
 } from '@pages/activity/constants/constants';
+import { getTotalCardItem } from '@pages/activity/helpers/helpers';
 import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
 
 @Component({

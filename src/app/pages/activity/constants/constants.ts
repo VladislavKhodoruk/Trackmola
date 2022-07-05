@@ -115,10 +115,7 @@ export const BASIC_OPTIONS_ACTIVITY_CHART_PIE: Options = {
   },
 };
 
-export const NUMBER_OF_HOURS_IN_DAY = 24;
-export const NUMBER_OF_REST_HOURS_IN_DAY = 16;
-export const NUMBER_OF_REST_HOURS_IN_WEEK = 128;
-export const NUMBER_OF_REST_HOURS_IN_WEEK_WITHOUT_SUNDAY = 104;
+export const HOURS_IN_DAY = 24;
 
 export const DEFAULT_HOURS_PER_WEEK = 40;
 export const DEFAULT_WEEK_OVERTIME = 3;
@@ -156,16 +153,4 @@ export const REST_HOURS_TOTAL_CARD = {
   progressBarSize: (getRestTime('week') / DEFAULT_HOURS_OF_REST_PER_WEEK) * 100,
   numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,
   numberMonthHours: getRestMonthDefaultHours(),
-};
-
-export const getTotalCardItem = (
-  totalCardItem: TotalCardItem,
-  value: number
-): TotalCardItem => {
-  totalCardItem.value = value;
-  totalCardItem.progressBarSize = (value / totalCardItem.numberWeekHours) * 100;
-  if (totalCardItem.progressBarSize > 100) {
-    totalCardItem.progressBarSize = 100;
-  }
-  return totalCardItem;
 };
