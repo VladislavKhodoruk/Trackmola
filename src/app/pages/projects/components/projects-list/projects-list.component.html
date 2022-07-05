@@ -6,11 +6,12 @@
       [class.projects-list-item-selected]="
         selectedProject && selectedProject.id === project.id
       "
-      *ngFor="let project of myProjects | searchProjects: searchText"
+      *ngFor="let project of projects | searchProjects: searchText"
       [project]="project"
+      [tasks]="tasks"
       [users]="users"
-      [allTaskTracks]="allTaskTracks"
-      (click)="selectProject.emit(project)"
+      [taskTracks]="taskTracks"
+      [routerLink]="[project.name | lowercase]"
     ></app-project-item>
   </ul>
 </section>

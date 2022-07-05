@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TaskStatus } from '@shared/enums/enum';
-import { Project, TaskTrack, User } from '@shared/interfaces/interfaces';
+import { Project, TaskTrack, User, Task } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-project-item ',
@@ -9,15 +8,15 @@ import { Project, TaskTrack, User } from '@shared/interfaces/interfaces';
 })
 export class ProjectItemComponent {
   @Input() readonly project: Project;
+  @Input() readonly tasks: Task[];
   @Input() readonly users: User[];
-  @Input() readonly allTaskTracks: TaskTrack[];
+  @Input() readonly taskTracks: TaskTrack[];
 
-  protected get activeTasksInProject(): TaskTrack[] {
-    if (this.project && this.allTaskTracks.length) {
-      return this.allTaskTracks.filter(({ projectId, status }) => {
+  protected get activeTasksInProject(): Task[] {
+    if (this.project && this.tasks.length) {
+      return this.tasks.filter(({ projectId, archived }) => {
         const compareProject = projectId === this.project.id;
-        const compareStatus = status === TaskStatus.InProgress;
-        return compareProject && compareStatus;
+        return compareProject && !archived;
       });
     }
     return [];
@@ -25,11 +24,18 @@ export class ProjectItemComponent {
 
   protected get usersInProject(): User[] | [] {
     if (this.project && this.users.length) {
-      const usersInProjects = this.allTaskTracks
-        .filter(({ projectId }) => projectId === this.project.id)
-        .map((task) => task.userId);
+      const usersIdInProjects: TaskTrack['userId'][] = this.taskTracks
+        .filter(({ projectId }, index) => {
+          if (index < 5) {
+            return projectId === this.project.id;
+          }
+        })
+        .sort((a, b) => b.date.seconds - a.date.seconds)
+        .map((taskTrack) => taskTrack.userId);
 
-      return this.users.filter(({ id }) => usersInProjects.includes(id));
+      return usersIdInProjects.map((userId) =>
+        this.users.find((user) => user.id === userId)
+      );
     }
     return [];
   }
