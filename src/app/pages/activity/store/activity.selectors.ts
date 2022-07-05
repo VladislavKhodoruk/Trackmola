@@ -11,3 +11,13 @@ export const getWeekReportTime = createSelector(
   getActivityState,
   ({ weekReportTime }) => weekReportTime
 );
+
+export const getActivityTasks = createSelector(
+  getActivityState,
+  ({ tasks }) => tasks
+);
+
+export const getActivityProjects = createSelector(
+  getActivityState,
+  ({ projects }) => projects
+);

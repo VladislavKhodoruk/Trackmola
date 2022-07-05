@@ -11,7 +11,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-profile>`,
 })
 export class ProfileContainer {
-  userType = localStorage.getItem('AuthUserType');
+  readonly userType: string = localStorage.getItem('AuthUserType');
 
   constructor(private store$: Store<TrackMolaState>) {}
 

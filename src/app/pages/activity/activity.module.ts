@@ -17,6 +17,9 @@ import { ActivityTotalCardsContainer } from './components/activity-total-cards/a
 import { ActivityTotalCardsItemComponent } from './components/activity-total-cards/activity-total-cards-item/activity-total-cards-item.component';
 import { EmployeeActivityContainer } from './components/employee-activity/employee-activity.container';
 import { ActivityEffects } from './store/activity.effects';
+import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
+import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
+import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
 
 @NgModule({
   declarations: [
@@ -27,12 +30,15 @@ import { ActivityEffects } from './store/activity.effects';
     ManagerActivityComponent,
     ActivityContainer,
     ActivityComponent,
+    ProjectsActivityComponent,
+    ProjectsActivityContainer,
     ActivityTotalCardsComponent,
     ActivityTotalCardsContainer,
     ActivityTotalCardsItemComponent,
   ],
   imports: [
     CommonModule,
+    HighchartsChartModule,
     EffectsModule.forFeature([ActivityEffects]),
     StoreModule.forFeature(ACTIVITY_STATE_NAME, ActivityReducer),
     RouterModule.forChild(ActivityRoutes),

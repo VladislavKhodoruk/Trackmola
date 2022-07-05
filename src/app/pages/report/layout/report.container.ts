@@ -9,7 +9,7 @@ import { getAllProjects, getAllTasks } from '../store/report.actions';
   template: '<app-report [userType]="this.userType"></app-report>',
 })
 export class ReportContainer implements OnInit {
-  userType = localStorage.getItem('AuthUserType');
+  readonly userType: string = localStorage.getItem('AuthUserType');
   constructor(private store$: Store<TrackMolaState>) {}
   ngOnInit(): void {
     this.store$.dispatch(getAllTasks());
