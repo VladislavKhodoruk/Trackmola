@@ -25,11 +25,7 @@ export class ProjectItemComponent {
   protected get usersInProject(): User[] | [] {
     if (this.project && this.users.length) {
       const usersIdInProjects: TaskTrack['userId'][] = this.taskTracks
-        .filter(({ projectId }, index) => {
-          if (index < 5) {
-            return projectId === this.project.id;
-          }
-        })
+        .filter(({ projectId }) => projectId === this.project.id)
         .sort((a, b) => b.date.seconds - a.date.seconds)
         .map((taskTrack) => taskTrack.userId);
 
