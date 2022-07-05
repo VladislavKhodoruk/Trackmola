@@ -12,11 +12,14 @@ import { AdminActivityComponent } from './components/admin-activity/admin-activi
 import { ManagerActivityComponent } from './components/manager-activity/manager-activity.component';
 import { ActivityContainer } from './layout/activity.container';
 import { ActivityComponent } from './layout/activity.component';
+import { ActivityTotalCardsComponent } from './components/activity-total-cards/activity-total-cards.component';
+import { ActivityTotalCardsContainer } from './components/activity-total-cards/activity-total-cards.container';
+import { ActivityTotalCardsItemComponent } from './components/activity-total-cards/activity-total-cards-item/activity-total-cards-item.component';
+import { EmployeeActivityContainer } from './components/employee-activity/employee-activity.container';
+import { ActivityEffects } from './store/activity.effects';
 import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
-import { ActivityEffects } from './store/activity.effects';
-import { EmployeeActivityContainer } from './components/employee-activity/employee-activity.container';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { EmployeeActivityContainer } from './components/employee-activity/employ
     ActivityComponent,
     ProjectsActivityComponent,
     ProjectsActivityContainer,
+    ActivityTotalCardsComponent,
+    ActivityTotalCardsContainer,
+    ActivityTotalCardsItemComponent,
   ],
   imports: [
     CommonModule,

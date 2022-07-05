@@ -26,7 +26,7 @@ export class CalendarContainer {
     this.store$.dispatch(getAllTasksTrack());
   }
 
-  onChangeDate(day: Date): void {
+  onChangeDate(day: number): void {
     this.store$.dispatch(changeDate({ date: day }));
   }
 }

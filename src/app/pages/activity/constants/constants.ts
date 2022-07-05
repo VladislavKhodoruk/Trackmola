@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Options, Point } from 'highcharts';
+import {
+  getRestMonthDefaultHours,
+  getRestTime,
+  getWorksMonthDefaultHours,
+} from '../helpers/helpers';
+import { TotalCardItem } from '../interfaces/interfaces';
 
 const ACTIVITY_CHART_PIE_COLORS: string[] = [
   'var(--aqua)',
@@ -107,4 +113,44 @@ export const BASIC_OPTIONS_ACTIVITY_CHART_PIE: Options = {
   credits: {
     enabled: false,
   },
+};
+
+export const HOURS_IN_DAY = 24;
+
+export const DEFAULT_HOURS_PER_WEEK = 40;
+export const DEFAULT_WEEK_OVERTIME = 3;
+export const DEFAULT_MONTH_OVERTIME = 12;
+export const DEFAULT_HOURS_OF_REST_PER_WEEK = 128;
+
+export const WORK_HOURS_TOTAL_CARD = {
+  value: null,
+  title: 'work hours',
+  img: 'assets/img/activity/work-hours.svg',
+  backgoundColor: 'var(--white)',
+  progressBarColor: 'var(--primary)',
+  progressBarSize: 0,
+  numberWeekHours: DEFAULT_HOURS_PER_WEEK,
+  numberMonthHours: getWorksMonthDefaultHours(),
+};
+
+export const OVERTIME_TOTAL_CARD = {
+  value: null,
+  title: 'overtimes',
+  img: 'assets/img/activity/overtimes.svg',
+  backgoundColor: 'var(--white)',
+  progressBarColor: 'var(--blue1)',
+  progressBarSize: 0,
+  numberWeekHours: DEFAULT_WEEK_OVERTIME,
+  numberMonthHours: DEFAULT_MONTH_OVERTIME,
+};
+
+export const REST_HOURS_TOTAL_CARD = {
+  value: getRestTime('week'),
+  title: 'rest hours',
+  img: 'assets/img/activity/rest-hours.svg',
+  backgoundColor: 'var(--blue1)',
+  progressBarColor: 'var(--yellow3)',
+  progressBarSize: (getRestTime('week') / DEFAULT_HOURS_OF_REST_PER_WEEK) * 100,
+  numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,
+  numberMonthHours: getRestMonthDefaultHours(),
 };

@@ -15,7 +15,7 @@ export class SearchProjectsPipe implements PipeTransform {
         .includes(search.toLocaleLowerCase());
 
       const compareDescription = description
-        .toLocaleLowerCase()
+        ?.toLocaleLowerCase()
         .includes(search.toLocaleLowerCase());
 
       return compareName || compareDescription;
