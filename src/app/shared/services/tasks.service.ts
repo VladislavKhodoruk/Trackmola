@@ -69,17 +69,5 @@ export class TasksService {
 
   removeTask(id: string): void {
     deleteDoc(doc(this.firestore, 'taskTrack', id));
-    const ref = collection(this.firestore, 'taskTrack');
-    const queryAllTasks = query(ref);
-    onSnapshot(
-      queryAllTasks,
-      { includeMetadataChanges: true },
-      (querySnapshot) => {
-        const tasks = [];
-        querySnapshot.forEach((respons) => {
-          tasks.push(respons.data());
-        });
-      }
-    );
   }
 }

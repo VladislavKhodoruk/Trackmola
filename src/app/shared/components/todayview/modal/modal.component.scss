@@ -3,9 +3,7 @@
   @import "mixins.scss";
 
   .top {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+    @include flex(center, space-between);
     margin-bottom: var(--offset-m);
   }
 
@@ -24,24 +22,32 @@
 
   .buttons-cancel,
   .buttons-delete {
-    background: var(--white);
-    border: $border-radius-button;
-    border-radius: var(--offset-d);
-    color: var(--primary);
-    font: var(--font-buttonMiddle);
     padding: 0.3rem var(--offset);
     gap: var(--offset-s);
+    border: $border-radius-button;
+    border-radius: var(--offset-d);
+    background: var(--white);
+    color: var(--primary);
+    font: var(--font-buttonMiddle);
+
     outline: 0;
   }
 
   .buttons-delete {
+    margin-left: var(--offset);
     background: var(--primary);
     color: var(--white);
-    margin-left: 1rem;
   }
   .icons {
     display: flex;
   }
+
+  .icons:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    color: var(--primary-hover);
+  }
+
   .buttons-cancel:hover,
   .buttons-delete:hover,
   .icons:hover {
@@ -53,12 +59,13 @@
 
 ::ng-deep {
   .mat-dialog-container {
-    border-radius: var(--offset);
     height: 14rem;
-    padding: 1rem;
+    padding: var(--offset);
     min-width: 26rem;
     overflow: hidden;
+    border-radius: var(--offset);
   }
+
   .mat-dialog-title {
     margin: 0;
   }

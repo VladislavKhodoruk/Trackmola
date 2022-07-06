@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import x from '@iconify/icons-tabler/x';
 
 @Component({
@@ -6,9 +6,6 @@ import x from '@iconify/icons-tabler/x';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
-export class ModalComponent implements OnInit {
-  x = x;
-  constructor() {}
-
-  ngOnInit(): void {}
+export class ModalComponent {
+  iconX = x;
 }

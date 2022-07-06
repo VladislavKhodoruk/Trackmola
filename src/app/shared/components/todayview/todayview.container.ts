@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TrackMolaState } from 'app/store/trackMola.state';
 import {
@@ -16,12 +16,10 @@ import { allTasksTrack, getDate } from '@store/common/common.selectors';
     [currentDate]="currentDate$ | async"
   ></app-todayview-component>`,
 })
-export class TodayviewContainer implements OnInit {
+export class TodayviewContainer {
   taskTracks$ = this.store$.select(allTasksTrack);
   tasks$ = this.store$.select(getAllTasksData);
   projects$ = this.store$.select(getAllProjectsData);
   currentDate$ = this.store$.select(getDate);
   constructor(private store$: Store<TrackMolaState>) {}
-
-  ngOnInit(): void {}
 }

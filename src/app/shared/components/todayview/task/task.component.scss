@@ -1,21 +1,22 @@
 :host {
   @import "vars/variables.scss";
   @import "mixins.scss";
+
   .task {
-    background: var(--white);
-    border-radius: 0 var(--offset-s) var(--offset-s) 0;
     box-sizing: border-box;
     margin: 0 0 var(--offset) 0;
     padding: var(--offset) var(--offset) 0 var(--offset-l);
     width: 100%;
-    box-shadow: 0 0 3px var(--gray);
+    border-radius: 0 var(--offset-s) var(--offset-s) 0;
+    background: var(--white);
+    box-shadow: 0 0 0.2rem var(--gray);
   }
 
   .task-top {
     align-items: flex-start;
     display: flex;
-    gap: var(--offset);
     width: 100%;
+    gap: var(--offset);
   }
 
   .time {
@@ -24,11 +25,11 @@
   }
 
   .project {
-    background: var(--white);
+    padding: 0 var(--offset);
     border: $border-radius-button;
     border-radius: var(--offset-l);
+    background: var(--white);
     font: var(--font-blocks);
-    padding: 0 var(--offset);
   }
 
   .description {
@@ -45,7 +46,6 @@
   .icons {
     color: var(--gray);
     display: none;
-
     &:last-of-type {
       margin-left: var(--offset-s);
     }
@@ -58,7 +58,7 @@
   }
 
   .task:hover {
-    box-shadow: 0px 0px 6px rgba(87, 74, 249, 0.25);
+    box-shadow: 0 0 0.4rem rgba(87, 74, 249, 0.25);
     cursor: pointer;
     .icons {
       display: block;
