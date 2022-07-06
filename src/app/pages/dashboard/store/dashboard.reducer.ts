@@ -27,7 +27,7 @@ const dashboardReducer = createReducer(
 
   on(getAllUsersSuccess, (state: DashboardState, { allUsers }) => ({
     ...state,
-    allUsers,
+    allUsers: allUsers,
   })),
 
   on(getActiveTasksSuccess, (state: DashboardState, { activeTasks }) => ({

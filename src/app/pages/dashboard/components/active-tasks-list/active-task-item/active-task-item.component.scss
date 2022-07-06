@@ -1,4 +1,5 @@
 :host {
+  @import "mixins.scss";
   .task-wrappeer {
     border: var(--offset-xxs) solid var(--gray);
     border-radius: var(--offset-s);
@@ -10,8 +11,7 @@
     grid-gap: var(--offset);
 
     .project-name-wrapper {
-      display: flex;
-      align-items: center;
+      @include flex(center, flex-start, 1.25rem);
     }
 
     .project-name {
@@ -38,10 +38,8 @@
       border-radius: var(--offset-m);
       font: var(--font-buttonSmall);
       color: var(--primary);
-      display: flex;
-      align-items: center;
+      @include flex(center, space-evenly);
       position: relative;
-      justify-content: space-evenly;
       max-height: var(--offset-ml);
     }
 

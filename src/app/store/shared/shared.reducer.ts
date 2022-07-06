@@ -69,9 +69,9 @@ const sharedReducer = createReducer(
       },
     };
   }),
-  on(getAllProjectsSuccess, (state, action) => ({
+  on(getAllProjectsSuccess, (state, { project }) => ({
     ...state,
-    projects: action.project,
+    projects: project,
   }))
 );
 

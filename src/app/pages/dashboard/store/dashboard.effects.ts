@@ -41,7 +41,7 @@ export class DashboardEffects {
       switchMap(() =>
         this.projectsService.getAllProjects$().pipe(
           take(1),
-          map((data) => getAllProjectsSuccess({ allProjects: data }))
+          map((allProjects) => getAllProjectsSuccess({ allProjects }))
         )
       )
     )
@@ -53,7 +53,7 @@ export class DashboardEffects {
       switchMap(() =>
         this.tasksService.allTasks$.pipe(
           take(1),
-          map((data) => getAllTasksSuccess({ allTasks: data }))
+          map((allTasks) => getAllTasksSuccess({ allTasks }))
         )
       )
     )
@@ -65,7 +65,7 @@ export class DashboardEffects {
       switchMap(() =>
         this.userService.allUsers$.pipe(
           take(1),
-          map((data) => getAllUsersSuccess({ allUsers: data }))
+          map((allUsers) => getAllUsersSuccess({ allUsers}))
         )
       )
     )
@@ -77,7 +77,7 @@ export class DashboardEffects {
       switchMap(() =>
         this.tasksService.getActiveTasks$.pipe(
           take(1),
-          map((data) => getActiveTasksSuccess({ activeTasks: data }))
+          map((activeTasks) => getActiveTasksSuccess({ activeTasks}))
         )
       )
     )
@@ -89,7 +89,7 @@ export class DashboardEffects {
       switchMap(() =>
         this.tasksService.allTaskTrack$.pipe(
           take(1),
-          map((data) => getAllTaskTracksSuccess({ allTaskTracks: data }))
+          map((allTaskTracks) => getAllTaskTracksSuccess({ allTaskTracks }))
         )
       )
     )

@@ -15,6 +15,7 @@ import { Task } from '@pages/report/interfaces/interfaces';
 import { getPeriod } from '@shared/helpers/helpers';
 import { Period } from '@shared/interfaces/interfaces';
 import { Tasks } from '@shared/interfaces/interfaces';
+import { TaskStatus } from "@shared/enums/enum";
 
 @Injectable({
   providedIn: 'root',
@@ -70,7 +71,7 @@ export class TasksService {
     const queryWeekTasks = query(
       ref,
       where('userId', '==', localStorage.getItem('AuthUserId')),
-      where('status', 'in', ['in progress', ''])
+      where('status', 'in', [TaskStatus.InProgress, ''])
     );
 
     return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;

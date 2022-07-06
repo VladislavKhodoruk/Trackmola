@@ -51,13 +51,12 @@ export const getTaskWithAllParametrs = createSelector(
   getAllUsersSelector,
   getAllTaskTracks,
   (active, projects, tasks, users, allTaskTracks) => {
-    const fullTask = active.map((i) => ({
+    return active.map((i) => ({
       projectName: searchName(i.projectId, projects),
       projectColor: searchProjectColor(i.projectId, projects),
       taskName: SearchTaskName(i.taskId, tasks),
       status: i.status,
       usersPhotos: SearchUserPhoto(i.taskId, allTaskTracks, users),
     }));
-    return fullTask;
   }
 );
