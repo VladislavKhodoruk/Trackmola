@@ -16,7 +16,5 @@ import { ActiveTasks } from '@shared/interfaces/interfaces';
 export class ActiveTasksListComponent implements OnChanges {
   @Input() fullTask!: ActiveTasks[];
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(this.fullTask);
-  }
+  ngOnChanges(changes: SimpleChanges) {}
 }

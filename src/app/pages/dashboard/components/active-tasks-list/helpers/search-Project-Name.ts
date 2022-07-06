@@ -1,15 +1,7 @@
 import { Project } from '@shared/interfaces/interfaces';
 
 export function searchName(id: string, projects: Project[]): string {
-  let name = 'undefined';
-  if (projects) {
-    projects.forEach((item) => {
-      if (item.id == id) {
-        name = item.name;
-      }
-    });
-  }
-  return name;
+  return projects.find((project) => project.id === id).name;
 }
 
 export function searchProjectColor(id: string, projects: Project[]): string {

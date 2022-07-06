@@ -43,6 +43,11 @@
       padding: 0 0.75rem;
     }
 
+    &-xs {
+      padding: 0 0.5rem;
+      height: 2.5rem;
+    }
+
     &-icon {
       @include flex(flex-start, flex-start);
     }

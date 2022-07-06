@@ -34,7 +34,7 @@
     }
 
     .task-status {
-      border: 2px solid var(--primary);
+      border: var(--border-xxs) solid var(--primary);
       border-radius: var(--offset-m);
       font: var(--font-buttonSmall);
       color: var(--primary);

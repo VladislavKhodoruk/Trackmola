@@ -1,6 +1,6 @@
 <article class="task-wrappeer">
   <div class="project-name-wrapper">
-    <p class="project-name" [ngStyle]="{ 'border-color': task.projectColor }">
+    <p class="project-name" [style.border-color]="task.projectColor">
       {{ task.projectName }}
     </p>
   </div>
@@ -14,7 +14,12 @@
     [users]="task.usersPhotos"
     size="2"
   ></app-users-photos>
-  <div class="button-add-to-report">
-    <img src="assets/img/activity/Button.svg" />
-  </div>
+  <app-button
+    class="form-report-footer-voice"
+    [buttonClass]="'button-primary button-xs'"
+    type="button"
+    [icon]="clipButton"
+    iconWidth="1.5rem"
+    iconHeight="1.5rem"
+  ></app-button>
 </article>

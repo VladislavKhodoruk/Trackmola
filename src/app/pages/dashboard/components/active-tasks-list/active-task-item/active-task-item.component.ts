@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActiveTasks } from '@shared/interfaces/interfaces';
+import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
 
 @Component({
   selector: 'app-active-task-item',
@@ -9,11 +10,11 @@ import { ActiveTasks } from '@shared/interfaces/interfaces';
 export class ActiveTaskItemComponent implements OnChanges {
   @Input() currentTask!: ActiveTasks;
   task: ActiveTasks;
+  readonly clipButton = clipboardPlus;
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.currentTask) {
       this.task = this.currentTask;
     }
-    console.log(this.currentTask);
   }
 }
