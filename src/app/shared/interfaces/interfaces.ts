@@ -1,4 +1,5 @@
 import { IconifyIcon } from '@iconify/types';
+import { Timestamp } from 'firebase/firestore';
 
 export interface Project {
   id: string;
@@ -29,7 +30,8 @@ export interface TaskTrack {
 }
 
 export interface User {
-  birthday: Date;
+  type: string;
+  birthday: Timestamp;
   email: string;
   fullName: string;
   id: string;
@@ -38,7 +40,7 @@ export interface User {
   position: string;
   qualification: string;
   role: string;
-  startDate: Date;
+  startDate: Timestamp;
   timeZone: string;
 }
 

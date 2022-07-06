@@ -20,6 +20,14 @@ export const getPeriod = createSelector(
   (state) => state.period
 );
 
+export const getUser = createSelector(getSharedState, (state) => state.user);
+
+export const getUserPhoto = createSelector(
+  getUser,
+  (user) => user?.photo || ''
+);
+export const getUserType = createSelector(getUser, (user) => user?.type || '');
+
 export const getFirstDay = createSelector(getPeriod, (period) => period.start);
 
 export const getLastDay = createSelector(getPeriod, (period) => period.end);

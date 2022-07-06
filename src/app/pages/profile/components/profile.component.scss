@@ -1,0 +1,92 @@
+.profile {
+
+    @import "vars/variables";
+    @import "mixins.scss";
+
+    margin: var(--offset-d);
+
+    &-header-title {
+        font: var(--font-title);
+    }
+
+    &-all-info {
+        margin: var(--offset-d) 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &-header-content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-article-weekends{
+        border: $border-input;
+        border-radius: var(--border-radius-l);
+    }
+
+    &-title {
+        font: var(--font-light);
+        color: var(--gray2);
+        margin: var(--offset-d) 0;
+    }
+
+    &-data {
+        font: var(--font-blocks);
+    }
+
+    &-info {
+        break-inside: avoid;
+        padding: var(--offset-m);
+    }
+
+    &-main-infos{
+        columns: 3;
+        break-inside: avoid;
+    }
+
+    &-visit-card {
+        margin: var(--offset-l) 0; 
+        border: $border-input;
+        border-radius: var(--border-radius-l);
+        display: flex;
+    }
+
+    &-instruction-title {
+        font: var(--font-title);
+    }
+
+    &-description {
+        font: var(--font-light);
+    }
+    &-avatar-container{
+        display: block;
+        margin:  auto var(--offset-d); 
+    }
+
+    &-avatar {
+        border-radius: 100%;
+        width: 16rem;
+        height: 16rem;
+        object-fit: cover;
+    }
+
+    @media(max-width:1200px) {
+        &-basic-info {
+            columns: 1;
+        }
+    }
+
+
+    @media(max-width:768px) {
+        &-all-info {
+            columns: 1;
+            flex-direction: column;
+        }
+
+        &-avatar {
+            max-width: 8rem;
+            max-height: 8rem;
+        }
+    }
+}

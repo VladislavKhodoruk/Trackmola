@@ -1,5 +1,7 @@
+import { User } from '@shared/interfaces/interfaces';
+
 export interface ProfileState {
-  [key: string]: string;
+  profileUser?: User;
 }
 
 export const profileState: ProfileState = {};
