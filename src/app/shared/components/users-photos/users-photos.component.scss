@@ -1,12 +1,19 @@
 :host {
   @import "mixins.scss";
   .photos {
-    @include flex(flex-start, flex-start);
+    @include flex(center, flex-start);
     flex-direction: row-reverse;
     margin-right: var(--offset);
 
+    &-over {
+      z-index: 2;
+      margin-right: calc(var(--offset) * -1);
+      text-align: right;
+      font: var(--font-typography);
+      font-weight: bold;
+      color: var(--primary);
+    }
     &-photo {
-      position: relative;
       margin-right: calc(var(--offset) * -1);
       border-radius: 100%;
       object-fit: cover;
