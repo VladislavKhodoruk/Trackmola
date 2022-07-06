@@ -9,6 +9,7 @@ export const getLoading = createSelector(
   (state) => state.loadingStatus.loading
 );
 
+
 export const getErrorMessage = createSelector(
   getCommonState,
   (state) => state.loadingStatus.errorMessage
@@ -18,6 +19,8 @@ export const getPeriod = createSelector(
   getCommonState,
   (state) => state.period
 );
+
+export const getUser = createSelector(getCommonState, (state) => state.user);
 
 export const getFirstDay = createSelector(getPeriod, (period) => period.start);
 
