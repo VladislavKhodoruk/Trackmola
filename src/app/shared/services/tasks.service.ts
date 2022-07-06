@@ -9,6 +9,8 @@ import {
   doc,
   setDoc,
   where,
+  deleteDoc,
+  onSnapshot,
 } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from '@pages/report/interfaces/interfaces';
@@ -63,5 +65,21 @@ export class TasksService {
     );
 
     return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
+  }
+
+  removeTask(id: string): void {
+    deleteDoc(doc(this.firestore, 'taskTrack', id));
+    const ref = collection(this.firestore, 'taskTrack');
+    const queryAllTasks = query(ref);
+    onSnapshot(
+      queryAllTasks,
+      { includeMetadataChanges: true },
+      (querySnapshot) => {
+        const tasks = [];
+        querySnapshot.forEach((respons) => {
+          tasks.push(respons.data());
+        });
+      }
+    );
   }
 }

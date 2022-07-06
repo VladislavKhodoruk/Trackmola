@@ -1,0 +1,188 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+  .todayview {
+    font-size: 1.25rem;
+    height: 100%;
+    width: 100%;
+    font-family: "Noto Sans";
+  }
+
+  .top-area {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--offset);
+    width: 100%;
+  }
+
+  .top-buttons {
+    display: flex;
+    justify-content: flex-end;
+    height: 10%;
+  }
+
+  .percentage-full {
+    background: var(--primary-max);
+    border-radius: $border-radius-percent;
+    color: var(--white);
+    font: var(--font-blocks);
+    font-weight: 600;
+    padding: 0.4rem var(--offset);
+  }
+
+  .percentage {
+    background: var(--primary);
+  }
+
+  .repeat-button,
+  .complete-button {
+    background: var(--white);
+    border: $border-radius-button;
+    border-radius: var(--offset-s);
+    color: var(--primary);
+    font: var(--font-buttonSmall);
+    padding: 0.4rem var(--offset);
+  }
+
+  .repeat-button {
+    margin: 0 var(--offset);
+  }
+
+  .complete-button {
+    background: var(--primary);
+    color: var(--white);
+  }
+
+  .bottom-area {
+    background: linear-gradient(
+      180deg,
+      rgba(115, 83, 208, 0) 0%,
+      rgba(115, 83, 208, 0.15) 100%
+    );
+    border-radius: 0 0 var(--offset-s) var(--offset-s);
+    display: flex;
+    height: calc(100% - 3.4rem);
+    width: 100%;
+  }
+
+  .flask {
+    align-items: flex-end;
+    background: var(--gray);
+    border-radius: 0 0 var(--offset) var(--offset);
+    display: flex;
+    margin-right: var(--offset);
+    position: relative;
+    width: 2rem;
+  }
+
+  .liquid-full {
+    align-items: flex-end;
+    background: var(--primary-max);
+    border-radius: 0 0 var(--offset) var(--offset);
+    display: flex;
+    height: 50%;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+
+  .liquid {
+    background: var(--primary);
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      min-width: 5rem;
+      min-height: 5rem;
+      background-color: var(--gray);
+      animation-name: rotate;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    &:before {
+      bottom: 95%;
+      border-radius: 45%;
+      animation-duration: 10s;
+    }
+
+    &:after {
+      bottom: 95%;
+      opacity: 0.5;
+      border-radius: 40%;
+      animation-duration: 10s;
+    }
+  }
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, 0) rotateZ(0deg);
+    }
+    50% {
+      transform: translate(-50%, -2%) rotateZ(180deg);
+    }
+    100% {
+      transform: translate(-50%, 0%) rotateZ(360deg);
+    }
+  }
+  .tasks {
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: 1.25rem;
+    padding-right: var(--offset);
+    width: 100%;
+  }
+
+  .repeat-button:hover,
+  .complete-button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.2s;
+  }
+  .bubbles {
+    position: absolute;
+    background-color: var(--white);
+    border-radius: 50%;
+    opacity: 0;
+  }
+  .bubble-1 {
+    animation: up2 9s infinite;
+    animation-delay: 0.5s;
+    height: 6px;
+    left: 20%;
+    width: 6px;
+  }
+  .bubble-2 {
+    animation: up1 7.5s infinite;
+    animation-delay: 3s;
+    height: 8px;
+    left: 8%;
+    width: 8px;
+  }
+  .bubble-3 {
+    animation: up2 8s infinite;
+    animation-delay: 4s;
+    height: 5px;
+    left: 50%;
+    width: 5px;
+  }
+  .bubble-4 {
+    animation: up1 10s infinite;
+    height: 7px;
+    left: 60%;
+    width: 7px;
+  }
+  @keyframes up1 {
+    100% {
+      transform: translateY(-36rem);
+      opacity: 0.8;
+    }
+  }
+  @keyframes up2 {
+    100% {
+      transform: translateY(-36rem);
+      opacity: 0.7;
+    }
+  }
+}

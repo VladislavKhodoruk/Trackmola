@@ -77,3 +77,11 @@ export interface Period {
   start: number;
   end: number;
 }
+
+export interface TaskItem {
+  id: string;
+  duration: number;
+  taskName: string;
+  projectColor: string;
+  projectName: string;
+}

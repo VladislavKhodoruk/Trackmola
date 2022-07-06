@@ -23,6 +23,7 @@ import { IconModule } from '@visurel/iconify-angular';
 import { SidebarModule } from './shared/components/sidebar/sidebar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomSerializer } from '@store/router/custom-serializer';
+import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,6 +48,7 @@ import { CustomSerializer } from '@store/router/custom-serializer';
     provideStorage(() => getStorage()),
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
+    TodayViewModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

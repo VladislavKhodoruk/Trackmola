@@ -20,8 +20,22 @@
     }
 
     &-input {
-      margin-bottom: 3rem;
-      width: 52rem;
+      margin-right: 2rem;
+      width: 60%;
     }
+
+    &-todayview {
+      width: 40%;
+    }
+  }
+  .top {
+    //height: 33%;
+    width: 100%;
+  }
+  .tasks-row {
+    display: flex;
+    //height: 66%;
+    margin-bottom: 3rem;
+    width: 100%;
   }
 }

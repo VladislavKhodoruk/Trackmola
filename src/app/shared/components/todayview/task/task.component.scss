@@ -1,0 +1,67 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+  .task {
+    background: var(--white);
+    border-radius: 0 var(--offset-s) var(--offset-s) 0;
+    box-sizing: border-box;
+    margin: 0 0 var(--offset) 0;
+    padding: var(--offset) var(--offset) 0 var(--offset-l);
+    width: 100%;
+    box-shadow: 0 0 3px var(--gray);
+  }
+
+  .task-top {
+    align-items: flex-start;
+    display: flex;
+    gap: var(--offset);
+    width: 100%;
+  }
+
+  .time {
+    font: var(--font-blocks);
+    font-weight: 700;
+  }
+
+  .project {
+    background: var(--white);
+    border: $border-radius-button;
+    border-radius: var(--offset-l);
+    font: var(--font-blocks);
+    padding: 0 var(--offset);
+  }
+
+  .description {
+    font: var(--font-blocks);
+    word-wrap: break-word;
+  }
+
+  .buttons {
+    @include flex(flex-end, flex-end);
+    height: 1.125rem;
+    margin-top: var(--offset);
+  }
+
+  .icons {
+    color: var(--gray);
+    display: none;
+
+    &:last-of-type {
+      margin-left: var(--offset-s);
+    }
+  }
+
+  .icons:hover {
+    color: var(--primary);
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .task:hover {
+    box-shadow: 0px 0px 6px rgba(87, 74, 249, 0.25);
+    cursor: pointer;
+    .icons {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+
+  .top {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--offset-m);
+  }
+
+  .title {
+    font: var(--font-title);
+  }
+
+  .middle {
+    font: var(--font-calendar);
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .buttons-cancel,
+  .buttons-delete {
+    background: var(--white);
+    border: $border-radius-button;
+    border-radius: var(--offset-d);
+    color: var(--primary);
+    font: var(--font-buttonMiddle);
+    padding: 0.3rem var(--offset);
+    gap: var(--offset-s);
+    outline: 0;
+  }
+
+  .buttons-delete {
+    background: var(--primary);
+    color: var(--white);
+    margin-left: 1rem;
+  }
+  .icons {
+    display: flex;
+  }
+  .buttons-cancel:hover,
+  .buttons-delete:hover,
+  .icons:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.2s;
+  }
+}
+
+::ng-deep {
+  .mat-dialog-container {
+    border-radius: var(--offset);
+    height: 14rem;
+    padding: 1rem;
+    min-width: 26rem;
+    overflow: hidden;
+  }
+  .mat-dialog-title {
+    margin: 0;
+  }
+}
