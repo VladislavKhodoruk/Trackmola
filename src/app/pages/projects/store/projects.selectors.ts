@@ -19,6 +19,11 @@ export const getTaskTracks = createSelector(
   ({ taskTracks }) => taskTracks
 );
 
+export const getPeriod = createSelector(
+  getProjectsState,
+  ({ period }) => period
+);
+
 export const getUsers = createSelector(getProjectsState, ({ users }) => users);
 
 export const getSelectedProject = createSelector(

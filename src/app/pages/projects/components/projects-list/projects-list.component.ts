@@ -1,5 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { Project, User, TaskTrack, Task } from '@shared/interfaces/interfaces';
+import {
+  Project,
+  User,
+  TaskTrack,
+  Task,
+  Period,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-projects-list',
@@ -13,4 +19,5 @@ export class ProjectsListComponent {
   @Input() readonly taskTracks: TaskTrack[];
   @Input() readonly selectedProject!: Project;
   @Input() readonly searchText: string;
+  @Input() readonly period: Period;
 }
