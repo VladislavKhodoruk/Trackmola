@@ -4,6 +4,7 @@ import { ActiveTasksListComponent } from '@pages/dashboard/components/active-tas
 import { CommonModule } from '@angular/common';
 import { IconModule } from '@visurel/iconify-angular';
 import { ActiveTaskItemComponent } from '@pages/dashboard/components/active-tasks-list/active-task-item/active-task-item.component';
+import { UsersPhotosModule } from "@shared/components/users-photos/users-photos.module";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { ActiveTaskItemComponent } from '@pages/dashboard/components/active-task
     ActiveTaskItemComponent,
     ActiveTaskItemComponent,
   ],
-  imports: [CommonModule, IconModule],
+  imports: [CommonModule, IconModule, UsersPhotosModule],
   exports: [ActiveTasksListContainer],
 })
 export class ActiveTasksListModule {}

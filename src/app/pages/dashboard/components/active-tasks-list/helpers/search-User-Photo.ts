@@ -12,12 +12,9 @@ export function SearchUserPhoto(
   const withoutRepeat = allUsers.filter(
     (item, index) => allUsers.indexOf(item) === index
   );
-  const obj = withoutRepeat.map((item) => {
-    return users.find((i) => {
-      if (i.id && i.id == item) {
-        return i.photo;
-      }
-    });
-  });
-  return obj;
+  const userInfo = withoutRepeat.map((item) =>
+    users.find((i) => i.id === item)
+  );
+  // .map((i) => i.photo);
+  return userInfo;
 }

@@ -100,5 +100,5 @@ export interface ActiveTasks {
   taskName?: string;
   status?: string | null;
   date?: Date;
-  teamPhoto?: string[];
+  usersPhotos?: string[];
 }

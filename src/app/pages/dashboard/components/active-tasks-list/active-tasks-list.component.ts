@@ -5,7 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { TaskTrack } from '@store/shared/shared.state';
+import { ActiveTasks } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-active-tasks-list',
@@ -14,8 +14,7 @@ import { TaskTrack } from '@store/shared/shared.state';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActiveTasksListComponent implements OnChanges {
-  @Input() fullTask!: TaskTrack[];
-  newAllTasks!: TaskTrack[];
+  @Input() fullTask!: ActiveTasks[];
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(this.fullTask);
