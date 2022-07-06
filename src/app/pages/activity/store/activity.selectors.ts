@@ -7,6 +7,11 @@ export const ACTIVITY_STATE_NAME = StateName.Activity;
 const getActivityState =
   createFeatureSelector<ActivityState>(ACTIVITY_STATE_NAME);
 
+export const getWeekReportTime = createSelector(
+  getActivityState,
+  ({ weekReportTime }) => weekReportTime
+);
+
 export const getActivityTasks = createSelector(
   getActivityState,
   ({ tasks }) => tasks

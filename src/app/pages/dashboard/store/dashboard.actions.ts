@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Project, User } from "@shared/interfaces/interfaces";
-import { TaskTrack } from '@store/shared/shared.state';
+import { TaskTrack } from "@store/common/common.state";
 import { Task } from "@pages/report/interfaces/interfaces";
 
 export const GET_WEEK_REPORT_TIME = '[Dashboard page] get week report time';

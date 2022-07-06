@@ -4,49 +4,65 @@ import { ProjectsPageService } from '../services/projectsPage.service';
 import { map, switchMap, take } from 'rxjs';
 
 import {
-  getAllTasks,
-  getAllTasksSuccess,
-  getAllProjects,
-  getAllProjectsSuccess,
-  getAllUsers,
-  getAllUsersSuccess,
+  getTaskTracks,
+  getTaskTracksSuccess,
+  getProjects,
+  getProjectsSuccess,
+  getUsers,
+  getUsersSuccess,
+  getTasks,
+  getTasksSuccess,
 } from './projects.actions';
 
 import { UsersService } from '@shared/services/users.service';
+import { Store } from '@ngrx/store';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Injectable()
 export class ProjectsEffects {
-  public getAllTasks$ = createEffect(() =>
+  public getTaskTracks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getAllTasks),
-      switchMap(({ period }) =>
-        this.projectsPageService.getAllTasks$(period).pipe(
-          take(1),
-          map((tasks) => getAllTasksSuccess({ tasks }))
-        )
-      )
-    )
-  );
-
-  public getAllProjects$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getAllProjects),
+      ofType(getTaskTracks),
       switchMap(() =>
-        this.projectsPageService.allProjects$.pipe(
+        this.projectsPageService.taskTracks$.pipe(
           take(1),
-          map((projects) => getAllProjectsSuccess({ projects }))
+          map((taskTracks) => getTaskTracksSuccess({ taskTracks }))
         )
       )
     )
   );
 
-  public getAllUsers$ = createEffect(() =>
+  public getTasks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getAllUsers),
+      ofType(getTasks),
+      switchMap(() =>
+        this.projectsPageService.tasks$.pipe(
+          take(1),
+          map((tasks) => getTasksSuccess({ tasks }))
+        )
+      )
+    )
+  );
+
+  public getProjects$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getProjects),
+      switchMap(() =>
+        this.projectsPageService.projects$.pipe(
+          take(1),
+          map((projects) => getProjectsSuccess({ projects }))
+        )
+      )
+    )
+  );
+
+  public getUsers$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getUsers),
       switchMap(() =>
         this.usersService.users$.pipe(
           take(1),
-          map((users) => getAllUsersSuccess({ users }))
+          map((users) => getUsersSuccess({ users }))
         )
       )
     )
@@ -55,6 +71,7 @@ export class ProjectsEffects {
   constructor(
     private actions$: Actions,
     private projectsPageService: ProjectsPageService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private store$: Store<TrackMolaState>
   ) {}
 }

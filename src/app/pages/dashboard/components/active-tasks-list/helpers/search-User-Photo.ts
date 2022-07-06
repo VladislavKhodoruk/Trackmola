@@ -1,5 +1,6 @@
 import { User } from '@shared/interfaces/interfaces';
-import { TaskTrack } from '@store/shared/shared.state';
+import { TaskTrack } from "@store/common/common.state";
+
 
 export function SearchUserPhoto(
   id: string,

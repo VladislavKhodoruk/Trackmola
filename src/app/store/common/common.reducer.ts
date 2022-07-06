@@ -10,16 +10,16 @@ import {
   nextWeek,
   previousWeek,
   setPeriod,
-} from './shared.actions';
-import { initialState, SharedState } from './shared.state';
+} from './common.actions';
+import { initialState, CommonState } from './common.state';
 
-const sharedReducer = createReducer(
+const commonReducer = createReducer(
   initialState,
-  on(loading, (state: SharedState, action) => ({
+  on(loading, (state: CommonState, action) => ({
     ...state,
     loadingStatus: { ...state.loadingStatus, loading: action.status },
   })),
-  on(errorMessage, (state: SharedState, action) => ({
+  on(errorMessage, (state: CommonState, action) => ({
     ...state,
     loadingStatus: {
       ...state.loadingStatus,
@@ -27,27 +27,27 @@ const sharedReducer = createReducer(
       errorMessage: action.message,
     },
   })),
-  on(getUserDataSuccess, (state: SharedState, action) => ({
+  on(getUserDataSuccess, (state: CommonState, action) => ({
     ...state,
     user: { ...action.profileUser },
   })),
-  on(logout, (state: SharedState) => ({
+  on(logout, (state: CommonState) => ({
     ...state,
     user: null,
   })),
-  on(changeDate, (state: SharedState, action) => ({
+  on(changeDate, (state: CommonState, action) => ({
     ...state,
     date: action.date,
   })),
-  on(getAllTasksTrackSuccess, (state: SharedState, action) => ({
+  on(getAllTasksTrackSuccess, (state: CommonState, action) => ({
     ...state,
     tasksTrack: action.tasksTrack,
   })),
-  on(setPeriod, (state: SharedState, action) => ({
+  on(setPeriod, (state: CommonState, action) => ({
     ...state,
     period: action.period,
   })),
-  on(nextWeek, (state: SharedState, action) => {
+  on(nextWeek, (state: CommonState, action) => {
     const firstDay = state.period.start;
     const lastDay = state.period.end;
     return {
@@ -58,7 +58,7 @@ const sharedReducer = createReducer(
       },
     };
   }),
-  on(previousWeek, (state: SharedState, action) => {
+  on(previousWeek, (state: CommonState, action) => {
     const firstDay = state.period.start;
     const lastDay = state.period.end;
     return {
@@ -75,6 +75,6 @@ const sharedReducer = createReducer(
   }))
 );
 
-export function SharedReducer(state: SharedState | undefined, action: Action) {
-  return sharedReducer(state, action);
+export function CommonReducer(state: CommonState | undefined, action: Action) {
+  return commonReducer(state, action);
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UserType } from '@shared/enums/enum';
+import { User } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +7,12 @@ import { UserType } from '@shared/enums/enum';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
-  @Input() userType!: string | null;
-  @Output() logout = new EventEmitter<void>();
-  types = UserType;
+  @Input() userInfo: User;
+
+  @Output() logoutEmmiter = new EventEmitter<void>();
+
+  logout(event: Event): void {
+    event.preventDefault();
+    this.logoutEmmiter.emit();
+  }
 }

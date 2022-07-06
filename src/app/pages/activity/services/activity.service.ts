@@ -5,6 +5,7 @@ import {
   Firestore,
   query,
 } from '@angular/fire/firestore';
+import { getPeriod } from '@shared/helpers/helpers';
 import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 import { where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
@@ -33,5 +34,22 @@ export class ActivityService {
     const ref = collection(this.firestore, 'projects');
     const queryAll = query(ref, where('id', 'in', projects));
     return collectionData(queryAll) as Observable<Project[]>;
+  }
+
+  get getWeekTasks$(): Observable<TaskTrack[]> {
+    const ref = collection(this.firestore, 'taskTrack');
+
+    const now = new Date();
+    const period: Period = getPeriod(now, 'week');
+
+    const userId = localStorage.getItem('AuthUserId');
+    const queryWeekTasks = query(
+      ref,
+      where('date', '>', new Date(period.start)),
+      where('date', '<', new Date(period.end)),
+      where('userId', '==', userId)
+    );
+
+    return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
   }
 }

@@ -1,5 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import {
+  getWeekReportTimeSuccess,
   getActivityProjectsSuccess,
   getActivityTasksSuccess,
 } from './activity.actions';
@@ -14,6 +15,10 @@ const activityReducer = createReducer(
   on(getActivityProjectsSuccess, (state: ActivityState, { projects }) => ({
     ...state,
     projects,
+  })),
+  on(getWeekReportTimeSuccess, (state: ActivityState, { weekReportTime }) => ({
+    ...state,
+    weekReportTime,
   }))
 );
 

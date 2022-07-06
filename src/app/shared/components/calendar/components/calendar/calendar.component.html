@@ -12,7 +12,7 @@
       <td *ngFor="let day of week.days">
         <app-calendar-item
           [day]="day"
-          [selected]="day.value.getTime() === date?.getTime()"
+          [selected]="day.value === date"
           (click)="onChangeDate(day.value)"
         ></app-calendar-item>
       </td>

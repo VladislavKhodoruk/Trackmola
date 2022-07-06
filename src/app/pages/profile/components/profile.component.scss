@@ -1,0 +1,94 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+  .profile {
+    margin: var(--offset-m);
+
+    &-header-title {
+      font: var(--font-title);
+    }
+
+    &-all-info {
+      margin: var(--offset-d) 0;
+      @include flex(center, space-between);
+    }
+
+    &-header-content {
+        @include flex(center, space-between);
+    }
+
+    &-article-weekends {
+      border: $border-input;
+      border-radius: var(--border-radius-l);
+    }
+
+    &-title {
+      font: var(--font-light);
+      color: var(--gray2);
+      margin: var(--offset-d) 0;
+    }
+
+    &-data {
+      font: var(--font-blocks);
+    }
+
+    &-info {
+      break-inside: avoid;
+      padding: var(--offset-m);
+    }
+
+    &-main-infos {
+      columns: 3;
+      break-inside: avoid;
+    }
+
+    &-visit-card {
+      margin: var(--offset-l) 0;
+      padding: var(--offset-d);
+      border: $border-input;
+      border-radius: var(--border-radius-l);
+      display: flex;
+    }
+
+    &-instruction-title {
+      font: var(--font-title);
+    }
+
+    &-description {
+      font: var(--font-light);
+    }
+    &-avatar-container {
+      display: block;
+    }
+
+    &-avatar {
+      @include profile-photo(16rem, 16rem);
+      object-fit: cover;
+    }
+
+    @media (max-width: 1200px) {
+      &-visit-card {
+        margin: var(--offset-m);
+      }
+      &-main-infos {
+        columns: 2;
+      }
+    }
+
+    @media (max-width: 926px) {
+      font-size: 80%;
+
+      &-main-infos {
+        flex-direction: column;
+      }
+
+      &-visit-card {
+        display: inline-block;
+      }
+
+      &-avatar {
+        @include profile-photo(8rem, 8rem);
+      }
+    }
+  }
+}

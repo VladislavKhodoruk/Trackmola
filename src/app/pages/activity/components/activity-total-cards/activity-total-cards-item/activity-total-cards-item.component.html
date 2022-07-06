@@ -1,0 +1,22 @@
+<div
+  [style.backgroundColor]="totalCardItem?.backgoundColor"
+  class="total-card-item"
+>
+  <div class="total-card-item-img">
+    <img src="{{ totalCardItem?.img }}" alt="images" />
+  </div>
+  <div class="total-card-item-title">{{ totalCardItem?.title }}</div>
+  <div class="total-card-item-hours">{{ totalCardItem?.value }}</div>
+  <div class="total-card-item-bar">
+    <div class="total-card-item-bar-title">
+      out of {{ totalCardItem?.numberWeekHours }}
+    </div>
+    <div class="total-card-item-bar-item">
+      <div
+        [style.backgroundColor]="totalCardItem?.progressBarColor"
+        [style.width.%]="totalCardItem?.progressBarSize"
+        class="total-card-item-bar-item-progress"
+      ></div>
+    </div>
+  </div>
+</div>

@@ -13,13 +13,13 @@ import {
   getUserData,
   getUserDataSuccess,
   loading,
-} from '@store/shared/shared.actions';
+} from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
 import { catchError, map, of, switchMap, take, tap, mergeMap } from 'rxjs';
 import { ProjectsService } from '@shared/services/projects.service';
 
 @Injectable()
-export class SharedEffects {
+export class CommonEffects {
   getUserData$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getUserData),

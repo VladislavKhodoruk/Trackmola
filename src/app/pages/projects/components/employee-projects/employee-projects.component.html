@@ -1,6 +1,6 @@
 <header class="projects-header">
   <h2 class="projects-header-title">Projects</h2>
-  <div class="projects-header-item" *ngIf="selectedProject">
+  <div class="projects-header-item">
     <ic-icon
       class="icon"
       width="2rem"
@@ -9,11 +9,11 @@
     ></ic-icon>
     <div
       class="projects-header-item-title"
-      [ngStyle]="{ 'border-color': selectedProject.color }"
+      [ngStyle]="{ 'border-color': 'var(--rose)' }"
     >
-      {{ selectedProject.name }}
+      PSVOD
     </div>
-    <div class="projects-header-item-name">{{ selectedProject.fullName }}</div>
+    <div class="projects-header-item-name">PSVOD fullName</div>
   </div>
 </header>
 

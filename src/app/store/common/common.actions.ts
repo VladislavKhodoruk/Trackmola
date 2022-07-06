@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Project } from '@shared/interfaces/interfaces';
 import { Period, User } from '@shared/interfaces/interfaces';
-import { TaskTrack } from './shared.state';
+import { TaskTrack } from './common.state';
 export const LOADING = 'loading';
 export const ERROR_MESSAGE = 'error message';
 export const GET_USER_DATA = 'get user data';
@@ -30,7 +30,7 @@ export const getUserDataSuccess = createAction(
   props<{ profileUser: User }>()
 );
 
-export const changeDate = createAction(CHANGE_DATE, props<{ date: Date }>());
+export const changeDate = createAction(CHANGE_DATE, props<{ date: number }>());
 
 export const setPeriod = createAction(SET_PERIOD, props<{ period: Period }>());
 

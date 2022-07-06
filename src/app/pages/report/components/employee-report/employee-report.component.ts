@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import check from '@iconify/icons-tabler/check';
 import { Store } from '@ngrx/store';
-import { getAllTasksTrack } from '@store/shared/shared.actions';
-import { SharedState } from '@store/shared/shared.state';
+import { getAllTasksTrack } from '@store/common/common.actions';
+import { CommonState } from '@store/common/common.state';
 import {
   collection,
   Firestore,
@@ -20,7 +20,7 @@ export class EmployeeReportComponent implements OnInit {
   iconCheck = check;
   firestore: Firestore;
 
-  constructor(private sharedStore$: Store<SharedState>) {
+  constructor(private commonStore$: Store<CommonState>) {
     this.firestore = getFirestore();
   }
 
@@ -32,7 +32,7 @@ export class EmployeeReportComponent implements OnInit {
     const ref = collection(this.firestore, 'taskTrack');
 
     onSnapshot(query(ref), () =>
-      this.sharedStore$.dispatch(getAllTasksTrack())
+      this.commonStore$.dispatch(getAllTasksTrack())
     );
   }
 }
