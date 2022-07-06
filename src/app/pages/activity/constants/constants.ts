@@ -5,7 +5,6 @@ import {
   getRestTime,
   getWorksMonthDefaultHours,
 } from '../helpers/helpers';
-import { TotalCardItem } from '../interfaces/interfaces';
 
 const ACTIVITY_CHART_PIE_COLORS: string[] = [
   'var(--aqua)',
@@ -103,7 +102,7 @@ export const BASIC_OPTIONS_ACTIVITY_CHART_PIE: Options = {
     enabled: true,
     symbolHeight: 24,
     symbolWidth: 24,
-    itemDistance: 85,
+    itemDistance: 40,
     itemMarginTop: 50,
     itemStyle: {
       font: 'var(--font-current)',

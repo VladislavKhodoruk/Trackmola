@@ -10,7 +10,6 @@ export class InputSearchComponent {
   @Input() searchText: string;
 
   @Output() search = new EventEmitter<string>();
-  @Output() focusEvent = new EventEmitter<void>();
 
   readonly iconSearch = searchIcon;
 }

@@ -1,5 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Project, User, TaskTrack } from '@shared/interfaces/interfaces';
+import { Component, Input } from '@angular/core';
+import {
+  Project,
+  User,
+  TaskTrack,
+  Task,
+  Period,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-projects-list',
@@ -7,11 +13,11 @@ import { Project, User, TaskTrack } from '@shared/interfaces/interfaces';
   styleUrls: ['./projects-list.component.scss'],
 })
 export class ProjectsListComponent {
-  @Input() readonly myProjects: Project[];
+  @Input() readonly projects: Project[];
+  @Input() readonly tasks: Task[];
   @Input() readonly users: User[];
-  @Input() readonly allTasks: TaskTrack[];
+  @Input() readonly taskTracks: TaskTrack[];
   @Input() readonly selectedProject!: Project;
   @Input() readonly searchText: string;
-
-  @Output() readonly selectProject = new EventEmitter<Project>();
+  @Input() readonly period: Period;
 }

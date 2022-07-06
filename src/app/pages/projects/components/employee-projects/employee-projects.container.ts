@@ -1,13 +1,13 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  getAllUsers,
+  getUsers,
   clearProjectStore,
-  getAllProjects,
-  getAllTasks,
+  getProjects,
+  getTaskTracks,
+  getTasks,
 } from '@pages/projects/store/projects.actions';
 import { getSelectedProject } from '@pages/projects/store/projects.selectors';
-import { getPeriod } from '@shared/helpers/helpers';
 
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -21,11 +21,10 @@ export class EmployeeProjectsContainer implements OnDestroy {
   readonly selectedProject$ = this.store$.select(getSelectedProject);
 
   constructor(private store$: Store<TrackMolaState>) {
-    this.store$.dispatch(
-      getAllTasks({ period: getPeriod(new Date(), 'week') })
-    );
-    this.store$.dispatch(getAllUsers());
-    this.store$.dispatch(getAllProjects());
+    this.store$.dispatch(getTaskTracks());
+    this.store$.dispatch(getTasks());
+    this.store$.dispatch(getUsers());
+    this.store$.dispatch(getProjects());
   }
 
   ngOnDestroy(): void {
