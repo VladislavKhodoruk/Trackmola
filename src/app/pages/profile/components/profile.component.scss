@@ -3,7 +3,7 @@
     @import "vars/variables";
     @import "mixins.scss";
 
-    margin: var(--offset-d);
+    margin: var(--offset-m);
 
     &-header-title {
         font: var(--font-title);
@@ -47,6 +47,7 @@
 
     &-visit-card {
         margin: var(--offset-l) 0; 
+        padding: var(--offset-d); 
         border: $border-input;
         border-radius: var(--border-radius-l);
         display: flex;
@@ -61,7 +62,6 @@
     }
     &-avatar-container{
         display: block;
-        margin:  auto var(--offset-d); 
     }
 
     &-avatar {
@@ -72,16 +72,25 @@
     }
 
     @media(max-width:1200px) {
-        &-basic-info {
-            columns: 1;
+        &-visit-card {
+            margin: var(--offset-m);
+        }
+        &-main-infos {
+            columns: 2;
         }
     }
 
 
-    @media(max-width:768px) {
-        &-all-info {
-            columns: 1;
+    @media(max-width:926px) {
+
+        font-size: 80%;
+
+        &-main-infos {
             flex-direction: column;
+        }
+
+        &-visit-card{
+            display: inline-block;
         }
 
         &-avatar {
