@@ -1,101 +1,94 @@
-.profile {
-
-    @import "vars/variables";
-    @import "mixins.scss";
-
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+  .profile {
     margin: var(--offset-m);
 
     &-header-title {
-        font: var(--font-title);
+      font: var(--font-title);
     }
 
     &-all-info {
-        margin: var(--offset-d) 0;
-        display: flex;
-        flex-direction: row;
+      margin: var(--offset-d) 0;
+      @include flex(center, space-between);
     }
 
     &-header-content {
-        display: flex;
-        justify-content: space-between;
+        @include flex(center, space-between);
     }
 
-    &-article-weekends{
-        border: $border-input;
-        border-radius: var(--border-radius-l);
+    &-article-weekends {
+      border: $border-input;
+      border-radius: var(--border-radius-l);
     }
 
     &-title {
-        font: var(--font-light);
-        color: var(--gray2);
-        margin: var(--offset-d) 0;
+      font: var(--font-light);
+      color: var(--gray2);
+      margin: var(--offset-d) 0;
     }
 
     &-data {
-        font: var(--font-blocks);
+      font: var(--font-blocks);
     }
 
     &-info {
-        break-inside: avoid;
-        padding: var(--offset-m);
+      break-inside: avoid;
+      padding: var(--offset-m);
     }
 
-    &-main-infos{
-        columns: 3;
-        break-inside: avoid;
+    &-main-infos {
+      columns: 3;
+      break-inside: avoid;
     }
 
     &-visit-card {
-        margin: var(--offset-l) 0; 
-        padding: var(--offset-d); 
-        border: $border-input;
-        border-radius: var(--border-radius-l);
-        display: flex;
+      margin: var(--offset-l) 0;
+      padding: var(--offset-d);
+      border: $border-input;
+      border-radius: var(--border-radius-l);
+      display: flex;
     }
 
     &-instruction-title {
-        font: var(--font-title);
+      font: var(--font-title);
     }
 
     &-description {
-        font: var(--font-light);
+      font: var(--font-light);
     }
-    &-avatar-container{
-        display: block;
+    &-avatar-container {
+      display: block;
     }
 
     &-avatar {
-        border-radius: 100%;
-        width: 16rem;
-        height: 16rem;
-        object-fit: cover;
+      @include profile-photo(16rem, 16rem);
+      object-fit: cover;
     }
 
-    @media(max-width:1200px) {
-        &-visit-card {
-            margin: var(--offset-m);
-        }
-        &-main-infos {
-            columns: 2;
-        }
+    @media (max-width: 1200px) {
+      &-visit-card {
+        margin: var(--offset-m);
+      }
+      &-main-infos {
+        columns: 2;
+      }
     }
 
+    @media (max-width: 926px) {
+      font-size: 80%;
 
-    @media(max-width:926px) {
+      &-main-infos {
+        flex-direction: column;
+      }
 
-        font-size: 80%;
+      &-visit-card {
+        display: inline-block;
+      }
 
-        &-main-infos {
-            flex-direction: column;
-        }
-
-        &-visit-card{
-            display: inline-block;
-        }
-
-        &-avatar {
-            max-width: 8rem;
-            max-height: 8rem;
-        }
+      &-avatar {
+        @include profile-photo(8rem, 8rem);
+      }
     }
+  }
 }

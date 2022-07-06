@@ -1,6 +1,5 @@
 import { Timestamp } from 'firebase/firestore';
 import { IconifyIcon } from '@iconify/types';
-import { Timestamp } from 'firebase/firestore';
 
 export interface Project {
   id: string;
