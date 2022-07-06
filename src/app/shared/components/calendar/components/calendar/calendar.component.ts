@@ -26,6 +26,7 @@ export class CalendarComponent implements OnChanges, OnDestroy {
   @Input() date!: number;
   @Input() allTasks!: TaskTrack[] | null;
   @Input() firstDay!: Period['start'];
+  @Input() numPreviousWeek!: number;
 
   @Output() changeDate = new EventEmitter<number>();
 
@@ -35,7 +36,7 @@ export class CalendarComponent implements OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.allTasks || changes.firstDay) {
-      this.generateWeeks(new Date(this.firstDay));
+      this.generateWeeks(new Date(this.firstDay), this.numPreviousWeek);
     }
   }
 
