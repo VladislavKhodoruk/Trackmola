@@ -1,12 +1,12 @@
 <article class="task-wrappeer">
-  <div>
+  <div class="project-name-wrapper">
     <p class="project-name" [ngStyle]="{ 'border-color': task.projectColor }">
       {{ task.projectName }}
     </p>
   </div>
   <p class="task-name">{{ task.taskName }}</p>
-  <div class="task-status">
-    <img src="assets/img/activity/tick.svg" class="tick-img" />
+  <div [ngClass]="{ 'task-status': task.status }">
+    <img src="assets/img/activity/tick.svg" [ngClass]="{ 'hidden': task.status === '' }"  alt="undefined" />
     <p>{{ task.status }}</p>
   </div>
   <app-users-photos
@@ -14,5 +14,7 @@
     [users]="task.usersPhotos"
     size="2"
   ></app-users-photos>
-  <button class="add-active-task-to-report">press</button>
+  <div class="button-add-to-report">
+    <img src="assets/img/activity/Button.svg" />
+  </div>
 </article>

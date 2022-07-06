@@ -6,20 +6,23 @@
     padding: var(--offset-d) var(--offset) var(--offset-d) var(--offset);
     margin-bottom: var(--offset);
     display: grid;
-    grid-template-columns: 9rem 30rem 8.2rem 1fr 2rem;
+    grid-template-columns: 9rem 28rem 8.2rem 1fr 2rem;
     grid-gap: var(--offset);
+
+    .project-name-wrapper {
+      display: flex;
+      align-items: center;
+    }
 
     .project-name {
       font: var(--font-calendar);
-      border: 3px solid var(--rose) ;
+      border: 0.2rem solid var(--rose) ;
       border-radius: var(--offset-m);
-      padding: 0 var(--offset-d) 0 var(--offset-d);
+      padding: 0 var(--offset-b) 0 var(--offset-b);
       object-fit: contain;
       display:inline-block;
       max-width: 9rem;
       overflow: hidden;
-      //white-space: nowrap;
-      //text-overflow: ellipsis;
     }
 
     .task-name {
@@ -39,14 +42,23 @@
       align-items: center;
       position: relative;
       justify-content: space-evenly;
+      max-height: var(--offset-ml);
+    }
+
+    .hidden {
+      opacity: 0;
     }
 
     app-users-photos {
       position: relative;
-      transform: translateY(var(--border-s));
+      transform: translateY(var(--border-m));
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .button-add-to-report {
+      transform: translateY(0.2rem);
     }
   }
 }

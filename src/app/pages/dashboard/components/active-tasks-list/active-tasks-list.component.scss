@@ -1,8 +1,23 @@
 :host {
+  .active-task-wrapper {
+    max-height: 18rem;
+    max-width: 60rem;
+    overflow: auto;
+  }
+
   .active-tasks {
     font: var(--font-titleBig);
     margin: 0 0 var(--offset-d) var(--offset-m);
   }
-  .active-tasks-list {}
-  max-width: 2rem;
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--gray4);
+    border-radius: 0.5rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: var(--offset-s);
+  }
+
+
 }
