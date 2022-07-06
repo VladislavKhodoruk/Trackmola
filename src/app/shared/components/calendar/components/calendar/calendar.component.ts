@@ -8,7 +8,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { TaskTrack } from '@store/shared/shared.state';
+import { TaskTrack } from '@store/common/common.state';
 import { Day, Period, Week } from '@shared/interfaces/interfaces';
 import {
   NAMES_OF_THE_DAYS_OF_THE_WEEK,
@@ -23,31 +23,31 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent implements OnChanges, OnDestroy {
-  @Input() date!: Date | null;
+  @Input() date!: number;
   @Input() allTasks!: TaskTrack[] | null;
   @Input() firstDay!: Period['start'];
+  @Input() numPreviousWeek!: number;
 
-  @Output() changeDate = new EventEmitter<Date>();
+  @Output() changeDate = new EventEmitter<number>();
 
   day!: Day;
   currentWeeks: Week[] = [];
   namesDaysWeek = NAMES_OF_THE_DAYS_OF_THE_WEEK;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.allTasks) {
-      if (this.date?.getDay() === 0) {
-        this.generateWeeks(this.date, 2, 0);
-        return;
-      }
-      this.generateWeeks(this.date);
-    }
-    if (changes.firstDay) {
-      this.generateWeeks(new Date(this.firstDay));
+    if (changes.allTasks || changes.firstDay) {
+      this.generateWeeks(new Date(this.firstDay), this.numPreviousWeek);
     }
   }
 
   ngOnDestroy(): void {
-    this.onChangeDate(new Date());
+    this.onChangeDate(
+      new Date(
+        new Date().getFullYear(),
+        new Date().getMonth(),
+        new Date().getDate()
+      ).getTime()
+    );
   }
 
   private generateWeeks(
@@ -89,7 +89,7 @@ export class CalendarComponent implements OnChanges, OnDestroy {
             );
 
             return {
-              value: new Date(value),
+              value: value,
               isTasks: isTasks,
               duration: duration,
             };
@@ -114,7 +114,7 @@ export class CalendarComponent implements OnChanges, OnDestroy {
     );
   }
 
-  onChangeDate(day: Date): void {
+  onChangeDate(day: number): void {
     this.changeDate.emit(day);
   }
 }

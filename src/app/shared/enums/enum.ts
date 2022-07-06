@@ -6,6 +6,8 @@ export enum UserType {
 }
 
 export enum StateName {
+  Common = 'common',
+  Router = 'router',
   Dashboard = 'dashboard',
   Activity = 'activity',
   Profile = 'profile',

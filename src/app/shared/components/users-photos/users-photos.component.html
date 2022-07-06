@@ -1,6 +1,6 @@
 <div *ngIf="users.length" class="photos">
   <img
-    *ngFor="let user of users; index as i"
+    *ngFor="let user of users | slice: 0:5; index as i"
     class="photos-photo"
     [ngStyle]="{
       'z-index': i,

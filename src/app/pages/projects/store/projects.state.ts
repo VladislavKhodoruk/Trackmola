@@ -1,15 +1,26 @@
-import { Project, TaskTrack, User } from '@shared/interfaces/interfaces';
+import { getPeriod } from '@shared/helpers/helpers';
+import {
+  Project,
+  TaskTrack,
+  Task,
+  User,
+  Period,
+} from '@shared/interfaces/interfaces';
 
 export interface ProjectsState {
-  allTasks: TaskTrack[];
-  allProjects: Project[];
+  projects: Project[];
+  tasks: Task[];
+  taskTracks: TaskTrack[];
   users: User[];
+  period: Period;
   selectedProject?: Project;
   searchValue?: string;
 }
 
 export const projectsState: ProjectsState = {
-  allTasks: [],
-  allProjects: [],
+  projects: [],
+  tasks: [],
+  taskTracks: [],
   users: [],
+  period: getPeriod(new Date(), 'week'),
 };

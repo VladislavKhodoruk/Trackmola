@@ -20,8 +20,8 @@
     max-width: calc(
       #{$width-project} + #{$width-scroll} + #{$shadow-left} + #{$shadow-right}
     );
-    height: 20rem;
-    max-height: 20rem;
+    height: 57rem;
+    max-height: 57rem;
     padding: #{$shadow-y} #{$shadow-right} #{$shadow-y} #{$shadow-left};
     margin: calc(#{$shadow-y} * -1) calc(#{$shadow-right} * -1)
       calc(#{$shadow-y} * -1) calc(#{$shadow-left} * -1);

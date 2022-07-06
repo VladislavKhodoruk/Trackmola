@@ -14,7 +14,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { SharedEffects } from './store/shared/shared.effects';
+import { CommonEffects } from './store/common/common.effects';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IconModule } from '@visurel/iconify-angular';
 import { SidebarModule } from './shared/components/sidebar/sidebar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomSerializer } from '@store/router/custom-serializer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,10 +36,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     IconModule,
     SidebarModule,
-    EffectsModule.forRoot([AuthorizationEffects, SharedEffects]),
+    EffectsModule.forRoot([AuthorizationEffects, CommonEffects]),
     StoreModule.forRoot(trackMolaReducer),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
-    StoreRouterConnectingModule.forRoot(),
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer,
+    }),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),

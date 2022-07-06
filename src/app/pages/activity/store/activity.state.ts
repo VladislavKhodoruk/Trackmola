@@ -5,10 +5,12 @@ export interface ActivityState {
   period: Period;
   tasks: TaskTrack[];
   projects: Project[];
+  weekReportTime: number;
 }
 
 export const activityState: ActivityState = {
   period: getPeriod(new Date(), 'week'),
   tasks: [],
   projects: [],
+  weekReportTime: 0,
 };

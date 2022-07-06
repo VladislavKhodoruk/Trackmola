@@ -15,6 +15,7 @@ import { DashboardComponent } from './layout/dashboard.component';
 import { DashboardEffects } from './store/dashboard.effects';
 import { WorkingHoursChartComponent } from './components/working-hours-chart/working-hours-chart.component';
 import { WorkingHoursChartContainer } from './components/working-hours-chart/working-hours-chart.container';
+import { CalendarModule } from '@shared/components/calendar/calendar.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { WorkingHoursChartContainer } from './components/working-hours-chart/wor
     EffectsModule.forFeature([DashboardEffects]),
     StoreModule.forFeature(DASHBOARD_STATE_NAME, DashboardReducer),
     RouterModule.forChild(DashboardRoutes),
+    CalendarModule,
   ],
   exports: [RouterModule],
   providers: [],
