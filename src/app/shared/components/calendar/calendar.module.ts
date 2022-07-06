@@ -7,6 +7,6 @@ import { CalendarContainer } from './components/calendar/calendar.container';
 @NgModule({
   declarations: [CalendarComponent, CalendarContainer, CalendarItemComponent],
   imports: [CommonModule],
-  exports: [CalendarComponent, CalendarContainer],
+  exports: [CalendarContainer],
 })
 export class CalendarModule {}
