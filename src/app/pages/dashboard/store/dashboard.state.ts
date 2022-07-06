@@ -1,6 +1,6 @@
 import { Project, User } from '@shared/interfaces/interfaces';
 import { Task } from '@pages/report/interfaces/interfaces';
-import { TaskTrack } from "@store/common/common.state";
+import { TaskTrack } from '@store/common/common.state';
 
 export interface DashboardState {
   weekReportTime: number;

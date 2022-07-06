@@ -3,7 +3,7 @@ import { IconifyIcon } from '@iconify/types';
 
 export interface Project {
   id: string;
-  colorProject: string;
+  color?: string;
   description: string;
   fullName: string;
   managersId: string[];
