@@ -49,6 +49,15 @@ export const AppRoutes: Routes = [
     title: 'Team',
   },
   {
+    path: 'report-constructor',
+    loadChildren: () =>
+      import('./pages/report-constructor/report-constructor.module').then(
+        (x) => x.ReportConstructorModule
+      ),
+    canActivate: [AuthorizationGuard],
+    title: 'Team',
+  },
+  {
     path: 'authorization',
     loadChildren: () =>
       import('./pages/authorization/authorization.module').then(

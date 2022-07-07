@@ -2,6 +2,7 @@ import chartDonut3 from '@iconify/icons-tabler/chart-donut-3';
 import fileTime from '@iconify/icons-tabler/file-time';
 import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
 import puzzleIcon from '@iconify/icons-tabler/puzzle';
+import manualGearbox from '@iconify/icons-tabler/manual-gearbox';
 import { UserType } from '@shared/enums/enum';
 import { NavigationItem } from '@shared/interfaces/interfaces';
 
@@ -34,16 +35,34 @@ const NAVIGATION_TEAM: NavigationItem = {
   label: 'Team',
 };
 
+const NAVIGATION_REPORT_CONSTRUCTOR: NavigationItem = {
+  routeLink: 'report-constructor',
+  icon: manualGearbox,
+  label: 'Report constructor',
+};
+
 export const getNavigationElems = (userType: string): NavigationItem[] => {
   switch (userType) {
     case UserType.Employee:
       return NAVIGATION_BASIC_ITEMS;
     case UserType.CTO:
-      return [...NAVIGATION_BASIC_ITEMS, NAVIGATION_TEAM];
+      return [
+        ...NAVIGATION_BASIC_ITEMS,
+        NAVIGATION_TEAM,
+        NAVIGATION_REPORT_CONSTRUCTOR,
+      ];
     case UserType.Manager:
-      return [...NAVIGATION_BASIC_ITEMS, NAVIGATION_TEAM];
+      return [
+        ...NAVIGATION_BASIC_ITEMS,
+        NAVIGATION_TEAM,
+        NAVIGATION_REPORT_CONSTRUCTOR,
+      ];
     case UserType.Admin:
-      return [...NAVIGATION_BASIC_ITEMS, NAVIGATION_TEAM];
+      return [
+        ...NAVIGATION_BASIC_ITEMS,
+        NAVIGATION_TEAM,
+        NAVIGATION_REPORT_CONSTRUCTOR,
+      ];
   }
 };
 
