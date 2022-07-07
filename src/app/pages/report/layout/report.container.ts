@@ -6,7 +6,7 @@ import { getAllProjects, getAllTasks } from '../store/report.actions';
 
 @Component({
   selector: 'app-report-container',
-  template: '<app-report [userType]="this.userType"></app-report>',
+  template: '<app-report [userType]="userType"></app-report>',
 })
 export class ReportContainer implements OnInit {
   readonly userType: string = localStorage.getItem('AuthUserType');
