@@ -5,7 +5,7 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-team-container',
   template: `<app-report-constructor
-    [userType]="this.userType"
+    [userType]="userType"
   ></app-report-constructor>`,
 })
 export class ReportConstructorContainer {

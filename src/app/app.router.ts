@@ -55,7 +55,7 @@ export const AppRoutes: Routes = [
         (x) => x.ReportConstructorModule
       ),
     canActivate: [AuthorizationGuard],
-    title: 'Team',
+    title: 'Report constructor',
   },
   {
     path: 'authorization',
