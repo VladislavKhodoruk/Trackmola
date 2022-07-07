@@ -43,6 +43,18 @@
       padding: 0 0.75rem;
     }
 
+    &-rect {
+      border-radius: 0;
+    }
+
+    &-left-border-straight {
+      border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
+    }
+
+    &-right-border-straight {
+      border-radius: var(--border-radius-m) 0 0 var(--border-radius-m);
+    }
+
     &-icon {
       @include flex(flex-start, flex-start);
     }
@@ -109,5 +121,16 @@
 
   .icon {
     display: flex;
+  }
+
+  .period-switcher {
+    background-color: var(--primary-50);
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &-selected {
+        background-color: var(--primary);
+      }
   }
 }

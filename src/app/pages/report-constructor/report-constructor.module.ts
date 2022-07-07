@@ -12,6 +12,8 @@ import { ReportConstructorReducer } from './store/report-constructor.reducer';
 import { REPORT_CONSTRUCTOR_STATE_NAME } from './store/report-constructor.selectors';
 import { ReportConstructorRoutes } from './report-constructor.router';
 import { ReportConstructorEffects } from './store/report-constructor.effects';
+import { ButtonModule } from '@shared/components/button/button.module';
+import { IconModule } from '@visurel/iconify-angular';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ReportConstructorEffects } from './store/report-constructor.effects';
       ReportConstructorReducer
     ),
     RouterModule.forChild(ReportConstructorRoutes),
+    ButtonModule,
+    IconModule,
   ],
   exports: [RouterModule],
 })

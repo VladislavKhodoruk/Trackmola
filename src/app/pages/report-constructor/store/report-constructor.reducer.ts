@@ -1,7 +1,10 @@
 import { Action, createReducer } from '@ngrx/store';
-import { teamState, ReportConstructorState } from './report-constructor.state';
+import {
+  reportConstructorState,
+  ReportConstructorState,
+} from './report-constructor.state';
 
-const reportConstructorReducer = createReducer(teamState);
+const reportConstructorReducer = createReducer(reportConstructorState);
 
 export function ReportConstructorReducer(
   state: ReportConstructorState,

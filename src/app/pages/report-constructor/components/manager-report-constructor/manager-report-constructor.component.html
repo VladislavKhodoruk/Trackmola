@@ -1,1 +1,38 @@
-<p>manager-report-constructor works!</p>
+<header class="report-constructor-header">
+  <div class="report-constructor-header-title">Report constructor</div>
+  <div class="report-constructor-header-buttons">
+    <div class="report-constructor-header-switcher-period">
+      <app-button
+        class="report-constructor-header-switcher-period-item"
+        buttonClass="button-m button-right-border-straight period-switcher-selected"
+        label="Week"
+      ></app-button>
+      <app-button
+        class="report-constructor-header-switcher-period-item"
+        buttonClass="button-m button-rect period-switcher"
+        label="Month"
+      ></app-button>
+      <app-button
+        class="report-constructor-header-switcher-period-item"
+        buttonClass="button-left-border-straight period-switcher"
+        label="Custom period"
+      ></app-button>
+    </div>
+    <app-button
+      class="report-constructor-header-buttons-item"
+      buttonClass="button-secondary"
+      label="Complete"
+      [icon]="checksIcon"
+      iconWidth="1.5rem"
+      iconHeight="1.5rem"
+    ></app-button>
+    <app-button
+      class="report-constructor-header-buttons-item"
+      buttonClass="button-primary"
+      label="Export to excel"
+      [icon]="fileXlsIcon"
+      iconWidth="1.5rem"
+      iconHeight="1.5rem"
+    ></app-button>
+  </div>
+</header>

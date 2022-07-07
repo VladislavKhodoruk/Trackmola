@@ -1,0 +1,32 @@
+:host {
+  @import "mixins.scss";
+  @import "vars/variables";
+  .report-constructor-header {
+    @include flex(flex-start, space-between);
+
+    &-title {
+      font: var(--font-titleBig);
+    }
+
+    &-buttons {
+      margin-right: var(--offset-m);
+      display: flex;
+
+      &-item {
+        margin-left: var(--offset-m);
+      }
+    }
+
+    &-switcher-period {
+      @include flex(center, center);
+
+      &-item {
+        margin-left: var(--offset-xxs);
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

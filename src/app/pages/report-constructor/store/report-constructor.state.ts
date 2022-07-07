@@ -2,4 +2,4 @@ export interface ReportConstructorState {
   [key: string]: string;
 }
 
-export const teamState: ReportConstructorState = {};
+export const reportConstructorState: ReportConstructorState = {};
