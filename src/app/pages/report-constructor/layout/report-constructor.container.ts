@@ -4,9 +4,11 @@ import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-team-container',
-  template: '<app-team [userType]="userType"></app-team>',
+  template: `<app-report-constructor
+    [userType]="userType"
+  ></app-report-constructor>`,
 })
-export class TeamContainer {
+export class ReportConstructorContainer {
   readonly userType: string = localStorage.getItem('AuthUserType');
   constructor(private store$: Store<TrackMolaState>) {}
 }
