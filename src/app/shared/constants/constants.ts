@@ -48,7 +48,7 @@ export const getNavigationElems = (userType: string): NavigationItem[] => {
 };
 
 export const DEFAULT_PHOTO_URL = 'assets/img/user.png';
-
+export const MAX_USERS_PHOTO = 4;
 export const ONE_DAY_IN_SECONDS = 86400000;
 export const ONE_WEEK_IN_SECONDS = ONE_DAY_IN_SECONDS * 7;
 
