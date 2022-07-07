@@ -7,12 +7,12 @@
     <mat-expansion-panel-header class="project-header">
       <mat-panel-title
         class="project-header-title"
-        [ngStyle]="{ 'border-color': 'var(--rose)' }"
+        [ngStyle]="{ 'border-color': project.color }"
       >
-        PSVOD
+        {{ project.name }}
       </mat-panel-title>
       <mat-panel-description class="project-header-description">
-        PSVOD fullName
+        {{ activeTask.name }}
         <app-button
           [buttonClass]="'button-primary button-add-to-report'"
           [icon]="iconClipboard"
@@ -22,35 +22,24 @@
         ></app-button>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div class="activeTask">
-      <div class="activeTask-date">12 June</div>
-      <div class="activeTask-container">
-        <img src="{{ defaultPhoto }}" class="activeTask-image" />
-        <div class="activeTask-description">
-          <div class="activeTask-description-header">
-            <span class="activeTask-description-header-name">Angel Curtis</span>
-            <span class="activeTask-description-header-duration">3h</span>
-          </div>
-          <div class="activeTask-description-comment">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non alias
-            beatae tempora recusandae incidunt. Quisquam, ex nostrum quia sequi,
-            optio temporibus blanditiis, vero perspiciatis dignissimos impedit
-            odit aperiam eaque ipsam?
-          </div>
-        </div>
+    <div
+      class="activeTask"
+      *ngFor="let activeTaskTrack of activeTaskTracksInTask"
+    >
+      <div class="activeTask-date">
+        {{ activeTaskTrack.date.seconds * 1000 | date }}
       </div>
       <div class="activeTask-container">
         <img src="{{ defaultPhoto }}" class="activeTask-image" />
         <div class="activeTask-description">
           <div class="activeTask-description-header">
             <span class="activeTask-description-header-name">Angel Curtis</span>
-            <span class="activeTask-description-header-duration">3h</span>
+            <span class="activeTask-description-header-duration">
+              {{ activeTaskTrack.duration }}h
+            </span>
           </div>
           <div class="activeTask-description-comment">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non alias
-            beatae tempora recusandae incidunt. Quisquam, ex nostrum quia sequi,
-            optio temporibus blanditiis, vero perspiciatis dignissimos impedit
-            odit aperiam eaque ipsam?
+            <!--    {{ activeTaskTrack.comments }} -->
           </div>
         </div>
       </div>

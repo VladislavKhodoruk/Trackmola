@@ -29,6 +29,7 @@ import { ActiveTasksContainer } from './components/active-tasks/active-tasks.con
 import { ActiveTaskComponent } from './components/active-tasks/active-task/active-task.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ButtonModule } from '@shared/components/button/button.module';
+import { ActiveTaskContainer } from './components/active-tasks/active-task/active-task.container';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
     ActiveTasksComponent,
     ActiveTasksContainer,
     ActiveTaskComponent,
+    ActiveTaskContainer,
   ],
   imports: [
     CommonModule,
