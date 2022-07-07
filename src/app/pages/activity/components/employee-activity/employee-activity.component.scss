@@ -1,5 +1,23 @@
 :host {
+  @import "mixins.scss";
   .container {
     padding: var(--offset) 0;
+  }
+
+  .head-of-activity-page {
+    margin: var(--offset-b) 0 0 0;
+    @include flex(center, flex-start,var(--offset-dl));
+  }
+
+  h1 {
+    font: var(--font-titleBig);
+    color: var(--black);
+  }
+
+  app-two-buttons-choose {
+    padding-top: var(--offset-d);
+  }
+  app-activity-chart-container {
+    margin-top: var(--offset);
   }
 }

@@ -35,8 +35,24 @@
       }
     }
 
+    &-halfOfPrimary {
+      background-color: var(--primary-50);
+    }
+
+    &-rightBoarderDefault {
+      border-radius: var(--border-radius-m) 0 0 var(--border-radius-m);
+    }
+
+    &-leftBoarderDefault {
+      border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
+    }
+
     &-m {
       padding: 0 3rem;
+    }
+
+    &-d {
+      padding: 1rem 3rem;
     }
 
     &-s {

@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './employee-activity.component.html',
   styleUrls: ['./employee-activity.component.scss'],
 })
-export class EmployeeActivityComponent {}
+export class EmployeeActivityComponent {
+  checked = true;
+
+  choose() {
+    this.checked = !this.checked;
+  }
+}

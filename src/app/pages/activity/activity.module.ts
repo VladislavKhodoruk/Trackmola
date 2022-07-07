@@ -21,6 +21,8 @@ import { ProjectsActivityComponent } from './components/projects-activity/projec
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
 import { ActivityChartModule } from '@shared/components/activity-chart/activity-chart.module';
+import { ButtonModule } from "@shared/components/button/button.module";
+import { TwoButtonModule } from "@shared/components/two-Buttons-choose/two-button.module";
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { ActivityChartModule } from '@shared/components/activity-chart/activity-
     StoreModule.forFeature(ACTIVITY_STATE_NAME, ActivityReducer),
     RouterModule.forChild(ActivityRoutes),
     ActivityChartModule,
+    ButtonModule,
+    TwoButtonModule
   ],
   exports: [RouterModule],
 })
