@@ -24,6 +24,11 @@ import { ProjectsRoutes } from './projects.router';
 import { ProjectsEffects } from './store/projects.effects';
 import { ProjectsReducer } from './store/projects.reducer';
 import { PROJECTS_STATE_NAME } from './store/projects.selectors';
+import { ActiveTasksComponent } from './components/active-tasks/active-tasks.component';
+import { ActiveTasksContainer } from './components/active-tasks/active-tasks.container';
+import { ActiveTaskComponent } from './components/active-tasks/active-task/active-task.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [
@@ -40,12 +45,17 @@ import { PROJECTS_STATE_NAME } from './store/projects.selectors';
     InputSearchContainer,
     ProjectItemComponent,
     SearchProjectsPipe,
+    ActiveTasksComponent,
+    ActiveTasksContainer,
+    ActiveTaskComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     IconModule,
     UsersPhotosModule,
+    MatExpansionModule,
+    ButtonModule,
     EffectsModule.forFeature([ProjectsEffects]),
     StoreModule.forFeature(PROJECTS_STATE_NAME, ProjectsReducer),
     RouterModule.forChild(ProjectsRoutes),

@@ -1,0 +1,83 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+
+  ::ng-deep {
+    .mat-expansion-panel-body {
+      @include flex(flex-start, flex-start, var(--offset-m));
+      flex-direction: column;
+      padding: var(--offset);
+    }
+  }
+
+  .project {
+    padding: var(--offset-s);
+    border: var(--border-xs) solid var(--gray);
+    border-radius: var(--border-radius);
+    box-shadow: none;
+
+    :hover {
+      background: none;
+    }
+
+    &-header {
+      padding: 0;
+
+      &-title {
+        flex-grow: 0;
+        margin-right: var(--offset);
+        padding: 0 var(--offset-b);
+        border: var(--border-s) solid var(--white);
+        border-radius: var(--border-radius-l);
+        font: var(--font-blocks);
+      }
+
+      &-description {
+        justify-content: space-between;
+        margin-right: var(--offset);
+        font: var(--font-main);
+        font-size: 1.25rem;
+        color: var(--black);
+      }
+    }
+  }
+
+  .activeTask {
+    @include flex(flex-start, flex-start, var(--offset-s));
+    flex-direction: column;
+
+    &-container {
+      @include flex(flex-start, flex-start, var(--offset-s));
+    }
+
+    &-date {
+      color: var(--gray2);
+    }
+
+    &-image {
+      @include profile-photo(3rem, 3rem);
+    }
+
+    &-description {
+      @include flex(flex-start, flex-start, var(--offset-xs));
+      flex-direction: column;
+
+      &-header {
+        @include flex(flex-start, space-between);
+        width: 100%;
+
+        &-name {
+          font: var(--font-main);
+        }
+        &-duration {
+          color: var(--primary);
+        }
+      }
+
+      &-comment {
+        font: var(--font-currentSmall);
+        text-align: justify;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+:host {
+  @import "mixins.scss";
+  @import "vars/variables.scss";
+
+  .activeTasks {
+    @include flex(flex-start, flex-start, var(--offset-m));
+    flex-direction: column;
+
+    &-header {
+      @include flex(center, flex-start);
+      height: 4rem;
+      max-height: 4rem;
+      margin-bottom: 0;
+      font: var(--font-title);
+      text-transform: capitalize;
+    }
+
+    &-list {
+      @include flex(flex-start, flex-start, var(--offset));
+      flex-direction: column;
+      width: 43.5rem;
+      max-width: 43.5rem;
+      background-color: var(--white);
+
+      &-item {
+        width: 100%;
+      }
+    }
+  }
+}
