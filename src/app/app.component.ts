@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { APIService } from '@shared/services/API.service';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public router: Router) {}
+  constructor(public router: Router, private apiService: APIService) {
+    this.apiService.subscribeFirebaseChanges();
+  }
 }

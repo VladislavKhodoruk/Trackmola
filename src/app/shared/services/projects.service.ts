@@ -16,7 +16,7 @@ export class ProjectsService {
   public get allProjects$(): Observable<Project[]> {
     const ref = collection(this.firestore, 'projects');
     const queryAll = query(ref);
-    console.log('allProjects in shared service')
+
     return collectionData(queryAll) as Observable<Project[]>;
   }
 

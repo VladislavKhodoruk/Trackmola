@@ -6,10 +6,10 @@ import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import {
   errorMessage,
-  getAllTasksTrack,
-  getAllTasksTrackSuccess,
   getUserData,
   getUserDataSuccess,
+  getAllUsers,
+  getAllUsersSuccess,
   loading,
 } from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
@@ -54,11 +54,11 @@ export class CommonEffects {
 
   getAllTasks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getAllTasksTrack),
+      ofType(getAllUsers),
       switchMap(() =>
-        this.tasksService.getTasksTrack().pipe(
+        this.usersService.allUsers$.pipe(
           take(1),
-          map((data) => getAllTasksTrackSuccess({ tasksTrack: data }))
+          map((users) => getAllUsersSuccess({ users }))
         )
       )
     )
@@ -67,7 +67,6 @@ export class CommonEffects {
   constructor(
     private actions$: Actions,
     private usersService: UsersService,
-    private tasksService: TasksService,
     private store$: Store<TrackMolaState>,
     private router: Router
   ) {}
