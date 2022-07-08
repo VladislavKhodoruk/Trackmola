@@ -9,8 +9,8 @@ import { Options, SeriesOptionsType } from 'highcharts';
   styleUrls: ['./projects-activity.component.scss'],
 })
 export class ProjectsActivityComponent {
-  @Input() myActivityProjects: Project[];
-  @Input() myActivityTaskTracks: TaskTrack[];
+  @Input() readonly myActivityProjects: Project[];
+  @Input() readonly myActivityTaskTracks: TaskTrack[];
 
   readonly basicOptions: Options = BASIC_OPTIONS_ACTIVITY_CHART_PIE;
 
