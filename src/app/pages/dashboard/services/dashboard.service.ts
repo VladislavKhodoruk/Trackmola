@@ -23,8 +23,10 @@ export class DashboardService {
   subscibeFirebaseChanges() {
     const ref = collection(this.firestore, 'taskTrack');
 
-    onSnapshot(query(ref), () =>
-      this.dashboardStore$.dispatch(getWeekReportTime())
-    );
+    onSnapshot(query(ref), () => {
+      console.log('subscibeFirebaseChanges in dashboard service');
+
+      this.dashboardStore$.dispatch(getWeekReportTime());
+    });
   }
 }

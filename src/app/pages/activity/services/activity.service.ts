@@ -26,6 +26,8 @@ export class ActivityService {
       where('date', '>', firstDay),
       where('date', '<', lastDay)
     );
+    console.log('getTasks in activity service');
+
     return collectionData(queryAll) as Observable<TaskTrack[]>;
   }
 
@@ -33,6 +35,8 @@ export class ActivityService {
     const projects: Project['id'][] = tasks.map(({ projectId }) => projectId);
     const ref = collection(this.firestore, 'projects');
     const queryAll = query(ref, where('id', 'in', projects));
+    console.log('getProjectsInTasks in activity service');
+
     return collectionData(queryAll) as Observable<Project[]>;
   }
 
@@ -49,6 +53,7 @@ export class ActivityService {
       where('date', '<', new Date(period.end)),
       where('userId', '==', userId)
     );
+    console.log('getWeekTasks in activity service');
 
     return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
   }
