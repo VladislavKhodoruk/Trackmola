@@ -1,6 +1,7 @@
 :host {
   @import "mixins.scss";
   @import "vars/variables";
+
   .report-constructor-header {
     @include flex(flex-start, space-between);
 
@@ -27,6 +28,15 @@
           margin-left: 0;
         }
       }
+    }
+  }
+
+  .report-constructor-navigation {
+    @include flex(center, space-between);
+
+    &-select {
+      display: flex;
+      flex-direction: column;
     }
   }
 }

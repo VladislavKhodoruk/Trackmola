@@ -14,6 +14,7 @@ import { ReportConstructorRoutes } from './report-constructor.router';
 import { ReportConstructorEffects } from './store/report-constructor.effects';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { IconModule } from '@visurel/iconify-angular';
+import { SelectModule } from '@shared/components/select/select.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { IconModule } from '@visurel/iconify-angular';
     RouterModule.forChild(ReportConstructorRoutes),
     ButtonModule,
     IconModule,
+    SelectModule,
   ],
   exports: [RouterModule],
 })
