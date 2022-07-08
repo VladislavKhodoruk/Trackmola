@@ -10,6 +10,6 @@ export class EmployeeDashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
-    this.dashboardService.subscibeFirebaseChanges();
+    this.dashboardService.subscribeFirebaseChanges();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import check from '@iconify/icons-tabler/check';
 import { Store } from '@ngrx/store';
 import { getAllTasksTrack } from '@store/common/common.actions';
@@ -9,6 +9,7 @@ import {
   getFirestore,
   onSnapshot,
   query,
+  Unsubscribe,
 } from 'firebase/firestore';
 
 @Component({
@@ -16,9 +17,10 @@ import {
   templateUrl: './employee-report.component.html',
   styleUrls: ['./employee-report.component.scss'],
 })
-export class EmployeeReportComponent implements OnInit {
+export class EmployeeReportComponent implements OnInit, OnDestroy {
   iconCheck = check;
   firestore: Firestore;
+  unsubscribe: Unsubscribe;
 
   constructor(private commonStore$: Store<CommonState>) {
     this.firestore = getFirestore();
@@ -28,10 +30,14 @@ export class EmployeeReportComponent implements OnInit {
     event.preventDefault();
   }
 
+  ngOnDestroy() {
+    this.unsubscribe();
+  }
+
   ngOnInit(): void {
     const ref = collection(this.firestore, 'taskTrack');
 
-    onSnapshot(query(ref), () =>
+    this.unsubscribe = onSnapshot(query(ref), () =>
       this.commonStore$.dispatch(getAllTasksTrack())
     );
   }
