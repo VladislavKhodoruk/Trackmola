@@ -21,6 +21,8 @@ export const getPeriod = createSelector(
 
 export const getUser = createSelector(getCommonState, (state) => state.user);
 
+export const getUsers = createSelector(getCommonState, (state) => state.users);
+
 export const getFirstDay = createSelector(getPeriod, (period) => period.start);
 
 export const getLastDay = createSelector(getPeriod, (period) => period.end);
