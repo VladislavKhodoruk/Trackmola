@@ -9,17 +9,20 @@ import { Options, SeriesOptionsType } from 'highcharts';
   styleUrls: ['./projects-activity.component.scss'],
 })
 export class ProjectsActivityComponent {
-  @Input() activityProjects: Project[];
-  @Input() activityTasks: TaskTrack[];
+  @Input() myActivityProjects: Project[];
+  @Input() myActivityTaskTracks: TaskTrack[];
 
   readonly basicOptions: Options = BASIC_OPTIONS_ACTIVITY_CHART_PIE;
 
   protected get seriesData(): SeriesOptionsType[] {
-    if (this.activityProjects.length && this.activityTasks.length) {
+    if (this.myActivityProjects.length && this.myActivityTaskTracks.length) {
       return [
         {
           type: 'pie',
-          data: this.dataForChart(this.activityProjects, this.activityTasks),
+          data: this.dataForChart(
+            this.myActivityProjects,
+            this.myActivityTaskTracks
+          ),
         },
       ];
     }
@@ -28,16 +31,16 @@ export class ProjectsActivityComponent {
 
   private dataForChart(
     project?: Project[],
-    tasks?: TaskTrack[]
+    taskTracks?: TaskTrack[]
   ): [string, number][] {
     const projectsNames: { id: Project['id']; name: Project['name'] }[] =
       project.map(({ name, id }) => ({ id, name }));
 
     return projectsNames.map(({ name, id }) => {
-      const tasksInProject: TaskTrack[] = tasks.filter(
+      const tasksInProject: TaskTrack[] = taskTracks.filter(
         ({ projectId }) => projectId === id
       );
-      const percent: number = tasksInProject.length / tasks.length;
+      const percent: number = tasksInProject.length / taskTracks.length;
       return [name, percent];
     });
   }

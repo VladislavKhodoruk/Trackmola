@@ -27,7 +27,7 @@ export const getLastDay = createSelector(getPeriod, (period) => period.end);
 
 export const getDate = createSelector(getCommonState, (state) => state.date);
 
-export const allTasksTrack = createSelector(
+export const getTasksTrack = createSelector(
   getCommonState,
   ({ taskTracks }) => taskTracks
 );
@@ -40,11 +40,12 @@ export const getProjects = createSelector(
 );
 
 export const getTasksTrackByPeriod = createSelector(
-  getCommonState,
+  getTasksTrack,
   getPeriod,
-  ({ taskTracks }, period) =>
+  (taskTracks, period) =>
     taskTracks.filter(
       (taskTrack) =>
+        taskTrack.userId === localStorage.getItem('AuthUserId') &&
         taskTrack.date.seconds * 1000 >= period.start &&
         taskTrack.date.seconds * 1000 <= period.end
     )
