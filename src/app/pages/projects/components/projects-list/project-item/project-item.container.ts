@@ -34,12 +34,10 @@ export class ProjectItemContainer implements OnChanges {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.index) {
-      if (this.index === 0) {
-        void this.router.navigate([this.project.name.toLowerCase()], {
-          relativeTo: this.route,
-        });
-      }
+    if (changes.index && !this.index) {
+      this.router.navigate([this.project.name.toLowerCase()], {
+        relativeTo: this.route,
+      });
     }
     if (changes.project && this.project) {
       this.activeTasksInProject$ = this.store$.select(
