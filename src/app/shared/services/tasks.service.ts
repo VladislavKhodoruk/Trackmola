@@ -25,6 +25,7 @@ export class TasksService {
   public get allTasks$(): Observable<Task[]> {
     const ref = collection(this.firestore, 'tasks');
     const queryAll = query(ref);
+    console.log('allTasks in shared service')
     return collectionData(queryAll) as Observable<Task[]>;
   }
   constructor() {
@@ -37,13 +38,14 @@ export class TasksService {
       ref,
       where('userId', '==', localStorage.getItem('AuthUserId'))
     );
-
+    console.log('getTasksTrack in shared service')
     return collectionData(queryAllTasks) as Observable<TaskTrack[]>;
   }
 
   setTaskTrack(taskTrack: TaskTrack): void {
     const refTaskTrack = doc(collection(this.firestore, 'taskTrack'));
     taskTrack.id = refTaskTrack.id;
+    console.log('setTaskTrack in shared service')
 
     setDoc(refTaskTrack, taskTrack);
   }
@@ -61,6 +63,7 @@ export class TasksService {
       where('date', '<', new Date(period.end)),
       where('userId', '==', userId)
     );
+    console.log('getWeekTasks in shared service')
 
     return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
   }

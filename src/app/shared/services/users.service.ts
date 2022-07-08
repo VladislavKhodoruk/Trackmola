@@ -23,12 +23,16 @@ export class UsersService {
       'users',
       localStorage.getItem('AuthUserId')
     );
+    console.log('currentUserProfile in shared service');
+
     return docData(ref) as Observable<User>;
   }
 
   public get allUsers$(): Observable<User[]> {
     const ref = collection(this.firestore, 'users');
     const queryAll = query(ref);
+    console.log('allUsers in shared service');
+
     return collectionData(queryAll) as Observable<User[]>;
   }
 
@@ -44,6 +48,8 @@ export class UsersService {
           return of(null);
         }
         const ref = doc(this.firestore, 'users', data.uid);
+        console.log('updateUser in shared service');
+
         return from(updateDoc(ref, { ...user }));
       })
     );
@@ -51,6 +57,8 @@ export class UsersService {
 
   public get users$(): Observable<User[]> {
     const ref = collection(this.firestore, 'users');
+    console.log('get user in shared service');
+
     return collectionData(ref) as Observable<User[]>;
   }
 }

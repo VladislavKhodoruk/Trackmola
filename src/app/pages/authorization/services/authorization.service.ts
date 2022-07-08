@@ -19,6 +19,8 @@ export class AuthorizationService {
   constructor(private auth: Auth) {}
 
   login(username: string, password: string) {
+    console.log('login in auth service');
+
     return from(signInWithEmailAndPassword(this.auth, username, password));
   }
 
@@ -39,6 +41,8 @@ export class AuthorizationService {
   }
 
   logout() {
+    console.log('logout in auth service');
+
     localStorage.clear();
     return from(this.auth.signOut());
   }
