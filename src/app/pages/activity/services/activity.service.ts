@@ -26,6 +26,7 @@ export class ActivityService {
       where('date', '>', firstDay),
       where('date', '<', lastDay)
     );
+
     return collectionData(queryAll) as Observable<TaskTrack[]>;
   }
 
@@ -33,6 +34,7 @@ export class ActivityService {
     const projects: Project['id'][] = tasks.map(({ projectId }) => projectId);
     const ref = collection(this.firestore, 'projects');
     const queryAll = query(ref, where('id', 'in', projects));
+
     return collectionData(queryAll) as Observable<Project[]>;
   }
 

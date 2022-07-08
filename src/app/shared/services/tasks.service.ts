@@ -25,6 +25,7 @@ export class TasksService {
   public get allTasks$(): Observable<Task[]> {
     const ref = collection(this.firestore, 'tasks');
     const queryAll = query(ref);
+
     return collectionData(queryAll) as Observable<Task[]>;
   }
   constructor() {
