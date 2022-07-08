@@ -1,15 +1,25 @@
 import { createAction, props } from '@ngrx/store';
-import { Period, User } from '@shared/interfaces/interfaces';
-
-import { TaskTrack } from './common.state';
+import {
+  Period,
+  Project,
+  User,
+  Task,
+  TaskTrack,
+} from '@shared/interfaces/interfaces';
 
 export const LOADING = 'loading';
 export const ERROR_MESSAGE = 'error message';
 export const GET_USER_DATA = 'get user data';
 export const GET_USER_DATA_SUCCESS = 'get user success';
 export const CHANGE_DATE = 'change date';
-export const GET_ALL_TASKS_TRACK = 'get all tasks track';
-export const GET_ALL_TASKS_TRACK_SUCCESS = 'get all tasks track success';
+export const GET_ALL_TASK_TRACKS = 'get all task tracks';
+export const GET_ALL_TASK_TRACKS_SUCCESS = 'get all task tracks success';
+export const GET_ALL_TASKS = 'get all tasks';
+export const GET_ALL_TASKS_SUCCESS = 'get all tasks success';
+export const GET_ALL_PROJECTS = 'get all projects';
+export const GET_ALL_PROJECTS_SUCCESS = 'get all projects success';
+export const GET_ALL_USERS = 'get all users';
+export const GET_ALL_USERS_SUCCESS = 'get all users success';
 export const GET_ALL_TASKS_UPDATE = 'get all tasks update';
 export const SET_PERIOD = 'set period';
 export const NEXT_WEEK = 'next week';
@@ -37,9 +47,30 @@ export const previousWeek = createAction(
   props<{ value: number }>()
 );
 
-export const getAllTasksTrack = createAction(GET_ALL_TASKS_TRACK);
+export const getAllTaskTracks = createAction(GET_ALL_TASK_TRACKS);
 
-export const getAllTasksTrackSuccess = createAction(
-  GET_ALL_TASKS_TRACK_SUCCESS,
-  props<{ tasksTrack: TaskTrack[] }>()
+export const getAllTaskTracksSuccess = createAction(
+  GET_ALL_TASK_TRACKS_SUCCESS,
+  props<{ taskTracks: TaskTrack[] }>()
+);
+
+export const getAllTasks = createAction(GET_ALL_TASKS);
+
+export const getAllTasksSuccess = createAction(
+  GET_ALL_TASKS_SUCCESS,
+  props<{ tasks: Task[] }>()
+);
+
+export const getAllProjects = createAction(GET_ALL_PROJECTS);
+
+export const getAllProjectsSuccess = createAction(
+  GET_ALL_PROJECTS_SUCCESS,
+  props<{ projects: Project[] }>()
+);
+
+export const getAllUsers = createAction(GET_ALL_USERS);
+
+export const getAllUsersSuccess = createAction(
+  GET_ALL_USERS_SUCCESS,
+  props<{ users: User[] }>()
 );
