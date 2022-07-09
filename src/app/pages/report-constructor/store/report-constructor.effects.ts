@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class ReportConstructorEffects {
-  constructor() {}
-}
+export class ReportConstructorEffects {}
