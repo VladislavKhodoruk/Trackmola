@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
-import { TaskTrackWithUserInfo } from '@pages/projects/interfaces/interface';
+import {
+  TaskTrackskGroupByDate,
+  TaskTrackWithUserInfo,
+} from '@pages/projects/interfaces/interface';
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
 import { Project, Task } from '@shared/interfaces/interfaces';
-import { isEqual } from 'lodash';
 
 @Component({
   selector: 'app-active-task',
@@ -17,6 +17,8 @@ export class ActiveTaskComponent implements OnChanges {
   @Input() readonly task: Task;
   @Input() readonly activeTaskTracksInTask: TaskTrackWithUserInfo[];
 
+  activeTaskTracksInTaskGroupByDate: [string, TaskTrackWithUserInfo[]][];
+
   panelOpenState = false;
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
@@ -24,19 +26,32 @@ export class ActiveTaskComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.activeTaskTracksInTask && this.activeTaskTracksInTask) {
-      console.log(this.groupByDate(this.activeTaskTracksInTask));
+      this.activeTaskTracksInTaskGroupByDate = this.groupByDate(
+        this.activeTaskTracksInTask
+      );
     }
   }
 
-  private groupByDate(activeTaskTracksInTask: TaskTrackWithUserInfo[]) {
-    return activeTaskTracksInTask.reduce((acc, elem) => {
-      const date = elem.date.seconds * 1000;
-      if (!acc[date]) {
-        acc[date] = [];
-      }
-      acc[date].push(elem);
-      return acc;
-    }, {});
+  private groupByDate(
+    activeTaskTracksInTask: TaskTrackWithUserInfo[]
+  ): [string, TaskTrackWithUserInfo[]][] {
+    const groupByDateObject: TaskTrackskGroupByDate =
+      activeTaskTracksInTask.reduce(
+        (
+          accumulator: TaskTrackskGroupByDate,
+          currentValue: TaskTrackWithUserInfo
+        ) => {
+          const date = currentValue.date.seconds * 1000;
+          if (!accumulator[date]) {
+            accumulator[date] = [];
+          }
+          accumulator[date].push(currentValue);
+          return accumulator;
+        },
+        {}
+      );
+
+    return Object.entries(groupByDateObject).sort((a, b) => +b[0] - +a[0]);
   }
 
   protected addToReport(): void {}

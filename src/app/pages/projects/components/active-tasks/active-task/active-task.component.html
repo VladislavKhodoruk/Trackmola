@@ -22,11 +22,14 @@
         ></app-button>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div class="activeTask" *ngFor="let taskTrack of activeTaskTracksInTask">
+    <div
+      class="activeTask"
+      *ngFor="let taskTrack of activeTaskTracksInTaskGroupByDate"
+    >
       <div class="activeTask-date">
-        {{ taskTrack.date.seconds * 1000 | date: "dd MMMM" }}
+        {{ taskTrack[0] | date: "dd MMMM" }}
       </div>
-      <div class="activeTask-container">
+      <div class="activeTask-container" *ngFor="let taskTrack of taskTrack[1]">
         <img
           src="{{ taskTrack.userInfo?.photo || defaultPhoto }}"
           class="activeTask-image"
