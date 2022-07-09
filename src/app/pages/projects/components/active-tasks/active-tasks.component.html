@@ -1,11 +1,11 @@
 <section class="activeTasks">
   <h2 class="activeTasks-header">active tasks</h2>
   <ul class="activeTasks-list" *ngIf="project">
-    <li *ngFor="let activeTask of activeTasks">
+    <li *ngFor="let task of activeTasksInProject" [style.width.%]="100">
       <app-active-task-container
         class="activeTasks-list-item"
         [project]="project"
-        [activeTask]="activeTask"
+        [task]="task"
       ></app-active-task-container>
     </li>
   </ul>

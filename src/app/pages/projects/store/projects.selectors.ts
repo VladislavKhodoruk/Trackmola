@@ -29,7 +29,7 @@ export const getProjectByRoute = createSelector(
     projects.find((project) => project.name.toLowerCase() === route.params.name)
 );
 
-export const activeTasksInProject = (project: Project) =>
+export const activeTaskTracksInProject = (project: Project) =>
   createSelector(
     getTasks,
     getTasksTrack,
@@ -51,13 +51,58 @@ export const activeTasksInProject = (project: Project) =>
   );
 
 export const usersInProject = (project: Project) =>
-  createSelector(getUsers, getTasksTrack, (users, taskTracks) => {
-    const usersIdInProjects: TaskTrack['userId'][] = taskTracks
-      .filter(({ projectId }) => projectId === project.id)
-      .sort((a, b) => b.date.seconds - a.date.seconds)
-      .map((taskTrack) => taskTrack.userId);
+  createSelector(
+    getUsers,
+    getTasksTrack,
+    getPeriod,
+    (users, taskTracks, period) => {
+      const usersIdInProjects: TaskTrack['userId'][] = taskTracks
+        .filter(({ projectId }) => projectId === project.id)
+        .filter(({ date }) => {
+          const startDate = period.start;
+          const endDate = period.end;
+          return (
+            date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate
+          );
+        })
+        .sort((a, b) => b.date.seconds - a.date.seconds)
+        .map((taskTrack) => taskTrack.userId);
 
-    return usersIdInProjects.map((userId) =>
-      users.find((user) => user.id === userId)
-    );
-  });
+      return usersIdInProjects.map((userId) =>
+        users.find((user) => user.id === userId)
+      );
+    }
+  );
+
+export const getActiveTasksInProject = (project: Project) =>
+  createSelector(
+    activeTaskTracksInProject(project),
+    getTasks,
+    (taskTracks, tasks) => {
+      const tasksId = taskTracks.map((taskTrack) => taskTrack.taskId);
+      return tasks.filter(({ id }) => tasksId.includes(id));
+    }
+  );
+
+export const getActiveTaskTracksInTask = (task: Task) =>
+  createSelector(
+    getTasksTrack,
+    getUsers,
+    getPeriod,
+    (taskTracks, users, period) => {
+      const activeTaskTracksInTask: TaskTrack[] = taskTracks
+        .filter(({ taskId }) => taskId === task.id)
+        .filter(({ date }) => {
+          const startDate = period.start;
+          const endDate = period.end;
+          return (
+            date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate
+          );
+        });
+
+      return activeTaskTracksInTask.map((taskTrack) => {
+        const userInfo = users.find((user) => user.id === taskTrack.userId);
+        return { ...taskTrack, userInfo };
+      });
+    }
+  );

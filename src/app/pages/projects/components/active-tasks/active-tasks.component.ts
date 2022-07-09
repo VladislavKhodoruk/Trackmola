@@ -8,5 +8,5 @@ import { Project, Task } from '@shared/interfaces/interfaces';
 })
 export class ActiveTasksComponent {
   @Input() readonly project: Project;
-  @Input() readonly activeTasks: Task[];
+  @Input() readonly activeTasksInProject: Task[];
 }

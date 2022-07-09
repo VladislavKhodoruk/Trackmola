@@ -3,12 +3,13 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import {
-  activeTasksInProject,
+  activeTaskTracksInProject,
   usersInProject,
 } from '@pages/projects/store/projects.selectors';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 import { TrackMolaState } from '@store/trackMola.state';
 import { Observable } from 'rxjs';
+import { RouterStateUrl } from '@store/router/custom-serializer';
 
 @Component({
   selector: 'app-project-item-container',
@@ -23,6 +24,7 @@ import { Observable } from 'rxjs';
 export class ProjectItemContainer implements OnChanges {
   @Input() readonly project: Project;
   @Input() readonly index: number;
+  @Input() readonly currentRoute: RouterStateUrl;
 
   activeTasksInProject$: Observable<TaskTrack[]>;
   usersInProject$: Observable<User[]>;
@@ -34,14 +36,14 @@ export class ProjectItemContainer implements OnChanges {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.index && !this.index) {
+    if (changes.index && !this.index && !this.currentRoute.params.name) {
       this.router.navigate([this.project.name.toLowerCase()], {
         relativeTo: this.route,
       });
     }
     if (changes.project && this.project) {
       this.activeTasksInProject$ = this.store$.select(
-        activeTasksInProject(this.project)
+        activeTaskTracksInProject(this.project)
       );
 
       this.usersInProject$ = this.store$.select(usersInProject(this.project));

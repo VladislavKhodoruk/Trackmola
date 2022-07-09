@@ -6,6 +6,7 @@
       class="projects-list-item"
       [index]="i"
       [project]="project"
+      [currentRoute]="currentRoute"
       [routerLink]="[project.name | lowercase]"
       routerLinkActive="projects-list-item-selected"
     ></app-project-item-container>

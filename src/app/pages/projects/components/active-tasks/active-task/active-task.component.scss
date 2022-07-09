@@ -45,9 +45,11 @@
   .activeTask {
     @include flex(flex-start, flex-start, var(--offset-s));
     flex-direction: column;
+    width: 100%;
 
     &-container {
       @include flex(flex-start, flex-start, var(--offset-s));
+      width: 100%;
     }
 
     &-date {
@@ -61,6 +63,7 @@
     &-description {
       @include flex(flex-start, flex-start, var(--offset-xs));
       flex-direction: column;
+      width: 100%;
 
       &-header {
         @include flex(flex-start, space-between);

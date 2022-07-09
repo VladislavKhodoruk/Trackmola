@@ -12,7 +12,7 @@
         {{ project.name }}
       </mat-panel-title>
       <mat-panel-description class="project-header-description">
-        {{ activeTask.name }}
+        {{ task.name }}
         <app-button
           [buttonClass]="'button-primary button-add-to-report'"
           [icon]="iconClipboard"
@@ -22,24 +22,27 @@
         ></app-button>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div
-      class="activeTask"
-      *ngFor="let activeTaskTrack of activeTaskTracksInTask"
-    >
+    <div class="activeTask" *ngFor="let taskTrack of activeTaskTracksInTask">
       <div class="activeTask-date">
-        {{ activeTaskTrack.date.seconds * 1000 | date }}
+        {{ taskTrack.date.seconds * 1000 | date: "dd MMMM" }}
       </div>
       <div class="activeTask-container">
-        <img src="{{ defaultPhoto }}" class="activeTask-image" />
+        <img
+          src="{{ taskTrack.userInfo?.photo || defaultPhoto }}"
+          class="activeTask-image"
+          alt="user photo"
+        />
         <div class="activeTask-description">
           <div class="activeTask-description-header">
-            <span class="activeTask-description-header-name">Angel Curtis</span>
+            <span class="activeTask-description-header-name">
+              {{ taskTrack.userInfo?.fullName }}
+            </span>
             <span class="activeTask-description-header-duration">
-              {{ activeTaskTrack.duration }}h
+              {{ taskTrack.duration }}h
             </span>
           </div>
           <div class="activeTask-description-comment">
-            <!--    {{ activeTaskTrack.comments }} -->
+            {{ taskTrack.comments }}
           </div>
         </div>
       </div>
