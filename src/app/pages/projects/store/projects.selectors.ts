@@ -1,3 +1,4 @@
+import { RouterStateUrl } from './../../../store/router/custom-serializer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { StateName } from '@shared/enums/enum';
 import { Project, Task, TaskTrack } from '@shared/interfaces/interfaces';
@@ -8,9 +9,8 @@ import {
   getTasksTrack,
   getUsers,
 } from '@store/common/common.selectors';
-import { RouterStateUrl } from '@store/router/custom-serializer';
-import { getCurrentRoute } from '@store/router/router.selector';
 import { ProjectsState } from './projects.state';
+import { getCurrentRoute } from '@store/router/router.selector';
 
 export const PROJECTS_STATE_NAME = StateName.Projects;
 
@@ -29,18 +29,6 @@ export const getProjectByRoute = createSelector(
     projects.find((project) => project.name.toLowerCase() === route.params.name)
 );
 
-export const getActiveTasksInProject = createSelector(
-  getProjectByRoute,
-  getTasks,
-  getTaskTracks,
-  getPeriod,
-  (project, tasks, taskTracks, period) => {
-    if (project && tasks.length && taskTracks.length) {
-      const tasksIdInProject = tasks
-        .filter(({ projectId }) => projectId === project.id)
-        .map((task) => task.id);
-
-      const activeTaskTracks = taskTracks
 export const activeTasksInProject = (project: Project) =>
   createSelector(
     getTasks,
@@ -59,40 +47,6 @@ export const activeTasksInProject = (project: Project) =>
             date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate
           );
         });
-
-      const activeIdTasks = activeTaskTracks.map(
-        (tasktrack) => tasktrack.taskId
-      );
-
-      return tasks.filter((task) => activeIdTasks.includes(task.id));
-    }
-  }
-);
-
-export const getActiveTaskTracksInTask = (task: Task) =>
-  createSelector(
-    getTaskTracks,
-    getPeriod,
-    getUsers,
-    (taskTracks, period, users) => {
-      if (taskTracks && period) {
-        const aсtiveTaskTracksInTask = taskTracks
-          .filter(({ taskId }) => taskId === task.id)
-          .filter(({ date }) => {
-            const startDate = period.start;
-            const endDate = period.end;
-            return (
-              date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate
-            );
-          });
-        const userInfo = aсtiveTaskTracksInTask.map((taskTrack) =>
-          users.find((user) => user.id === taskTrack.userId)
-        );
-
-        return aсtiveTaskTracksInTask;
-      }
-    }
-  );
     }
   );
 
