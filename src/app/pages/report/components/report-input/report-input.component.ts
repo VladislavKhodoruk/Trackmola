@@ -17,8 +17,7 @@ import {
   onRightIndex,
 } from '@pages/report/helpers/report-input-helpers';
 import { Task } from '@pages/report/interfaces/interfaces';
-import { Project } from '@shared/interfaces/interfaces';
-import { TaskTrack } from '@store/common/common.state';
+import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 import { Timestamp } from 'firebase/firestore';
 import { TasksService } from '@shared/services/tasks.service';
 import {
@@ -36,7 +35,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() allProjects: Project[];
   @Input() allTasks: Task[];
   @Input() currentDate: string;
-
+  @Input() editableTaskTrack: TaskTrack;
   currentProjectId: string;
   currentTaskId: string;
   allProjectsName: string[];
@@ -105,6 +104,16 @@ export class ReportInputComponent implements OnInit, OnChanges {
           startWith(''),
           map((value) => this.filterTasks(value || ''))
         );
+      }
+      if (changes.editableTaskTrack) {
+        const projectName = this.allProjects?.find(
+          (project) => project.id === this.editableTaskTrack?.projectId
+        )?.name;
+        this.form.get('project')?.setValue(projectName);
+        console.log(changes);
+        console.log(this.allProjects);
+        console.log(this.editableTaskTrack);
+        console.log(projectName);
       }
     }
   }

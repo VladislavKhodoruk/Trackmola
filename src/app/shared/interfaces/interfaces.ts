@@ -19,14 +19,14 @@ export interface Task {
 }
 
 export interface TaskTrack {
-  comments: string;
+  comments?: string;
   date: Timestamp;
   duration: number;
-  id: string;
+  id?: string;
   projectId: string;
-  status: string;
+  status?: string;
   taskId: string;
-  userId: string;
+  userId?: string;
 }
 
 export interface User {

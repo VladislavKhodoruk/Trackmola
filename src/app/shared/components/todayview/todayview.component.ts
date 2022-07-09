@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { Project, TaskItem, TaskTrack } from '../../interfaces/interfaces';
 import { Task } from '@pages/report/interfaces/interfaces';
 import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
@@ -14,11 +21,18 @@ export class TodayviewComponent implements OnChanges {
   @Input() projects!: Project[];
   @Input() tasks!: Task[];
   @Input() currentDate!: Date;
-
+  @Output() taskTrack = new EventEmitter<TaskTrack>();
   taskItems: TaskItem[];
 
   ngOnChanges(changes: SimpleChanges): void {
     this.taskItems = this.createTaskItemsByDate();
+  }
+
+  editTaskTrack(id: string) {
+    const currentTaskTrack = this.taskTracks.find(
+      (tasktrack) => tasktrack.id === id
+    );
+    this.taskTrack.emit(currentTaskTrack);
   }
 
   get totalDuration(): number {

@@ -1,3 +1,4 @@
+import { TaskTrack } from '@shared/interfaces/interfaces';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TrackMolaState } from 'app/store/trackMola.state';
@@ -6,6 +7,7 @@ import {
   getAllTasksData,
 } from '@pages/report/store/report.selectors';
 import { allTasksTrack, getDate } from '@store/common/common.selectors';
+import { putTaskTrack } from '@pages/report/store/report.actions';
 
 @Component({
   selector: 'app-todayview-container',
@@ -14,6 +16,7 @@ import { allTasksTrack, getDate } from '@store/common/common.selectors';
     [tasks]="tasks$ | async"
     [projects]="projects$ | async"
     [currentDate]="currentDate$ | async"
+    (taskTrack)="putIntoStore($event)"
   ></app-todayview-component>`,
 })
 export class TodayviewContainer {
@@ -21,5 +24,8 @@ export class TodayviewContainer {
   tasks$ = this.store$.select(getAllTasksData);
   projects$ = this.store$.select(getAllProjectsData);
   currentDate$ = this.store$.select(getDate);
+  putIntoStore(taskTrack: TaskTrack) {
+    this.store$.dispatch(putTaskTrack({ taskTrack }));
+  }
   constructor(private store$: Store<TrackMolaState>) {}
 }

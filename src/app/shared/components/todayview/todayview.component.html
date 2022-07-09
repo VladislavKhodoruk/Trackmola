@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="tasks">
-            <app-task *ngFor="let taskItem of taskItems" [taskItem]="taskItem"></app-task>
+            <app-task *ngFor="let taskItem of taskItems" [taskItem]="taskItem" (edit)="editTaskTrack($event)"></app-task>
         </div>
     </div>
 </div>

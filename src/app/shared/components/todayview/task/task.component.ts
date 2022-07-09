@@ -1,5 +1,12 @@
 import { TasksService } from '@shared/services/tasks.service';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import trash from '@iconify/icons-tabler/trash';
 import pencil from '@iconify/icons-tabler/pencil';
 import { TaskItem } from '@shared/interfaces/interfaces';
@@ -15,16 +22,22 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class TaskComponent implements OnChanges {
   @Input() taskItem!: TaskItem | null;
+  @Output() edit = new EventEmitter<string>();
+
   iconTrash = trash;
   iconPencil = pencil;
-
-  onDeleteClick(): void {
-    this.taskService.removeTask(this.taskItem.id);
-  }
 
   constructor(private taskService: TasksService, public dialog: MatDialog) {}
 
   ngOnChanges(changes: SimpleChanges): void {}
+
+  onEdit(id: string) {
+    this.edit.emit(id);
+  }
+
+  onDeleteClick(): void {
+    this.taskService.removeTask(this.taskItem.id);
+  }
 
   openDialog(): void {
     let dialogRef = this.dialog.open(ModalComponent);
