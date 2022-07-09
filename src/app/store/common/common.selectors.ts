@@ -9,7 +9,6 @@ export const getLoading = createSelector(
   (state) => state.loadingStatus.loading
 );
 
-
 export const getErrorMessage = createSelector(
   getCommonState,
   (state) => state.loadingStatus.errorMessage
@@ -30,5 +29,23 @@ export const getDate = createSelector(getCommonState, (state) => state.date);
 
 export const allTasksTrack = createSelector(
   getCommonState,
-  (state) => state.tasksTrack
+  ({ taskTracks }) => taskTracks
+);
+
+export const getTasks = createSelector(getCommonState, ({ tasks }) => tasks);
+
+export const getProjects = createSelector(
+  getCommonState,
+  ({ projects }) => projects
+);
+
+export const getTasksTrackByPeriod = createSelector(
+  getCommonState,
+  getPeriod,
+  ({ taskTracks }, period) =>
+    taskTracks.filter(
+      (taskTrack) =>
+        taskTrack.date.seconds * 1000 >= period.start &&
+        taskTrack.date.seconds * 1000 <= period.end
+    )
 );

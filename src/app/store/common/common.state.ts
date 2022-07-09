@@ -1,12 +1,15 @@
 import { getPeriod } from '@shared/helpers/helpers';
-import { Period, User } from '@shared/interfaces/interfaces';
+import { Period, Project, User, Task } from '@shared/interfaces/interfaces';
 import { Timestamp } from 'firebase/firestore';
 
 export interface CommonState {
   loadingStatus: LoadingStatus;
   user: User | null;
   date: number;
-  tasksTrack: TaskTrack[];
+  taskTracks: TaskTrack[];
+  tasks: Task[];
+  projects: Project[];
+  users: User[];
   period: Period;
   usersInProjects: User[];
 }
@@ -40,7 +43,10 @@ export const initialState: CommonState = {
     new Date().getMonth(),
     new Date().getDate()
   ).getTime(),
-  tasksTrack: [],
+  taskTracks: [],
+  tasks: [],
+  projects: [],
+  users: [],
   usersInProjects: [],
   period: getPeriod(new Date(), 'week'),
 };

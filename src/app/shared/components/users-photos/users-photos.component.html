@@ -1,13 +1,19 @@
 <div *ngIf="users.length" class="photos">
+  <span
+    *ngIf="users.length > maxUsersPhoto"
+    class="photos-over"
+    [ngStyle]="{ 'width.rem': [size] }"
+  >
+    +{{ users.length - maxUsersPhoto }}
+  </span>
   <img
-    *ngFor="let user of users | slice: 0:5; index as i"
+    *ngFor="let user of users | slice: 0:maxUsersPhoto"
     class="photos-photo"
     [ngStyle]="{
-      'z-index': i,
       'width.rem': [size],
       'height.rem': [size]
     }"
-    src="{{ user.photo || defaultPhoto }}"
+    src="{{ user?.photo || defaultPhoto }}"
     alt="photo"
   />
 </div>
