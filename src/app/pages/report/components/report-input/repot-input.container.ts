@@ -24,5 +24,7 @@ export class ReportInputContainer {
   constructor(
     private reportStore$: Store<ReportState>,
     private commonStore$: Store<CommonState>
-  ) {}
+  ) {
+    this.taskTrack$.subscribe((tasktrack) => console.log(tasktrack));
+  }
 }

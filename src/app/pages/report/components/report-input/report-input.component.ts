@@ -105,16 +105,21 @@ export class ReportInputComponent implements OnInit, OnChanges {
           map((value) => this.filterTasks(value || ''))
         );
       }
-      if (changes.editableTaskTrack) {
-        const projectName = this.allProjects?.find(
-          (project) => project.id === this.editableTaskTrack?.projectId
-        )?.name;
-        this.form.get('project')?.setValue(projectName);
-        console.log(changes);
-        console.log(this.allProjects);
-        console.log(this.editableTaskTrack);
-        console.log(projectName);
-      }
+    }
+    if (changes.editableTaskTrack) {
+      const projectName = this.allProjects?.find(
+        (project) => project.id === this.editableTaskTrack?.projectId
+      )?.name;
+      this.form.get('project')?.setValue(projectName);
+      const taskName = this.allTasks?.find(
+        (task) => task.id === this.editableTaskTrack?.taskId
+      )?.name;
+      this.form.get('task')?.setValue(taskName);
+      this.form
+        .get('duration')
+        ?.setValue(`${this.editableTaskTrack?.duration}`);
+      this.form.get('comments').setValue(this.editableTaskTrack.comments);
+      this.onCheckStatus(this.editableTaskTrack?.status);
     }
   }
 
@@ -174,7 +179,13 @@ export class ReportInputComponent implements OnInit, OnChanges {
       userId: localStorage.getItem('AuthUserId'),
       status: this.status,
     };
-    this.tasksService.setTaskTrack(addTask);
+    if (!this.editableTaskTrack) {
+      this.tasksService.setTaskTrack(addTask);
+    } else {
+      this.tasksService.updateTask(this.editableTaskTrack.id, addTask);
+    }
+    this.editableTaskTrack = null;
+    this.onCheckStatus(this.status);
     this.form.get('project').reset();
     this.form.get('task').reset();
     this.form.get('comments').reset();

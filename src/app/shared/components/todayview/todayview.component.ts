@@ -61,9 +61,9 @@ export class TodayviewComponent implements OnChanges {
       let taskItem: TaskItem = {
         id: curTaskTrack.id,
         duration: curTaskTrack.duration,
-        taskName: task.name,
-        projectColor: project.color,
-        projectName: project.name,
+        taskName: task?.name,
+        projectColor: project?.color,
+        projectName: project?.name,
       };
       return [...acc, taskItem];
     }, []);

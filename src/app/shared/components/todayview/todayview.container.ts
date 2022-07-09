@@ -6,7 +6,12 @@ import {
   getAllProjectsData,
   getAllTasksData,
 } from '@pages/report/store/report.selectors';
-import { allTasksTrack, getDate } from '@store/common/common.selectors';
+import {
+  allTasksTrack,
+  getDate,
+  getProjects,
+  getTasks,
+} from '@store/common/common.selectors';
 import { putTaskTrack } from '@pages/report/store/report.actions';
 
 @Component({
@@ -21,8 +26,8 @@ import { putTaskTrack } from '@pages/report/store/report.actions';
 })
 export class TodayviewContainer {
   taskTracks$ = this.store$.select(allTasksTrack);
-  tasks$ = this.store$.select(getAllTasksData);
-  projects$ = this.store$.select(getAllProjectsData);
+  tasks$ = this.store$.select(getTasks);
+  projects$ = this.store$.select(getProjects);
   currentDate$ = this.store$.select(getDate);
   putIntoStore(taskTrack: TaskTrack) {
     this.store$.dispatch(putTaskTrack({ taskTrack }));

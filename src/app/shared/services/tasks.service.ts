@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { collectionData } from '@angular/fire/firestore';
-import { TaskTrack } from '@store/common/common.state';
 import {
   collection,
   Firestore,
@@ -11,10 +10,11 @@ import {
   where,
   deleteDoc,
   onSnapshot,
+  updateDoc,
 } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from '@pages/report/interfaces/interfaces';
-import { Period } from '@shared/interfaces/interfaces';
+import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 import { getPeriod } from '@shared/helpers/helpers';
 
 @Injectable({
@@ -70,5 +70,12 @@ export class TasksService {
 
   removeTask(id: string): void {
     deleteDoc(doc(this.firestore, 'taskTrack', id));
+  }
+
+  updateTask(id: string, tasktrack: TaskTrack): void {
+    console.log(id);
+    console.log(tasktrack);
+    tasktrack.id = id;
+    setDoc(doc(this.firestore, 'taskTrack', id), tasktrack);
   }
 }
