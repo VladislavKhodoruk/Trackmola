@@ -31,10 +31,6 @@ export class TaskComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {}
 
-  onEdit(id: string) {
-    this.edit.emit(id);
-  }
-
   onDeleteClick(): void {
     this.taskService.removeTask(this.taskItem.id);
   }

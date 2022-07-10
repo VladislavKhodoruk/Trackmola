@@ -1,7 +1,7 @@
 :host {
   @import "vars/variables.scss";
   @import "mixins.scss";
-
+  --box-shadow-color: rgba(87, 74, 249, 0.25);
   .task {
     box-sizing: border-box;
     margin: 0 0 var(--offset) 0;
@@ -13,8 +13,7 @@
   }
 
   .task-top {
-    align-items: flex-start;
-    display: flex;
+    @include flex(flex-start, flex-start);
     width: 100%;
     gap: var(--offset);
   }
@@ -42,7 +41,6 @@
     height: 1.125rem;
     margin-top: var(--offset);
   }
-
   .icons {
     color: var(--gray);
     display: none;
@@ -58,10 +56,18 @@
   }
 
   .task:hover {
-    box-shadow: 0 0 0.4rem rgba(87, 74, 249, 0.25);
+    box-shadow: 0 0 0.4rem var(--box-shadow-color);
     cursor: pointer;
     .icons {
       display: block;
+    }
+  }
+}
+::ng-deep {
+  .icons {
+    svg {
+      width: 1.375rem;
+      height: 1.375rem;
     }
   }
 }

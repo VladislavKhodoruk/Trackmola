@@ -1,6 +1,11 @@
 :host {
   @import "vars/variables.scss";
   @import "mixins.scss";
+  --tasktrack-field-bg-color: linear-gradient(
+    180deg,
+    rgba(115, 83, 208, 0) 0%,
+    rgba(115, 83, 208, 0.15) 100%
+  );
   .todayview {
     height: 100%;
     width: 100%;
@@ -8,15 +13,13 @@
   }
 
   .top-area {
-    display: flex;
-    justify-content: space-between;
+    @include flex(stretch, space-between);
     margin-bottom: var(--offset);
     width: 100%;
   }
 
   .top-buttons {
-    display: flex;
-    justify-content: flex-end;
+    @include flex(stretch, flex-end);
     height: 10%;
   }
 
@@ -57,16 +60,11 @@
     height: calc(100% - 3.4rem);
     width: 100%;
     border-radius: 0 0 var(--offset-s) var(--offset-s);
-    background: linear-gradient(
-      180deg,
-      rgba(115, 83, 208, 0) 0%,
-      rgba(115, 83, 208, 0.15) 100%
-    );
+    background: var(--tasktrack-field-bg-color);
   }
 
   .flask {
-    align-items: flex-end;
-    display: flex;
+    @include flex(flex-end, flex-start);
     position: relative;
     margin-right: var(--offset);
     width: var(--offset-l);
@@ -75,8 +73,7 @@
   }
 
   .liquid-full {
-    align-items: flex-end;
-    display: flex;
+    @include flex(flex-end, flex-start);
     position: absolute;
     height: 50%;
     max-height: 100%;
