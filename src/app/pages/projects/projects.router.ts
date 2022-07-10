@@ -11,6 +11,7 @@ export const ProjectsRoutes: Routes = [
         path: ':name',
         component: ActiveTasksContainer,
       },
+      { path: '**', redirectTo: 'projects' },
     ],
   },
 ];

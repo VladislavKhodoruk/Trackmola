@@ -7,3 +7,7 @@ export interface TaskTrackWithUserInfo extends TaskTrack {
 export interface TaskTrackskGroupByDate {
   [key: string]: TaskTrackWithUserInfo[];
 }
+
+export interface UsersGroupByProject {
+  [key: string]: User[];
+}

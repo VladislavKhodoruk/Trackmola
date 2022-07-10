@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { UserType } from '@shared/enums/enum';
+import angleRight from '@iconify/icons-uil/angle-right';
+import { Project } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-projects',
@@ -7,6 +8,7 @@ import { UserType } from '@shared/enums/enum';
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent {
-  @Input() readonly userType!: string | null;
-  readonly types = UserType;
+  @Input() readonly projectByRoute: Project;
+
+  readonly iconAngleRight = angleRight;
 }

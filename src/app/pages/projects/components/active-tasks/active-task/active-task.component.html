@@ -22,33 +22,38 @@
         ></app-button>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div
-      class="activeTask"
-      *ngFor="let taskTrack of activeTaskTracksInTaskGroupByDate"
-    >
-      <div class="activeTask-date">
-        {{ taskTrack[0] | date: "dd MMMM" }}
-      </div>
-      <div class="activeTask-container" *ngFor="let taskTrack of taskTrack[1]">
-        <img
-          src="{{ taskTrack.userInfo?.photo || defaultPhoto }}"
-          class="activeTask-image"
-          alt="user photo"
-        />
-        <div class="activeTask-description">
-          <div class="activeTask-description-header">
-            <span class="activeTask-description-header-name">
-              {{ taskTrack.userInfo?.fullName }}
-            </span>
-            <span class="activeTask-description-header-duration">
-              {{ taskTrack.duration }}h
-            </span>
-          </div>
-          <div class="activeTask-description-comment">
-            {{ taskTrack.comments }}
-          </div>
+
+    <ng-container *ngTemplateOutlet="activeTask"> </ng-container>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<ng-template #activeTask>
+  <div
+    class="activeTask"
+    *ngFor="let taskTrack of activeTaskTracksInTaskGroupByDate"
+  >
+    <div class="activeTask-date">
+      {{ taskTrack[0] | date: "dd MMMM" }}
+    </div>
+    <div class="activeTask-container" *ngFor="let taskTrack of taskTrack[1]">
+      <img
+        src="{{ taskTrack.userInfo?.photo || defaultPhoto }}"
+        class="activeTask-image"
+        alt="user photo"
+      />
+      <div class="activeTask-description">
+        <div class="activeTask-description-header">
+          <span class="activeTask-description-header-name">
+            {{ taskTrack.userInfo?.fullName }}
+          </span>
+          <span class="activeTask-description-header-duration">
+            {{ taskTrack.duration }}h
+          </span>
+        </div>
+        <div class="activeTask-description-comment">
+          {{ taskTrack.comments }}
         </div>
       </div>
     </div>
-  </mat-expansion-panel>
-</mat-accordion>
+  </div>
+</ng-template>

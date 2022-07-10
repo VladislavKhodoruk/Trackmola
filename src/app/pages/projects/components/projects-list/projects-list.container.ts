@@ -3,11 +3,15 @@ import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { getSearchValue } from '@pages/projects/store/projects.selectors';
+import {
+  getSearchValue,
+  usersGroupByProject,
+} from '@pages/projects/store/projects.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 import { getProjects } from '@store/common/common.selectors';
 import { getCurrentRoute } from '@store/router/router.selector';
 import { RouterStateUrl } from '@store/router/custom-serializer';
+import { UsersGroupByProject } from '@pages/projects/interfaces/interface';
 
 @Component({
   selector: 'app-projects-list-container',
@@ -15,10 +19,15 @@ import { RouterStateUrl } from '@store/router/custom-serializer';
     [searchText]="searchText$ | async"
     [projects]="projects$ | async"
     [currentRoute]="currentRoute$ | async"
+    [usersGroupByProject]="usersGroupByProject$ | async"
   ></app-projects-list>`,
+  styleUrls: ['./projects-list.component.scss'],
 })
 export class ProjectsListContainer {
   readonly projects$: Observable<Project[]> = this.store$.select(getProjects);
+
+  readonly usersGroupByProject$: Observable<UsersGroupByProject> =
+    this.store$.select(usersGroupByProject);
   readonly currentRoute$: Observable<RouterStateUrl> =
     this.store$.select(getCurrentRoute);
 

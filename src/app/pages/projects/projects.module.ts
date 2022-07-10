@@ -7,15 +7,8 @@ import { StoreModule } from '@ngrx/store';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 import { IconModule } from '@visurel/iconify-angular';
 
-import { AdminProjectsComponent } from './components/admin-projects/admin-projects.component';
-import { CtoProjectsComponent } from './components/cto-projects/cto-projects.component';
-import { EmployeeProjectsComponent } from './components/employee-projects/employee-projects.component';
-import { EmployeeProjectsContainer } from './components/employee-projects/employee-projects.container';
-import { ManagerProjectsComponent } from './components/manager-projects/manager-projects.component';
 import { InputSearchComponent } from './components/projects-list/input-search/input-search.component';
 import { InputSearchContainer } from './components/projects-list/input-search/input-search.container';
-import { ProjectItemComponent } from './components/projects-list/project-item/project-item.component';
-import { ProjectItemContainer } from './components/projects-list/project-item/project-item.container';
 import { ProjectsListComponent } from './components/projects-list/projects-list.component';
 import { ProjectsListContainer } from './components/projects-list/projects-list.container';
 import { ProjectsComponent } from './layout/projects.component';
@@ -34,24 +27,17 @@ import { ActiveTaskContainer } from './components/active-tasks/active-task/activ
 
 @NgModule({
   declarations: [
-    ManagerProjectsComponent,
-    CtoProjectsComponent,
-    EmployeeProjectsComponent,
-    EmployeeProjectsContainer,
-    AdminProjectsComponent,
     ProjectsContainer,
     ProjectsComponent,
     ProjectsListComponent,
     ProjectsListContainer,
     InputSearchComponent,
     InputSearchContainer,
-    ProjectItemComponent,
     SearchProjectsPipe,
     ActiveTasksComponent,
     ActiveTasksContainer,
     ActiveTaskComponent,
     ActiveTaskContainer,
-    ProjectItemContainer,
   ],
   imports: [
     CommonModule,
