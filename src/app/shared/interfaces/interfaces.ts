@@ -22,7 +22,7 @@ export interface TaskTrack {
   comments: string;
   date: Timestamp;
   duration: number;
-  id: string;
+  id?: string;
   projectId: string;
   status: string;
   taskId: string;

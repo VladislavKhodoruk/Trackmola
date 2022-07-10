@@ -7,6 +7,6 @@ export const PROFILE_STATE_NAME = StateName.Profile;
 const getProfileState = createFeatureSelector<ProfileState>(PROFILE_STATE_NAME);
 
 export const getProfileUser = createSelector(
-    getProfileState,
-    ({ profileUser }) => profileUser
+  getProfileState,
+  ({ profileUser }) => profileUser
 );

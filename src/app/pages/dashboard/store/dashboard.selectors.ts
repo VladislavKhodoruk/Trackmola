@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { StateName } from '@shared/enums/enum';
 import { DashboardState } from './dashboard.state';
-import { allTasksTrack } from '@store/common/common.selectors';
+import { getTasksTrack } from '@store/common/common.selectors';
 
 export const DASHBOARD_STATE_NAME = StateName.Dashboard;
 
@@ -14,12 +14,13 @@ export const getDashboardPeriod = createSelector(
 );
 
 export const getWeekReportTime = createSelector(
-  allTasksTrack,
+  getTasksTrack,
   getDashboardPeriod,
   (taskTracks, period) =>
     taskTracks
       .filter(
         (taskTrack) =>
+          taskTrack.userId === localStorage.getItem('AuthUserId') &&
           taskTrack.date.seconds * 1000 > period.start &&
           taskTrack.date.seconds * 1000 < period.end
       )

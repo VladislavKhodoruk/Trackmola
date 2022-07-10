@@ -1,6 +1,11 @@
 import { getPeriod } from '@shared/helpers/helpers';
-import { Period, Project, User, Task } from '@shared/interfaces/interfaces';
-import { Timestamp } from 'firebase/firestore';
+import {
+  Period,
+  Project,
+  User,
+  Task,
+  TaskTrack,
+} from '@shared/interfaces/interfaces';
 
 export interface CommonState {
   loadingStatus: LoadingStatus;
@@ -18,17 +23,6 @@ export interface LoadingStatus {
   loading: boolean;
   loaded: boolean;
   errorMessage: string;
-}
-
-export interface TaskTrack {
-  id?: string;
-  projectId: string;
-  date: Timestamp;
-  taskId: string;
-  duration: number;
-  userId?: string;
-  comments?: string;
-  status?: string;
 }
 
 export const initialState: CommonState = {

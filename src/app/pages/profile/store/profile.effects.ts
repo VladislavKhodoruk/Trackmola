@@ -24,5 +24,5 @@ export class ProfileEffects {
     private actions$: Actions,
     private usersService: UsersService,
     private store$: Store<TrackMolaState>
-  ) { }
+  ) {}
 }

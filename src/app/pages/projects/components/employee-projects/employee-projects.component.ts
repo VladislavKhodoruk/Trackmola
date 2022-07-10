@@ -8,7 +8,7 @@ import { Project } from '@shared/interfaces/interfaces';
   styleUrls: ['./employee-projects.component.scss'],
 })
 export class EmployeeProjectsComponent {
-  @Input() readonly selectedProject!: Project;
+  @Input() readonly projectByRoute: Project;
 
   readonly iconAngleRight = angleRight;
 }

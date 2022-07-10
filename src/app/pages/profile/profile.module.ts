@@ -23,4 +23,4 @@ import { ProfileEffects } from './store/profile.effects';
   ],
   exports: [RouterModule],
 })
-export class ProfileModule { }
+export class ProfileModule {}

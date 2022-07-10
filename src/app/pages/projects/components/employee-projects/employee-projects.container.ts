@@ -1,33 +1,19 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {
-  getUsers,
-  clearProjectStore,
-  getProjects,
-  getTaskTracks,
-  getTasks,
-} from '@pages/projects/store/projects.actions';
-import { getSelectedProject } from '@pages/projects/store/projects.selectors';
-
+import { getProjectByRoute } from '@pages/projects/store/projects.selectors';
+import { Project } from '@shared/interfaces/interfaces';
 import { TrackMolaState } from '@store/trackMola.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employee-projects-container',
   template: `<app-employee-projects
-    [selectedProject]="selectedProject$ | async"
+    [projectByRoute]="projectByRoute$ | async"
   ></app-employee-projects>`,
 })
-export class EmployeeProjectsContainer implements OnDestroy {
-  readonly selectedProject$ = this.store$.select(getSelectedProject);
+export class EmployeeProjectsContainer {
+  readonly projectByRoute$: Observable<Project> =
+    this.store$.select(getProjectByRoute);
 
-  constructor(private store$: Store<TrackMolaState>) {
-    this.store$.dispatch(getTaskTracks());
-    this.store$.dispatch(getTasks());
-    this.store$.dispatch(getUsers());
-    this.store$.dispatch(getProjects());
-  }
-
-  ngOnDestroy(): void {
-    this.store$.dispatch(clearProjectStore());
-  }
+  constructor(private store$: Store<TrackMolaState>) {}
 }
