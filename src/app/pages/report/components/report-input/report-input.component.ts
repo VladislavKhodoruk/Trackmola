@@ -128,6 +128,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       startWith(''),
       map((value) => this.filterOption(value || '', Object.values(Roles)))
     );
+    this.form.get('duration').setValue(DurationValue.Default);
   }
 
   private filterOption(value: string, options: string[]): string[] {
