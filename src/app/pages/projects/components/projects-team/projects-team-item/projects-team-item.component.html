@@ -1,0 +1,14 @@
+<div class="projects-team-item">
+  <app-users-photos
+    *ngIf="usersInProject"
+    [users]="usersInProject"
+    size="2"
+  ></app-users-photos>
+
+  <h2 class="projects-team-item-name">Zain Rosser</h2>
+  <p class="projects-team-item-role">Project manager</p>
+
+  <ul>
+    <li *ngFor="let user of usersInProject">{{ user }}</li>
+  </ul>
+</div>

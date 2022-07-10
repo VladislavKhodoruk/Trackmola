@@ -25,6 +25,9 @@ import { ProjectsRoutes } from './projects.router';
 import { ProjectsEffects } from './store/projects.effects';
 import { ProjectsReducer } from './store/projects.reducer';
 import { PROJECTS_STATE_NAME } from './store/projects.selectors';
+import { ProjectsTeamComponent } from './components/projects-team/projects-team.component';
+import { ProjectsTeamItemComponent } from './components/projects-team/projects-team-item/projects-team-item.component';
+import { ProjectsTeamItemContainer } from './components/projects-team/projects-team-item/projects-team-item.container';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { PROJECTS_STATE_NAME } from './store/projects.selectors';
     ProjectItemComponent,
     SearchProjectsPipe,
     ProjectItemContainer,
+    ProjectsTeamComponent,
+    ProjectsTeamItemComponent,
+    ProjectsTeamItemContainer,
   ],
   imports: [
     CommonModule,
@@ -54,4 +60,4 @@ import { PROJECTS_STATE_NAME } from './store/projects.selectors';
   ],
   exports: [RouterModule],
 })
-export class ProjectsModule {}
+export class ProjectsModule { }
