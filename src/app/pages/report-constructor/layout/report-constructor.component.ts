@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { UserType } from '@shared/enums/enum';
+import { Project } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-report-constructor',
@@ -8,5 +9,6 @@ import { UserType } from '@shared/enums/enum';
 })
 export class ReportConstructorComponent {
   @Input() userType!: string | null;
+  @Input() projects!: Project[];
   types = UserType;
 }

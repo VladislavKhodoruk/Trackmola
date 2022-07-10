@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
-  selector: 'app-team-container',
+  selector: 'app-report-constructor-container',
   template: `<app-report-constructor
     [userType]="userType"
   ></app-report-constructor>`,

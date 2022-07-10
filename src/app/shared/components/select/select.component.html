@@ -1,5 +1,9 @@
-<mat-select>
-  <mat-option *ngFor="let food of foods" [value]="food.value">
-    {{ food.viewValue }}
+<mat-select [(ngModel)]="selectedValue">
+  <mat-option
+    *ngFor="let option of options"
+    [value]="option.value"
+    (click)="getSelectedValue.emit(selectedValue)"
+  >
+    {{ option.viewValue }}
   </mat-option>
 </mat-select>

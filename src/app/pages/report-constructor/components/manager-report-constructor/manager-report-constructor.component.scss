@@ -2,8 +2,13 @@
   @import "mixins.scss";
   @import "vars/variables";
 
+  .container {
+    @include flex(center, flex-start);
+  }
+
   .report-constructor-header {
     @include flex(flex-start, space-between);
+    margin-bottom: var(--offset);
 
     &-title {
       font: var(--font-titleBig);
@@ -32,11 +37,16 @@
   }
 
   .report-constructor-navigation {
+    margin-right: var(--offset-m);
     @include flex(center, space-between);
 
     &-select {
       display: flex;
       flex-direction: column;
+    }
+
+    &-date-switch {
+      margin-left: 2rem;
     }
   }
 }

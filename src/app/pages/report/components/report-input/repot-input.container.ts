@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ReportState } from '@pages/report/store/report.state';
-import { getProjects, getTasks } from '@store/common/common.selectors';
-import { getDate } from '@store/common/common.selectors';
+import { getProjects, getTasks, getDate } from '@store/common/common.selectors';
 import { CommonState } from '@store/common/common.state';
 
 @Component({
@@ -14,12 +12,9 @@ import { CommonState } from '@store/common/common.state';
   ></app-report-input>`,
 })
 export class ReportInputContainer {
-  allTasks$ = this.reportStore$.select(getTasks);
-  allProjects$ = this.reportStore$.select(getProjects);
+  allTasks$ = this.commonStore$.select(getTasks);
+  allProjects$ = this.commonStore$.select(getProjects);
   currentDate$ = this.commonStore$.select(getDate);
 
-  constructor(
-    private reportStore$: Store<ReportState>,
-    private commonStore$: Store<CommonState>
-  ) {}
+  constructor(private commonStore$: Store<CommonState>) {}
 }

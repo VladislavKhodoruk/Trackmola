@@ -77,3 +77,8 @@ export interface Period {
   start: number;
   end: number;
 }
+
+export interface SelectOptions {
+  value: string;
+  viewValue: string;
+}

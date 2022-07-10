@@ -15,6 +15,9 @@ import { ReportConstructorEffects } from './store/report-constructor.effects';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { IconModule } from '@visurel/iconify-angular';
 import { SelectModule } from '@shared/components/select/select.module';
+import { ManagerReportConstructorContainer } from './components/manager-report-constructor/manager-report-constructor.container';
+import { DateSwitchModule } from '@shared/components/date-switch/date-switch.module';
+import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { SelectModule } from '@shared/components/select/select.module';
     CtoReportConstructorComponent,
     AdminReportConstructorComponent,
     ManagerReportConstructorComponent,
+    ManagerReportConstructorContainer,
   ],
   imports: [
     CommonModule,
@@ -35,6 +39,8 @@ import { SelectModule } from '@shared/components/select/select.module';
     ButtonModule,
     IconModule,
     SelectModule,
+    DateSwitchModule,
+    DatepickerModule,
   ],
   exports: [RouterModule],
 })
