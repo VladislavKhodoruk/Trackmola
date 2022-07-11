@@ -1,0 +1,16 @@
+:host {
+  @import "mixins";
+  .wrapper {
+    @include flex(center, center,var(--offset-xxs));
+  }
+
+  ::ng-deep .button-primary .button {
+    background-color: var(--primary) !important;
+    &:hover {
+      background-color: var(--primary-hover) !important;
+    }
+    &:disabled {
+      background-color: var(--primary-disabled);
+    }
+  }
+}

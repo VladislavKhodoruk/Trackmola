@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <app-button
+    class="choose-item"
+    *ngFor="
+      let button of lables;
+      index as i;
+      let first = first;
+      let last = last
+    "
+    [label]="button"
+    [buttonClass]="classes[i]"
+    (buttonClick)="chooseButton(button)"
+    [class.button-primary]="button === checkedValue"
+    [leftButton]="first === true"
+    [rightButton]="last === true"
+  >
+  </app-button>
+</div>

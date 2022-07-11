@@ -4,6 +4,8 @@
   [type]="type"
   [disabled]="disabled"
   (click)="buttonClick.emit($event)"
+  [class.first]="leftButton"
+  [class.last]="rightButton"
 >
   <ic-icon
     *ngIf="icon"
