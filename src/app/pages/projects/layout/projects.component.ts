@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import angleRight from '@iconify/icons-uil/angle-right';
 import { Project } from '@shared/interfaces/interfaces';
 
@@ -6,6 +6,7 @@ import { Project } from '@shared/interfaces/interfaces';
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
   @Input() readonly projectByRoute: Project;

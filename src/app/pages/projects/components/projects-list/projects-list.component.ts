@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Project, User } from '@shared/interfaces/interfaces';
 import { RouterStateUrl } from '@store/router/custom-serializer';
 import { UsersGroupByProject } from '@pages/projects/interfaces/interface';
@@ -7,6 +7,7 @@ import { UsersGroupByProject } from '@pages/projects/interfaces/interface';
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
   styleUrls: ['./projects-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsListComponent {
   @Input() readonly searchText: string;

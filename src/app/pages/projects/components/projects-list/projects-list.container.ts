@@ -1,6 +1,6 @@
 import { Project } from '@shared/interfaces/interfaces';
 import { Observable } from 'rxjs';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import {
@@ -22,6 +22,7 @@ import { UsersGroupByProject } from '@pages/projects/interfaces/interface';
     [usersGroupByProject]="usersGroupByProject$ | async"
   ></app-projects-list>`,
   styleUrls: ['./projects-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsListContainer {
   readonly projects$: Observable<Project[]> = this.store$.select(getProjects);

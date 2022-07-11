@@ -1,4 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
 import {
   TaskTrackskGroupByDate,
@@ -11,6 +17,7 @@ import { Project, Task } from '@shared/interfaces/interfaces';
   selector: 'app-active-task',
   templateUrl: './active-task.component.html',
   styleUrls: ['./active-task.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActiveTaskComponent implements OnChanges {
   @Input() readonly project: Project;

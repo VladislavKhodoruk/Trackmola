@@ -1,6 +1,6 @@
 import { TrackMolaState } from '@store/trackMola.state';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import {
   getActiveTasksInProject,
   getProjectByRoute,
@@ -15,6 +15,7 @@ import { Observable, Subscription } from 'rxjs';
     [activeTasksInProject]="activeTasksInProject$ | async"
   ></app-active-tasks>`,
   styleUrls: ['./active-tasks.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActiveTasksContainer implements OnInit, OnDestroy {
   readonly project$: Observable<Project> =

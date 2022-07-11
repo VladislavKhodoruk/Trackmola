@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { getProjectByRoute } from '@pages/projects/store/projects.selectors';
 import { Project } from '@shared/interfaces/interfaces';
@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
     [projectByRoute]="projectByRoute$ | async"
   ></app-projects>`,
   styleUrls: ['./projects.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsContainer {
   readonly projectByRoute$: Observable<Project> =

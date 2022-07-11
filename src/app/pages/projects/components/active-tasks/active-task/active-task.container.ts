@@ -1,5 +1,11 @@
 import { Store } from '@ngrx/store';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { TrackMolaState } from '@store/trackMola.state';
 import { Project, Task } from '@shared/interfaces/interfaces';
 import { Observable } from 'rxjs';
@@ -13,6 +19,7 @@ import { TaskTrackWithUserInfo } from '@pages/projects/interfaces/interface';
     [activeTaskTracksInTask]="activeTaskTracksInTask$ | async"
   ></app-active-task>`,
   styleUrls: ['./active-task.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActiveTaskContainer implements OnChanges {
   @Input() readonly project: Project;
