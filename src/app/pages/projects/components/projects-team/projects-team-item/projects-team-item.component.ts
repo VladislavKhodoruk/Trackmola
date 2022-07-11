@@ -7,7 +7,9 @@ import { Project, TaskTrack, User } from '@shared/interfaces/interfaces';
   styleUrls: ['./projects-team-item.component.scss'],
 })
 export class ProjectsTeamItemComponent {
+
   @Input() readonly activeTasksInProject: TaskTrack[];
   @Input() readonly usersInProject: User[];
   @Input() readonly projectByRoute: Project;
+  @Input() readonly defaultPhoto: string;
 }

@@ -1,14 +1,13 @@
 <div class="projects-team-item">
-  <app-users-photos
-    *ngIf="usersInProject"
-    [users]="usersInProject"
-    size="2"
-  ></app-users-photos>
-
-  <h2 class="projects-team-item-name">Zain Rosser</h2>
-  <p class="projects-team-item-role">Project manager</p>
-
   <ul>
-    <li *ngFor="let user of usersInProject">{{ user }}</li>
+    <li *ngFor="let user of usersInProject">
+      <img
+        src="{{ user.photo || defaultPhoto }}"
+        class="activeTask-image"
+        alt="user photo"
+      />
+      <p class="projects-team-item-name">{{ user.fullName }}</p>
+      <p class="projects-team-item-role">{{ user.position }}</p>
+    </li>
   </ul>
 </div>
