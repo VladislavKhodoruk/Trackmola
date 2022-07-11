@@ -17,12 +17,14 @@ import {
 export class ButtonsChooseComponent implements OnChanges {
   @Input() lables: string[];
   @Input() receiving!: string;
+
   @Output() changed = new EventEmitter<string>();
+
   checkedValue: string;
   ngOnChanges(changes: SimpleChanges) {
     this.checkedValue = this.receiving;
   }
-  chooseButton(button: string) {
+  chooseButton(button: string): void {
     this.checkedValue = button;
     this.changed.emit(button);
   }

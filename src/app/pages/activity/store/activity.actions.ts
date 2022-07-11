@@ -11,9 +11,10 @@ export const GET_ACTIVITY_PROJECTS_SUCCESS =
 export const GET_WEEK_REPORT_TIME = '[Activity page] get week report time';
 export const GET_WWEK_REPORT_TIME_SUCCUSS =
   '[Activity page] get week report time success';
-export const CHANGE_PERIOD_ACTIVITY = 'choose activity activity';
+export const CHANGE_PERIOD_ACTIVITY =
+  '[Activity page] choose activity activity';
 export const CHANGE_PERIOD_ACTIVITY_SUCCESS =
-  'choose activity activity success';
+  ' [Activity page] choose activity activity success';
 
 export const getActivityTasks = createAction(
   GET_ACTIVITY_TASKS,
