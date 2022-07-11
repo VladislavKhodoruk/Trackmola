@@ -8,7 +8,12 @@ import { APIService } from '@shared/services/API.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  verstMode = true;
   constructor(public router: Router, private apiService: APIService) {
-    this.apiService.subscribeFirebaseChanges();
+    if (!this.verstMode) {
+      this.apiService.subscribeFirebaseChanges();
+      return;
+    }
+    this.apiService.useMockData();
   }
 }
