@@ -26,6 +26,7 @@
         *ngFor="let taskItem of taskItems"
         [taskItem]="taskItem"
         (edit)="editTaskTrack($event)"
+        (delete)="deleteTaskTrack.emit($event)"
       ></app-task>
     </div>
   </div>

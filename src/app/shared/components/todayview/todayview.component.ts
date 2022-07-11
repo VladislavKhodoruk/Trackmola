@@ -21,7 +21,10 @@ export class TodayviewComponent implements OnChanges {
   @Input() projects!: Project[];
   @Input() tasks!: Task[];
   @Input() currentDate!: Date;
+
   @Output() taskTrack = new EventEmitter<TaskTrack>();
+  @Output() deleteTaskTrack = new EventEmitter<string>();
+
   taskItems: TaskItem[];
 
   ngOnChanges(changes: SimpleChanges): void {

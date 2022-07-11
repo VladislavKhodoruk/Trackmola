@@ -10,9 +10,12 @@ import {
   getAllUsers,
   getAllUsersSuccess,
   loading,
+  deleteTaskTrack,
+  updateTaskTrack,
 } from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
 import { catchError, map, of, switchMap, take, tap } from 'rxjs';
+import { TasksService } from '@shared/services/tasks.service';
 
 @Injectable()
 export class CommonEffects {
@@ -63,9 +66,28 @@ export class CommonEffects {
     )
   );
 
+  deleteTaskTrack$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteTaskTrack),
+      switchMap((action) => {
+        return this.tasksService.removeTask(action.id);
+      })
+    )
+  );
+
+  updateTaskTrack$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateTaskTrack),
+      switchMap((action) => {
+        return this.tasksService.updateTask(action.tasktrack);
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private usersService: UsersService,
+    private tasksService: TasksService,
     private store$: Store<TrackMolaState>,
     private router: Router
   ) {}

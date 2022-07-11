@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -36,6 +38,9 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() allTasks: Task[];
   @Input() currentDate: string;
   @Input() editableTaskTrack: TaskTrack;
+
+  @Output() editTaskTrack = new EventEmitter<TaskTrack>();
+
   currentProjectId: string;
   currentTaskId: string;
   allProjectsName: string[];
@@ -182,7 +187,8 @@ export class ReportInputComponent implements OnInit, OnChanges {
       status: this.status,
     };
     if (this.editableTaskTrack) {
-      this.tasksService.updateTask(this.editableTaskTrack.id, addTask);
+      addTask.id = this.editableTaskTrack.id;
+      this.editTaskTrack.emit(addTask);
       this.editableTaskTrack = null;
     } else {
       this.tasksService.setTaskTrack(addTask);

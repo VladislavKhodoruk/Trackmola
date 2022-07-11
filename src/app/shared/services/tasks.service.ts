@@ -10,7 +10,7 @@ import {
   where,
   deleteDoc,
 } from 'firebase/firestore';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Task } from '@pages/report/interfaces/interfaces';
 import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 import { getPeriod } from '@shared/helpers/helpers';
@@ -66,12 +66,13 @@ export class TasksService {
     return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
   }
 
-  removeTask(id: string): void {
+  removeTask(id: string): Observable<any> {
     deleteDoc(doc(this.firestore, 'taskTrack', id));
+    return of();
   }
 
-  updateTask(id: string, tasktrack: TaskTrack): void {
-    tasktrack.id = id;
-    setDoc(doc(this.firestore, 'taskTrack', id), tasktrack);
+  updateTask(tasktrack: TaskTrack): Observable<any> {
+    setDoc(doc(this.firestore, 'taskTrack', tasktrack.id), tasktrack);
+    return of();
   }
 }

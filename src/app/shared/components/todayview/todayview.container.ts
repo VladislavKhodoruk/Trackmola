@@ -9,6 +9,7 @@ import {
   getTasksTrack,
 } from '@store/common/common.selectors';
 import { putTaskTrack } from '@pages/report/store/report.actions';
+import { deleteTaskTrack } from '@store/common/common.actions';
 
 @Component({
   selector: 'app-todayview-container',
@@ -18,6 +19,7 @@ import { putTaskTrack } from '@pages/report/store/report.actions';
     [projects]="projects$ | async"
     [currentDate]="currentDate$ | async"
     (taskTrack)="putIntoStore($event)"
+    (deleteTaskTrack)="deleteTaskTrack($event)"
   ></app-todayview-component>`,
 })
 export class TodayviewContainer {
@@ -25,8 +27,14 @@ export class TodayviewContainer {
   tasks$ = this.store$.select(getTasks);
   projects$ = this.store$.select(getProjects);
   currentDate$ = this.store$.select(getDate);
+
+  constructor(private store$: Store<TrackMolaState>) {}
+
   putIntoStore(taskTrack: TaskTrack) {
     this.store$.dispatch(putTaskTrack({ taskTrack }));
   }
-  constructor(private store$: Store<TrackMolaState>) {}
+
+  deleteTaskTrack(id: string) {
+    this.store$.dispatch(deleteTaskTrack({ id }));
+  }
 }

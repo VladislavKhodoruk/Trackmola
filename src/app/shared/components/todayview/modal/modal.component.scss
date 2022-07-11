@@ -58,8 +58,8 @@
 ::ng-deep {
   .mat-dialog-container {
     height: 14rem;
-    padding: var(--offset);
     min-width: 26rem;
+    padding: var(--offset);
     overflow: hidden;
     border-radius: var(--offset);
   }
