@@ -16,6 +16,7 @@ export class ButtonComponent {
   @Input() iconWidth!: string;
   @Input() iconHeight!: string;
   @Input() iconClass: string | string[] = 'icon';
+
   @Output() buttonClick: EventEmitter<Event> = new EventEmitter<Event>();
 
   readonly iconCheck = check;
