@@ -12,6 +12,7 @@ import {
 import { ProjectsState } from './projects.state';
 import { getCurrentRoute } from '@store/router/router.selector';
 import {
+  TaskGroupByProject,
   TaskTrackWithUserInfo,
   UsersGroupByProject,
 } from '@pages/projects/interfaces/interface';
@@ -53,6 +54,36 @@ export const activeTaskTracksInProject = (project: Project) =>
         });
     }
   );
+
+export const activeTaskGroupByProject = createSelector(
+  getTasks,
+  getTasksTrack,
+  getPeriod,
+  (tasks, taskTracks, period) => {
+    const activeTasksId = taskTracks
+      .filter(({ date }) => {
+        const startDate = period.start;
+        const endDate = period.end;
+        return (
+          date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate
+        );
+      })
+      .map((taskTrack) => taskTrack.taskId);
+
+    const activeTasks = tasks.filter((task) => activeTasksId.includes(task.id));
+    return activeTasks.reduce(
+      (accumulator: TaskGroupByProject, currentValue: Task) => {
+        const project = currentValue.projectId;
+        if (!accumulator[project]) {
+          accumulator[project] = [];
+        }
+        accumulator[project].push(currentValue);
+        return accumulator;
+      },
+      {}
+    );
+  }
+);
 
 export const usersGroupByProject = createSelector(
   getUsers,

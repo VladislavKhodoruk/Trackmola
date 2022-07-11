@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Project, User } from '@shared/interfaces/interfaces';
+import { Project, User, Task } from '@shared/interfaces/interfaces';
 import { RouterStateUrl } from '@store/router/custom-serializer';
-import { UsersGroupByProject } from '@pages/projects/interfaces/interface';
+import {
+  TaskGroupByProject,
+  UsersGroupByProject,
+} from '@pages/projects/interfaces/interface';
 
 @Component({
   selector: 'app-projects-list',
@@ -14,6 +17,7 @@ export class ProjectsListComponent {
   @Input() readonly projects: Project[];
   @Input() readonly currentRoute: RouterStateUrl;
   @Input() readonly usersGroupByProject: UsersGroupByProject;
+  @Input() readonly activeTaskGroupByProject: TaskGroupByProject;
 
   protected usersInProject(project: Project): User[] {
     if (
@@ -21,6 +25,16 @@ export class ProjectsListComponent {
       this.usersGroupByProject[project.id].every((user) => !!user)
     ) {
       return this.usersGroupByProject[project.id];
+    }
+    return [];
+  }
+
+  protected activeTaskInProject(project: Project): Task[] {
+    if (
+      this.activeTaskGroupByProject[project.id] &&
+      this.activeTaskGroupByProject[project.id].every((task) => !!task)
+    ) {
+      return this.activeTaskGroupByProject[project.id];
     }
     return [];
   }
