@@ -13,9 +13,8 @@
   }
 
   .task-top {
-    @include flex(flex-start, flex-start);
+    @include flex(flex-start, flex-start, var(--offset));
     width: 100%;
-    gap: var(--offset);
   }
 
   .time {

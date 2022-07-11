@@ -182,9 +182,8 @@ export class ReportInputComponent implements OnInit, OnChanges {
     };
     if (!this.editableTaskTrack) {
       this.tasksService.setTaskTrack(addTask);
-    } else {
-      this.tasksService.updateTask(this.editableTaskTrack.id, addTask);
     }
+    this.tasksService.updateTask(this.editableTaskTrack.id, addTask);
     this.editableTaskTrack = null;
     this.onCheckStatus(this.status);
     this.form.get('project').reset();
