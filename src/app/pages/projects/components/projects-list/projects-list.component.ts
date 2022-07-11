@@ -19,16 +19,6 @@ export class ProjectsListComponent {
   @Input() readonly usersGroupByProject: UsersGroupByProject;
   @Input() readonly activeTaskGroupByProject: TaskGroupByProject;
 
-  protected usersInProject(project: Project): User[] {
-    if (
-      this.usersGroupByProject[project.id] &&
-      this.usersGroupByProject[project.id].every((user) => !!user)
-    ) {
-      return this.usersGroupByProject[project.id];
-    }
-    return [];
-  }
-
   protected activeTaskInProject(project: Project): Task[] {
     if (
       this.activeTaskGroupByProject[project.id] &&

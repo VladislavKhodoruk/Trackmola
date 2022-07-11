@@ -86,47 +86,13 @@ export const activeTaskGroupByProject = createSelector(
 );
 
 export const usersGroupByProject = createSelector(
-  getUsers,
   getTasksTrack,
+  getProjects,
+  getUsers,
   getPeriod,
-  (users, taskTracks, period) =>
-    taskTracks
-      .filter(({ date }) => {
-        const startDate = period.start;
-        const endDate = period.end;
-        return (
-          date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate
-        );
-      })
-      .sort((a, b) => b.date.seconds - a.date.seconds)
-      .map((taskTrack) => {
-        const userInfo = users.find((user) => user.id === taskTrack.userId);
-        return { ...taskTrack, userInfo };
-      })
-      .reduce(
-        (
-          accumulator: UsersGroupByProject,
-          currentValue: TaskTrackWithUserInfo
-        ) => {
-          const project = currentValue.projectId;
-          if (!accumulator[project]) {
-            accumulator[project] = [];
-          }
-          accumulator[project].push(currentValue.userInfo);
-          return accumulator;
-        },
-        {}
-      )
-);
-
-export const usersInProject = (project: Project) =>
-  createSelector(
-    getUsers,
-    getTasksTrack,
-    getPeriod,
-    (users, taskTracks, period) => {
-      const usersIdInProjects: TaskTrack['userId'][] = taskTracks
-        .filter(({ projectId }) => projectId === project.id)
+  (taskTracks, projects, users, period) =>
+    projects.reduce((acum, project) => {
+      const usersInTaskTracks = taskTracks
         .filter(({ date }) => {
           const startDate = period.start;
           const endDate = period.end;
@@ -135,13 +101,19 @@ export const usersInProject = (project: Project) =>
           );
         })
         .sort((a, b) => b.date.seconds - a.date.seconds)
-        .map((taskTrack) => taskTrack.userId);
+        .filter(({ projectId }) => projectId === project.id)
+        .map(({ userId }) => userId);
 
-      return usersIdInProjects.map((userId) =>
-        users.find((user) => user.id === userId)
+      const filteredUsers = users.filter(({ id }) =>
+        usersInTaskTracks.includes(id)
       );
-    }
-  );
+
+      return {
+        ...acum,
+        [project.id]: filteredUsers,
+      };
+    }, {})
+);
 
 export const getActiveTasksInProject = (project: Project) =>
   createSelector(
