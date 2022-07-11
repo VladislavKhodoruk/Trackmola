@@ -73,8 +73,6 @@ export class TasksService {
   }
 
   updateTask(id: string, tasktrack: TaskTrack): void {
-    console.log(id);
-    console.log(tasktrack);
     tasktrack.id = id;
     setDoc(doc(this.firestore, 'taskTrack', id), tasktrack);
   }
