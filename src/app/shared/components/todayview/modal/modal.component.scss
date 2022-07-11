@@ -16,8 +16,7 @@
   }
 
   .buttons {
-    display: flex;
-    justify-content: flex-end;
+    @include flex(stretch, flex-end);
   }
 
   .buttons-cancel,
@@ -26,7 +25,7 @@
     gap: var(--offset-s);
     border: $border-radius-button;
     border-radius: var(--offset-d);
-    background: var(--white);
+    background-color: var(--white);
     color: var(--primary);
     font: var(--font-buttonMiddle);
     outline: 0;
@@ -34,14 +33,14 @@
 
   .buttons-delete {
     margin-left: var(--offset);
-    background: var(--primary);
+    background-color: var(--primary);
     color: var(--white);
   }
-  .icons {
+  .icon-x {
     display: flex;
   }
 
-  .icons:hover {
+  .icon-x:hover {
     cursor: pointer;
     opacity: 0.8;
     color: var(--primary-hover);
@@ -69,7 +68,7 @@
     margin: 0;
   }
 
-  .icons {
+  .icon-x {
     svg {
       width: 1.75rem;
       height: 1.75rem;

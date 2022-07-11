@@ -26,14 +26,14 @@
   .percentage-full {
     padding: 0.4rem var(--offset);
     border-radius: $border-radius-percent;
-    background: var(--primary-max);
+    background-color: var(--primary-max);
     color: var(--white);
     font: var(--font-blocks);
     font-weight: 600;
   }
 
   .percentage {
-    background: var(--primary);
+    background-color: var(--primary);
   }
 
   .repeat-button,
@@ -41,7 +41,7 @@
     padding: 0.4rem var(--offset);
     border: $border-radius-button;
     border-radius: var(--offset-s);
-    background: var(--white);
+    background-color: var(--white);
     color: var(--primary);
     font: var(--font-buttonSmall);
   }
@@ -51,7 +51,7 @@
   }
 
   .complete-button {
-    background: var(--primary);
+    background-color: var(--primary);
     color: var(--white);
   }
 
@@ -69,7 +69,7 @@
     margin-right: var(--offset);
     width: var(--offset-l);
     border-radius: 0 0 var(--offset) var(--offset);
-    background: var(--gray);
+    background-color: var(--gray);
   }
 
   .liquid-full {
@@ -80,11 +80,11 @@
     width: 100%;
     border-radius: 0 0 var(--offset) var(--offset);
     overflow: hidden;
-    background: var(--primary-max);
+    background-color: var(--primary-max);
   }
 
   .liquid {
-    background: var(--primary);
+    background-color: var(--primary);
     &:before,
     &:after {
       content: "";
