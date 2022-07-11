@@ -21,7 +21,6 @@ import {
   template: `<app-projects-list
     [searchText]="searchText$ | async"
     [projects]="projects$ | async"
-    [currentRoute]="currentRoute$ | async"
     [usersGroupByProject]="usersGroupByProject$ | async"
     [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
   ></app-projects-list>`,
@@ -34,8 +33,6 @@ export class ProjectsListContainer {
     this.store$.select(activeTaskGroupByProject);
   readonly usersGroupByProject$: Observable<UsersGroupByProject> =
     this.store$.select(usersGroupByProject);
-  readonly currentRoute$: Observable<RouterStateUrl> =
-    this.store$.select(getCurrentRoute);
 
   readonly searchText$: Observable<string> = this.store$.select(getSearchValue);
 
