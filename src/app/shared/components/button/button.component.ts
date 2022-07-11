@@ -18,6 +18,7 @@ export class ButtonComponent {
   @Input() iconClass: string | string[] = 'icon';
   @Input() leftButton!: boolean | null;
   @Input() rightButton!: boolean | null;
+  @Input() chooseButton!: boolean | null;
   @Output() buttonClick: EventEmitter<Event> = new EventEmitter<Event>();
 
   readonly iconCheck = check;

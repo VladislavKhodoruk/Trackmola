@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HALF_OF_PRIMARY_BUTTON } from "@pages/activity/constants/constants";
 
 @Component({
   selector: 'app-employee-activity',
@@ -8,8 +9,8 @@ import { Component } from '@angular/core';
 export class EmployeeActivityComponent {
   lables = ['Week', 'Month'];
   classes = [
-    'button-halfOfPrimary button-d',
-    'button-halfOfPrimary button-d',
-    'button-halfOfPrimary button-d',
+    HALF_OF_PRIMARY_BUTTON.dSize,
+    HALF_OF_PRIMARY_BUTTON.dSize,
+    HALF_OF_PRIMARY_BUTTON.dSize,
   ];
 }

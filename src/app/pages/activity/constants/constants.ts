@@ -153,3 +153,7 @@ export const REST_HOURS_TOTAL_CARD = {
   numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,
   numberMonthHours: getRestMonthDefaultHours(),
 };
+
+export const HALF_OF_PRIMARY_BUTTON = {
+  dSize: 'button-halfOfPrimary button-d',
+};

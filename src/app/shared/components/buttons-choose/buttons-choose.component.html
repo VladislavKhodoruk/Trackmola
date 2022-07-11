@@ -10,7 +10,7 @@
     [label]="button"
     [buttonClass]="classes[i]"
     (buttonClick)="chooseButton(button)"
-    [class.button-primary]="button === checkedValue"
+    [chooseButton]="button === checkedValue"
     [leftButton]="first === true"
     [rightButton]="last === true"
   >
