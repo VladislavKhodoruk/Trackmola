@@ -20,7 +20,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
 })
-export class TaskComponent implements OnChanges {
+export class TaskComponent {
   @Input() taskItem!: TaskItem | null;
   @Output() edit = new EventEmitter<string>();
 
@@ -28,8 +28,6 @@ export class TaskComponent implements OnChanges {
   iconPencil = pencil;
 
   constructor(private taskService: TasksService, public dialog: MatDialog) {}
-
-  ngOnChanges(changes: SimpleChanges): void {}
 
   onDeleteClick(): void {
     this.taskService.removeTask(this.taskItem.id);

@@ -1,24 +1,32 @@
 <div class="todayview">
-    <div class = "top-area">
-        <div class="percentage-full" [class.percentage]="totalDuration < 100" >
-            {{ totalDuration }}%
-        </div>
-        <div class="top-buttons">
-            <button class="repeat-button">Repeat the previous day</button>
-            <button class="complete-button">Complete</button>
-        </div>
+  <div class="top-area">
+    <div class="percentage-full" [class.percentage]="totalDuration < 100">
+      {{ totalDuration }}%
     </div>
-    <div class="bottom-area">
-        <div class="flask">
-            <div class="liquid-full" [class.liquid]="totalDuration < 100" [style.height.%]="totalDuration">
-                <div class="bubbles bubble-1"></div>
-                <div class="bubbles bubble-2"></div>
-                <div class="bubbles bubble-3"></div>
-                <div class="bubbles bubble-4"></div>
-            </div>
-        </div>
-        <div class="tasks">
-            <app-task *ngFor="let taskItem of taskItems" [taskItem]="taskItem" (edit)="editTaskTrack($event)"></app-task>
-        </div>
+    <div class="top-buttons">
+      <button class="repeat-button">Repeat the previous day</button>
+      <button class="complete-button">Complete</button>
     </div>
+  </div>
+  <div class="bottom-area">
+    <div class="flask">
+      <div
+        class="liquid-full"
+        [class.liquid]="totalDuration < 100"
+        [style.height.%]="totalDuration"
+      >
+        <div class="bubbles bubble-1"></div>
+        <div class="bubbles bubble-2"></div>
+        <div class="bubbles bubble-3"></div>
+        <div class="bubbles bubble-4"></div>
+      </div>
+    </div>
+    <div class="tasks">
+      <app-task
+        *ngFor="let taskItem of taskItems"
+        [taskItem]="taskItem"
+        (edit)="editTaskTrack($event)"
+      ></app-task>
+    </div>
+  </div>
 </div>

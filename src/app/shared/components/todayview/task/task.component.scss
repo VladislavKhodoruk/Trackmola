@@ -41,8 +41,8 @@
     margin-top: var(--offset);
   }
   .icons {
-    color: var(--gray);
     display: none;
+    color: var(--gray);
     &:last-of-type {
       margin-left: var(--offset-s);
     }

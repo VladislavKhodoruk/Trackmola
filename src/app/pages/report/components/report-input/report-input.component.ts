@@ -172,6 +172,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
 
   addTaskTrack(): void {
     const addTask: TaskTrack = {
+      id: '',
       projectId: this.currentProjectId,
       date: new Timestamp(new Date(this.currentDate).getTime() / 1000, 0),
       taskId: this.currentTaskId,
