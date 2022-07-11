@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { HALF_OF_PRIMARY_BUTTON } from "@pages/activity/constants/constants";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: 'app-employee-activity',
@@ -7,10 +6,15 @@ import { HALF_OF_PRIMARY_BUTTON } from "@pages/activity/constants/constants";
   styleUrls: ['./employee-activity.component.scss'],
 })
 export class EmployeeActivityComponent {
-  lables = ['Week', 'Month'];
-  classes = [
-    HALF_OF_PRIMARY_BUTTON.dSize,
-    HALF_OF_PRIMARY_BUTTON.dSize,
-    HALF_OF_PRIMARY_BUTTON.dSize,
-  ];
+  @Input() period: string;
+  @Output() forPushUp = new EventEmitter<string>();
+  changeInfo: string;
+  lables = ['Week', 'Month', 'Year'];
+  changed(event) {
+    this.changeInfo = event;
+    this.pushPeriodUp();
+  }
+  pushPeriodUp() {
+    this.forPushUp.emit(this.changeInfo);
+  }
 }

@@ -1,4 +1,12 @@
-<app-buttons-choose [lables]="lables" [classes]="classes"></app-buttons-choose>
+<div class="header-wrapper">
+  <h1>My Activity</h1>
+  <app-buttons-choose
+    class="choose-Period-buttons"
+    [lables]="lables"
+    [receiving]="period"
+    (changed)="changed($event)"
+  ></app-buttons-choose>
+</div>
 <app-projects-activity-container></app-projects-activity-container>
 <div class="container">
   <app-activity-total-cards-container></app-activity-total-cards-container>

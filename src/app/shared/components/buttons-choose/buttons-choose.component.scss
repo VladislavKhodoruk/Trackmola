@@ -3,14 +3,25 @@
   .wrapper {
     @include flex(center, center,var(--offset-xxs));
   }
-
-  ::ng-deep .button-primary .button {
-    background-color: var(--primary) !important;
-    &:hover {
-      background-color: var(--primary-hover) !important;
+  .choose-item {
+    ::ng-deep .button {
+      border-radius: 0;
     }
-    &:disabled {
-      background-color: var(--primary-disabled);
+    &:first-child {
+      ::ng-deep .button {
+        border-radius: var(--border-radius-m) 0 0 var(--border-radius-m);
+      }
+    }
+
+    &:last-child {
+      ::ng-deep .button {
+        border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
+      }
+    }
+    &.checked {
+      ::ng-deep .button {
+        background-color: var(--primary);
+      }
     }
   }
 }

@@ -1,4 +1,17 @@
 :host {
+  @import "mixins.scss";
+  .header-wrapper {
+    @include flex(flex-start, flex-start, var(--offset-l));
+    margin: 0 0 var(--offset) 0;
+    h1 {
+      font: var(--font-titleBig);
+    }
+
+    .choose-Period-buttons {
+      transform: translateY(var(--offset-s));
+    }
+  }
+
   .container {
     padding: var(--offset) 0;
   }
