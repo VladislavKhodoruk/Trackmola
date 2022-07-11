@@ -10,10 +10,10 @@ import { APIService } from '@shared/services/API.service';
 export class AppComponent {
   verstMode = true;
   constructor(public router: Router, private apiService: APIService) {
-    if (!this.verstMode) {
-      this.apiService.subscribeFirebaseChanges();
+    if (this.verstMode) {
+      this.apiService.useMockData();
       return;
     }
-    this.apiService.useMockData();
+    this.apiService.subscribeFirebaseChanges();
   }
 }
