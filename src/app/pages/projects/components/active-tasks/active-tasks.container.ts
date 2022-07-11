@@ -1,6 +1,11 @@
 import { TrackMolaState } from '@store/trackMola.state';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   getActiveTasksInProject,
   getProjectByRoute,

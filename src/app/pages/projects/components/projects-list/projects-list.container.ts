@@ -11,7 +11,10 @@ import { TrackMolaState } from '@store/trackMola.state';
 import { getProjects } from '@store/common/common.selectors';
 import { getCurrentRoute } from '@store/router/router.selector';
 import { RouterStateUrl } from '@store/router/custom-serializer';
-import { TaskGroupByProject, UsersGroupByProject } from '@pages/projects/interfaces/interface';
+import {
+  TaskGroupByProject,
+  UsersGroupByProject,
+} from '@pages/projects/interfaces/interface';
 
 @Component({
   selector: 'app-projects-list-container',
