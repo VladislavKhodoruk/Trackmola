@@ -9,8 +9,6 @@ import {
   setDoc,
   where,
   deleteDoc,
-  onSnapshot,
-  updateDoc,
 } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from '@pages/report/interfaces/interfaces';

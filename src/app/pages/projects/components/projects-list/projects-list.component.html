@@ -1,18 +1,13 @@
 <section class="projects-list-section">
   <app-input-search-container></app-input-search-container>
   <ul class="projects-list">
-    <app-project-item
+    <app-project-item-container
+      *ngFor="let project of projects | searchProjects: searchText; index as i"
       class="projects-list-item"
-      [class.projects-list-item-selected]="
-        selectedProject && selectedProject.id === project.id
-      "
-      *ngFor="let project of projects | searchProjects: searchText"
+      [index]="i"
       [project]="project"
-      [tasks]="tasks"
-      [users]="users"
-      [taskTracks]="taskTracks"
-      [period]="period"
       [routerLink]="[project.name | lowercase]"
-    ></app-project-item>
+      routerLinkActive="projects-list-item-selected"
+    ></app-project-item-container>
   </ul>
 </section>

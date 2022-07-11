@@ -118,7 +118,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       this.form
         .get('duration')
         ?.setValue(`${this.editableTaskTrack?.duration}`);
-      this.form.get('comments').setValue(this.editableTaskTrack.comments);
+      this.form.get('comments')?.setValue(this.editableTaskTrack.comments);
       this.onCheckStatus(this.editableTaskTrack?.status);
     }
   }

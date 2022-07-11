@@ -1,11 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  Project,
-  User,
-  TaskTrack,
-  Task,
-  Period,
-} from '@shared/interfaces/interfaces';
+import { Project } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-projects-list',
@@ -13,11 +7,6 @@ import {
   styleUrls: ['./projects-list.component.scss'],
 })
 export class ProjectsListComponent {
-  @Input() readonly projects: Project[];
-  @Input() readonly tasks: Task[];
-  @Input() readonly users: User[];
-  @Input() readonly taskTracks: TaskTrack[];
-  @Input() readonly selectedProject!: Project;
   @Input() readonly searchText: string;
-  @Input() readonly period: Period;
+  @Input() readonly projects: Project[];
 }

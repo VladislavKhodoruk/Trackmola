@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
@@ -5,8 +6,15 @@ import {
   getAllTasksSuccess,
   getAllTaskTracksSuccess,
   getAllUsers,
+  getAllUsersSuccess,
 } from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
+import {
+  mockProjects,
+  mockTasks,
+  mockUsers,
+  mockTaskTracks,
+} from 'app/mockdata';
 import {
   collection,
   Firestore,
@@ -73,5 +81,14 @@ export class APIService {
     );
 
     this.store$.dispatch(getAllUsers());
+  }
+
+  useMockData() {
+    this.store$.dispatch(getAllUsersSuccess({ users: mockUsers }));
+    this.store$.dispatch(getAllProjectsSuccess({ projects: mockProjects }));
+    this.store$.dispatch(getAllTasksSuccess({ tasks: mockTasks }));
+    this.store$.dispatch(
+      getAllTaskTracksSuccess({ taskTracks: mockTaskTracks })
+    );
   }
 }

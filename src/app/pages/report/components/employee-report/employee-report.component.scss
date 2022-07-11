@@ -20,7 +20,7 @@
     }
 
     &-input {
-      margin-right: 2rem;
+      margin-right: var(--offset-l);
       width: 60%;
     }
 
@@ -33,7 +33,7 @@
   }
   .tasks-row {
     display: flex;
-    margin-bottom: 3rem;
+    margin-bottom: var(--offset-ml);
     width: 100%;
   }
 }

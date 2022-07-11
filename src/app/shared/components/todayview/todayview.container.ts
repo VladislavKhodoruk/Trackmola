@@ -3,14 +3,10 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TrackMolaState } from 'app/store/trackMola.state';
 import {
-  getAllProjectsData,
-  getAllTasksData,
-} from '@pages/report/store/report.selectors';
-import {
-  allTasksTrack,
   getDate,
   getProjects,
   getTasks,
+  getTasksTrack,
 } from '@store/common/common.selectors';
 import { putTaskTrack } from '@pages/report/store/report.actions';
 
@@ -25,7 +21,7 @@ import { putTaskTrack } from '@pages/report/store/report.actions';
   ></app-todayview-component>`,
 })
 export class TodayviewContainer {
-  taskTracks$ = this.store$.select(allTasksTrack);
+  taskTracks$ = this.store$.select(getTasksTrack);
   tasks$ = this.store$.select(getTasks);
   projects$ = this.store$.select(getProjects);
   currentDate$ = this.store$.select(getDate);
