@@ -106,7 +106,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
         );
       }
     }
-    if (changes.editableTaskTrack) {
+    if (changes.editableTaskTrack && this.editableTaskTrack) {
       const projectName = this.allProjects?.find(
         (project) => project.id === this.editableTaskTrack?.projectId
       )?.name;
@@ -181,11 +181,12 @@ export class ReportInputComponent implements OnInit, OnChanges {
       userId: localStorage.getItem('AuthUserId'),
       status: this.status,
     };
-    if (!this.editableTaskTrack) {
+    if (this.editableTaskTrack) {
+      this.tasksService.updateTask(this.editableTaskTrack.id, addTask);
+      this.editableTaskTrack = null;
+    } else {
       this.tasksService.setTaskTrack(addTask);
     }
-    this.tasksService.updateTask(this.editableTaskTrack.id, addTask);
-    this.editableTaskTrack = null;
     this.onCheckStatus(this.status);
     this.form.get('project').reset();
     this.form.get('task').reset();

@@ -144,6 +144,8 @@
   }
   .liquid {
     background-color: var(--primary);
+    transition: 1s;
+
     &:before,
     &:after {
       content: "";
