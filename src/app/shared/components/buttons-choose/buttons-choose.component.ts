@@ -20,7 +20,7 @@ export class ButtonsChooseComponent implements OnChanges {
   @Output() changed = new EventEmitter<string>();
   checkedValue: string;
   ngOnChanges(changes: SimpleChanges) {
-    this.checkedValue = this.lables[0];
+    this.checkedValue = this.receiving;
   }
   chooseButton(button: string) {
     this.checkedValue = button;
