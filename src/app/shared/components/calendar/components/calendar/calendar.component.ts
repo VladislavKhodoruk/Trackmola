@@ -8,8 +8,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { TaskTrack } from '@store/common/common.state';
-import { Day, Period, Week } from '@shared/interfaces/interfaces';
+import { Day, Period, Week, TaskTrack } from '@shared/interfaces/interfaces';
 import {
   NAMES_OF_THE_DAYS_OF_THE_WEEK,
   NUMBER_OF_DAYS_IN_A_WEEK,

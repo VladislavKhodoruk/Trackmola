@@ -17,8 +17,7 @@ import {
   onRightIndex,
 } from '@pages/report/helpers/report-input-helpers';
 import { Task } from '@pages/report/interfaces/interfaces';
-import { Project } from '@shared/interfaces/interfaces';
-import { TaskTrack } from '@store/common/common.state';
+import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 import { Timestamp } from 'firebase/firestore';
 import { TasksService } from '@shared/services/tasks.service';
 import {

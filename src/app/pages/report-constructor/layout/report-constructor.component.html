@@ -1,0 +1,11 @@
+<container-element [ngSwitch]="userType">
+  <app-cto-report-constructor
+    *ngSwitchCase="types.CTO"
+  ></app-cto-report-constructor>
+  <app-admin-report-constructor
+    *ngSwitchCase="types.Admin"
+  ></app-admin-report-constructor>
+  <app-manager-report-constructor
+    *ngSwitchCase="types.Manager"
+  ></app-manager-report-constructor>
+</container-element>

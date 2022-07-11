@@ -1,6 +1,6 @@
 <header class="projects-header">
   <h2 class="projects-header-title">Projects</h2>
-  <div class="projects-header-item">
+  <div class="projects-header-item" *ngIf="projectByRoute">
     <ic-icon
       class="icon"
       width="2rem"
@@ -9,11 +9,11 @@
     ></ic-icon>
     <div
       class="projects-header-item-title"
-      [ngStyle]="{ 'border-color': 'var(--rose)' }"
+      [ngStyle]="{ 'border-color': projectByRoute.color }"
     >
-      PSVOD
+      {{ projectByRoute.name }}
     </div>
-    <div class="projects-header-item-name">PSVOD fullName</div>
+    <div class="projects-header-item-name">{{ projectByRoute.fullName }}</div>
   </div>
 </header>
 

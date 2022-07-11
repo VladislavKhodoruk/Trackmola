@@ -4,7 +4,7 @@ import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-dashboard-container',
-  template: '<app-dashboard [userType]="this.userType"></app-dashboard>',
+  template: '<app-dashboard [userType]="userType"></app-dashboard>',
 })
 export class DashboardContainer {
   readonly userType: string = localStorage.getItem('AuthUserType');

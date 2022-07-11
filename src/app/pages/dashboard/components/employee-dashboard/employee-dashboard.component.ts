@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '@pages/dashboard/services/dashboard.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-employee-dashboard',
   templateUrl: './employee-dashboard.component.html',
   styleUrls: ['./employee-dashboard.component.scss'],
 })
-export class EmployeeDashboardComponent implements OnInit {
-  constructor(private dashboardService: DashboardService) {}
-
-  ngOnInit() {
-    this.dashboardService.subscibeFirebaseChanges();
-  }
-}
+export class EmployeeDashboardComponent {}
