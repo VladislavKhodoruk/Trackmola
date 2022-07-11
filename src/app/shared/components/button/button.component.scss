@@ -47,6 +47,10 @@
       border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
     }
 
+    &-defaultBoarders {
+      border-radius: 0;
+    }
+
     &-m {
       padding: 0 3rem;
     }
@@ -126,4 +130,17 @@
   .icon {
     display: flex;
   }
+
+  .choose-item-right {
+    border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
+  }
+
+  .choose-item {
+    border-radius: 0;
+  }
+
+  .choose-item-left {
+    border-radius: var(--border-radius-m) 0 0 var(--border-radius-m);
+  }
 }
+

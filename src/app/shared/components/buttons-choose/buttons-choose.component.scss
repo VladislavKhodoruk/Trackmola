@@ -1,0 +1,7 @@
+:host {
+  @import "mixins";
+  .wrapper {
+    @include flex(center, center,var(--offset-xxs));
+  }
+
+}

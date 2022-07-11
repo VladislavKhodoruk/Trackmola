@@ -22,7 +22,7 @@ import { HighchartsChartModule } from '@shared/components/highcharts-chart/highc
 import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
 import { ActivityChartModule } from '@shared/components/activity-chart/activity-chart.module';
 import { ButtonModule } from "@shared/components/button/button.module";
-import { TwoButtonModule } from "@shared/components/two-Buttons-choose/two-button.module";
+import { ButtonsChooseModule } from "@shared/components/buttons-choose/buttons-choose.module";
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { TwoButtonModule } from "@shared/components/two-Buttons-choose/two-butto
     RouterModule.forChild(ActivityRoutes),
     ActivityChartModule,
     ButtonModule,
-    TwoButtonModule
+    ButtonsChooseModule
   ],
   exports: [RouterModule],
 })

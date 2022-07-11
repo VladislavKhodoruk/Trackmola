@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <app-button
+    class="choose-item"
+    *ngFor="let button of lables"
+    [label]="button"
+    [buttonClass]="'button-halfOfPrimary'"
+    (buttonClick)="chooseButton(button)"
+    [class.button-primary]="button === checkedValue"
+  >
+  </app-button>
+</div>

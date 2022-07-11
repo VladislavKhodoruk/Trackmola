@@ -1,13 +1,9 @@
 <div class="head-of-activity-page">
   <h1>My activity</h1>
-  <app-two-buttons-choose
-    [leftLabel]="'Week'"
-    [rightLabel]="'Month'"
-    [classOfLeftButton]="'button-primary button-rightBoarderDefault button-d'"
-    [classOfRightButton]="
-      'button-halfOfPrimary button-leftBoarderDefault button-d'
-    "
-  ></app-two-buttons-choose>
+  <app-buttons-choose
+    [lables]="lables"
+    [classes]="classes"
+  ></app-buttons-choose>
 </div>
 <app-activity-chart-container></app-activity-chart-container>
 <app-projects-activity-container></app-projects-activity-container>
