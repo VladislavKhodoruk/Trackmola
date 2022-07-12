@@ -3,7 +3,7 @@ import { ActivityChartComponent } from '@shared/components/activity-chart/activi
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [ActivityChartComponent, ChartModule],
+  declarations: [ActivityChartComponent],
   imports: [CommonModule],
   exports: [ActivityChartComponent],
 })
