@@ -2,7 +2,7 @@
   @import "mixins.scss";
   .task-wrappeer {
     display: grid;
-    grid-template-columns: 9rem 28rem 8.2rem 1fr 2rem;
+    grid-template-columns: 10rem 28rem 8.2rem 1fr 2rem;
     grid-gap: var(--offset);
     max-width: 59rem;
     padding: var(--offset-d) var(--offset);
@@ -17,9 +17,11 @@
     .project-name {
       display:inline-block;
       padding: 0 var(--offset-b);
-      max-width: 9rem;
+      max-width: 10rem;
       object-fit: contain;
       overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       border: 0.2rem solid var(--rose) ;
       border-radius: var(--offset-m);
       font: var(--font-calendar);
