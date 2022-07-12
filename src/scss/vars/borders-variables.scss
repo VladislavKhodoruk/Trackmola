@@ -18,4 +18,8 @@ $border-radius-table-tooltip: var(--offset) var(--offset) var(--offset) 0;
 
 $border-form: var(--border-xs) solid var(--primary);
 $border-cdk-select: 0 0 10rem rgba(87, 74, 249, 0.25);
+
+$border-radius-percent: var(--offset-s) var(--offset-s) var(--offset-s) 0;
+$border-radius-button: var(--offset-xxs) solid var(--primary);
+$border-radius-task: var(--offset-xxs) solid var(--primary);
 $border-radius-activity-total-cards: 0 0.25rem 0.6rem rgba(0, 0, 0, 0.1);
