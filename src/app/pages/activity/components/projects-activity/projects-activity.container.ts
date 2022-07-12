@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  getActivityProjects,
-  getActivityTasks,
+  getMyActivityProjects,
+  getMyActivityTaskTracks,
 } from '@pages/activity/store/activity.selectors';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
@@ -17,10 +17,12 @@ import { Observable } from 'rxjs';
   ></app-projects-activity>`,
 })
 export class ProjectsActivityContainer {
-  readonly activityTasks$: Observable<TaskTrack[]> =
-    this.store$.select(getActivityTasks);
-  readonly activityProjects$: Observable<Project[]> =
-    this.store$.select(getActivityProjects);
+  readonly activityTasks$: Observable<TaskTrack[]> = this.store$.select(
+    getMyActivityTaskTracks
+  );
+  readonly activityProjects$: Observable<Project[]> = this.store$.select(
+    getMyActivityProjects
+  );
 
   constructor(private store$: Store<TrackMolaState>) {}
 }
