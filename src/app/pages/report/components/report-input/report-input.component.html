@@ -138,9 +138,7 @@
           <div class="form-report-status">
             <app-button
               [icon]="iconCheck"
-              buttonClass="task-status {{
-                status === 'done' ? 'task-status-checked' : ''
-              }}"
+              [buttonClass]="['task-status', classStatusDone]"
               [iconClass]="'task-status-icon'"
               label="done"
               (click)="onCheckStatus('done')"
@@ -149,9 +147,7 @@
           <div class="form-report-status">
             <app-button
               [icon]="iconCheck"
-              buttonClass="task-status {{
-                status === 'in progress' ? 'task-status-checked' : ''
-              }}"
+              [buttonClass]="['task-status', classStatusInProgress]"
               [iconClass]="'task-status-icon'"
               label="in progress"
               (click)="onCheckStatus('in progress')"
@@ -183,10 +179,19 @@
       iconHeight="1.5rem"
     ></app-button>
     <app-button
+      *ngIf="!editableTaskTrack; else edit"
       [buttonClass]="'button-primary button-m'"
       type="submit"
       label="Add"
       [disabled]="form.invalid"
     ></app-button>
+    <ng-template #edit>
+      <app-button
+        [buttonClass]="'button-primary button-m'"
+        type="submit"
+        label="Edit"
+        [disabled]="form.invalid"
+      ></app-button>
+    </ng-template>
   </div>
 </form>

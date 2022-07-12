@@ -1,0 +1,17 @@
+<div class="task">
+  <div class="task-top">
+    <div class="time">{{ taskItem?.duration }}h</div>
+    <div class="project" [style.borderColor]="taskItem?.projectColor">
+      {{ taskItem?.projectName }}
+    </div>
+    <div class="description">{{ taskItem?.taskName }}</div>
+  </div>
+  <div class="buttons">
+    <ic-icon
+      class="icons"
+      [icon]="iconPencil"
+      (click)="edit.emit(taskItem?.id)"
+    ></ic-icon>
+    <ic-icon class="icons" [icon]="iconTrash" (click)="openDialog()"></ic-icon>
+  </div>
+</div>

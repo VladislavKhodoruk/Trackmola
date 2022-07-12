@@ -22,7 +22,7 @@ export interface TaskTrack {
   comments: string;
   date: Timestamp;
   duration: number;
-  id?: string;
+  id: string;
   projectId: string;
   status: string;
   taskId: string;
@@ -78,7 +78,10 @@ export interface Period {
   end: number;
 }
 
-export interface SelectOptions {
-  value: string;
-  viewValue: string;
+export interface TaskItem {
+  id: string;
+  duration: number;
+  taskName: string;
+  projectColor: string;
+  projectName: string;
 }
