@@ -1,6 +1,6 @@
 import { Period } from '@shared/interfaces/interfaces';
 
-export function getPeriod(date: Date, type?: 'week' | 'month'): Period {
+export function getPeriod(date: Date, type?: string): Period {
   switch (type) {
     case 'week': {
       const dayOfWeek = date.getDay();

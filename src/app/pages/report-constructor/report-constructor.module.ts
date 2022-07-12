@@ -18,6 +18,7 @@ import { SelectModule } from '@shared/components/select/select.module';
 import { ManagerReportConstructorContainer } from './components/manager-report-constructor/manager-report-constructor.container';
 import { DateSwitchModule } from '@shared/components/date-switch/date-switch.module';
 import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
+import { ReportConstructorTableComponent } from './components/report-constructor-table/report-constructor-table.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DatepickerModule } from '@shared/components/datepicker/datepicker.modul
     AdminReportConstructorComponent,
     ManagerReportConstructorComponent,
     ManagerReportConstructorContainer,
+    ReportConstructorTableComponent,
   ],
   imports: [
     CommonModule,

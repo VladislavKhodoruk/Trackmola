@@ -138,7 +138,9 @@
           <div class="form-report-status">
             <app-button
               [icon]="iconCheck"
-              [buttonClass]="['task-status', classStatusDone]"
+              buttonClass="task-status {{
+                status === 'done' ? 'task-status-checked' : ''
+              }}"
               [iconClass]="'task-status-icon'"
               label="done"
               (click)="onCheckStatus('done')"
@@ -147,7 +149,9 @@
           <div class="form-report-status">
             <app-button
               [icon]="iconCheck"
-              [buttonClass]="['task-status', classStatusInProgress]"
+              buttonClass="task-status {{
+                status === 'in progress' ? 'task-status-checked' : ''
+              }}"
               [iconClass]="'task-status-icon'"
               label="in progress"
               (click)="onCheckStatus('in progress')"

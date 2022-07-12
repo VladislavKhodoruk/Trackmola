@@ -40,4 +40,16 @@
   .mat-datepicker-toggle-default-icon {
     width: 2rem !important;
   }
+
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding: 0;
+  }
+
+  .mat-form-field-wrapper {
+    padding: 0;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0;
+}
 }

@@ -19,24 +19,25 @@ import { Period } from '@shared/interfaces/interfaces';
 })
 export class DateSwitchComponent implements OnChanges {
   @Input() period: 'week' | 'month' = 'week';
+  @Input() date: Date = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
+  );
   @Output() getFirstandLastDay: EventEmitter<Period> =
     new EventEmitter<Period>();
   readonly iconArrowNarrowLeft = arrowNarrowLeft;
   readonly iconArrowNarrowRight = arrowNarrowRight;
 
-  now = new Date(
-    new Date().getFullYear(),
-    new Date().getMonth(),
-    new Date().getDate()
-  );
   firstDay: number;
   lastDay: number;
-  firstandLastDay: Period = getPeriod(this.now, this.period);
+  firstandLastDay: Period;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.period && this.period) {
-      this.firstDay = getPeriod(this.now, this.period).start;
-      this.lastDay = getPeriod(this.now, this.period).end;
+      this.firstDay = getPeriod(new Date(this.date), this.period).start;
+      this.lastDay = getPeriod(new Date(this.date), this.period).end;
+      this.firstandLastDay = getPeriod(new Date(this.date), this.period);
     }
   }
 
@@ -45,13 +46,19 @@ export class DateSwitchComponent implements OnChanges {
       case 'week': {
         this.firstDay -= ONE_WEEK_IN_SECONDS;
         this.lastDay -= ONE_WEEK_IN_SECONDS;
-        this.firstandLastDay.start = this.firstDay;
-        this.firstandLastDay.end = this.lastDay;
+        const firstandLastDay = {
+          start: this.firstDay,
+          end: this.lastDay,
+        };
+        this.firstandLastDay = firstandLastDay;
         break;
       }
       case 'month': {
-        this.now = new Date(this.now.getFullYear(), this.now.getMonth() - 1);
-        this.firstandLastDay = getPeriod(this.now, this.period);
+        this.date = new Date(
+          new Date(this.firstDay).getFullYear(),
+          new Date(this.firstDay).getMonth() - 1
+        );
+        this.firstandLastDay = getPeriod(this.date, this.period);
         this.firstDay = this.firstandLastDay.start;
         this.lastDay = this.firstandLastDay.end;
         break;
@@ -65,13 +72,19 @@ export class DateSwitchComponent implements OnChanges {
       case 'week': {
         this.firstDay += ONE_WEEK_IN_SECONDS;
         this.lastDay += ONE_WEEK_IN_SECONDS;
-        this.firstandLastDay.start = this.firstDay;
-        this.firstandLastDay.end = this.lastDay;
+        const firstandLastDay = {
+          start: this.firstDay,
+          end: this.lastDay,
+        };
+        this.firstandLastDay = firstandLastDay;
         break;
       }
       case 'month': {
-        this.now = new Date(this.now.getFullYear(), this.now.getMonth() + 1);
-        this.firstandLastDay = getPeriod(this.now, this.period);
+        this.date = new Date(
+          new Date(this.firstDay).getFullYear(),
+          new Date(this.firstDay).getMonth() + 1
+        );
+        this.firstandLastDay = getPeriod(this.date, this.period);
         this.firstDay = this.firstandLastDay.start;
         this.lastDay = this.firstandLastDay.end;
         break;

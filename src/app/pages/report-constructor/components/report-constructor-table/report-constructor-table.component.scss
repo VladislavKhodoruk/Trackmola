@@ -1,0 +1,44 @@
+:host {
+  @import "mixins.scss";
+  @import "vars/variables";
+
+  .flex-container {
+    @include flex(center, center);
+
+    &:hover .report-constructor-table-head-item-text {
+      transform: scale(1.05);
+    }
+  }
+
+  .report-constructor-table {
+    border: $border-report-constructor-table;
+    border-radius: var(--border-radius);
+    border-collapse: collapse;
+
+    &-head {
+      height: 4.75rem;
+
+      background-color: var(--blue2);
+      font: var(--font-blocks);
+
+      &-item {
+        height: 3rem;
+        width: 16rem;
+
+        cursor: pointer;
+
+        &-text {
+          margin-right: 4rem;
+        }
+      }
+    }
+
+    &-body {
+      height: 3rem;
+
+      &-item {
+        font: var(--font-current);
+      }
+    }
+  }
+}

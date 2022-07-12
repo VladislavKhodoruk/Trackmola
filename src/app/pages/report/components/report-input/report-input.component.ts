@@ -66,9 +66,6 @@ export class ReportInputComponent implements OnInit, OnChanges {
   readonly iconMicrophone = microphoneIcon;
 
   status = '';
-  classStatusChecked = 'task-status-checked';
-  classStatusDone = '';
-  classStatusInProgress = '';
 
   constructor(private tasksService: TasksService) {}
 
@@ -138,17 +135,11 @@ export class ReportInputComponent implements OnInit, OnChanges {
     switch (status) {
       case this.status:
         this.status = '';
-        this.classStatusDone = '';
-        this.classStatusInProgress = '';
         break;
       case 'done':
-        this.classStatusDone = this.classStatusChecked;
-        this.classStatusInProgress = '';
         this.status = status;
         break;
       case 'in progress':
-        this.classStatusInProgress = this.classStatusChecked;
-        this.classStatusDone = '';
         this.status = status;
         break;
     }

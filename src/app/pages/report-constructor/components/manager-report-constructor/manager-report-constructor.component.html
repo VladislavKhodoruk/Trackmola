@@ -4,18 +4,31 @@
     <div class="report-constructor-header-switcher-period">
       <app-button
         class="report-constructor-header-switcher-period-item"
-        buttonClass="button-m button-right-border-straight period-switcher-selected"
+        buttonClass="button-m button-right-border-straight {{
+          periodType === 'week' ? 'period-switcher-selected' : 'period-switcher'
+        }}"
         label="Week"
+        (click)="changePeriod('week')"
       ></app-button>
       <app-button
         class="report-constructor-header-switcher-period-item"
-        buttonClass="button-m button-rect period-switcher"
+        buttonClass="button-m button-rect {{
+          periodType === 'month'
+            ? 'period-switcher-selected'
+            : 'period-switcher'
+        }}"
         label="Month"
+        (click)="changePeriod('month')"
       ></app-button>
       <app-button
         class="report-constructor-header-switcher-period-item"
-        buttonClass="button-left-border-straight period-switcher"
+        buttonClass="button-left-border-straight {{
+          periodType === 'custom'
+            ? 'period-switcher-selected'
+            : 'period-switcher'
+        }}"
         label="Custom period"
+        (click)="changePeriod('custom')"
       ></app-button>
     </div>
     <app-button
@@ -48,12 +61,13 @@
     </div>
     <div class="report-constructor-navigation-date-switch">
       <app-date-switch
-        *ngIf="periodType"
+        *ngIf="periodType === 'week' || periodType === 'month'"
+        [date]="period.end"
         [period]="periodType"
         (getFirstandLastDay)="getFirstandLastDay($event)"
       ></app-date-switch>
       <app-datepicker
-        *ngIf="customPeriod"
+        *ngIf="periodType === 'custom'"
         (getFirstandLastDay)="getFirstandLastDay($event)"
       ></app-datepicker>
     </div>
@@ -75,3 +89,4 @@
     ></app-button>
   </div>
 </div>
+<app-report-constructor-table></app-report-constructor-table>
