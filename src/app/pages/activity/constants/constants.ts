@@ -153,4 +153,3 @@ export const REST_HOURS_TOTAL_CARD = {
   numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,
   numberMonthHours: getRestMonthDefaultHours(),
 };
-

@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
 import { StateName } from '@shared/enums/enum';
 import { CommonState } from './common.state';
 
@@ -48,7 +49,7 @@ export const getTasksTrackByPeriod = createSelector(
     taskTracks.filter(
       (taskTrack) =>
         taskTrack.userId === localStorage.getItem('AuthUserId') &&
-        taskTrack.date.seconds * 1000 >= period.start &&
+        taskTrack.date.seconds * 1000 >= period.start - ONE_WEEK_IN_SECONDS &&
         taskTrack.date.seconds * 1000 <= period.end
     )
 );

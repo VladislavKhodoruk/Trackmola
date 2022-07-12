@@ -4,7 +4,6 @@ import {
   Input,
   OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import { Project, TaskItem, TaskTrack } from '../../interfaces/interfaces';
 import { Task } from '@pages/report/interfaces/interfaces';
@@ -27,8 +26,8 @@ export class TodayviewComponent implements OnChanges {
 
   taskItems: TaskItem[];
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.taskItems = this.createTaskItemsByDate();
+  ngOnChanges(): void {
+    this.taskItems = this.createTaskItems();
   }
 
   editTaskTrack(id: string): void {
@@ -46,22 +45,25 @@ export class TodayviewComponent implements OnChanges {
     return (totalDuration / MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY) * 100;
   }
 
-  getTasksTracksByDate(): TaskTrack[] {
+  getFilteredTasksTracks(): TaskTrack[] {
     return this.taskTracks?.filter(
       (curTaskTrack) =>
+        curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
         transformDate(new Date(curTaskTrack.date.seconds * 1000)).getTime() ===
-        transformDate(this.currentDate).getTime()
+          transformDate(this.currentDate).getTime()
     );
   }
 
-  createTaskItemsByDate(): TaskItem[] {
-    const currentTaskTracks = this.getTasksTracksByDate();
+  createTaskItems(): TaskItem[] {
+    const currentTaskTracks = this.getFilteredTasksTracks();
     return currentTaskTracks.reduce((acc, curTaskTrack) => {
-      const task = this.tasks.find((task) => task.id === curTaskTrack.taskId);
-      const project = this.projects.find(
-        (project) => project.id === curTaskTrack.projectId
+      const task: Task = this.tasks.find(
+        (curTask) => curTask.id === curTaskTrack.taskId
       );
-      let taskItem: TaskItem = {
+      const project = this.projects.find(
+        (curProject) => curProject.id === curTaskTrack.projectId
+      );
+      const taskItem: TaskItem = {
         id: curTaskTrack.id,
         duration: curTaskTrack.duration,
         taskName: task?.name,
@@ -69,6 +71,6 @@ export class TodayviewComponent implements OnChanges {
         projectName: project?.name,
       };
       return [...acc, taskItem];
-    }, []);
+    }, [] as TaskItem[]);
   }
 }
