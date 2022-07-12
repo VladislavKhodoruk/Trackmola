@@ -9,12 +9,11 @@ import {
 } from '@pages/projects/store/projects.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 import { getProjects } from '@store/common/common.selectors';
-import { getCurrentRoute } from '@store/router/router.selector';
-import { RouterStateUrl } from '@store/router/custom-serializer';
 import {
   TaskGroupByProject,
   UsersGroupByProject,
 } from '@pages/projects/interfaces/interface';
+import { setSearchValue } from '@pages/projects/store/projects.actions';
 
 @Component({
   selector: 'app-projects-list-container',
@@ -23,18 +22,25 @@ import {
     [projects]="projects$ | async"
     [usersGroupByProject]="usersGroupByProject$ | async"
     [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
+    (search)="onSearch($event)"
   ></app-projects-list>`,
   styleUrls: ['./projects-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsListContainer {
   readonly projects$: Observable<Project[]> = this.store$.select(getProjects);
+
   readonly activeTaskGroupByProject$: Observable<TaskGroupByProject> =
     this.store$.select(activeTaskGroupByProject);
+
   readonly usersGroupByProject$: Observable<UsersGroupByProject> =
     this.store$.select(usersGroupByProject);
 
   readonly searchText$: Observable<string> = this.store$.select(getSearchValue);
 
   constructor(private store$: Store<TrackMolaState>) {}
+
+  public onSearch(value: string): void {
+    this.store$.dispatch(setSearchValue({ value }));
+  }
 }

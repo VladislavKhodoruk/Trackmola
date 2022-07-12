@@ -1,7 +1,6 @@
 import { RouterStateUrl } from '@store/router/custom-serializer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { StateName } from '@shared/enums/enum';
-import { Project, Task, TaskTrack } from '@shared/interfaces/interfaces';
 import {
   getPeriod,
   getProjects,
@@ -11,7 +10,6 @@ import {
 } from '@store/common/common.selectors';
 import { ProjectsState } from './projects.state';
 import { getCurrentRoute } from '@store/router/router.selector';
-import { TaskGroupByProject } from '@pages/projects/interfaces/interface';
 
 export const PROJECTS_STATE_NAME = StateName.Projects;
 
@@ -23,33 +21,16 @@ export const getSearchValue = createSelector(
   ({ searchValue }) => searchValue
 );
 
+export const usersInfoByUserId = createSelector(getUsers, (users) =>
+  users.reduce((accum, user) => ({ ...accum, [user.id]: user }), {})
+);
+
 export const getProjectByRoute = createSelector(
   getProjects,
   getCurrentRoute,
   (projects, route: RouterStateUrl) =>
     projects.find((project) => project.name.toLowerCase() === route.params.name)
 );
-
-export const activeTaskTracksInProject = (project: Project) =>
-  createSelector(
-    getTasks,
-    getTasksTrack,
-    getPeriod,
-    (tasks, taskTracks, period) => {
-      const tasksIdInProject: Task['id'][] = tasks
-        .filter(({ projectId }) => projectId === project.id)
-        .map((task) => task.id);
-      return taskTracks
-        .filter(({ taskId }) => tasksIdInProject.includes(taskId))
-        .filter(({ date }) => {
-          const startDate = period.start;
-          const endDate = period.end;
-          return (
-            date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate
-          );
-        });
-    }
-  );
 
 export const filteredTaskTracksByPeriod = createSelector(
   getTasksTrack,
@@ -100,37 +81,12 @@ export const usersGroupByProject = createSelector(
     }, {})
 );
 
-export const getActiveTasksInProject = (project: Project) =>
-  createSelector(
-    activeTaskTracksInProject(project),
-    getTasks,
-    (taskTracks, tasks) => {
-      const tasksId = taskTracks.map((taskTrack) => taskTrack.taskId);
-      return tasks
-        .filter(({ id }) => tasksId.includes(id))
-        .sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
-    }
-  );
-
-export const getActiveTaskTracksInTask = (task: Task) =>
-  createSelector(
-    getTasksTrack,
-    getUsers,
-    getPeriod,
-    (taskTracks, users, period) => {
-      const activeTaskTracksInTask: TaskTrack[] = taskTracks
-        .filter(({ taskId }) => taskId === task.id)
-        .filter(({ date }) => {
-          const startDate = period.start;
-          const endDate = period.end;
-          return (
-            date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate
-          );
-        });
-
-      return activeTaskTracksInTask.map((taskTrack) => {
-        const userInfo = users.find((user) => user.id === taskTrack.userId);
-        return { ...taskTrack, userInfo };
-      });
-    }
-  );
+export const activeTaskTracksGroupByTask = createSelector(
+  getTasks,
+  filteredTaskTracksByPeriod,
+  (tasks, taskTracks) =>
+    tasks.reduce((accum, task) => {
+      const activeTasks = taskTracks.filter(({ taskId }) => taskId === task.id);
+      return { ...accum, [task.id]: activeTasks };
+    }, {})
+);

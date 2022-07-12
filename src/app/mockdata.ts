@@ -418,7 +418,7 @@ export const mockProjects: Project[] = [
   {
     fullName: 'Paid and Unpaid Vacations',
     taskId: [],
-    id: ' kIjYlnhio4ghwoC0CyWf',
+    id: 'kIjYlnhio4ghwoC0CyWf',
     description:
       // eslint-disable-next-line max-len
       'Planned paid vacations managing by Administrator and Unpaid Leaves. Unpaid Leave should be approved by Project Manager.',

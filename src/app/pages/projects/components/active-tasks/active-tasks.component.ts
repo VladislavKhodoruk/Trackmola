@@ -1,5 +1,14 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Project, Task } from '@shared/interfaces/interfaces';
+import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
+import {
+  TaskGroupByProject,
+  TaskTracksGroupByTask,
+  TaskTrackskGroupByDate,
+  UsersGroupByUserId,
+} from '@pages/projects/interfaces/interface';
+import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
+import { Project, TaskTrack } from '@shared/interfaces/interfaces';
+import { IconifyIcon } from '@iconify/types';
 
 @Component({
   selector: 'app-active-tasks',
@@ -9,5 +18,30 @@ import { Project, Task } from '@shared/interfaces/interfaces';
 })
 export class ActiveTasksComponent {
   @Input() readonly project: Project;
-  @Input() readonly activeTasksInProject: Task[];
+  @Input() readonly activeTaskGroupByProject: TaskGroupByProject;
+  @Input() readonly activeTaskTracksGroupByTask: TaskTracksGroupByTask;
+  @Input() readonly usersInfoByUserId: UsersGroupByUserId;
+
+  panelOpenState = false;
+
+  readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
+  readonly iconClipboard: IconifyIcon = clipboardPlus;
+
+  protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
+    const taskTracksGroupByDate: TaskTrackskGroupByDate = taskTracks.reduce(
+      (accum: TaskTrackskGroupByDate, taskTrack: TaskTrack) => {
+        const date = taskTrack.date.seconds * 1000;
+        if (!accum[date]) {
+          accum[date] = [];
+        }
+        accum[date].push(taskTrack);
+        return accum;
+      },
+      {}
+    );
+
+    return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
+  }
+
+  protected addToReport(): void {}
 }

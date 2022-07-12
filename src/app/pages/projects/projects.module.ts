@@ -7,8 +7,6 @@ import { StoreModule } from '@ngrx/store';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 import { IconModule } from '@visurel/iconify-angular';
 
-import { InputSearchComponent } from './components/projects-list/input-search/input-search.component';
-import { InputSearchContainer } from './components/projects-list/input-search/input-search.container';
 import { ProjectsListComponent } from './components/projects-list/projects-list.component';
 import { ProjectsListContainer } from './components/projects-list/projects-list.container';
 import { ProjectsComponent } from './layout/projects.component';
@@ -20,10 +18,8 @@ import { ProjectsReducer } from './store/projects.reducer';
 import { PROJECTS_STATE_NAME } from './store/projects.selectors';
 import { ActiveTasksComponent } from './components/active-tasks/active-tasks.component';
 import { ActiveTasksContainer } from './components/active-tasks/active-tasks.container';
-import { ActiveTaskComponent } from './components/active-tasks/active-task/active-task.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ButtonModule } from '@shared/components/button/button.module';
-import { ActiveTaskContainer } from './components/active-tasks/active-task/active-task.container';
 
 @NgModule({
   declarations: [
@@ -31,13 +27,9 @@ import { ActiveTaskContainer } from './components/active-tasks/active-task/activ
     ProjectsComponent,
     ProjectsListComponent,
     ProjectsListContainer,
-    InputSearchComponent,
-    InputSearchContainer,
     SearchProjectsPipe,
     ActiveTasksComponent,
     ActiveTasksContainer,
-    ActiveTaskComponent,
-    ActiveTaskContainer,
   ],
   imports: [
     CommonModule,

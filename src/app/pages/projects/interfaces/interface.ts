@@ -1,11 +1,7 @@
 import { TaskTrack, Task, User } from '@shared/interfaces/interfaces';
 
-export interface TaskTrackWithUserInfo extends TaskTrack {
-  userInfo: User;
-}
-
 export interface TaskTrackskGroupByDate {
-  [key: string]: TaskTrackWithUserInfo[];
+  [key: string]: TaskTrack[];
 }
 
 export interface UsersGroupByProject {
@@ -14,4 +10,12 @@ export interface UsersGroupByProject {
 
 export interface TaskGroupByProject {
   [key: string]: Task[];
+}
+
+export interface TaskTracksGroupByTask {
+  [key: string]: TaskTrack[];
+}
+
+export interface UsersGroupByUserId {
+  [key: string]: User;
 }
