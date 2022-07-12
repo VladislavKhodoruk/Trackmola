@@ -4,7 +4,7 @@
     class="choose-period-buttons"
     [labels]="labels"
     [checked]="period"
-    (changeMode)="passUp.emit($event)"
+    (changeMode)="selectedPeriod.emit($event)"
   ></app-toggle-buttons>
 </div>
 <app-projects-activity-container></app-projects-activity-container>

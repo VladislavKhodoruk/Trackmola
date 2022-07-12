@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class EmployeeActivityComponent {
   @Input() period: string;
 
-  @Output() passUp = new EventEmitter<string>();
+  @Output() selectedPeriod = new EventEmitter<string>();
 
   labels = ['Week', 'Month', 'Year'];
 }
