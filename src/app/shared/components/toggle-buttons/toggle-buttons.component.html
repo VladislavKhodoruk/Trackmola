@@ -4,7 +4,7 @@
     *ngFor="let button of labels"
     [label]="button"
     [buttonClass]="'button-half-of-primary button-d'"
-    (buttonClick)="chooseButton(button)"
+    (buttonClick)="changeMode.emit(button)"
     [class.checked]="checked === button"
   >
   </app-button>

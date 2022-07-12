@@ -17,8 +17,4 @@ export class ToggleButtonsComponent {
   @Input() checked!: string;
 
   @Output() changeMode = new EventEmitter<string>();
-
-  chooseButton(button: string): void {
-    this.changeMode.emit(button);
-  }
 }
