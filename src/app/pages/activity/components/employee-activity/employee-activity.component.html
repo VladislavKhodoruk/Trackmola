@@ -1,4 +1,17 @@
-<app-projects-activity-container></app-projects-activity-container>
+<div class="header-wrapper">
+  <h1>My Activity</h1>
+  <app-toggle-buttons
+    class="choose-period-buttons"
+    [labels]="labels"
+    [checked]="period"
+    (changeMode)="selectPeriod.emit($event)"
+  ></app-toggle-buttons>
+</div>
+<div class="container-for-charts">
+  <app-activity-chart-component></app-activity-chart-component>
+  <app-projects-activity-container></app-projects-activity-container>
+</div>
+
 <div class="container">
   <app-activity-total-cards-container></app-activity-total-cards-container>
 </div>

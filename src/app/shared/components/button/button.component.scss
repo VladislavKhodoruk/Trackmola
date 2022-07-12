@@ -35,19 +35,11 @@
       }
     }
 
-    &-halfOfPrimary {
+    &-half-of-primary {
       background-color: var(--primary-50);
     }
 
-    &-rightBoarderDefault {
-      border-radius: var(--border-radius-m) 0 0 var(--border-radius-m);
-    }
-
-    &-leftBoarderDefault {
-      border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
-    }
-
-    &-defaultBoarders {
+    &-default-borders {
       border-radius: 0;
     }
 
@@ -56,7 +48,7 @@
     }
 
     &-d {
-      padding: 1rem 3rem;
+      padding: var(--offset) var(--offset-ml);
     }
 
     &-s {
@@ -131,16 +123,4 @@
     display: flex;
   }
 
-  .choose-item-right {
-    border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
-  }
-
-  .choose-item {
-    border-radius: 0;
-  }
-
-  .choose-item-left {
-    border-radius: var(--border-radius-m) 0 0 var(--border-radius-m);
-  }
 }
-

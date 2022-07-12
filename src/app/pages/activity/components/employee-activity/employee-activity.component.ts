@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-employee-activity',
@@ -6,12 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./employee-activity.component.scss'],
 })
 export class EmployeeActivityComponent {
-  checked = true;
-  lables = ['Week', 'Month', 'Year'];
-  classes = [
-    'button-primary button-d choose-item-left ',
-    'button-halfOfPrimary button-d choose-item',
-    'button-halfOfPrimary button-d choose-item-right',
-  ];
+  @Input() period: string;
 
+  @Output() selectPeriod = new EventEmitter<string>();
+
+  labels = ['Week', 'Month', 'Year'];
 }
