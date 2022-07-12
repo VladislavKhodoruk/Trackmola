@@ -20,8 +20,8 @@ import { ActivityEffects } from './store/activity.effects';
 import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
-import { ToggleButtonsModule } from "@shared/components/toggle-buttons/toggle-buttons.module";
-import { ButtonModule } from "@shared/components/button/button.module";
+import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
+import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { ButtonModule } from "@shared/components/button/button.module";
     StoreModule.forFeature(ACTIVITY_STATE_NAME, ActivityReducer),
     RouterModule.forChild(ActivityRoutes),
     ToggleButtonsModule,
-    ButtonModule
+    ButtonModule,
   ],
   exports: [RouterModule],
 })

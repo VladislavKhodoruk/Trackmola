@@ -85,3 +85,7 @@ export interface TaskItem {
   projectColor: string;
   projectName: string;
 }
+
+export interface GroupBy<T> {
+  [key: string]: T;
+}

@@ -1,13 +1,39 @@
-<section class="projects-list-section">
-  <app-input-search-container></app-input-search-container>
+<section class="projects-list-with-search">
+  <div class="search">
+    <input
+      class="input search-input"
+      type="text"
+      placeholder="Search..."
+      [(ngModel)]="searchText"
+      (ngModelChange)="this.search.emit(searchText)"
+    />
+    <ic-icon class="icon search-icon" [icon]="iconSearch"></ic-icon>
+  </div>
   <ul class="projects-list">
-    <app-project-item-container
-      *ngFor="let project of projects | searchProjects: searchText; index as i"
-      class="projects-list-item"
-      [index]="i"
-      [project]="project"
-      [routerLink]="[project.name | lowercase]"
-      routerLinkActive="projects-list-item-selected"
-    ></app-project-item-container>
+    <ng-container *ngIf="projects.length">
+      <li
+        *ngFor="let project of projects | searchProjects: searchText"
+        class="projects-list-item"
+        [routerLink]="[project.name | lowercase]"
+        routerLinkActive="projects-list-item-selected"
+      >
+        <div class="projects-list-item-header">
+          <div
+            class="projects-list-item-header-title"
+            [ngStyle]="{ 'border-color': project.color }"
+          >
+            {{ project.name }}
+          </div>
+          <app-users-photos
+            [users]="usersGroupByProject[project.id]"
+            size="2"
+          ></app-users-photos>
+        </div>
+        <p class="projects-list-item-name">{{ project.fullName }}</p>
+        <p class="projects-list-item-description">
+          {{ activeTaskGroupByProject[project.id].length }} active tasks
+        </p>
+      </li>
+    </ng-container>
   </ul>
 </section>
