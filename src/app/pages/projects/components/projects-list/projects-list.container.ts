@@ -14,6 +14,8 @@ import {
   UsersGroupByProject,
 } from '@pages/projects/interfaces/interface';
 import { setSearchValue } from '@pages/projects/store/projects.actions';
+import { getCurrentRoute } from '@store/router/router.selector';
+import { RouterStateUrl } from '@store/router/custom-serializer';
 
 @Component({
   selector: 'app-projects-list-container',
@@ -22,6 +24,7 @@ import { setSearchValue } from '@pages/projects/store/projects.actions';
     [projects]="projects$ | async"
     [usersGroupByProject]="usersGroupByProject$ | async"
     [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
+    [currentRoute]="currentRoute$ | async"
     (search)="onSearch($event)"
   ></app-projects-list>`,
   styleUrls: ['./projects-list.component.scss'],
@@ -35,6 +38,9 @@ export class ProjectsListContainer {
 
   readonly usersGroupByProject$: Observable<UsersGroupByProject> =
     this.store$.select(usersGroupByProject);
+
+  readonly currentRoute$: Observable<RouterStateUrl> =
+    this.store$.select(getCurrentRoute);
 
   readonly searchText$: Observable<string> = this.store$.select(getSearchValue);
 
