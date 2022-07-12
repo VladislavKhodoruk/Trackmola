@@ -85,3 +85,8 @@ export interface TaskItem {
   projectColor: string;
   projectName: string;
 }
+
+export interface SelectOptions {
+  value: string;
+  viewValue: string;
+}
