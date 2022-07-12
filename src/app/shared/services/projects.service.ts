@@ -4,7 +4,6 @@ import {
   collectionData,
   Firestore,
   query,
-  where,
 } from '@angular/fire/firestore';
 import { Project } from '@shared/interfaces/interfaces';
 
@@ -22,15 +21,4 @@ export class ProjectsService {
   }
 
   constructor(private firestore: Firestore) {}
-
-  public tasksInProject$(project): Observable<Task[]> {
-    const ref = collection(this.firestore, 'taskTrack');
-    const queryAll = query(ref, where('projectId', '==', project));
-    return collectionData(queryAll) as Observable<Task[]>;
-  }
-
-  getAllProjects$(): Observable<Project[]> {
-    const projects = collection(this.firestore, 'projects');
-    return collectionData(projects) as Observable<Project[]>;
-  }
 }

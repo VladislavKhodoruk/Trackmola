@@ -13,8 +13,6 @@ import { Observable } from 'rxjs';
 import { Task } from '@pages/report/interfaces/interfaces';
 import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 import { getPeriod } from '@shared/helpers/helpers';
-import { Tasks } from '@shared/interfaces/interfaces';
-import { TaskStatus } from "@shared/enums/enum";
 
 @Injectable({
   providedIn: 'root',
@@ -66,27 +64,5 @@ export class TasksService {
 
     return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
   }
-
-  get getActiveTasks$(): Observable<TaskTrack[]> {
-    const ref = collection(this.firestore, 'taskTrack');
-    const queryWeekTasks = query(
-      ref,
-      where('userId', '==', localStorage.getItem('AuthUserId')),
-      where('status', 'in', [TaskStatus.InProgress, ''])
-    );
-
-    return collectionData(queryWeekTasks) as Observable<TaskTrack[]>;
-  }
-
-  public getCurrentTaskById(id: string): Observable<Tasks[]> {
-    const ref = collection(this.firestore, 'tasks');
-    const queryAll = query(ref, where('id', '==', id));
-    return collectionData(queryAll) as Observable<Tasks[]>;
-  }
-
-  public get allTaskTrack$(): Observable<TaskTrack[]> {
-    const ref = collection(this.firestore, 'taskTrack');
-    const queryAll = query(ref);
-    return collectionData(queryAll) as Observable<TaskTrack[]>;
-  }
 }
+

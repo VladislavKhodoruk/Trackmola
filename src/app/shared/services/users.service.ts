@@ -9,7 +9,7 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 import { AuthorizationService } from '@pages/authorization/services/authorization.service';
-import { ProfileUser, User } from '@shared/interfaces/interfaces';
+import { User } from '@shared/interfaces/interfaces';
 import { User as UserFirebase } from 'firebase/auth';
 import { from, Observable, of, switchMap } from 'rxjs';
 
@@ -56,10 +56,5 @@ export class UsersService {
     const ref = collection(this.firestore, 'users');
 
     return collectionData(ref) as Observable<User[]>;
-  }
-
-  public currentUserProfileById$(id: string): Observable<ProfileUser | null> {
-    const ref = doc(this.firestore, 'users', id);
-    return docData(ref) as Observable<ProfileUser>;
   }
 }
