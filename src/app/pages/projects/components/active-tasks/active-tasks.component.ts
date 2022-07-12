@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
-import {
-  TaskGroupByProject,
-  TaskTracksGroupByTask,
-  TaskTrackskGroupByDate,
-  UsersGroupByUserId,
-} from '@pages/projects/interfaces/interface';
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
-import { Project, TaskTrack } from '@shared/interfaces/interfaces';
+import {
+  GroupBy,
+  Project,
+  TaskTrack,
+  Task,
+  User,
+} from '@shared/interfaces/interfaces';
 import { IconifyIcon } from '@iconify/types';
 
 @Component({
@@ -18,9 +18,9 @@ import { IconifyIcon } from '@iconify/types';
 })
 export class ActiveTasksComponent {
   @Input() readonly project: Project;
-  @Input() readonly activeTaskGroupByProject: TaskGroupByProject;
-  @Input() readonly activeTaskTracksGroupByTask: TaskTracksGroupByTask;
-  @Input() readonly usersInfoByUserId: UsersGroupByUserId;
+  @Input() readonly activeTaskGroupByProject: GroupBy<Task[]>;
+  @Input() readonly activeTaskTracksGroupByTask: GroupBy<TaskTrack[]>;
+  @Input() readonly usersInfoByUserId: GroupBy<User>;
 
   panelOpenState = false;
 
@@ -28,8 +28,8 @@ export class ActiveTasksComponent {
   readonly iconClipboard: IconifyIcon = clipboardPlus;
 
   protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
-    const taskTracksGroupByDate: TaskTrackskGroupByDate = taskTracks.reduce(
-      (accum: TaskTrackskGroupByDate, taskTrack: TaskTrack) => {
+    const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
+      (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
         const date = taskTrack.date.seconds * 1000;
         if (!accum[date]) {
           accum[date] = [];

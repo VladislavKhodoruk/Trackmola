@@ -39,11 +39,11 @@ export const getMyActivityProjects = createSelector(
   getMyActivityTaskTracks,
   getProjects,
   (activityTaskTracks, projects) => {
-    const activityProjecstId = activityTaskTracks.map(
+    const activityProjectsId = activityTaskTracks.map(
       (taskTrack) => taskTrack.projectId
     );
     return projects.filter((project) =>
-      activityProjecstId.includes(project.id)
+      activityProjectsId.includes(project.id)
     );
   }
 );

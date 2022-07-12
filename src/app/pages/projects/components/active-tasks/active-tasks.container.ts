@@ -7,13 +7,14 @@ import {
   getProjectByRoute,
   usersInfoByUserId,
 } from '@pages/projects/store/projects.selectors';
-import { Project } from '@shared/interfaces/interfaces';
-import { Observable } from 'rxjs';
 import {
-  TaskGroupByProject,
-  TaskTracksGroupByTask,
-  UsersGroupByUserId,
-} from '@pages/projects/interfaces/interface';
+  GroupBy,
+  Project,
+  Task,
+  TaskTrack,
+  User,
+} from '@shared/interfaces/interfaces';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-active-tasks-container',
@@ -30,13 +31,13 @@ export class ActiveTasksContainer {
   readonly project$: Observable<Project> =
     this.store$.select(getProjectByRoute);
 
-  readonly activeTaskGroupByProject$: Observable<TaskGroupByProject> =
+  readonly activeTaskGroupByProject$: Observable<GroupBy<Task[]>> =
     this.store$.select(activeTaskGroupByProject);
 
-  readonly activeTaskTracksGroupByTask$: Observable<TaskTracksGroupByTask> =
+  readonly activeTaskTracksGroupByTask$: Observable<GroupBy<TaskTrack[]>> =
     this.store$.select(activeTaskTracksGroupByTask);
 
-  readonly usersInfoByUserId$: Observable<UsersGroupByUserId> =
+  readonly usersInfoByUserId$: Observable<GroupBy<User>> =
     this.store$.select(usersInfoByUserId);
 
   constructor(private store$: Store<TrackMolaState>) {}

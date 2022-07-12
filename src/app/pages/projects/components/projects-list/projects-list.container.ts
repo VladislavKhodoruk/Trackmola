@@ -1,4 +1,4 @@
-import { Project } from '@shared/interfaces/interfaces';
+import { GroupBy, Project, User, Task } from '@shared/interfaces/interfaces';
 import { Observable } from 'rxjs';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -9,10 +9,6 @@ import {
 } from '@pages/projects/store/projects.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 import { getProjects } from '@store/common/common.selectors';
-import {
-  TaskGroupByProject,
-  UsersGroupByProject,
-} from '@pages/projects/interfaces/interface';
 import { setSearchValue } from '@pages/projects/store/projects.actions';
 import { getCurrentRoute } from '@store/router/router.selector';
 import { RouterStateUrl } from '@store/router/custom-serializer';
@@ -33,10 +29,10 @@ import { RouterStateUrl } from '@store/router/custom-serializer';
 export class ProjectsListContainer {
   readonly projects$: Observable<Project[]> = this.store$.select(getProjects);
 
-  readonly activeTaskGroupByProject$: Observable<TaskGroupByProject> =
+  readonly activeTaskGroupByProject$: Observable<GroupBy<Task[]>> =
     this.store$.select(activeTaskGroupByProject);
 
-  readonly usersGroupByProject$: Observable<UsersGroupByProject> =
+  readonly usersGroupByProject$: Observable<GroupBy<User[]>> =
     this.store$.select(usersGroupByProject);
 
   readonly currentRoute$: Observable<RouterStateUrl> =

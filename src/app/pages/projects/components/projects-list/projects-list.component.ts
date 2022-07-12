@@ -7,11 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Project } from '@shared/interfaces/interfaces';
-import {
-  TaskGroupByProject,
-  UsersGroupByProject,
-} from '@pages/projects/interfaces/interface';
+import { GroupBy, Project, User, Task } from '@shared/interfaces/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import searchIcon from '@iconify/icons-tabler/search';
 import { IconifyIcon } from '@iconify/types';
@@ -25,8 +21,8 @@ import { RouterStateUrl } from '@store/router/custom-serializer';
 })
 export class ProjectsListComponent implements OnChanges {
   @Input() readonly projects: Project[];
-  @Input() readonly usersGroupByProject: UsersGroupByProject;
-  @Input() readonly activeTaskGroupByProject: TaskGroupByProject;
+  @Input() readonly usersGroupByProject: GroupBy<User[]>;
+  @Input() readonly activeTaskGroupByProject: GroupBy<Task[]>;
   @Input() readonly currentRoute: RouterStateUrl;
 
   @Input() searchText: string;
