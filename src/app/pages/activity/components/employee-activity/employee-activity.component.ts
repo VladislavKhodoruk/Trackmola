@@ -10,15 +10,5 @@ export class EmployeeActivityComponent {
 
   @Output() passUp = new EventEmitter<string>();
 
-  changeInfo: string;
   labels = ['Week', 'Month', 'Year'];
-
-  periodChange(event): void {
-    this.changeInfo = event;
-    this.pushPeriodUp();
-  }
-
-  pushPeriodUp(): void {
-    this.passUp.emit(this.changeInfo);
-  }
 }
