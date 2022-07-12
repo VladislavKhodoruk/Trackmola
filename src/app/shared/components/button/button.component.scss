@@ -35,8 +35,20 @@
       }
     }
 
+    &-half-of-primary {
+      background-color: var(--primary-50);
+    }
+
+    &-default-borders {
+      border-radius: 0;
+    }
+
     &-m {
       padding: 0 3rem;
+    }
+
+    &-d {
+      padding: var(--offset) var(--offset-ml);
     }
 
     &-s {
@@ -110,4 +122,5 @@
   .icon {
     display: flex;
   }
+
 }
