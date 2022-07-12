@@ -8,15 +8,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class EmployeeActivityComponent {
   @Input() period: string;
 
-  @Output() forPushUp = new EventEmitter<string>();
+  @Output() passUp = new EventEmitter<string>();
 
   changeInfo: string;
-  lables = ['Week', 'Month', 'Year'];
-  changed(event) {
+  labels = ['Week', 'Month', 'Year'];
+
+  periodChange(event): void {
     this.changeInfo = event;
     this.pushPeriodUp();
   }
-  pushPeriodUp() {
-    this.forPushUp.emit(this.changeInfo);
+
+  pushPeriodUp(): void {
+    this.passUp.emit(this.changeInfo);
   }
 }

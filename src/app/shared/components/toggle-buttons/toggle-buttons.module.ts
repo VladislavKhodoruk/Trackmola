@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { ButtonsChooseComponent } from '@shared/components/buttons-choose/buttons-choose.component';
+import { ToggleButtonsComponent } from '@shared/components/toggle-buttons/toggle-buttons.component';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from '@shared/components/button/button.module';
 @NgModule({
-  declarations: [ButtonsChooseComponent],
+  declarations: [ToggleButtonsComponent],
   imports: [CommonModule, ButtonModule],
-  exports: [ButtonsChooseComponent],
+  exports: [ToggleButtonsComponent],
 })
-export class ButtonsChooseModule {}
+export class ToggleButtonsModule {}

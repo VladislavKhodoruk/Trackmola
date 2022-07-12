@@ -1,11 +1,11 @@
 <div class="header-wrapper">
   <h1>My Activity</h1>
-  <app-buttons-choose
-    class="choose-Period-buttons"
-    [lables]="lables"
-    [receiving]="period"
-    (changed)="changed($event)"
-  ></app-buttons-choose>
+  <app-toggle-buttons
+    class="choose-period-buttons"
+    [labels]="labels"
+    [getInit]="period"
+    (catchPeriod)="periodChange($event)"
+  ></app-toggle-buttons>
 </div>
 <app-projects-activity-container></app-projects-activity-container>
 <div class="container">

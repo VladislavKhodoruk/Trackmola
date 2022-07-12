@@ -1,12 +1,15 @@
 :host {
   @import "mixins";
+
   .wrapper {
     @include flex(center, center,var(--offset-xxs));
   }
+
   .choose-item {
     ::ng-deep .button {
       border-radius: 0;
     }
+
     &:first-child {
       ::ng-deep .button {
         border-radius: var(--border-radius-m) 0 0 var(--border-radius-m);
@@ -18,6 +21,7 @@
         border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
       }
     }
+
     &.checked {
       ::ng-deep .button {
         background-color: var(--primary);

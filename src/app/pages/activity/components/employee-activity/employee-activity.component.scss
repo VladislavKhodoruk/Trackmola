@@ -2,7 +2,8 @@
   @import "mixins.scss";
   .header-wrapper {
     @include flex(flex-start, flex-start, var(--offset-l));
-    margin: 0 0 var(--offset) 0;
+    margin-bottom:var(--offset);
+
     h1 {
       font: var(--font-titleBig);
     }

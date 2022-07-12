@@ -154,4 +154,3 @@ export const REST_HOURS_TOTAL_CARD = {
   numberMonthHours: getRestMonthDefaultHours(),
 };
 
-export const HALF_OF_PRIMARY_BUTTON = 'button-halfOfPrimary button-d';
