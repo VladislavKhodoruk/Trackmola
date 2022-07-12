@@ -4,6 +4,7 @@
     @include flex(center, space-between, var(--offset-m));
 
     &-interval {
+      width: 14rem;
       font: var(--font-calendar);
     }
   }

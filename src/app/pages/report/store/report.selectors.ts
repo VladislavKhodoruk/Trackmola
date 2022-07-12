@@ -15,3 +15,8 @@ export const getAllProjectsData = createSelector(
   getReportState,
   (state) => state.allProjects
 );
+
+export const getTaskTrack = createSelector(
+  getReportState,
+  (state) => state.taskTrack
+);
