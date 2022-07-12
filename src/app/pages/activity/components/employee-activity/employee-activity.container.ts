@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
   selector: 'app-employee-activity-container',
   template: `<app-employee-activity
     [period]="period$ | async"
-    (forPushUp)="changePeriodOnStore($event)"
+    (passUp)="changePeriodOnStore($event)"
   ></app-employee-activity>`,
 })
 export class EmployeeActivityContainer {
