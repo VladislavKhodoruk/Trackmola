@@ -14,12 +14,11 @@ import {
 })
 export class ToggleButtonsComponent {
   @Input() labels: string[];
-  @Input() getInit!: string;
+  @Input() checked!: string;
 
-  @Output() catchPeriod = new EventEmitter<string>();
+  @Output() changeMode = new EventEmitter<string>();
 
   chooseButton(button: string): void {
-    this.getInit = button;
-    this.catchPeriod.emit(button);
+    this.changeMode.emit(button);
   }
 }

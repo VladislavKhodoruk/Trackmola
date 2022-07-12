@@ -3,8 +3,8 @@
   <app-toggle-buttons
     class="choose-period-buttons"
     [labels]="labels"
-    [getInit]="period"
-    (catchPeriod)="periodChange($event)"
+    [checked]="period"
+    (changeMode)="periodChange($event)"
   ></app-toggle-buttons>
 </div>
 <app-projects-activity-container></app-projects-activity-container>
