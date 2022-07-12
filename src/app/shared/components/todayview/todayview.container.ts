@@ -30,11 +30,11 @@ export class TodayviewContainer {
 
   constructor(private store$: Store<TrackMolaState>) {}
 
-  putIntoStore(taskTrack: TaskTrack) {
+  putIntoStore(taskTrack: TaskTrack): void {
     this.store$.dispatch(putTaskTrack({ taskTrack }));
   }
 
-  deleteTaskTrack(id: string) {
+  deleteTaskTrack(id: string): void {
     this.store$.dispatch(deleteTaskTrack({ id }));
   }
 }

@@ -31,7 +31,7 @@ export class TodayviewComponent implements OnChanges {
     this.taskItems = this.createTaskItemsByDate();
   }
 
-  editTaskTrack(id: string) {
+  editTaskTrack(id: string): void {
     const currentTaskTrack = this.taskTracks.find(
       (tasktrack) => tasktrack.id === id
     );
