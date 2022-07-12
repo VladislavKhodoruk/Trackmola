@@ -36,11 +36,11 @@
     }
 
     &-m {
-      padding: 0 3rem;
+      padding: 0 var(--offset-ml);
     }
 
     &-s {
-      padding: 0 0.75rem;
+      padding: 0 var(--offset-ml);
     }
 
     &-xs {

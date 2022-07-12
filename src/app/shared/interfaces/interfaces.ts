@@ -3,7 +3,7 @@ import { IconifyIcon } from '@iconify/types';
 
 export interface Project {
   id: string;
-  color?: string;
+  color: string;
   description: string;
   fullName: string;
   managersId: string[];
@@ -86,10 +86,10 @@ export interface Tasks {
 }
 
 export interface ActiveTasks {
-  projectName?: string;
-  projectColor?: string;
-  taskName?: string;
-  status?: string | null;
+  projectName: string;
+  projectColor: string;
+  taskName: string;
+  status: string | null;
   date?: Date;
-  usersPhotos?: string[];
+  usersPhotos: string[];
 }

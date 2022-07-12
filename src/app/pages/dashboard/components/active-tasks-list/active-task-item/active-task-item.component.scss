@@ -1,46 +1,46 @@
 :host {
   @import "mixins.scss";
   .task-wrappeer {
-    border: var(--offset-xxs) solid var(--gray);
-    border-radius: var(--offset-s);
-    max-width: 59rem;
-    padding: var(--offset-d) var(--offset) var(--offset-d) var(--offset);
-    margin-bottom: var(--offset);
     display: grid;
     grid-template-columns: 9rem 28rem 8.2rem 1fr 2rem;
     grid-gap: var(--offset);
+    max-width: 59rem;
+    padding: var(--offset-d) var(--offset);
+    margin-bottom: var(--offset);
+    border: var(--offset-xxs) solid var(--gray);
+    border-radius: var(--offset-s);
 
     .project-name-wrapper {
       @include flex(center, flex-start, 1.25rem);
     }
 
     .project-name {
-      font: var(--font-calendar);
+      display:inline-block;
+      padding: 0 var(--offset-b);
+      max-width: 9rem;
+      object-fit: contain;
+      overflow: hidden;
       border: 0.2rem solid var(--rose) ;
       border-radius: var(--offset-m);
-      padding: 0 var(--offset-b) 0 var(--offset-b);
-      object-fit: contain;
-      display:inline-block;
-      max-width: 9rem;
-      overflow: hidden;
+      font: var(--font-calendar);
     }
 
     .task-name {
-      font: var(--font-calendar);
+      transform: translateY(var(--offset-xs));
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      transform: translateY(var(--offset-xs));
+      font: var(--font-calendar);
     }
 
     .task-status {
+      position: relative;
+      @include flex(center, space-evenly);
+      max-height: var(--offset-ml);
       border: var(--border-xxs) solid var(--primary);
       border-radius: var(--offset-m);
-      font: var(--font-buttonSmall);
       color: var(--primary);
-      @include flex(center, space-evenly);
-      position: relative;
-      max-height: var(--offset-ml);
+      font: var(--font-buttonSmall);
     }
 
     .hidden {

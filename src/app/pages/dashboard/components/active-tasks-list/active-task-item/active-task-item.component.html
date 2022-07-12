@@ -1,17 +1,17 @@
 <article class="task-wrappeer">
   <div class="project-name-wrapper">
-    <p class="project-name" [style.border-color]="task.projectColor">
-      {{ task.projectName }}
+    <p class="project-name" [style.border-color]="currentTask.projectColor">
+      {{ currentTask.projectName }}
     </p>
   </div>
-  <p class="task-name">{{ task.taskName }}</p>
-  <div [ngClass]="{ 'task-status': task.status }">
-    <img src="assets/img/activity/tick.svg" [ngClass]="{ 'hidden': task.status === '' }"  alt="undefined" />
-    <p>{{ task.status }}</p>
+  <p class="task-name">{{ currentTask.taskName }}</p>
+  <div [class.task-status]="currentTask.status">
+    <img src="assets/img/activity/tick.svg" [class.hidden]="!currentTask.status"  alt="tick" />
+    <p>{{ currentTask.status }}</p>
   </div>
   <app-users-photos
-    *ngIf="task.usersPhotos"
-    [users]="task.usersPhotos"
+    *ngIf="currentTask.usersPhotos"
+    [users]="currentTask.usersPhotos"
     size="2"
   ></app-users-photos>
   <app-button

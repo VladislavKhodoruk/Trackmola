@@ -11,9 +11,9 @@ import {
 import {
   searchName,
   searchProjectColor,
-} from '@pages/dashboard/components/active-tasks-list/helpers/search-Project-Name';
-import { SearchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-Task-Name';
-import { SearchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-User-Photo';
+} from '@pages/dashboard/components/active-tasks-list/helpers/search-project-name-color';
+import { SearchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-task-name';
+import { SearchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-user-photo';
 
 export const DASHBOARD_STATE_NAME = StateName.Dashboard;
 

@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  ChangeDetectionStrategy,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { ActiveTasks } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -13,7 +7,6 @@ import { ActiveTasks } from '@shared/interfaces/interfaces';
   styleUrls: ['active-tasks-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ActiveTasksListComponent  {
+export class ActiveTasksListComponent {
   @Input() fullTask!: ActiveTasks[];
-
 }
