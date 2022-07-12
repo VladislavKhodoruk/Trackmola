@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { Options, SeriesOptionsType } from 'highcharts';
-import { BASIC_OPTIONS_ACTIVITY_CHART_COLUMN } from '@pages/activity/constants/constants';
-import { Project, TaskTrack } from '@shared/interfaces/interfaces';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { HighchartsService } from "@shared/services/active-charts.service";
 
 @Component({
   selector: 'app-activity-chart-component',
@@ -9,68 +7,51 @@ import { Project, TaskTrack } from '@shared/interfaces/interfaces';
   styleUrls: ['activity-chart-component.scss'],
 })
 export class ActivityChartComponent {
-  readonly basicOptions: Options = BASIC_OPTIONS_ACTIVITY_CHART_COLUMN;
+  @ViewChild('charts') public chartEl: ElementRef;
 
-  protected get seriesData(): SeriesOptionsType[] {
-    return [
-      {
-        type: 'column',
-        data: this.dataForChart(
-          [{
-              id: 'strings',
-              color: 'black',
-              description: 'asdasda',
-              fullName: 'dasdasd',
-              managersId: ['dasdasd'],
-              name: 'asdasdasd',
-              taskId: ['asdasdas'],
-          }],
-          [
-            {
-              comments: 'string',
-              date: new Date(),
-              duration: 22,
-              id: 'string',
-              projectId: 'strings',
-              status: 'string',
-              taskId: 'string',
-              userId: 'string',
-            },
-          ]
-        ),
+  ngOnInit() {
+    this.highcharts.createChart(this.chartEl.nativeElement, this.myOptions);
+  }
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  myOptions = {
+    chart: {
+      type: 'column',
+    },
+    title: {
+      text: 'Stacked bar chart',
+    },
+    xAxis: {
+      categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'],
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: 'Total fruit consumption',
       },
-    ];
-  }
+    },
+    legend: {
+      reversed: true,
+    },
+    plotOptions: {
+      series: {
+      },
+    },
+    series: [
+      {
+        name: 'John',
+        data: [5, 3, 4, 7, 2],
+      },
+      {
+        name: 'Jane',
+        data: [2, 2, 3, 2, 1],
+      },
+      {
+        name: 'Joe',
+        data: [3, 4, 4, 2, 5],
+      },
+    ],
+  };
 
-  private dataForChart(
-    project?: Project[],
-    tasks?: {
-      date: Date;
-      duration: number;
-      comments: string;
-      id: string;
-      projectId: string;
-      userId: string;
-      taskId: string;
-      status: string;
-    }[]
-  ): [string, number][] {
-    const projectsNames: { id: Project['id']; name: Project['name'] }[] =
-      project.map(({ name, id }) => ({ id, name }));
-
-    return projectsNames.map(({ name, id }) => {
-      const tasksInProject: {
-        date: Date;
-        duration: number;
-        comments: string;
-        id: string;
-        projectId: string;
-        userId: string;
-        taskId: string;
-        status: string;
-      }[] = tasks.filter(({ projectId }) => projectId === id);
-      const percent: number = tasksInProject.length / tasks.length;
-      return [name, percent];
-    });
-  }
+  constructor(private highcharts: HighchartsService) {}
 }
+
