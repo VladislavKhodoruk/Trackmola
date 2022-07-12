@@ -1,6 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { ReportState, reportState } from './report.state';
-import { getAllTasksSuccess, getAllProjectsSuccess } from './report.actions';
+import {
+  getAllTasksSuccess,
+  getAllProjectsSuccess,
+  putTaskTrack,
+} from './report.actions';
 
 const reportReducer = createReducer(
   reportState,
@@ -11,6 +15,10 @@ const reportReducer = createReducer(
   on(getAllProjectsSuccess, (state: ReportState, action) => ({
     ...state,
     allProjects: action.allProjects,
+  })),
+  on(putTaskTrack, (state: ReportState, { taskTrack }) => ({
+    ...state,
+    taskTrack,
   }))
 );
 

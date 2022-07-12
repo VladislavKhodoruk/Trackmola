@@ -23,3 +23,12 @@ export function isInputOnlyNumber(event: KeyboardEvent): boolean {
 }
 
 export const onRightIndex = (index: number): number => index + 1;
+
+export function transformDate(date: Date): Date {
+  date = new Date(date);
+  date.setHours(0);
+  date.setMinutes(0);
+  date.setSeconds(0);
+  date.setMilliseconds(0);
+  return date;
+}

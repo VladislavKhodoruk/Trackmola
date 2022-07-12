@@ -1,0 +1,77 @@
+:host {
+  @import "vars/variables.scss";
+  @import "mixins.scss";
+
+  .top {
+    @include flex(center, space-between);
+    margin-bottom: var(--offset-m);
+  }
+
+  .title {
+    font: var(--font-title);
+  }
+
+  .middle {
+    font: var(--font-calendar);
+  }
+
+  .buttons {
+    @include flex(stretch, flex-end);
+  }
+
+  .buttons-cancel,
+  .buttons-delete {
+    padding: 0.3rem var(--offset);
+    gap: var(--offset-s);
+    border: $border-radius-button;
+    border-radius: var(--offset-d);
+    background-color: var(--white);
+    color: var(--primary);
+    font: var(--font-buttonMiddle);
+    outline: 0;
+  }
+
+  .buttons-delete {
+    margin-left: var(--offset);
+    background-color: var(--primary);
+    color: var(--white);
+  }
+  .icon-x {
+    display: flex;
+  }
+
+  .icon-x:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    color: var(--primary-hover);
+  }
+
+  .buttons-cancel:hover,
+  .buttons-delete:hover,
+  .icons:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.2s;
+  }
+}
+
+::ng-deep {
+  .mat-dialog-container {
+    height: 14rem;
+    min-width: 26rem;
+    padding: var(--offset);
+    overflow: hidden;
+    border-radius: var(--offset);
+  }
+
+  .mat-dialog-title {
+    margin: 0;
+  }
+
+  .icon-x {
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+}
