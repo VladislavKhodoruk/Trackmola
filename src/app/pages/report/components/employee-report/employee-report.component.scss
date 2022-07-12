@@ -20,8 +20,20 @@
     }
 
     &-input {
-      margin-bottom: 3rem;
-      width: 52rem;
+      margin-right: var(--offset-l);
+      width: 60%;
     }
+
+    &-todayview {
+      width: 40%;
+    }
+  }
+  .top {
+    width: 100%;
+  }
+  .tasks-row {
+    display: flex;
+    margin-bottom: var(--offset-ml);
+    width: 100%;
   }
 }

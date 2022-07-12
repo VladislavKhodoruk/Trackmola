@@ -6,6 +6,7 @@ import {
   Task,
   TaskTrack,
 } from '@shared/interfaces/interfaces';
+import { Timestamp } from 'firebase/firestore';
 
 export interface CommonState {
   loadingStatus: LoadingStatus;

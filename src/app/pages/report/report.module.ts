@@ -18,6 +18,7 @@ import { NavigationCalendarModule } from '@shared/components/navigatinon-calenda
 import { ButtonModule } from '@shared/components/button/button.module';
 import { ReportInputModule } from './components/report-input/report-input.module';
 import { ReportEffects } from './store/report.effects';
+import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ReportEffects } from './store/report.effects';
     RouterModule.forChild(ReportRoutes),
     CalendarModule,
     ReportInputModule,
+    TodayViewModule,
   ],
   exports: [RouterModule],
 })
