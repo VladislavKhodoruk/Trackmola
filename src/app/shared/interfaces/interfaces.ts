@@ -22,7 +22,7 @@ export interface TaskTrack {
   comments: string;
   date: Timestamp;
   duration: number;
-  id: string;
+  id?: string;
   projectId: string;
   status: string;
   taskId: string;
@@ -76,16 +76,6 @@ export interface Week {
 export interface Period {
   start: number;
   end: number;
-}
-
-export interface Project {
-  id: string;
-  name: string;
-  fullName: string;
-  manager: string;
-  team: string[];
-  description: string;
-  color?: string;
 }
 
 export interface Tasks {

@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { changeDate, getAllTasksTrack } from '@store/common/common.actions';
+import { changeDate } from '@store/common/common.actions';
 import {
-  allTasksTrack,
   getDate,
   getFirstDay,
+  getTasksTrackByPeriod,
 } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -21,12 +21,10 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class CalendarContainer {
   @Input() numPreviousWeek = 1;
   date$ = this.store$.select(getDate);
-  allTasks$ = this.store$.select(allTasksTrack);
+  allTasks$ = this.store$.select(getTasksTrackByPeriod);
   firstDay$ = this.store$.select(getFirstDay);
 
-  constructor(private store$: Store<TrackMolaState>) {
-    this.store$.dispatch(getAllTasksTrack());
-  }
+  constructor(private store$: Store<TrackMolaState>) {}
 
   onChangeDate(day: number): void {
     this.store$.dispatch(changeDate({ date: day }));

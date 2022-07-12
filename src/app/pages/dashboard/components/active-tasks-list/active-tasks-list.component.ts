@@ -13,8 +13,7 @@ import { ActiveTasks } from '@shared/interfaces/interfaces';
   styleUrls: ['active-tasks-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ActiveTasksListComponent implements OnChanges {
+export class ActiveTasksListComponent  {
   @Input() fullTask!: ActiveTasks[];
 
-  ngOnChanges(changes: SimpleChanges) {}
 }

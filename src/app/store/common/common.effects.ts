@@ -2,21 +2,17 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import {
   errorMessage,
-  getAllTasksTrack,
-  getAllTasksTrackSuccess,
-  getAllProjects,
-  getAllProjectsSuccess,
   getUserData,
   getUserDataSuccess,
+  getAllUsers,
+  getAllUsersSuccess,
   loading,
 } from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
-import { catchError, map, of, switchMap, take, tap, mergeMap } from 'rxjs';
-import { ProjectsService } from '@shared/services/projects.service';
+import { catchError, map, of, switchMap, take, tap } from 'rxjs';
 
 @Injectable()
 export class CommonEffects {
@@ -57,23 +53,11 @@ export class CommonEffects {
 
   getAllTasks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(getAllTasksTrack),
+      ofType(getAllUsers),
       switchMap(() =>
-        this.tasksService.getTasksTrack().pipe(
+        this.usersService.allUsers$.pipe(
           take(1),
-          map((data) => getAllTasksTrackSuccess({ tasksTrack: data }))
-        )
-      )
-    )
-  );
-
-  getAllProjects$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getAllProjects),
-      mergeMap(() =>
-        this.project.getAllProjects$().pipe(
-          take(1),
-          map((project) => getAllProjectsSuccess({ project }))
+          map((users) => getAllUsersSuccess({ users }))
         )
       )
     )
@@ -82,9 +66,7 @@ export class CommonEffects {
   constructor(
     private actions$: Actions,
     private usersService: UsersService,
-    private tasksService: TasksService,
     private store$: Store<TrackMolaState>,
-    private router: Router,
-    private project: ProjectsService
+    private router: Router
   ) {}
 }

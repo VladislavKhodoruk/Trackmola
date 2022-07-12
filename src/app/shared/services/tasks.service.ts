@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { collectionData } from '@angular/fire/firestore';
-import { TaskTrack } from '@store/common/common.state';
 import {
   collection,
   Firestore,
@@ -12,7 +11,7 @@ import {
 } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from '@pages/report/interfaces/interfaces';
-import { Period } from '@shared/interfaces/interfaces';
+import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 import { getPeriod } from '@shared/helpers/helpers';
 import { Tasks } from '@shared/interfaces/interfaces';
 import { TaskStatus } from "@shared/enums/enum";
@@ -27,6 +26,7 @@ export class TasksService {
   public get allTasks$(): Observable<Task[]> {
     const ref = collection(this.firestore, 'tasks');
     const queryAll = query(ref);
+
     return collectionData(queryAll) as Observable<Task[]>;
   }
   constructor() {

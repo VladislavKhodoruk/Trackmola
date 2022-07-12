@@ -13,6 +13,7 @@ export enum StateName {
   Profile = 'profile',
   Projects = 'projects',
   Report = 'report',
+  ReportConstructor = 'report constructor',
   Team = 'team',
 }
 

@@ -23,12 +23,14 @@ export class UsersService {
       'users',
       localStorage.getItem('AuthUserId')
     );
+
     return docData(ref) as Observable<User>;
   }
 
   public get allUsers$(): Observable<User[]> {
     const ref = collection(this.firestore, 'users');
     const queryAll = query(ref);
+
     return collectionData(queryAll) as Observable<User[]>;
   }
 
@@ -44,6 +46,7 @@ export class UsersService {
           return of(null);
         }
         const ref = doc(this.firestore, 'users', data.uid);
+
         return from(updateDoc(ref, { ...user }));
       })
     );
@@ -51,6 +54,7 @@ export class UsersService {
 
   public get users$(): Observable<User[]> {
     const ref = collection(this.firestore, 'users');
+
     return collectionData(ref) as Observable<User[]>;
   }
 

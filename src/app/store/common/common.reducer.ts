@@ -3,13 +3,15 @@ import { logout } from '@pages/authorization/store/authorization.actions';
 import {
   changeDate,
   errorMessage,
+  getAllTaskTracksSuccess,
+  getAllTasksSuccess,
   getAllProjectsSuccess,
-  getAllTasksTrackSuccess,
   getUserDataSuccess,
   loading,
   nextWeek,
   previousWeek,
   setPeriod,
+  getAllUsersSuccess,
 } from './common.actions';
 import { initialState, CommonState } from './common.state';
 
@@ -39,9 +41,21 @@ const commonReducer = createReducer(
     ...state,
     date: action.date,
   })),
-  on(getAllTasksTrackSuccess, (state: CommonState, action) => ({
+  on(getAllTaskTracksSuccess, (state: CommonState, { taskTracks }) => ({
     ...state,
-    tasksTrack: action.tasksTrack,
+    taskTracks,
+  })),
+  on(getAllTasksSuccess, (state: CommonState, { tasks }) => ({
+    ...state,
+    tasks,
+  })),
+  on(getAllProjectsSuccess, (state: CommonState, { projects }) => ({
+    ...state,
+    projects,
+  })),
+  on(getAllUsersSuccess, (state: CommonState, { users }) => ({
+    ...state,
+    users,
   })),
   on(setPeriod, (state: CommonState, action) => ({
     ...state,
@@ -68,11 +82,7 @@ const commonReducer = createReducer(
         end: lastDay - action.value,
       },
     };
-  }),
-  on(getAllProjectsSuccess, (state, { project }) => ({
-    ...state,
-    projects: project,
-  }))
+  })
 );
 
 export function CommonReducer(state: CommonState | undefined, action: Action) {
