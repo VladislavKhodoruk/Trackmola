@@ -10,6 +10,7 @@ import { isEqual } from 'lodash';
 export class HighchartsChartComponent implements OnChanges {
   @Input() options: Options;
   @Input() data: SeriesOptionsType[];
+  @Input() idContainer: string;
   chart: Chart;
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -17,7 +18,7 @@ export class HighchartsChartComponent implements OnChanges {
       changes.data &&
       !isEqual(changes.data.currentValue, changes.data.previousValue)
     ) {
-      this.chart = new Chart('chart-container', {
+      this.chart = new Chart({
         ...this.options,
         series: this.data,
       });

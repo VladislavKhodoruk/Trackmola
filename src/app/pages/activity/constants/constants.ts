@@ -166,7 +166,7 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
     height: 594,
   },
   title: {
-    text: 'Project activity',
+    text: '',
     style: {
       fontSize: 'var(--offset-l)',
     },

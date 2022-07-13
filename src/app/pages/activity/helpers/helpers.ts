@@ -1,6 +1,8 @@
 import { HOURS_IN_DAY } from '@pages/activity/constants/constants';
 import { RestHours } from '@pages/activity/enums/enums';
 import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
+import { SeriesOptionsType } from 'highcharts';
+import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);
@@ -102,3 +104,10 @@ export const getTotalCardItem = (
   }
   return totalCardItem;
 };
+
+export function getDataForChart(
+  tasks: TaskTrack[],
+  projects: Project[]
+): SeriesOptionsType[] {
+  return [];
+}

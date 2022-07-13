@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { Options, SeriesOptionsType } from "highcharts";
+import { Component, Input } from "@angular/core";
+import { Options, SeriesOptionsType } from 'highcharts';
 import { BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE } from '@pages/activity/constants/constants';
+import { Project, TaskTrack } from "@shared/interfaces/interfaces";
+import { getDataForChart } from "@pages/activity/helpers/helpers";
 
 @Component({
   selector: 'app-activity-week-chart-component',
@@ -8,9 +10,13 @@ import { BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE } from '@pages/activity/constants
   styleUrls: ['activity-week-chart.scss'],
 })
 export class ActivityWeekChartComponent {
+  @Input() activeTasks: TaskTrack[];
+  @Input() projects: Project[];
+
   basicOptions: Options = BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE;
 
   protected get seriesData(): SeriesOptionsType[] {
+    getDataForChart(this.activeTasks, this.projects);
     return [
       {
         type: 'column',
