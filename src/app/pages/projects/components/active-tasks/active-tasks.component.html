@@ -35,7 +35,7 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
 
-          <ng-container
+          <div
             class="activeTask"
             *ngFor="
               let taskTrack of groupByDate(
@@ -71,7 +71,7 @@
                 </div>
               </div>
             </div>
-          </ng-container>
+          </div>
         </mat-expansion-panel>
       </mat-accordion>
     </li>

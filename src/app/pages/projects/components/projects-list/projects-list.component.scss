@@ -1,6 +1,13 @@
 @import "mixins";
 @import "vars/variables";
 
+::ng-deep {
+  .search-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
 :host {
   display: flex;
 
@@ -112,13 +119,6 @@
       margin-left: -2.5rem;
 
       color: var(--gray2);
-    }
-  }
-
-  ::ng-deep {
-    .search-icon svg {
-      width: 1.5rem;
-      height: 1.5rem;
     }
   }
 }
