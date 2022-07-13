@@ -1,5 +1,7 @@
-import { RouterStateUrl } from '@store/router/custom-serializer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
+import { ProjectsState } from './projects.state';
+
 import { StateName } from '@shared/enums/enum';
 import {
   getPeriod,
@@ -8,7 +10,7 @@ import {
   getTasksTrack,
   getUsers,
 } from '@store/common/common.selectors';
-import { ProjectsState } from './projects.state';
+import { RouterStateUrl } from '@store/router/custom-serializer';
 import { getCurrentRoute } from '@store/router/router.selector';
 
 export const PROJECTS_STATE_NAME = StateName.Projects;

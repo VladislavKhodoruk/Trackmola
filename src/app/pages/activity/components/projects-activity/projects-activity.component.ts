@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
+
+import { Options, SeriesOptionsType } from 'highcharts';
+
 import { BASIC_OPTIONS_ACTIVITY_CHART_PIE } from '@pages/activity/constants/constants';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
-import { Options, SeriesOptionsType } from 'highcharts';
 
 @Component({
   selector: 'app-projects-activity',

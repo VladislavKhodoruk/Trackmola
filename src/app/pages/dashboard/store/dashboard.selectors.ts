@@ -1,6 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StateName } from '@shared/enums/enum';
+
 import { DashboardState } from './dashboard.state';
+
+import { StateName } from '@shared/enums/enum';
 
 export const DASHBOARD_STATE_NAME = StateName.Dashboard;
 

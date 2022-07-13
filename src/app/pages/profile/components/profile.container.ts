@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { User } from '@shared/interfaces/interfaces';
-import { TrackMolaState } from '@store/trackMola.state';
+
 import { Observable } from 'rxjs';
+
 import { logout } from '@pages/authorization/store/authorization.actions';
 import { getUserInfo } from '@pages/profile/store/profile.actions';
 import { getProfileUser } from '@pages/profile/store/profile.selectors';
+import { User } from '@shared/interfaces/interfaces';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-profile-container',
-  template: `<app-profile
-    [userInfo]="userInfo$ | async"
-    (logoutEmmiter)="onLogout()"
-  >
-  </app-profile>`,
+  template: `<app-profil [userInfo]="userInfo$ | async" (logoutEmmiter)="onLogout()"></app-profile>
+>`,
 })
 export class ProfileContainer {
   readonly userInfo$: Observable<User> = this.store$.select(getProfileUser);

@@ -1,22 +1,24 @@
-import { updateTaskTrack } from './../../../../store/common/common.actions';
-import { TaskTrack } from '@shared/interfaces/interfaces';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+
+import { updateTaskTrack } from './../../../../store/common/common.actions';
+
 import { getTaskTrack } from '@pages/report/store/report.selectors';
 import { ReportState } from '@pages/report/store/report.state';
-import { getProjects, getTasks } from '@store/common/common.selectors';
-import { getDate } from '@store/common/common.selectors';
+import { TaskTrack } from '@shared/interfaces/interfaces';
+import { getProjects, getTasks, getDate } from '@store/common/common.selectors';
 import { CommonState } from '@store/common/common.state';
 
 @Component({
   selector: 'app-report-input-container',
   template: `<app-report-input
-    [allProjects]="allProjects$ | async"
-    [allTasks]="allTasks$ | async"
-    [currentDate]="currentDate$ | async"
-    [editableTaskTrack]="taskTrack$ | async"
-    (editTaskTrack)="editTaskTrack($event)"
-  ></app-report-input>`,
+      [allProjects]="allProjects$ | async"
+      [allTasks]="allTasks$ | async"
+      [currentDate]="currentDate$ | async"
+      [editableTaskTrack]="taskTrack$ | async"
+      (editTaskTrack)="editTaskTrack($event)"
+    ></app-report-input
+    >> > > > >`,
 })
 export class ReportInputContainer {
   allTasks$ = this.reportStore$.select(getTasks);

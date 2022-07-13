@@ -1,16 +1,19 @@
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ProfileRoutes } from './profile.router';
+import { RouterModule } from '@angular/router';
+
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { ProfileReducer } from './store/profile.reducer';
-import { PROFILE_STATE_NAME } from './store/profile.selectors';
+
 import { ProfileComponent } from './components/profile.component';
 import { ProfileContainer } from './components/profile.container';
+import { ProfileRoutes } from './profile.router';
+
+import { ProfileEffects } from './store/profile.effects';
+import { ProfileReducer } from './store/profile.reducer';
+import { PROFILE_STATE_NAME } from './store/profile.selectors';
 
 import { ButtonModule } from '@shared/components/button/button.module';
-import { ProfileEffects } from './store/profile.effects';
 
 @NgModule({
   declarations: [ProfileContainer, ProfileComponent],

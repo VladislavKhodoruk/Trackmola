@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Options, Point } from 'highcharts';
+
 import {
   getRestMonthDefaultHours,
   getRestTime,

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import angleRight from '@iconify/icons-uil/angle-right';
+
 import { Project } from '@shared/interfaces/interfaces';
 
 @Component({

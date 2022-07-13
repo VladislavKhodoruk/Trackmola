@@ -1,28 +1,29 @@
-import { GroupBy, Project, User, Task } from '@shared/interfaces/interfaces';
-import { Observable } from 'rxjs';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { setSearchValue } from '@pages/projects/store/projects.actions';
 import {
   activeTaskGroupByProject,
   getSearchValue,
   usersGroupByProject,
 } from '@pages/projects/store/projects.selectors';
-import { TrackMolaState } from '@store/trackMola.state';
+import { GroupBy, Project, User, Task } from '@shared/interfaces/interfaces';
 import { getProjects } from '@store/common/common.selectors';
-import { setSearchValue } from '@pages/projects/store/projects.actions';
-import { getCurrentRoute } from '@store/router/router.selector';
 import { RouterStateUrl } from '@store/router/custom-serializer';
+import { getCurrentRoute } from '@store/router/router.selector';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-projects-list-container',
   template: `<app-projects-list
-    [searchText]="searchText$ | async"
-    [projects]="projects$ | async"
-    [usersGroupByProject]="usersGroupByProject$ | async"
-    [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
-    [currentRoute]="currentRoute$ | async"
-    (search)="onSearch($event)"
-  ></app-projects-list>`,
+      [searchText]="searchText$ | async"
+      [projects]="projects$ | async"
+      [usersGroupByProject]="usersGroupByProject$ | async"
+      [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
+      [currentRoute]="currentRoute$ | async"
+ (search)="onSearch($event)"
+"></app-projects-list>`,
   styleUrls: ['./projects-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

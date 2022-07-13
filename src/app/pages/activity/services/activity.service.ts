@@ -5,10 +5,13 @@ import {
   Firestore,
   query,
 } from '@angular/fire/firestore';
+
+import { where } from 'firebase/firestore';
+
+import { Observable } from 'rxjs';
+
 import { getPeriod } from '@shared/helpers/helpers';
 import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
-import { where } from 'firebase/firestore';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

@@ -11,9 +11,10 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 import { Observable, of } from 'rxjs';
+
 import { Task } from '@pages/report/interfaces/interfaces';
-import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 import { getPeriod } from '@shared/helpers/helpers';
+import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',

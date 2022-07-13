@@ -1,5 +1,4 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { logout } from '@pages/authorization/store/authorization.actions';
 
 import {
   changeDate,
@@ -15,6 +14,8 @@ import {
   getAllUsersSuccess,
 } from './common.actions';
 import { initialState, CommonState } from './common.state';
+
+import { logout } from '@pages/authorization/store/authorization.actions';
 
 const commonReducer = createReducer(
   initialState,

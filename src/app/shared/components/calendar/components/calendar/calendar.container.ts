@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { changeDate } from '@store/common/common.actions';
 import {
   getDate,
@@ -11,12 +12,13 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-calendar-container',
   template: `<app-calendar
-    [date]="date$ | async"
-    [numPreviousWeek]="numPreviousWeek"
-    [allTasks]="allTasks$ | async"
-    [firstDay]="firstDay$ | async"
-    (changeDate)="onChangeDate($event)"
-  ></app-calendar>`,
+      [date]="date$ | async"
+      [numPreviousWeek]="numPreviousWeek"
+      [allTasks]="allTasks$ | async"
+      [firstDay]="firstDay$ | async"
+      (changeDate)="onChangeDate($event)"
+    ></app-calendar
+    >> > > > >`,
 })
 export class CalendarContainer {
   @Input() numPreviousWeek = 1;
