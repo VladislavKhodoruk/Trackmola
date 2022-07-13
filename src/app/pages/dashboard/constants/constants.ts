@@ -18,21 +18,21 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
     borderColor: 'var(--gray)',
     borderRadius: 15,
     borderWidth: 1,
-    margin: [130, 130, 170, 130],
-    width: 880,
-    height: 594,
+    margin: [80, 40, 124, 40],
+    width: 940,
+    height: 458,
   },
   plotOptions: {
     series: {
-      stacking: 'percent',
+      stacking: 'normal',
     },
   },
   title: {
-    text: '',
+    text: 'Project Hours',
     style: {
       fontSize: 'var(--offset-l)',
     },
-    x: -280,
+    x: -350,
     y: 40,
   },
   xAxis: {
@@ -60,10 +60,10 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
     },
   },
   legend: {
-    floating: true,
     itemDistance: 80,
-    itemMarginBottom: 50,
+    itemMarginBottom: 20,
     symbolHeight: 26,
+    symbolPadding: 12,
     itemStyle: {
       fontFamily: 'var(--font-current)',
       fontSize: 'var(--offset-sm)',

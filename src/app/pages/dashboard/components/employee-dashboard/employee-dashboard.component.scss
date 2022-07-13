@@ -25,4 +25,10 @@
     width: 59rem;
     margin-bottom: var(--offset-m);
   }
+
+  ::ng-deep {
+    .highcharts-legend-item .highcharts-column-series .highcharts-color-undefined {
+      color: #04e4cc;
+    }
+  }
 }
