@@ -1,7 +1,7 @@
 $base-colors: (
   white: #fff,
   primary: #7353d0,
-  primary-50: #B9A9E8,
+  primary-50: #b9a9e8,
   primary-hover: #6247b1,
   primary-disabled: #886dd7,
   primary-max: #392968,
@@ -12,7 +12,7 @@ $base-colors: (
   gray2: #808689,
   gray3: #969696,
   gray4: #d9d9d9,
-  gray5: #E4E8EE,
+  gray5: #e4e8ee,
   black: #222,
   green: #7ae582,
   orange: #e26a43,
@@ -25,7 +25,7 @@ $base-colors: (
   violet: #a45c84,
   yellow: #fbd304,
   yellow2: #f4bf4a,
-  yellow3: #F8CF45,
+  yellow3: #f8cf45,
   rose: #ff3d71,
   ocean: #045585,
   flowers: #db0492,
@@ -33,5 +33,6 @@ $base-colors: (
   powder: #fca4ac,
   selected-day: #d0f1e5,
   shadow-project-selected: rgb(123 97 255 / 25%),
-  calendar-item-selected: linear-gradient(180deg, rgb(115 83 208 / 0%) 0%, rgb(87 41 218 / 22%) 100%),
+  calendar-item-selected:
+    linear-gradient(180deg, rgb(115 83 208 / 0%) 0%, rgb(87 41 218 / 22%) 100%),
 );

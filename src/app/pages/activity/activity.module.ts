@@ -18,15 +18,14 @@ import { ManagerActivityComponent } from './components/manager-activity/manager-
 import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
 
 import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
+import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
+import { ButtonModule } from '@shared/components/button/button.module';
 import { ActivityComponent } from './layout/activity.component';
 import { ActivityContainer } from './layout/activity.container';
 import { ActivityEffects } from './store/activity.effects';
 import { ActivityReducer } from './store/activity.reducer';
 import { ACTIVITY_STATE_NAME } from './store/activity.selectors';
-
-import { ButtonModule } from '@shared/components/button/button.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
-import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 
 @NgModule({
   declarations: [

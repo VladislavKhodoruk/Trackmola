@@ -1,6 +1,6 @@
 <div class="todayview">
   <div class="top-area">
-    <div class="percentage-full" [class.percentage]="totalDuration < 100">
+    <div class="percentage-full" [class.percentage]="totalDuration <= 100">
       {{ totalDuration }}%
     </div>
     <div class="top-buttons">
@@ -12,7 +12,7 @@
     <div class="flask">
       <div
         class="liquid-full"
-        [class.liquid]="totalDuration < 100"
+        [class.liquid]="totalDuration <= 100"
         [style.height.%]="totalDuration"
       >
         <div class="bubbles bubble-1"></div>

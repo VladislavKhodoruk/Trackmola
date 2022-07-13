@@ -78,7 +78,7 @@ export class CommonEffects {
   updateTaskTrack$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateTaskTrack),
-      switchMap((action) => this.tasksService.updateTask(action.tasktrack))
+      switchMap(({ tasktrack }) => this.tasksService.updateTask(tasktrack))
     )
   );
 
