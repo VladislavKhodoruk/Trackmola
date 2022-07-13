@@ -1,5 +1,6 @@
-import { User, Task, TaskTrack, Project } from '@shared/interfaces/interfaces';
 import { Timestamp } from 'firebase/firestore';
+
+import { User, Task, TaskTrack, Project } from '@shared/interfaces/interfaces';
 
 export const mockUsers: User[] = [
   {
@@ -357,7 +358,7 @@ export const mockTaskTracks: TaskTrack[] = [
     id: 'dBhXfrNBVNovZqE8Zc9B',
     status: '',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
-    date: new Timestamp(1657141200, 0),
+    date: new Timestamp(1657535499, 0),
     comments: '',
     taskId: '33vqSse9t7ZBt7L9dU4E',
     duration: 3,
@@ -368,7 +369,7 @@ export const mockTaskTracks: TaskTrack[] = [
     duration: 1,
     status: '',
     comments: '',
-    date: new Timestamp(1657314000, 0),
+    date: new Timestamp(1657535499, 0),
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
     projectId: 'DAK4rhvLhUoROKPuKMIz',
@@ -377,7 +378,7 @@ export const mockTaskTracks: TaskTrack[] = [
     duration: 3,
     taskId: '33vqSse9t7ZBt7L9dU4E',
     comments: '',
-    date: new Timestamp(1656536400, 0),
+    date: new Timestamp(1657535499, 0),
     id: 'sQEgQpv0l3nvshNycxad',
     userId: 'ZI4fLQuaHfduoEdxAj7YevkrSq62',
     status: '',
@@ -418,7 +419,7 @@ export const mockProjects: Project[] = [
   {
     fullName: 'Paid and Unpaid Vacations',
     taskId: [],
-    id: ' kIjYlnhio4ghwoC0CyWf',
+    id: 'kIjYlnhio4ghwoC0CyWf',
     description:
       // eslint-disable-next-line max-len
       'Planned paid vacations managing by Administrator and Unpaid Leaves. Unpaid Leave should be approved by Project Manager.',

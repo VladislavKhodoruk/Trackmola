@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { AuthorizationForm } from '@pages/authorization/interfaces/interface';
 import { loginStart } from '@pages/authorization/store/authorization.actions';
 import { loading } from '@store/common/common.actions';

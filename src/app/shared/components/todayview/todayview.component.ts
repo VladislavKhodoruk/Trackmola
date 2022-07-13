@@ -5,10 +5,15 @@ import {
   OnChanges,
   Output,
 } from '@angular/core';
-import { Project, TaskItem, TaskTrack } from '../../interfaces/interfaces';
-import { Task } from '@pages/report/interfaces/interfaces';
-import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
+
 import { transformDate } from '@pages/report/helpers/report-input-helpers';
+import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
+import {
+  Project,
+  TaskItem,
+  TaskTrack,
+  Task,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-todayview-component',

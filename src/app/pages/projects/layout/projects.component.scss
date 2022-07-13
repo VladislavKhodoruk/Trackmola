@@ -1,0 +1,50 @@
+@import "mixins";
+
+:host {
+  $gap: 2.5rem;
+  $header-height: var(--offset-ml);
+
+  display: flex;
+
+  max-height: 100%;
+
+  .projects {
+    @include flex(flex-start, flex-start, #{$gap});
+
+    flex-direction: column;
+
+    max-height: 100%;
+
+    &-header {
+      @include flex(center, flex-start, var(--offset-sm));
+      max-height: #{$header-height};
+
+      &-title {
+        font: var(--font-title);
+      }
+
+      &-item {
+        @include flex(center, flex-start, var(--offset-sm));
+
+        &-title {
+          padding: 0 var(--offset-b);
+
+          font: var(--font-blocks);
+
+          border: var(--border-s) solid var(--rose);
+          border-radius: var(--border-radius-l);
+        }
+
+        &-name {
+          font: var(--font-main);
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    &-container {
+      @include flex(flex-start, flex-start, var(--offset-ml));
+      max-height: calc(100% - #{$header-height} - #{$gap});
+    }
+  }
+}

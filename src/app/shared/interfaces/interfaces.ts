@@ -1,5 +1,5 @@
-import { Timestamp } from 'firebase/firestore';
 import { IconifyIcon } from '@iconify/types';
+import { Timestamp } from 'firebase/firestore';
 
 export interface Project {
   id: string;
@@ -84,4 +84,8 @@ export interface TaskItem {
   taskName: string;
   projectColor: string;
   projectName: string;
+}
+
+export interface GroupBy<T> {
+  [key: string]: T;
 }

@@ -1,6 +1,6 @@
-import { HOURS_IN_DAY } from '../constants/constants';
-import { RestHours } from '../enums/enums';
-import { TotalCardItem } from '../interfaces/interfaces';
+import { HOURS_IN_DAY } from '@pages/activity/constants/constants';
+import { RestHours } from '@pages/activity/enums/enums';
+import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
 
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);

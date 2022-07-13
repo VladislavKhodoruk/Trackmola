@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
 import { NavigationItem } from '@shared/interfaces/interfaces';
 

@@ -1,10 +1,126 @@
-@import "vars/variables.scss";
-@import "mixins.scss";
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .mat-form-field {
+    width: 20.5rem;
+    margin-top: var(--offset-xs);
+    margin-right: var(--offset);
+    padding: var(--offset-d) var(--offset);
+
+    font-size: var(--font-main);
+    line-height: 1;
+
+    border: $border-input;
+    border-radius: var(--border-radius-m);
+
+    &:hover {
+      box-shadow: $border-input-select;
+    }
+
+    &-warning {
+      border-color: var(--warning);
+    }
+
+    &-icon {
+      cursor: pointer;
+
+      transform: rotate(-90deg);
+
+      width: 1.5rem;
+      height: 1rem;
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: auto;
+
+        path {
+          fill: var(--gray2);
+        }
+      }
+    }
+
+    .mat-form-field-wrapper {
+      padding: 0;
+    }
+
+    .mat-form-field-flex {
+      padding: 0;
+
+      background-color: var(--white);
+    }
+
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+      padding: 0;
+
+      border-radius: none;
+    }
+
+    .mat-form-field-infix {
+      @include flex(center, space-between);
+      padding: 0;
+
+      border-top: none;
+    }
+
+    .mat-form-field-underline {
+      display: none;
+    }
+
+    .mat-input-element {
+      color: var(--gray2);
+    }
+  }
+
+  .mat-slide-toggle-bar {
+    width: 3rem;
+    height: 1.6rem;
+
+    background-color: var(--primary-50);
+    border-radius: var(--offset-d);
+  }
+
+  .mat-slide-toggle-thumb-container {
+    top: 0.2rem;
+    left: 0.2rem;
+  }
+
+  .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: var(--primary);
+  }
+
+  .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: var(--white);
+  }
+
+  .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
+    transform: translate3d(var(--offset-sm), 0, 0);
+  }
+
+  .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
+    background-color: var(--primary);
+  }
+
+  .mat-slide-toggle.mat-checked .mat-ripple-element {
+    background-color: var(--primary);
+  }
+
+  .mat-slide-toggle-content {
+    font: var(--font-main);
+  }
+
+  .mat-form-field-invalid .mat-input-element {
+    caret-color: var(--black);
+  }
+}
 
 :host {
   .form-report {
     position: relative;
+
     overflow: hidden;
+
     padding: 3.5rem;
 
     border: $border-form;
@@ -12,10 +128,10 @@
 
     &-img {
       position: absolute;
+      z-index: -1;
       bottom: 0;
       left: 0;
-      z-index: -1;
-      
+
       width: 23rem;
       height: 23rem;
     }
@@ -25,24 +141,22 @@
     }
 
     &-side {
-      width: 50%;
-
       display: flex;
       flex-direction: column;
+
+      width: 50%;
     }
 
     &-duration {
-      margin-right: var(--offset-s);
+      @include flex(center, center);
 
       width: 7.25rem;
       height: 3rem;
-
-      @include flex(center, center);
-
-      border: $border-input;
-      border-radius: var(--offset-d);
+      margin-right: var(--offset-s);
 
       background-color: var(--white);
+      border: $border-input;
+      border-radius: var(--offset-d);
 
       &-label {
         margin-bottom: var(--offset-xs);
@@ -52,30 +166,28 @@
         width: 2.5rem;
         height: 100%;
 
-        border: none;
-        outline: none;
-
         font-size: 1.25rem;
         color: var(--gray2);
-
         text-align: center;
+
+        border: none;
+        outline: none;
       }
 
       &-btn {
-        margin: 0;
-        padding: 0;
+        cursor: pointer;
+
         z-index: 1;
 
-        height: 100%;
         width: 100%;
-
-        border: none;
+        height: 100%;
+        margin: 0;
+        padding: 0;
 
         color: var(--gray2);
 
         background-color: var(--white);
-
-        cursor: pointer;
+        border: none;
 
         &-border-right {
           border-radius: 0 var(--offset-d) var(--offset-d) 0;
@@ -101,38 +213,40 @@
     }
 
     &-item {
-      margin-bottom: 1.25rem;
-
       display: flex;
       flex-direction: column;
 
+      margin-bottom: var(--offset-sm);
+
       &-label {
+        cursor: pointer;
+
         display: inline;
+
         font-size: var(--font-main);
         color: var(--black);
-
-        cursor: pointer;
       }
     }
 
     &-comments-label {
       margin-bottom: var(--offset-xs);
+
       font: var(--font-main);
     }
 
     &-comments-input {
+      resize: none;
+
       width: 100%;
       height: 24rem;
-
       padding: var(--offset-d) var(--offset);
-      resize: none;
+
+      font: var(--font-main);
+      color: var(--black);
 
       border: $border-input;
       border-radius: var(--offset-d);
       outline: none;
-
-      font: var(--font-main);
-      color: var(--black);
 
       &:hover {
         box-shadow: $border-input-select;
@@ -144,161 +258,12 @@
     }
 
     &-footer {
-      margin-top: 4.5rem;
-
       @include flex(center, flex-end);
+      margin-top: 4.5rem;
 
       &-voice {
         margin: 0 var(--offset-l);
       }
     }
-  }
-
-  ::ng-deep {
-    .mat-form-field {
-      margin-top: var(--offset-xs);
-      margin-right: var(--offset);
-      padding: var(--offset-d) var(--offset);
-      width: 20.5rem;
-
-      border: $border-input;
-      border-radius: var(--border-radius-m);
-
-      font-size: var(--font-main);
-      line-height: 1;
-
-      &:hover {
-        box-shadow: $border-input-select;
-      }
-
-      &-warning {
-        border-color: var(--warning);
-      }
-
-      &-icon {
-        width: 1.5rem;
-        height: 1rem;
-        transform: rotate(-90deg);
-
-        cursor: pointer;
-
-        svg {
-          width: 1.5rem;
-          height: 1.5rem;
-          margin: auto;
-
-          path {
-            fill: var(--gray2);
-          }
-        }
-      }
-
-      .mat-form-field-wrapper {
-        padding: 0;
-      }
-
-      .mat-form-field-flex {
-        padding: 0;
-        background-color: var(--white);
-      }
-
-      .mat-form-field-appearance-fill .mat-form-field-flex {
-        padding: 0;
-        border-radius: var(--border-radius-m);
-      }
-
-      .mat-form-field-appearance-fill .mat-form-field-flex {
-        border-radius: none;
-        padding: 0;
-      }
-
-      .mat-form-field-infix {
-        padding: 0;
-        border-top: none;
-
-        @include flex(center, space-between);
-      }
-
-      .mat-form-field-underline {
-        display: none;
-      }
-
-      .mat-input-element {
-        color: var(--gray2);
-      }
-    }
-
-    .mat-slide-toggle-bar {
-      width: 3rem;
-      height: 1.6rem;
-      border-radius: var(--offset-d);
-      background-color: var(--primary-50);
-    }
-
-    .mat-slide-toggle-thumb-container {
-      top: 0.2rem;
-      left: 0.2rem;
-    }
-
-    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-      background-color: var(--primary);
-    }
-
-    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
-      background-color: var(--white);
-    }
-
-    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
-      transform: translate3d(1.25rem, 0, 0);
-    }
-
-    .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
-      background-color: var(--primary);
-    }
-
-    .mat-slide-toggle.mat-checked .mat-ripple-element {
-      background-color: var(--primary);
-    }
-
-    .mat-slide-toggle-content {
-      font: var(--font-main);
-    }
-
-    .mat-form-field-invalid .mat-input-element {
-      caret-color: var(--black);
-  }
-  }
-}
-
-::ng-deep {
-  .cdk-overlay-pane {
-    margin-top: var(--offset-xs);
-    margin-left: -1.1rem;
-    width: 20.55rem !important;
-  }
-
-  .mat-autocomplete-panel {
-    max-height: 10rem !important;
-    border-radius: 0 0 var(--offset-d) var(--offset-d) !important;
-    background-color: var(--white);
-
-    box-shadow: $border-cdk-select  !important;
-  }
-
-  .mat-option {
-    height: 2.5rem !important;
-
-    border: $border-input;
-
-    color: var(--gray2);
-
-    &:hover {
-      background-color: var(--white) !important;
-      box-shadow: $border-input-select;
-    }
-  }
-
-  .mat-selected {
-    color: var(--primary) !important;
   }
 }

@@ -1,0 +1,81 @@
+<section class="activeTasks">
+  <h2 class="activeTasks-header">active tasks</h2>
+  <ng-container *ngIf="project">
+    <ul class="activeTasks-list">
+      <ng-container *ngTemplateOutlet="activeTask"> </ng-container>
+    </ul>
+  </ng-container>
+</section>
+
+<ng-template #activeTask>
+  <ng-container *ngFor="let activeTask of activeTaskGroupByProject[project.id]">
+    <li class="activeTasks-list-item">
+      <mat-accordion>
+        <mat-expansion-panel
+          class="project"
+          (opened)="(!panelOpenState)"
+          (closed)="(!panelOpenState)"
+        >
+          <mat-expansion-panel-header class="project-header">
+            <mat-panel-title
+              class="project-header-title"
+              [style.borderColor]="project.color"
+            >
+              {{ project.name }}
+            </mat-panel-title>
+            <mat-panel-description class="project-header-description">
+              {{ activeTask.name }}
+              <app-button
+                [buttonClass]="'button-primary button-add-to-report'"
+                [icon]="iconClipboard"
+                iconWidth="1.5rem"
+                iconHeight="1.5rem"
+                (buttonClick)="addToReport()"
+              ></app-button>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <ng-container
+            class="activeTask"
+            *ngFor="
+              let taskTrack of groupByDate(
+                activeTaskTracksGroupByTask[activeTask.id]
+              )
+            "
+          >
+            <div class="activeTask-date">
+              {{ taskTrack[0] | date: "dd MMMM" }}
+            </div>
+            <div
+              class="activeTask-container"
+              *ngFor="let taskTrack1 of taskTrack[1]"
+            >
+              <img
+                src="{{
+                  usersInfoByUserId[taskTrack1.userId].photo || defaultPhoto
+                }}"
+                class="activeTask-image"
+                alt="user photo"
+              />
+              <div class="activeTask-description">
+                <div class="activeTask-description-header">
+                  <span class="activeTask-description-header-name">
+                    {{ usersInfoByUserId[taskTrack1.userId].fullName }}
+                  </span>
+                  <span class="activeTask-description-header-duration">
+                    {{ taskTrack1.duration }}h
+                  </span>
+                </div>
+                <div class="activeTask-description-comment">
+                  {{ taskTrack1.comments || "no comments" }}
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </li>
+  </ng-container>
+</ng-template>
+
+<ng-template #taskTracks> </ng-template>
