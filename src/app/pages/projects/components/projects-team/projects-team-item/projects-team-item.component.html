@@ -1,13 +1,15 @@
-<div class="projects-team-item">
+<article class="projects-team-item">
   <ul>
-    <li *ngFor="let user of usersInProject">
+    <li class="projects-team-item-list" *ngFor="let user of usersInProject">
       <img
         src="{{ user.photo || defaultPhoto }}"
-        class="activeTask-image"
+        class="projects-team-item-avatar"
         alt="user photo"
       />
-      <p class="projects-team-item-name">{{ user.fullName }}</p>
-      <p class="projects-team-item-role">{{ user.position }}</p>
+      <div class="projects-team-container">
+        <p class="projects-team-item-name">{{ user.fullName }}</p>
+        <p class="projects-team-item-role">{{ user.position }}</p>
+      </div>
     </li>
   </ul>
-</div>
+</article>

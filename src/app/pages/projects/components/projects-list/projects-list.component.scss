@@ -6,7 +6,7 @@
     $width-project: 21.5rem;
     $width-scroll: var(--offset-s);
     $shadow-y: var(--offset-d);
-    $shadow-left: var(--offset-l);
+    $shadow-left: var(--offset-l);  
     $shadow-right: var(--offset);
     $shadow-selected: 0 var(--offset-xs) #{$shadow-left} calc(
         var(--offset-xs) * -1

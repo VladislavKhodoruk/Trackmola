@@ -4,7 +4,7 @@
     @include flex(center, flex-start, 1.25rem);
 
     &-title {
-      font: var(--font-title);
+      font: var(--font-titleBig);
     }
     &-item {
       @include flex(center, flex-start, 1.25rem);

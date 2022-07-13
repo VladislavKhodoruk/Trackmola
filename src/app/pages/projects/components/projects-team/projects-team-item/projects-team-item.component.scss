@@ -1,19 +1,32 @@
 :host {
-    @import "mixins.scss";
-    @import "vars/variables.scss";
-  
-    .projects-team-item {
-     
-  
-      &-name {
-        font: var(--font-calendar);
-        font-size: 1.25rem;
+  @import "mixins.scss";
+  @import "vars/variables.scss";
+
+  .projects-team-item {
+    
+      &-list {
+        @include flex(flex-start, flex-start, var(--offset-xm));
+        margin: var(--offset-m);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        align-content: stretch;
       }
-  
-      &-role {
-        font: var(--font-current);
-        font-size: 1.25rem;
-        color: var(--gray2);
-      }
+
+    &-name {
+      font: var(--font-calendar);
+      font-size: 1.25rem;
+    }
+
+    &-avatar{
+      @include profile-photo(5rem, 5rem);
+      object-fit: cover;
+    }
+
+    &-role {
+      font: var(--font-current);
+      font-size: 1.25rem;
+      color: var(--gray2);
     }
   }
+}

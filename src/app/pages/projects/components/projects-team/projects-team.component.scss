@@ -1,19 +1,18 @@
 :host {
-    @import "mixins.scss";
-    @import "vars/variables.scss";
-  
-    .projects-team {
-        @include flex(flex-start, center, var(--offset-d));
-        
-  
-      &-container {
-        flex-direction: column;
-        padding: var(--offset) var(--offset-m);
-        border-radius: var(--border-radius);
-        border: var(--border-xxs) solid var(--gray);
-        background-color: var(--white);
-      }
+  @import "mixins.scss";
+  @import "vars/variables.scss";
 
+  .projects-team {
+    @include flex(flex-start, center, var(--offset-d));
+      flex-direction: column;
+      padding: var(--offset) var(--offset-m);
+      border-radius: var(--border-radius);
+      border: var(--border-xxs) solid var(--gray);
+      background-color: var(--white);
+
+    &-title {
+      margin-bottom: var(--offset);
+      font: var(--font-title);
     }
   }
-  
+}
