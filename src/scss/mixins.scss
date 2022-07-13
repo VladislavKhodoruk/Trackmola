@@ -25,6 +25,7 @@
   #{$variable}-s: calc(var(#{$variable}) / 2);
   #{$variable}-b: calc(var(#{$variable}) * 0.625);
   #{$variable}-d: calc(var(#{$variable}) * 0.75);
+  #{$variable}-sm: calc(var(#{$variable}) * 1.25);
   #{$variable}-m: calc(var(#{$variable}) * 1.5);
   #{$variable}-xm: calc(var(#{$variable}) * 1.75);
   #{$variable}-l: calc(var(#{$variable}) * 2);

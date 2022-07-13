@@ -8,7 +8,7 @@ import { APIService } from '@shared/services/API.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  verstMode = false;
+  verstMode = true;
   constructor(public router: Router, private apiService: APIService) {
     if (this.verstMode) {
       this.apiService.useMockData();

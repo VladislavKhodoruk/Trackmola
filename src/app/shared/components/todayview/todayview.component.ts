@@ -4,12 +4,11 @@ import {
   Input,
   OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 import { Project, TaskItem, TaskTrack } from '../../interfaces/interfaces';
-import { Task } from '@pages/report/interfaces/interfaces';
-import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
-import { transformDate } from '@pages/report/helpers/report-input-helpers';
+import { Task } from '../../../pages/report/interfaces/interfaces';
+import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '../../../shared/constants/constants';
+import { transformDate } from '../../../pages/report/helpers/report-input-helpers';
 
 @Component({
   selector: 'app-todayview-component',
@@ -27,7 +26,7 @@ export class TodayviewComponent implements OnChanges {
 
   taskItems: TaskItem[];
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.taskItems = this.createTaskItemsByDate();
   }
 
@@ -61,7 +60,7 @@ export class TodayviewComponent implements OnChanges {
       const project = this.projects.find(
         (project) => project.id === curTaskTrack.projectId
       );
-      let taskItem: TaskItem = {
+      const taskItem: TaskItem = {
         id: curTaskTrack.id,
         duration: curTaskTrack.duration,
         taskName: task?.name,

@@ -5,7 +5,8 @@
     @include flex(center, space-between);
     flex-direction: column;
     padding: var(--offset-l) 0;
-    width: 7.5rem;
+    width: var(--sidebar-width);
+    max-width: var(--sidebar-width);
     height: 100vh;
     max-height: 100vh;
     border-right: $border-sidebar;
@@ -36,39 +37,26 @@
             border-right: $border-sidebar-active;
             color: var(--primary);
           }
+          &:hover .sidebar-list-item-icon {
+            color: var(--primary);
+          }
         }
 
         &-icon {
           color: var(--gray);
-
-          &-active {
-            color: var(--primary);
-          }
-
-          &:hover {
-            color: var(--primary);
-          }
-        }
-
-        &-label {
-          color: var(--gray2);
-
-          &-active {
-            color: var(--primary);
-          }
-
-          &:hover {
-            text-decoration: underline 0.125rem var(--primary);
-            text-underline-offset: 0.1rem;
-          }
         }
 
         &-active {
+          color: var(--primary);
           border-right: $border-sidebar-active;
 
           &-profile {
             outline: $border-sidebar-active;
           }
+        }
+
+        &-active .sidebar-list-item-icon {
+          color: var(--primary);
         }
       }
     }

@@ -4,7 +4,7 @@ import {
   getRestMonthDefaultHours,
   getRestTime,
   getWorksMonthDefaultHours,
-} from '../helpers/helpers';
+} from '@pages/activity/helpers/helpers';
 
 const ACTIVITY_CHART_PIE_COLORS: string[] = [
   'var(--aqua)',
@@ -153,4 +153,3 @@ export const REST_HOURS_TOTAL_CARD = {
   numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,
   numberMonthHours: getRestMonthDefaultHours(),
 };
-

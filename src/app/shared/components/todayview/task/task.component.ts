@@ -24,7 +24,7 @@ export class TaskComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(ModalComponent);
+    const dialogRef = this.dialog.open(ModalComponent);
     dialogRef
       .afterClosed()
       .pipe(untilDestroyed(this))
