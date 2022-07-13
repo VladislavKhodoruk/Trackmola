@@ -52,7 +52,7 @@
             >
               <img
                 src="{{
-                  usersInfoByUserId[taskTrack1.userId].photo || defaultPhoto
+                  usersInfoByUserId[taskTrack1.userId]?.photo || defaultPhoto
                 }}"
                 class="activeTask-image"
                 alt="user photo"
@@ -60,7 +60,7 @@
               <div class="activeTask-description">
                 <div class="activeTask-description-header">
                   <span class="activeTask-description-header-name">
-                    {{ usersInfoByUserId[taskTrack1.userId].fullName }}
+                    {{ usersInfoByUserId[taskTrack1.userId]?.fullName }}
                   </span>
                   <span class="activeTask-description-header-duration">
                     {{ taskTrack1.duration }}h
@@ -77,5 +77,3 @@
     </li>
   </ng-container>
 </ng-template>
-
-<ng-template #taskTracks> </ng-template>
