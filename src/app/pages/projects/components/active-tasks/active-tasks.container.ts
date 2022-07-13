@@ -22,12 +22,11 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-active-tasks-container',
   template: `<app-active-tasks
-      [project]="project$ | async"
-      [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
-      [activeTaskTracksGroupByTask]="activeTaskTracksGroupByTask$ | async"
-      [usersInfoByUserId]="usersInfoByUserId$ | async"
-    ></app-active-tasks
-    >> > > > >`,
+    [project]="project$ | async"
+    [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
+    [activeTaskTracksGroupByTask]="activeTaskTracksGroupByTask$ | async"
+    [usersInfoByUserId]="usersInfoByUserId$ | async"
+  ></app-active-tasks>`,
   styleUrls: ['./active-tasks.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

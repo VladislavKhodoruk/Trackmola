@@ -14,10 +14,9 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-employee-activity-container',
   template: `<app-employee-activity
-      [period]="period$ | async"
-      (selectedPeriod)="changePeriodOnStore($event)"
-    ></app-employee-activity
-    >> > > > >`,
+    [period]="period$ | async"
+    (selectedPeriod)="changePeriodOnStore($event)"
+  ></app-employee-activity>`,
 })
 export class EmployeeActivityContainer {
   period$: Observable<string> = this.store$.select(getActivePeriod);

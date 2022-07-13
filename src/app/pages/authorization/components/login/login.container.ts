@@ -9,12 +9,11 @@ import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   template: `<app-login
-      [loading]="loading$ | async"
-      [errorMessage]="errorMessage$ | async"
-      (startLoading)="onStartLoading()"
-      (loginStart)="onLoginStart($event)"
-    ></app-login
-    >> > > > >`,
+    [loading]="loading$ | async"
+    [errorMessage]="errorMessage$ | async"
+    (startLoading)="onStartLoading()"
+    (loginStart)="onLoginStart($event)"
+  ></app-login>`,
 })
 export class LoginContainer {
   loading$ = this.store$.select(getLoading);

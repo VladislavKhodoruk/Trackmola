@@ -17,13 +17,13 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-projects-list-container',
   template: `<app-projects-list
-      [searchText]="searchText$ | async"
-      [projects]="projects$ | async"
-      [usersGroupByProject]="usersGroupByProject$ | async"
-      [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
-      [currentRoute]="currentRoute$ | async"
- (search)="onSearch($event)"
-"></app-projects-list>`,
+    [searchText]="searchText$ | async"
+    [projects]="projects$ | async"
+    [usersGroupByProject]="usersGroupByProject$ | async"
+    [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
+    [currentRoute]="currentRoute$ | async"
+    (search)="onSearch($event)"
+  ></app-projects-list>`,
   styleUrls: ['./projects-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

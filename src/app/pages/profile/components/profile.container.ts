@@ -11,8 +11,10 @@ import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-profile-container',
-  template: `<app-profil [userInfo]="userInfo$ | async" (logoutEmmiter)="onLogout()"></app-profile>
->`,
+  template: `<app-profile
+    [userInfo]="userInfo$ | async"
+    (logoutEmmiter)="onLogout()"
+  ></app-profile>`,
 })
 export class ProfileContainer {
   readonly userInfo$: Observable<User> = this.store$.select(getProfileUser);

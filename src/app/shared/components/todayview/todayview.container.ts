@@ -15,14 +15,13 @@ import { TrackMolaState } from 'app/store/trackMola.state';
 @Component({
   selector: 'app-todayview-container',
   template: `<app-todayview-component
-      [taskTracks]="taskTracks$ | async"
-      [tasks]="tasks$ | async"
-      [projects]="projects$ | async"
-      [currentDate]="currentDate$ | async"
-      (taskTrack)="putIntoStore($event)"
-      (deleteTaskTrack)="deleteTaskTrack($event)"
-    ></app-todayview-component
-    >> > > > >`,
+    [taskTracks]="taskTracks$ | async"
+    [tasks]="tasks$ | async"
+    [projects]="projects$ | async"
+    [currentDate]="currentDate$ | async"
+    (taskTrack)="putIntoStore($event)"
+    (deleteTaskTrack)="deleteTaskTrack($event)"
+  ></app-todayview-component>`,
 })
 export class TodayviewContainer {
   taskTracks$ = this.store$.select(getTasksTrack);

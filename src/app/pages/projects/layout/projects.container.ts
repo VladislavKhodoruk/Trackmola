@@ -10,10 +10,9 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-projects-container',
   template: `<app-projects
-      class="projects"
-      [projectByRoute]="projectByRoute$ | async"
-    ></app-projects
-    >> > > > >`,
+    class="projects"
+    [projectByRoute]="projectByRoute$ | async"
+  ></app-projects>`,
   styleUrls: ['./projects.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

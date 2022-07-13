@@ -17,13 +17,12 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-navigation-calendar-container',
   template: `<app-navigation-calendar
-      [firstDay]="firstDay$ | async"
-      [lastDay]="lastDay$ | async"
-      [usersInProject]="usersInProject$"
-      (previousWeek)="onPreviousWeek()"
-      (nextWeek)="onNextWeek()"
-    ></app-navigation-calendar
-    >> > > > >`,
+    [firstDay]="firstDay$ | async"
+    [lastDay]="lastDay$ | async"
+    [usersInProject]="usersInProject$"
+    (previousWeek)="onPreviousWeek()"
+    (nextWeek)="onNextWeek()"
+  ></app-navigation-calendar>`,
 })
 export class NavigationCalendarContainer {
   readonly firstDay$ = this.store$.select(getFirstDay);

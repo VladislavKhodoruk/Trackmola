@@ -12,13 +12,12 @@ import { CommonState } from '@store/common/common.state';
 @Component({
   selector: 'app-report-input-container',
   template: `<app-report-input
-      [allProjects]="allProjects$ | async"
-      [allTasks]="allTasks$ | async"
-      [currentDate]="currentDate$ | async"
-      [editableTaskTrack]="taskTrack$ | async"
-      (editTaskTrack)="editTaskTrack($event)"
-    ></app-report-input
-    >> > > > >`,
+    [allProjects]="allProjects$ | async"
+    [allTasks]="allTasks$ | async"
+    [currentDate]="currentDate$ | async"
+    [editableTaskTrack]="taskTrack$ | async"
+    (editTaskTrack)="editTaskTrack($event)"
+  ></app-report-input>`,
 })
 export class ReportInputContainer {
   allTasks$ = this.reportStore$.select(getTasks);
