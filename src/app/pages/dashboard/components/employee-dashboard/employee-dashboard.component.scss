@@ -1,18 +1,18 @@
+@import "vars/variables";
+@import "mixins";
+
 :host {
-  @import "vars/variables.scss";
-  @import "mixins.scss";
-
   .working-hours {
-    padding: var(--offset) var(--offset-l);
-
     width: 32rem;
     height: 28rem;
+    padding: var(--offset) var(--offset-l);
 
     border: $border-input;
     border-radius: var(--border-radius-l);
 
     &-title {
       margin-bottom: var(--offset);
+
       font: var(--font-title);
     }
 
@@ -22,7 +22,7 @@
   }
 
   .calendar {
-    margin-bottom: var(--offset-m);
     width: 59rem;
+    margin-bottom: var(--offset-m);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
+
 import {
   DEFAULT_HOURS_PER_WEEK,
   OVERTIME_TOTAL_CARD,

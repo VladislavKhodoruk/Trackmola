@@ -1,7 +1,7 @@
-import { Action, createReducer } from '@ngrx/store';
-import { profileState, ProfileState } from './profile.state';
+import { Action, createReducer, on } from '@ngrx/store';
+
 import { getUserInfoSuccess } from './profile.actions';
-import { on } from '@ngrx/store';
+import { profileState, ProfileState } from './profile.state';
 
 const profileReducer = createReducer(
   profileState,

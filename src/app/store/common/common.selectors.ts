@@ -1,6 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StateName } from '@shared/enums/enum';
+
 import { CommonState } from './common.state';
+
+import { StateName } from '@shared/enums/enum';
 
 const getCommonState = createFeatureSelector<CommonState>(StateName.Common);
 

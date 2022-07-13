@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import {
   Period,
   Project,
@@ -24,6 +25,8 @@ export const GET_ALL_TASKS_UPDATE = 'get all tasks update';
 export const SET_PERIOD = 'set period';
 export const NEXT_WEEK = 'next week';
 export const PREVIOUS_WEEK = 'previous week';
+export const DELETE_TASK_TRACK = 'delete task track';
+export const UPDATE_TASK_TRACK = 'update task track';
 
 export const loading = createAction(LOADING, props<{ status: boolean }>());
 export const errorMessage = createAction(
@@ -73,4 +76,14 @@ export const getAllUsers = createAction(GET_ALL_USERS);
 export const getAllUsersSuccess = createAction(
   GET_ALL_USERS_SUCCESS,
   props<{ users: User[] }>()
+);
+
+export const deleteTaskTrack = createAction(
+  DELETE_TASK_TRACK,
+  props<{ id: string }>()
+);
+
+export const updateTaskTrack = createAction(
+  UPDATE_TASK_TRACK,
+  props<{ tasktrack: TaskTrack }>()
 );

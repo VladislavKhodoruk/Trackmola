@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { changeDate } from '@store/common/common.actions';
 import {
   getDate,

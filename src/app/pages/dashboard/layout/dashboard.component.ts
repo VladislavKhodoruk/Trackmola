@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { UserType } from '@shared/enums/enum';
 
 @Component({

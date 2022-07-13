@@ -1,0 +1,89 @@
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .mat-dialog-container {
+    overflow: hidden;
+
+    min-width: 26rem;
+    height: 14rem;
+    padding: var(--offset);
+
+    border-radius: var(--offset);
+  }
+
+  .mat-dialog-title {
+    margin: 0;
+  }
+
+  .icon-x {
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+}
+
+:host {
+  .top {
+    @include flex(center, space-between);
+    margin-bottom: var(--offset-m);
+  }
+
+  .title {
+    font: var(--font-title);
+  }
+
+  .middle {
+    font: var(--font-calendar);
+  }
+
+  .buttons {
+    @include flex(stretch, flex-end);
+  }
+
+  .buttons-cancel,
+  .buttons-delete {
+    gap: var(--offset-s);
+
+    padding: 0.3rem var(--offset);
+
+    font: var(--font-buttonMiddle);
+    color: var(--primary);
+
+    background-color: var(--white);
+    border: $border-radius-button;
+    border-radius: var(--offset-d);
+    outline: 0;
+  }
+
+  .buttons-delete {
+    margin-left: var(--offset);
+
+    color: var(--white);
+
+    background-color: var(--primary);
+  }
+
+  .icon-x {
+    display: flex;
+  }
+
+  .icon-x:hover {
+    cursor: pointer;
+
+    color: var(--primary-hover);
+
+    opacity: 0.8;
+  }
+
+  .buttons-cancel:hover,
+  .buttons-delete:hover,
+  .icons:hover {
+    cursor: pointer;
+
+    opacity: 0.8;
+
+    transition: 0.2s;
+  }
+}

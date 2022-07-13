@@ -1,30 +1,34 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
-import angleLeftB from '@iconify/icons-uil/angle-left-b';
-import plus from '@iconify/icons-tabler/plus';
-import minus from '@iconify/icons-tabler/minus';
 import check from '@iconify/icons-mdi/check';
 import microphoneIcon from '@iconify/icons-tabler/microphone';
+import minus from '@iconify/icons-tabler/minus';
+import plus from '@iconify/icons-tabler/plus';
+import angleLeftB from '@iconify/icons-uil/angle-left-b';
+import { Timestamp } from 'firebase/firestore';
+import { map, Observable, startWith } from 'rxjs';
+
+import {
+  DurationValue,
+  KeyCodeAllowedSymbol,
+  Roles,
+} from '@pages/report/enums/enum';
 import {
   isInputOnlyNumber,
   onRightIndex,
 } from '@pages/report/helpers/report-input-helpers';
 import { Task } from '@pages/report/interfaces/interfaces';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
-import { Timestamp } from 'firebase/firestore';
+
 import { TasksService } from '@shared/services/tasks.service';
-import {
-  DurationValue,
-  KeyCodeAllowedSymbol,
-  Roles,
-} from '@pages/report/enums/enum';
 
 @Component({
   selector: 'app-report-input',
@@ -35,6 +39,9 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() allProjects: Project[];
   @Input() allTasks: Task[];
   @Input() currentDate: string;
+  @Input() editableTaskTrack: TaskTrack;
+
+  @Output() editTaskTrack = new EventEmitter<TaskTrack>();
 
   currentProjectId: string;
   currentTaskId: string;
@@ -106,6 +113,21 @@ export class ReportInputComponent implements OnInit, OnChanges {
         );
       }
     }
+    if (changes.editableTaskTrack && this.editableTaskTrack) {
+      const projectName = this.allProjects?.find(
+        (project) => project.id === this.editableTaskTrack?.projectId
+      )?.name;
+      this.form.get('project')?.setValue(projectName);
+      const taskName = this.allTasks?.find(
+        (task) => task.id === this.editableTaskTrack?.taskId
+      )?.name;
+      this.form.get('task')?.setValue(taskName);
+      this.form
+        .get('duration')
+        ?.setValue(`${this.editableTaskTrack?.duration}`);
+      this.form.get('comments')?.setValue(this.editableTaskTrack.comments);
+      this.onCheckStatus(this.editableTaskTrack?.status);
+    }
   }
 
   ngOnInit(): void {
@@ -113,6 +135,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       startWith(''),
       map((value) => this.filterOption(value || '', Object.values(Roles)))
     );
+    this.form.get('duration').setValue(DurationValue.Default);
   }
 
   private filterOption(value: string, options: string[]): string[] {
@@ -156,6 +179,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
 
   addTaskTrack(): void {
     const addTask: TaskTrack = {
+      id: '',
       projectId: this.currentProjectId,
       date: new Timestamp(new Date(this.currentDate).getTime() / 1000, 0),
       taskId: this.currentTaskId,
@@ -164,7 +188,14 @@ export class ReportInputComponent implements OnInit, OnChanges {
       userId: localStorage.getItem('AuthUserId'),
       status: this.status,
     };
-    this.tasksService.setTaskTrack(addTask);
+    if (this.editableTaskTrack) {
+      addTask.id = this.editableTaskTrack.id;
+      this.editTaskTrack.emit(addTask);
+      this.editableTaskTrack = null;
+    } else {
+      this.tasksService.setTaskTrack(addTask);
+    }
+    this.onCheckStatus(this.status);
     this.form.get('project').reset();
     this.form.get('task').reset();
     this.form.get('comments').reset();

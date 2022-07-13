@@ -1,9 +1,12 @@
+@import "mixins";
+
 :host {
-  @import "mixins.scss";
   .report-week {
     @include flex(center, space-between, var(--offset-m));
 
     &-interval {
+      width: 14rem;
+
       font: var(--font-calendar);
     }
   }

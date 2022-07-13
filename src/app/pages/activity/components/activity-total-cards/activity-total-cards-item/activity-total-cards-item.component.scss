@@ -1,17 +1,17 @@
-:host {
-  @import "vars/variables.scss";
-  @import "mixins.scss";
+@import "vars/variables";
+@import "mixins";
 
+:host {
   .total-card-item {
-    margin: 0 var(--offset-l);
-    padding: var(--offset) var(--offset-xm) var(--offset-l);
+    cursor: pointer;
+
     width: 17rem;
     height: 25rem;
+    margin: 0 var(--offset-l);
+    padding: var(--offset) var(--offset-xm) var(--offset-l);
 
     border-radius: var(--border-radius-l);
     box-shadow: $border-radius-activity-total-cards;
-
-    cursor: pointer;
 
     &:first-child {
       margin-left: 0;
@@ -22,10 +22,10 @@
     }
 
     &-img {
-      margin: 0 auto var(--offset);
-      padding: 0 var(--offset);
       width: 13.5rem;
       height: 11rem;
+      margin: 0 auto var(--offset);
+      padding: 0 var(--offset);
 
       img {
         width: 100%;
@@ -37,7 +37,7 @@
       font: var(--font-blocks);
       color: var(--gray2);
 
-      &:first-letter {
+      &::first-letter {
         text-transform: uppercase;
       }
     }
@@ -49,30 +49,29 @@
     }
 
     &-bar {
-      margin: 0 auto;
-      width: 10.75rem;
-
       display: flex;
       flex-direction: column;
 
+      width: 10.75rem;
+      margin: 0 auto;
+
       &-title {
-        text-align: right;
         font: var(--font-current-small);
         color: var(--gray2);
+        text-align: right;
       }
 
       &-item {
         width: 10.75rem;
         height: 0.5rem;
 
+        background-color: var(--gray5);
         border: none;
         border-radius: var(--border-radius-xxl);
 
-        background-color: var(--gray5);
-
         &-progress {
-          height: 100%;
           width: 80%;
+          height: 100%;
 
           border: none;
           border-radius: var(--border-radius-xxl);

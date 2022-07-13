@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+
 import {
   DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK,
   MAX_VALUE_WEEK_REPORT_TIME,

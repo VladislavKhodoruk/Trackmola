@@ -1,5 +1,5 @@
-import { Timestamp } from 'firebase/firestore';
 import { IconifyIcon } from '@iconify/types';
+import { Timestamp } from 'firebase/firestore';
 
 export interface Project {
   id: string;
@@ -22,7 +22,7 @@ export interface TaskTrack {
   comments: string;
   date: Timestamp;
   duration: number;
-  id?: string;
+  id: string;
   projectId: string;
   status: string;
   taskId: string;
@@ -76,4 +76,16 @@ export interface Week {
 export interface Period {
   start: number;
   end: number;
+}
+
+export interface TaskItem {
+  id: string;
+  duration: number;
+  taskName: string;
+  projectColor: string;
+  projectName: string;
+}
+
+export interface GroupBy<T> {
+  [key: string]: T;
 }

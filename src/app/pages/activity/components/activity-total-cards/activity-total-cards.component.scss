@@ -1,6 +1,6 @@
+@import "mixins";
+
 :host {
-  @import "vars/variables.scss";
-  @import "mixins.scss";
   .container {
     @include flex(center, flex-start);
   }

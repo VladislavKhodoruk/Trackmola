@@ -1,23 +1,28 @@
 <div class="report">
-  <div class="report-header">
-    <h2 class="report-header-title">My report</h2>
-    <div class="report-header-container">
-      <app-navigation-calendar-container></app-navigation-calendar-container>
-      <app-button
-        type="submit"
-        [buttonClass]="'button-primary'"
-        label="Send report for approval"
-        [disabled]="false"
-        [icon]="iconCheck"
-        iconWidth="2rem"
-        iconHeight="2rem"
-        (buttonClick)="submitReport($event)"
-      >
-      </app-button>
+  <div class="top">
+    <div class="report-header">
+      <h2 class="report-header-title">My report</h2>
+      <div class="report-header-container">
+        <app-navigation-calendar-container></app-navigation-calendar-container>
+        <app-button
+          type="submit"
+          [buttonClass]="'button-primary'"
+          label="Send report for approval"
+          [disabled]="false"
+          [icon]="iconCheck"
+          iconWidth="2rem"
+          iconHeight="2rem"
+          (buttonClick)="submitReport($event)"
+        >
+        </app-button>
+      </div>
     </div>
+    <app-calendar-container class="report-calendar"></app-calendar-container>
   </div>
-  <app-calendar-container class="report-calendar"></app-calendar-container>
-  <div class="report-input">
-    <app-report-input-container></app-report-input-container>
+  <div class="tasks-row">
+    <app-report-input-container
+      class="report-input"
+    ></app-report-input-container>
+    <app-todayview-container class="report-todayview"></app-todayview-container>
   </div>
 </div>

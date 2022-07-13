@@ -1,55 +1,124 @@
+@import "mixins";
+@import "vars/variables";
+
 :host {
-  @import "mixins.scss";
-  @import "vars/variables.scss";
+  display: flex;
+
+  width: 21.5rem;
+  max-width: 21.5rem;
+  max-height: 100%;
+
+  .projects-list-with-search {
+    @include flex(flex-start, flex-start, var(--offset-m));
+    flex-direction: column;
+
+    width: 100%;
+  }
 
   .projects-list {
-    $width-project: 21.5rem;
+    @include flex(flex-start, flex-start, var(--offset-m));
+
     $width-scroll: var(--offset-s);
     $shadow-y: var(--offset-d);
-    $shadow-left: var(--offset-l);  
+    $shadow-left: var(--offset-l);
     $shadow-right: var(--offset);
     $shadow-selected: 0 var(--offset-xs) #{$shadow-left} calc(
         var(--offset-xs) * -1
       ) var(--shadow-project-selected);
-
-    @include flex(flex-start, flex-start, var(--offset-m));
-    flex-direction: column;
-    width: calc(
-      #{$width-project} + #{$width-scroll} + #{$shadow-left} + #{$shadow-right}
-    );
-    max-width: calc(
-      #{$width-project} + #{$width-scroll} + #{$shadow-left} + #{$shadow-right}
-    );
-    height: 57rem;
-    max-height: 57rem;
-    padding: #{$shadow-y} #{$shadow-right} #{$shadow-y} #{$shadow-left};
-    margin: calc(#{$shadow-y} * -1) calc(#{$shadow-right} * -1)
-      calc(#{$shadow-y} * -1) calc(#{$shadow-left} * -1);
-    overflow-y: scroll;
     scroll-snap-type: y mandatory;
 
-    &-section {
-      @include flex(flex-start, flex-start, var(--offset-m));
-      flex-direction: column;
-    }
+    overflow-y: scroll;
+    flex-direction: column;
 
-    &-item {
-      width: 100%;
-      max-width: 100%;
-      
-      &-selected {
-        box-shadow: #{$shadow-selected};
-      }
-    }
+    width: calc(100% + #{$width-scroll} + #{$shadow-left} + #{$shadow-right});
+    max-width: calc(
+      100% + #{$width-scroll} + #{$shadow-left} + #{$shadow-right}
+    );
+    margin: calc(#{$shadow-y} * -1) calc(#{$shadow-right} * -1)
+      calc(#{$shadow-y} * -1) calc(#{$shadow-left} * -1);
+    padding: #{$shadow-y} #{$shadow-right} #{$shadow-y} #{$shadow-left};
 
     &::-webkit-scrollbar {
       width: #{$width-scroll};
+
       background-color: var(--white);
     }
 
     &::-webkit-scrollbar-thumb {
       background-color: var(--gray4);
       border-radius: var(--border-radius-l);
+    }
+
+    &-item {
+      @include flex(flex-start, center, var(--offset-d));
+      cursor: pointer;
+      scroll-margin-top: var(--offset-d);
+      scroll-snap-align: start;
+
+      flex-direction: column;
+
+      width: 100%;
+      max-width: 100%;
+      height: 8.5rem;
+      padding: var(--offset) var(--offset-m);
+
+      background-color: var(--white);
+      border: var(--border-xxs) solid var(--gray);
+      border-radius: var(--border-radius);
+
+      &-header {
+        @include flex(flex-start, space-between);
+        width: 100%;
+
+        &-title {
+          padding: 0 var(--offset-b);
+
+          font: var(--font-blocks);
+
+          border: var(--border-s) solid var(--white);
+          border-radius: var(--border-radius-l);
+        }
+      }
+
+      &-name {
+        font: var(--font-main);
+        font-size: 1.25rem;
+      }
+
+      &-description {
+        font: var(--font-main);
+        font-size: 1.25rem;
+        color: var(--gray2);
+      }
+
+      &-selected {
+        box-shadow: #{$shadow-selected};
+      }
+    }
+  }
+
+  .search {
+    @include flex(center, flex-start);
+    width: 100%;
+
+    &-input {
+      width: 100%;
+      padding-right: 3rem;
+    }
+
+    &-icon {
+      cursor: pointer;
+
+      margin-left: -2.5rem;
+
+      color: var(--gray2);
+    }
+  }
+
+  ::ng-deep {
+    .search-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
     }
   }
 }

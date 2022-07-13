@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CalendarComponent } from './components/calendar/calendar.component';
+import { NgModule } from '@angular/core';
+
 import { CalendarItemComponent } from './components/calendar-item/calendar-item.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarContainer } from './components/calendar/calendar.container';
 
 @NgModule({

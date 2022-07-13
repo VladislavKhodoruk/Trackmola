@@ -1,32 +1,39 @@
+@import "mixins";
+
 :host {
-  @import "mixins.scss";
   .authorization {
     @include flex(center, center);
-    min-height: 100vh;
     min-width: 100%;
+    min-height: 100vh;
+
+    background: linear-gradient(
+      180deg,
+      rgb(115 83 208 / 0%) 0%,
+      rgb(115 83 208 / 15%) 100%
+    );
+
     &-form {
       max-width: 30rem;
     }
-    background: linear-gradient(
-      180deg,
-      rgba(115, 83, 208, 0) 0%,
-      rgba(115, 83, 208, 0.15) 100%
-    );
   }
 
   .form {
     &-title {
       margin-block-end: var(--offset-m);
+
       font: var(--font-authorization-title);
       text-align: center;
       text-transform: uppercase;
     }
+
     &-control {
-      margin-top: var(--offset);
       width: 100%;
+      margin-top: var(--offset);
+
       &-validation {
-        padding: 0 var(--offset);
         margin-top: var(--offset-xs);
+        padding: 0 var(--offset);
+
         color: var(--warning);
       }
     }

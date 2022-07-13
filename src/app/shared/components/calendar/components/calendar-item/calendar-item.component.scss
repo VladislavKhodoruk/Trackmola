@@ -1,30 +1,36 @@
+@import "vars/variables";
+@import "mixins";
+
 :host {
-  @import "vars/variables.scss";
-  @import "mixins.scss";
   $item-height: 6.625rem;
   $item-padding: var(--offset-s);
 
   .tooltip {
     @include flex(center, center);
-    visibility: hidden;
-    margin-left: var(--offset-d);
     width: 2.5rem;
     height: var(--offset-xm);
-    border-radius: $border-radius-table-tooltip;
+    margin-left: var(--offset-d);
+
     font-size: var(--font-blocks);
     color: var(--white);
+
+    visibility: hidden;
     background-color: var(--primary);
+    border-radius: $border-radius-table-tooltip;
   }
 
   .calendar-item {
     @include flex(flex-start, space-between);
-    padding: $item-padding;
+    cursor: pointer;
+
     width: 100%;
     height: $item-height;
-    border: $border-table;
+    padding: $item-padding;
+
     font-size: var(--font-calendar);
     color: var(--gray3);
-    cursor: pointer;
+
+    border: $border-table;
 
     &:hover {
       box-shadow: $border-input-select;
@@ -45,18 +51,22 @@
 
   .calendar-bar {
     position: relative;
+
     width: var(--offset-s);
     height: calc($item-height - $item-padding * 2);
-    border-radius: $border-radius-table-bar;
+
     background-color: var(--gray);
+    border-radius: $border-radius-table-bar;
 
     &-progress {
       position: absolute;
       bottom: 0;
+
       width: 100%;
       height: 0;
-      border-radius: $border-radius-table-bar;
+
       background-color: var(--primary);
+      border-radius: $border-radius-table-bar;
     }
   }
 
