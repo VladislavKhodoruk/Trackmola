@@ -47,7 +47,7 @@ import { ActivityChartModule } from "@shared/components/activity-chart/activity-
     RouterModule.forChild(ActivityRoutes),
     ToggleButtonsModule,
     ButtonModule,
-    ActivityChartModule
+    ActivityChartModule,
   ],
   exports: [RouterModule],
 })
