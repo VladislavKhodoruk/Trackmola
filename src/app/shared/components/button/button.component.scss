@@ -1,37 +1,49 @@
+@import "mixins";
+@import "vars/variables";
+
 :host {
-  @import "mixins.scss";
-  @import "vars/variables";
   .button {
     @include flex(center, center, var(--offset));
-    padding: 0 var(--offset);
+    cursor: pointer;
+
     height: 3rem;
-    outline: none;
-    border: none;
-    border-radius: var(--border-radius-m);
+    padding: 0 var(--offset);
+
     font: var(--font-buttonMiddle);
     color: var(--white);
-    cursor: pointer;
+
+    border: none;
+    border-radius: var(--border-radius-m);
+    outline: none;
+
     &-primary {
       background-color: var(--primary);
+
       &:hover {
         background-color: var(--primary-hover);
       }
+
       &:disabled {
         background-color: var(--primary-disabled);
       }
     }
+
     &-secondary {
-      border: $border-button;
-      background-color: var(--white);
       color: var(--primary);
 
+      background-color: var(--white);
+      border: $border-button;
+
       &:hover {
-        border-color: var(--primary-hover);
         color: var(--primary-hover);
+
+        border-color: var(--primary-hover);
       }
+
       &:disabled {
-        border-color: var(--primary-disabled);
         color: var(--primary-disabled);
+
+        border-color: var(--primary-disabled);
       }
     }
 
@@ -58,14 +70,18 @@
     &-icon {
       @include flex(flex-start, flex-start);
     }
+
     &-authorization {
-      margin: var(--offset) 0;
       width: 100%;
+      margin: var(--offset) 0;
+
       text-transform: uppercase;
     }
+
     &-navigation-icon {
-      height: 2.25rem;
       width: 2.25rem;
+      height: 2.25rem;
+
       border-radius: var(--border-radius);
     }
 
@@ -75,27 +91,25 @@
   }
 
   .button-add-to-report {
-    padding: 0 var(--offset-xs);
     width: 2.5rem;
     height: 2.25rem;
+    padding: 0 var(--offset-xs);
   }
 
   .task-status {
-    padding: 0 0.5rem;
-
-    height: 2rem;
-
     @include flex(center, center);
 
-    border: none;
-    border-radius: var(--border-radius-l);
+    cursor: pointer;
+    user-select: none;
+
+    height: 2rem;
+    padding: 0 0.5rem;
 
     font-size: var(--font-main);
     color: var(--primary);
 
-    cursor: pointer;
-
-    user-select: none;
+    border: none;
+    border-radius: var(--border-radius-l);
 
     &:hover {
       background-color: var(--gray4);
@@ -107,6 +121,7 @@
 
     &-checked {
       color: var(--white);
+
       background-color: var(--primary);
 
       &:hover {
@@ -121,12 +136,13 @@
 
   .task-status-checked .task-status-icon {
     display: flex;
+
     margin-right: 0.25rem;
+
     color: var(--white);
   }
 
   .icon {
     display: flex;
   }
-
 }

@@ -1,15 +1,16 @@
-:host {
-  @import "mixins.scss";
-  @import "vars/variables.scss";
+@import "mixins";
+@import "vars/variables";
 
-  ::ng-deep {
-    .mat-expansion-panel-body {
-      @include flex(flex-start, flex-start, var(--offset-m));
-      flex-direction: column;
-      padding: var(--offset);
-    }
+::ng-deep {
+  .mat-expansion-panel-body {
+    @include flex(flex-start, flex-start, var(--offset-m));
+    flex-direction: column;
+
+    padding: var(--offset);
   }
+}
 
+:host {
   .activeTasks {
     @include flex(flex-start, flex-start, var(--offset-m));
     flex-direction: column;
@@ -19,6 +20,7 @@
       height: 4rem;
       max-height: 4rem;
       margin-bottom: 0;
+
       font: var(--font-title);
       text-transform: capitalize;
     }
@@ -26,8 +28,10 @@
     &-list {
       @include flex(flex-start, flex-start, var(--offset));
       flex-direction: column;
+
       width: 43.5rem;
       max-width: 43.5rem;
+
       background-color: var(--white);
 
       &-item {
@@ -38,6 +42,7 @@
 
   .project {
     padding: var(--offset-s);
+
     border: var(--border-xs) solid var(--gray);
     border-radius: var(--border-radius);
     box-shadow: none;
@@ -51,16 +56,21 @@
 
       &-title {
         flex-grow: 0;
+
         margin-right: var(--offset);
         padding: 0 var(--offset-b);
+
+        font: var(--font-blocks);
+
         border: var(--border-s) solid var(--white);
         border-radius: var(--border-radius-l);
-        font: var(--font-blocks);
       }
 
       &-description {
         justify-content: space-between;
+
         margin-right: var(--offset);
+
         font: var(--font-main);
         font-size: 1.25rem;
         color: var(--black);
@@ -71,6 +81,7 @@
   .activeTask {
     @include flex(flex-start, flex-start, var(--offset-s));
     flex-direction: column;
+
     width: 100%;
 
     &-container {
@@ -89,6 +100,7 @@
     &-description {
       @include flex(flex-start, flex-start, var(--offset-xs));
       flex-direction: column;
+
       width: 100%;
 
       &-header {
@@ -98,6 +110,7 @@
         &-name {
           font: var(--font-main);
         }
+
         &-duration {
           color: var(--primary);
         }

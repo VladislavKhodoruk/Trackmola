@@ -1,14 +1,18 @@
+@import "mixins";
+
 :host {
-  @import "mixins.scss";
-  max-height: 100%;
+  $gap: 2.5rem;
+  $header-height: var(--offset-ml);
+
   display: flex;
 
+  max-height: 100%;
+
   .projects {
-    $gap: 2.5rem;
-    $header-height: var(--offset-ml);
-    
     @include flex(flex-start, flex-start, #{$gap});
+
     flex-direction: column;
+
     max-height: 100%;
 
     &-header {
@@ -18,14 +22,19 @@
       &-title {
         font: var(--font-title);
       }
+
       &-item {
         @include flex(center, flex-start, var(--offset-sm));
+
         &-title {
           padding: 0 var(--offset-b);
+
+          font: var(--font-blocks);
+
           border: var(--border-s) solid var(--rose);
           border-radius: var(--border-radius-l);
-          font: var(--font-blocks);
         }
+
         &-name {
           font: var(--font-main);
           font-size: 1.25rem;
