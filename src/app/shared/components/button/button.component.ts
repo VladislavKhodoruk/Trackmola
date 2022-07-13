@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IconifyIcon } from '@iconify/types';
 import check from '@iconify/icons-tabler/check';
+import { IconifyIcon } from '@iconify/types';
 
 @Component({
   selector: 'app-button',

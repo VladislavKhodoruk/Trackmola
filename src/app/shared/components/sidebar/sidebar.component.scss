@@ -1,16 +1,19 @@
+@import "vars/variables";
+@import "mixins";
+
 :host {
-  @import "vars/variables.scss";
-  @import "mixins.scss";
   .sidebar {
     @include flex(center, space-between);
     flex-direction: column;
-    padding: var(--offset-l) 0;
+
     width: var(--sidebar-width);
     max-width: var(--sidebar-width);
     height: 100vh;
     max-height: 100vh;
-    border-right: $border-sidebar;
+    padding: var(--offset-l) 0;
+
     background-color: var(--white);
+    border-right: $border-sidebar;
 
     &-logo {
       width: 3rem;
@@ -21,26 +24,11 @@
       @include flex(center, center);
       flex-direction: column;
       gap: var(--offset-xl);
+
       width: 100%;
 
       &-item {
         width: 100%;
-
-        &-link {
-          @include flex(center, center);
-          flex-direction: column;
-          width: 100%;
-          box-sizing: content-box;
-          color: var(--gray2);
-
-          &:hover {
-            border-right: $border-sidebar-active;
-            color: var(--primary);
-          }
-          &:hover .sidebar-list-item-icon {
-            color: var(--primary);
-          }
-        }
 
         &-icon {
           color: var(--gray);
@@ -48,6 +36,7 @@
 
         &-active {
           color: var(--primary);
+
           border-right: $border-sidebar-active;
 
           &-profile {
@@ -58,12 +47,33 @@
         &-active .sidebar-list-item-icon {
           color: var(--primary);
         }
+
+        &-link {
+          @include flex(center, center);
+          flex-direction: column;
+
+          box-sizing: content-box;
+          width: 100%;
+
+          color: var(--gray2);
+
+          &:hover {
+            color: var(--primary);
+
+            border-right: $border-sidebar-active;
+          }
+
+          &:hover .sidebar-list-item-icon {
+            color: var(--primary);
+          }
+        }
       }
     }
 
     &-container {
       @include flex(flex-start, flex-start, var(--offset-s));
       flex-direction: column;
+
       width: 100%;
     }
 

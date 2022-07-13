@@ -5,10 +5,15 @@ import {
   OnChanges,
   Output,
 } from '@angular/core';
-import { Project, TaskItem, TaskTrack } from '../../interfaces/interfaces';
-import { Task } from '../../../pages/report/interfaces/interfaces';
-import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '../../../shared/constants/constants';
-import { transformDate } from '../../../pages/report/helpers/report-input-helpers';
+
+import { transformDate } from '@pages/report/helpers/report-input-helpers';
+import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
+import {
+  Project,
+  TaskItem,
+  TaskTrack,
+  Task,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-todayview-component',
@@ -56,9 +61,11 @@ export class TodayviewComponent implements OnChanges {
   createTaskItemsByDate(): TaskItem[] {
     const currentTaskTracks = this.getTasksTracksByDate();
     return currentTaskTracks.reduce((acc, curTaskTrack) => {
-      const task = this.tasks.find((task) => task.id === curTaskTrack.taskId);
+      const task: Task = this.tasks.find(
+        ({ id }) => id === curTaskTrack.taskId
+      );
       const project = this.projects.find(
-        (project) => project.id === curTaskTrack.projectId
+        ({ id }) => id === curTaskTrack.projectId
       );
       const taskItem: TaskItem = {
         id: curTaskTrack.id,
@@ -68,6 +75,6 @@ export class TodayviewComponent implements OnChanges {
         projectName: project?.name,
       };
       return [...acc, taskItem];
-    }, []);
+    }, [] as TaskItem[]);
   }
 }

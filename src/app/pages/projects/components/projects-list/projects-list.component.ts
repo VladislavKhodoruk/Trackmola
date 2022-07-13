@@ -7,10 +7,12 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { GroupBy, Project, User, Task } from '@shared/interfaces/interfaces';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import searchIcon from '@iconify/icons-tabler/search';
 import { IconifyIcon } from '@iconify/types';
+
+import { GroupBy, Project, User, Task } from '@shared/interfaces/interfaces';
 import { RouterStateUrl } from '@store/router/custom-serializer';
 
 @Component({

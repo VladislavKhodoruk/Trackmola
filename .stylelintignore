@@ -1,0 +1,7 @@
+*.ts
+*.js
+*.md
+*.svg
+*.ico
+/node_modules
+/src/scss/main.scss

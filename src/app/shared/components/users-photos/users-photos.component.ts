@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import {
   DEFAULT_PHOTO_URL,
   MAX_USERS_PHOTO,

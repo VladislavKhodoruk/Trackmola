@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
+
 import {
   getMyActivityProjects,
   getMyActivityTaskTracks,
@@ -7,7 +10,6 @@ import {
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 import { TrackMolaState } from '@store/trackMola.state';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects-activity-container',

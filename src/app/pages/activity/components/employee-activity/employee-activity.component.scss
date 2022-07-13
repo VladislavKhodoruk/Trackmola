@@ -1,8 +1,9 @@
+@import "mixins";
+
 :host {
-  @import "mixins.scss";
   .header-wrapper {
     @include flex(flex-start, flex-start, var(--offset-l));
-    margin-bottom:var(--offset);
+    margin-bottom: var(--offset);
 
     h1 {
       font: var(--font-titleBig);

@@ -1,5 +1,6 @@
+@import "mixins";
+
 :host {
-  @import "mixins.scss";
   .container {
     @include flex(flex-start, flex-start, var(--offset-sm));
     width: 100vw;

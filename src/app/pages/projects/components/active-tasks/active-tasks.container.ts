@@ -1,6 +1,8 @@
-import { TrackMolaState } from '@store/trackMola.state';
-import { Store } from '@ngrx/store';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
+
 import {
   activeTaskGroupByProject,
   activeTaskTracksGroupByTask,
@@ -14,7 +16,8 @@ import {
   TaskTrack,
   User,
 } from '@shared/interfaces/interfaces';
-import { Observable } from 'rxjs';
+
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-active-tasks-container',

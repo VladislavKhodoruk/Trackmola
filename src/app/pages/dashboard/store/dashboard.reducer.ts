@@ -1,6 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { DashboardState, dashboardState } from './dashboard.state';
+
 import { getWeekReportTimeSuccess } from './dashboard.actions';
+import { DashboardState, dashboardState } from './dashboard.state';
 
 const dashboardReducer = createReducer(
   dashboardState,

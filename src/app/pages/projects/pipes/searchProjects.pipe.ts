@@ -1,5 +1,6 @@
-import { Project } from '@shared/interfaces/interfaces';
 import { Pipe, PipeTransform } from '@angular/core';
+
+import { Project } from '@shared/interfaces/interfaces';
 
 @Pipe({
   name: 'searchProjects',

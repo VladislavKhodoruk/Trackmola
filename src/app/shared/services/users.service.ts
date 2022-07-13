@@ -8,10 +8,13 @@ import {
   query,
   updateDoc,
 } from '@angular/fire/firestore';
+
+import { User as UserFirebase } from 'firebase/auth';
+
+import { from, Observable, of, switchMap } from 'rxjs';
+
 import { AuthorizationService } from '@pages/authorization/services/authorization.service';
 import { User } from '@shared/interfaces/interfaces';
-import { User as UserFirebase } from 'firebase/auth';
-import { from, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

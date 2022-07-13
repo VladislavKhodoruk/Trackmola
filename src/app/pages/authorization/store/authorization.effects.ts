@@ -1,18 +1,20 @@
-import { Store } from '@ngrx/store';
-import { loginStart, loginSuccess, logout } from './authorization.actions';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
 
 import { catchError, map, of, tap, Observable, switchMap } from 'rxjs';
-import { TrackMolaState } from '@store/trackMola.state';
+
+import { loginStart, loginSuccess, logout } from './authorization.actions';
+
+import { FirebaseCodeError } from '@pages/authorization/interfaces/interface';
+import { AuthorizationService } from '@pages/authorization/services/authorization.service';
 import {
   errorMessage,
   getUserData,
   loading,
 } from '@store/common/common.actions';
-import { AuthorizationService } from '@pages/authorization/services/authorization.service';
-import { Router } from '@angular/router';
-import { FirebaseCodeError } from '@pages/authorization/interfaces/interface';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Injectable()
 export class AuthorizationEffects {
