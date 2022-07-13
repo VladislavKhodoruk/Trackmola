@@ -21,4 +21,14 @@
   .container {
     padding: var(--offset) 0;
   }
+
+  ::ng-deep {
+    .highcharts-credits {
+      display: none;
+    }
+
+    .highcharts-series-group .highcharts-title {
+      margin-left: 100px;
+    }
+  }
 }

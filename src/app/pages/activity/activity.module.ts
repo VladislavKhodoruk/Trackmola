@@ -22,7 +22,8 @@ import { HighchartsChartModule } from '@shared/components/highcharts-chart/highc
 import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { ButtonModule } from '@shared/components/button/button.module';
-import { ActivityChartModule } from '@shared/components/activity-chart/activity-chart.module';
+import { ActivityWeekChartComponent } from '@pages/activity/components/activity-week-chart/activity-week-chart.component';
+import { ActivityWeekChartContainer } from '@pages/activity/components/activity-week-chart/activity-week-chart.container';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,8 @@ import { ActivityChartModule } from '@shared/components/activity-chart/activity-
     ActivityTotalCardsComponent,
     ActivityTotalCardsContainer,
     ActivityTotalCardsItemComponent,
+    ActivityWeekChartComponent,
+    ActivityWeekChartContainer,
   ],
   imports: [
     CommonModule,
@@ -47,7 +50,6 @@ import { ActivityChartModule } from '@shared/components/activity-chart/activity-
     RouterModule.forChild(ActivityRoutes),
     ToggleButtonsModule,
     ButtonModule,
-    ActivityChartModule,
   ],
   exports: [RouterModule],
 })
