@@ -1,4 +1,23 @@
 <section class="projects-team">
   <h2 class="projects-team-title">Current project team</h2>
-  <app-project-team-item-container></app-project-team-item-container>
+  <article class="projects-team-item">
+    <ul>
+      <ng-container *ngIf="projectByRoute">
+        <li
+          class="projects-team-item-list"
+          *ngFor="let user of usersGroupByProject[projectByRoute.id]"
+        >
+          <img
+            src="{{ user.photo }}"
+            class="projects-team-item-avatar"
+            alt="user photo"
+          />
+          <div class="projects-team-item-container">
+            <p class="projects-team-item-name">{{ user.fullName }}</p>
+            <p class="projects-team-item-role">{{ user.position }}</p>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+  </article>
 </section>

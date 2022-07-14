@@ -12,6 +12,7 @@ import { ActiveTasksComponent } from './components/active-tasks/active-tasks.com
 import { ActiveTasksContainer } from './components/active-tasks/active-tasks.container';
 import { ProjectsListComponent } from './components/projects-list/projects-list.component';
 import { ProjectsListContainer } from './components/projects-list/projects-list.container';
+import { ProjectsTeamComponent } from './components/projects-team/projects-team.component';
 import { ProjectsComponent } from './layout/projects.component';
 import { ProjectsContainer } from './layout/projects.container';
 import { SearchProjectsPipe } from './pipes/searchProjects.pipe';
@@ -19,9 +20,6 @@ import { ProjectsRoutes } from './projects.router';
 import { ProjectsEffects } from './store/projects.effects';
 import { ProjectsReducer } from './store/projects.reducer';
 import { PROJECTS_STATE_NAME } from './store/projects.selectors';
-import { ProjectsTeamComponent } from './components/projects-team/projects-team.component';
-import { ProjectsTeamItemComponent } from './components/projects-team/projects-team-item/projects-team-item.component';
-import { ProjectsTeamItemContainer } from './components/projects-team/projects-team-item/projects-team-item.container';
 
 import { ButtonModule } from '@shared/components/button/button.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
@@ -35,6 +33,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     SearchProjectsPipe,
     ActiveTasksComponent,
     ActiveTasksContainer,
+    ProjectsTeamComponent,
   ],
   imports: [
     CommonModule,
@@ -49,4 +48,4 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
   ],
   exports: [RouterModule],
 })
-export class ProjectsModule { }
+export class ProjectsModule {}

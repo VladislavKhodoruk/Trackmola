@@ -3,8 +3,11 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
-import { getProjectByRoute } from '@pages/projects/store/projects.selectors';
-import { Project } from '@shared/interfaces/interfaces';
+import {
+  getProjectByRoute,
+  usersGroupByProject,
+} from '@pages/projects/store/projects.selectors';
+import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
@@ -12,6 +15,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   template: `<app-projects
     class="projects"
     [projectByRoute]="projectByRoute$ | async"
+    [usersGroupByProject]="usersGroupByProject$ | async"
   ></app-projects>`,
   styleUrls: ['./projects.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,6 +23,9 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class ProjectsContainer {
   readonly projectByRoute$: Observable<Project> =
     this.store$.select(getProjectByRoute);
+
+  readonly usersGroupByProject$: Observable<GroupBy<User>> =
+    this.store$.select(usersGroupByProject);
 
   constructor(private store$: Store<TrackMolaState>) {}
 }
