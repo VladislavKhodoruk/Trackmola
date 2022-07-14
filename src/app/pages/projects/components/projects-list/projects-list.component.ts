@@ -37,7 +37,12 @@ export class ProjectsListComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.projects && !this.currentRoute.params.name) {
-      const firstProject: Project = this.projects[0];
+      const firstProject = this.projects
+        .map((project) => ({
+          ...project,
+          activeTasksLength: this.activeTaskGroupByProject[project.id].length,
+        }))
+        .sort((a, b) => b.activeTasksLength - a.activeTasksLength)[0];
       this.router.navigate([firstProject.name.toLowerCase()], {
         relativeTo: this.route,
       });

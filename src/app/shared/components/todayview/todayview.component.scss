@@ -95,8 +95,9 @@
     max-height: 100%;
 
     background-color: var(--primary-max);
-    transition: 1s;
     border-radius: 0 0 var(--offset) var(--offset);
+
+    transition: 1s;
   }
 
   .tasks {
@@ -201,15 +202,17 @@
       animation-iteration-count: infinite;
     }
 
-    &:before {
+    &::before {
       bottom: 97%;
+
       border-radius: 45%;
 
       animation-duration: 10s;
     }
 
-    &:after {
+    &::after {
       bottom: 97%;
+
       opacity: 0.5;
       border-radius: 40%;
 
