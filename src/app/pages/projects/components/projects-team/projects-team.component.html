@@ -4,11 +4,11 @@
     <ul>
       <ng-container *ngIf="projectByRoute">
         <li
-          class="projects-team-item-list"
           *ngFor="let user of usersGroupByProject[projectByRoute.id]"
+          class="projects-team-item-list"
         >
           <img
-            src="{{ user.photo }}"
+            src="{{ user.photo || defaultPhoto }}"
             class="projects-team-item-avatar"
             alt="user photo"
           />

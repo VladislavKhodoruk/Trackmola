@@ -58,7 +58,6 @@
 
     &-avatar {
       @include profile-photo(5rem, 5rem);
-      object-fit: cover;
     }
 
     &-role {
