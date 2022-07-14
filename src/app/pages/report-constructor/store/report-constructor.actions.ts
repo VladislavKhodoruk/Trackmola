@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { Period } from '@shared/interfaces/interfaces';
 
 export const SET_PERIOD = 'set period';

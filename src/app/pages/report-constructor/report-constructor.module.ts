@@ -6,10 +6,6 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { StoreModule } from '@ngrx/store';
 
-import { ButtonModule } from '@shared/components/button/button.module';
-import { DateSwitchModule } from '@shared/components/date-switch/date-switch.module';
-import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
-import { SelectModule } from '@shared/components/select/select.module';
 import { IconModule } from '@visurel/iconify-angular';
 
 import { AdminReportConstructorComponent } from './components/admin-report-constructor/admin-report-constructor.component';
@@ -26,6 +22,11 @@ import { ReportConstructorEffects } from './store/report-constructor.effects';
 
 import { ReportConstructorReducer } from './store/report-constructor.reducer';
 import { REPORT_CONSTRUCTOR_STATE_NAME } from './store/report-constructor.selectors';
+
+import { ButtonModule } from '@shared/components/button/button.module';
+import { DateSwitchModule } from '@shared/components/date-switch/date-switch.module';
+import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
+import { SelectModule } from '@shared/components/select/select.module';
 
 @NgModule({
   declarations: [

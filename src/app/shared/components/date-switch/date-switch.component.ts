@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import arrowNarrowLeft from '@iconify/icons-tabler/arrow-narrow-left';
 import arrowNarrowRight from '@iconify/icons-tabler/arrow-narrow-right';
+
 import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
 import { getPeriod } from '@shared/helpers/helpers';
 import { Period } from '@shared/interfaces/interfaces';

@@ -1,7 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
+import { ReportConstructorState } from './report-constructor.state';
+
 import { StateName } from '@shared/enums/enum';
 import { getTasksTrack } from '@store/common/common.selectors';
-import { ReportConstructorState } from './report-constructor.state';
 
 export const REPORT_CONSTRUCTOR_STATE_NAME = StateName.ReportConstructor;
 

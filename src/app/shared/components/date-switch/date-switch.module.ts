@@ -1,6 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
 import { DateSwitchComponent } from './date-switch.component';
+
 import { ButtonModule } from '../button/button.module';
 
 @NgModule({

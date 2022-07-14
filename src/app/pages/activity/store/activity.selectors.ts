@@ -1,8 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StateName } from '@shared/enums/enum';
-import { getProjects, getTasksTrack } from '@store/common/common.selectors';
 
 import { ActivityState } from './activity.state';
+
+import { StateName } from '@shared/enums/enum';
+import { getProjects, getTasksTrack } from '@store/common/common.selectors';
 
 export const ACTIVITY_STATE_NAME = StateName.Activity;
 

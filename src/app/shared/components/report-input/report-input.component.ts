@@ -14,6 +14,9 @@ import minus from '@iconify/icons-tabler/minus';
 import plus from '@iconify/icons-tabler/plus';
 import angleLeftB from '@iconify/icons-uil/angle-left-b';
 
+import { Timestamp } from 'firebase/firestore';
+import { map, Observable, startWith } from 'rxjs';
+
 import {
   DurationValue,
   KeyCodeAllowedSymbol,
@@ -27,8 +30,6 @@ import { Task } from '@pages/report/interfaces/interfaces';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 import { TasksService } from '@shared/services/tasks.service';
-import { Timestamp } from 'firebase/firestore';
-import { map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-report-input',

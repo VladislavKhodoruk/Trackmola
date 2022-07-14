@@ -6,6 +6,7 @@ import {
   OnChanges,
 } from '@angular/core';
 import sortDescending from '@iconify/icons-tabler/sort-descending';
+
 import { getSortInfoReportConstructor } from '@pages/report-constructor/helpers/helpers';
 import {
   InfoFromTaskTracksForTable,

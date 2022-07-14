@@ -1,10 +1,11 @@
-import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
-import { Period, Task, TaskTrack, User } from '@shared/interfaces/interfaces';
 import {
   InfoFromTaskTracksForTable,
   InfoReportConstructorItem,
   SortOption,
 } from '../interfaces/interfaces';
+
+import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
+import { Period, Task, TaskTrack, User } from '@shared/interfaces/interfaces';
 
 export function getInfoFromTaskTracks(
   taskTracks: TaskTrack[],

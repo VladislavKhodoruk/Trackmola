@@ -1,6 +1,6 @@
-import { EventEmitter, Output } from '@angular/core';
-import { Component } from '@angular/core';
+import { EventEmitter, Output, Component } from '@angular/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+
 import { getPeriod } from '@shared/helpers/helpers';
 import { Period } from '@shared/interfaces/interfaces';
 
