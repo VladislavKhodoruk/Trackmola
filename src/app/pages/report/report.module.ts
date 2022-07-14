@@ -23,8 +23,8 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
 import { NavigationCalendarModule } from '@shared/components/navigatinon-calendar/navigation-calendar.module';
 
-import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 import { ReportInputModule } from '@shared/components/report-input/report-input.module';
+import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 
 @NgModule({
   declarations: [
