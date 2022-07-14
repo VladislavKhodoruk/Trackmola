@@ -45,8 +45,11 @@ export class TasksService {
 
   setTaskTrack(taskTrack: TaskTrack): Observable<any> {
     const refTaskTrack = doc(collection(this.firestore, 'taskTrack'));
-    taskTrack.id = refTaskTrack.id;
-    setDoc(refTaskTrack, taskTrack);
+    const newTaskTrack = {
+      ...taskTrack,
+      id: refTaskTrack.id,
+    };
+    setDoc(refTaskTrack, newTaskTrack);
     return of();
   }
 
