@@ -1,17 +1,14 @@
-import { Component } from "@angular/core";
-import { Options, SeriesOptionsType } from "highcharts";
-import {
-  BASIC_ACTIVITY_CHART_DASHBOARD_PAGE,
-} from "@pages/dashboard/constants/constants";
+import { Component } from '@angular/core';
+import { Options, SeriesOptionsType } from 'highcharts';
+
+import { BASIC_ACTIVITY_CHART_DASHBOARD_PAGE } from '@pages/dashboard/constants/constants';
 
 @Component({
   selector: 'app-activity-week-chart-component',
   templateUrl: 'activity-week-chart.component.html',
-  styleUrls: ['activity-week-chart.component.scss']
+  styleUrls: ['activity-week-chart.component.scss'],
 })
-
 export class ActivityWeekChartComponent {
-
   basicOptions = BASIC_ACTIVITY_CHART_DASHBOARD_PAGE;
 
   protected get seriesData(): SeriesOptionsType[] {
@@ -31,7 +28,7 @@ export class ActivityWeekChartComponent {
       {
         type: 'column',
         name: 'PAT',
-        data: [3, 5, 2, 5, 6, 1, 3],
+        data: [10, 5, 2, 5, 6, 1, 3],
         color: '#2EC4B6',
       },
     ];

@@ -27,8 +27,8 @@
   }
 
   ::ng-deep {
-    .highcharts-legend-item .highcharts-column-series .highcharts-color-undefined {
-      color: #04e4cc;
+    .highcharts-credits {
+      display: none;
     }
   }
 }

@@ -18,7 +18,7 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
     borderColor: 'var(--gray)',
     borderRadius: 15,
     borderWidth: 1,
-    margin: [80, 40, 124, 40],
+    margin: [70, 40, 124, 40],
     width: 940,
     height: 458,
   },
@@ -28,9 +28,10 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
     },
   },
   title: {
-    text: 'Project Hours',
+    text: 'Project hours',
     style: {
       fontSize: 'var(--offset-l)',
+      fontWeight: 600,
     },
     x: -350,
     y: 40,
@@ -71,6 +72,4 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
       fontWeight: '300',
     },
   },
-}
-
-
+};
