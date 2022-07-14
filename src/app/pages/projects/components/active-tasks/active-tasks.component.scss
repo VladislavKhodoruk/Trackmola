@@ -1,36 +1,14 @@
 @import "mixins";
 @import "vars/variables";
 
-::ng-deep {
-  .mat-expansion-panel-body {
+:host {
+  .activeTasks {
     @include flex(flex-start, flex-start, var(--offset-m));
     flex-direction: column;
 
-    margin-top: var(--offset);
-    padding: var(--offset);
-  }
-}
-
-:host {
-  $width-scroll: var(--offset-s);
-  $height-header: 4rem;
-  $gap: var(--offset-m);
-
-  display: flex;
-
-  max-height: 100%;
-
-  .activeTasks {
-    @include flex(flex-start, flex-start, #{$gap});
-    flex-direction: column;
-
-    width: 43.5rem;
-    max-width: 43.5rem;
-
     &-header {
       @include flex(center, flex-start);
-      width: 100%;
-      height: #{$height-header};
+      height: 4rem;
       max-height: 4rem;
       margin-bottom: 0;
 
@@ -40,29 +18,15 @@
 
     &-list {
       @include flex(flex-start, flex-start, var(--offset));
-
-      overflow-y: scroll;
       flex-direction: column;
 
-      width: 100%;
-      max-width: 100%;
-      max-height: calc(100% - #{$height-header} - #{$gap});
+      width: 43.5rem;
+      max-width: 43.5rem;
 
       background-color: var(--white);
 
-      &::-webkit-scrollbar {
-        width: var(--offset-s);
-
-        background-color: var(--white);
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--gray4);
-        border-radius: var(--border-radius-l);
-      }
-
       &-item {
-        width: calc(100% - #{$width-scroll});
+        width: 100%;
       }
     }
   }
@@ -149,5 +113,14 @@
         word-break: break-word;
       }
     }
+  }
+}
+
+::ng-deep {
+  .mat-expansion-panel-body {
+    @include flex(flex-start, flex-start, var(--offset-m));
+    flex-direction: column;
+
+    padding: var(--offset);
   }
 }

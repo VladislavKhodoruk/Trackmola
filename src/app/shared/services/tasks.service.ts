@@ -43,11 +43,11 @@ export class TasksService {
     return collectionData(queryAllTasks) as Observable<TaskTrack[]>;
   }
 
-  setTaskTrack(taskTrack: TaskTrack): void {
+  setTaskTrack(taskTrack: TaskTrack): Observable<any> {
     const refTaskTrack = doc(collection(this.firestore, 'taskTrack'));
     taskTrack.id = refTaskTrack.id;
-
     setDoc(refTaskTrack, taskTrack);
+    return of();
   }
 
   get getWeekTasks$(): Observable<TaskTrack[]> {
