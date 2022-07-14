@@ -6,6 +6,8 @@
     @include flex(center, space-between);
     flex-direction: column;
 
+    position: fixed;
+
     width: var(--sidebar-width);
     max-width: var(--sidebar-width);
     height: 100vh;
