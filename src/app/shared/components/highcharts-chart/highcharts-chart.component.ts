@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Chart, Options, SeriesOptionsType } from 'highcharts';
+import { Chart } from 'angular-highcharts';
+import { Options, SeriesOptionsType } from 'highcharts';
 import { isEqual } from 'lodash';
 
 @Component({
@@ -19,7 +20,7 @@ export class HighchartsChartComponent implements OnChanges {
       changes.data &&
       !isEqual(changes.data.currentValue, changes.data.previousValue)
     ) {
-      this.chart = new Chart('chart-container', {
+      this.chart = new Chart({
         ...this.options,
         series: this.data,
       });

@@ -1,13 +1,14 @@
+import { SeriesOptionsType } from 'highcharts';
+
 import { HOURS_IN_DAY } from '@pages/activity/constants/constants';
 import { RestHours } from '@pages/activity/enums/enums';
 import {
-  Tas,
+  ModifiedTask,
   TotalCardItem,
   WeekType,
 } from '@pages/activity/interfaces/interfaces';
 import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
-import { SeriesOptionsType } from 'highcharts';
 
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);
@@ -114,21 +115,29 @@ export function getProjectNameAndColor(id: string, projects: Project[]) {
   return projects.filter((project) => project.id === id);
 }
 
-export function searchInWeek(id: string, week: WeekType) {
-  return Object.values(week).map((day: [] | Tas[]) => {
+export function getColorOfProject(proj: string, projects: Project[]) {
+  return projects.filter((item: Project) => item.name === proj);
+}
+
+export function searchInWeek(
+  currentProject: string,
+  weekTasksByDays: WeekType
+) {
+  return Object.values(weekTasksByDays).map((day: [] | ModifiedTask[]) => {
     if (day.length === 0) {
       return 0;
     }
-    if (day.length > 0) {
-      const same = day
-        .filter((i: Tas) => i.projectId === id)
-        .map((i) => i.duration);
-      if (same.length === 0) {
-        return 0;
-      }
-      if (same.length === 1) {
-        return same[0];
-      }
+    if (day.length === 1 && day[0].projectName === currentProject) {
+      return day[0].duration;
+    }
+    if (day.length === 1) {
+      return 0;
+    }
+    if (day.length >= 2) {
+      return day
+        .filter((i: ModifiedTask) => i.projectName === currentProject)
+        .map((i) => i.duration)
+        .reduce((acc, prev) => acc + prev);
     }
   });
 }
@@ -136,16 +145,7 @@ export function getDataForChart(
   tasks: TaskTrack[],
   projects: Project[]
 ): SeriesOptionsType[] {
-  const tas = tasks.map(
-    (task): Tas => ({
-      projectId: getProjectNameAndColor(task.projectId, projects)[0].name,
-      projectColor: getProjectNameAndColor(task.projectId, projects)[0].color,
-      duration: task.duration,
-      date: task.date.toDate(),
-    })
-  );
-  tas.sort((a, b) => a.date.getTime() - b.date.getTime());
-  const week: WeekType = {
+  const weekTasksByDays: WeekType = {
     MON: [],
     TUE: [],
     WED: [],
@@ -154,17 +154,32 @@ export function getDataForChart(
     SAT: [],
     SUN: [],
   };
-  tas.map((task) => {
+  tasks.sort((a, b) => a.date.seconds - b.date.seconds);
+  const desiredTasks = tasks.map(
+    (task: TaskTrack): ModifiedTask => ({
+      projectName: getProjectNameAndColor(task.projectId, projects)[0].name,
+      projectColor: getProjectNameAndColor(task.projectId, projects)[0].color,
+      projectId: task.projectId,
+      duration: task.duration,
+      date: task.date.toDate(),
+    })
+  );
+  desiredTasks.forEach((task: ModifiedTask) => {
     const day = SHORT_NAMES_OF_THE_WEEK_UPPERCASE[task.date.getDay() - 1];
-    week[day] = [...week[day], task];
+    weekTasksByDays[day] = [...weekTasksByDays[day], task];
   });
-
-  const proj = tas.map((i) => i.projectId);
-  const without = proj.filter((item, index) => proj.indexOf(item) === index);
-  const currentType = without.map((project) => ({
-    type: 'column',
-    name: project,
-    data: searchInWeek(project, week),
-  }));
-  return currentType as SeriesOptionsType[];
+  const allProjects = desiredTasks.map(
+    (i: ModifiedTask): string => i.projectName
+  );
+  // this variable is created to exclude infinite cycle creatures
+  return allProjects
+    .filter(
+      (item: string, index: number) => allProjects.indexOf(item) === index
+    )
+    .map((project) => ({
+      type: 'column',
+      name: project,
+      data: searchInWeek(project, weekTasksByDays),
+      color: getColorOfProject(project, projects)[0].color,
+    }));
 }

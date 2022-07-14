@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { getMyActivityTaskTracks } from '@pages/activity/store/activity.selectors';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
-import { getFirstDay, getProjects } from '@store/common/common.selectors';
+import { getProjects } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({

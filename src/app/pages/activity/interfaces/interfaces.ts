@@ -10,18 +10,19 @@ export interface TotalCardItem {
 }
 
 export interface WeekType {
-  MON: [] | Tas[];
-  TUE: [] | Tas[];
-  WED: [] | Tas[];
-  THU: [] | Tas[];
-  FRI: [] | Tas[];
-  SAT: [] | Tas[];
-  SUN: [] | Tas[];
+  MON: [] | ModifiedTask[];
+  TUE: [] | ModifiedTask[];
+  WED: [] | ModifiedTask[];
+  THU: [] | ModifiedTask[];
+  FRI: [] | ModifiedTask[];
+  SAT: [] | ModifiedTask[];
+  SUN: [] | ModifiedTask[];
 }
 
-export interface Tas {
-  projectId: string;
+export interface ModifiedTask {
+  projectName: string;
   projectColor: string;
   duration: number;
   date: Date;
+  projectId: string;
 }

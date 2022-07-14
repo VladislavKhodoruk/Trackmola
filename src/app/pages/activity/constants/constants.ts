@@ -6,6 +6,7 @@ import {
   getRestTime,
   getWorksMonthDefaultHours,
 } from '@pages/activity/helpers/helpers';
+import { WeekType } from '@pages/activity/interfaces/interfaces';
 import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
 
 const ACTIVITY_CHART_PIE_COLORS: string[] = [
