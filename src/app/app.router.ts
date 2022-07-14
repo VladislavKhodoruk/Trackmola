@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
+
 import { AuthorizationGuard } from './pages/authorization/authorization.guard';
+
 import { IsAuthenticated } from '@shared/guards/IsAuthentificated.guard';
 
 export const AppRoutes: Routes = [

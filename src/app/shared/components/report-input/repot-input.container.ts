@@ -1,11 +1,11 @@
-import { updateTaskTrack } from './../../../../store/common/common.actions';
-import { TaskTrack } from '@shared/interfaces/interfaces';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { getTaskTrack } from '@pages/report/store/report.selectors';
 import { ReportState } from '@pages/report/store/report.state';
-import { getProjects, getTasks } from '@store/common/common.selectors';
-import { getDate } from '@store/common/common.selectors';
+import { TaskTrack } from '@shared/interfaces/interfaces';
+import { addTaskTrack, updateTaskTrack } from '@store/common/common.actions';
+import { getProjects, getTasks, getDate } from '@store/common/common.selectors';
 import { CommonState } from '@store/common/common.state';
 
 @Component({
@@ -16,6 +16,7 @@ import { CommonState } from '@store/common/common.state';
     [currentDate]="currentDate$ | async"
     [editableTaskTrack]="taskTrack$ | async"
     (editTaskTrack)="editTaskTrack($event)"
+    (addCurTaskTrack)="addCurTaskTrack($event)"
   ></app-report-input>`,
 })
 export class ReportInputContainer {
@@ -31,5 +32,9 @@ export class ReportInputContainer {
 
   editTaskTrack(tasktrack: TaskTrack) {
     this.commonStore$.dispatch(updateTaskTrack({ tasktrack }));
+  }
+
+  addCurTaskTrack(tasktrack: TaskTrack) {
+    this.commonStore$.dispatch(addTaskTrack({ tasktrack }));
   }
 }

@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { TasksService } from '@shared/services/tasks.service';
+
+import { map, switchMap, take } from 'rxjs';
+
 import {
   getWeekReportTime,
   getWeekReportTimeSuccess,
 } from './dashboard.actions';
-import { map, switchMap, take } from 'rxjs';
+
+import { TasksService } from '@shared/services/tasks.service';
 @Injectable()
 export class DashboardEffects {
   getReportTime$ = createEffect(() =>

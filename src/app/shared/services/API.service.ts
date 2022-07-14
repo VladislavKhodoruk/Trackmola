@@ -1,6 +1,15 @@
 /* eslint-disable no-console */
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+
+import {
+  collection,
+  Firestore,
+  getFirestore,
+  onSnapshot,
+  query,
+} from 'firebase/firestore';
+
 import {
   getAllProjectsSuccess,
   getAllTasksSuccess,
@@ -15,13 +24,6 @@ import {
   mockUsers,
   mockTaskTracks,
 } from 'app/mockdata';
-import {
-  collection,
-  Firestore,
-  getFirestore,
-  onSnapshot,
-  query,
-} from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',

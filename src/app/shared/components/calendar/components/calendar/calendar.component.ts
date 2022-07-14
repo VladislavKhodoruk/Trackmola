@@ -8,12 +8,13 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Day, Period, TaskTrack, Week } from '@shared/interfaces/interfaces';
+
 import {
   NAMES_OF_THE_DAYS_OF_THE_WEEK,
   NUMBER_OF_DAYS_IN_A_WEEK,
   ONE_DAY_IN_SECONDS,
 } from '@shared/constants/constants';
+import { Day, Period, TaskTrack, Week } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-calendar',

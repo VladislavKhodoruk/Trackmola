@@ -1,8 +1,8 @@
-:host {
-  @import "mixins";
+@import "mixins";
 
+:host {
   .wrapper {
-    @include flex(center, center,var(--offset-xxs));
+    @include flex(center, center, var(--offset-xxs));
   }
 
   .choose-item {

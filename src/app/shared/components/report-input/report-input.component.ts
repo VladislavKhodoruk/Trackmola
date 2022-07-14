@@ -8,25 +8,27 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
-import angleLeftB from '@iconify/icons-uil/angle-left-b';
-import plus from '@iconify/icons-tabler/plus';
-import minus from '@iconify/icons-tabler/minus';
 import check from '@iconify/icons-mdi/check';
 import microphoneIcon from '@iconify/icons-tabler/microphone';
+import minus from '@iconify/icons-tabler/minus';
+import plus from '@iconify/icons-tabler/plus';
+import angleLeftB from '@iconify/icons-uil/angle-left-b';
+
+import {
+  DurationValue,
+  KeyCodeAllowedSymbol,
+  Roles,
+} from '@pages/report/enums/enum';
 import {
   isInputOnlyNumber,
   onRightIndex,
 } from '@pages/report/helpers/report-input-helpers';
 import { Task } from '@pages/report/interfaces/interfaces';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
-import { Timestamp } from 'firebase/firestore';
+
 import { TasksService } from '@shared/services/tasks.service';
-import {
-  DurationValue,
-  KeyCodeAllowedSymbol,
-  Roles,
-} from '@pages/report/enums/enum';
+import { Timestamp } from 'firebase/firestore';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-report-input',
@@ -40,6 +42,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() editableTaskTrack: TaskTrack;
 
   @Output() editTaskTrack = new EventEmitter<TaskTrack>();
+  @Output() addCurTaskTrack = new EventEmitter<TaskTrack>();
 
   currentProjectId: string;
   currentTaskId: string;
@@ -191,7 +194,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       this.editTaskTrack.emit(addTask);
       this.editableTaskTrack = null;
     } else {
-      this.tasksService.setTaskTrack(addTask);
+      this.addCurTaskTrack.emit(addTask);
     }
     this.onCheckStatus(this.status);
     this.form.get('project').reset();

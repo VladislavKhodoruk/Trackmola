@@ -7,10 +7,17 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import checksIcon from '@iconify/icons-tabler/checks';
-import fileXls from '@iconify-icons/ph/file-xls';
-import templateIcon from '@iconify/icons-tabler/template';
+import fileXls from '@iconify-icons/ph/file-xls.js';
 import chartBar from '@iconify/icons-tabler/chart-bar';
+import checksIcon from '@iconify/icons-tabler/checks';
+import templateIcon from '@iconify/icons-tabler/template';
+import {
+  getInfoFromTaskTracks,
+  getWorksCustomPeriodHours,
+} from '@pages/report-constructor/helpers/helpers';
+import { InfoReportConstructorItem } from '@pages/report-constructor/interfaces/interfaces';
+import { DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK } from '@shared/constants/constants';
+import { getPeriod } from '@shared/helpers/helpers';
 import {
   Period,
   Project,
@@ -19,13 +26,6 @@ import {
   User,
   Task,
 } from '@shared/interfaces/interfaces';
-import { getPeriod } from '@shared/helpers/helpers';
-import {
-  getInfoFromTaskTracks,
-  getWorksCustomPeriodHours,
-} from '@pages/report-constructor/helpers/helpers';
-import { InfoReportConstructorItem } from '@pages/report-constructor/interfaces/interfaces';
-import { DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK } from '@shared/constants/constants';
 
 @Component({
   selector: 'app-manager-report-constructor',

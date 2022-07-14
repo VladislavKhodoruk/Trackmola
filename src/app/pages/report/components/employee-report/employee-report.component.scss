@@ -1,26 +1,30 @@
+@import "mixins";
+
 :host {
-  @import "mixins.scss";
   .report {
     @include flex(flex-start, flex-start, var(--offset-l));
-    margin-right: var(--offset-xm);
     flex-direction: column;
+
+    margin-right: var(--offset-xm);
 
     &-header {
       @include flex(center, space-between);
       width: 100%;
+
       &-title {
         font: var(--font-titleBig);
       }
+
       &-container {
         @include flex(center, center, 5rem);
       }
     }
+
     &-calendar {
       width: 100%;
     }
 
     &-input {
-      margin-right: var(--offset-l);
       width: 60%;
     }
 
@@ -28,12 +32,15 @@
       width: 40%;
     }
   }
+
   .top {
     width: 100%;
   }
+
   .tasks-row {
     display: flex;
-    margin-bottom: var(--offset-ml);
+    gap: var(--offset-l);
+
     width: 100%;
   }
 }

@@ -1,6 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { StateName } from '@shared/enums/enum';
-import { getTasksTrack } from '@store/common/common.selectors';
+import { getProjects, getTasksTrack } from '@store/common/common.selectors';
+
 import { ActivityState } from './activity.state';
 
 export const ACTIVITY_STATE_NAME = StateName.Activity;
@@ -27,6 +28,11 @@ export const getWeekReportTime = createSelector(
       .reduce((result, item) => (result += item.duration), 0)
 );
 
+export const getActivePeriod = createSelector(
+  getActivityState,
+  ({ choosePeriod }) => choosePeriod
+);
+
 export const getMyActivityTaskTracks = createSelector(
   getTasksTrack,
   getActivityPeriod,
@@ -39,17 +45,15 @@ export const getMyActivityTaskTracks = createSelector(
     )
 );
 
-export const getActivityTasks = createSelector(
-  getActivityState,
-  ({ tasks }) => tasks
-);
-
-export const getActivityProjects = createSelector(
-  getActivityState,
-  ({ projects }) => projects
-);
-
-export const getActivePeriod = createSelector(
-  getActivityState,
-  ({ choosePeriod }) => choosePeriod
+export const getMyActivityProjects = createSelector(
+  getMyActivityTaskTracks,
+  getProjects,
+  (activityTaskTracks, projects) => {
+    const activityProjectsId = activityTaskTracks.map(
+      (taskTrack) => taskTrack.projectId
+    );
+    return projects.filter((project) =>
+      activityProjectsId.includes(project.id)
+    );
+  }
 );

@@ -1,9 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
+
+import { setPeriod, setProject } from './report-constructor.actions';
 import {
   reportConstructorState,
   ReportConstructorState,
 } from './report-constructor.state';
-import { setPeriod, setProject } from './report-constructor.actions';
 
 const reportConstructorReducer = createReducer(
   reportConstructorState,

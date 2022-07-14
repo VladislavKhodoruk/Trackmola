@@ -1,6 +1,7 @@
+@import "vars/variables";
+@import "mixins";
+
 :host {
-  @import "vars/variables.scss";
-  @import "mixins.scss";
   table {
     width: 100%;
     max-width: 100%;
@@ -8,8 +9,9 @@
 
   table,
   th {
-    border: $border-table;
     border-collapse: collapse;
+
+    border: $border-table;
   }
 
   th {
@@ -17,7 +19,6 @@
     height: 3rem;
 
     font-size: var(--font-calendar);
-
     color: #969696;
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({

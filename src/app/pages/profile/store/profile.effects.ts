@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+
+import { map, switchMap, take } from 'rxjs';
+
+import { getUserInfo, getUserInfoSuccess } from './profile.actions';
+
 import { UsersService } from '@shared/services/users.service';
 import { TrackMolaState } from '@store/trackMola.state';
-import { map, switchMap, take } from 'rxjs';
-import { getUserInfo, getUserInfoSuccess } from './profile.actions';
 
 @Injectable()
 export class ProfileEffects {

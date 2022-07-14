@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
 
 @Component({

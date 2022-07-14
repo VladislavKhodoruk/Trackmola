@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import {
   Period,
   Project,
@@ -26,6 +27,7 @@ export const NEXT_WEEK = 'next week';
 export const PREVIOUS_WEEK = 'previous week';
 export const DELETE_TASK_TRACK = 'delete task track';
 export const UPDATE_TASK_TRACK = 'update task track';
+export const ADD_TASK_TRACK = 'add task track';
 
 export const loading = createAction(LOADING, props<{ status: boolean }>());
 export const errorMessage = createAction(
@@ -84,5 +86,10 @@ export const deleteTaskTrack = createAction(
 
 export const updateTaskTrack = createAction(
   UPDATE_TASK_TRACK,
+  props<{ tasktrack: TaskTrack }>()
+);
+
+export const addTaskTrack = createAction(
+  ADD_TASK_TRACK,
   props<{ tasktrack: TaskTrack }>()
 );

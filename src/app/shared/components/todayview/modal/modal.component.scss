@@ -1,7 +1,30 @@
-:host {
-  @import "vars/variables.scss";
-  @import "mixins.scss";
+@import "vars/variables";
+@import "mixins";
 
+::ng-deep {
+  .mat-dialog-container {
+    overflow: hidden;
+
+    max-width: 26rem;
+    height: 14rem;
+    padding: var(--offset);
+
+    border-radius: var(--offset);
+  }
+
+  .mat-dialog-title {
+    margin: 0;
+  }
+
+  .icon-x {
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+}
+
+:host {
   .top {
     @include flex(center, space-between);
     margin-bottom: var(--offset-m);
@@ -21,57 +44,46 @@
 
   .buttons-cancel,
   .buttons-delete {
-    padding: 0.3rem var(--offset);
     gap: var(--offset-s);
+
+    padding: 0.3rem var(--offset);
+
+    font: var(--font-buttonMiddle);
+    color: var(--primary);
+
+    background-color: var(--white);
     border: $border-radius-button;
     border-radius: var(--offset-d);
-    background-color: var(--white);
-    color: var(--primary);
-    font: var(--font-buttonMiddle);
     outline: 0;
   }
 
   .buttons-delete {
     margin-left: var(--offset);
-    background-color: var(--primary);
+
     color: var(--white);
+
+    background-color: var(--primary);
   }
+
   .icon-x {
     display: flex;
   }
 
   .icon-x:hover {
     cursor: pointer;
-    opacity: 0.8;
+
     color: var(--primary-hover);
+
+    opacity: 0.8;
   }
 
   .buttons-cancel:hover,
   .buttons-delete:hover,
   .icons:hover {
     cursor: pointer;
+
     opacity: 0.8;
+
     transition: 0.2s;
-  }
-}
-
-::ng-deep {
-  .mat-dialog-container {
-    height: 14rem;
-    min-width: 26rem;
-    padding: var(--offset);
-    overflow: hidden;
-    border-radius: var(--offset);
-  }
-
-  .mat-dialog-title {
-    margin: 0;
-  }
-
-  .icon-x {
-    svg {
-      width: 1.75rem;
-      height: 1.75rem;
-    }
   }
 }

@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+
+import {
+  DEFAULT_PHOTO_URL,
+  ONE_WEEK_IN_SECONDS,
+} from '@shared/constants/constants';
 import { getPeriod } from '@shared/helpers/helpers';
 import {
   nextWeek,
@@ -8,10 +13,6 @@ import {
 } from '@store/common/common.actions';
 import { getFirstDay, getLastDay } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
-import {
-  DEFAULT_PHOTO_URL,
-  ONE_WEEK_IN_SECONDS,
-} from '@shared/constants/constants';
 
 @Component({
   selector: 'app-navigation-calendar-container',

@@ -11,9 +11,10 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 import { Observable, of } from 'rxjs';
+
 import { Task } from '@pages/report/interfaces/interfaces';
-import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 import { getPeriod } from '@shared/helpers/helpers';
+import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -42,11 +43,14 @@ export class TasksService {
     return collectionData(queryAllTasks) as Observable<TaskTrack[]>;
   }
 
-  setTaskTrack(taskTrack: TaskTrack): void {
+  setTaskTrack(taskTrack: TaskTrack): Observable<any> {
     const refTaskTrack = doc(collection(this.firestore, 'taskTrack'));
-    taskTrack.id = refTaskTrack.id;
-
-    setDoc(refTaskTrack, taskTrack);
+    const newTaskTrack = {
+      ...taskTrack,
+      id: refTaskTrack.id,
+    };
+    setDoc(refTaskTrack, newTaskTrack);
+    return of();
   }
 
   get getWeekTasks$(): Observable<TaskTrack[]> {

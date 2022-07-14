@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import trash from '@iconify/icons-tabler/trash';
-import pencil from '@iconify/icons-tabler/pencil';
-import { TaskItem } from '@shared/interfaces/interfaces';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
+import pencil from '@iconify/icons-tabler/pencil';
+import trash from '@iconify/icons-tabler/trash';
+
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+
+import { ModalComponent } from '../modal/modal.component';
+
+import { TaskItem } from '@shared/interfaces/interfaces';
 
 @UntilDestroy()
 @Component({
@@ -24,7 +27,7 @@ export class TaskComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(ModalComponent);
+    const dialogRef = this.dialog.open(ModalComponent);
     dialogRef
       .afterClosed()
       .pipe(untilDestroyed(this))

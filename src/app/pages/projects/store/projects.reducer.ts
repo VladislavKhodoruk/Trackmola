@@ -1,5 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { setSearchValue } from './projects.actions';
+
+import { setSearchValue, clearProjectState } from './projects.actions';
 
 import { ProjectsState, projectsState } from './projects.state';
 
@@ -8,6 +9,9 @@ const projectsReducer = createReducer(
   on(setSearchValue, (state: ProjectsState, { value }) => ({
     ...state,
     searchValue: value,
+  })),
+  on(clearProjectState, () => ({
+    ...projectsState,
   }))
 );
 
