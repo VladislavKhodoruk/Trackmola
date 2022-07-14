@@ -1,5 +1,6 @@
 @import "mixins";
 @import "vars/variables";
+
 :host {
   .projects-team {
     @include flex(flex-start, center, var(--offset-d));
