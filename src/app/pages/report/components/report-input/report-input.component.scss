@@ -7,7 +7,7 @@
 
     overflow: hidden;
 
-    padding: 1.5rem;
+    padding: var(--offset-m);
 
     border: $border-form;
     border-radius: var(--offset);
@@ -37,7 +37,7 @@
       @include flex(center, center);
 
       width: 7.25rem;
-      height: 3rem;
+      height: var(--offset-ml);
       margin-right: var(--offset-s);
 
       background-color: var(--white);
@@ -49,10 +49,10 @@
       }
 
       &-input {
-        width: 2.5rem;
+        width: var(--offset-dl);
         height: 100%;
 
-        font-size: 1.25rem;
+        font-size: var(--offset-sm);
         color: var(--gray2);
         text-align: center;
 
@@ -84,8 +84,8 @@
         }
 
         ic-icon {
-          width: 1.5rem;
-          height: 1.5rem;
+          width: var(--offset-m);
+          height: var(--offset-m);
         }
 
         &:hover {
@@ -145,7 +145,7 @@
 
     &-footer {
       @include flex(center, flex-end);
-      margin-top: 1.5rem;
+      margin-top: var(--offset-m);
 
       &-voice {
         margin: 0 var(--offset-l);
@@ -179,12 +179,12 @@
 
         transform: rotate(-90deg);
 
-        width: 1.5rem;
-        height: 1rem;
+        width: var(--offset-m);
+        height: var(--offset);
 
         svg {
-          width: 1.5rem;
-          height: 1.5rem;
+          width: var(--offset-m);
+          height: var(--offset-m);
           margin: auto;
 
           path {
@@ -226,7 +226,7 @@
     }
 
     .mat-slide-toggle-bar {
-      width: 3rem;
+      width: var(--offset-ml);
       height: 1.6rem;
 
       background-color: var(--primary-50);
