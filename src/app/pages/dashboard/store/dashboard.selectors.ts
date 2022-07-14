@@ -6,8 +6,8 @@ import {
   searchName,
   searchProjectColor,
 } from '@pages/dashboard/components/active-tasks-list/helpers/search-project-name-color';
-import { SearchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-task-name';
-import { SearchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-user-photo';
+import { searchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-task-name';
+import { searchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-user-photo';
 
 import { StateName } from '@shared/enums/enum';
 import {
@@ -38,8 +38,8 @@ export const getTaskWithAllParametrs = createSelector(
     active.map((i) => ({
       projectName: searchName(i.projectId, projects),
       projectColor: searchProjectColor(i.projectId, projects),
-      taskName: SearchTaskName(i.taskId, tasks),
+      taskName: searchTaskName(i.taskId, tasks),
       status: i.status,
-      usersPhotos: SearchUserPhoto(i.taskId, allTaskTracks, users),
+      usersPhotos: searchUserPhoto(i.taskId, allTaskTracks, users),
     }))
 );

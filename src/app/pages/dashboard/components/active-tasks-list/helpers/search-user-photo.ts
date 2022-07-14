@@ -1,6 +1,6 @@
 import { TaskTrack, User } from '@shared/interfaces/interfaces';
 
-export function SearchUserPhoto(
+export function searchUserPhoto(
   id: string,
   taskTracks: TaskTrack[],
   users: User[]
