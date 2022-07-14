@@ -29,10 +29,11 @@ export class TodayviewComponent implements OnChanges {
   @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() deleteTaskTrack = new EventEmitter<string>();
 
+  maxDuration: number = 100;
   taskItems: TaskItem[];
 
   ngOnChanges(): void {
-    this.taskItems = this.createTaskItemsByDate();
+    this.taskItems = this.createTaskItems();
   }
 
   editTaskTrack(id: string): void {
@@ -50,22 +51,23 @@ export class TodayviewComponent implements OnChanges {
     return (totalDuration / MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY) * 100;
   }
 
-  getTasksTracksByDate(): TaskTrack[] {
+  getFilteredTasksTracks(): TaskTrack[] {
     return this.taskTracks?.filter(
       (curTaskTrack) =>
+        curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
         transformDate(new Date(curTaskTrack.date.seconds * 1000)).getTime() ===
-        transformDate(this.currentDate).getTime()
+          transformDate(this.currentDate).getTime()
     );
   }
 
-  createTaskItemsByDate(): TaskItem[] {
-    const currentTaskTracks = this.getTasksTracksByDate();
+  createTaskItems(): TaskItem[] {
+    const currentTaskTracks = this.getFilteredTasksTracks();
     return currentTaskTracks.reduce((acc, curTaskTrack) => {
       const task: Task = this.tasks.find(
-        ({ id }) => id === curTaskTrack.taskId
+        (curTask) => curTask.id === curTaskTrack.taskId
       );
       const project = this.projects.find(
-        ({ id }) => id === curTaskTrack.projectId
+        (curProject) => curProject.id === curTaskTrack.projectId
       );
       const taskItem: TaskItem = {
         id: curTaskTrack.id,

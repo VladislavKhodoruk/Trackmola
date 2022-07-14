@@ -1,25 +1,28 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Project } from '@shared/interfaces/interfaces';
+import { GroupBy, Project, Task } from '@shared/interfaces/interfaces';
 
 @Pipe({
   name: 'searchProjects',
 })
 export class SearchProjectsPipe implements PipeTransform {
-  transform(projects: Project[], search = ''): Project[] {
+  transform(
+    projects: Project[],
+    search = '',
+    activeTaskGroupByProject: GroupBy<Task[]>
+  ): Project[] {
+    const projectsWithActiveTasksLength = projects
+      .map((project) => ({
+        ...project,
+        activeTasksLength: activeTaskGroupByProject[project.id].length,
+      }))
+      .sort((a, b) => b.activeTasksLength - a.activeTasksLength);
+
     if (!search.trim()) {
-      return projects;
+      return projectsWithActiveTasksLength;
     }
-    return projects.filter(({ name, description }) => {
-      const compareName = name
-        .toLocaleLowerCase()
-        .includes(search.toLocaleLowerCase());
-
-      const compareDescription = description
-        ?.toLocaleLowerCase()
-        .includes(search.toLocaleLowerCase());
-
-      return compareName || compareDescription;
-    });
+    return projectsWithActiveTasksLength.filter(({ name }) =>
+      name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    );
   }
 }

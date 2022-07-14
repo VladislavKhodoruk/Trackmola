@@ -4,6 +4,9 @@
 :host {
   .sidebar {
     @include flex(center, space-between);
+
+    position: fixed;
+
     flex-direction: column;
 
     width: var(--sidebar-width);
@@ -44,7 +47,8 @@
           }
         }
 
-        &-active .sidebar-list-item-icon {
+        &-active .sidebar-list-item-icon,
+        &-active .sidebar-list-item-label {
           color: var(--primary);
         }
 

@@ -12,7 +12,10 @@
   <ul class="projects-list">
     <ng-container *ngIf="projects.length">
       <li
-        *ngFor="let project of projects | searchProjects: searchText"
+        *ngFor="
+          let project of projects
+            | searchProjects: searchText:activeTaskGroupByProject
+        "
         class="projects-list-item"
         [routerLink]="[project.name | lowercase]"
         routerLinkActive="projects-list-item-selected"

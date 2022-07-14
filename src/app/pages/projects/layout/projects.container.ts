@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
+
+import { clearProjectState } from '../store/projects.actions';
 
 import {
   getProjectByRoute,
@@ -20,7 +22,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   styleUrls: ['./projects.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectsContainer {
+export class ProjectsContainer implements OnDestroy {
   readonly projectByRoute$: Observable<Project> =
     this.store$.select(getProjectByRoute);
 
@@ -28,4 +30,8 @@ export class ProjectsContainer {
     this.store$.select(usersGroupByProject);
 
   constructor(private store$: Store<TrackMolaState>) {}
+
+  ngOnDestroy(): void {
+    this.store$.dispatch(clearProjectState());
+  }
 }

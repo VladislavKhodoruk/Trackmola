@@ -18,6 +18,7 @@ import { ManagerActivityComponent } from './components/manager-activity/manager-
 import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
 
 import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
+
 import { ActivityComponent } from './layout/activity.component';
 import { ActivityContainer } from './layout/activity.container';
 import { ActivityEffects } from './store/activity.effects';

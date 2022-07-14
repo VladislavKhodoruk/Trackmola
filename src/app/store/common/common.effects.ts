@@ -16,6 +16,7 @@ import {
   loading,
   deleteTaskTrack,
   updateTaskTrack,
+  addTaskTrack,
 } from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -78,7 +79,14 @@ export class CommonEffects {
   updateTaskTrack$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateTaskTrack),
-      switchMap((action) => this.tasksService.updateTask(action.tasktrack))
+      switchMap(({ tasktrack }) => this.tasksService.updateTask(tasktrack))
+    )
+  );
+
+  addTaskTrack$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addTaskTrack),
+      switchMap(({ tasktrack }) => this.tasksService.setTaskTrack(tasktrack))
     )
   );
 
