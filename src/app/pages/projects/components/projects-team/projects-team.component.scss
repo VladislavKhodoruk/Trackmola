@@ -1,0 +1,69 @@
+@import "mixins";
+@import "vars/variables";
+
+:host {
+  .projects-team {
+    @include flex(flex-start, center, var(--offset-d));
+    flex-direction: column;
+
+    margin-right: var(--offset-m);
+    padding: var(--offset);
+
+    background-color: var(--white);
+    border: var(--border-xxs) solid var(--gray);
+    border-radius: var(--border-radius);
+
+    &-title {
+      font: var(--font-title);
+    }
+  }
+
+  .projects-team-item {
+    $width-scroll: var(--offset-s);
+    $shadow-y: var(--offset-d);
+    $shadow-left: var(--offset-l);
+    $shadow-right: var(--offset);
+    $shadow-selected: 0 var(--offset-xs) #{$shadow-left} calc(
+        var(--offset-xs) * -1
+      ) var(--shadow-project-selected);
+    scroll-snap-type: y mandatory;
+
+    overflow-y: scroll;
+
+    max-height: 50vh;
+
+    &::-webkit-scrollbar {
+      width: #{$width-scroll};
+
+      background-color: var(--white);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--gray4);
+      border-radius: var(--border-radius-l);
+    }
+
+    &-list {
+      @include flex(flex-start, flex-start, var(--offset-xm));
+      flex-direction: row;
+      align-items: center;
+
+      margin: var(--offset-m);
+    }
+
+    &-name {
+      font: var(--font-calendar);
+      font-size: 1.25rem;
+    }
+
+    &-avatar {
+      @include profile-photo(5rem, 5rem);
+    }
+
+    &-role {
+      font: var(--font-current);
+      font-size: 1.25rem;
+      color: var(--gray2);
+    }
+  }
+}
