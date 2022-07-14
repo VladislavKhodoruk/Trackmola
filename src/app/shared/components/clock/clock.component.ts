@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { map, Subscription, timer } from 'rxjs';
-import { share } from 'rxjs/operators';
 
 @Component({
   selector: 'app-clock',
@@ -9,22 +8,22 @@ import { share } from 'rxjs/operators';
 })
 export class ClockComponent implements OnInit, OnDestroy {
   time: Date = new Date();
-  subscription: Subscription;
+  timeSubscription: Subscription;
+
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.subscription = timer(0, 1000)
-      .pipe(
-        map(() => new Date()),
-        share()
-      )
+    this.timeSubscription = timer(0, 1000)
+      .pipe(map(() => new Date()))
       .subscribe((data) => {
         this.time = data;
+        this.changeDetector.detectChanges();
       });
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.timeSubscription) {
+      this.timeSubscription.unsubscribe();
     }
   }
 }
