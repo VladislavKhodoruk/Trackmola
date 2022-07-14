@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
+
+import { IconifyIcon } from '@iconify/types';
+
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
 import {
   GroupBy,
@@ -8,7 +11,6 @@ import {
   Task,
   User,
 } from '@shared/interfaces/interfaces';
-import { IconifyIcon } from '@iconify/types';
 
 @Component({
   selector: 'app-active-tasks',
@@ -43,5 +45,7 @@ export class ActiveTasksComponent {
     return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
   }
 
-  protected addToReport(): void {}
+  protected addToReport(): void {
+    return null;
+  }
 }

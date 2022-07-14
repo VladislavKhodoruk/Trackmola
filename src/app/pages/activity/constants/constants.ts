@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Options, Point } from 'highcharts';
+
 import {
   getRestMonthDefaultHours,
   getRestTime,
   getWorksMonthDefaultHours,
 } from '@pages/activity/helpers/helpers';
-import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from "@shared/constants/constants";
+import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
 
 const ACTIVITY_CHART_PIE_COLORS: string[] = [
   'var(--aqua)',
@@ -209,4 +210,4 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
       fontWeight: '300',
     },
   },
-}
+};

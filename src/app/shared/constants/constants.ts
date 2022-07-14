@@ -1,8 +1,9 @@
 import chartDonut3 from '@iconify/icons-tabler/chart-donut-3';
 import fileTime from '@iconify/icons-tabler/file-time';
 import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
-import puzzleIcon from '@iconify/icons-tabler/puzzle';
 import manualGearbox from '@iconify/icons-tabler/manual-gearbox';
+import puzzleIcon from '@iconify/icons-tabler/puzzle';
+
 import { UserType } from '@shared/enums/enum';
 import { NavigationItem } from '@shared/interfaces/interfaces';
 

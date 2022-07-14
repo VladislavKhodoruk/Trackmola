@@ -1,5 +1,6 @@
-import { User, Task, TaskTrack, Project } from '@shared/interfaces/interfaces';
 import { Timestamp } from 'firebase/firestore';
+
+import { User, Task, TaskTrack, Project } from '@shared/interfaces/interfaces';
 
 export const mockUsers: User[] = [
   {

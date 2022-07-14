@@ -1,6 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StateName } from '@shared/enums/enum';
+
 import { ProfileState } from './profile.state';
+
+import { StateName } from '@shared/enums/enum';
 
 export const PROFILE_STATE_NAME = StateName.Profile;
 

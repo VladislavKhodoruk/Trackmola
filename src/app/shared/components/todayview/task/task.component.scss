@@ -1,14 +1,26 @@
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .icons {
+    svg {
+      width: 1.375rem;
+      height: 1.375rem;
+    }
+  }
+}
+
 :host {
-  @import "vars/variables.scss";
-  @import "mixins.scss";
-  --box-shadow-color: rgba(87, 74, 249, 0.25);
+  --box-shadow-color: rgb(87 74 249 / 25%);
+
   .task {
     box-sizing: border-box;
+    width: 100%;
     margin: 0 0 var(--offset) 0;
     padding: var(--offset) var(--offset) 0 var(--offset-l);
-    width: 100%;
-    border-radius: 0 var(--offset-s) var(--offset-s) 0;
+
     background-color: var(--white);
+    border-radius: 0 var(--offset-s) var(--offset-s) 0;
     box-shadow: 0 0 0.2rem var(--gray);
   }
 
@@ -24,10 +36,12 @@
 
   .project {
     padding: 0 var(--offset);
+
+    font: var(--font-blocks);
+
+    background-color: var(--white);
     border: $border-radius-button;
     border-radius: var(--offset-l);
-    background-color: var(--white);
-    font: var(--font-blocks);
   }
 
   .description {
@@ -40,33 +54,32 @@
     height: 1.125rem;
     margin-top: var(--offset);
   }
+
   .icons {
     display: none;
+
     color: var(--gray);
+
     &:last-of-type {
       margin-left: var(--offset-s);
     }
   }
 
   .icons:hover {
-    color: var(--primary);
     cursor: pointer;
+
+    color: var(--primary);
+
     transition: 0.2s;
   }
 
   .task:hover {
-    box-shadow: 0 0 0.4rem var(--box-shadow-color);
     cursor: pointer;
+
+    box-shadow: 0 0 0.4rem var(--box-shadow-color);
+
     .icons {
       display: block;
-    }
-  }
-}
-::ng-deep {
-  .icons {
-    svg {
-      width: 1.375rem;
-      height: 1.375rem;
     }
   }
 }

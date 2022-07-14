@@ -7,10 +7,12 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { GroupBy, Project, User, Task } from '@shared/interfaces/interfaces';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import searchIcon from '@iconify/icons-tabler/search';
 import { IconifyIcon } from '@iconify/types';
+
+import { GroupBy, Project, User, Task } from '@shared/interfaces/interfaces';
 import { RouterStateUrl } from '@store/router/custom-serializer';
 
 @Component({
@@ -35,7 +37,12 @@ export class ProjectsListComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.projects && !this.currentRoute.params.name) {
-      const firstProject: Project = this.projects[0];
+      const firstProject = this.projects
+        .map((project) => ({
+          ...project,
+          activeTasksLength: this.activeTaskGroupByProject[project.id].length,
+        }))
+        .sort((a, b) => b.activeTasksLength - a.activeTasksLength)[0];
       this.router.navigate([firstProject.name.toLowerCase()], {
         relativeTo: this.route,
       });

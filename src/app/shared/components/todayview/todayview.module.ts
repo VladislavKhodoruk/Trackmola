@@ -1,12 +1,15 @@
-import { MatDialogModule } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { TodayviewComponent } from './todayview.component';
-import { TaskComponent } from './task/task.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { IconModule } from '@visurel/iconify-angular';
-import { TodayviewContainer } from './todayview.container';
+
 import { ModalComponent } from './modal/modal.component';
+import { TaskComponent } from './task/task.component';
+import { TodayviewComponent } from './todayview.component';
+
+import { TodayviewContainer } from './todayview.container';
 
 @NgModule({
   declarations: [

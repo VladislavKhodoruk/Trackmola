@@ -5,10 +5,15 @@ import {
   OnChanges,
   Output,
 } from '@angular/core';
-import { Project, TaskItem, TaskTrack } from '../../interfaces/interfaces';
-import { Task } from '../../../pages/report/interfaces/interfaces';
-import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '../../../shared/constants/constants';
-import { transformDate } from '../../../pages/report/helpers/report-input-helpers';
+
+import { transformDate } from '@pages/report/helpers/report-input-helpers';
+import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
+import {
+  Project,
+  TaskItem,
+  TaskTrack,
+  Task,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-todayview-component',
@@ -27,7 +32,7 @@ export class TodayviewComponent implements OnChanges {
   taskItems: TaskItem[];
 
   ngOnChanges(): void {
-    this.taskItems = this.createTaskItemsByDate();
+    this.taskItems = this.createTaskItems();
   }
 
   editTaskTrack(id: string): void {
@@ -45,20 +50,23 @@ export class TodayviewComponent implements OnChanges {
     return (totalDuration / MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY) * 100;
   }
 
-  getTasksTracksByDate(): TaskTrack[] {
+  getFilteredTasksTracks(): TaskTrack[] {
     return this.taskTracks?.filter(
       (curTaskTrack) =>
+        curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
         transformDate(new Date(curTaskTrack.date.seconds * 1000)).getTime() ===
-        transformDate(this.currentDate).getTime()
+          transformDate(this.currentDate).getTime()
     );
   }
 
-  createTaskItemsByDate(): TaskItem[] {
-    const currentTaskTracks = this.getTasksTracksByDate();
+  createTaskItems(): TaskItem[] {
+    const currentTaskTracks = this.getFilteredTasksTracks();
     return currentTaskTracks.reduce((acc, curTaskTrack) => {
-      const task = this.tasks.find((task) => task.id === curTaskTrack.taskId);
+      const task: Task = this.tasks.find(
+        (curTask) => curTask.id === curTaskTrack.taskId
+      );
       const project = this.projects.find(
-        (project) => project.id === curTaskTrack.projectId
+        (curProject) => curProject.id === curTaskTrack.projectId
       );
       const taskItem: TaskItem = {
         id: curTaskTrack.id,
@@ -68,6 +76,6 @@ export class TodayviewComponent implements OnChanges {
         projectName: project?.name,
       };
       return [...acc, taskItem];
-    }, []);
+    }, [] as TaskItem[]);
   }
 }

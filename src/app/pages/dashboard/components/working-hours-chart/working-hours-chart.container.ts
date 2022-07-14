@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { DashboardState } from '@pages/dashboard/store/dashboard.state';
+
 import { getWeekReportTime } from '@pages/dashboard/store/dashboard.selectors';
+import { DashboardState } from '@pages/dashboard/store/dashboard.state';
 
 @Component({
   selector: 'app-working-hours-chart-container',
