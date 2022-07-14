@@ -42,6 +42,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() editableTaskTrack: TaskTrack;
 
   @Output() editTaskTrack = new EventEmitter<TaskTrack>();
+  @Output() addCurTaskTrack = new EventEmitter<TaskTrack>();
 
   currentProjectId: string;
   currentTaskId: string;
@@ -193,7 +194,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       this.editTaskTrack.emit(addTask);
       this.editableTaskTrack = null;
     } else {
-      this.tasksService.setTaskTrack(addTask);
+      this.addCurTaskTrack.emit(addTask);
     }
     this.onCheckStatus(this.status);
     this.form.get('project').reset();

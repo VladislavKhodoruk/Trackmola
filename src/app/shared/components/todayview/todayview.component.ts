@@ -29,6 +29,7 @@ export class TodayviewComponent implements OnChanges {
   @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() deleteTaskTrack = new EventEmitter<string>();
 
+  maxDuration: number = 100;
   taskItems: TaskItem[];
 
   ngOnChanges(): void {
