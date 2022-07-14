@@ -1,6 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
+
 import {
   getMyActivityProjects,
   getMyActivityTaskTracks,
@@ -8,20 +10,19 @@ import {
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 import { TrackMolaState } from '@store/trackMola.state';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects-activity-container',
   template: `<app-projects-activity
-    [myActivityProjects]="myActivityProjects$ | async"
-    [myActivityTaskTracks]="myActivityTaskTracks$ | async"
+    [myActivityProjects]="activityProjects$ | async"
+    [myActivityTaskTracks]="activityTasks$ | async"
   ></app-projects-activity>`,
 })
 export class ProjectsActivityContainer {
-  readonly myActivityTaskTracks$: Observable<TaskTrack[]> = this.store$.select(
+  readonly activityTasks$: Observable<TaskTrack[]> = this.store$.select(
     getMyActivityTaskTracks
   );
-  readonly myActivityProjects$: Observable<Project[]> = this.store$.select(
+  readonly activityProjects$: Observable<Project[]> = this.store$.select(
     getMyActivityProjects
   );
 

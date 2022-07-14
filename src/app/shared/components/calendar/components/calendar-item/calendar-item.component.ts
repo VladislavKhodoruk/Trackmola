@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+
 import {
   CLASS_DURATION_MORE_THAN_EIGHT,
   MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY,

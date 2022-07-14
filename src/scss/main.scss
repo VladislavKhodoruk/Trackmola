@@ -32,6 +32,7 @@ html {
   @include var-range(--offset, $offset);
   @include var-range(--border, $border);
   @include var-range(--border-radius, $border-radius);
+  --sidebar-width: 7.5rem;
   --font-authorization-title: 400 2.5rem "Averia Sans Libre", sans-serif;
   --font-main: 400 1rem "Noto Sans", sans-serif;
   --font-current: 300 1.125rem "Noto Sans", sans-serif;

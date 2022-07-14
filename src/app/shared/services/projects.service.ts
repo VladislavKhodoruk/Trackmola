@@ -5,9 +5,10 @@ import {
   Firestore,
   query,
 } from '@angular/fire/firestore';
-import { Project } from '@shared/interfaces/interfaces';
 
 import { Observable } from 'rxjs';
+
+import { Project } from '@shared/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',

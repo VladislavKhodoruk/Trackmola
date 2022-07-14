@@ -1,6 +1,8 @@
-import { StateName } from '@shared/enums/enum';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { ReportState } from './report.state';
+
+import { StateName } from '@shared/enums/enum';
 
 export const REPORT_STATE_NAME = StateName.Report;
 

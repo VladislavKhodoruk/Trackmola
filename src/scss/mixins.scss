@@ -1,15 +1,16 @@
 @mixin flex($align, $justify, $gap: 0) {
   display: flex;
+  gap: $gap;
   align-items: $align;
   justify-content: $justify;
-  gap: $gap;
 }
 
 @mixin profile-photo($width, $height) {
   width: $width;
   height: $height;
-  border-radius: 100%;
+
   object-fit: cover;
+  border-radius: 100%;
 }
 
 @mixin color-variables($colors) {
@@ -25,6 +26,7 @@
   #{$variable}-s: calc(var(#{$variable}) / 2);
   #{$variable}-b: calc(var(#{$variable}) * 0.625);
   #{$variable}-d: calc(var(#{$variable}) * 0.75);
+  #{$variable}-sm: calc(var(#{$variable}) * 1.25);
   #{$variable}-m: calc(var(#{$variable}) * 1.5);
   #{$variable}-xm: calc(var(#{$variable}) * 1.75);
   #{$variable}-l: calc(var(#{$variable}) * 2);

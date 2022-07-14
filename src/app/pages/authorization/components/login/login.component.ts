@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AuthorizationForm } from '@pages/authorization/interfaces/interface';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AuthorizationForm } from '@pages/authorization/interfaces/interface';
 
 @Component({
   selector: 'app-login',

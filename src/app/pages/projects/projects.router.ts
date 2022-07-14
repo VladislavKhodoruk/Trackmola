@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { InputSearchContainer } from './components/projects-list/input-search/input-search.container';
+
+import { ActiveTasksContainer } from './components/active-tasks/active-tasks.container';
 import { ProjectsContainer } from './layout/projects.container';
 
 export const ProjectsRoutes: Routes = [
@@ -9,8 +10,9 @@ export const ProjectsRoutes: Routes = [
     children: [
       {
         path: ':name',
-        component: InputSearchContainer,
+        component: ActiveTasksContainer,
       },
     ],
   },
+  { path: '**', redirectTo: '' },
 ];

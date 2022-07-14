@@ -1,8 +1,23 @@
-<container-element [ngSwitch]="userType">
-  <app-employee-projects-container
-    *ngSwitchCase="types.Employee"
-  ></app-employee-projects-container>
-  <app-cto-projects *ngSwitchCase="types.CTO"></app-cto-projects>
-  <app-admin-projects *ngSwitchCase="types.Admin"></app-admin-projects>
-  <app-manager-projects *ngSwitchCase="types.Manager"></app-manager-projects>
-</container-element>
+<header class="projects-header">
+  <h2 class="projects-header-title">Projects</h2>
+  <div class="projects-header-item" *ngIf="projectByRoute">
+    <ic-icon
+      class="icon"
+      width="2rem"
+      height="2rem"
+      [icon]="iconAngleRight"
+    ></ic-icon>
+    <div
+      class="projects-header-item-title"
+      [ngStyle]="{ 'border-color': projectByRoute.color }"
+    >
+      {{ projectByRoute.name }}
+    </div>
+    <div class="projects-header-item-name">{{ projectByRoute.fullName }}</div>
+  </div>
+</header>
+
+<div class="projects-container">
+  <app-projects-list-container></app-projects-list-container>
+  <app-active-tasks-container></app-active-tasks-container>
+</div>

@@ -1,7 +1,9 @@
 import { routerReducer, RouterReducerState } from '@ngrx/router-store';
-import { StateName } from '@shared/enums/enum';
+
 import { CommonReducer } from './common/common.reducer';
 import { CommonState } from './common/common.state';
+
+import { StateName } from '@shared/enums/enum';
 
 export interface TrackMolaState {
   [StateName.Common]: CommonState;

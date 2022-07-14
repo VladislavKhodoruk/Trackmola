@@ -1,6 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StateName } from '@shared/enums/enum';
+
 import { DashboardState } from './dashboard.state';
+
+import {
+  searchName,
+  searchProjectColor,
+} from '@pages/dashboard/components/active-tasks-list/helpers/search-project-name-color';
+import { SearchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-task-name';
+import { SearchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-user-photo';
+
+import { StateName } from '@shared/enums/enum';
 import {
   getActiveTasks,
   getProjects,
@@ -8,12 +17,6 @@ import {
   getTasksTrack,
   getUsers,
 } from '@store/common/common.selectors';
-import {
-  searchName,
-  searchProjectColor,
-} from '@pages/dashboard/components/active-tasks-list/helpers/search-project-name-color';
-import { SearchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-task-name';
-import { SearchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-user-photo';
 
 export const DASHBOARD_STATE_NAME = StateName.Dashboard;
 
@@ -31,13 +34,12 @@ export const getTaskWithAllParametrs = createSelector(
   getTasks,
   getUsers,
   getTasksTrack,
-  (active, projects, tasks, users, allTaskTracks) => {
-    return active.map((i) => ({
+  (active, projects, tasks, users, allTaskTracks) =>
+    active.map((i) => ({
       projectName: searchName(i.projectId, projects),
       projectColor: searchProjectColor(i.projectId, projects),
       taskName: SearchTaskName(i.taskId, tasks),
       status: i.status,
       usersPhotos: SearchUserPhoto(i.taskId, allTaskTracks, users),
-    }));
-  }
+    }))
 );

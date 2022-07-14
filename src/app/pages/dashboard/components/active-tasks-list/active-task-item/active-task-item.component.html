@@ -6,7 +6,11 @@
   </div>
   <p class="task-name">{{ currentTask.taskName }}</p>
   <div [class.task-status]="currentTask.status">
-    <img src="assets/img/activity/tick.svg" [class.hidden]="!currentTask.status"  alt="tick" />
+    <img
+      src="assets/img/activity/tick.svg"
+      [class.hidden]="!currentTask.status"
+      alt="tick"
+    />
     <p>{{ currentTask.status }}</p>
   </div>
   <app-users-photos

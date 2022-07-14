@@ -1,5 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { getWeekReportTimeSuccess } from './activity.actions';
+
+import {
+  getWeekReportTimeSuccess,
+  changeActivityPeriodSuccess,
+} from './activity.actions';
 import { ActivityState, activityState } from './activity.state';
 
 const activityReducer = createReducer(
@@ -7,6 +11,10 @@ const activityReducer = createReducer(
   on(getWeekReportTimeSuccess, (state: ActivityState, { weekReportTime }) => ({
     ...state,
     weekReportTime,
+  })),
+  on(changeActivityPeriodSuccess, (state: ActivityState, { choosePeriod }) => ({
+    ...state,
+    choosePeriod,
   }))
 );
 

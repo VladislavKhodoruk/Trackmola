@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { TasksService } from '@shared/services/tasks.service';
+
+import { map, switchMap, take } from 'rxjs';
+
 import {
   getAllTasks,
   getAllTasksSuccess,
   getAllProjects,
   getAllProjectsSuccess,
 } from '@pages/report/store/report.actions';
-import { map, switchMap, take } from 'rxjs';
 import { ProjectsService } from '@shared/services/projects.service';
+import { TasksService } from '@shared/services/tasks.service';
 
 @Injectable()
 export class ReportEffects {
