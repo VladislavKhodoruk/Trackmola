@@ -56,6 +56,6 @@ export const getTasksTrackByPeriod = createSelector(
     )
 );
 
-export const getActiveTasks = createSelector(getTasksTrack, (tasks) =>
+export const getActiveTasks = createSelector(getTasksTrackByPeriod, (tasks) =>
   tasks.filter((item) => item.status === 'in progress' || item.status === '')
 );

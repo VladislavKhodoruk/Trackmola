@@ -11,6 +11,6 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-active-tasks-list>`,
 })
 export class ActiveTasksListContainer {
-  fullTask$ = this.store$.select(getTaskWithAllParametrs);
+  readonly fullTask$ = this.store$.select(getTaskWithAllParametrs);
   constructor(private store$: Store<TrackMolaState>) {}
 }
