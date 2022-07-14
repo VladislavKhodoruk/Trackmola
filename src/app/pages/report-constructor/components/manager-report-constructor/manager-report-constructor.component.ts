@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -20,12 +20,18 @@ import {
   Task,
 } from '@shared/interfaces/interfaces';
 import { getPeriod } from '@shared/helpers/helpers';
-import { getInfoFromTaskTracks } from '@pages/report-constructor/helpers/helpers';
+import {
+  getInfoFromTaskTracks,
+  getWorksCustomPeriodHours,
+} from '@pages/report-constructor/helpers/helpers';
+import { InfoReportConstructorItem } from '@pages/report-constructor/interfaces/interfaces';
+import { DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK } from '@shared/constants/constants';
 
 @Component({
   selector: 'app-manager-report-constructor',
   templateUrl: './manager-report-constructor.component.html',
   styleUrls: ['./manager-report-constructor.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManagerReportConstructorComponent implements OnChanges {
   @Input() projects: Project[];
@@ -39,6 +45,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
 
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
+  infoFromTaskTracks: InfoReportConstructorItem[];
 
   periodType = 'week';
 
@@ -53,11 +60,35 @@ export class ManagerReportConstructorComponent implements OnChanges {
         value: project.id,
         viewValue: project.name,
       }));
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
       this.currentProjectId = this.selectProjectOptions[0]?.value;
       this.getSelectedValue(this.currentProjectId);
     }
-    getInfoFromTaskTracks(this.taskTracks, this.users, this.tasks);
+    switch (this.periodType) {
+      case 'week':
+        this.infoFromTaskTracks = getInfoFromTaskTracks(
+          this.taskTracks,
+          this.users,
+          this.tasks,
+          DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK
+        );
+        break;
+      case 'month':
+        this.infoFromTaskTracks = getInfoFromTaskTracks(
+          this.taskTracks,
+          this.users,
+          this.tasks,
+          getWorksCustomPeriodHours(this.period)
+        );
+        break;
+      case 'custom':
+        this.infoFromTaskTracks = getInfoFromTaskTracks(
+          this.taskTracks,
+          this.users,
+          this.tasks,
+          getWorksCustomPeriodHours(this.period)
+        );
+        break;
+    }
   }
 
   getSelectedValue(currentProjectId: string) {
@@ -67,8 +98,6 @@ export class ManagerReportConstructorComponent implements OnChanges {
   getFirstandLastDay(period: Period) {
     this.period = period;
     this.changeStorePeriod.emit(period);
-    console.log(new Date(period.start));
-    console.log(new Date(period.end));
   }
 
   changePeriod(type: string) {

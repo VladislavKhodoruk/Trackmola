@@ -1,25 +1,43 @@
 <table class="report-constructor-table">
   <thead class="report-constructor-table-head">
     <tr>
-      <th class="report-constructor-table-head-item">Deliverables</th>
       <th class="report-constructor-table-head-item">
-        <div class="flex-container">
-          <span class="report-constructor-table-head-item-text">Resource</span>
+        <div class="flex-container" (click)="changeSortOption('deliverables')">
+          <span class="report-constructor-table-head-item-text"
+            >Deliverables</span
+          >
           <ic-icon
             class="report-constructor-table-head-item-icon"
+            [style.transform]="
+              'rotate(' +
+              (selectedSort.columnName === 'deliverables' &&
+              selectedSort.ascendingSort
+                ? 180
+                : 0) +
+              'deg)'
+            "
             [icon]="sortDescendingIcon"
             width="1.5rem"
             height="1.5rem"
           ></ic-icon>
         </div>
       </th>
+      <th class="report-constructor-table-head-item">Resource</th>
       <th class="report-constructor-table-head-item">
-        <div class="flex-container">
+        <div class="flex-container" (click)="changeSortOption('hours spend')">
           <span class="report-constructor-table-head-item-text"
             >Hours spend</span
           >
           <ic-icon
             class="report-constructor-table-head-item-icon"
+            [style.transform]="
+              'rotate(' +
+              (selectedSort.columnName === 'hours spend' &&
+              selectedSort.ascendingSort
+                ? 180
+                : 0) +
+              'deg)'
+            "
             [icon]="sortDescendingIcon"
             width="1.5rem"
             height="1.5rem"
@@ -27,12 +45,20 @@
         </div>
       </th>
       <th class="report-constructor-table-head-item">
-        <div class="flex-container">
+        <div class="flex-container" (click)="changeSortOption('percentage')">
           <span class="report-constructor-table-head-item-text"
             >Percentage</span
           >
           <ic-icon
             class="report-constructor-table-head-item-icon"
+            [style.transform]="
+              'rotate(' +
+              (selectedSort.columnName === 'percentage' &&
+              selectedSort.ascendingSort
+                ? 180
+                : 0) +
+              'deg)'
+            "
             [icon]="sortDescendingIcon"
             width="1.5rem"
             height="1.5rem"
@@ -43,21 +69,29 @@
     </tr>
   </thead>
   <tbody class="report-constructor-table-body">
-    <tr>
+    <tr *ngFor="let infoItem of infoFromTaskTracksForTable">
       <td class="report-constructor-table-body-item">
-        <div class="flex-container">Create Dashboard</div>
+        {{ infoItem?.taskName }}
       </td>
       <td class="report-constructor-table-body-item">
-        <div class="flex-container">DWH developer</div>
+        <ng-container *ngFor="let userPosition of infoItem?.userPositions">
+          <div class="report-constructor-table-body-item-text">
+            {{ userPosition }}
+          </div>
+        </ng-container>
       </td>
       <td class="report-constructor-table-body-item">
-        <div class="flex-container">8</div>
+        {{ infoItem?.taskDuration }}
       </td>
       <td class="report-constructor-table-body-item">
-        <div class="flex-container">12%</div>
+        {{ infoItem?.taskPercentageWeek }}%
       </td>
       <td class="report-constructor-table-body-item">
-        <div class="flex-container">Martin Mango, 100%</div>
+        <ng-container *ngFor="let userName of infoItem?.userNames">
+          <div class="report-constructor-table-body-item-text">
+            {{ userName }}
+          </div>
+        </ng-container>
       </td>
     </tr>
   </tbody>

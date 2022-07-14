@@ -5,8 +5,14 @@
   .flex-container {
     @include flex(center, center);
 
+    cursor: pointer;
+
     &:hover .report-constructor-table-head-item-text {
       transform: scale(1.05);
+    }
+
+    &:hover .report-constructor-table-head-item-icon {
+      transform: scale(1.1);
     }
   }
 
@@ -25,10 +31,12 @@
         height: 3rem;
         width: 16rem;
 
-        cursor: pointer;
-
         &-text {
-          margin-right: 4rem;
+          margin-right: var(--offset);
+        }
+
+        &-icon {
+          padding-top: var(--offset-xs);
         }
       }
     }
@@ -37,7 +45,14 @@
       height: 3rem;
 
       &-item {
+        padding: var(--offset) 0;
+        text-align: center;
         font: var(--font-current);
+
+        &-text {
+          text-align: center;
+          font: var(--font-current);
+        }
       }
     }
   }

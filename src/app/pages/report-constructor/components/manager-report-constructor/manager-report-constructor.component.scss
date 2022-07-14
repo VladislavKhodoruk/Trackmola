@@ -38,6 +38,7 @@
 
   .report-constructor-navigation {
     margin-right: var(--offset-m);
+    margin-bottom: var(--offset-l);
     @include flex(center, space-between);
 
     &-select {
