@@ -1,8 +1,13 @@
 import { HOURS_IN_DAY } from '@pages/activity/constants/constants';
 import { RestHours } from '@pages/activity/enums/enums';
-import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
-import { SeriesOptionsType } from 'highcharts';
+import {
+  Tas,
+  TotalCardItem,
+  WeekType,
+} from '@pages/activity/interfaces/interfaces';
+import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
+import { SeriesOptionsType } from 'highcharts';
 
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);
@@ -105,9 +110,61 @@ export const getTotalCardItem = (
   return totalCardItem;
 };
 
+export function getProjectNameAndColor(id: string, projects: Project[]) {
+  return projects.filter((project) => project.id === id);
+}
+
+export function searchInWeek(id: string, week: WeekType) {
+  return Object.values(week).map((day: [] | Tas[]) => {
+    if (day.length === 0) {
+      return 0;
+    }
+    if (day.length > 0) {
+      const same = day
+        .filter((i: Tas) => i.projectId === id)
+        .map((i) => i.duration);
+      if (same.length === 0) {
+        return 0;
+      }
+      if (same.length === 1) {
+        return same[0];
+      }
+    }
+  });
+}
 export function getDataForChart(
   tasks: TaskTrack[],
   projects: Project[]
 ): SeriesOptionsType[] {
-  return [];
+  const tas = tasks.map(
+    (task): Tas => ({
+      projectId: getProjectNameAndColor(task.projectId, projects)[0].name,
+      projectColor: getProjectNameAndColor(task.projectId, projects)[0].color,
+      duration: task.duration,
+      date: task.date.toDate(),
+    })
+  );
+  tas.sort((a, b) => a.date.getTime() - b.date.getTime());
+  const week: WeekType = {
+    MON: [],
+    TUE: [],
+    WED: [],
+    THU: [],
+    FRI: [],
+    SAT: [],
+    SUN: [],
+  };
+  tas.map((task) => {
+    const day = SHORT_NAMES_OF_THE_WEEK_UPPERCASE[task.date.getDay() - 1];
+    week[day] = [...week[day], task];
+  });
+
+  const proj = tas.map((i) => i.projectId);
+  const without = proj.filter((item, index) => proj.indexOf(item) === index);
+  const currentType = without.map((project) => ({
+    type: 'column',
+    name: project,
+    data: searchInWeek(project, week),
+  }));
+  return currentType as SeriesOptionsType[];
 }
