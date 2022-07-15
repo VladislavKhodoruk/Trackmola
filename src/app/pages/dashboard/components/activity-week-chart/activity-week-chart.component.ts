@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SeriesOptionsType } from 'highcharts';
 
 import { BASIC_ACTIVITY_CHART_DASHBOARD_PAGE } from '@pages/dashboard/constants/constants';
@@ -7,6 +7,7 @@ import { BASIC_ACTIVITY_CHART_DASHBOARD_PAGE } from '@pages/dashboard/constants/
   selector: 'app-activity-week-chart-component',
   templateUrl: 'activity-week-chart.component.html',
   styleUrls: ['activity-week-chart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActivityWeekChartComponent {
   basicOptions = BASIC_ACTIVITY_CHART_DASHBOARD_PAGE;
