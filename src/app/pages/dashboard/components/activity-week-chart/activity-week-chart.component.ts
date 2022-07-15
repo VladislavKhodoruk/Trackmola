@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Options, SeriesOptionsType } from 'highcharts';
+import { SeriesOptionsType } from 'highcharts';
 
 import { BASIC_ACTIVITY_CHART_DASHBOARD_PAGE } from '@pages/dashboard/constants/constants';
 

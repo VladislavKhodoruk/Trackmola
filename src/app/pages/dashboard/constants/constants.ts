@@ -1,16 +1,8 @@
+import { NAMES_OF_THE_DAYS_OF_THE_WEEK } from '@shared/constants/constants';
+
 export const DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK = 40;
 
 export const MAX_VALUE_WEEK_REPORT_TIME = 100;
-
-export const SHORT_NAMES_OF_THE_WEEK_UPPERCASE = [
-  'MON',
-  'TUE',
-  'WED',
-  'THU',
-  'FRI',
-  'SAT',
-  'SUN',
-];
 
 export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
   chart: {
@@ -37,7 +29,9 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
     y: 40,
   },
   xAxis: {
-    categories: SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
+    categories: NAMES_OF_THE_DAYS_OF_THE_WEEK.map((i) =>
+      i.slice(0, 3).toUpperCase()
+    ),
     crosshair: true,
     gridLineDashStyle: null,
     gridLineWidth: 0,
