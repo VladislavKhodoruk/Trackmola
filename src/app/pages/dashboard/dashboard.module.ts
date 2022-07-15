@@ -19,14 +19,12 @@ import { DashboardReducer } from './store/dashboard.reducer';
 import { DASHBOARD_STATE_NAME } from './store/dashboard.selectors';
 
 import { ActiveTasksListModule } from '@pages/dashboard/components/active-tasks-list/active-tasks-list-module';
+import { ActivityWeekChartComponent } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.component';
+import { ActivityWeekChartContainer } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.container';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
-import {
-  ActivityWeekChartContainer
-} from "@pages/dashboard/components/activity-week-chart/activity-week-chart.container";
-import {
-  ActivityWeekChartComponent
-} from "@pages/dashboard/components/activity-week-chart/activity-week-chart.component";
-import { HighchartsChartModule } from "@shared/components/highcharts-chart/highcharts-chart.module";
+import { ClockModule } from '@shared/components/clock/clock.module';
+import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
+import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +46,9 @@ import { HighchartsChartModule } from "@shared/components/highcharts-chart/highc
     StoreModule.forFeature(DASHBOARD_STATE_NAME, DashboardReducer),
     RouterModule.forChild(DashboardRoutes),
     CalendarModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    TodayViewModule,
+    ClockModule,
   ],
   exports: [RouterModule],
   providers: [],

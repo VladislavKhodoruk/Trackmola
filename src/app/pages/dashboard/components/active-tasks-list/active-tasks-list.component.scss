@@ -7,9 +7,9 @@
   }
 
   .active-tasks {
-    margin: 0 0 var(--offset-d) var(--offset-m);
+    margin: var(--offset-s) 0;
 
-    font: var(--font-titleBig);
+    font: var(--font-title);
   }
 
   ::-webkit-scrollbar-thumb {

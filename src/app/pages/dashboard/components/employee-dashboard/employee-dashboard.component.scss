@@ -2,9 +2,51 @@
 @import "mixins";
 
 :host {
+  .dashboard-header {
+    @include flex(center, space-between);
+    margin-bottom: var(--offset-m);
+
+    &-title {
+      font: var(--font-titleBig);
+    }
+
+    &-date {
+      font: var(--font-title);
+    }
+
+    &-time {
+      @include flex(flex-start, flex-start, var(--offset-m));
+      margin: var(--offset-m);
+    }
+  }
+
+  .dashboard {
+    &-main {
+      @include flex(flex-start, flex-start, var(--offset-l));
+    }
+
+    &-clock {
+      padding: var(--offset-xs);
+
+      background-color: var(--background);
+      border-radius: var(--border-radius);
+    }
+
+    &-charts {
+      @include flex(flex-start, flex-start, var(--offset-l));
+      margin: var(--offset);
+    }
+
+    &-todayview {
+      @include flex(stretch, flex-start);
+      align-content: stretch;
+
+      min-width: 30rem;
+      min-height: 30rem;
+    }
+  }
+
   .working-hours {
-    width: 32rem;
-    height: 28rem;
     padding: var(--offset) var(--offset-l);
 
     border: $border-input;
