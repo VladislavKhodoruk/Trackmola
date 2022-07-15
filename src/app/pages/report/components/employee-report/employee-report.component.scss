@@ -5,10 +5,12 @@
     @include flex(flex-start, flex-start, var(--offset-l));
     flex-direction: column;
 
+    height: 100%;
     margin-right: var(--offset-xm);
 
     &-header {
       @include flex(center, space-between);
+
       width: 100%;
 
       &-title {
@@ -35,6 +37,7 @@
 
   .top {
     width: 100%;
+    height: 36%;
   }
 
   .tasks-row {
@@ -42,5 +45,6 @@
     gap: var(--offset-l);
 
     width: 100%;
+    height: 66%;
   }
 }
