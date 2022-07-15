@@ -1,15 +1,5 @@
 @import "mixins";
 
-::ng-deep {
-  .highcharts-legend-item .highcharts-point {
-    transform: translate(calc(var(--offset-d) * -1), 3px);
-  }
-
-  .highcharts-legend-item:hover {
-    cursor: pointer;
-  }
-}
-
 :host {
   .projects-activity {
     @include flex(flex-start, flex-start, var(--offset-l));
@@ -30,5 +20,15 @@
       width: 100%;
       height: 100%;
     }
+  }
+}
+
+::ng-deep {
+  .highcharts-legend-item .highcharts-point {
+    transform: translate(calc(var(--offset-d) * -1), 3px);
+  }
+
+  .highcharts-legend-item:hover {
+    cursor: pointer;
   }
 }

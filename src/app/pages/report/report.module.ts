@@ -12,7 +12,6 @@ import { CtoReportComponent } from './components/cto-report/cto-report.component
 import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
 import { ManagerReportComponent } from './components/manager-report/manager-report.component';
 
-import { ReportInputModule } from './components/report-input/report-input.module';
 import { ReportComponent } from './layout/report.component';
 import { ReportContainer } from './layout/report.container';
 import { ReportRoutes } from './report.router';
@@ -24,6 +23,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
 import { NavigationCalendarModule } from '@shared/components/navigatinon-calendar/navigation-calendar.module';
 
+import { ReportInputModule } from '@shared/components/report-input/report-input.module';
 import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 
 @NgModule({
