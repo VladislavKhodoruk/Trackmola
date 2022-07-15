@@ -11,5 +11,8 @@
       <div class="tooltip-text">{{ day.duration }}h</div>
     </div>
   </div>
-  <div class="calendar-number">{{ day.value | date: "d" }}</div>
+  <div class="calendar-clock-and-number">
+    <app-clock *ngIf="day.value === todayDate"></app-clock>
+    <div class="calendar-number">{{ day.value | date: "d" }}</div>
+  </div>
 </div>

@@ -90,6 +90,15 @@ export interface SelectOptions {
   value: string;
   viewValue: string;
 }
+export interface ActiveTasks {
+  projectName: string;
+  projectColor: string;
+  taskName: string;
+  status: string | null;
+  date?: Date;
+  usersPhotos: string[];
+}
+
 export interface GroupBy<T> {
   [key: string]: T;
 }

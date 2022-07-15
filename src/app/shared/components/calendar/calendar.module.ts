@@ -5,9 +5,11 @@ import { CalendarItemComponent } from './components/calendar-item/calendar-item.
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarContainer } from './components/calendar/calendar.container';
 
+import { ClockModule } from '../clock/clock.module';
+
 @NgModule({
   declarations: [CalendarComponent, CalendarContainer, CalendarItemComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, ClockModule],
   exports: [CalendarContainer],
 })
 export class CalendarModule {}
