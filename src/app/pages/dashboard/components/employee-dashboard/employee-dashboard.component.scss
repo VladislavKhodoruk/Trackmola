@@ -25,4 +25,10 @@
     width: 59rem;
     margin-bottom: var(--offset-m);
   }
+
+  ::ng-deep {
+    .highcharts-credits {
+      display: none;
+    }
+  }
 }
