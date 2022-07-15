@@ -1,0 +1,77 @@
+@import "mixins";
+
+:host {
+  .task-wrappeer {
+    display: grid;
+    grid-gap: var(--offset);
+    grid-template-columns: 10rem 28rem 8.2rem 1fr 2rem;
+
+    max-width: 59rem;
+    margin-bottom: var(--offset);
+    padding: var(--offset-d) var(--offset);
+
+    border: var(--offset-xxs) solid var(--gray);
+    border-radius: var(--offset-s);
+
+    .project-name-wrapper {
+      @include flex(center, flex-start, 1.25rem);
+    }
+
+    .project-name {
+      overflow: hidden;
+      display: inline-block;
+
+      max-width: 10rem;
+      padding: 0 var(--offset-b);
+
+      font: var(--font-calendar);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      object-fit: contain;
+      border: 0.2rem solid var(--rose);
+      border-radius: var(--offset-m);
+    }
+
+    .task-name {
+      transform: translateY(var(--offset-xs));
+
+      overflow: hidden;
+
+      font: var(--font-calendar);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .task-status {
+      @include flex(center, space-evenly);
+      position: relative;
+
+      max-height: var(--offset-ml);
+
+      font: var(--font-buttonSmall);
+      color: var(--primary);
+
+      border: var(--border-xxs) solid var(--primary);
+      border-radius: var(--offset-m);
+    }
+
+    .hidden {
+      opacity: 0;
+    }
+
+    app-users-photos {
+      position: relative;
+      transform: translateY(var(--border-m));
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .button-add-to-report {
+      transform: translateY(0.2rem);
+    }
+  }
+}
