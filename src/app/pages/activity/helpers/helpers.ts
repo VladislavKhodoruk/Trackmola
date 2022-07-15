@@ -1,14 +1,6 @@
-import { SeriesOptionsType } from 'highcharts';
-
 import { HOURS_IN_DAY } from '@pages/activity/constants/constants';
 import { RestHours } from '@pages/activity/enums/enums';
-import {
-  ModifiedTask,
-  TotalCardItem,
-  WeekType,
-} from '@pages/activity/interfaces/interfaces';
-import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
-import { Project, TaskTrack } from '@shared/interfaces/interfaces';
+import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
 
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);

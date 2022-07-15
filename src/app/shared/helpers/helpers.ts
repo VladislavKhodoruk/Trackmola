@@ -1,7 +1,8 @@
-import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
-import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
 import { SeriesOptionsType } from 'highcharts';
+
+import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
 import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
+import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: 'week' | 'month'): Period {
   switch (type) {
