@@ -36,8 +36,8 @@ export const getWeekReportTime = createSelector(
       .filter(
         (taskTrack) =>
           taskTrack.userId === localStorage.getItem('AuthUserId') &&
-          taskTrack.date.seconds * 1000 > period.start &&
-          taskTrack.date.seconds * 1000 < period.end
+          taskTrack.date.seconds * 1000 >= period.start &&
+          taskTrack.date.seconds * 1000 <= period.end
       )
       .reduce((result, item) => (result += item.duration), 0)
 );

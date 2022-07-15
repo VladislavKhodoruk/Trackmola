@@ -5,6 +5,7 @@ import {
 } from '../interfaces/interfaces';
 
 import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
+import { NumDay } from '@shared/enums/enum';
 import { Period, Task, TaskTrack, User } from '@shared/interfaces/interfaces';
 
 export function getInfoFromTaskTracks(
@@ -80,10 +81,7 @@ export function getWorksCustomPeriodHours(period: Period): number {
         i
       ).getDay()
     ) {
-      case 0: {
-        break;
-      }
-      case 6: {
+      case NumDay.Saturday || NumDay.Sunday: {
         break;
       }
       default: {
@@ -102,26 +100,18 @@ export function getSortInfoReportConstructor(
 ): InfoFromTaskTracksForTable[] {
   switch (columnType) {
     case 'string':
-      if (selectedSort.ascendingSort) {
-        infoItem.sort((a, b) =>
-          a[selectedSort.columnName] > b[selectedSort.columnName] ? 1 : -1
-        );
-        return;
-      }
       infoItem.sort((a, b) =>
-        a[selectedSort.columnName] < b[selectedSort.columnName] ? 1 : -1
+        a[selectedSort.columnName] > b[selectedSort.columnName] &&
+        selectedSort.ascendingSort
+          ? 1
+          : -1
       );
       return infoItem;
     case 'number':
-      if (selectedSort.ascendingSort) {
-        infoItem.sort(
-          (a, b) => a[selectedSort.columnName] - b[selectedSort.columnName]
-        );
-        return;
-      }
-      infoItem.sort(
-        (a, b) => b[selectedSort.columnName] - a[selectedSort.columnName]
+      infoItem.sort((a, b) =>
+        selectedSort.ascendingSort
+          ? a[selectedSort.columnName] - b[selectedSort.columnName]
+          : b[selectedSort.columnName] - a[selectedSort.columnName]
       );
-      return infoItem;
   }
 }
