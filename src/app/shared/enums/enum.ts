@@ -34,3 +34,9 @@ export enum NumDay {
   Friday = 5,
   Saturday = 6,
 }
+
+export enum PeriodType {
+  Week = 'week',
+  Month = 'month',
+  Custom = 'custom',
+}

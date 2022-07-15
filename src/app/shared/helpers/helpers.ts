@@ -1,8 +1,9 @@
+import { PeriodType } from '@shared/enums/enum';
 import { Period } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: string): Period {
   switch (type) {
-    case 'week': {
+    case PeriodType.Week: {
       const dayOfWeek = date.getDay();
       const startDay = date.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
       const startDate = new Date(date.getFullYear(), date.getMonth(), startDay);
@@ -20,7 +21,7 @@ export function getPeriod(date: Date, type?: string): Period {
         end: endDate.getTime(),
       };
     }
-    case 'month': {
+    case PeriodType.Month: {
       const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
       endDate.setHours(23);
       endDate.setMinutes(59);

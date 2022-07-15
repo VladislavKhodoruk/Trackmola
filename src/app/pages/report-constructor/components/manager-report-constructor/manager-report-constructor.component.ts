@@ -19,6 +19,7 @@ import {
 } from '@pages/report-constructor/helpers/helpers';
 import { InfoReportConstructorItem } from '@pages/report-constructor/interfaces/interfaces';
 import { DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK } from '@shared/constants/constants';
+import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
 import {
   Period,
@@ -47,13 +48,13 @@ export class ManagerReportConstructorComponent implements OnChanges {
   @Output() changeStoreProjectId: EventEmitter<string> =
     new EventEmitter<string>();
 
-  labels = ['week', 'month', 'custom'];
+  labels = [...Object.values(PeriodType)];
 
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
   infoFromTaskTracks: InfoReportConstructorItem[];
 
-  periodType = 'week';
+  periodType: string = PeriodType.Week;
 
   readonly checksIcon: IconifyIcon = checksIcon;
   readonly fileXlsIcon: IconifyIcon = fileXls;
@@ -74,7 +75,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
       this.taskTracks,
       this.users,
       this.tasks,
-      this.periodType === 'week'
+      this.periodType === PeriodType.Week
         ? DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK
         : getWorksCustomPeriodHours(this.period)
     );
@@ -93,8 +94,8 @@ export class ManagerReportConstructorComponent implements OnChanges {
     this.periodType = type;
 
     this.period =
-      this.periodType === 'custom'
-        ? getPeriod(new Date(), 'week')
+      this.periodType === PeriodType.Custom
+        ? getPeriod(new Date(), PeriodType.Week)
         : getPeriod(new Date(), this.periodType);
 
     this.getFirstandLastDay(this.period);

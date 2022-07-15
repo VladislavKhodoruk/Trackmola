@@ -71,7 +71,7 @@ export function getWorksCustomPeriodHours(period: Period): number {
   let workCustomHours = 0;
   for (
     let i = new Date(period.start).getDate();
-    i <= new Date(period.end).getDate();
+    i < new Date(period.end).getDate();
     i++
   ) {
     switch (

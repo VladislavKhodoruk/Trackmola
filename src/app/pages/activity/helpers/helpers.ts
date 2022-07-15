@@ -1,6 +1,7 @@
 import { HOURS_IN_DAY } from '@pages/activity/constants/constants';
 import { RestHours } from '@pages/activity/enums/enums';
 import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
+import { PeriodType } from '@shared/enums/enum';
 
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);
@@ -11,14 +12,14 @@ export function setMidnightTime(date: Date) {
   return currentDate;
 }
 
-export function getRestTime(type?: 'week' | 'month'): number {
+export function getRestTime(type?: string): number {
   const date = new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
     new Date().getDate()
   );
   switch (type) {
-    case 'week': {
+    case PeriodType.Week: {
       switch (date.getDay()) {
         case 0: {
           return RestHours.Week;
@@ -31,7 +32,7 @@ export function getRestTime(type?: 'week' | 'month'): number {
         }
       }
     }
-    case 'month': {
+    case PeriodType.Month: {
       let restMonthHours = 0;
       for (let i = 1; i <= date.getDate(); i++) {
         switch (new Date(date.getFullYear(), date.getMonth(), i).getDay()) {

@@ -10,6 +10,7 @@ import arrowNarrowLeft from '@iconify/icons-tabler/arrow-narrow-left';
 import arrowNarrowRight from '@iconify/icons-tabler/arrow-narrow-right';
 
 import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
+import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
 import { Period } from '@shared/interfaces/interfaces';
 
@@ -19,7 +20,7 @@ import { Period } from '@shared/interfaces/interfaces';
   styleUrls: ['./date-switch.component.scss'],
 })
 export class DateSwitchComponent implements OnChanges {
-  @Input() period: 'week' | 'month' = 'week';
+  @Input() period: PeriodType.Week | PeriodType.Month = PeriodType.Week;
   @Input() date: Date = new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
@@ -44,7 +45,7 @@ export class DateSwitchComponent implements OnChanges {
 
   previousPeriod() {
     switch (this.period) {
-      case 'week': {
+      case PeriodType.Week: {
         this.firstDay -= ONE_WEEK_IN_SECONDS;
         this.lastDay -= ONE_WEEK_IN_SECONDS;
         const firstandLastDay = {
@@ -54,7 +55,7 @@ export class DateSwitchComponent implements OnChanges {
         this.firstandLastDay = firstandLastDay;
         break;
       }
-      case 'month': {
+      case PeriodType.Month: {
         this.date = new Date(
           new Date(this.firstDay).getFullYear(),
           new Date(this.firstDay).getMonth() - 1
@@ -70,7 +71,7 @@ export class DateSwitchComponent implements OnChanges {
 
   nextPeriod() {
     switch (this.period) {
-      case 'week': {
+      case PeriodType.Week: {
         this.firstDay += ONE_WEEK_IN_SECONDS;
         this.lastDay += ONE_WEEK_IN_SECONDS;
         const firstandLastDay = {
@@ -80,7 +81,7 @@ export class DateSwitchComponent implements OnChanges {
         this.firstandLastDay = firstandLastDay;
         break;
       }
-      case 'month': {
+      case PeriodType.Month: {
         this.date = new Date(
           new Date(this.firstDay).getFullYear(),
           new Date(this.firstDay).getMonth() + 1
