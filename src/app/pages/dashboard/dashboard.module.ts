@@ -19,9 +19,9 @@ import { DashboardReducer } from './store/dashboard.reducer';
 import { DASHBOARD_STATE_NAME } from './store/dashboard.selectors';
 
 import { ActiveTasksListModule } from '@pages/dashboard/components/active-tasks-list/active-tasks-list-module';
-import { CalendarModule } from '@shared/components/calendar/calendar.module';
-import { ActivityWeekChartContainer } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.container';
 import { ActivityWeekChartComponent } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.component';
+import { ActivityWeekChartContainer } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.container';
+import { CalendarModule } from '@shared/components/calendar/calendar.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 
 @NgModule({
