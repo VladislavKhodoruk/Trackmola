@@ -1,0 +1,29 @@
+<article class="task-wrappeer">
+  <div class="project-name-wrapper">
+    <p class="project-name" [style.border-color]="currentTask.projectColor">
+      {{ currentTask.projectName }}
+    </p>
+  </div>
+  <p class="task-name">{{ currentTask.taskName }}</p>
+  <div [class.task-status]="currentTask.status">
+    <img
+      src="assets/img/activity/tick.svg"
+      [class.hidden]="!currentTask.status"
+      alt="tick"
+    />
+    <p>{{ currentTask.status }}</p>
+  </div>
+  <app-users-photos
+    *ngIf="currentTask.usersPhotos"
+    [users]="currentTask.usersPhotos"
+    size="2"
+  ></app-users-photos>
+  <app-button
+    class="form-report-footer-voice"
+    [buttonClass]="'button-primary button-xs'"
+    type="button"
+    [icon]="clipButton"
+    iconWidth="1.5rem"
+    iconHeight="1.5rem"
+  ></app-button>
+</article>
