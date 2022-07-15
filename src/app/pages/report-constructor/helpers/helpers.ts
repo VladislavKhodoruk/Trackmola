@@ -74,20 +74,19 @@ export function getWorksCustomPeriodHours(period: Period): number {
     i < new Date(period.end).getDate();
     i++
   ) {
-    switch (
+    if (
       new Date(
         new Date(period.start).getFullYear(),
         new Date(period.start).getMonth(),
         i
-      ).getDay()
+      ).getDay() !== NumDay.Saturday &&
+      new Date(
+        new Date(period.start).getFullYear(),
+        new Date(period.start).getMonth(),
+        i
+      ).getDay() !== NumDay.Sunday
     ) {
-      case NumDay.Saturday || NumDay.Sunday: {
-        break;
-      }
-      default: {
-        workCustomHours += MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY;
-        break;
-      }
+      workCustomHours += MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY;
     }
   }
   return workCustomHours;

@@ -1,6 +1,8 @@
 import { EventEmitter, Output, Component } from '@angular/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 
+import { PeriodType } from '@shared/enums/enum';
+
 import { getPeriod } from '@shared/helpers/helpers';
 import { Period } from '@shared/interfaces/interfaces';
 
@@ -25,11 +27,11 @@ export const MY_DATE_FORMATS = {
 export class DatepickerComponent {
   @Output() getFirstandLastDay: EventEmitter<Period> =
     new EventEmitter<Period>();
-  period = getPeriod(new Date(), 'week');
+  period: Period = getPeriod(new Date(), PeriodType.Week);
   start = new Date(this.period.start);
   end = new Date(this.period.end);
 
-  onGetFirstandLastDay(event) {
+  onGetFirstandLastDay(event): void {
     if (this.end) {
       const firstandLastDay = {
         start: this.start.getTime(),

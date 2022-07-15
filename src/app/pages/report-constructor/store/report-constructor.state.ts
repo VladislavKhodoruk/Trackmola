@@ -1,3 +1,4 @@
+import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
 import { Period } from '@shared/interfaces/interfaces';
 
@@ -7,5 +8,5 @@ export interface ReportConstructorState {
 }
 
 export const reportConstructorState: ReportConstructorState = {
-  period: getPeriod(new Date(), 'week'),
+  period: getPeriod(new Date(), PeriodType.Week),
 };

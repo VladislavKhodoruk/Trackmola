@@ -39,7 +39,9 @@
     </div>
     <div class="report-constructor-navigation-date-switch">
       <app-date-switch
-        *ngIf="periodType === 'week' || periodType === 'month'"
+        *ngIf="
+          periodType === TypePeriod.Week || periodType === TypePeriod.Month
+        "
         [date]="period.end"
         [period]="periodType"
         (getFirstandLastDay)="getFirstandLastDay($event)"

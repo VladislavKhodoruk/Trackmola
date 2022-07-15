@@ -38,7 +38,7 @@ import {
 })
 export class ManagerReportConstructorComponent implements OnChanges {
   @Input() projects: Project[];
-  @Input() period: Period = getPeriod(new Date(), 'week');
+  @Input() period: Period = getPeriod(new Date(), PeriodType.Week);
   @Input() taskTracks: TaskTrack[];
   @Input() users: User[];
   @Input() tasks: Task[];
@@ -48,13 +48,14 @@ export class ManagerReportConstructorComponent implements OnChanges {
   @Output() changeStoreProjectId: EventEmitter<string> =
     new EventEmitter<string>();
 
-  labels = [...Object.values(PeriodType)];
+  labels: string[] = [...Object.values(PeriodType)];
 
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
   infoFromTaskTracks: InfoReportConstructorItem[];
 
-  periodType: string = PeriodType.Week;
+  readonly TypePeriod = PeriodType;
+  periodType: PeriodType = PeriodType.Week;
 
   readonly checksIcon: IconifyIcon = checksIcon;
   readonly fileXlsIcon: IconifyIcon = fileXls;
@@ -90,7 +91,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
     this.changeStorePeriod.emit(period);
   }
 
-  changePeriod(type: string): void {
+  changePeriod(type: PeriodType): void {
     this.periodType = type;
 
     this.period =

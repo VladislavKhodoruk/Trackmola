@@ -1,7 +1,7 @@
 import { PeriodType } from '@shared/enums/enum';
 import { Period } from '@shared/interfaces/interfaces';
 
-export function getPeriod(date: Date, type?: string): Period {
+export function getPeriod(date: Date, type?: PeriodType): Period {
   switch (type) {
     case PeriodType.Week: {
       const dayOfWeek = date.getDay();
