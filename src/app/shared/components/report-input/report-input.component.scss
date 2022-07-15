@@ -1,12 +1,46 @@
 @import "vars/variables";
 @import "mixins";
 
+::ng-deep {
+  .cdk-overlay-pane {
+    width: 20.55rem !important;
+    margin-top: var(--offset-xs);
+    margin-left: -1.1rem;
+  }
+
+  .mat-autocomplete-panel {
+    max-height: 10rem !important;
+
+    background-color: var(--white);
+    border-radius: 0 0 var(--offset-d) var(--offset-d) !important;
+    box-shadow: $border-cdk-select !important;
+  }
+
+  .mat-option {
+    height: 2.5rem !important;
+
+    color: var(--gray2);
+
+    border: $border-input;
+
+    &:hover {
+      background-color: var(--white) !important;
+      box-shadow: $border-input-select;
+    }
+  }
+
+  .mat-selected {
+    color: var(--primary) !important;
+  }
+}
+
 :host {
   .form-report {
     position: relative;
 
     overflow: hidden;
 
+    height: 100%;
     padding: var(--offset-m);
 
     border: $border-form;
@@ -18,12 +52,14 @@
       bottom: 0;
       left: 0;
 
-      width: 20rem;
+      width: 23rem;
       height: 20rem;
     }
 
     &-container {
       display: flex;
+
+      height: 90%;
     }
 
     &-side {
@@ -102,6 +138,7 @@
       display: flex;
       flex-direction: column;
 
+      height: 15%;
       margin-bottom: var(--offset-sm);
 
       &-label {
@@ -145,7 +182,6 @@
 
     &-footer {
       @include flex(center, flex-end);
-      margin-top: var(--offset-m);
 
       &-voice {
         margin: 0 var(--offset-l);
@@ -155,7 +191,7 @@
 
   ::ng-deep {
     .mat-form-field {
-      width: 20.5rem;
+      width: 60%;
       margin-top: var(--offset-xs);
       margin-right: var(--offset);
       padding: var(--offset-d) var(--offset);
@@ -165,6 +201,8 @@
 
       border: $border-input;
       border-radius: var(--border-radius-m);
+
+      background-color: var(--white);
 
       &:hover {
         box-shadow: $border-input-select;
@@ -179,12 +217,12 @@
 
         transform: rotate(-90deg);
 
-        width: var(--offset-m);
-        height: var(--offset);
+        width: 1.5rem;
+        height: 1rem;
 
         svg {
-          width: var(--offset-m);
-          height: var(--offset-m);
+          width: 1.5rem;
+          height: 1.5rem;
           margin: auto;
 
           path {
@@ -226,7 +264,7 @@
     }
 
     .mat-slide-toggle-bar {
-      width: var(--offset-ml);
+      width: 3rem;
       height: 1.6rem;
 
       background-color: var(--primary-50);
@@ -247,7 +285,7 @@
     }
 
     .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
-      transform: translate3d(var(--offset-sm), 0, 0);
+      transform: translate3d(1.25rem, 0, 0);
     }
 
     .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {

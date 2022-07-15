@@ -31,9 +31,14 @@ export class TodayviewComponent implements OnChanges {
 
   maxDuration = 100;
   taskItems: TaskItem[];
+  taskItemsAreEmpty = true;
 
   ngOnChanges(): void {
     this.taskItems = this.createTaskItems();
+    this.taskItemsAreEmpty = false;
+    if (this.taskItems.length === 0) {
+      this.taskItemsAreEmpty = true;
+    }
   }
 
   editTaskTrack(id: string): void {
