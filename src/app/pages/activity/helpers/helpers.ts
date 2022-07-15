@@ -35,12 +35,12 @@ export function getRestTime(type?: PeriodType): number {
     case PeriodType.Month: {
       let restMonthHours = 0;
       for (let i = 1; i <= date.getDate(); i++) {
-        if (
-          new Date(date.getFullYear(), date.getMonth(), i).getDay() !==
-            NumDay.Sunday &&
-          new Date(date.getFullYear(), date.getMonth(), i).getDay() !==
-            NumDay.Saturday
-        ) {
+        const currentDate = new Date(
+          date.getFullYear(),
+          date.getMonth(),
+          i
+        ).getDay();
+        if (currentDate !== NumDay.Sunday && currentDate !== NumDay.Saturday) {
           restMonthHours += RestHours.Day;
         }
         restMonthHours += HOURS_IN_DAY;
@@ -59,12 +59,12 @@ export function getRestMonthDefaultHours(): number {
   let restMonthDefaultHours = 0;
   const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
   for (let i = 1; i <= endDate.getDate(); i++) {
-    if (
-      new Date(date.getFullYear(), date.getMonth(), i).getDay() !==
-        NumDay.Sunday &&
-      new Date(date.getFullYear(), date.getMonth(), i).getDay() !==
-        NumDay.Saturday
-    ) {
+    const currentDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      i
+    ).getDay();
+    if (currentDate !== NumDay.Sunday && currentDate !== NumDay.Saturday) {
       restMonthDefaultHours += RestHours.Day;
     }
     restMonthDefaultHours += HOURS_IN_DAY;
