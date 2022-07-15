@@ -14,7 +14,10 @@
   <section class="profile-visit-card">
     <ng-container *ngIf="userInfo">
       <div class="profile-avatar-container">
-        <img class="profile-avatar" src="{{ userInfo.photo }}" />
+        <img
+          class="profile-avatar"
+          src="{{ userInfo.photo || defaultPhoto }}"
+        />
       </div>
 
       <div class="profile-main-infos">
