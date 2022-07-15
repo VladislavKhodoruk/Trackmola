@@ -9,23 +9,30 @@
     margin-top: var(--offset);
     padding: var(--offset);
   }
+
+  .mat-content {
+    align-items: center;
+  }
 }
 
 :host {
   $width-scroll: var(--offset-s);
   $height-header: 4rem;
   $gap: var(--offset-m);
+  $gap-scroll: var(--offset);
 
   display: flex;
 
+  width: 100%;
+  max-width: 100%;
   max-height: 100%;
 
   .activeTasks {
     @include flex(flex-start, flex-start, #{$gap});
     flex-direction: column;
 
-    width: 43.5rem;
-    max-width: 43.5rem;
+    width: 100%;
+    max-width: 100%;
 
     &-header {
       @include flex(center, flex-start);
@@ -44,9 +51,10 @@
       overflow-y: scroll;
       flex-direction: column;
 
-      width: 100%;
-      max-width: 100%;
+      width: calc(100% + #{$width-scroll} + #{$gap-scroll});
+      max-width: calc(100% + #{$width-scroll} + #{$gap-scroll});
       max-height: calc(100% - #{$height-header} - #{$gap});
+      margin-right: calc((#{$width-scroll} * -1) + (#{$gap-scroll} * -1));
 
       background-color: var(--white);
 
@@ -62,7 +70,7 @@
       }
 
       &-item {
-        width: calc(100% - #{$width-scroll});
+        width: calc(100% - #{$gap-scroll});
       }
     }
   }
@@ -79,11 +87,14 @@
     }
 
     &-header {
+      width: 100%;
+      height: 100%;
       padding: 0;
 
       &-title {
         flex-grow: 0;
 
+        height: fit-content;
         margin-right: var(--offset);
         padding: 0 var(--offset-b);
 

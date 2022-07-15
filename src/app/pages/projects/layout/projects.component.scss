@@ -13,10 +13,13 @@
 
     flex-direction: column;
 
+    width: 100%;
+    max-width: 100%;
     max-height: 100%;
 
     &-header {
       @include flex(center, flex-start, var(--offset-sm));
+      width: 100%;
       max-height: #{$header-height};
 
       &-title {
@@ -44,7 +47,19 @@
 
     &-container {
       @include flex(flex-start, flex-start, var(--offset-ml));
+      width: 100%;
+      max-width: 100%;
       max-height: calc(100% - #{$header-height} - #{$gap});
+    }
+
+    &-team-and-vacations {
+      @include flex(flex-start, flex-start, var(--offset-m));
+      flex-direction: column;
+
+      width: 25%;
+      max-width: 25%;
+      height: calc(100% - var(--offset-m));
+      max-height: calc(100% - var(--offset-m));
     }
   }
 }
