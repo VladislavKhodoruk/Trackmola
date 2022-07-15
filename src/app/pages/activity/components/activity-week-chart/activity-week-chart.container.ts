@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -14,6 +14,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [activeTasks]="activityTasks$ | async"
     [projects]="allProjects$ | async"
   ></app-activity-week-chart-component>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActivityWeekChartContainer {
   readonly activityTasks$: Observable<TaskTrack[]> = this.store$.select(

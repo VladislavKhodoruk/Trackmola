@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Options, SeriesOptionsType } from 'highcharts';
 
 import { BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE } from '@pages/activity/constants/constants';
-import { getDataForChart } from '@pages/activity/helpers/helpers';
+import { getDataForChart } from '@shared/helpers/helpers';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -18,6 +18,8 @@ export class ActivityWeekChartComponent {
   basicOptions: Options = BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE;
 
   protected get seriesData(): SeriesOptionsType[] {
-    return getDataForChart(this.activeTasks, this.projects);
+    if (this.activeTasks && this.projects) {
+      return getDataForChart(this.activeTasks, this.projects);
+    }
   }
 }
