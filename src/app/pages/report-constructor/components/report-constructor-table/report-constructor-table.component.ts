@@ -6,13 +6,16 @@ import {
   OnChanges,
 } from '@angular/core';
 import sortDescending from '@iconify/icons-tabler/sort-descending';
+import { IconifyIcon } from '@iconify/types';
 
 import { getSortInfoReportConstructor } from '@pages/report-constructor/helpers/helpers';
+
 import {
   InfoFromTaskTracksForTable,
   InfoReportConstructorItem,
   SortOption,
 } from '@pages/report-constructor/interfaces/interfaces';
+import { TableHeadItem } from '@pages/report-constructor/models/models';
 
 @Component({
   selector: 'app-report-constructor-table',
@@ -22,31 +25,34 @@ import {
 })
 export class ReportConstructorTableComponent implements OnChanges {
   @Input() infoFromTaskTracks: InfoReportConstructorItem[];
-  sortDescendingIcon = sortDescending;
+  sortDescendingIcon: IconifyIcon = sortDescending;
   infoFromTaskTracksForTable: InfoFromTaskTracksForTable[];
 
+  tableHeadItems = [
+    new TableHeadItem('deliverables', 'taskName', 'string', true),
+    new TableHeadItem('resource', 'userPositions', 'string', false),
+    new TableHeadItem('hours spend', 'taskDuration', 'number', true),
+    new TableHeadItem('percentage', 'taskPercentageWeek', 'number', true),
+    new TableHeadItem('team', 'userNames', 'string', false),
+  ];
+
   selectedSort: SortOption = {
-    columnName: 'deliverables',
+    columnName: 'taskName',
     ascendingSort: true,
   };
 
   constructor(private ref: ChangeDetectorRef) {}
 
   ngOnChanges(): void {
-    this.infoFromTaskTracks.sort((a, b) => {
-      if (a.taskName < b.taskName) {
-        return -1;
-      }
-      if (a.taskName > b.taskName) {
-        return 1;
-      }
-    });
+    this.infoFromTaskTracks.sort((a, b) =>
+      a[this.selectedSort.columnName] > b[this.selectedSort.columnName] ? 1 : -1
+    );
     this.setTableFields();
   }
 
-  setTableFields() {
-    this.infoFromTaskTracksForTable = this.infoFromTaskTracks
-      .map((infoFromTaskTrack) => {
+  setTableFields(): void {
+    this.infoFromTaskTracksForTable = this.infoFromTaskTracks.flatMap(
+      (infoFromTaskTrack) => {
         const userNames = infoFromTaskTrack.usersInfo.map(
           (track) =>
             `${track.userName} ${track.userPercentageAllDurationTask} %`
@@ -62,69 +68,22 @@ export class ReportConstructorTableComponent implements OnChanges {
           userNames: userNames,
           userPositions: userPositions,
         };
-      })
-      .flat();
+      }
+    );
   }
 
-  changeSortOption(sortOption: string) {
-    switch (sortOption) {
-      case 'deliverables':
-        if (this.selectedSort.columnName === 'deliverables') {
-          this.selectedSort.ascendingSort = !this.selectedSort.ascendingSort;
-          getSortInfoReportConstructor(
-            this.infoFromTaskTracksForTable,
-            this.selectedSort
-          );
-          return;
-        }
-        if (this.selectedSort.columnName !== 'deliverables') {
-          this.selectedSort.columnName = 'deliverables';
-          this.selectedSort.ascendingSort = true;
-          getSortInfoReportConstructor(
-            this.infoFromTaskTracksForTable,
-            this.selectedSort
-          );
-          return;
-        }
-        break;
-      case 'hours spend':
-        if (this.selectedSort.columnName === 'hours spend') {
-          this.selectedSort.ascendingSort = !this.selectedSort.ascendingSort;
-          getSortInfoReportConstructor(
-            this.infoFromTaskTracksForTable,
-            this.selectedSort
-          );
-          return;
-        }
-        if (this.selectedSort.columnName !== 'hours spend') {
-          this.selectedSort.columnName = 'hours spend';
-          this.selectedSort.ascendingSort = true;
-          getSortInfoReportConstructor(
-            this.infoFromTaskTracksForTable,
-            this.selectedSort
-          );
-          return;
-        }
-        break;
-      case 'percentage':
-        if (this.selectedSort.columnName === 'percentage') {
-          this.selectedSort.ascendingSort = !this.selectedSort.ascendingSort;
-          getSortInfoReportConstructor(
-            this.infoFromTaskTracksForTable,
-            this.selectedSort
-          );
-          return;
-        }
-        if (this.selectedSort.columnName !== 'percentage') {
-          this.selectedSort.columnName = 'percentage';
-          this.selectedSort.ascendingSort = true;
-          getSortInfoReportConstructor(
-            this.infoFromTaskTracksForTable,
-            this.selectedSort
-          );
-          return;
-        }
-        break;
-    }
+  changeSortOption(columnName: string, columnType: string) {
+    this.selectedSort.ascendingSort =
+      this.selectedSort.columnName === columnName
+        ? !this.selectedSort.ascendingSort
+        : true;
+
+    this.selectedSort.columnName = columnName;
+
+    getSortInfoReportConstructor(
+      this.infoFromTaskTracksForTable,
+      this.selectedSort,
+      columnType
+    );
   }
 }

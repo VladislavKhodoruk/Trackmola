@@ -11,6 +11,7 @@ import fileXls from '@iconify-icons/ph/file-xls.js';
 import chartBar from '@iconify/icons-tabler/chart-bar';
 import checksIcon from '@iconify/icons-tabler/checks';
 import templateIcon from '@iconify/icons-tabler/template';
+import { IconifyIcon } from '@iconify/types';
 
 import {
   getInfoFromTaskTracks,
@@ -36,13 +37,17 @@ import {
 })
 export class ManagerReportConstructorComponent implements OnChanges {
   @Input() projects: Project[];
-  @Input() period = getPeriod(new Date(), 'week');
+  @Input() period: Period = getPeriod(new Date(), 'week');
   @Input() taskTracks: TaskTrack[];
   @Input() users: User[];
   @Input() tasks: Task[];
 
-  @Output() changeStorePeriod = new EventEmitter();
-  @Output() changeStoreProjectId = new EventEmitter();
+  @Output() changeStorePeriod: EventEmitter<Period> =
+    new EventEmitter<Period>();
+  @Output() changeStoreProjectId: EventEmitter<string> =
+    new EventEmitter<string>();
+
+  labels = ['week', 'month', 'custom'];
 
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
@@ -50,10 +55,10 @@ export class ManagerReportConstructorComponent implements OnChanges {
 
   periodType = 'week';
 
-  checksIcon = checksIcon;
-  fileXlsIcon = fileXls;
-  templateIcon = templateIcon;
-  chartBarIcon = chartBar;
+  readonly checksIcon: IconifyIcon = checksIcon;
+  readonly fileXlsIcon: IconifyIcon = fileXls;
+  readonly templateIcon: IconifyIcon = templateIcon;
+  readonly chartBarIcon: IconifyIcon = chartBar;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.projects && this.projects) {
@@ -64,52 +69,34 @@ export class ManagerReportConstructorComponent implements OnChanges {
       this.currentProjectId = this.selectProjectOptions[0]?.value;
       this.getSelectedValue(this.currentProjectId);
     }
-    switch (this.periodType) {
-      case 'week':
-        this.infoFromTaskTracks = getInfoFromTaskTracks(
-          this.taskTracks,
-          this.users,
-          this.tasks,
-          DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK
-        );
-        break;
-      case 'month':
-        this.infoFromTaskTracks = getInfoFromTaskTracks(
-          this.taskTracks,
-          this.users,
-          this.tasks,
-          getWorksCustomPeriodHours(this.period)
-        );
-        break;
-      case 'custom':
-        this.infoFromTaskTracks = getInfoFromTaskTracks(
-          this.taskTracks,
-          this.users,
-          this.tasks,
-          getWorksCustomPeriodHours(this.period)
-        );
-        break;
-    }
+
+    this.infoFromTaskTracks = getInfoFromTaskTracks(
+      this.taskTracks,
+      this.users,
+      this.tasks,
+      this.periodType === 'week'
+        ? DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK
+        : getWorksCustomPeriodHours(this.period)
+    );
   }
 
-  getSelectedValue(currentProjectId: string) {
+  getSelectedValue(currentProjectId: string): void {
     this.changeStoreProjectId.emit(currentProjectId);
   }
 
-  getFirstandLastDay(period: Period) {
+  getFirstandLastDay(period: Period): void {
     this.period = period;
     this.changeStorePeriod.emit(period);
   }
 
-  changePeriod(type: string) {
+  changePeriod(type: string): void {
     this.periodType = type;
 
-    if (this.periodType === 'custom') {
-      this.period = getPeriod(new Date(), 'week');
-      this.getFirstandLastDay(this.period);
-      return;
-    }
-    this.period = getPeriod(new Date(), this.periodType);
+    this.period =
+      this.periodType === 'custom'
+        ? getPeriod(new Date(), 'week')
+        : getPeriod(new Date(), this.periodType);
+
     this.getFirstandLastDay(this.period);
   }
 }

@@ -27,6 +27,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { DateSwitchModule } from '@shared/components/date-switch/date-switch.module';
 import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
 import { SelectModule } from '@shared/components/select/select.module';
+import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { SelectModule } from '@shared/components/select/select.module';
     ),
     RouterModule.forChild(ReportConstructorRoutes),
     ButtonModule,
+    ToggleButtonsModule,
     IconModule,
     SelectModule,
     DateSwitchModule,

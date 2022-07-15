@@ -39,11 +39,11 @@ export class ManagerReportConstructorContainer {
 
   constructor(private store$: Store<TrackMolaState>) {}
 
-  changePeriod(period: Period) {
+  changePeriod(period: Period): void {
     this.store$.dispatch(setPeriod({ period }));
   }
 
-  changeProjectId(projectId: string) {
+  changeProjectId(projectId: string): void {
     this.store$.dispatch(setProject({ projectId }));
   }
 }

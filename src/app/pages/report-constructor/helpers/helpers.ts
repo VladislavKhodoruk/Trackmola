@@ -97,41 +97,31 @@ export function getWorksCustomPeriodHours(period: Period): number {
 
 export function getSortInfoReportConstructor(
   infoItem: InfoFromTaskTracksForTable[],
-  sortOption: SortOption
+  selectedSort: SortOption,
+  columnType: string
 ): InfoFromTaskTracksForTable[] {
-  switch (sortOption.columnName) {
-    case 'deliverables':
-      if (sortOption.ascendingSort) {
-        return infoItem.sort((a, b) => {
-          if (a.taskName < b.taskName) {
-            return -1;
-          }
-          if (a.taskName > b.taskName) {
-            return 1;
-          }
-        });
-      }
-      return infoItem.sort((a, b) => {
-        if (a.taskName > b.taskName) {
-          return -1;
-        }
-        if (a.taskName < b.taskName) {
-          return 1;
-        }
-      });
-    case 'hours spend':
-      if (sortOption.ascendingSort) {
-        return infoItem.sort((a, b) => a.taskDuration - b.taskDuration);
-      }
-      return infoItem.sort((a, b) => b.taskDuration - a.taskDuration);
-    case 'percentage':
-      if (sortOption.ascendingSort) {
-        return infoItem.sort(
-          (a, b) => a.taskPercentageWeek - b.taskPercentageWeek
+  switch (columnType) {
+    case 'string':
+      if (selectedSort.ascendingSort) {
+        infoItem.sort((a, b) =>
+          a[selectedSort.columnName] > b[selectedSort.columnName] ? 1 : -1
         );
+        return;
       }
-      return infoItem.sort(
-        (a, b) => b.taskPercentageWeek - a.taskPercentageWeek
+      infoItem.sort((a, b) =>
+        a[selectedSort.columnName] < b[selectedSort.columnName] ? 1 : -1
       );
+      return infoItem;
+    case 'number':
+      if (selectedSort.ascendingSort) {
+        infoItem.sort(
+          (a, b) => a[selectedSort.columnName] - b[selectedSort.columnName]
+        );
+        return;
+      }
+      infoItem.sort(
+        (a, b) => b[selectedSort.columnName] - a[selectedSort.columnName]
+      );
+      return infoItem;
   }
 }

@@ -15,6 +15,7 @@
     border: none;
     border-radius: var(--border-radius-m);
     outline: none;
+    text-transform: capitalize;
 
     &-primary {
       background-color: var(--primary);
