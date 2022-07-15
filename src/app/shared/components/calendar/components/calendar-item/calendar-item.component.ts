@@ -20,6 +20,12 @@ export class CalendarItemComponent implements OnChanges {
   timeBar = 0;
   more = '';
 
+  todayDate = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    new Date().getDate()
+  ).getTime();
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.day) {
       if (this.day?.duration <= MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY) {
