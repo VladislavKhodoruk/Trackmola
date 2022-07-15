@@ -199,10 +199,9 @@
       font-size: var(--font-main);
       line-height: 1;
 
+      background-color: var(--white);
       border: $border-input;
       border-radius: var(--border-radius-m);
-
-      background-color: var(--white);
 
       &:hover {
         box-shadow: $border-input-select;
