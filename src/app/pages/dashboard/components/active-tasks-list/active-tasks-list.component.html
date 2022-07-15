@@ -1,0 +1,6 @@
+<h2 class="active-tasks">Active tasks</h2>
+<main class="active-task-wrapper">
+  <ul *ngFor="let task of fullTask" class="active-tasks-list">
+    <app-active-task-item [currentTask]="task"></app-active-task-item>
+  </ul>
+</main>

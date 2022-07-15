@@ -15,7 +15,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   selector: 'app-employee-activity-container',
   template: `<app-employee-activity
     [period]="period$ | async"
-    (selectedPeriod)="changePeriodOnStore($event)"
+    (selectPeriod)="changePeriodOnStore($event)"
   ></app-employee-activity>`,
 })
 export class EmployeeActivityContainer {

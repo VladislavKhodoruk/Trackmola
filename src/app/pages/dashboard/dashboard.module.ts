@@ -18,7 +18,11 @@ import { DashboardEffects } from './store/dashboard.effects';
 import { DashboardReducer } from './store/dashboard.reducer';
 import { DASHBOARD_STATE_NAME } from './store/dashboard.selectors';
 
+import { ActiveTasksListModule } from '@pages/dashboard/components/active-tasks-list/active-tasks-list-module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
+import { ActivityWeekChartContainer } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.container';
+import { ActivityWeekChartComponent } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.component';
+import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 
 @NgModule({
   declarations: [
@@ -30,13 +34,17 @@ import { CalendarModule } from '@shared/components/calendar/calendar.module';
     DashboardContainer,
     WorkingHoursChartComponent,
     WorkingHoursChartContainer,
+    ActivityWeekChartContainer,
+    ActivityWeekChartComponent,
   ],
   imports: [
+    ActiveTasksListModule,
     CommonModule,
     EffectsModule.forFeature([DashboardEffects]),
     StoreModule.forFeature(DASHBOARD_STATE_NAME, DashboardReducer),
     RouterModule.forChild(DashboardRoutes),
     CalendarModule,
+    HighchartsChartModule,
   ],
   exports: [RouterModule],
   providers: [],

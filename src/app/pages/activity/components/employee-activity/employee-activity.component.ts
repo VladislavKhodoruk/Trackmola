@@ -10,5 +10,5 @@ export class EmployeeActivityComponent {
 
   @Output() selectPeriod = new EventEmitter<string>();
 
-  labels = ['Week', 'Month', 'Year'];
+  labels = ['Week', 'Month'];
 }
