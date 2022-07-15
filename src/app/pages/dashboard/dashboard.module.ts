@@ -18,6 +18,7 @@ import { DashboardEffects } from './store/dashboard.effects';
 import { DashboardReducer } from './store/dashboard.reducer';
 import { DASHBOARD_STATE_NAME } from './store/dashboard.selectors';
 
+import { ActiveTasksListModule } from '@pages/dashboard/components/active-tasks-list/active-tasks-list-module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
 import {
   ActivityWeekChartContainer
@@ -41,6 +42,7 @@ import { HighchartsChartModule } from "@shared/components/highcharts-chart/highc
     ActivityWeekChartComponent,
   ],
   imports: [
+    ActiveTasksListModule,
     CommonModule,
     EffectsModule.forFeature([DashboardEffects]),
     StoreModule.forFeature(DASHBOARD_STATE_NAME, DashboardReducer),

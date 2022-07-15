@@ -55,3 +55,7 @@ export const getTasksTrackByPeriod = createSelector(
         taskTrack.date.seconds * 1000 <= period.end
     )
 );
+
+export const getActiveTasks = createSelector(getTasksTrackByPeriod, (tasks) =>
+  tasks.filter((item) => item.status === 'in progress' || item.status === '')
+);

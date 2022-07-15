@@ -1,0 +1,23 @@
+:host {
+  .active-task-wrapper {
+    overflow: auto;
+
+    max-width: 60rem;
+    max-height: 20rem;
+  }
+
+  .active-tasks {
+    margin: 0 0 var(--offset-d) var(--offset-m);
+
+    font: var(--font-titleBig);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--gray4);
+    border-radius: var(--offset-s);
+  }
+
+  ::-webkit-scrollbar {
+    width: var(--offset-s);
+  }
+}

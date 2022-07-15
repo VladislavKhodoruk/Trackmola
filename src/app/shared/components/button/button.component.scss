@@ -56,7 +56,7 @@
     }
 
     &-m {
-      padding: 0 3rem;
+      padding: 0 var(--offset-ml);
     }
 
     &-d {
@@ -64,7 +64,12 @@
     }
 
     &-s {
-      padding: 0 0.75rem;
+      padding: 0 var(--offset-ml);
+    }
+
+    &-xs {
+      height: 2.5rem;
+      padding: 0 var(--offset-s);
     }
 
     &-icon {
