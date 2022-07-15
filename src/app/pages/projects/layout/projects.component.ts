@@ -1,14 +1,7 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import angleRight from '@iconify/icons-uil/angle-right';
-import { Store } from '@ngrx/store';
 
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
-import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-projects',
