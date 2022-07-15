@@ -124,14 +124,11 @@ export function searchInWeek(
   weekTasksByDays: WeekType
 ) {
   return Object.values(weekTasksByDays).map((day: [] | ModifiedTask[]) => {
-    if (day.length === 0) {
+    if (day.length === 0 || day.length === 1) {
       return 0;
     }
     if (day.length === 1 && day[0].projectName === currentProject) {
       return day[0].duration;
-    }
-    if (day.length === 1) {
-      return 0;
     }
     if (day.length >= 2) {
       return day
