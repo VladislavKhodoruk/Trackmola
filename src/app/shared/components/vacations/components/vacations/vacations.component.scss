@@ -2,16 +2,19 @@
 
 :host {
   section {
-    max-height: 32rem;
-    max-width: 24rem;
     overflow: auto;
+
+    max-width: 24rem;
+    max-height: 32rem;
+
     border: var(--offset-xxs) solid var(--gray);
     border-radius: var(--offset);
   }
 
   .vacations-container {
-    max-height: 27rem;
     overflow: auto;
+
+    max-height: 27rem;
   }
 
   .vacations {
@@ -24,8 +27,9 @@
     }
 
     &-head {
-      font: var(--font-title);
       transform: translateY(-0.2rem);
+
+      font: var(--font-title);
     }
   }
 
