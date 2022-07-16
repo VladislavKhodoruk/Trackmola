@@ -1,6 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import pineappleIcon from '@iconify/icons-noto/pineapple';
 import { IconifyIcon } from '@iconify/types';
+
+import { Vacations } from '@shared/interfaces/interfaces';
 @Component({
   selector: 'app-vacations-component',
   templateUrl: 'vacations.component.html',
@@ -8,5 +10,6 @@ import { IconifyIcon } from '@iconify/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationsComponent {
+  @Input() data: Vacations[];
   pineapple: IconifyIcon = pineappleIcon;
 }

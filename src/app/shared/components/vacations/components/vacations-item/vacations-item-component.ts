@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { Vacations } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-vacation-item-component',
@@ -6,4 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['vacations-item-component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class VacationsItemComponent {}
+export class VacationsItemComponent {
+  @Input() vacation: Vacations;
+}

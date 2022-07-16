@@ -116,3 +116,9 @@ export interface ModifiedTask {
   date: Date;
   projectId: string;
 }
+
+export interface Vacations {
+  vacationDay: Date;
+  fullName: string;
+  photo: string;
+}

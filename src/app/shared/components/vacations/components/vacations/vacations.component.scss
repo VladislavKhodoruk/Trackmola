@@ -3,10 +3,8 @@
 :host {
   section {
     overflow: auto;
-
-    max-width: 24rem;
+    max-width: 23.8rem;
     max-height: 32rem;
-
     border: var(--offset-xxs) solid var(--gray);
     border-radius: var(--offset);
   }
@@ -39,6 +37,6 @@
   }
 
   ::-webkit-scrollbar {
-    width: var(--offset-s);
+    width: 0;
   }
 }

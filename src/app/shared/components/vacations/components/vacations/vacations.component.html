@@ -3,9 +3,11 @@
     <ic-icon [icon]="pineapple" class="vacations-icon"></ic-icon>
     <h1 class="vacations-head">Vacations</h1>
   </div>
-  <div class="vacations-container">
-    <app-vacation-item-component></app-vacation-item-component>
-    <app-vacation-item-component></app-vacation-item-component>
-    <app-vacation-item-component></app-vacation-item-component>
-  </div>
+  <ul class="vacations-container">
+    <div *ngFor="let step of data">
+      <app-vacation-item-component
+        [vacation]="step"
+      ></app-vacation-item-component>
+    </div>
+  </ul>
 </section>
