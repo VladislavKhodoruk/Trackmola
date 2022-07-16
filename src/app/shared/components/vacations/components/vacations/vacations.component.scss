@@ -1,0 +1,23 @@
+@import "mixins";
+
+:host {
+  section {
+    border: var(--offset-xxs) solid var(--gray);
+    border-radius: var(--offset);
+    max-width: 24rem;
+  }
+
+  .vacations {
+    @include flex(center, flex-start, var(--offset-sm));
+    margin: var(--offset-m) 0 0 var(--offset-m);
+
+    &-icon {
+      position: relative;
+      transform: scale(2.5);
+    }
+
+    &-head {
+      font: var(--font-title);
+    }
+  }
+}
