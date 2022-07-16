@@ -82,6 +82,9 @@ export const NAMES_OF_THE_DAYS_OF_THE_WEEK = [
   'Sunday',
 ];
 
+export const SHORT_NAMES_OF_THE_WEEK_UPPERCASE =
+  NAMES_OF_THE_DAYS_OF_THE_WEEK.map((i) => i.slice(0, 3).toUpperCase());
+
 export const ONE_DIVISION_CALENDAR_BAR = 0.7;
 
 export const MAXIMUM_VALUE_BAR = 5.625;
