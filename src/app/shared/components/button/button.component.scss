@@ -11,11 +11,11 @@
 
     font: var(--font-buttonMiddle);
     color: var(--white);
+    text-transform: capitalize;
 
     border: none;
     border-radius: var(--border-radius-m);
     outline: none;
-    text-transform: capitalize;
 
     &-primary {
       background-color: var(--primary);
