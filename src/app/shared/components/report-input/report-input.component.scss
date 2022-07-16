@@ -59,7 +59,9 @@
     &-container {
       display: flex;
 
-      height: 90%;
+      gap: var(--offset);
+      height: 70%;
+      margin-bottom: var(--offset-l);
     }
 
     &-side {
@@ -74,7 +76,6 @@
 
       width: 7.25rem;
       height: var(--offset-ml);
-      margin-right: var(--offset-s);
 
       background-color: var(--white);
       border: $border-input;
@@ -130,15 +131,11 @@
       }
     }
 
-    &-status {
-      margin: 0 var(--offset-s);
-    }
-
     &-item {
       display: flex;
       flex-direction: column;
 
-      height: 15%;
+      height: 25%;
       margin-bottom: var(--offset-sm);
 
       &-label {
