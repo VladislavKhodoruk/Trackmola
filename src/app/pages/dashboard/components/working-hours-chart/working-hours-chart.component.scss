@@ -12,8 +12,10 @@
     padding: var(--offset-dl);
 
     background: linear-gradient(var(--white), var(--white)) content-box,
-      linear-gradient(var(--size-left), var(--gray) 51%, transparent 0) 0 / min(100%, (50 - var(--size-report)) * 100%),
-      linear-gradient(var(--size-left), transparent 50%, var(--primary) 0) 0 / min(100%, (var(--size-report) - 50) * 100%),
+      linear-gradient(var(--size-left), var(--gray) 51%, transparent 0) 0 /
+        min(100%, (50 - var(--size-report)) * 100%),
+      linear-gradient(var(--size-left), transparent 50%, var(--primary) 0) 0 /
+        min(100%, (var(--size-report) - 50) * 100%),
       linear-gradient(to right, var(--gray) 50%, var(--primary) 0);
     border-radius: 50%;
 
@@ -21,10 +23,14 @@
 
     &-full {
       background: linear-gradient(var(--white), var(--white)) content-box,
-        linear-gradient(var(--size-left), var(--gray) 51%, transparent 0) 0 / min(100%, (50 - var(--size-report)) * 100%),
-        linear-gradient(var(--size-left),
-          transparent 50%,
-          var(--primary-hover) 0) 0 / min(100%, (var(--size-report) - 50) * 100%),
+        linear-gradient(var(--size-left), var(--gray) 51%, transparent 0) 0 /
+          min(100%, (50 - var(--size-report)) * 100%),
+        linear-gradient(
+            var(--size-left),
+            transparent 50%,
+            var(--primary-hover) 0
+          )
+          0 / min(100%, (var(--size-report) - 50) * 100%),
         linear-gradient(to right, var(--gray) 50%, var(--primary-hover) 0);
     }
 
