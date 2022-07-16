@@ -15,6 +15,7 @@
     border: none;
     border-radius: var(--border-radius-m);
     outline: none;
+    text-transform: capitalize;
 
     &-primary {
       background-color: var(--primary);
@@ -70,6 +71,18 @@
     &-xs {
       height: 2.5rem;
       padding: 0 var(--offset-s);
+    }
+
+    &-rect {
+      border-radius: 0;
+    }
+
+    &-left-border-straight {
+      border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
+    }
+
+    &-right-border-straight {
+      border-radius: var(--border-radius-m) 0 0 var(--border-radius-m);
     }
 
     &-icon {
@@ -149,5 +162,17 @@
 
   .icon {
     display: flex;
+  }
+
+  .period-switcher {
+    background-color: var(--primary-50);
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &-selected {
+      background-color: var(--primary);
+    }
   }
 }

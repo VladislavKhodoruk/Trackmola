@@ -36,10 +36,7 @@
     &-title {
       font: var(--font-blocks);
       color: var(--gray2);
-
-      &::first-letter {
-        text-transform: uppercase;
-      }
+      text-transform: capitalize;
     }
 
     &-hours {

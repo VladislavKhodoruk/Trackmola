@@ -1,0 +1,86 @@
+@import "mixins.scss";
+@import "vars/variables";
+
+:host {
+  .mat-select {
+    margin: 0;
+    width: 14.5rem;
+    height: 3rem;
+
+    border: $border-input;
+    border-radius: var(--border-radius-m);
+
+    font-size: var(--font-main);
+    line-height: 1;
+
+    &:hover {
+      box-shadow: $border-input-select;
+    }
+  }
+}
+
+::ng-deep {
+  .cdk-overlay-pane {
+    transform: none !important;
+  }
+
+  .mat-select-trigger {
+    height: 100%;
+  }
+
+  .mat-select-panel {
+    min-width: 100% !important;
+    max-height: 9rem !important;
+    border: $border-input;
+    border-radius: var(--border-radius-l) !important;
+  }
+
+  .mat-select-panel:not([class*=mat-elevation-z]) {
+    box-shadow: $border-cdk-select;
+  }
+
+  .mat-select-arrow-wrapper {
+    margin-right: var(--offset-s);
+  }
+
+  .mat-select-arrow {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    border: none !important;
+    background: url('https://api.iconify.design/uil/angle-left-b.svg?color=%23808689') no-repeat center center / contain;
+    transform: rotate(-90deg)
+  }
+
+  .mat-select-value {
+    padding: var(--offset);
+    color: var(--gray2);
+  }
+
+  .mat-option {
+    border-top: $border-input;
+    border-bottom: $border-input;
+  }
+
+  .mat-option.mat-active {
+    background: var(--white);
+    color: var(--gray2);
+  }
+
+  .mat-option:hover:not(.mat-option-disabled),
+  .mat-option:focus:not(.mat-option-disabled) {
+    background: var(--white);
+    box-shadow: $border-input-select;
+  }
+
+  .mat-option-text {
+    color: var(--gray2);
+  }
+
+  .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+    background: var(--white);
+  }
+
+  .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) .mat-option-text {
+    color: var(--primary);
+  }
+}

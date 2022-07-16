@@ -1,0 +1,63 @@
+:host {
+  @import "mixins";
+  @import "vars/variables";
+
+  .flex-container {
+    @include flex(center, center);
+
+    cursor: pointer;
+
+    &:hover .report-constructor-table-head-item-text {
+      transform: scale(1.05);
+    }
+
+    &:hover .report-constructor-table-head-item-icon {
+      transform: scale(1.1);
+    }
+  }
+
+  .report-constructor-table {
+    width: 100%;
+    max-width: 100%;
+    border: $border-report-constructor-table;
+    border-radius: var(--border-radius);
+    border-collapse: collapse;
+
+    &-head {
+      height: 4.75rem;
+
+      background-color: var(--blue2);
+      font: var(--font-blocks);
+
+      &-item {
+        height: 3rem;
+        width: 20%;
+        max-width: 20%;
+
+        &-text {
+          margin-right: var(--offset);
+          text-transform: capitalize;
+        }
+
+        &-icon {
+          padding-top: var(--offset-xs);
+        }
+      }
+    }
+
+    &-body {
+      height: 3rem;
+
+      &-item {
+        padding: var(--offset) 0;
+        text-align: center;
+        font: var(--font-current);
+
+        &-text {
+          text-align: center;
+          font: var(--font-current);
+        }
+      }
+    }
+  }
+}
