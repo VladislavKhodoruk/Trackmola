@@ -120,9 +120,7 @@ export function getTeamPhoto(
       )
     )
   );
-
-  const teamProjectPhoto = teamProjectId.map(
+  return teamProjectId.map(
     (userId) => users.find((user) => user.id === userId).photo
   );
-  return teamProjectPhoto;
 }
