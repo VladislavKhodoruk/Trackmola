@@ -1,0 +1,59 @@
+:host {
+  @import "mixins.scss";
+  @import "vars/variables";
+
+  .container {
+    @include flex(center, flex-start);
+  }
+
+  .report-constructor-table {
+    margin-right: var(--offset-m);
+    max-height: 65%;
+    overflow: auto;
+  }
+
+  .report-constructor-header {
+    @include flex(flex-start, space-between);
+    margin-bottom: var(--offset);
+
+    &-title {
+      font: var(--font-titleBig);
+    }
+
+    &-buttons {
+      margin-right: var(--offset-m);
+      display: flex;
+
+      &-item {
+        margin-left: var(--offset-m);
+      }
+    }
+
+    &-switcher-period {
+      @include flex(center, center);
+
+      &-item {
+        margin-left: var(--offset-xxs);
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .report-constructor-navigation {
+    margin-right: var(--offset-m);
+    margin-bottom: var(--offset-l);
+    @include flex(center, space-between);
+
+    &-select {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-date-switch {
+      margin-left: var(--offset-l);
+    }
+  }
+}
