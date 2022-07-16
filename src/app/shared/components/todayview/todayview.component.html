@@ -7,7 +7,12 @@
       {{ totalDuration }}%
     </div>
     <div class="top-buttons">
-      <button class="repeat-button">Repeat the previous day</button>
+      <button class="repeat-button" *ngIf="taskItemsAreEmpty; else notEmpty">
+        Repeat the previous day
+      </button>
+      <ng-template #notEmpty>
+        <button class="repeat-button">Repeat to current day</button>
+      </ng-template>
       <button class="complete-button">Complete</button>
     </div>
   </div>

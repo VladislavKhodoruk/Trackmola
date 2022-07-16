@@ -1,23 +1,5 @@
-@import "mixins.scss";
+@import "mixins";
 @import "vars/variables";
-
-:host {
-  .mat-date-range-input {
-    padding: var(--offset-d) 0;
-    width: 14.5rem;
-    height: 3rem;
-    border: $border-input;
-    border-radius: var(--border-radius-m);
-
-    font: var(--font-main);
-    color: var(--gray2);
-    line-height: 1;
-
-    &-separator {
-      color: var(--gray2);
-    }
-  }
-}
 
 ::ng-deep {
   .mat-date-range-input-container {
@@ -30,9 +12,10 @@
 
   .mat-form-field-infix {
     padding: 0;
+
     border-top: 0;
   }
-  
+
   .mat-button-focus-overlay {
     background-color: inherit !important;
   }
@@ -41,15 +24,34 @@
     width: 2rem !important;
   }
 
-  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  .mat-form-field-wrapper {
     padding: 0;
   }
 
-  .mat-form-field-wrapper {
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
     padding: 0;
   }
 
   .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0;
+  }
 }
+
+:host {
+  .mat-date-range-input {
+    width: 14.5rem;
+    height: 3rem;
+    padding: var(--offset-d) 0;
+
+    font: var(--font-main);
+    line-height: 1;
+    color: var(--gray2);
+
+    border: $border-input;
+    border-radius: var(--border-radius-m);
+
+    &-separator {
+      color: var(--gray2);
+    }
+  }
 }
