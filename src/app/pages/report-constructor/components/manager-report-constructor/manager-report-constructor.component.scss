@@ -6,12 +6,6 @@
     @include flex(center, flex-start);
   }
 
-  .report-constructor-table {
-    margin-right: var(--offset-m);
-    max-height: 65%;
-    overflow: auto;
-  }
-
   .report-constructor-header {
     @include flex(flex-start, space-between);
     margin-bottom: var(--offset);
@@ -55,5 +49,16 @@
     &-date-switch {
       margin-left: var(--offset-l);
     }
+  }
+
+  .report-constructor-table {
+    margin-right: var(--offset-m);
+    max-height: 65%;
+    overflow: auto;
+  }
+
+  .report-constructor-team {
+    @include flex(center, flex-start);
+    margin: var(--offset) 0;
   }
 }

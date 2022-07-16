@@ -24,5 +24,9 @@
       object-fit: cover;
       border-radius: 100%;
     }
+
+    &-normal {
+      margin-right: var(--offset-s);
+    }
   }
 }
