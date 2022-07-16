@@ -2,22 +2,39 @@
 
 :host {
   section {
+    max-height: 32rem;
+    max-width: 24rem;
+    overflow: auto;
     border: var(--offset-xxs) solid var(--gray);
     border-radius: var(--offset);
-    max-width: 24rem;
+  }
+
+  .vacations-container {
+    max-height: 27rem;
+    overflow: auto;
   }
 
   .vacations {
     @include flex(center, flex-start, var(--offset-sm));
-    margin: var(--offset-m) 0 0 var(--offset-m);
+    margin: var(--offset-l) 0 0 var(--offset-l);
 
     &-icon {
       position: relative;
-      transform: scale(2.5);
+      transform: scale(2.7);
     }
 
     &-head {
       font: var(--font-title);
+      transform: translateY(-0.2rem);
     }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--gray4);
+    border-radius: var(--offset-s);
+  }
+
+  ::-webkit-scrollbar {
+    width: var(--offset-s);
   }
 }
