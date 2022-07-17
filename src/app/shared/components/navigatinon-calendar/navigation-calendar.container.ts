@@ -5,6 +5,7 @@ import {
   DEFAULT_PHOTO_URL,
   ONE_WEEK_IN_SECONDS,
 } from '@shared/constants/constants';
+import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
 import {
   nextWeek,
@@ -37,7 +38,7 @@ export class NavigationCalendarContainer {
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(
       setPeriod({
-        period: getPeriod(new Date(), 'week'),
+        period: getPeriod(new Date(), PeriodType.Week),
       })
     );
   }

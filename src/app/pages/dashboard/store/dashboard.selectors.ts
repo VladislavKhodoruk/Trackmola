@@ -23,9 +23,23 @@ export const DASHBOARD_STATE_NAME = StateName.Dashboard;
 const getDashboardState =
   createFeatureSelector<DashboardState>(DASHBOARD_STATE_NAME);
 
-export const getWeekReportTime = createSelector(
+export const getDashboardPeriod = createSelector(
   getDashboardState,
-  ({ weekReportTime }) => weekReportTime
+  ({ period }) => period
+);
+
+export const getWeekReportTime = createSelector(
+  getTasksTrack,
+  getDashboardPeriod,
+  (taskTracks, period) =>
+    taskTracks
+      .filter(
+        (taskTrack) =>
+          taskTrack.userId === localStorage.getItem('AuthUserId') &&
+          taskTrack.date.seconds * 1000 >= period.start &&
+          taskTrack.date.seconds * 1000 <= period.end
+      )
+      .reduce((result, item) => (result += item.duration), 0)
 );
 
 export const getTaskWithAllParametrs = createSelector(

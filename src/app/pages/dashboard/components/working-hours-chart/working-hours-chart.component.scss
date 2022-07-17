@@ -65,10 +65,7 @@
 
         font: var(--font-blocks);
         color: var(--gray4);
-
-        &::first-letter {
-          text-transform: uppercase;
-        }
+        text-transform: capitalize;
       }
 
       &-reported {
@@ -77,10 +74,7 @@
         font: var(--font-blocks);
         font-weight: 300;
         color: var(--primary);
-
-        &::first-letter {
-          text-transform: uppercase;
-        }
+        text-transform: capitalize;
       }
     }
   }

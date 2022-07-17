@@ -1,6 +1,7 @@
 import { HOURS_IN_DAY } from '@pages/activity/constants/constants';
 import { RestHours } from '@pages/activity/enums/enums';
 import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
+import { NumDay, PeriodType } from '@shared/enums/enum';
 
 export function setMidnightTime(date: Date) {
   const currentDate = new Date(date);
@@ -11,19 +12,19 @@ export function setMidnightTime(date: Date) {
   return currentDate;
 }
 
-export function getRestTime(type?: 'week' | 'month'): number {
+export function getRestTime(type?: PeriodType): number {
   const date = new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
     new Date().getDate()
   );
   switch (type) {
-    case 'week': {
+    case PeriodType.Week: {
       switch (date.getDay()) {
-        case 0: {
+        case NumDay.Sunday: {
           return RestHours.Week;
         }
-        case 6: {
+        case NumDay.Saturday: {
           return RestHours.WeekWithout;
         }
         default: {
@@ -31,23 +32,18 @@ export function getRestTime(type?: 'week' | 'month'): number {
         }
       }
     }
-    case 'month': {
+    case PeriodType.Month: {
       let restMonthHours = 0;
       for (let i = 1; i <= date.getDate(); i++) {
-        switch (new Date(date.getFullYear(), date.getMonth(), i).getDay()) {
-          case 0: {
-            restMonthHours += HOURS_IN_DAY;
-            break;
-          }
-          case 6: {
-            restMonthHours += HOURS_IN_DAY;
-            break;
-          }
-          default: {
-            restMonthHours += RestHours.Day;
-            break;
-          }
+        const currentDate = new Date(
+          date.getFullYear(),
+          date.getMonth(),
+          i
+        ).getDay();
+        if (currentDate !== NumDay.Sunday && currentDate !== NumDay.Saturday) {
+          restMonthHours += RestHours.Day;
         }
+        restMonthHours += HOURS_IN_DAY;
       }
       return restMonthHours;
     }
@@ -63,20 +59,15 @@ export function getRestMonthDefaultHours(): number {
   let restMonthDefaultHours = 0;
   const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
   for (let i = 1; i <= endDate.getDate(); i++) {
-    switch (new Date(date.getFullYear(), date.getMonth(), i).getDay()) {
-      case 0: {
-        restMonthDefaultHours += HOURS_IN_DAY;
-        break;
-      }
-      case 6: {
-        restMonthDefaultHours += HOURS_IN_DAY;
-        break;
-      }
-      default: {
-        restMonthDefaultHours += RestHours.Day;
-        break;
-      }
+    const currentDate = new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      i
+    ).getDay();
+    if (currentDate !== NumDay.Sunday && currentDate !== NumDay.Saturday) {
+      restMonthDefaultHours += RestHours.Day;
     }
+    restMonthDefaultHours += HOURS_IN_DAY;
   }
   return restMonthDefaultHours;
 }
