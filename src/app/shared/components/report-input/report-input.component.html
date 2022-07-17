@@ -179,6 +179,14 @@
       iconHeight="1.5rem"
     ></app-button>
     <app-button
+      *ngIf="formTask"
+      [buttonClass]="'button-secondary button-m'"
+      class="cancel-button"
+      type="button"
+      label="Cancel"
+      (click)="closeDialog.emit()"
+    ></app-button>
+    <app-button
       *ngIf="!editableTaskTrack; else edit"
       [buttonClass]="'button-primary button-m'"
       type="submit"

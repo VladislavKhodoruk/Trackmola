@@ -12,6 +12,10 @@
       [icon]="iconPencil"
       (click)="edit.emit(taskItem?.id)"
     ></ic-icon>
-    <ic-icon class="icons" [icon]="iconTrash" (click)="openDialog()"></ic-icon>
+    <ic-icon
+      class="icons"
+      [icon]="iconTrash"
+      (click)="openDialog('300ms')"
+    ></ic-icon>
   </div>
 </div>

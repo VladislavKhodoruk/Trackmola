@@ -37,6 +37,7 @@
 :host {
   .form-report {
     position: relative;
+    z-index: 0;
 
     overflow: hidden;
 
@@ -184,6 +185,10 @@
         margin: 0 var(--offset-l);
       }
     }
+  }
+
+  .cancel-button {
+    margin-right: var(--offset-l);
   }
 
   ::ng-deep {

@@ -1,0 +1,23 @@
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .modal {
+    min-width: 61rem;
+
+    .mat-dialog-container {
+      min-width: 61rem;
+      min-height: 35rem;
+    }
+
+    .form-report-img {
+      position: absolute;
+      z-index: 0;
+      bottom: 0;
+      left: 0;
+
+      width: 23rem;
+      height: 20rem;
+    }
+  }
+}

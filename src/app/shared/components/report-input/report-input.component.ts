@@ -17,6 +17,8 @@ import angleLeftB from '@iconify/icons-uil/angle-left-b';
 import { Timestamp } from 'firebase/firestore';
 import { map, Observable, startWith } from 'rxjs';
 
+import { ActiveTasks, Project, TaskTrack } from './../../interfaces/interfaces';
+
 import {
   DurationValue,
   KeyCodeAllowedSymbol,
@@ -27,7 +29,6 @@ import {
   onRightIndex,
 } from '@pages/report/helpers/report-input-helpers';
 import { Task } from '@pages/report/interfaces/interfaces';
-import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 import { TasksService } from '@shared/services/tasks.service';
 
@@ -41,9 +42,11 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() allTasks: Task[];
   @Input() currentDate: string;
   @Input() editableTaskTrack: TaskTrack;
+  @Input() formTask: ActiveTasks;
 
   @Output() editTaskTrack = new EventEmitter<TaskTrack>();
   @Output() addCurTaskTrack = new EventEmitter<TaskTrack>();
+  @Output() closeDialog = new EventEmitter();
 
   currentProjectId: string;
   currentTaskId: string;
@@ -116,19 +119,10 @@ export class ReportInputComponent implements OnInit, OnChanges {
       }
     }
     if (changes.editableTaskTrack && this.editableTaskTrack) {
-      const projectName = this.allProjects?.find(
-        (project) => project.id === this.editableTaskTrack?.projectId
-      )?.name;
-      this.form.get('project')?.setValue(projectName);
-      const taskName = this.allTasks?.find(
-        (task) => task.id === this.editableTaskTrack?.taskId
-      )?.name;
-      this.form.get('task')?.setValue(taskName);
-      this.form
-        .get('duration')
-        ?.setValue(`${this.editableTaskTrack?.duration}`);
-      this.form.get('comments')?.setValue(this.editableTaskTrack.comments);
-      this.onCheckStatus(this.editableTaskTrack?.status);
+      this.fillForm();
+    }
+    if (changes.formTask && this.formTask) {
+      this.fillModalForm();
     }
   }
 
@@ -138,6 +132,31 @@ export class ReportInputComponent implements OnInit, OnChanges {
       map((value) => this.filterOption(value || '', Object.values(Roles)))
     );
     this.form.get('duration').setValue(DurationValue.Default);
+  }
+
+  private fillForm(): void {
+    const projectName = this.allProjects?.find(
+      (project) => project.id === this.editableTaskTrack?.projectId
+    )?.name;
+    this.form.get('project')?.setValue(projectName);
+    const taskName = this.allTasks?.find(
+      (task) => task.id === this.editableTaskTrack?.taskId
+    )?.name;
+    this.form.get('task')?.setValue(taskName);
+    this.form.get('duration')?.setValue(`${this.editableTaskTrack?.duration}`);
+    this.form.get('comments')?.setValue(this.editableTaskTrack.comments);
+    this.onCheckStatus(this.editableTaskTrack?.status);
+  }
+
+  private get mostFrequentDuration(): number {
+    return 5;
+  }
+
+  private fillModalForm(): void {
+    this.form.get('project')?.setValue(this.formTask.projectName);
+    this.form.get('task')?.setValue(this.formTask.taskName);
+    this.form.get('duration')?.setValue(`${this.mostFrequentDuration}`);
+    this.onCheckStatus('');
   }
 
   private filterOption(value: string, options: string[]): string[] {
@@ -190,6 +209,11 @@ export class ReportInputComponent implements OnInit, OnChanges {
       userId: localStorage.getItem('AuthUserId'),
       status: this.status,
     };
+    if (this.formTask) {
+      this.addCurTaskTrack.emit(addTask);
+      this.closeDialog.emit();
+      return;
+    }
     if (this.editableTaskTrack) {
       addTask.id = this.editableTaskTrack.id;
       this.editTaskTrack.emit(addTask);
