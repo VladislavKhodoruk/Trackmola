@@ -73,7 +73,9 @@
       border-radius: var(--border-radius);
 
       &-header {
-        @include flex(flex-start, space-between);
+        @include flex(flex-start, space-between, var(--offset));
+        flex-wrap: wrap;
+
         width: 100%;
 
         &-title {
@@ -119,13 +121,6 @@
       margin-left: -2.5rem;
 
       color: var(--gray2);
-    }
-  }
-
-  @media only screen and (max-width: 1400px) {
-    .projects-list-item-header {
-      flex-direction: column;
-      gap: var(--offset);
     }
   }
 }
