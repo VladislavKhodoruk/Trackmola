@@ -32,7 +32,10 @@ export class ActivityTotalCardsComponent implements OnChanges {
         this.overtime
       ),
       getTotalCardItem(OVERTIME_TOTAL_CARD, this.overtime),
-      REST_HOURS_TOTAL_CARD,
+      {
+        ...REST_HOURS_TOTAL_CARD,
+        value: REST_HOURS_TOTAL_CARD.value - this.overtime,
+      },
     ];
   }
 }
