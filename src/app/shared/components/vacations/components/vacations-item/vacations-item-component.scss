@@ -5,6 +5,7 @@
     @include flex(center, flex-start);
     max-width: 21.5rem;
     margin: var(--offset-sm) var(--offset-m) var(--offset) var(--offset);
+
     background-color: var(--pale-blue);
     border-radius: var(--offset);
 
@@ -22,6 +23,7 @@
     &-wrapper {
       @include flex(center, flex-start);
       margin-left: var(--offset-s);
+
       border-left: var(--offset-xxs) dashed var(--gray);
 
       &-info {

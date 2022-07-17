@@ -3,8 +3,10 @@
 :host {
   section {
     overflow: auto;
+
     max-width: 23.8rem;
     max-height: 32rem;
+
     border: var(--offset-xxs) solid var(--gray);
     border-radius: var(--offset);
   }
