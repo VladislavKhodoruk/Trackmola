@@ -2,12 +2,6 @@
 @import "vars/variables";
 
 :host {
-  .flex-container {
-    @include flex(center, center);
-
-    cursor: pointer;
-  }
-
   .report-constructor-table {
     border-collapse: collapse;
 
@@ -56,6 +50,12 @@
         }
       }
     }
+  }
+
+  .flex-container {
+    @include flex(center, center);
+
+    cursor: pointer;
 
     &:hover .report-constructor-table-head-item-text {
       transform: scale(1.05);
