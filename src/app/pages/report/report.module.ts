@@ -10,6 +10,7 @@ import { IconModule } from '@visurel/iconify-angular';
 import { AdminReportComponent } from './components/admin-report/admin-report.component';
 import { CtoReportComponent } from './components/cto-report/cto-report.component';
 import { EmployeeReportComponent } from './components/employee-report/employee-report.component';
+import { EmployeeReportContainer } from './components/employee-report/employee-report.container';
 import { ManagerReportComponent } from './components/manager-report/manager-report.component';
 
 import { ReportComponent } from './layout/report.component';
@@ -32,6 +33,7 @@ import { TodayViewModule } from '@shared/components/todayview/todayview.module';
     CtoReportComponent,
     ManagerReportComponent,
     EmployeeReportComponent,
+    EmployeeReportContainer,
     ReportComponent,
     ReportContainer,
   ],

@@ -20,8 +20,8 @@ import { CommonState } from '@store/common/common.state';
   ></app-report-input>`,
 })
 export class ReportInputContainer {
-  allTasks$ = this.reportStore$.select(getTasks);
-  allProjects$ = this.reportStore$.select(getProjects);
+  allTasks$ = this.commonStore$.select(getTasks);
+  allProjects$ = this.commonStore$.select(getProjects);
   currentDate$ = this.commonStore$.select(getDate);
   taskTrack$ = this.reportStore$.select(getTaskTrack);
 

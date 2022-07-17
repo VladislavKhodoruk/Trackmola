@@ -1,0 +1,11 @@
+@import "mixins";
+
+:host {
+  .report-week {
+    @include flex(center, space-between, var(--offset-m));
+
+    &-interval {
+      font: var(--font-calendar);
+    }
+  }
+}

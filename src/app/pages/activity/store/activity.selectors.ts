@@ -10,14 +10,23 @@ export const ACTIVITY_STATE_NAME = StateName.Activity;
 const getActivityState =
   createFeatureSelector<ActivityState>(ACTIVITY_STATE_NAME);
 
-export const getWeekReportTime = createSelector(
-  getActivityState,
-  ({ weekReportTime }) => weekReportTime
-);
-
 export const getActivityPeriod = createSelector(
   getActivityState,
   ({ period }) => period
+);
+
+export const getWeekReportTime = createSelector(
+  getTasksTrack,
+  getActivityPeriod,
+  (taskTracks, period) =>
+    taskTracks
+      .filter(
+        (taskTrack) =>
+          taskTrack.userId === localStorage.getItem('AuthUserId') &&
+          taskTrack.date.seconds * 1000 > period.start &&
+          taskTrack.date.seconds * 1000 < period.end
+      )
+      .reduce((result, item) => (result += item.duration), 0)
 );
 
 export const getActivePeriod = createSelector(

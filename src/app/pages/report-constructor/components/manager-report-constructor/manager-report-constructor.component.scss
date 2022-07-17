@@ -1,0 +1,61 @@
+@import "mixins";
+@import "vars/variables";
+
+:host {
+  .container {
+    @include flex(center, flex-start);
+  }
+
+  .report-constructor-table {
+    overflow: auto;
+
+    max-height: 65%;
+    margin-right: var(--offset-m);
+  }
+
+  .report-constructor-header {
+    @include flex(flex-start, space-between);
+    margin-bottom: var(--offset);
+
+    &-title {
+      font: var(--font-titleBig);
+    }
+
+    &-buttons {
+      display: flex;
+
+      margin-right: var(--offset-m);
+
+      &-item {
+        margin-left: var(--offset-m);
+      }
+    }
+
+    &-switcher-period {
+      @include flex(center, center);
+
+      &-item {
+        margin-left: var(--offset-xxs);
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .report-constructor-navigation {
+    @include flex(center, space-between);
+    margin-right: var(--offset-m);
+    margin-bottom: var(--offset-l);
+
+    &-select {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-date-switch {
+      margin-left: var(--offset-l);
+    }
+  }
+}

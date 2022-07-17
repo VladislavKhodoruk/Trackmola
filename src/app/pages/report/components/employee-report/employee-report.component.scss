@@ -35,6 +35,12 @@
     }
   }
 
+  .date {
+    height: 10%;
+
+    font: var(--font-title);
+  }
+
   .top {
     width: 100%;
     height: 36%;
@@ -45,6 +51,6 @@
     gap: var(--offset-l);
 
     width: 100%;
-    height: 66%;
+    height: 54%;
   }
 }

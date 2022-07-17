@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { PeriodType } from '@shared/enums/enum';
+
 @Component({
   selector: 'app-employee-activity',
   templateUrl: './employee-activity.component.html',
@@ -10,5 +12,5 @@ export class EmployeeActivityComponent {
 
   @Output() selectPeriod = new EventEmitter<string>();
 
-  labels = ['Week', 'Month'];
+  labels = [PeriodType.Week, PeriodType.Month];
 }
