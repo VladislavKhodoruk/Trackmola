@@ -6,7 +6,7 @@
     margin: var(--offset-m);
 
     &-header-title {
-      font: var(--font-title);
+      font: var(--font-titleBig);
     }
 
     &-all-info {
@@ -64,12 +64,12 @@
     }
 
     &-avatar-container {
-      display: block;
+      @include flex(center, center);
+      margin: 0 var(--offset-m);
     }
 
     &-avatar {
       @include profile-photo(16rem, 16rem);
-      object-fit: cover;
     }
 
     @media (max-width: 1200px) {
