@@ -1,0 +1,44 @@
+@import "mixins";
+
+:host {
+  section {
+    overflow: auto;
+
+    max-width: 24.8rem;
+    max-height: 32rem;
+
+    border: var(--offset-xxs) solid var(--gray);
+    border-radius: var(--offset);
+  }
+
+  .vacations-list {
+    overflow: auto;
+
+    max-height: 27rem;
+  }
+
+  .vacations {
+    @include flex(center, flex-start, var(--offset-sm));
+    margin: var(--offset-l) 0 0 var(--offset-l);
+
+    &-icon {
+      position: relative;
+      transform: scale(2.7);
+    }
+
+    &-head {
+      transform: translateY(-0.2rem);
+
+      font: var(--font-title);
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--gray4);
+    border-radius: var(--offset-s);
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}

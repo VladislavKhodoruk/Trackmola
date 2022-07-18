@@ -30,6 +30,7 @@ import { ActivityWeekChartContainer } from '@pages/activity/components/activity-
 import { ButtonModule } from '@shared/components/button/button.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
+import { VacationsModule } from '@shared/components/vacations/vacations.module';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-bu
     RouterModule.forChild(ActivityRoutes),
     ToggleButtonsModule,
     ButtonModule,
+    VacationsModule,
   ],
   exports: [RouterModule],
 })
