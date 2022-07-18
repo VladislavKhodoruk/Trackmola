@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
+import fileZip from '@iconify/icons-tabler/file-zip';
+import pencilIcon from '@iconify/icons-tabler/pencil';
 
 import { IconifyIcon } from '@iconify/types';
 
@@ -28,6 +30,8 @@ export class ActiveTasksComponent {
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconClipboard: IconifyIcon = clipboardPlus;
+  readonly iconPencil: IconifyIcon = pencilIcon;
+  readonly iconfileZip: IconifyIcon = fileZip;
 
   protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
     const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
@@ -45,7 +49,8 @@ export class ActiveTasksComponent {
     return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
   }
 
-  protected addToReport(): void {
+  protected addToReport(event: Event): void {
+    event.stopPropagation();
     return null;
   }
 }

@@ -1,19 +1,46 @@
 <header class="projects-header">
-  <h2 class="projects-header-title">Projects</h2>
-  <div class="projects-header-item" *ngIf="projectByRoute">
-    <ic-icon
-      class="icon"
-      width="2rem"
-      height="2rem"
-      [icon]="iconAngleRight"
-    ></ic-icon>
-    <div
-      class="projects-header-item-title"
-      [ngStyle]="{ 'border-color': projectByRoute.color }"
-    >
-      {{ projectByRoute.name }}
+  <div class="flex-container">
+    <h2 class="projects-header-title">Projects</h2>
+    <div class="projects-header-item" *ngIf="projectByRoute">
+      <ic-icon
+        class="icon"
+        width="2rem"
+        height="2rem"
+        [icon]="iconAngleRight"
+      ></ic-icon>
+      <div
+        class="projects-header-item-title"
+        [ngStyle]="{ 'border-color': projectByRoute.color }"
+      >
+        {{ projectByRoute.name }}
+      </div>
+      <div class="projects-header-item-name">{{ projectByRoute.fullName }}</div>
     </div>
-    <div class="projects-header-item-name">{{ projectByRoute.fullName }}</div>
+  </div>
+  <div class="projects-header-buttons">
+    <app-toggle-buttons
+      class="projects-header-buttons-item"
+      [labels]="toggleLabels"
+      [checked]="currentMode"
+      [buttonClass]="'button-s'"
+      (changeMode)="changeMode($event)"
+    ></app-toggle-buttons>
+    <app-button
+      class="projects-header-buttons-item"
+      buttonClass="button-secondary"
+      label="Send notifications"
+      [icon]="messagePlusIcon"
+      iconHeight="1.5rem"
+      iconWidth="1.5rem"
+    ></app-button>
+    <app-button
+      class="projects-header-buttons-item"
+      buttonClass="button-primary"
+      label="Approve all hours"
+      [icon]="checksIcon"
+      iconHeight="1.5rem"
+      iconWidth="1.5rem"
+    ></app-button>
   </div>
 </header>
 

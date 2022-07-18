@@ -15,6 +15,7 @@ import {
 export class ToggleButtonsComponent {
   @Input() labels: string[];
   @Input() checked!: string;
+  @Input() buttonClass!: string;
 
   @Output() changeMode = new EventEmitter<string>();
 }

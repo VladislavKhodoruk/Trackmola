@@ -20,12 +20,20 @@
     max-height: 100%;
 
     &-header {
-      @include flex(center, flex-start, var(--offset-sm));
+      @include flex(center, space-between, var(--offset-sm));
       width: 100%;
       max-height: #{$header-height};
 
       &-title {
         font: var(--font-title);
+      }
+
+      &-buttons {
+        @include flex(center, center);
+
+        &-item {
+          margin-left: var(--offset);
+        }
       }
 
       &-item {
@@ -64,5 +72,9 @@
       height: calc(100% - var(--offset-m));
       max-height: calc(100% - var(--offset-m));
     }
+  }
+
+  .flex-container {
+    @include flex(center, center);
   }
 }

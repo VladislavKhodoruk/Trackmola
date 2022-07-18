@@ -112,6 +112,14 @@
         font: var(--font-main);
         font-size: 1.25rem;
         color: var(--black);
+
+        &-buttons {
+          @include flex(center, center);
+
+          &-item {
+            margin-left: var(--offset-s);
+          }
+        }
       }
     }
   }
@@ -160,5 +168,10 @@
         word-break: break-word;
       }
     }
+  }
+
+  .flex-container {
+    width: 100%;
+    @include flex(center, space-between);
   }
 }

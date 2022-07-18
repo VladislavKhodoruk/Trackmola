@@ -22,6 +22,7 @@ import { ProjectsReducer } from './store/projects.reducer';
 import { PROJECTS_STATE_NAME } from './store/projects.selectors';
 
 import { ButtonModule } from '@shared/components/button/button.module';
+import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 
 @NgModule({
@@ -45,6 +46,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     EffectsModule.forFeature([ProjectsEffects]),
     StoreModule.forFeature(PROJECTS_STATE_NAME, ProjectsReducer),
     RouterModule.forChild(ProjectsRoutes),
+    ToggleButtonsModule,
   ],
   exports: [RouterModule],
 })

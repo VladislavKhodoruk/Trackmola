@@ -1,5 +1,8 @@
 <section class="activeTasks">
-  <h2 class="activeTasks-header">active tasks</h2>
+  <div class="flex-container">
+    <h2 class="activeTasks-header">active tasks</h2>
+    <app-button buttonClass="button-primary button-s" label="Add"></app-button>
+  </div>
   <ng-container *ngIf="project">
     <ul class="activeTasks-list">
       <ng-container *ngTemplateOutlet="activeTask"> </ng-container>
@@ -25,13 +28,32 @@
             </mat-panel-title>
             <mat-panel-description class="project-header-description">
               {{ activeTask.name }}
-              <app-button
-                [buttonClass]="'button-primary button-add-to-report'"
-                [icon]="iconClipboard"
-                iconWidth="1.5rem"
-                iconHeight="1.5rem"
-                (buttonClick)="addToReport()"
-              ></app-button>
+              <div class="project-header-description-buttons">
+                <app-button
+                  class="project-header-description-buttons-item"
+                  [buttonClass]="'button-secondary button-add-to-report'"
+                  [icon]="iconPencil"
+                  iconWidth="1.5rem"
+                  iconHeight="1.5rem"
+                  (buttonClick)="addToReport($event)"
+                ></app-button>
+                <app-button
+                  class="project-header-description-buttons-item"
+                  [buttonClass]="'button-secondary button-add-to-report'"
+                  [icon]="iconfileZip"
+                  iconWidth="1.5rem"
+                  iconHeight="1.5rem"
+                  (buttonClick)="addToReport($event)"
+                ></app-button>
+                <app-button
+                  class="project-header-description-buttons-item"
+                  [buttonClass]="'button-primary button-add-to-report'"
+                  [icon]="iconClipboard"
+                  iconWidth="1.5rem"
+                  iconHeight="1.5rem"
+                  (buttonClick)="addToReport($event)"
+                ></app-button>
+              </div>
             </mat-panel-description>
           </mat-expansion-panel-header>
 
