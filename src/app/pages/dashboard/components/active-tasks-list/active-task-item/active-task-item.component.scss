@@ -64,14 +64,18 @@
       position: relative;
       transform: translateY(var(--border-m));
 
-      overflow: hidden;
-
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
     .button-add-to-report {
       transform: translateY(0.2rem);
+    }
+  }
+
+  @media (max-width: 1110px) {
+    .task-wrappeer {
+      grid-template-columns: 5rem 5rem 5rem 1fr 2rem;
     }
   }
 }

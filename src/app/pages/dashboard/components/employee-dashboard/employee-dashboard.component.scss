@@ -18,12 +18,6 @@
       @include flex(flex-start, flex-start, var(--offset-m));
       margin: var(--offset-m);
     }
-  }
-
-  .dashboard {
-    &-main {
-      @include flex(flex-start, flex-start, var(--offset-l));
-    }
 
     &-clock {
       padding: var(--offset-xs);
@@ -31,6 +25,10 @@
       background-color: var(--background);
       border-radius: var(--border-radius);
     }
+  }
+
+  .dashboard-main {
+    @include flex(flex-start, flex-start, var(--offset-l));
 
     &-charts {
       @include flex(flex-start, flex-start, var(--offset-l));
@@ -40,10 +38,13 @@
     &-todayview {
       @include flex(stretch, flex-start);
       align-content: stretch;
-
-      min-width: 30rem;
-      min-height: 30rem;
     }
+  }
+
+  app-todayview-container {
+    width: 100%;
+    min-width: 30rem;
+    min-height: 23rem;
   }
 
   .working-hours {
@@ -63,14 +64,24 @@
     }
   }
 
-  .calendar {
-    width: 59rem;
-    margin-bottom: var(--offset-m);
-  }
-
   ::ng-deep {
     .highcharts-credits {
       display: none;
+    }
+  }
+
+  @media (max-width: 1110px) {
+    .dashboard-main {
+      display: block;
+
+      &-charts {
+        display: block;
+      }
+    }
+
+    app-activity-week-chart-container {
+      width: 5rem;
+      height: 6rem;
     }
   }
 }

@@ -2,7 +2,7 @@
   <h1 class="dashboard-header-title">My dashboard</h1>
   <div class="dashboard-header-time">
     <h2 class="dashboard-header-date">{{ today | date: "EEEE, dd MMM" }}</h2>
-    <app-clock class="dashboard-clock"></app-clock>
+    <app-clock class="dashboard-header-clock"></app-clock>
   </div>
 </header>
 
@@ -11,12 +11,12 @@
     <app-calendar-container [numPreviousWeek]="0"></app-calendar-container>
     <active-tasks-list-container></active-tasks-list-container>
   </div>
-  <div class="dashboard-todayview">
+  <div class="dashboard-main-todayview">
     <app-todayview-container></app-todayview-container>
   </div>
 </section>
 
-<section class="dashboard-charts">
+<section class="dashboard-main-charts">
   <app-activity-week-chart-container></app-activity-week-chart-container>
   <article class="working-hours">
     <h2 class="working-hours-title">Working hours</h2>
