@@ -49,15 +49,15 @@ export function getColorOfProjectByName(proj: string, projects: Project[]) {
 export function searchInWeek(
   currentProject: string,
   weekTasksByDays: WeekType
-) {
+): number[] {
   return Object.values(weekTasksByDays).map((day: [] | ModifiedTask[]) => {
     if (day.length === 1 && day[0].projectName === currentProject) {
       return day[0].duration;
     }
-    if (day.length >= 2) {
+    if (day.length >= 2 && day.length) {
       return day
         .filter((i: ModifiedTask) => i.projectName === currentProject)
-        .map((i) => i.duration)
+        .map((i: ModifiedTask) => i.duration)
         .reduce((acc, prev) => acc + prev);
     }
     if (day.length === 0 || day.length === 1) {
@@ -78,7 +78,6 @@ export function getDataForChart(
     SAT: [],
     SUN: [],
   };
-  tasks.sort((a, b) => a.date.seconds - b.date.seconds);
   const desiredTasks = tasks.map(
     (task: TaskTrack): ModifiedTask => ({
       projectName: getProjectNameAndColor(task.projectId, projects)?.name,
@@ -89,14 +88,13 @@ export function getDataForChart(
     })
   );
   desiredTasks.forEach((task: ModifiedTask) => {
-    const currentDay = task.date.getDay() - 1;
+    const currentDay: number = task.date.getDay() - 1;
     const day: string = SHORT_NAMES_OF_THE_WEEK_UPPERCASE[currentDay];
     weekTasksByDays[day] = [...weekTasksByDays[day], task];
   });
   const allProjects = desiredTasks.map(
     (i: ModifiedTask): string => i.projectName
   );
-  // this variable is created to exclude infinite cycle creatures
   return allProjects
     .filter(
       (item: string, index: number) => allProjects.indexOf(item) === index
