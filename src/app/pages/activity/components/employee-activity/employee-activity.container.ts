@@ -9,6 +9,7 @@ import {
 } from '@pages/activity/store/activity.actions';
 
 import { getActivePeriod } from '@pages/activity/store/activity.selectors';
+import { PeriodType } from '@shared/enums/enum';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
@@ -19,12 +20,13 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-employee-activity>`,
 })
 export class EmployeeActivityContainer {
-  period$: Observable<string> = this.store$.select(getActivePeriod);
+  period$: Observable<PeriodType> = this.store$.select(getActivePeriod);
+
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(getWeekReportTime());
   }
 
-  changePeriodOnStore(period: string) {
+  changePeriodOnStore(period: PeriodType) {
     this.store$.dispatch(changeActivityPeriodSuccess({ choosePeriod: period }));
   }
 }

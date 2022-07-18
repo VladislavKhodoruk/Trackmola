@@ -3,7 +3,10 @@
     *ngIf="!router.url.includes('authorization')"
   ></app-sidebar-container>
 
-  <main class="main">
+  <main
+    class="main"
+    [class.authorization-main]="router.url.includes('authorization')"
+  >
     <router-outlet></router-outlet>
   </main>
 </div>

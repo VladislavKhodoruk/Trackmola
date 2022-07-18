@@ -27,7 +27,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [activeTaskTracksGroupByTask]="activeTaskTracksGroupByTask$ | async"
     [usersInfoByUserId]="usersInfoByUserId$ | async"
   ></app-active-tasks>`,
-  styleUrls: ['./active-tasks.component.scss'],
+  styleUrls: ['./active-tasks.container.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActiveTasksContainer {

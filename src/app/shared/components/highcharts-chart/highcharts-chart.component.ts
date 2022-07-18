@@ -16,6 +16,7 @@ export class HighchartsChartComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (
       changes.data &&
+      this.data.length &&
       !isEqual(changes.data.currentValue, changes.data.previousValue)
     ) {
       this.chart = new Chart({

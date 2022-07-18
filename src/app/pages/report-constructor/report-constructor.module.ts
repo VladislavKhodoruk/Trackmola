@@ -28,6 +28,7 @@ import { DateSwitchModule } from '@shared/components/date-switch/date-switch.mod
 import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
 import { SelectModule } from '@shared/components/select/select.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
+import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-bu
     SelectModule,
     DateSwitchModule,
     DatepickerModule,
+    UsersPhotosModule,
   ],
   exports: [RouterModule],
 })
