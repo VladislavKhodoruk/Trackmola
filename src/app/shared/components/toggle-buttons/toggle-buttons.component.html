@@ -3,7 +3,10 @@
     class="choose-item"
     *ngFor="let label of labels"
     [label]="label"
-    [buttonClass]="['button-half-of-primary button-d', buttonClass]"
+    [buttonClass]="[
+      'button-half-of-primary button-d',
+      buttonClass ? buttonClass : ''
+    ]"
     (buttonClick)="changeMode.emit(label)"
     [class.checked]="checked === label"
   >

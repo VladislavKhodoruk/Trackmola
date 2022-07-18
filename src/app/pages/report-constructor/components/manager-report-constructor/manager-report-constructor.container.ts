@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
@@ -36,6 +36,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     (changeStorePeriod)="changePeriod($event)"
     (changeStoreProjectId)="changeProjectId($event)"
   ></app-manager-report-constructor>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManagerReportConstructorContainer {
   @Input() userType: string;

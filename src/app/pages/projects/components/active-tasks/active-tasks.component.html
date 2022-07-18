@@ -1,7 +1,12 @@
 <section class="activeTasks">
   <div class="flex-container">
     <h2 class="activeTasks-header">active tasks</h2>
-    <app-button buttonClass="button-primary button-s" label="Add"></app-button>
+    <ng-container *ngIf="currentUser !== 'employee'">
+      <app-button
+        buttonClass="button-primary button-s"
+        label="Add"
+      ></app-button>
+    </ng-container>
   </div>
   <ng-container *ngIf="project">
     <ul class="activeTasks-list">
@@ -37,22 +42,24 @@
                   iconHeight="1.5rem"
                   (buttonClick)="addToReport($event)"
                 ></app-button>
-                <app-button
-                  class="project-header-description-buttons-item"
-                  [buttonClass]="'button-secondary button-add-to-report'"
-                  [icon]="iconfileZip"
-                  iconWidth="1.5rem"
-                  iconHeight="1.5rem"
-                  (buttonClick)="addToReport($event)"
-                ></app-button>
-                <app-button
-                  class="project-header-description-buttons-item"
-                  [buttonClass]="'button-primary button-add-to-report'"
-                  [icon]="iconClipboard"
-                  iconWidth="1.5rem"
-                  iconHeight="1.5rem"
-                  (buttonClick)="addToReport($event)"
-                ></app-button>
+                <ng-container *ngIf="currentUser !== userType.Employee">
+                  <app-button
+                    class="project-header-description-buttons-item"
+                    [buttonClass]="'button-secondary button-add-to-report'"
+                    [icon]="iconfileZip"
+                    iconWidth="1.5rem"
+                    iconHeight="1.5rem"
+                    (buttonClick)="addToReport($event)"
+                  ></app-button>
+                  <app-button
+                    class="project-header-description-buttons-item"
+                    [buttonClass]="'button-primary button-add-to-report'"
+                    [icon]="iconClipboard"
+                    iconWidth="1.5rem"
+                    iconHeight="1.5rem"
+                    (buttonClick)="addToReport($event)"
+                  ></app-button>
+                </ng-container>
               </div>
             </mat-panel-description>
           </mat-expansion-panel-header>

@@ -5,6 +5,7 @@ import angleRight from '@iconify/icons-uil/angle-right';
 
 import { ProjectMode } from '../enums/enums';
 
+import { UserType } from '@shared/enums/enum';
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -24,6 +25,9 @@ export class ProjectsComponent {
   readonly messagePlusIcon = messagePlus;
 
   readonly toggleLabels = [ProjectMode.Tasks, ProjectMode.Users];
+
+  readonly userType = UserType;
+  readonly currentUser: string = localStorage.getItem('AuthUserType');
 
   changeMode(mode: string) {
     this.currentMode = mode;

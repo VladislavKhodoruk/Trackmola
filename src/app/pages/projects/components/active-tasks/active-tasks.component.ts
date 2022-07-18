@@ -6,6 +6,7 @@ import pencilIcon from '@iconify/icons-tabler/pencil';
 import { IconifyIcon } from '@iconify/types';
 
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
+import { UserType } from '@shared/enums/enum';
 import {
   GroupBy,
   Project,
@@ -32,6 +33,9 @@ export class ActiveTasksComponent {
   readonly iconClipboard: IconifyIcon = clipboardPlus;
   readonly iconPencil: IconifyIcon = pencilIcon;
   readonly iconfileZip: IconifyIcon = fileZip;
+
+  readonly userType = UserType;
+  readonly currentUser: string = localStorage.getItem('AuthUserType');
 
   protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
     const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
