@@ -16,7 +16,6 @@ import { ActiveTasks } from '@shared/interfaces/interfaces';
 })
 export class ActiveTaskItemComponent {
   @Input() currentTask!: ActiveTasks;
-  readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
 
   readonly clipButton: IconifyIcon = clipboardPlus;
 }
