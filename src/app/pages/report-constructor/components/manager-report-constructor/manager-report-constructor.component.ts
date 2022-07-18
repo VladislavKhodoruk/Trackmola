@@ -15,7 +15,7 @@ import { IconifyIcon } from '@iconify/types';
 
 import {
   getInfoFromTaskTracks,
-  getTeamPhoto,
+  getTeam,
   getWorksCustomPeriodHours,
 } from '@pages/report-constructor/helpers/helpers';
 import { InfoReportConstructorItem } from '@pages/report-constructor/interfaces/interfaces';
@@ -51,7 +51,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
 
   labels: string[] = [...Object.values(PeriodType)];
 
-  teamProjectPhoto: string[];
+  teamProject: User[];
 
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
@@ -84,7 +84,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
         : getWorksCustomPeriodHours(this.period)
     );
 
-    this.teamProjectPhoto = getTeamPhoto(this.users, this.infoFromTaskTracks);
+    this.teamProject = getTeam(this.users, this.infoFromTaskTracks);
   }
 
   getSelectedValue(currentProjectId: string): void {

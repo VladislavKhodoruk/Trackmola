@@ -6,8 +6,8 @@ import {
   getRestTime,
   getWorksMonthDefaultHours,
 } from '@pages/activity/helpers/helpers';
-import { PeriodType } from '@shared/enums/enum';
 import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
+import { PeriodType } from '@shared/enums/enum';
 
 const ACTIVITY_CHART_PIE_COLORS: string[] = [
   'var(--aqua)',
