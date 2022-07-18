@@ -1,0 +1,57 @@
+@import "mixins";
+@import "vars/variables";
+
+::ng-deep {
+  .mat-date-range-input-container {
+    padding-left: var(--offset) !important;
+  }
+
+  .mat-form-field-underline {
+    display: none;
+  }
+
+  .mat-form-field-infix {
+    padding: 0;
+
+    border-top: 0;
+  }
+
+  .mat-button-focus-overlay {
+    background-color: inherit !important;
+  }
+
+  .mat-datepicker-toggle-default-icon {
+    width: 2rem !important;
+  }
+
+  .mat-form-field-wrapper {
+    padding: 0;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding: 0;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0;
+  }
+}
+
+:host {
+  .mat-date-range-input {
+    width: 14.5rem;
+    height: 3rem;
+    padding: var(--offset-d) 0;
+
+    font: var(--font-main);
+    line-height: 1;
+    color: var(--gray2);
+
+    border: $border-input;
+    border-radius: var(--border-radius-m);
+
+    &-separator {
+      color: var(--gray2);
+    }
+  }
+}

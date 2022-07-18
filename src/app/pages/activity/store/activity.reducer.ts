@@ -4,7 +4,10 @@ import {
   getWeekReportTimeSuccess,
   changeActivityPeriodSuccess,
 } from './activity.actions';
+
 import { ActivityState, activityState } from './activity.state';
+
+import { getPeriod } from '@shared/helpers/helpers';
 
 const activityReducer = createReducer(
   activityState,
@@ -15,6 +18,7 @@ const activityReducer = createReducer(
   on(changeActivityPeriodSuccess, (state: ActivityState, { choosePeriod }) => ({
     ...state,
     choosePeriod,
+    period: getPeriod(new Date(), choosePeriod),
   }))
 );
 

@@ -1,0 +1,25 @@
+<div class="report-week">
+  <app-button
+    [buttonClass]="'button-secondary button-navigation-icon'"
+    [icon]="iconArrowNarrowLeft"
+    iconWidth="1.5rem"
+    iconHeight="1.5rem"
+    (buttonClick)="previousPeriod()"
+  ></app-button>
+  <span *ngIf="period === 'week'" class="report-week-interval">
+    Week {{ firstDay | date: "dd MMM" }} -
+    {{ lastDay | date: "dd MMM" }}
+  </span>
+
+  <span *ngIf="period === 'month'" class="report-week-interval">
+    {{ firstDay | date: "MMMM" }}
+  </span>
+
+  <app-button
+    [buttonClass]="'button-secondary button-navigation-icon'"
+    [icon]="iconArrowNarrowRight"
+    iconWidth="1.5rem"
+    iconHeight="1.5rem"
+    (buttonClick)="nextPeriod()"
+  ></app-button>
+</div>
