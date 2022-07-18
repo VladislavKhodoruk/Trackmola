@@ -1,5 +1,14 @@
 <form class="form-report" [formGroup]="form" (ngSubmit)="addTaskTrack()">
   <img class="form-report-img" src="assets/img/report-image.svg" alt="images" />
+  <div class="top" *ngIf="formTask">
+    <h1 mat-dialog-title class="title">Delete task</h1>
+    <ic-icon
+      class="icon-x"
+      [icon]="iconX"
+      mat-button
+      mat-dialog-close
+    ></ic-icon>
+  </div>
   <div class="form-report-container">
     <div class="form-report-side">
       <div class="form-report-item">
@@ -177,6 +186,14 @@
       [icon]="iconMicrophone"
       iconWidth="1.5rem"
       iconHeight="1.5rem"
+    ></app-button>
+    <app-button
+      *ngIf="formTask"
+      [buttonClass]="'button-secondary button-m'"
+      class="cancel-button"
+      type="button"
+      label="Cancel"
+      (click)="closeDialog.emit()"
     ></app-button>
     <app-button
       *ngIf="!editableTaskTrack; else edit"
