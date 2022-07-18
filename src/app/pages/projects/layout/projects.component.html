@@ -20,10 +20,8 @@
 <div class="projects-container">
   <app-projects-list-container></app-projects-list-container>
   <app-active-tasks-container></app-active-tasks-container>
-  <div class="projects-team-and-vacations">
-    <app-projects-team
-      [usersGroupByProject]="usersGroupByProject"
-      [projectByRoute]="projectByRoute"
-    ></app-projects-team>
-  </div>
+  <app-projects-team
+    [usersGroupByProject]="usersGroupByProject"
+    [projectByRoute]="projectByRoute"
+  ></app-projects-team>
 </div>

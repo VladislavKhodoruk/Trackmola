@@ -1,0 +1,50 @@
+@import "mixins";
+
+:host {
+  .vacations-list-item {
+    @include flex(center, flex-start);
+    max-width: 21.5rem;
+    margin: var(--offset-sm) var(--offset-m) var(--offset) var(--offset);
+
+    background-color: var(--pale-blue);
+    border-radius: var(--border-radius-l);
+
+    &-circle {
+      position: sticky;
+      transform: translateX(-0.4rem);
+
+      width: 1rem;
+      height: 2rem;
+
+      background-color: var(--white);
+      border-radius: 50%;
+    }
+
+    &-wrapper {
+      @include flex(center, flex-start);
+      margin-left: var(--offset-s);
+
+      border-left: var(--offset-xxs) dashed var(--gray);
+
+      &-info {
+        width: 11.5rem;
+        margin-left: var(--offset);
+
+        &-day {
+          font: var(--font-calendar);
+          color: var(--primary);
+        }
+
+        &-employee {
+          font: var(--font-currentBig);
+          color: var(--black);
+        }
+      }
+
+      &-photo {
+        @include profile-photo(5rem, 5rem);
+        margin: var(--offset-sm) var(--offset) var(--offset-sm) var(--offset-m);
+      }
+    }
+  }
+}
