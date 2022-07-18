@@ -7,6 +7,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { ModalComponent } from '../modal/modal.component';
 
+import { dialogOpeningTime } from '@shared/constants/constants';
 import { TaskItem } from '@shared/interfaces/interfaces';
 
 @UntilDestroy()
@@ -23,6 +24,8 @@ export class TaskComponent {
 
   iconTrash = trash;
   iconPencil = pencil;
+
+  openingTime = dialogOpeningTime;
 
   constructor(public dialog: MatDialog) {}
 

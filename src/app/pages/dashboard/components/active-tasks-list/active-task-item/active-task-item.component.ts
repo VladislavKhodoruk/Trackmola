@@ -8,6 +8,7 @@ import { IconifyIcon } from '@iconify/types';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { AddTasktrackDialogContainer } from '@shared/components/add-tasktrack-dialog/add-tasktrack-dialog.container';
+import { dialogOpeningTime } from '@shared/constants/constants';
 import { ActiveTasks } from '@shared/interfaces/interfaces';
 
 @UntilDestroy()
@@ -21,6 +22,8 @@ export class ActiveTaskItemComponent {
   @Input() currentTask!: ActiveTasks;
 
   readonly clipButton: IconifyIcon = clipboardPlus;
+
+  openingTime = dialogOpeningTime;
 
   constructor(public dialog: MatDialog) {}
 
