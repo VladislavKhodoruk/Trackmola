@@ -47,13 +47,10 @@ import { TodayViewModule } from '@shared/components/todayview/todayview.module';
     RouterModule.forChild(DashboardRoutes),
     CalendarModule,
     HighchartsChartModule,
-<<<<<<< HEAD
     TodayViewModule,
     ClockModule,
-=======
->>>>>>> 07422b1db3e476790fc70eba1a1076a3e10d6c28
   ],
   exports: [RouterModule],
   providers: [],
 })
-export class DashboardModule { }
+export class DashboardModule {}

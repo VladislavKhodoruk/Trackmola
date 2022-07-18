@@ -22,7 +22,7 @@
     &-clock {
       padding: var(--offset-xs);
 
-      background-color: var(--background);
+      background-color: var(--blue2);
       border-radius: var(--border-radius);
     }
   }
@@ -44,7 +44,7 @@
   app-todayview-container {
     width: 100%;
     min-width: 30rem;
-    min-height: 23rem;
+    min-height: 35rem;
   }
 
   .working-hours {
