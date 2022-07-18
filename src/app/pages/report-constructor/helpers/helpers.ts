@@ -108,3 +108,19 @@ export function getSortInfoReportConstructor(
       );
   }
 }
+
+export function getTeamPhoto(
+  users: User[],
+  infoFromTaskTracks: InfoReportConstructorItem[]
+): string[] {
+  const teamProjectId: string[] = Array.from(
+    new Set(
+      infoFromTaskTracks.flatMap((infoFromTaskTrack) =>
+        infoFromTaskTrack.usersInfo.map((userInfo) => userInfo.userId)
+      )
+    )
+  );
+  return teamProjectId.map(
+    (userId) => users.find((user) => user.id === userId).photo
+  );
+}
