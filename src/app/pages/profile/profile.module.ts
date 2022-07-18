@@ -14,6 +14,7 @@ import { ProfileReducer } from './store/profile.reducer';
 import { PROFILE_STATE_NAME } from './store/profile.selectors';
 
 import { ButtonModule } from '@shared/components/button/button.module';
+import { VacationsModule } from '@shared/components/vacations/vacations.module';
 
 @NgModule({
   declarations: [ProfileContainer, ProfileComponent],
@@ -23,6 +24,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
     EffectsModule.forFeature([ProfileEffects]),
     StoreModule.forFeature(PROFILE_STATE_NAME, ProfileReducer),
     RouterModule.forChild(ProfileRoutes),
+    VacationsModule,
   ],
   exports: [RouterModule],
 })

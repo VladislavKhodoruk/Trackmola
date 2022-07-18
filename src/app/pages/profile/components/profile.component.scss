@@ -2,6 +2,11 @@
 @import "mixins";
 
 :host {
+  a {
+    font: var(--font-currentBig);
+    color: var(--primary);
+  }
+
   .profile {
     margin: var(--offset-m);
 
@@ -10,7 +15,7 @@
     }
 
     &-all-info {
-      @include flex(center, space-between);
+      @include flex(top, space-between);
       margin: var(--offset-d) 0;
     }
 
@@ -55,12 +60,18 @@
       border-radius: var(--border-radius-l);
     }
 
+    &-article-instruction {
+      margin: var(--offset-s) var(--offset-l);
+    }
+
     &-instruction-title {
+      margin-bottom: var(--offset-d);
+
       font: var(--font-title);
     }
 
     &-description {
-      font: var(--font-light);
+      font: var(--font-currentBig);
     }
 
     &-avatar-container {
