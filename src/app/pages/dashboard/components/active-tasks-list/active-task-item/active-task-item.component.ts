@@ -23,11 +23,9 @@ export class ActiveTaskItemComponent {
 
   readonly clipButton: IconifyIcon = clipboardPlus;
 
-  openingTime = dialogOpeningTime;
-
   constructor(public dialog: MatDialog) {}
 
-  openDialog(enterAnimationDuration: string): void {
+  openDialog(enterAnimationDuration: string = dialogOpeningTime): void {
     this.dialog.open(AddTasktrackDialogContainer, {
       panelClass: 'modal',
       enterAnimationDuration,

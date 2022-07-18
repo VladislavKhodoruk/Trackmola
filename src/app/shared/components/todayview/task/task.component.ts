@@ -25,11 +25,9 @@ export class TaskComponent {
   iconTrash = trash;
   iconPencil = pencil;
 
-  openingTime = dialogOpeningTime;
-
   constructor(public dialog: MatDialog) {}
 
-  openDialog(enterAnimationDuration: string): void {
+  openDialog(enterAnimationDuration: string = dialogOpeningTime): void {
     const dialogRef = this.dialog.open(ModalComponent, {
       enterAnimationDuration,
     });
