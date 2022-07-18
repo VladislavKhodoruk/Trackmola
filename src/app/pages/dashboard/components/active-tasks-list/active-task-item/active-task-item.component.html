@@ -15,7 +15,7 @@
   </div>
   <app-users-photos
     *ngIf="currentTask.usersPhotos"
-    [users]="currentTask.usersPhotos"
+    [users]="currentTask.usersPhotos || defaultPhoto"
     size="2"
   ></app-users-photos>
   <app-button

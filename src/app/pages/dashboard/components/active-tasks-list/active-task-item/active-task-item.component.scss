@@ -48,7 +48,8 @@
       position: relative;
 
       max-height: var(--offset-ml);
-
+      min-width: 100%;
+      white-space: nowrap;
       font: var(--font-buttonSmall);
       color: var(--primary);
 

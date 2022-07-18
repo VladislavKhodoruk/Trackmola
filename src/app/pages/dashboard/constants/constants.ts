@@ -11,8 +11,8 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
     borderRadius: 15,
     borderWidth: 1,
     margin: [70, 40, 124, 40],
-    width: 940,
-    height: 458,
+    width: 890,
+    height: 575,
   },
   plotOptions: {
     series: {
@@ -25,7 +25,7 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
       fontSize: 'var(--offset-l)',
       fontWeight: 600,
     },
-    x: -350,
+    x: -300,
     y: 40,
   },
   xAxis: {

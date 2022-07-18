@@ -4,6 +4,8 @@ import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
 
 import { IconifyIcon } from '@iconify/types';
 
+import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
+
 import { ActiveTasks } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -14,6 +16,7 @@ import { ActiveTasks } from '@shared/interfaces/interfaces';
 })
 export class ActiveTaskItemComponent {
   @Input() currentTask!: ActiveTasks;
+  readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
 
   readonly clipButton: IconifyIcon = clipboardPlus;
 }
