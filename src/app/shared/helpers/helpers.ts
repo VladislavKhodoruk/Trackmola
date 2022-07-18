@@ -2,11 +2,12 @@ import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
 import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
+import { PeriodType } from '@shared/enums/enum';
 import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 
-export function getPeriod(date: Date, type?: 'week' | 'month'): Period {
+export function getPeriod(date: Date, type?: PeriodType): Period {
   switch (type) {
-    case 'week': {
+    case PeriodType.Week: {
       const dayOfWeek = date.getDay();
       const startDay = date.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
       const startDate = new Date(date.getFullYear(), date.getMonth(), startDay);
@@ -24,7 +25,7 @@ export function getPeriod(date: Date, type?: 'week' | 'month'): Period {
         end: endDate.getTime(),
       };
     }
-    case 'month': {
+    case PeriodType.Month: {
       const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
       endDate.setHours(23);
       endDate.setMinutes(59);

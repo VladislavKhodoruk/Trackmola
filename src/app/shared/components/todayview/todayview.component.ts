@@ -24,16 +24,21 @@ export class TodayviewComponent implements OnChanges {
   @Input() taskTracks!: TaskTrack[];
   @Input() projects!: Project[];
   @Input() tasks!: Task[];
-  @Input() currentDate!: Date;
+  @Input() currentDate!: number;
 
   @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() deleteTaskTrack = new EventEmitter<string>();
 
   maxDuration = 100;
   taskItems: TaskItem[];
+  taskItemsAreEmpty = true;
 
   ngOnChanges(): void {
     this.taskItems = this.createTaskItems();
+    const isToday =
+      transformDate(this.currentDate).getTime() ===
+      transformDate(new Date().getTime()).getTime();
+    this.taskItemsAreEmpty = !this.taskItems.length || isToday;
   }
 
   editTaskTrack(id: string): void {
@@ -55,7 +60,7 @@ export class TodayviewComponent implements OnChanges {
     return this.taskTracks?.filter(
       (curTaskTrack) =>
         curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
-        transformDate(new Date(curTaskTrack.date.seconds * 1000)).getTime() ===
+        transformDate(curTaskTrack.date.seconds * 1000).getTime() ===
           transformDate(this.currentDate).getTime()
     );
   }

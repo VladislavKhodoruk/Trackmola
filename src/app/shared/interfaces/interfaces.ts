@@ -86,6 +86,10 @@ export interface TaskItem {
   projectName: string;
 }
 
+export interface SelectOptions {
+  value: string;
+  viewValue: string;
+}
 export interface ActiveTasks {
   projectName: string;
   projectColor: string;
@@ -97,4 +101,22 @@ export interface ActiveTasks {
 
 export interface GroupBy<T> {
   [key: string]: T;
+}
+
+export interface WeekType {
+  MON: [] | ModifiedTask[];
+  TUE: [] | ModifiedTask[];
+  WED: [] | ModifiedTask[];
+  THU: [] | ModifiedTask[];
+  FRI: [] | ModifiedTask[];
+  SAT: [] | ModifiedTask[];
+  SUN: [] | ModifiedTask[];
+}
+
+export interface ModifiedTask {
+  projectName: string;
+  projectColor: string;
+  duration: number;
+  date: Date;
+  projectId: string;
 }

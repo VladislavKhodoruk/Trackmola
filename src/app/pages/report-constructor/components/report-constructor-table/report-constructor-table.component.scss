@@ -1,0 +1,68 @@
+@import "mixins";
+@import "vars/variables";
+
+:host {
+  .report-constructor-table {
+    border-collapse: collapse;
+
+    width: 100%;
+    max-width: 100%;
+
+    border: $border-report-constructor-table;
+    border-radius: var(--border-radius);
+
+    &-head {
+      height: 4.75rem;
+
+      font: var(--font-blocks);
+
+      background-color: var(--blue2);
+
+      &-item {
+        width: 20%;
+        max-width: 20%;
+        height: 3rem;
+
+        &-text {
+          margin-right: var(--offset);
+
+          text-transform: capitalize;
+        }
+
+        &-icon {
+          padding-top: var(--offset-xs);
+        }
+      }
+    }
+
+    &-body {
+      height: 3rem;
+
+      &-item {
+        padding: var(--offset) 0;
+
+        font: var(--font-current);
+        text-align: center;
+
+        &-text {
+          font: var(--font-current);
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .flex-container {
+    @include flex(center, center);
+
+    cursor: pointer;
+
+    &:hover .report-constructor-table-head-item-text {
+      transform: scale(1.05);
+    }
+
+    &:hover .report-constructor-table-head-item-icon {
+      transform: scale(1.1);
+    }
+  }
+}

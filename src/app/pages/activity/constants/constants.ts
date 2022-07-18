@@ -6,6 +6,7 @@ import {
   getRestTime,
   getWorksMonthDefaultHours,
 } from '@pages/activity/helpers/helpers';
+import { PeriodType } from '@shared/enums/enum';
 import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
 
 const ACTIVITY_CHART_PIE_COLORS: string[] = [
@@ -146,12 +147,13 @@ export const OVERTIME_TOTAL_CARD = {
 };
 
 export const REST_HOURS_TOTAL_CARD = {
-  value: getRestTime('week'),
+  value: getRestTime(PeriodType.Week),
   title: 'rest hours',
   img: 'assets/img/activity/rest-hours.svg',
   backgoundColor: 'var(--blue1)',
   progressBarColor: 'var(--yellow3)',
-  progressBarSize: (getRestTime('week') / DEFAULT_HOURS_OF_REST_PER_WEEK) * 100,
+  progressBarSize:
+    (getRestTime(PeriodType.Week) / DEFAULT_HOURS_OF_REST_PER_WEEK) * 100,
   numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,
   numberMonthHours: getRestMonthDefaultHours(),
 };

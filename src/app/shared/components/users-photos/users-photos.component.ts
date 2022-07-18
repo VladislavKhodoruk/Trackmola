@@ -13,6 +13,7 @@ import {
 export class UsersPhotosComponent {
   @Input() readonly users!: string[];
   @Input() readonly size: number;
+  @Input() readonly classPhoto: string;
 
   readonly maxUsersPhoto: number = MAX_USERS_PHOTO;
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;

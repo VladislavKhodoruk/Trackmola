@@ -10,6 +10,7 @@ import { where } from 'firebase/firestore';
 
 import { Observable } from 'rxjs';
 
+import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
 import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 
@@ -45,7 +46,7 @@ export class ActivityService {
     const ref = collection(this.firestore, 'taskTrack');
 
     const now = new Date();
-    const period: Period = getPeriod(now, 'week');
+    const period: Period = getPeriod(now, PeriodType.Week);
 
     const userId = localStorage.getItem('AuthUserId');
     const queryWeekTasks = query(
