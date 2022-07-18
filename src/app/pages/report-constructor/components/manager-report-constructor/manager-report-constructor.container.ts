@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import { Observable } from 'rxjs';
+
 import {
   setPeriod,
   setProject,
@@ -9,7 +11,13 @@ import {
   getPeriod,
   getTaskTracks,
 } from '@pages/report-constructor/store/report-constructor.selectors';
-import { Period } from '@shared/interfaces/interfaces';
+import {
+  Period,
+  Project,
+  TaskTrack,
+  User,
+  Task,
+} from '@shared/interfaces/interfaces';
 import {
   getProjects,
   getTasks,
@@ -31,11 +39,11 @@ import { TrackMolaState } from '@store/trackMola.state';
 })
 export class ManagerReportConstructorContainer {
   @Input() userType: string;
-  projects$ = this.store$.select(getProjects);
-  period$ = this.store$.select(getPeriod);
-  users$ = this.store$.select(getUsers);
-  taskTracks$ = this.store$.select(getTaskTracks);
-  tasks$ = this.store$.select(getTasks);
+  projects$: Observable<Project[]> = this.store$.select(getProjects);
+  period$: Observable<Period> = this.store$.select(getPeriod);
+  users$: Observable<User[]> = this.store$.select(getUsers);
+  taskTracks$: Observable<TaskTrack[]> = this.store$.select(getTaskTracks);
+  tasks$: Observable<Task[]> = this.store$.select(getTasks);
 
   constructor(private store$: Store<TrackMolaState>) {}
 

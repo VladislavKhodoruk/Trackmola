@@ -11,11 +11,14 @@ import { isEqual } from 'lodash';
 export class HighchartsChartComponent implements OnChanges {
   @Input() options: Options;
   @Input() data: SeriesOptionsType[];
+  @Input() idContainer: string;
   chart: Chart;
+  stoke: Chart;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
       changes.data &&
+      this.data.length &&
       !isEqual(changes.data.currentValue, changes.data.previousValue)
     ) {
       this.chart = new Chart({

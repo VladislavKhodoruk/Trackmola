@@ -84,9 +84,10 @@ export function getWorksMonthDefaultHours(): number {
 
 export const getTotalCardItem = (
   totalCardItem: TotalCardItem,
-  value: number
+  value: number,
+  overtime?: number
 ): TotalCardItem => {
-  totalCardItem.value = value;
+  totalCardItem.value = overtime ? value - overtime : value;
   totalCardItem.progressBarSize = (value / totalCardItem.numberWeekHours) * 100;
   if (totalCardItem.progressBarSize > 100) {
     totalCardItem.progressBarSize = 100;

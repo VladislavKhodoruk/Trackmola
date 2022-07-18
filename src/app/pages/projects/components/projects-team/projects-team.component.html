@@ -1,23 +1,22 @@
 <section class="projects-team">
-  <h2 class="projects-team-title">Current project team</h2>
-  <article class="projects-team-item">
-    <ul>
-      <ng-container *ngIf="projectByRoute">
-        <li
-          *ngFor="let user of usersGroupByProject[projectByRoute.id]"
-          class="projects-team-item-list"
-        >
-          <img
-            src="{{ user.photo || defaultPhoto }}"
-            class="projects-team-item-avatar"
-            alt="user photo"
-          />
-          <div class="projects-team-item-container">
-            <p class="projects-team-item-name">{{ user.fullName }}</p>
-            <p class="projects-team-item-role">{{ user.position }}</p>
-          </div>
-        </li>
-      </ng-container>
-    </ul>
-  </article>
+  <h2 class="projects-team-title">project team</h2>
+  <ul class="projects-team-list">
+    <ng-container *ngIf="projectByRoute">
+      <li
+        *ngFor="let user of usersGroupByProject[projectByRoute.id]"
+        class="projects-team-list-user"
+        [class.projects-team-list-user-manager]="user.role === roles.Manager"
+      >
+        <img
+          src="{{ user.photo || defaultPhoto }}"
+          class="projects-team-list-user-avatar"
+          alt="user photo"
+        />
+        <div class="projects-team-list-item-container">
+          <p class="projects-team-list-user-name">{{ user.fullName }}</p>
+          <p class="projects-team-list-user-role">{{ user.position }}</p>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
 </section>

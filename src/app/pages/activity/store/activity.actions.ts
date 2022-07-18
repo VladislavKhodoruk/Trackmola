@@ -1,5 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
+import { PeriodType } from '@shared/enums/enum';
+
 export const GET_WEEK_REPORT_TIME = '[Activity page] get week report time';
 export const GET_WEEK_REPORT_TIME_SUCCUSS =
   '[Activity page] get week report time success';
@@ -19,5 +21,5 @@ export const changeActivityPeriod = createAction(CHANGE_PERIOD_ACTIVITY);
 
 export const changeActivityPeriodSuccess = createAction(
   CHANGE_PERIOD_ACTIVITY_SUCCESS,
-  props<{ choosePeriod: string }>()
+  props<{ choosePeriod: PeriodType }>()
 );

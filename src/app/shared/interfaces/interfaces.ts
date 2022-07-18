@@ -102,3 +102,9 @@ export interface ActiveTasks {
 export interface GroupBy<T> {
   [key: string]: T;
 }
+
+export interface Vacations {
+  vacationDay: Date;
+  fullName: string;
+  photo: string;
+}
