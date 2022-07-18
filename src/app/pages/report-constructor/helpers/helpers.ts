@@ -112,7 +112,7 @@ export function getSortInfoReportConstructor(
 export function getTeamPhoto(
   users: User[],
   infoFromTaskTracks: InfoReportConstructorItem[]
-): string[] {
+): User[] {
   const teamProjectId: string[] = Array.from(
     new Set(
       infoFromTaskTracks.flatMap((infoFromTaskTrack) =>
@@ -120,7 +120,7 @@ export function getTeamPhoto(
       )
     )
   );
-  return teamProjectId.map(
-    (userId) => users.find((user) => user.id === userId).photo
+  return teamProjectId.map((userId) =>
+    users.find((user) => user.id === userId)
   );
 }

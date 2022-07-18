@@ -4,6 +4,7 @@ import {
   DEFAULT_PHOTO_URL,
   MAX_USERS_PHOTO,
 } from '@shared/constants/constants';
+import { User } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-users-photos',
@@ -11,7 +12,7 @@ import {
   styleUrls: ['./users-photos.component.scss'],
 })
 export class UsersPhotosComponent {
-  @Input() readonly users!: string[];
+  @Input() readonly users!: User[];
   @Input() readonly size: number;
   @Input() readonly classPhoto: string;
 

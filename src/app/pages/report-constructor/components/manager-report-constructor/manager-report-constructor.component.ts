@@ -51,7 +51,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
 
   labels: string[] = [...Object.values(PeriodType)];
 
-  teamProjectPhoto: string[];
+  teamProjectPhoto: User[];
 
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
