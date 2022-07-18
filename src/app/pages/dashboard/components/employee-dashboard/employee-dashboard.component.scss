@@ -2,9 +2,58 @@
 @import "mixins";
 
 :host {
+  $height-charts: 35rem;
+
+  .dashboard-header {
+    @include flex(center, space-between);
+    margin-bottom: var(--offset-m);
+
+    &-title {
+      font: var(--font-titleBig);
+    }
+
+    &-date {
+      font: var(--font-title);
+    }
+
+    &-time {
+      @include flex(flex-start, flex-start, var(--offset-m));
+      margin: var(--offset-m);
+    }
+
+    &-clock {
+      padding: var(--offset-xs);
+
+      background-color: var(--blue2);
+      border-radius: var(--border-radius);
+    }
+  }
+
+  .dashboard-main {
+    @include flex(flex-start, space-between, var(--offset-l));
+
+    &-charts {
+      @include flex(flex-start, flex-start, var(--offset-l));
+      margin: var(--offset);
+    }
+
+    &-todayview {
+      @include flex(stretch, flex-start);
+      align-content: stretch;
+
+      width: 100%;
+    }
+  }
+
+  app-todayview-container {
+    width: 100%;
+    min-width: 30rem;
+    min-height: #{$height-charts};
+  }
+
   .working-hours {
-    width: 32rem;
-    height: 28rem;
+    width: 100%;
+    min-height: #{$height-charts};
     padding: var(--offset) var(--offset-l);
 
     border: $border-input;
@@ -17,18 +66,27 @@
     }
 
     &-main {
+      display: flex;
+      justify-content: center;
+
       padding: 0 var(--offset-ml);
     }
-  }
-
-  .calendar {
-    width: 59rem;
-    margin-bottom: var(--offset-m);
   }
 
   ::ng-deep {
     .highcharts-credits {
       display: none;
+    }
+  }
+
+  @media (max-width: 1110px) {
+    .dashboard-main {
+      display: block;
+      grid-gap: var(--offset);
+
+      &-charts {
+        display: block;
+      }
     }
   }
 }
