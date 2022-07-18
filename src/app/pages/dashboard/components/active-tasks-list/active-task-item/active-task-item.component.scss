@@ -47,11 +47,12 @@
       @include flex(center, space-evenly);
       position: relative;
 
-      max-height: var(--offset-ml);
       min-width: 100%;
-      white-space: nowrap;
+      max-height: var(--offset-ml);
+
       font: var(--font-buttonSmall);
       color: var(--primary);
+      white-space: nowrap;
 
       border: var(--border-xxs) solid var(--primary);
       border-radius: var(--offset-m);
