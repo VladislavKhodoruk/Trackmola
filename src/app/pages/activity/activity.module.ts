@@ -25,9 +25,12 @@ import { ActivityEffects } from './store/activity.effects';
 import { ActivityReducer } from './store/activity.reducer';
 import { ACTIVITY_STATE_NAME } from './store/activity.selectors';
 
+import { ActivityWeekChartComponent } from '@pages/activity/components/activity-week-chart/activity-week-chart.component';
+import { ActivityWeekChartContainer } from '@pages/activity/components/activity-week-chart/activity-week-chart.container';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
+import { VacationsModule } from '@shared/components/vacations/vacations.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-bu
     ActivityTotalCardsComponent,
     ActivityTotalCardsContainer,
     ActivityTotalCardsItemComponent,
+    ActivityWeekChartComponent,
+    ActivityWeekChartContainer,
   ],
   imports: [
     CommonModule,
@@ -52,6 +57,7 @@ import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-bu
     RouterModule.forChild(ActivityRoutes),
     ToggleButtonsModule,
     ButtonModule,
+    VacationsModule,
   ],
   exports: [RouterModule],
 })

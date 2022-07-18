@@ -14,7 +14,17 @@
     }
   }
 
+  .container-for-charts {
+    @include flex(flex-start, flex-start, var(--offset-l));
+  }
+
   .container {
     padding: var(--offset) 0;
+  }
+
+  ::ng-deep {
+    .highcharts-credits {
+      display: none;
+    }
   }
 }

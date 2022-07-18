@@ -5,8 +5,8 @@
   .mat-dialog-container {
     overflow: hidden;
 
-    max-width: 26rem;
-    height: 14rem;
+    min-width: 25vw;
+    height: 23vh;
     padding: var(--offset);
 
     border-radius: var(--offset);

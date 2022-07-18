@@ -26,8 +26,10 @@ export class TaskComponent {
 
   constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ModalComponent);
+  openDialog(enterAnimationDuration: string): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      enterAnimationDuration,
+    });
     dialogRef
       .afterClosed()
       .pipe(untilDestroyed(this))
