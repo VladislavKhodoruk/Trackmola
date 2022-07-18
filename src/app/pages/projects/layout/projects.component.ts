@@ -29,7 +29,7 @@ export class ProjectsComponent {
   readonly userType = UserType;
   readonly currentUser: string = localStorage.getItem('AuthUserType');
 
-  changeMode(mode: string) {
+  changeMode(mode: string): void {
     this.currentMode = mode;
   }
 }
