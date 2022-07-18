@@ -1,9 +1,10 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { getMyActivityTaskTracks } from '@pages/activity/store/activity.selectors';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
+
 import { getProjects } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
