@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './employee-dashboard.component.html',
   styleUrls: ['./employee-dashboard.component.scss'],
 })
-export class EmployeeDashboardComponent {}
+export class EmployeeDashboardComponent {
+  today = new Date();
+}
