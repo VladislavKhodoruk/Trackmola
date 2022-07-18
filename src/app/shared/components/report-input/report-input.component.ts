@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -15,9 +16,10 @@ import plus from '@iconify/icons-tabler/plus';
 import angleLeftB from '@iconify/icons-uil/angle-left-b';
 
 import { Timestamp } from 'firebase/firestore';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, takeLast } from 'rxjs';
 
 import { ActiveTasks, Project, TaskTrack } from './../../interfaces/interfaces';
+import x from '@iconify/icons-tabler/x';
 
 import {
   DurationValue,
@@ -36,6 +38,7 @@ import { TasksService } from '@shared/services/tasks.service';
   selector: 'app-report-input',
   templateUrl: './report-input.component.html',
   styleUrls: ['./report-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportInputComponent implements OnInit, OnChanges {
   @Input() allProjects: Project[];
@@ -43,6 +46,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() currentDate: string;
   @Input() editableTaskTrack: TaskTrack;
   @Input() formTask: ActiveTasks;
+  @Input() taskTracks: TaskTrack[];
 
   @Output() editTaskTrack = new EventEmitter<TaskTrack>();
   @Output() addCurTaskTrack = new EventEmitter<TaskTrack>();
@@ -55,6 +59,8 @@ export class ReportInputComponent implements OnInit, OnChanges {
   filteredProjectsOptions: Observable<string[]>;
   filteredTasksOptions: Observable<string[]>;
   filteredRoleOptions!: Observable<string[]>;
+
+  iconX = x;
 
   form = new FormGroup({
     project: new FormControl('', Validators.required),
@@ -131,7 +137,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       startWith(''),
       map((value) => this.filterOption(value || '', Object.values(Roles)))
     );
-    this.form.get('duration').setValue(DurationValue.Default);
+    this.editableTaskTrack = null;
   }
 
   private fillForm(): void {
@@ -149,7 +155,18 @@ export class ReportInputComponent implements OnInit, OnChanges {
   }
 
   private get mostFrequentDuration(): number {
-    return 5;
+    const curTaskId = this.allTasks.find(
+      (task) => task.name === this.formTask.taskName
+    ).id;
+    const usersTaskTracks = this.taskTracks?.filter(
+      (curTaskTrack) =>
+        curTaskTrack.taskId === curTaskId &&
+        curTaskTrack.userId === localStorage.getItem('AuthUserId')
+    );
+    const averageDuration =
+      usersTaskTracks.reduce((acc, cur) => (acc += cur.duration), 0) /
+      usersTaskTracks.length;
+    return Math.round(averageDuration);
   }
 
   private fillModalForm(): void {

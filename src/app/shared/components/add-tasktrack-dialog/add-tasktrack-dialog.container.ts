@@ -1,6 +1,5 @@
 import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 import { ActiveTasks } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -10,8 +9,6 @@ import { ActiveTasks } from '@shared/interfaces/interfaces';
   ></app-add-tasktrack-dialog-component>`,
 })
 export class AddTasktrackDialogContainer {
-  @Input() add: ActiveTasks;
-
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { formTask: ActiveTasks }

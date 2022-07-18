@@ -32,6 +32,17 @@
   .mat-selected {
     color: var(--primary) !important;
   }
+
+  .mat-dialog-title {
+    margin: 0;
+  }
+
+  .icon-x {
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
 }
 
 :host {
@@ -304,5 +315,25 @@
     .mat-form-field-invalid .mat-input-element {
       caret-color: var(--black);
     }
+  }
+  .top {
+    @include flex(center, space-between);
+    margin-bottom: var(--offset-m);
+  }
+
+  .title {
+    font: var(--font-title);
+  }
+
+  .icon-x {
+    display: flex;
+  }
+
+  .icon-x:hover {
+    cursor: pointer;
+
+    color: var(--primary-hover);
+
+    opacity: 0.8;
   }
 }
