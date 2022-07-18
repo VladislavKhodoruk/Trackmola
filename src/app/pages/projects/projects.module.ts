@@ -24,6 +24,7 @@ import { PROJECTS_STATE_NAME } from './store/projects.selectors';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
+import { VacationsModule } from '@shared/components/vacations/vacations.module';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     StoreModule.forFeature(PROJECTS_STATE_NAME, ProjectsReducer),
     RouterModule.forChild(ProjectsRoutes),
     ToggleButtonsModule,
+    VacationsModule,
   ],
   exports: [RouterModule],
 })

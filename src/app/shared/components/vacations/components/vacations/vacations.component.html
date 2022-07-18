@@ -1,0 +1,13 @@
+<section>
+  <div class="vacations">
+    <ic-icon [icon]="pineappleIcon" class="vacations-icon"></ic-icon>
+    <h2 class="vacations-head">Vacations</h2>
+  </div>
+  <ul class="vacations-list">
+    <li *ngFor="let vacation of vacations">
+      <app-vacation-item-component
+        [vacation]="vacation"
+      ></app-vacation-item-component>
+    </li>
+  </ul>
+</section>

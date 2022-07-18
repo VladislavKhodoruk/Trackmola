@@ -6,6 +6,7 @@ import {
   getRestTime,
   getWorksMonthDefaultHours,
 } from '@pages/activity/helpers/helpers';
+import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
 
 const ACTIVITY_CHART_PIE_COLORS: string[] = [
@@ -155,4 +156,60 @@ export const REST_HOURS_TOTAL_CARD = {
     (getRestTime(PeriodType.Week) / DEFAULT_HOURS_OF_REST_PER_WEEK) * 100,
   numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,
   numberMonthHours: getRestMonthDefaultHours(),
+};
+
+export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
+  chart: {
+    type: 'column',
+    borderColor: 'var(--gray)',
+    borderRadius: 15,
+    borderWidth: 1,
+    margin: [130, 130, 170, 130],
+    width: 880,
+    height: 594,
+  },
+  title: {
+    text: 'Projects activity',
+    style: {
+      fontSize: 'var(--offset-l)',
+    },
+    x: -280,
+    y: 40,
+  },
+  xAxis: {
+    categories: SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
+    crosshair: true,
+    gridLineDashStyle: null,
+    gridLineWidth: 0,
+    lineWidth: 0,
+    labels: {
+      style: {
+        fontWeight: '500',
+        fontFamily: 'var(--font-calendar)',
+        fontSize: 'var(--offset-sm)',
+        color: 'var(--gray3)',
+      },
+    },
+  },
+  yAxis: {
+    gridLineWidth: 0,
+    lineWidth: 0,
+    title: {
+      style: {
+        display: 'none',
+      },
+    },
+  },
+  legend: {
+    floating: true,
+    itemDistance: 80,
+    itemMarginBottom: 50,
+    symbolHeight: 26,
+    itemStyle: {
+      fontFamily: 'var(--font-current)',
+      fontSize: 'var(--offset-sm)',
+      color: 'var(--black)',
+      fontWeight: '300',
+    },
+  },
 };
