@@ -1,0 +1,65 @@
+<table class="report-constructor-table">
+  <thead class="report-constructor-table-head">
+    <tr>
+      <th
+        *ngFor="let tableHeadItem of tableHeadItems"
+        class="report-constructor-table-head-item"
+      >
+        <div
+          class="flex-container"
+          (click)="
+            changeSortOption(tableHeadItem.columnName, tableHeadItem.columnType)
+          "
+        >
+          <span class="report-constructor-table-head-item-text"
+            >{{ tableHeadItem.name }}
+          </span>
+          <ic-icon
+            *ngIf="tableHeadItem.icon"
+            class="report-constructor-table-head-item-icon"
+            [style.transform]="
+              'rotate(' +
+              (selectedSort.columnName === tableHeadItem.columnName &&
+              selectedSort.ascendingSort
+                ? 180
+                : 0) +
+              'deg)'
+            "
+            [icon]="sortDescendingIcon"
+            width="1.5rem"
+            height="1.5rem"
+          ></ic-icon>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody class="report-constructor-table-body">
+    <ng-container *ngIf="infoFromTaskTracksForTable">
+      <tr *ngFor="let infoItem of infoFromTaskTracksForTable">
+        <td class="report-constructor-table-body-item">
+          {{ infoItem.taskName }}
+        </td>
+        <td class="report-constructor-table-body-item">
+          <ng-container *ngFor="let userPosition of infoItem.userPositions">
+            <div class="report-constructor-table-body-item-text">
+              {{ userPosition }}
+            </div>
+          </ng-container>
+        </td>
+        <td class="report-constructor-table-body-item">
+          {{ infoItem.taskDuration }}
+        </td>
+        <td class="report-constructor-table-body-item">
+          {{ infoItem.taskPercentageWeek }}%
+        </td>
+        <td class="report-constructor-table-body-item">
+          <ng-container *ngFor="let userName of infoItem.userNames">
+            <div class="report-constructor-table-body-item-text">
+              {{ userName }}
+            </div>
+          </ng-container>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

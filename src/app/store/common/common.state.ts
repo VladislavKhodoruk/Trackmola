@@ -1,3 +1,4 @@
+import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
 import {
   Period,
@@ -42,5 +43,5 @@ export const initialState: CommonState = {
   projects: [],
   users: [],
   usersInProjects: [],
-  period: getPeriod(new Date(), 'week'),
+  period: getPeriod(new Date(), PeriodType.Week),
 };

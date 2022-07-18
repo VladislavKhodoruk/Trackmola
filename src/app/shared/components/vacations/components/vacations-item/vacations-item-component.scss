@@ -16,7 +16,7 @@
       width: var(--offset-m);
       height: var(--offset-m);
 
-      background-color: white;
+      background-color: var(--white);
       border-radius: 50%;
     }
 
@@ -44,7 +44,7 @@
       &-photo {
         max-width: 5rem;
         max-height: 5rem;
-        margin: var(--offset-sm) var(--offset) var(--offset-sm) var(--offset);
+        margin: var(--offset-sm) var(--offset);
 
         border-radius: 50%;
 

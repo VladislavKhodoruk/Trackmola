@@ -5,12 +5,12 @@ import { Vacations } from '@shared/interfaces/interfaces';
 @Component({
   selector: 'app-vacations-container',
   template: `<app-vacations-component
-    [data]="vacationDate$"
+    [data]="vacationDate"
   ></app-vacations-component>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationsContainer {
-  vacationDate$: Vacations[] = [
+  vacationDate: Vacations[] = [
     {
       vacationDay: new Date('2022-07-22T03:24:00'),
       fullName: 'Kirill Borisenok',

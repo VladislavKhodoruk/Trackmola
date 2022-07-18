@@ -52,14 +52,16 @@
       bottom: 0;
       left: 0;
 
-      width: 20rem;
+      width: 23rem;
       height: 20rem;
     }
 
     &-container {
       display: flex;
+      gap: var(--offset);
 
-      height: 90%;
+      height: 70%;
+      margin-bottom: var(--offset-l);
     }
 
     &-side {
@@ -74,7 +76,6 @@
 
       width: 7.25rem;
       height: var(--offset-ml);
-      margin-right: var(--offset-s);
 
       background-color: var(--white);
       border: $border-input;
@@ -128,10 +129,6 @@
           box-shadow: $border-input-select;
         }
       }
-    }
-
-    &-status {
-      margin: 0 var(--offset-s);
     }
 
     &-item {
@@ -191,7 +188,7 @@
 
   ::ng-deep {
     .mat-form-field {
-      width: 60%;
+      width: 20.5rem;
       margin-top: var(--offset-xs);
       margin-right: var(--offset);
       padding: var(--offset-d) var(--offset);
@@ -199,6 +196,7 @@
       font-size: var(--font-main);
       line-height: 1;
 
+      background-color: var(--white);
       border: $border-input;
       border-radius: var(--border-radius-m);
 

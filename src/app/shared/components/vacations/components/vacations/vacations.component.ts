@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import pineappleIcon from '@iconify/icons-noto/pineapple';
+import pineapple from '@iconify/icons-noto/pineapple';
 import { IconifyIcon } from '@iconify/types';
 
 import { Vacations } from '@shared/interfaces/interfaces';
@@ -11,5 +11,5 @@ import { Vacations } from '@shared/interfaces/interfaces';
 })
 export class VacationsComponent {
   @Input() data: Vacations[];
-  pineapple: IconifyIcon = pineappleIcon;
+  pineappleIcon: IconifyIcon = pineapple;
 }

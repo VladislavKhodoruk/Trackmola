@@ -27,6 +27,9 @@
   }
 
   .percentage-full {
+    display: flex;
+    align-items: center;
+
     padding: 0.4rem var(--offset);
 
     font: var(--font-blocks);
