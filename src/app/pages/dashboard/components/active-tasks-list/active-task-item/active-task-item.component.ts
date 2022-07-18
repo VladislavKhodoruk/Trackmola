@@ -5,7 +5,7 @@ import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
 
 import { IconifyIcon } from '@iconify/types';
 
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { AddTasktrackDialogContainer } from '@shared/components/add-tasktrack-dialog/add-tasktrack-dialog.container';
 import { ActiveTasks } from '@shared/interfaces/interfaces';
@@ -21,7 +21,6 @@ export class ActiveTaskItemComponent {
   @Input() currentTask!: ActiveTasks;
 
   readonly clipButton: IconifyIcon = clipboardPlus;
-  duration = 1;
 
   constructor(public dialog: MatDialog) {}
 

@@ -24,9 +24,7 @@ import { CommonEffects } from './store/common/common.effects';
 
 import { trackMolaReducer } from './store/trackMola.state';
 
-import { AddTasktrackDialogModule } from '@shared/components/add-tasktrack-dialog/add-tasktrack-dialog.module';
 import { ReportInputModule } from '@shared/components/report-input/report-input.module';
-import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 import { CustomSerializer } from '@store/router/custom-serializer';
 import { environment } from 'environments/environment';
 

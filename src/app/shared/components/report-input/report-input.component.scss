@@ -316,6 +316,7 @@
       caret-color: var(--black);
     }
   }
+
   .top {
     @include flex(center, space-between);
     margin-bottom: var(--offset-m);

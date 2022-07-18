@@ -13,13 +13,13 @@ import check from '@iconify/icons-mdi/check';
 import microphoneIcon from '@iconify/icons-tabler/microphone';
 import minus from '@iconify/icons-tabler/minus';
 import plus from '@iconify/icons-tabler/plus';
+import x from '@iconify/icons-tabler/x';
 import angleLeftB from '@iconify/icons-uil/angle-left-b';
 
 import { Timestamp } from 'firebase/firestore';
-import { map, Observable, startWith, takeLast } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 
 import { ActiveTasks, Project, TaskTrack } from './../../interfaces/interfaces';
-import x from '@iconify/icons-tabler/x';
 
 import {
   DurationValue,

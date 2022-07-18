@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 import { ActiveTasks } from './../../interfaces/interfaces';
 
 @Component({
