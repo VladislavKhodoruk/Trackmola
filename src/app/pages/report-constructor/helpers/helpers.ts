@@ -109,7 +109,7 @@ export function getSortInfoReportConstructor(
   }
 }
 
-export function getTeamPhoto(
+export function getTeam(
   users: User[],
   infoFromTaskTracks: InfoReportConstructorItem[]
 ): User[] {
