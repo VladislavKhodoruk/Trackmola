@@ -19,7 +19,8 @@
   }
 
   .container {
-    padding: var(--offset) 0;
+    @include flex(flex-start, flex-start, var(--offset-x));
+    padding: var(--offset-l) 0;
   }
 
   ::ng-deep {
