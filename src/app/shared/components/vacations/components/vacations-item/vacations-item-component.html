@@ -1,14 +1,14 @@
-<section class="main">
-  <div class="main-circle"></div>
-  <div class="main-wrapper">
-    <div class="main-wrapper-info">
-      <p class="main-wrapper-info-day">
+<section class="vacations-list-item">
+  <div class="vacations-list-item-circle"></div>
+  <div class="vacations-list-item-wrapper">
+    <div class="vacations-list-item-wrapper-info">
+      <p class="vacations-list-item-wrapper-info-day">
         {{ vacation.vacationDay | date: "MMM d" }}
       </p>
-      <p class="main-wrapper-info-employee">{{ vacation.fullName }}</p>
+      <p class="vacations-list-item-wrapper-info-employee">
+        {{ vacation.fullName }}
+      </p>
     </div>
-    <div class="main-wrapper-photo">
-      <img src="{{ vacation.photo }}" />
-    </div>
+    <img src="{{ vacation.photo }}" class="vacations-list-item-wrapper-photo" />
   </div>
 </section>

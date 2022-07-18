@@ -5,7 +5,7 @@ import { Vacations } from '@shared/interfaces/interfaces';
 @Component({
   selector: 'app-vacations-container',
   template: `<app-vacations-component
-    [data]="vacationDate"
+    [vacations]="vacationDate"
   ></app-vacations-component>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

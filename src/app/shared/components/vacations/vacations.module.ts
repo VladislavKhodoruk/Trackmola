@@ -16,6 +16,6 @@ import { VacationsContainer } from '@shared/components/vacations/components/vaca
     VacationsItemComponent,
   ],
   imports: [CommonModule, IconModule, UsersPhotosModule],
-  exports: [VacationsContainer, VacationsItemComponent],
+  exports: [VacationsContainer, VacationsItemComponent, VacationsComponent],
 })
 export class VacationsModule {}
