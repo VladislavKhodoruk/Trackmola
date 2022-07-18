@@ -31,7 +31,7 @@ export class DatepickerComponent {
   start = new Date(this.period.start);
   end = new Date(this.period.end);
 
-  onGetFirstandLastDay(event): void {
+  onGetFirstandLastDay(): void {
     if (this.end) {
       const firstandLastDay = {
         start: this.start.getTime(),

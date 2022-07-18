@@ -10,7 +10,7 @@ import { PeriodType } from '@shared/enums/enum';
 export class EmployeeActivityComponent {
   @Input() period: string;
 
-  @Output() selectPeriod = new EventEmitter<string>();
+  @Output() selectPeriod = new EventEmitter<PeriodType>();
 
   labels = [PeriodType.Week, PeriodType.Month];
 }

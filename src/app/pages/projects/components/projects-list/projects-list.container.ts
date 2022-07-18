@@ -17,6 +17,7 @@ import { TrackMolaState } from '@store/trackMola.state';
 @Component({
   selector: 'app-projects-list-container',
   template: `<app-projects-list
+    class="projects-list-container"
     [searchText]="searchText$ | async"
     [projects]="projects$ | async"
     [usersGroupByProject]="usersGroupByProject$ | async"
@@ -24,7 +25,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [currentRoute]="currentRoute$ | async"
     (search)="onSearch($event)"
   ></app-projects-list>`,
-  styleUrls: ['./projects-list.component.scss'],
+  styleUrls: ['./projects-list.container.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsListContainer {
