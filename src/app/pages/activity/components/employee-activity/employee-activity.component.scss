@@ -1,10 +1,13 @@
 @import "mixins";
 
 :host {
+  @include flex(flex-start, flex-start);
+  flex-direction: column;
+  gap: var(--offset-l);
+
   .header-wrapper {
     @include flex(center, flex-start, var(--offset-l));
     height: 5rem;
-    margin-bottom: var(--offset-l);
 
     h1 {
       font: var(--font-titleBig);
@@ -15,18 +18,35 @@
     }
   }
 
-  .container-for-charts {
-    @include flex(flex-start, flex-start, var(--offset-l));
-  }
-
   .container {
     @include flex(flex-start, flex-start, var(--offset-x));
-    padding: var(--offset-l) 0;
+    flex-grow: 1;
+    gap: var(--offset-l);
+
+    width: 100%;
+
+    :first-child {
+      width: 66%;
+      height: 37.5rem;
+    }
+
+    :last-child {
+      width: 33%;
+      height: 37.5rem;
+    }
   }
 
   ::ng-deep {
     .highcharts-credits {
       display: none;
     }
+  }
+
+  app-activity-total-cards-container {
+    height: 0 !important;
+  }
+
+  app-project-efficiency-component {
+    height: 0 !important;
   }
 }

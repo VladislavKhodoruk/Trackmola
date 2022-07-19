@@ -3,5 +3,6 @@
 :host {
   .container {
     @include flex(center, flex-start);
+    justify-content: center;
   }
 }

@@ -2,7 +2,7 @@
 
 :host {
   .project-efficiency {
-    padding: 0 9.625rem 0 var(--offset-l);
+    height: 25rem;
 
     border: var(--border-xs) solid var(--gray);
     border-radius: var(--border-radius-l);
@@ -11,10 +11,13 @@
       margin-top: var(--offset-l);
 
       font: var(--font-title);
+      text-align: center;
     }
 
     &-hart-info {
       @include flex(flex-start, flex-start, var(--offset-ml));
+      justify-content: center;
+
       margin: 4.5rem 0 5.7rem var(--offset-m);
 
       &-text {

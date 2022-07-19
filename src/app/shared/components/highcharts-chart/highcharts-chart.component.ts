@@ -1,4 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { Options, SeriesOptionsType } from 'highcharts';
 import { isEqual } from 'lodash';
@@ -26,5 +32,13 @@ export class HighchartsChartComponent implements OnChanges {
         series: this.data,
       });
     }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    setTimeout(() => {
+      this.chart.ref.setSize();
+    });
   }
 }

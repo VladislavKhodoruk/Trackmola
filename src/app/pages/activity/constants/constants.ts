@@ -165,8 +165,6 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
     borderRadius: 15,
     borderWidth: 1,
     margin: [130, 130, 170, 130],
-    width: 880,
-    height: 594,
   },
   title: {
     text: 'Daily Activity',
