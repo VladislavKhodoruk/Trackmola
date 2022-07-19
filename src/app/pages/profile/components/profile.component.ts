@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
 
-import { User } from '@shared/interfaces/interfaces';
+import { User, Vacations } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +15,19 @@ export class ProfileComponent {
   @Output() logoutEmmiter = new EventEmitter<void>();
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
+
+  readonly vacations: Vacations[] = [
+    {
+      vacationDay: new Date('2022-07-20T03:24:00'),
+      fullName: 'Maria Ivakhnenko',
+      photo: 'https://avatars.githubusercontent.com/u/88663763?v=4',
+    },
+    {
+      vacationDay: new Date('2022-07-31T03:24:00'),
+      fullName: 'Maria Ivakhnenko',
+      photo: 'https://avatars.githubusercontent.com/u/88663763?v=4',
+    },
+  ];
 
   logout(event: Event): void {
     event.preventDefault();
