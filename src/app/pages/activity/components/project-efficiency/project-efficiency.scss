@@ -1,0 +1,37 @@
+@import "mixins";
+
+:host {
+  .project-efficiency {
+    padding: 0 9.625rem 0 var(--offset-l);
+
+    border: var(--border-xs) solid var(--gray);
+    border-radius: var(--border-radius-l);
+
+    &-header {
+      margin-top: var(--offset-l);
+
+      font: var(--font-title);
+    }
+
+    &-hart-info {
+      @include flex(flex-start, flex-start, var(--offset-ml));
+      margin: 4.5rem 0 5.7rem var(--offset-m);
+
+      &-text {
+        margin-top: var(--offset-b);
+      }
+    }
+  }
+
+  p {
+    font: var(--font-current);
+  }
+
+  p:first-child {
+    max-width: 8rem;
+  }
+
+  span {
+    color: var(--primary);
+  }
+}
