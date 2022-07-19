@@ -9,8 +9,7 @@
   .report-constructor-table {
     overflow: auto;
 
-    height: 65%;
-    max-height: 65%;
+    height: calc(100% - 15rem);
     margin-right: var(--offset-m);
   }
 
@@ -63,5 +62,11 @@
   .report-constructor-team {
     @include flex(center, flex-start);
     margin: var(--offset) 0;
+  }
+
+  @media (max-width: 1440px) {
+    .report-constructor-table {
+      height: calc(100% - 17rem);
+    }
   }
 }
