@@ -19,7 +19,7 @@
   $width-scroll: var(--offset-s);
   $height-header: 4rem;
   $gap: var(--offset-m);
-  $gap-scroll: var(--offset);
+  $gap-scroll: calc(var(--offset-l) / 2 - #{$width-scroll} / 2);
 
   display: flex;
 
