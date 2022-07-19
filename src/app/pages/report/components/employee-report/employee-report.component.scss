@@ -16,6 +16,7 @@
       &-title {
         font: var(--font-titleBig);
       }
+
       &-container {
         @include flex(center, center, 5rem);
       }
@@ -23,12 +24,14 @@
 
     &-calendar {
       flex: 1;
+
       width: 100%;
       margin-bottom: var(--offset-l);
     }
 
     &-date {
       margin-bottom: var(--offset);
+
       font: var(--font-title);
     }
 
