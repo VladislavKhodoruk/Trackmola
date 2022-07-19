@@ -5,7 +5,9 @@
   $height-charts: 35rem;
   display: flex;
   flex-direction: column;
+
   height: 100%;
+
   .dashboard-header {
     @include flex(center, space-between);
     height: 5rem;
@@ -35,6 +37,7 @@
     display: flex;
     flex: 3;
     gap: var(--offset-l);
+
     margin-bottom: var(--offset-l);
 
     &-charts {
@@ -51,18 +54,19 @@
       @include flex(stretch, flex-start);
       flex: 1;
     }
+
     &-calendar {
       display: flex;
+      flex: 2;
       flex-direction: column;
       gap: var(--offset-l);
-
-      flex: 2;
     }
   }
 
   app-calendar-container {
     flex: 1;
   }
+
   active-tasks-list-container {
     flex: 3;
   }
@@ -75,7 +79,9 @@
 
   .working-hours {
     flex: 1;
+
     height: 100%;
+
     border: $border-input;
     border-radius: var(--border-radius-l);
 
@@ -87,8 +93,9 @@
 
     &-main {
       display: flex;
-      justify-content: center;
       flex: 1;
+      justify-content: center;
+
       padding: 0 var(--offset-ml);
     }
   }
