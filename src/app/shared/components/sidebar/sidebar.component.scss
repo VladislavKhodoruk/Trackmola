@@ -37,6 +37,10 @@
           color: var(--gray);
         }
 
+        &-label {
+          text-align: center;
+        }
+
         &-active {
           color: var(--primary);
 
