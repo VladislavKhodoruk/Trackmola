@@ -14,8 +14,8 @@
 
   .report-constructor-header {
     @include flex(center, space-between);
-    margin-bottom: var(--offset-l);
     height: 5rem;
+    margin-bottom: var(--offset-l);
 
     &-title {
       font: var(--font-titleBig);
