@@ -20,8 +20,9 @@
 
   .container {
     @include flex(flex-start, flex-start, var(--offset-x));
-    gap: var(--offset-l);
     flex-grow: 1;
+    gap: var(--offset-l);
+
     width: 100%;
 
     :first-child {

@@ -4,6 +4,7 @@
   .projects-activity {
     @include flex(flex-start, flex-start, var(--offset-l));
     flex-direction: column;
+
     height: 37.5rem;
     padding: var(--offset-m) var(--offset-l);
 
