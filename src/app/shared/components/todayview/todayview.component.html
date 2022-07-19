@@ -1,10 +1,10 @@
 <div class="todayview">
   <div class="top-area">
     <div
-      class="percentage-full"
-      [class.percentage]="totalDuration <= maxDuration"
+      class="bubble-full"
+      [class.bubble]="totalDuration <= maximumNumberOfHoursInADay"
     >
-      {{ totalDuration }}%
+      {{ totalDuration }}h
     </div>
     <div class="top-buttons">
       <button class="repeat-button" *ngIf="taskItemsAreEmpty; else notEmpty">
@@ -20,8 +20,8 @@
     <div class="flask">
       <div
         class="liquid-full"
-        [class.liquid]="totalDuration <= maxDuration"
-        [style.height.%]="totalDuration"
+        [class.liquid]="totalDuration <= maximumNumberOfHoursInADay"
+        [style.height.%]="totalDurationPercent"
       >
         <div class="bubbles bubble-1"></div>
         <div class="bubbles bubble-2"></div>

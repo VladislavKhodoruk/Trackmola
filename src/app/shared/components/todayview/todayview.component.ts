@@ -33,6 +33,8 @@ export class TodayviewComponent implements OnChanges {
   taskItems: TaskItem[];
   taskItemsAreEmpty = true;
 
+  maximumNumberOfHoursInADay = MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY;
+
   ngOnChanges(): void {
     this.taskItems = this.createTaskItems();
     const isToday =
@@ -53,7 +55,11 @@ export class TodayviewComponent implements OnChanges {
       (prev, cur) => prev + cur.duration,
       0
     );
-    return (totalDuration / MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY) * 100;
+    return totalDuration;
+  }
+
+  get totalDurationPercent(): number {
+    return (this.totalDuration / MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY) * 100;
   }
 
   getFilteredTasksTracks(): TaskTrack[] {
