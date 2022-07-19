@@ -4,9 +4,9 @@
   .task-wrappeer {
     display: grid;
     grid-gap: var(--offset);
-    grid-template-columns: 10rem 28rem 8.2rem 1fr 2rem;
+    grid-template-columns: 10rem 34rem 8.2rem 1fr 2rem;
 
-    max-width: 59rem;
+    margin-right: var(--offset);
     margin-bottom: var(--offset);
     padding: var(--offset-d) var(--offset);
 
