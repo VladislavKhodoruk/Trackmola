@@ -3,7 +3,9 @@
 
 :host {
   $height-charts: 35rem;
-
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   .dashboard-header {
     @include flex(center, space-between);
     height: 5rem;
@@ -18,7 +20,7 @@
     }
 
     &-time {
-      @include flex(flex-start, flex-start, var(--offset-m));
+      @include flex(flex-start, flex-start, var(--offset-l));
     }
 
     &-clock {
@@ -30,19 +32,39 @@
   }
 
   .dashboard-main {
-    @include flex(flex-start, space-between, var(--offset-l));
+    display: flex;
+    flex: 3;
+    gap: var(--offset-l);
+    margin-bottom: var(--offset-l);
 
     &-charts {
       @include flex(flex-start, flex-start, var(--offset-l));
-      margin: var(--offset);
+      flex: 2;
+    }
+
+    &-chart {
+      @include flex(flex-start, flex-start, var(--offset-l));
+      flex: 2;
     }
 
     &-todayview {
       @include flex(stretch, flex-start);
-      align-content: stretch;
-
-      width: 100%;
+      flex: 1;
     }
+    &-calendar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--offset-l);
+
+      flex: 2;
+    }
+  }
+
+  app-calendar-container {
+    flex: 1;
+  }
+  active-tasks-list-container {
+    flex: 3;
   }
 
   app-todayview-container {
@@ -52,15 +74,13 @@
   }
 
   .working-hours {
-    width: 100%;
-    min-height: #{$height-charts};
-    padding: var(--offset) var(--offset-l);
-
+    flex: 1;
+    height: 100%;
     border: $border-input;
     border-radius: var(--border-radius-l);
 
     &-title {
-      margin-bottom: var(--offset);
+      margin: var(--offset-l);
 
       font: var(--font-title);
     }
@@ -68,7 +88,7 @@
     &-main {
       display: flex;
       justify-content: center;
-
+      flex: 1;
       padding: 0 var(--offset-ml);
     }
   }
@@ -82,7 +102,7 @@
   @media (max-width: 1110px) {
     .dashboard-main {
       display: block;
-      grid-gap: var(--offset);
+      grid-gap: var(--offset-l);
 
       &-charts {
         display: block;

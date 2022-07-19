@@ -3,7 +3,7 @@
     overflow: auto;
 
     width: 100%;
-    max-height: 20rem;
+    max-height: 30rem;
     margin: var(--offset-s) 0;
   }
 
@@ -11,10 +11,13 @@
     margin: var(--offset-s) 0;
 
     &-title {
-      margin-top: var(--offset-m);
       margin-bottom: var(--offset-s);
 
       font: var(--font-title);
+    }
+
+    &-list {
+      margin: var(--offset-s) 0;
     }
   }
 
