@@ -130,7 +130,7 @@ export const mockTasks: Task[] = [
     name: 'Projects page polishing',
   },
   {
-    name: 'init2',
+    name: 'Create app',
     projectId: 'lrvIgoy3xaroJTWlBeTx',
     id: 'Dp62ch3RLoOnV2NMjky0',
     archived: false,
@@ -180,7 +180,7 @@ export const mockTasks: Task[] = [
   {
     projectId: 'lrvIgoy3xaroJTWlBeTx',
     id: 'Uo7r5QOnCaSxLBgdYk5X',
-    name: 'Init',
+    name: 'Create authorization',
     archived: false,
   },
   {
@@ -209,7 +209,7 @@ export const mockTasks: Task[] = [
   },
   {
     id: 'gJGIgdv9AagjEnE3ZD2u',
-    name: 'init3',
+    name: 'Create user profile',
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     archived: false,
   },
