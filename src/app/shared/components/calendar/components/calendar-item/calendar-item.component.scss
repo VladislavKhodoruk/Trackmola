@@ -24,7 +24,8 @@
     cursor: pointer;
 
     width: 100%;
-    height: $item-height;
+    height: 100%;
+    min-height: $item-height;
     padding: $item-padding;
 
     font-size: var(--font-calendar);
