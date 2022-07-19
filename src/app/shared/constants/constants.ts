@@ -95,3 +95,5 @@ export const NUMBER_OF_DAYS_IN_A_WEEK = 7;
 export const MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY = 8;
 
 export const CLASS_DURATION_MORE_THAN_EIGHT = 'more';
+
+export const dialogOpeningTime = '300ms';

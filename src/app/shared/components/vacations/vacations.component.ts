@@ -10,6 +10,7 @@ import { Vacations } from '@shared/interfaces/interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VacationsComponent {
-  @Input() vacations: Vacations[];
-  pineappleIcon: IconifyIcon = pineapple;
+  @Input() readonly vacations: Vacations[];
+
+  readonly pineappleIcon: IconifyIcon = pineapple;
 }
