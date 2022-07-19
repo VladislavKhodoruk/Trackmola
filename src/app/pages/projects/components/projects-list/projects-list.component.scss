@@ -26,6 +26,7 @@
     @include flex(flex-start, flex-start, var(--offset-m));
 
     $width-scroll: var(--offset-s);
+    $gap-scroll: calc(var(--offset-l) / 2 - #{$width-scroll} / 2);
     $shadow-y: var(--offset-d);
     $shadow-left: var(--offset-l);
     $shadow-right: var(--offset);
@@ -37,13 +38,15 @@
     overflow-y: scroll;
     flex-direction: column;
 
-    width: calc(100% + #{$width-scroll} + #{$shadow-left} + #{$shadow-right});
-    max-width: calc(
-      100% + #{$width-scroll} + #{$shadow-left} + #{$shadow-right}
+    width: calc(
+      100% + #{$shadow-left} + #{$shadow-right} + #{$width-scroll} * 2 - #{$gap-scroll}
     );
-    margin: calc(#{$shadow-y} * -1) calc(#{$shadow-right} * -1)
+    max-width: calc(
+      100% + #{$shadow-left} + #{$shadow-right} + #{$width-scroll} * 2 - #{$gap-scroll}
+    );
+    margin: calc(#{$shadow-y} * -1) calc(#{$gap-scroll} * -1)
       calc(#{$shadow-y} * -1) calc(#{$shadow-left} * -1);
-    padding: #{$shadow-y} #{$shadow-right} #{$shadow-y} #{$shadow-left};
+    padding: #{$shadow-y} #{$gap-scroll} #{$shadow-y} #{$shadow-left};
 
     &::-webkit-scrollbar {
       width: #{$width-scroll};
@@ -64,8 +67,8 @@
 
       flex-direction: column;
 
-      width: 100%;
-      max-width: 100%;
+      width: calc(100%);
+      max-width: calc(100%);
       padding: var(--offset) var(--offset-m);
 
       background-color: var(--white);

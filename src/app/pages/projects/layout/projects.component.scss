@@ -1,8 +1,8 @@
 @import "mixins";
 
 :host {
-  $gap: 2.5rem;
-  $header-height: var(--offset-ml);
+  $gap: var(--offset-l);
+  $header-height: 5rem;
 
   display: flex;
 
@@ -22,10 +22,11 @@
     &-header {
       @include flex(center, space-between, var(--offset-sm));
       width: 100%;
+      height: #{$header-height};
       max-height: #{$header-height};
 
       &-title {
-        font: var(--font-title);
+        font: var(--font-titleBig);
       }
 
       &-buttons {
@@ -56,7 +57,7 @@
     }
 
     &-container {
-      @include flex(flex-start, flex-start, var(--offset-ml));
+      @include flex(flex-start, flex-start, var(--offset-l));
       width: 100%;
       max-width: 100%;
       height: calc(100% - #{$header-height} - #{$gap});
@@ -64,13 +65,13 @@
     }
 
     &-team-and-vacations {
-      @include flex(flex-start, flex-start, var(--offset-m));
+      @include flex(flex-start, flex-start, var(--offset-l));
       flex-direction: column;
 
       width: 25%;
       max-width: 25%;
-      height: calc(100% - var(--offset-m));
-      max-height: calc(100% - var(--offset-m));
+      height: 100%;
+      max-height: 100%;
     }
 
     &-vacations {
