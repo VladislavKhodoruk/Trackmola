@@ -49,6 +49,8 @@
   .form-report {
     position: relative;
     z-index: 0;
+    display: flex;
+    flex-direction: column;
 
     overflow: hidden;
 
@@ -72,15 +74,20 @@
       display: flex;
       gap: var(--offset);
 
-      height: 70%;
+      flex: 1;
       margin-bottom: var(--offset-l);
     }
 
-    &-side {
+    &-side-left {
       display: flex;
       flex-direction: column;
+      flex: 1 2;
+    }
 
-      width: 50%;
+    &-side-right {
+      display: flex;
+      flex-direction: column;
+      flex: 3 1;
     }
 
     &-duration {
@@ -147,7 +154,6 @@
       display: flex;
       flex-direction: column;
 
-      height: 25%;
       margin-bottom: var(--offset-sm);
 
       &-label {
@@ -167,10 +173,9 @@
     }
 
     &-comments-input {
+      flex: 1;
       resize: none;
 
-      width: 100%;
-      height: 23rem;
       padding: var(--offset-d) var(--offset);
 
       font: var(--font-main);
