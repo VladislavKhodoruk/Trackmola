@@ -61,6 +61,22 @@ export const activeTaskGroupByProject = createSelector(
     }, {})
 );
 
+export const activeUserGroupByProject = createSelector(
+  getUsers,
+  getProjects,
+  filteredTaskTracksByPeriod,
+  (users, projects, taskTracks) =>
+    projects.reduce((accum, project) => {
+      const activeUsersId = taskTracks
+        .filter(({ projectId }) => projectId === project.id)
+        .map(({ taskId }) => taskId);
+
+      const activeUsers = users.filter(({ id }) => activeUsersId.includes(id));
+
+      return { ...accum, [project.id]: activeUsers };
+    }, {})
+);
+
 export const usersGroupByProject = createSelector(
   filteredTaskTracksByPeriod,
   getProjects,
