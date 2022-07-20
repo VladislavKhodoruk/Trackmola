@@ -6,10 +6,10 @@
     @include flex(center, center);
 
     --size-left: calc(((18 / 5) * var(--size-report) - 90) * 1deg);
-
-    width: 26rem;
-    height: 26rem;
-    padding: var(--offset-dl);
+    aspect-ratio: 1/1;
+    width: 100%;
+    height: 100%;
+    padding: var(--offset-m);
 
     background: linear-gradient(var(--white), var(--white)) content-box,
       linear-gradient(var(--size-left), var(--gray) 51%, transparent 0) 0 /
@@ -40,30 +40,36 @@
 
       margin-bottom: var(--offset-s);
 
+      &-container {
+        padding: var(--offset-l);
+      }
+
       &-left {
-        font: var(--font-titleBig);
+        font: var(--font-title);
         color: var(--gray4);
       }
 
       &-slash {
-        font: var(--font-titleBig);
+        font: var(--font-title);
         color: var(--gray);
       }
 
       &-reported {
-        font: var(--font-titleBig);
+        font: var(--font-title);
         color: var(--primary);
       }
     }
 
     &-text-explanation {
-      @include flex(center, center);
       user-select: none;
+
+      display: flex;
+
+      height: 100%;
 
       &-left {
         margin-left: auto;
 
-        font: var(--font-blocks);
         color: var(--gray4);
         text-transform: capitalize;
       }
@@ -71,8 +77,6 @@
       &-reported {
         margin-left: auto;
 
-        font: var(--font-blocks);
-        font-weight: 300;
         color: var(--primary);
         text-transform: capitalize;
       }

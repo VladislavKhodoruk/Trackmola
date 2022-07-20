@@ -3,7 +3,7 @@
   style="--size-report: {{ sizeReportTimeChart }}"
   [class.box-full]="weekReportTime >= numberOfHoursInWorkingWeek"
 >
-  <div>
+  <div class="box-text-hours-container">
     <div class="box-text-hours">
       <span
         *ngIf="weekReportTime < numberOfHoursInWorkingWeek"
@@ -16,7 +16,7 @@
       ><span
         class="box-text-hours-reported"
         [style.fontSize.rem]="
-          weekReportTime >= numberOfHoursInWorkingWeek ? 3.75 : 2.5
+          weekReportTime >= numberOfHoursInWorkingWeek ? 3.75 : 2
         "
         [style.color]="
           weekReportTime >= numberOfHoursInWorkingWeek
@@ -30,7 +30,7 @@
       <span
         *ngIf="weekReportTime < numberOfHoursInWorkingWeek"
         class="box-text-explanation-left"
-        >left</span
+        >left &nbsp;</span
       >
       <span
         *ngIf="weekReportTime < numberOfHoursInWorkingWeek"
