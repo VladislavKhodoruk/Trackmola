@@ -4,6 +4,10 @@
   .container {
     @include flex(center, flex-start);
     gap: var(--offset-l);
-    justify-content: space-between;
+  }
+
+  app-activity-total-cards-item {
+    width: 100%;
+    height: 100%;
   }
 }

@@ -2,13 +2,10 @@
 @import "mixins";
 
 :host {
-  // &:last-child {
-  //   margin-right: 0;
-  // }
-
   .total-card-item {
     cursor: pointer;
-
+    height: 100%;
+    flex: 1;
     padding: var(--offset) var(--offset-xm) var(--offset-l);
 
     border-radius: var(--border-radius-l);
