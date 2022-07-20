@@ -4,8 +4,10 @@
 :host {
   .total-card-item {
     cursor: pointer;
-    height: 100%;
+
     flex: 1;
+
+    height: 100%;
     padding: var(--offset) var(--offset-xm) var(--offset-l);
 
     border-radius: var(--border-radius-l);
