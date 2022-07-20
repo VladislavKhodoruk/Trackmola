@@ -34,14 +34,16 @@
   }
 
   .dashboard-main {
+    overflow: auto;
     display: flex;
-    flex: 3;
+    flex: 5;
     gap: var(--offset-l);
 
     margin-bottom: var(--offset-l);
 
     &-charts {
       @include flex(flex-start, flex-start, var(--offset-l));
+      overflow: auto;
       flex: 2;
     }
 
@@ -68,25 +70,27 @@
   }
 
   active-tasks-list-container {
-    flex: 3;
+    overflow: hidden;
+    flex: 2;
   }
 
   app-todayview-container {
     width: 100%;
     min-width: 30rem;
-    min-height: #{$height-charts};
+  }
+
+  app-working-hours-chart-container {
+    aspect-ratio: 1 / 1;
   }
 
   .working-hours {
     flex: 1;
 
-    height: 100%;
-
     border: $border-input;
     border-radius: var(--border-radius-l);
 
     &-title {
-      margin: var(--offset-l);
+      margin: var(--offset);
 
       font: var(--font-title);
     }

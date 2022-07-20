@@ -3,7 +3,7 @@
     overflow: auto;
 
     width: 100%;
-    max-height: 30rem;
+    max-height: calc(100% - 3.5rem);
     margin: var(--offset-s) 0;
   }
 
