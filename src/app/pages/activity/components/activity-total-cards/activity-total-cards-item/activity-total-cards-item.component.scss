@@ -2,24 +2,16 @@
 @import "mixins";
 
 :host {
-  &:last-child {
-    margin-right: 0;
-  }
+  // &:last-child {
+  //   margin-right: 0;
+  // }
 
   .total-card-item {
     cursor: pointer;
-
-    width: 17rem;
-    height: 25rem;
-    margin-right: var(--offset-l);
     padding: var(--offset) var(--offset-xm) var(--offset-l);
 
     border-radius: var(--border-radius-l);
     box-shadow: $border-radius-activity-total-cards;
-
-    &:first-child {
-      margin-left: 0;
-    }
 
     &:hover {
       box-shadow: $border-input-select;

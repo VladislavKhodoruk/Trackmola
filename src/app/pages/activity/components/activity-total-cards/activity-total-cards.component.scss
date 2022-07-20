@@ -3,6 +3,7 @@
 :host {
   .container {
     @include flex(center, flex-start);
-    justify-content: center;
+    gap: var(--offset-l);
+    justify-content: space-between;
   }
 }

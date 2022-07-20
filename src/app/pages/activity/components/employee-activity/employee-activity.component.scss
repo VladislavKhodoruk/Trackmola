@@ -19,20 +19,20 @@
   }
 
   .container {
-    @include flex(flex-start, flex-start, var(--offset-x));
+    @include flex(flex-start, space-evenly, var(--offset-x));
     flex-grow: 1;
     gap: var(--offset-l);
 
     width: 100%;
 
     :first-child {
-      width: 66%;
+      width: 60%;
       height: 37.5rem;
     }
 
     :last-child {
-      width: 33%;
-      height: 37.5rem;
+      width: 40%;
+      // height: 37.5rem;
     }
   }
 
@@ -42,11 +42,11 @@
     }
   }
 
-  app-activity-total-cards-container {
-    height: 0 !important;
-  }
+  // app-activity-total-cards-container {
+  //   height: 0 !important;
+  // }
 
-  app-project-efficiency-component {
-    height: 0 !important;
-  }
+  // app-project-efficiency-component {
+  //   height: 0 !important;
+  // }
 }
