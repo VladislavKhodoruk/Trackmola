@@ -2,8 +2,7 @@
 
 :host {
   .container {
-    @include flex(center, flex-start);
-    gap: var(--offset-l);
+    @include flex(center, flex-start, var(--offset-l));
   }
 
   app-activity-total-cards-item {
