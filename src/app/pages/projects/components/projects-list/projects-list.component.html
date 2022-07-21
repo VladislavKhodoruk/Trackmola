@@ -21,10 +21,12 @@
         routerLinkActive="projects-list-item-selected"
       >
         <div class="projects-list-item-header">
-          <app-project-label
-            [projectColor]="project.color"
-            [projectName]="project.name"
-          ></app-project-label>
+          <ng-container *ngIf="project">
+            <app-project-label
+              [projectColor]="project.color"
+              [projectName]="project.name"
+            ></app-project-label>
+          </ng-container>
           <app-users-photos
             [users]="usersGroupByProject[project.id]"
             size="2"

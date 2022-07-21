@@ -1,10 +1,12 @@
 <div class="task">
   <div class="task-top">
     <div class="time">{{ taskItem?.duration }}h</div>
-    <app-project-label
-      [projectColor]="taskItem?.projectColor"
-      [projectName]="taskItem?.projectName"
-    ></app-project-label>
+    <ng-container *ngIf="taskItem">
+      <app-project-label
+        [projectColor]="taskItem.projectColor"
+        [projectName]="taskItem.projectName"
+      ></app-project-label>
+    </ng-container>
     <div class="description">{{ taskItem?.taskName }}</div>
   </div>
   <div class="buttons">

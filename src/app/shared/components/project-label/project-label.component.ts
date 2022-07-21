@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./project-label.component.scss'],
 })
 export class ProjectLabelComponent {
-  @Input() projectColor!: string;
-  @Input() projectName!: string;
+  @Input() projectColor: string;
+  @Input() projectName: string;
 }

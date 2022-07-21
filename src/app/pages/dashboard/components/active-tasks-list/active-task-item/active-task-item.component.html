@@ -1,9 +1,11 @@
 <article class="task-wrappeer">
   <div class="project-name-wrapper">
-    <app-project-label
-      [projectColor]="currentTask.projectColor"
-      [projectName]="currentTask.projectName"
-    ></app-project-label>
+    <ng-container *ngIf="currentTask">
+      <app-project-label
+        [projectColor]="currentTask.projectColor"
+        [projectName]="currentTask.projectName"
+      ></app-project-label>
+    </ng-container>
   </div>
   <p class="task-name">{{ currentTask.taskName }}</p>
   <div [class.task-status]="currentTask.status">
