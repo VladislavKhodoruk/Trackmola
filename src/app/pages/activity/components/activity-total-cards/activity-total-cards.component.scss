@@ -2,7 +2,11 @@
 
 :host {
   .container {
-    @include flex(center, flex-start);
-    justify-content: center;
+    @include flex(center, flex-start, var(--offset-l));
+  }
+
+  app-activity-total-cards-item {
+    width: 100%;
+    height: 100%;
   }
 }
