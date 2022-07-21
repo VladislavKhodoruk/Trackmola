@@ -4,6 +4,9 @@
 :host {
   .total-card-item {
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     flex: 1;
 
@@ -37,7 +40,6 @@
 
     &-hours {
       font: var(--font-titleBig);
-      font-size: 130%;
       color: var(--black);
     }
 
@@ -49,22 +51,20 @@
       margin: 0 auto;
 
       &-title {
-        width: 63%;
+        width: 80%;
         margin: 0 auto;
-
         font: var(--font-current-small);
         color: var(--gray2);
         text-align: right;
       }
 
       &-item {
-        width: 63%;
+        width: 80%;
         height: 0.5rem;
         margin: 0 auto;
-
         background-color: var(--gray5);
         border: none;
-        border-radius: var(--border-radius-xxl);
+        border-radius: var(--offset);
 
         &-progress {
           width: 80%;

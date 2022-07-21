@@ -26,7 +26,7 @@
     gap: var(--offset-l);
 
     width: 100%;
-    height: calc(100% - 34% - 5rem);
+    height: calc(100% - 38% - 5rem);
 
     :first-child {
       width: calc(100% - 33% - 1rem);
@@ -43,7 +43,7 @@
     @include flex(flex-start, flex-start, var(--offset-l));
 
     width: 100%;
-    height: calc(100% - 66% - 5rem);
+    height: calc(100% - 62% - 5rem);
   }
 
   app-activity-total-cards-container {
