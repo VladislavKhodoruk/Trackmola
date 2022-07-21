@@ -1,8 +1,21 @@
 :host {
-  .projects-activity-chart {
-    display: block;
-
-    width: 100%;
+  .projects-activity {
+    display: flex;
+    flex-direction: column;
+    border: var(--border-xs) solid var(--gray);
+    border-radius: var(--border-radius-l);
+    gap: 4.625rem;
     height: 100%;
+    padding: var(--offset-m) 5.5rem 4rem 5.5rem;
+
+    &-header {
+      font: var(--font-title);
+    }
+
+    &-chart {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
   }
 }

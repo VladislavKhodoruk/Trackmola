@@ -5,7 +5,7 @@
     @include flex(flex-start, flex-start, var(--offset-l));
     flex-direction: column;
 
-    height: 37.5rem;
+    height: 100%;
     padding: var(--offset-m) var(--offset-l);
 
     border: var(--border-xs) solid var(--gray);

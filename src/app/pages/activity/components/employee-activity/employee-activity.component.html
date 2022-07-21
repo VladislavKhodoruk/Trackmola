@@ -7,14 +7,11 @@
     (changeMode)="selectPeriod.emit($event)"
   ></app-toggle-buttons>
 </div>
-<div class="container">
-  <div class="container-chart-wrapper">
-    <h2 class="container-chart-wrapper-header">Daily Activity</h2>
-    <app-activity-week-chart-container></app-activity-week-chart-container>
-  </div>
+<div class="container-one">
+  <app-activity-week-chart-container></app-activity-week-chart-container>
   <app-projects-activity-container></app-projects-activity-container>
 </div>
-<div class="container">
+<div class="container-two">
   <app-activity-total-cards-container></app-activity-total-cards-container>
   <app-project-efficiency-component></app-project-efficiency-component>
 </div>

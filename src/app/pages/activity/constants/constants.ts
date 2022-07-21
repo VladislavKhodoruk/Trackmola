@@ -161,6 +161,8 @@ export const REST_HOURS_TOTAL_CARD = {
 export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
   chart: {
     type: 'column',
+    reflow: true,
+    marginBottom: 150,
   },
   title: {
     text: '',
@@ -190,6 +192,7 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
     },
   },
   legend: {
+    y: 60,
     floating: true,
     itemDistance: 80,
     itemMarginBottom: 50,

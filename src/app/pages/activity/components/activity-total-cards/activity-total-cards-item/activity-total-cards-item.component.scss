@@ -8,10 +8,8 @@
 
   .total-card-item {
     cursor: pointer;
-
-    width: 17rem;
-    height: 25rem;
-    margin-right: var(--offset-l);
+    flex: 1;
+    height: 100%;
     padding: var(--offset) var(--offset-xm) var(--offset-l);
 
     border-radius: var(--border-radius-l);

@@ -4,6 +4,7 @@
   @include flex(flex-start, flex-start);
   flex-direction: column;
   gap: var(--offset-l);
+  height: 100%;
 
   .header-wrapper {
     @include flex(center, flex-start, var(--offset-l));
@@ -18,28 +19,35 @@
     }
   }
 
-  .container {
-    @include flex(flex-start, flex-start, var(--offset-x));
-    flex-grow: 1;
-    gap: var(--offset-l);
-
+  .container-one {
+    @include flex(flex-start, flex-start, var(--offset-l));
     width: 100%;
+    height: calc(100% - 34% - 5rem);
 
     :first-child {
-      flex-grow: 2;
+      width: calc(100% - 33% - 1rem);
+      height: 100%;
     }
 
     :last-child {
-      flex-grow: 1;
+      width: calc(100% - 67% - 1rem);
+      height: 100%;
+    }
+  }
+
+  .container-two {
+    @include flex(flex-start, flex-start, var(--offset-l));
+    width: 100%;
+    height: calc(100% - 66% - 5rem);
+
+    :first-child {
+      width: calc(100% - 33% - 1rem);
+      height: 100%;
     }
 
-    &-chart-wrapper {
-      border: var(--border-xs) solid var(--gray);
-      border-radius: var(--border-radius-l);
-
-      &-header {
-        font: var(--font-title);
-      }
+    :last-child {
+      width: calc(100% - 67% - 1rem);
+      height: 100%;
     }
   }
 
@@ -47,13 +55,5 @@
     .highcharts-credits {
       display: none;
     }
-  }
-
-  app-activity-total-cards-container {
-    height: 0 !important;
-  }
-
-  app-project-efficiency-component {
-    height: 0 !important;
   }
 }
