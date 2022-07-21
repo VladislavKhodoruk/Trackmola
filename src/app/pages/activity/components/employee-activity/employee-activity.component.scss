@@ -20,8 +20,11 @@
     }
   }
 
-  .container-one {
-    @include flex(flex-start, flex-start, var(--offset-l));
+  .container {
+    @include flex(flex-start, space-evenly, var(--offset-x));
+
+    gap: var(--offset-l);
+
     width: 100%;
     height: calc(100% - 34% - 5rem);
 
@@ -36,20 +39,26 @@
     }
   }
 
-  .container-two {
+  .cards {
     @include flex(flex-start, flex-start, var(--offset-l));
+
     width: 100%;
     height: calc(100% - 66% - 5rem);
+  }
 
-    :first-child {
-      width: calc(100% - 33% - 1rem);
-      height: 100%;
-    }
+  app-activity-total-cards-container {
+    width: calc(100% - 33% - 1rem);
+    height: 100%;
+  }
 
-    :last-child {
-      width: calc(100% - 67% - 1rem);
-      height: 100%;
-    }
+  app-project-efficiency-component {
+    display: flex;
+
+    width: calc(100% - 67% - 1rem);
+  }
+
+  .total-card-item-img:last-child {
+    background-color: #04e4cc;
   }
 
   ::ng-deep {

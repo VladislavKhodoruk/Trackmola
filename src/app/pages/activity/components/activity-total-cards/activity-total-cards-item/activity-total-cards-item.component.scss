@@ -2,10 +2,6 @@
 @import "mixins";
 
 :host {
-  &:last-child {
-    margin-right: 0;
-  }
-
   .total-card-item {
     cursor: pointer;
 
@@ -17,23 +13,19 @@
     border-radius: var(--border-radius-l);
     box-shadow: $border-radius-activity-total-cards;
 
-    &:first-child {
-      margin-left: 0;
-    }
-
     &:hover {
       box-shadow: $border-input-select;
     }
 
     &-img {
-      width: 13.5rem;
-      height: 11rem;
-      margin: 0 auto var(--offset);
-      padding: 0 var(--offset);
+      width: 60%;
+      margin: 0 auto;
 
       img {
+        display: block;
+
         width: 100%;
-        height: 100%;
+        margin: 0 auto;
       }
     }
 
@@ -45,7 +37,7 @@
 
     &-hours {
       font: var(--font-titleBig);
-      font-size: 4rem;
+      font-size: 130%;
       color: var(--black);
     }
 
@@ -53,18 +45,22 @@
       display: flex;
       flex-direction: column;
 
-      width: 10.75rem;
+      width: 100%;
       margin: 0 auto;
 
       &-title {
+        width: 63%;
+        margin: 0 auto;
+
         font: var(--font-current-small);
         color: var(--gray2);
         text-align: right;
       }
 
       &-item {
-        width: 10.75rem;
+        width: 63%;
         height: 0.5rem;
+        margin: 0 auto;
 
         background-color: var(--gray5);
         border: none;

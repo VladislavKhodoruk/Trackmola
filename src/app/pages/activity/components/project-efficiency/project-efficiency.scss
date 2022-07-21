@@ -2,6 +2,7 @@
 
 :host {
   .project-efficiency {
+    width: 100%;
     height: 100%;
 
     border: var(--border-xs) solid var(--gray);
@@ -17,8 +18,6 @@
     &-hart-info {
       @include flex(flex-start, flex-start, var(--offset-ml));
       justify-content: center;
-
-      margin: 4.5rem 0 5.7rem var(--offset-m);
 
       &-text {
         margin-top: var(--offset-b);
