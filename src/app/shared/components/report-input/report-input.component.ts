@@ -163,6 +163,9 @@ export class ReportInputComponent implements OnInit, OnChanges {
         curTaskTrack.taskId === curTaskId &&
         curTaskTrack.userId === localStorage.getItem('AuthUserId')
     );
+    if (!usersTaskTracks.length) {
+      return +DurationValue.Default;
+    }
     const averageDuration =
       usersTaskTracks.reduce((acc, cur) => (acc += cur.duration), 0) /
       usersTaskTracks.length;
