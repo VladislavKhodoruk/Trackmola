@@ -163,6 +163,7 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
     type: 'column',
     reflow: true,
     marginBottom: 150,
+    marginTop: 50,
   },
   title: {
     text: '',
