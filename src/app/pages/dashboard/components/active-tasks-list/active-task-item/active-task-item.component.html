@@ -1,8 +1,9 @@
 <article class="task-wrappeer">
   <div class="project-name-wrapper">
-    <p class="project-name" [style.border-color]="currentTask.projectColor">
-      {{ currentTask.projectName }}
-    </p>
+    <app-project-label
+      [projectColor]="currentTask.projectColor"
+      [projectName]="currentTask.projectName"
+    ></app-project-label>
   </div>
   <p class="task-name">{{ currentTask.taskName }}</p>
   <div [class.task-status]="currentTask.status">

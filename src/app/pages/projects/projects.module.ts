@@ -49,6 +49,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     RouterModule.forChild(ProjectsRoutes),
     ToggleButtonsModule,
     VacationsModule,
+    ProjectLabelModule,
   ],
   exports: [RouterModule],
 })

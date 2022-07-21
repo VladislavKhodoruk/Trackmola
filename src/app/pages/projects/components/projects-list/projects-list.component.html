@@ -21,12 +21,10 @@
         routerLinkActive="projects-list-item-selected"
       >
         <div class="projects-list-item-header">
-          <div
-            class="projects-list-item-header-title"
-            [ngStyle]="{ 'border-color': project.color }"
-          >
-            {{ project.name }}
-          </div>
+          <app-project-label
+            [projectColor]="project.color"
+            [projectName]="project.name"
+          ></app-project-label>
           <app-users-photos
             [users]="usersGroupByProject[project.id]"
             size="2"
