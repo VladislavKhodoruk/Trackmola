@@ -67,10 +67,13 @@ export class ActiveTasksComponent {
   }
 
   protected modalAddToReport(
+    event: Event,
     projectName: Project['name'],
     taskName: Task['name'],
     enterAnimationDuration: string = dialogOpeningTime
   ): void {
+    event.stopPropagation();
+
     this.dialog.open(AddTasktrackDialogContainer, {
       panelClass: 'modal',
       enterAnimationDuration,

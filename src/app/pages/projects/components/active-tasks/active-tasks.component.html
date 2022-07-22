@@ -41,7 +41,7 @@
                   iconWidth="1.5rem"
                   iconHeight="1.5rem"
                   (buttonClick)="
-                    modalAddToReport(project.name, activeTask.name)
+                    modalAddToReport($event, project.name, activeTask.name)
                   "
                 ></app-button>
                 <ng-container *ngIf="currentUser !== userType.Employee">
