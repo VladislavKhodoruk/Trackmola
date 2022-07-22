@@ -1,1 +1,82 @@
-<p>active-tasks-users works!</p>
+<section class="activeTasks">
+  <h2 class="activeTasks-header">current Team</h2>
+  <ng-container *ngIf="project">
+    <ul class="activeTasks-list">
+      <ng-container *ngTemplateOutlet="activeTask"> </ng-container>
+    </ul>
+  </ng-container>
+</section>
+
+<ng-template #activeTask>
+  <ng-container *ngFor="let activeTask of activeUserGroupByProject[project.id]">
+    <li class="activeTasks-list-item">
+      <mat-accordion>
+        <mat-expansion-panel
+          class="project"
+          (opened)="(!panelOpenState)"
+          (closed)="(!panelOpenState)"
+        >
+          <mat-expansion-panel-header class="project-header">
+            <mat-panel-title class="project-header-title">
+              <img
+                src="{{ activeTask.photo || defaultPhoto }}"
+                class="activeTask-image"
+                alt="user photo"
+              />
+              <div class="project-header-user-info">
+                <div class="project-header-user-info-name">
+                  {{ activeTask.fullName }}
+                </div>
+                <div class="project-header-user-info-position">
+                  {{ activeTask.position }}
+                </div>
+              </div>
+            </mat-panel-title>
+            <mat-panel-description class="project-header-description">
+              {{ activeTask.name }}
+              <div class="project-header-description-buttons">
+                <app-button
+                  class="project-header-description-buttons-item"
+                  [buttonClass]="'button-primary button-add-to-report'"
+                  [icon]="iconCheck"
+                  iconWidth="1.5rem"
+                  iconHeight="1.5rem"
+                  (buttonClick)="aprove($event)"
+                ></app-button>
+              </div>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div
+            class="activeTask"
+            *ngFor="
+              let taskTrack of groupByDate(
+                activeTaskTracksGroupByUser[activeTask.id]
+              )
+            "
+          >
+            <div class="activeTask-date">
+              {{ taskTrack[0] | date: "dd MMMM" }}
+            </div>
+            <div
+              class="activeTask-container"
+              *ngFor="let taskTrack1 of taskTrack[1]"
+            >
+              <div class="activeTask-description">
+                <div class="activeTask-description-header">
+                  <div>{{ tasksInfoByTaskId[taskTrack1.taskId].name }}</div>
+                  <span class="activeTask-description-header-duration">
+                    {{ taskTrack1.duration }}h
+                  </span>
+                </div>
+                <div class="activeTask-description-comment">
+                  {{ taskTrack1.comments || "no comments" }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </li>
+  </ng-container>
+</ng-template>

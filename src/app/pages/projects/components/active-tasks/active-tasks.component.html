@@ -99,10 +99,12 @@
                   {{ taskTrack1.comments || "no comments" }}
                 </div>
               </div>
-              <app-button
-                buttonClass="button-secondary"
-                [icon]="iconQuestionMark"
-              ></app-button>
+              <ng-container *ngIf="currentUser !== userType.Employee">
+                <app-button
+                  buttonClass="button-secondary project-task-question"
+                  [icon]="iconQuestionMark"
+                ></app-button>
+              </ng-container>
             </div>
           </div>
         </mat-expansion-panel>

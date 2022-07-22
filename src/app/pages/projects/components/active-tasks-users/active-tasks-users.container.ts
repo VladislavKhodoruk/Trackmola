@@ -4,17 +4,16 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import {
-  activeTaskGroupByProject,
-  activeTaskTracksGroupByTask,
+  activeTaskTracksGroupByUser,
   activeUserGroupByProject,
   getProjectByRoute,
-  usersInfoByUserId,
+  tasksInfoByTaskId,
 } from '@pages/projects/store/projects.selectors';
 import {
   GroupBy,
   Project,
-  Task,
   TaskTrack,
+  Task,
   User,
 } from '@shared/interfaces/interfaces';
 
@@ -24,28 +23,25 @@ import { TrackMolaState } from '@store/trackMola.state';
   selector: 'app-active-tasks-users-container',
   template: `<app-active-tasks-users
     [project]="project$ | async"
-    [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
     [activeUserGroupByProject]="activeUserGroupByProject$ | async"
-    [activeTaskTracksGroupByTask]="activeTaskTracksGroupByTask$ | async"
-    [usersInfoByUserId]="usersInfoByUserId$ | async"
+    [activeTaskTracksGroupByUser]="activeTaskTracksGroupByUser$ | async"
+    [tasksInfoByTaskId]="tasksInfoByTaskId$ | async"
   ></app-active-tasks-users>`,
+  styleUrls: ['./active-tasks-users.container.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActiveTasksUsersContainer {
   readonly project$: Observable<Project> =
     this.store$.select(getProjectByRoute);
 
-  readonly activeTaskGroupByProject$: Observable<GroupBy<Task[]>> =
-    this.store$.select(activeTaskGroupByProject);
-
   readonly activeUserGroupByProject$: Observable<GroupBy<User>> =
     this.store$.select(activeUserGroupByProject);
 
-  readonly activeTaskTracksGroupByTask$: Observable<GroupBy<TaskTrack[]>> =
-    this.store$.select(activeTaskTracksGroupByTask);
+  readonly activeTaskTracksGroupByUser$: Observable<GroupBy<TaskTrack[]>> =
+    this.store$.select(activeTaskTracksGroupByUser);
 
-  readonly usersInfoByUserId$: Observable<GroupBy<User>> =
-    this.store$.select(usersInfoByUserId);
+  readonly tasksInfoByTaskId$: Observable<GroupBy<Task[]>> =
+    this.store$.select(tasksInfoByTaskId);
 
   constructor(private store$: Store<TrackMolaState>) {}
 }

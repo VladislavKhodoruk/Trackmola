@@ -23,6 +23,7 @@ export class ProjectsComponent {
   @Input() readonly projectByRoute: Project;
   @Input() readonly usersGroupByProject: GroupBy<User[]>;
 
+  readonly projectMode = ProjectMode;
   currentMode: string = ProjectMode.Tasks;
 
   readonly iconAngleRight = angleRight;
