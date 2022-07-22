@@ -3,11 +3,11 @@
 :host {
   .projects-activity {
     @include flex(flex-start, flex-start, var(--offset-l));
+    overflow: hidden;
     flex-direction: column;
 
     height: 100%;
     padding: var(--offset-m) var(--offset-l);
-    overflow: hidden;
 
     border: var(--border-xs) solid var(--gray);
     border-radius: var(--border-radius-l);
