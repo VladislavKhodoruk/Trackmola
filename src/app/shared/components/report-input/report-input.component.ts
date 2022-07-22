@@ -32,8 +32,6 @@ import {
 } from '@pages/report/helpers/report-input-helpers';
 import { Task } from '@pages/report/interfaces/interfaces';
 
-import { TasksService } from '@shared/services/tasks.service';
-
 @Component({
   selector: 'app-report-input',
   templateUrl: './report-input.component.html',
@@ -87,8 +85,6 @@ export class ReportInputComponent implements OnInit, OnChanges {
   classStatusChecked = 'task-status-checked';
   classStatusDone = '';
   classStatusInProgress = '';
-
-  constructor(private tasksService: TasksService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.allProjects) {

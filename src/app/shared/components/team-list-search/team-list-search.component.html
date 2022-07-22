@@ -1,0 +1,22 @@
+<div>
+  <form class="team-list" [formGroup]="form">
+    <div class="search">
+      <mat-form-field appearance="fill">
+        <input
+          type="text"
+          matInput
+          formControlName="project"
+          [matAutocomplete]="projects"
+          (blur)="isProject()"
+        />
+        <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+
+        <mat-autocomplete #projects="matAutocomplete">
+          <mat-option *ngFor="let option of allProjects" [value]="option">
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
