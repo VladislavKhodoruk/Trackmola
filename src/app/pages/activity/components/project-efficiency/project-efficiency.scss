@@ -19,8 +19,6 @@
       @include flex(flex-start, flex-start, var(--offset-ml));
       justify-content: center;
 
-      margin: 4.5rem 0 5.7rem var(--offset-m);
-
       &-text {
         margin-top: var(--offset-b);
       }

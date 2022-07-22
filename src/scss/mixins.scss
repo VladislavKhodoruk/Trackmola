@@ -35,3 +35,11 @@
   #{$variable}-xl: calc(var(#{$variable}) * 4);
   #{$variable}-xl: calc(var(#{$variable}) * 6);
 }
+
+@mixin width-variables($width, $indent) {
+  width: calc(100% - #{$width} - #{$indent});
+}
+
+@mixin height-variables($height, $indent) {
+  height: calc(100% - #{$height} - #{$indent});
+}
