@@ -36,11 +36,13 @@
               <div class="project-header-description-buttons">
                 <app-button
                   class="project-header-description-buttons-item"
-                  [buttonClass]="'button-secondary button-add-to-report'"
-                  [icon]="iconPencil"
+                  [buttonClass]="'button-primary button-add-to-report'"
+                  [icon]="iconClipboard"
                   iconWidth="1.5rem"
                   iconHeight="1.5rem"
-                  (buttonClick)="addToReport($event)"
+                  (buttonClick)="
+                    modalAddToReport(project.name, activeTask.name)
+                  "
                 ></app-button>
                 <ng-container *ngIf="currentUser !== userType.Employee">
                   <app-button
@@ -53,8 +55,8 @@
                   ></app-button>
                   <app-button
                     class="project-header-description-buttons-item"
-                    [buttonClass]="'button-primary button-add-to-report'"
-                    [icon]="iconClipboard"
+                    [buttonClass]="'button-secondary button-add-to-report'"
+                    [icon]="iconPencil"
                     iconWidth="1.5rem"
                     iconHeight="1.5rem"
                     (buttonClick)="addToReport($event)"

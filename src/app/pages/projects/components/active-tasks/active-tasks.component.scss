@@ -114,11 +114,8 @@
         color: var(--black);
 
         &-buttons {
-          @include flex(center, center);
-
-          &-item {
-            margin-left: var(--offset-s);
-          }
+          @include flex(center, center, var(--offset-s));
+          flex-direction: row-reverse;
         }
       }
     }

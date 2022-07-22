@@ -9,6 +9,9 @@
   );
 
   .todayview {
+    display: flex;
+    flex-direction: column;
+
     width: 100%;
     height: 100%;
 
@@ -23,7 +26,6 @@
 
   .top-buttons {
     @include flex(stretch, flex-end);
-    height: 10%;
   }
 
   .bubble-full {
@@ -68,9 +70,9 @@
 
   .bottom-area {
     display: flex;
+    flex: 1;
 
     width: 100%;
-    height: calc(100% - 3.4rem);
 
     background: var(--tasktrack-field-bg-color);
     border-radius: 0 0 var(--offset-s) var(--offset-s);
