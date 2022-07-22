@@ -214,7 +214,15 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
   },
 
   title: {
-    text: '',
+    text: '89.5%',
+    align: 'center',
+    verticalAlign: 'middle',
+    style: {
+      fontFamily: '"Noto Sans", sans-serif',
+      fontSize: 'var(--offset-l)',
+      color: 'var(--primary)',
+      fontWeight: '600',
+    },
   },
 
   tooltip: {
@@ -229,7 +237,11 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
   },
 
   legend: {
-    enabled: true,
+    title: {
+      style: {
+        display: 'none',
+      },
+    },
   },
 
   plotOptions: {
@@ -247,6 +259,7 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
           brightness: 0,
         },
       },
+
       // point: {
       //   events: {
       //     mouseOver: function(this: Point) {

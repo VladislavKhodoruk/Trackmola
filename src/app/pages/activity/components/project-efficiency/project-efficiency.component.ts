@@ -14,7 +14,7 @@ import { TaskTrack } from '@shared/interfaces/interfaces';
   templateUrl: 'project-efficiency.component.html',
   styleUrls: ['project-efficiency.scss'],
 })
-export class ProjectEfficiencyComponent implements OnChanges {
+export class ProjectEfficiencyComponent {
   @Input() tasks: TaskTrack[];
   @Input() startOfWeek: number;
   @Input() presentDay: number;
@@ -35,19 +35,9 @@ export class ProjectEfficiencyComponent implements OnChanges {
             color: 'var(--gray)',
           },
         ],
-        dataLabels: {
-          style: {
-            display: 'none',
-          },
-        },
       },
     ];
   }
-  //
-  //   [
-  //     '',
-  //   getEfficiency(this.tasks, this.startOfWeek, this.presentDay,),
-  // ],['', 0.4],
 
   efficiency = {
     total: 2,
