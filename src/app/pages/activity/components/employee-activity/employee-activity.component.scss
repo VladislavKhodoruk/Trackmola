@@ -23,18 +23,17 @@
   .container {
     @include flex(flex-start, space-evenly, var(--offset-l));
 
+    @include height-variables(38%, 5rem);
     width: 100%;
-    height: calc(100% - 38% - 5rem);
 
     :first-child {
       overflow: hidden;
-
-      width: calc(100% - 33% - 1rem);
+      @include width-variables(33%, 1rem);
       height: 100%;
     }
 
     :last-child {
-      width: calc(100% - 67% - 1rem);
+      @include width-variables(67%, 1rem);
       height: 100%;
     }
   }
@@ -42,17 +41,17 @@
   .cards {
     @include flex(flex-start, flex-start, var(--offset-l));
 
+    @include height-variables(62%, 5rem);
     width: 100%;
-    height: calc(100% - 62% - 5rem);
   }
 
   app-activity-total-cards-container {
-    width: calc(100% - 33% - 1rem);
+    @include width-variables(33%, 1rem);
     height: 100%;
   }
 
   app-project-efficiency-component {
-    width: calc(100% - 67% - 1rem);
+    @include width-variables(67%, 1rem);
     height: 100%;
   }
 
