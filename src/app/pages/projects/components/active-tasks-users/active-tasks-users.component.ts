@@ -31,7 +31,7 @@ export class ActiveTasksUsersComponent {
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconCheck: IconifyIcon = checkIcon;
 
-  aprove(event: Event): void {
+  approve(event: Event): void {
     event.stopPropagation();
     return null;
   }
