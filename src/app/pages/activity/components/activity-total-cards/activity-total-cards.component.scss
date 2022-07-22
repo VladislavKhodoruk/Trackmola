@@ -3,6 +3,7 @@
 :host {
   .container {
     @include flex(center, flex-start, var(--offset-l));
+    height: 100%;
   }
 
   app-activity-total-cards-item {

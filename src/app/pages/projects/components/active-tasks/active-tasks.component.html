@@ -40,7 +40,9 @@
                   [icon]="iconClipboard"
                   iconWidth="1.5rem"
                   iconHeight="1.5rem"
-                  (buttonClick)="addToReport($event)"
+                  (buttonClick)="
+                    modalAddToReport($event, project.name, activeTask.name)
+                  "
                 ></app-button>
                 <ng-container *ngIf="currentUser !== userType.Employee">
                   <app-button
@@ -53,8 +55,8 @@
                   ></app-button>
                   <app-button
                     class="project-header-description-buttons-item"
-                    [buttonClass]="'button-primary button-add-to-report'"
-                    [icon]="iconClipboard"
+                    [buttonClass]="'button-secondary button-add-to-report'"
+                    [icon]="iconPencil"
                     iconWidth="1.5rem"
                     iconHeight="1.5rem"
                     (buttonClick)="addToReport($event)"
@@ -99,6 +101,12 @@
                   {{ taskTrack1.comments || "no comments" }}
                 </div>
               </div>
+              <ng-container *ngIf="currentUser !== userType.Employee">
+                <app-button
+                  buttonClass="button-secondary project-task-question"
+                  [icon]="iconQuestionMark"
+                ></app-button>
+              </ng-container>
             </div>
           </div>
         </mat-expansion-panel>

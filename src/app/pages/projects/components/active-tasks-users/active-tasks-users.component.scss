@@ -104,8 +104,23 @@
         border-radius: var(--border-radius-l);
       }
 
+      &-user-info {
+        margin-left: 1rem;
+
+        &-name {
+          font: var(--font-buttonSmall);
+          text-transform: capitalize;
+        }
+
+        &-position {
+          font: var(--font-main);
+          color: var(--gray2);
+          text-transform: capitalize;
+        }
+      }
+
       &-description {
-        justify-content: space-between;
+        justify-content: flex-end;
 
         margin-right: var(--offset);
 
@@ -114,8 +129,11 @@
         color: var(--black);
 
         &-buttons {
-          @include flex(center, center, var(--offset-s));
-          flex-direction: row-reverse;
+          @include flex(center, center);
+
+          &-item {
+            margin-left: var(--offset-s);
+          }
         }
       }
     }
@@ -137,7 +155,7 @@
     }
 
     &-image {
-      @include profile-photo(3rem, 3rem);
+      @include profile-photo(5rem, 5rem);
     }
 
     &-description {

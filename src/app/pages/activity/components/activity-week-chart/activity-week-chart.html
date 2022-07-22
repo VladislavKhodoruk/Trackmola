@@ -1,6 +1,9 @@
-<app-highcharts-chart
-  class="projects-activity-chart"
-  [options]="basicOptions"
-  [data]="seriesData"
-  [idContainer]="'week-activity'"
-></app-highcharts-chart>
+<section class="projects-activity">
+  <h2 class="projects-activity-header">Daily Activity</h2>
+  <app-highcharts-chart
+    class="projects-activity-chart"
+    [options]="basicOptions"
+    [data]="seriesData"
+    [idContainer]="'week-activity'"
+  ></app-highcharts-chart>
+</section>

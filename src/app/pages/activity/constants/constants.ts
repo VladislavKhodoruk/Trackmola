@@ -161,19 +161,12 @@ export const REST_HOURS_TOTAL_CARD = {
 export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
   chart: {
     type: 'column',
-    borderColor: 'var(--gray)',
-    borderRadius: 15,
-    borderWidth: 1,
-    margin: [130, 130, 170, 130],
+    reflow: true,
+    marginBottom: 150,
+    marginTop: 50,
   },
   title: {
-    text: 'Daily Activity',
-    style: {
-      fontWeight: '600',
-      fontSize: 'var(--offset-l)',
-    },
-    x: -280,
-    y: 40,
+    text: '',
   },
   xAxis: {
     categories: SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
