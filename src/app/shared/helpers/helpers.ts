@@ -106,3 +106,24 @@ export function getDataForChart(
       color: getColorOfProjectByName(project, projects)?.color,
     }));
 }
+
+export function getEfficiency(
+  tasks: TaskTrack[],
+  startOfWeek: number,
+  presentDay: number
+): number {
+  const totalHours = tasks
+    .map((task: TaskTrack) => task.duration)
+    .reduce((acc, prev) => acc + prev);
+  const requiredAmount =
+    (1 + new Date(presentDay).getDay() - new Date(startOfWeek).getDay()) * 8;
+  let efficiency: number;
+  if (totalHours < requiredAmount) {
+    efficiency = totalHours / requiredAmount;
+  } else if (totalHours > requiredAmount) {
+    efficiency = totalHours / requiredAmount - 1;
+  } else {
+    efficiency = 1;
+  }
+  return efficiency;
+}

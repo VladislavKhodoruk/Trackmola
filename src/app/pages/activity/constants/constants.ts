@@ -212,3 +212,82 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
     },
   },
 };
+
+export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: 0,
+    plotShadow: false,
+  },
+
+  title: {
+    text: '',
+  },
+
+  tooltip: {
+    enabled: false,
+  },
+
+  accessibility: {
+    point: {
+      valueSuffix: '%',
+    },
+    enabled: false,
+  },
+
+  legend: {
+    enabled: true,
+  },
+
+  plotOptions: {
+    pie: {
+      dataLabels: {
+        enabled: false,
+      },
+      innerSize: '80%',
+      colors: ACTIVITY_CHART_PIE_COLORS,
+      cursor: 'pointer',
+      showInLegend: true,
+      states: {
+        hover: {
+          halo: null,
+          brightness: 0,
+        },
+      },
+      // point: {
+      //   events: {
+      //     mouseOver: function(this: Point) {
+      //       const point = this as any;
+      //       this.series.chart.update({
+      //         title: {
+      //           text: `${this.percentage.toFixed(1)}%`,
+      //           style: {
+      //             color: this.color.toString(),
+      //           },
+      //         },
+      //       });
+      //       point.graphic
+      //         .attr({
+      //           ['stroke-width']: 10,
+      //           stroke: point.color,
+      //           zIndex: 3,
+      //         })
+      //         .add();
+      //     },
+      //     mouseOut: function(this: Point) {
+      //       const point = this as any;
+      //       this.series.chart.update({
+      //         title: { text: '' },
+      //       });
+      //       point.graphic
+      //         .attr({
+      //           ['stroke-width']: 1,
+      //           stroke: point.color,
+      //         })
+      //         .add();
+      //     },
+      //   },
+      // },
+    },
+  },
+};

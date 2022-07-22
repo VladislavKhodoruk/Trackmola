@@ -1,7 +1,13 @@
 <section class="project-efficiency">
   <h2 class="project-efficiency-header">Project efficiency</h2>
   <div class="project-efficiency-hart-info">
-    <img src="assets/img/activity/Circle%20diaram.svg" />
+    <div class="pieWrapper">
+      <app-highcharts-chart
+        class="projects-activity-chart"
+        [options]="basicOptions"
+        [data]="seriesData"
+      ></app-highcharts-chart>
+    </div>
     <div class="project-efficiency-hart-info-text">
       <p>
         Total project <span>{{ efficiency.complited }}</span> of them:
