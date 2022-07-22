@@ -1,11 +1,13 @@
+@import "mixins";
+
 :host {
   .projects-activity {
-    display: flex;
+    @include flex(normal, normal, 10%);
     flex-direction: column;
-    gap: 4.625rem;
 
     height: 100%;
     padding: 2% 4% 5%;
+    overflow: hidden;
 
     border: var(--border-xs) solid var(--gray);
     border-radius: var(--border-radius-l);
