@@ -57,3 +57,21 @@ export const getTaskWithAllParametrs = createSelector(
       usersPhotos: searchUserPhoto(i.taskId, allTaskTracks, users),
     }))
 );
+
+export const getManadgersProjects = createSelector(getProjects, (projects) =>
+  projects.filter((project) =>
+    project.managersId.includes(localStorage.getItem('AuthUserId'))
+  )
+);
+
+export const getManagerProjectsFilter = createSelector(
+  getDashboardState,
+  getManadgersProjects,
+  ({ manager }, projects) =>
+    projects.filter((project) => manager.projectsFilter.includes(project.name))
+);
+
+export const getModeView = createSelector(
+  getDashboardState,
+  ({ manager }) => manager.modeView
+);

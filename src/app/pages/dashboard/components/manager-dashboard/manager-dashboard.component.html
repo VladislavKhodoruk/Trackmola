@@ -1,1 +1,10 @@
-<p>manager-dashboard works!</p>
+<app-header></app-header>
+
+<app-manager-controls-container></app-manager-controls-container>
+
+<section class="dashboard-main"></section>
+
+<app-vacations-component
+  class="dashboard-vacations"
+  [vacations]="vacations"
+></app-vacations-component>

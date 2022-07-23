@@ -1,0 +1,72 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
+import chartArrows from '@iconify/icons-tabler/chart-arrows';
+import pinnedIcon from '@iconify/icons-tabler/pinned';
+import pinnedOff from '@iconify/icons-tabler/pinned-off';
+import tableIcon from '@iconify/icons-tabler/table';
+import angleDown from '@iconify/icons-uil/angle-down';
+import { IconifyIcon } from '@iconify/types';
+import { Observable } from 'rxjs';
+
+import { map, startWith } from 'rxjs/operators';
+
+import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
+import { Project } from '@shared/interfaces/interfaces';
+
+@Component({
+  selector: 'app-manager-controls',
+  templateUrl: './manager-controls.component.html',
+  styleUrls: ['./manager-controls.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ManagerControlsComponent implements OnChanges {
+  @Input() readonly managerProjects: Project[];
+  @Input() readonly managerProjectsFilter: Project[];
+  @Input() readonly modeView: ManagerDashboardView;
+
+  @Output() projectFilter = new EventEmitter<Project['name']>();
+  @Output() removeProjectFilter = new EventEmitter<Project['name']>();
+  @Output() changeManagerMainView = new EventEmitter<ManagerDashboardView>();
+
+  readonly iconAngleDown: IconifyIcon = angleDown;
+  readonly iconPinned: IconifyIcon = pinnedIcon;
+  readonly iconPinnedOff: IconifyIcon = pinnedOff;
+  readonly iconTable: IconifyIcon = tableIcon;
+  readonly iconChartArrows: IconifyIcon = chartArrows;
+
+  managerDashboardView = ManagerDashboardView;
+
+  projectInput = new FormControl('');
+
+  filteredProjects: Observable<Project[]>;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.managerProjects) {
+      this.filteredProjects = this.projectInput.valueChanges.pipe(
+        startWith(''),
+        map((projectInputValue) => this._filter(projectInputValue || ''))
+      );
+    }
+  }
+
+  private _filter(projectInputValue: string): Project[] {
+    return this.managerProjects.filter((project) =>
+      project.name.toLowerCase().includes(projectInputValue.toLowerCase())
+    );
+  }
+
+  protected addProjectToFilter(): void {
+    if (this.projectInput.value.length) {
+      this.projectFilter.emit(this.projectInput.value);
+      this.projectInput.reset();
+    }
+  }
+}

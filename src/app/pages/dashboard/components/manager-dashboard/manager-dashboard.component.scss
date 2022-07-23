@@ -1,0 +1,46 @@
+@import "vars/variables";
+@import "mixins";
+
+:host {
+  @include flex(flex-start, flex-start, var(--offset-l));
+  flex-direction: column;
+
+  height: 100%;
+
+  .dashboard-main {
+    @include flex(flex-start, flex-start, var(--offset-l));
+    overflow: auto;
+    flex: 3;
+
+    width: 100%;
+  }
+
+  .dashboard-vacations {
+    flex: 1;
+  }
+
+  ::ng-deep {
+    $height-scroll: var(--offset-s);
+
+    .vacations {
+      padding: 0 !important;
+
+      border: none !important;
+      border-radius: 0 !important ;
+
+      &-list {
+        flex-direction: row !important;
+
+        padding: 0 0 var(--offset) 0 !important;
+
+        &::-webkit-scrollbar {
+          height: #{$height-scroll};
+        }
+
+        &-item {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

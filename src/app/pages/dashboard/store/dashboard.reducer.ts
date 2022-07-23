@@ -1,6 +1,11 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { getWeekReportTimeSuccess } from './dashboard.actions';
+import {
+  getWeekReportTimeSuccess,
+  setProjectFilter,
+  removeProjectFilter,
+  changeManagerMainView,
+} from './dashboard.actions';
 import { DashboardState, dashboardState } from './dashboard.state';
 
 const dashboardReducer = createReducer(
@@ -8,6 +13,29 @@ const dashboardReducer = createReducer(
   on(getWeekReportTimeSuccess, (state: DashboardState, { weekReportTime }) => ({
     ...state,
     weekReportTime,
+  })),
+  on(setProjectFilter, (state: DashboardState, { projectName }) => {
+    const projectsFilter = [...state.manager.projectsFilter];
+    if (!projectsFilter.includes(projectName)) {
+      projectsFilter.push(projectName);
+    }
+    return {
+      ...state,
+      manager: { ...state.manager, projectsFilter },
+    };
+  }),
+  on(removeProjectFilter, (state: DashboardState, { projectName }) => {
+    const projectsFilter = [...state.manager.projectsFilter].filter(
+      (name) => name !== projectName
+    );
+    return {
+      ...state,
+      manager: { ...state.manager, projectsFilter },
+    };
+  }),
+  on(changeManagerMainView, (state: DashboardState, { mode }) => ({
+    ...state,
+    manager: { ...state.manager, modeView: mode },
   }))
 );
 

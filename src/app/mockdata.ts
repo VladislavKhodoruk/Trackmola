@@ -503,7 +503,10 @@ export const mockProjects: Project[] = [
     id: 'BoavfTxFkFinfWUa8lLd',
     name: 'dataMill',
     taskId: [],
-    managersId: ['mocfzWIHXuYiYbefQMTclEotJr83'],
+    managersId: [
+      'mocfzWIHXuYiYbefQMTclEotJr83',
+      'Y2nsuR3ejZMJxvxHnVZ1hjQlbV32',
+    ],
     description:
       'From Data To Insights. Smart tool and fast GPU data processing.',
   },
@@ -520,7 +523,10 @@ export const mockProjects: Project[] = [
   {
     name: 'Education',
     color: '#fbd304',
-    managersId: ['mocfzWIHXuYiYbefQMTclEotJr83'],
+    managersId: [
+      'mocfzWIHXuYiYbefQMTclEotJr83',
+      'Y2nsuR3ejZMJxvxHnVZ1hjQlbV32',
+    ],
     taskId: [],
     id: 'iyWKSkrUoKRMErqmbSUO',
     fullName: 'Angular Course',
@@ -549,7 +555,10 @@ export const mockProjects: Project[] = [
     color: '#FF3D71',
   },
   {
-    managersId: ['mocfzWIHXuYiYbefQMTclEotJr83'],
+    managersId: [
+      'mocfzWIHXuYiYbefQMTclEotJr83',
+      'Y2nsuR3ejZMJxvxHnVZ1hjQlbV32',
+    ],
     taskId: [
       '0N9SBvw8R48Ybb1rw3T4',
       '33vqSse9t7ZBt7L9dU4E',
