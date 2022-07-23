@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
 import fileZip from '@iconify/icons-tabler/file-zip';
 import pencilIcon from '@iconify/icons-tabler/pencil';
+import questionMark from '@iconify/icons-tabler/question-mark';
 
 import { IconifyIcon } from '@iconify/types';
 
@@ -39,6 +40,7 @@ export class ActiveTasksComponent {
   readonly iconClipboard: IconifyIcon = clipboardPlus;
   readonly iconPencil: IconifyIcon = pencilIcon;
   readonly iconfileZip: IconifyIcon = fileZip;
+  readonly iconQuestionMark: IconifyIcon = questionMark;
 
   readonly userType = UserType;
   readonly currentUser: string = localStorage.getItem('AuthUserType');

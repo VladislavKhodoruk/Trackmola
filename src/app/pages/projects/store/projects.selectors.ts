@@ -27,6 +27,10 @@ export const usersInfoByUserId = createSelector(getUsers, (users) =>
   users.reduce((accum, user) => ({ ...accum, [user.id]: user }), {})
 );
 
+export const tasksInfoByTaskId = createSelector(getTasks, (tasks) =>
+  tasks.reduce((accum, task) => ({ ...accum, [task.id]: task }), {})
+);
+
 export const getProjectByRoute = createSelector(
   getProjects,
   getCurrentRoute,
@@ -61,6 +65,22 @@ export const activeTaskGroupByProject = createSelector(
     }, {})
 );
 
+export const activeUserGroupByProject = createSelector(
+  getUsers,
+  getProjects,
+  filteredTaskTracksByPeriod,
+  (users, projects, taskTracks) =>
+    projects.reduce((accum, project) => {
+      const activeUsersId = taskTracks
+        .filter(({ projectId }) => projectId === project.id)
+        .map(({ userId }) => userId);
+
+      const activeUsers = users.filter(({ id }) => activeUsersId.includes(id));
+
+      return { ...accum, [project.id]: activeUsers };
+    }, {})
+);
+
 export const usersGroupByProject = createSelector(
   filteredTaskTracksByPeriod,
   getProjects,
@@ -90,5 +110,15 @@ export const activeTaskTracksGroupByTask = createSelector(
     tasks.reduce((accum, task) => {
       const activeTasks = taskTracks.filter(({ taskId }) => taskId === task.id);
       return { ...accum, [task.id]: activeTasks };
+    }, {})
+);
+
+export const activeTaskTracksGroupByUser = createSelector(
+  getUsers,
+  filteredTaskTracksByPeriod,
+  (users, taskTracks) =>
+    users.reduce((accum, user) => {
+      const activeTasks = taskTracks.filter(({ userId }) => userId === user.id);
+      return { ...accum, [user.id]: activeTasks };
     }, {})
 );
