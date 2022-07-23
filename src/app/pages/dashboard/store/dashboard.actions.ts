@@ -1,7 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Project } from '@shared/interfaces/interfaces';
 import { ManagerDashboardView } from '../enums/enum';
+
+import { Project } from '@shared/interfaces/interfaces';
 
 export const GET_WEEK_REPORT_TIME = '[Dashboard page] get week report time';
 export const GET_WEEK_REPORT_TIME_SUCCESS =

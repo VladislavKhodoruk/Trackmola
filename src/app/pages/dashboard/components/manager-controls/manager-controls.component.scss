@@ -46,9 +46,9 @@
 
     &-selected-projects {
       @include flex(center, flex-start, 2.25rem);
+      height: 100%;
       margin-left: 1.625rem;
       padding: 0 var(--offset-d);
-      height: 100%;
 
       background: var(--pale-blue);
       border-radius: var(--border-radius-l);
@@ -59,15 +59,18 @@
 
         &-item {
           @include flex(center, flex-start, var(--offset-l));
-          font: var(--font-typography);
-          padding: 0 var(--offset-s) 0 var(--offset-d);
           height: 100%;
-          border-radius: var(--border-radius);
+          padding: 0 var(--offset-s) 0 var(--offset-d);
+
+          font: var(--font-typography);
           color: var(--white);
 
+          border-radius: var(--border-radius);
+
           &-icon {
-            display: flex;
             cursor: pointer;
+
+            display: flex;
           }
         }
       }
