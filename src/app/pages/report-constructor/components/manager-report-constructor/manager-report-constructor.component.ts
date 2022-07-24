@@ -19,6 +19,7 @@ import {
   getWorksCustomPeriodHours,
 } from '@pages/report-constructor/helpers/helpers';
 import { InfoReportConstructorItem } from '@pages/report-constructor/interfaces/interfaces';
+import { ExportExelService } from '@pages/report-constructor/services/export-exel.service';
 import { DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
@@ -48,6 +49,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
     new EventEmitter<Period>();
   @Output() changeStoreProjectId: EventEmitter<string> =
     new EventEmitter<string>();
+  @Output() exportExel: EventEmitter<object[]> = new EventEmitter<object[]>();
 
   labels: string[] = [...Object.values(PeriodType)];
 
@@ -64,7 +66,6 @@ export class ManagerReportConstructorComponent implements OnChanges {
   readonly fileXlsIcon: IconifyIcon = fileXls;
   readonly templateIcon: IconifyIcon = templateIcon;
   readonly chartBarIcon: IconifyIcon = chartBar;
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.projects && this.projects) {
       this.selectProjectOptions = this.projects.map((project) => ({
@@ -105,5 +106,28 @@ export class ManagerReportConstructorComponent implements OnChanges {
         : getPeriod(new Date(), this.periodType);
 
     this.getFirstandLastDay(this.period);
+  }
+
+  exportToExel() {
+    const exelData = this.infoFromTaskTracks.flatMap((infoFromTaskTrack) => {
+      const userNames = infoFromTaskTrack.usersInfo
+        .flatMap(
+          (track) =>
+            `${track.userName} ${track.userPercentageAllDurationTask} %`
+        )
+        .join('\n');
+      const userPositions = infoFromTaskTrack.usersInfo
+        .flatMap((track) => track.userPosition)
+        .join('\n');
+
+      return {
+        taskName: infoFromTaskTrack.taskName,
+        userPositions: userPositions,
+        taskDuration: infoFromTaskTrack.taskDuration,
+        taskPercentageWeek: infoFromTaskTrack.taskPercentageWeek,
+        userNames: userNames,
+      };
+    });
+    this.exportExel.emit(exelData);
   }
 }
