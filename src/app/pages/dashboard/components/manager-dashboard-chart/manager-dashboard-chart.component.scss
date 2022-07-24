@@ -41,8 +41,8 @@
 
     &-list {
       @include flex(flex-start, flex-start, var(--offset-s));
-      $width-scroll: var(--offset-s);
 
+      $width-scroll: var(--offset-s);
       $gap-scroll: calc(var(--offset-l) / 2 - #{$width-scroll} / 2);
       $shadow-y: var(--offset-d);
       $shadow-left: var(--offset-l);
@@ -61,7 +61,6 @@
       max-width: calc(
         100% + #{$shadow-left} + #{$shadow-right} + #{$width-scroll} * 2 - #{$gap-scroll}
       );
-
       margin: calc(#{$shadow-y} * -1) calc(#{$gap-scroll} * -1)
         calc(#{$shadow-y} * -1) calc(#{$shadow-left} * -1);
       padding: #{$shadow-y} #{$gap-scroll} #{$shadow-y} #{$shadow-left};
@@ -79,9 +78,9 @@
 
       &-item {
         @include flex(center, flex-start, var(--offset-s));
-        scroll-snap-align: start;
 
         cursor: pointer;
+        scroll-snap-align: start;
 
         width: 100%;
         padding: var(--offset-s);
