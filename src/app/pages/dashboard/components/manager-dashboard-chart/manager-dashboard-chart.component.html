@@ -1,0 +1,42 @@
+<section class="dashboard-main-tasks">
+  <header class="dashboard-main-tasks-header">
+    <ng-container *ngIf="managerProjectsFilter.length">
+      <ul class="dashboard-main-tasks-header-projects-list">
+        <li
+          *ngFor="let project of managerProjectsFilter"
+          class="dashboard-main-tasks-header-projects-list-item"
+          [style.borderColor]="project.color"
+        >
+          {{ project.name }}
+        </li>
+      </ul>
+    </ng-container>
+    <h2 class="dashboard-main-tasks-header-title">in progress</h2>
+  </header>
+  <ul class="dashboard-main-tasks-list">
+    <li class="dashboard-main-tasks-list-item">
+      <div class="dashboard-main-tasks-list-item-bar"></div>
+      <span class="dashboard-main-tasks-list-item-name">
+        Dashboard page polishing
+      </span>
+      <span class="dashboard-main-tasks-list-item-duration">35h</span>
+    </li>
+    <li
+      class="dashboard-main-tasks-list-item dashboard-main-tasks-list-item-selected"
+    >
+      <div class="dashboard-main-tasks-list-item-bar"></div>
+      <span class="dashboard-main-tasks-list-item-name">
+        Dashboard page polishing
+      </span>
+      <span class="dashboard-main-tasks-list-item-duration">35h</span>
+    </li>
+    <li class="dashboard-main-tasks-list-item">
+      <div class="dashboard-main-tasks-list-item-bar"></div>
+      <span class="dashboard-main-tasks-list-item-name">
+        Dashboard page polishing
+      </span>
+      <span class="dashboard-main-tasks-list-item-duration">35h</span>
+    </li>
+  </ul>
+</section>
+<section class="dashboard-main-chart">Chart</section>

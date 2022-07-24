@@ -2,17 +2,20 @@
 @import "mixins";
 
 :host {
-  @include flex(flex-start, flex-start, var(--offset-l));
+  @include flex(flex-start, flex-start);
   flex-direction: column;
 
   height: 100%;
 
   .dashboard-main {
     @include flex(flex-start, flex-start, var(--offset-l));
-    overflow: auto;
     flex: 3;
 
     width: 100%;
+    padding: var(--offset-m);
+
+    border: $border-input;
+    border-radius: var(--border-radius-l);
   }
 
   .dashboard-vacations {

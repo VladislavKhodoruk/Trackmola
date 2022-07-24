@@ -13,8 +13,13 @@
   width: 100%;
 
   .dashboard-controls {
-    @include flex(center, space-between);
+    @include flex(center, space-between, var(--offset));
     height: 4rem;
+
+    &-container {
+      @include flex(center, flex-start, 1.625rem);
+      height: 100%;
+    }
 
     &-project {
       @include flex(center, flex-start, 0.375rem);
@@ -46,8 +51,9 @@
 
     &-selected-projects {
       @include flex(center, flex-start, 2.25rem);
+      flex: 1;
+
       height: 100%;
-      margin-left: 1.625rem;
       padding: 0 var(--offset-d);
 
       background: var(--pale-blue);
@@ -59,6 +65,7 @@
 
         &-item {
           @include flex(center, flex-start, var(--offset-l));
+
           height: 100%;
           padding: 0 var(--offset-s) 0 var(--offset-d);
 

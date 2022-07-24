@@ -20,7 +20,7 @@ export const dashboardState: DashboardState = {
   weekReportTime: 0,
   period: getPeriod(new Date(), PeriodType.Week),
   manager: {
-    projectsFilter: [],
+    projectsFilter: ['dataMill', 'Education', 'TrackMola'],
     modeView: ManagerDashboardView.Table,
   },
 };

@@ -17,6 +17,8 @@ import { EmployeeDashboardComponent } from './components/employee-dashboard/empl
 import { HeaderComponent } from './components/header/header.component';
 import { ManagerControlsComponent } from './components/manager-controls/manager-controls.component';
 import { ManagerControlsContainer } from './components/manager-controls/manager-controls.container';
+import { ManagerDashboardChartComponent } from './components/manager-dashboard-chart/manager-dashboard-chart.component';
+import { ManagerDashboardChartContainer } from './components/manager-dashboard-chart/manager-dashboard-chart.container';
 import { ManagerDashboardComponent } from './components/manager-dashboard/manager-dashboard.component';
 import { WorkingHoursChartComponent } from './components/working-hours-chart/working-hours-chart.component';
 import { WorkingHoursChartContainer } from './components/working-hours-chart/working-hours-chart.container';
@@ -52,6 +54,8 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ManagerControlsContainer,
     HeaderComponent,
     ManagerControlsComponent,
+    ManagerDashboardChartComponent,
+    ManagerDashboardChartContainer,
   ],
   imports: [
     ActiveTasksListModule,
