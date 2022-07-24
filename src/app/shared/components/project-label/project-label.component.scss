@@ -9,9 +9,9 @@
     padding: 0 var(--offset);
 
     font: var(--font-blocks);
+    text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
-    text-align: center;
 
     background-color: var(--white);
     border: $border-radius-button;
