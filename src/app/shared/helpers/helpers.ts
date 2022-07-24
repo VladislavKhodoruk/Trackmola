@@ -1,7 +1,11 @@
 import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
-import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
+import {
+  CHAR_CREATE_COLOR,
+  NUMBER_CHAR_CREATE_COLOR,
+  SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
+} from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
 import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 
@@ -108,10 +112,10 @@ export function getDataForChart(
 }
 
 export function getRandomColor() {
-  const letters = '0123456789ABCDEF';
   let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+  for (let i = 0; i < NUMBER_CHAR_CREATE_COLOR; i++) {
+    color +=
+      CHAR_CREATE_COLOR[Math.floor(Math.random() * CHAR_CREATE_COLOR.length)];
   }
   return color;
 }
