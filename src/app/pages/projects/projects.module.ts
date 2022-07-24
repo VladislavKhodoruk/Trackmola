@@ -8,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { IconModule } from '@visurel/iconify-angular';
 
+import { ActiveTasksUserModeComponent } from './components/active-tasks-user-mode/active-tasks-user-mode.component';
+import { ActiveTasksUserModeContainer } from './components/active-tasks-user-mode/active-tasks-user-mode.container';
 import { ActiveTasksUsersComponent } from './components/active-tasks-users/active-tasks-users.component';
 import { ActiveTasksUsersContainer } from './components/active-tasks-users/active-tasks-users.container';
 import { ActiveTasksComponent } from './components/active-tasks/active-tasks.component';
@@ -40,6 +42,8 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ProjectsTeamComponent,
     ActiveTasksUsersComponent,
     ActiveTasksUsersContainer,
+    ActiveTasksUserModeComponent,
+    ActiveTasksUserModeContainer,
   ],
   imports: [
     CommonModule,
