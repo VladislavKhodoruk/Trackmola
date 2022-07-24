@@ -7,6 +7,7 @@ import { ActiveTasksListComponent } from '@pages/dashboard/components/active-tas
 import { ActiveTasksListContainer } from '@pages/dashboard/components/active-tasks-list/active-tasks-list.container';
 import { AddTasktrackDialogModule } from '@shared/components/add-tasktrack-dialog/add-tasktrack-dialog.module';
 import { ButtonModule } from '@shared/components/button/button.module';
+import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     UsersPhotosModule,
     ButtonModule,
     AddTasktrackDialogModule,
+    ProjectLabelModule,
   ],
   exports: [ActiveTasksListContainer],
 })

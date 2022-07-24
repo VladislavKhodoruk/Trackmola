@@ -26,11 +26,11 @@
           (closed)="(!panelOpenState)"
         >
           <mat-expansion-panel-header class="project-header">
-            <mat-panel-title
-              class="project-header-title"
-              [style.borderColor]="project.color"
-            >
-              {{ project.name }}
+            <mat-panel-title>
+              <app-project-label
+                [projectColor]="project.color"
+                [projectName]="project.name"
+              ></app-project-label>
             </mat-panel-title>
             <mat-panel-description class="project-header-description">
               {{ activeTask.name }}
