@@ -2,9 +2,10 @@
   <h1 mat-dialog-title class="title">add task</h1>
   <ic-icon class="icon-x" [icon]="iconX" mat-button mat-dialog-close></ic-icon>
 </div>
-<div class="project-title" [style.borderColor]="data.project?.color">
-  {{ data.project?.name }}
-</div>
+<app-project-label
+  [projectColor]="data.project?.color"
+  [projectName]="data.project?.name"
+></app-project-label>
 <div mat-dialog-content class="middle">task name *</div>
 <input class="input" type="text" [formControl]="taskInput" />
 <div mat-dialog-actions class="buttons">
