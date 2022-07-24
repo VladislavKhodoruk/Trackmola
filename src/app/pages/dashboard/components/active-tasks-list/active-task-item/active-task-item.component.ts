@@ -30,6 +30,7 @@ export class ActiveTaskItemComponent {
       panelClass: 'modal',
       enterAnimationDuration,
       data: { formTask: this.currentTask },
+      autoFocus: false,
     });
   }
 }

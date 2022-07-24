@@ -1,0 +1,19 @@
+@import "vars/variables";
+@import "mixins";
+
+:host {
+  .project {
+    overflow: hidden;
+
+    max-width: 10rem;
+    padding: 0 var(--offset);
+
+    font: var(--font-blocks);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    background-color: var(--white);
+    border: $border-radius-button;
+    border-radius: var(--offset-l);
+  }
+}
