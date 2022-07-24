@@ -80,16 +80,6 @@
         flex-wrap: wrap;
 
         width: 100%;
-
-        &-title {
-          padding: 0 var(--offset-b);
-
-          font: var(--font-blocks);
-          word-break: break-word;
-
-          border: var(--border-s) solid var(--white);
-          border-radius: var(--border-radius-l);
-        }
       }
 
       &-name {

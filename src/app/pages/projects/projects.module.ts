@@ -24,6 +24,7 @@ import { ProjectsReducer } from './store/projects.reducer';
 import { PROJECTS_STATE_NAME } from './store/projects.selectors';
 
 import { ButtonModule } from '@shared/components/button/button.module';
+import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
@@ -53,6 +54,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     RouterModule.forChild(ProjectsRoutes),
     ToggleButtonsModule,
     VacationsModule,
+    ProjectLabelModule,
   ],
   exports: [RouterModule],
 })
