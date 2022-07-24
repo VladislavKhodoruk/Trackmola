@@ -45,7 +45,7 @@ export class ActiveTasksComponent {
   @Input() readonly activeTaskTracksGroupByTask: GroupBy<TaskTrack[]>;
   @Input() readonly usersInfoByUserId: GroupBy<User>;
 
-  @Output() addTask = new EventEmitter<Task>();
+  @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
 
   panelOpenState = false;
 
