@@ -13,6 +13,7 @@
 
   .mat-dialog-title {
     margin: 0;
+
     text-transform: capitalize;
   }
 
@@ -40,8 +41,9 @@
   }
 
   .project-title {
-    margin-bottom: var(--offset);
     display: inline-block;
+
+    margin-bottom: var(--offset);
     padding: 0 var(--offset-s);
 
     font: var(--font-blocks);
@@ -54,8 +56,10 @@
   .input {
     width: 100%;
     margin: var(--offset-xs) 0;
+
     font-size: var(--font-main);
     line-height: 1;
+
     background-color: var(--white);
     border: var(--border-xs) solid var(--gray);
     border-radius: var(--border-radius-m);
@@ -69,12 +73,12 @@
   .buttons-add {
     gap: var(--offset-s);
 
-    height: 2rem;
     width: 5rem;
+    height: 2rem;
 
     font: var(--font-buttonMiddle);
-    text-transform: capitalize;
     color: var(--primary);
+    text-transform: capitalize;
 
     background-color: var(--white);
     border: $border-radius-button;
@@ -113,14 +117,14 @@
   }
 
   .disabled {
-    opacity: 0.5;
-
     cursor: no-drop;
 
-    &:hover {
-      opacity: 0.5;
+    opacity: 0.5;
 
+    &:hover {
       cursor: no-drop;
+
+      opacity: 0.5;
     }
   }
 }
