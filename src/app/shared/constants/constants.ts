@@ -9,37 +9,37 @@ import { NavigationItem } from '@shared/interfaces/interfaces';
 
 const NAVIGATION_BASIC_ITEMS: NavigationItem[] = [
   {
-    routeLink: 'dashboard',
     icon: layoutDashboard,
     label: 'Dashboard',
+    routeLink: 'dashboard',
   },
   {
-    routeLink: 'report',
     icon: fileTime,
     label: 'My report',
+    routeLink: 'report',
   },
   {
-    routeLink: 'activity',
     icon: chartDonut3,
     label: 'My activity',
+    routeLink: 'activity',
   },
   {
-    routeLink: 'projects',
     icon: puzzleIcon,
     label: 'Projects',
+    routeLink: 'projects',
   },
 ];
 
 const NAVIGATION_TEAM: NavigationItem = {
-  routeLink: 'team',
   icon: puzzleIcon,
   label: 'Team',
+  routeLink: 'team',
 };
 
 const NAVIGATION_REPORT_CONSTRUCTOR: NavigationItem = {
-  routeLink: 'report-constructor',
   icon: manualGearbox,
   label: 'Report constructor',
+  routeLink: 'report-constructor',
 };
 
 export const getNavigationElems = (userType: string): NavigationItem[] => {

@@ -7,7 +7,7 @@ import { ButtonModule } from '../button/button.module';
 
 @NgModule({
   declarations: [DateSwitchComponent],
-  imports: [CommonModule, ButtonModule],
   exports: [DateSwitchComponent],
+  imports: [CommonModule, ButtonModule],
 })
 export class DateSwitchModule {}

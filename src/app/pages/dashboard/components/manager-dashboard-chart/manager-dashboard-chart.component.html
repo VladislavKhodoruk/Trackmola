@@ -13,30 +13,28 @@
     </ng-container>
     <h2 class="dashboard-main-tasks-header-title">in progress</h2>
   </header>
-  <ul class="dashboard-main-tasks-list">
-    <li class="dashboard-main-tasks-list-item">
-      <div class="dashboard-main-tasks-list-item-bar"></div>
-      <span class="dashboard-main-tasks-list-item-name">
-        Dashboard page polishing
-      </span>
-      <span class="dashboard-main-tasks-list-item-duration">35h</span>
-    </li>
-    <li
-      class="dashboard-main-tasks-list-item dashboard-main-tasks-list-item-selected"
-    >
-      <div class="dashboard-main-tasks-list-item-bar"></div>
-      <span class="dashboard-main-tasks-list-item-name">
-        Dashboard page polishing
-      </span>
-      <span class="dashboard-main-tasks-list-item-duration">35h</span>
-    </li>
-    <li class="dashboard-main-tasks-list-item">
-      <div class="dashboard-main-tasks-list-item-bar"></div>
-      <span class="dashboard-main-tasks-list-item-name">
-        Dashboard page polishing
-      </span>
-      <span class="dashboard-main-tasks-list-item-duration">35h</span>
-    </li>
-  </ul>
+  <ng-container *ngIf="tasksForManager.length">
+    <ul class="dashboard-main-tasks-list">
+      <li
+        *ngFor="let task of tasksForManager"
+        class="dashboard-main-tasks-list-item"
+        [class.dashboard-main-tasks-list-item-selected]="
+          task.id === activeTask?.id
+        "
+        (click)="this.selectTask.emit(task)"
+      >
+        <div
+          class="dashboard-main-tasks-list-item-bar"
+          [style.backgroundColor]="task.projectInformation.color"
+        ></div>
+        <span class="dashboard-main-tasks-list-item-name">
+          {{ task.name }}
+        </span>
+        <span class="dashboard-main-tasks-list-item-duration">
+          {{ task.durationInTask }}h
+        </span>
+      </li>
+    </ul>
+  </ng-container>
 </section>
 <section class="dashboard-main-chart">Chart</section>

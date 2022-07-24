@@ -11,8 +11,8 @@ import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
 
 @Component({
   selector: 'app-activity-total-cards',
-  templateUrl: './activity-total-cards.component.html',
   styleUrls: ['./activity-total-cards.component.scss'],
+  templateUrl: './activity-total-cards.component.html',
 })
 export class ActivityTotalCardsComponent implements OnChanges {
   @Input() weekReportTime: number;

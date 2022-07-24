@@ -8,8 +8,8 @@ import { User } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-users-photos',
-  templateUrl: './users-photos.component.html',
   styleUrls: ['./users-photos.component.scss'],
+  templateUrl: './users-photos.component.html',
 })
 export class UsersPhotosComponent {
   @Input() readonly users!: User[];

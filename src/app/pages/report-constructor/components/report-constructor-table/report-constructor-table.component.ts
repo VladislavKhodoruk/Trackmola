@@ -18,10 +18,10 @@ import {
 import { TableHeadItem } from '@pages/report-constructor/models/models';
 
 @Component({
-  selector: 'app-report-constructor-table',
-  templateUrl: './report-constructor-table.component.html',
-  styleUrls: ['./report-constructor-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-report-constructor-table',
+  styleUrls: ['./report-constructor-table.component.scss'],
+  templateUrl: './report-constructor-table.component.html',
 })
 export class ReportConstructorTableComponent implements OnChanges {
   @Input() infoFromTaskTracks: InfoReportConstructorItem[];
@@ -37,8 +37,8 @@ export class ReportConstructorTableComponent implements OnChanges {
   ];
 
   selectedSort: SortOption = {
-    columnName: 'taskName',
     ascendingSort: true,
+    columnName: 'taskName',
   };
 
   constructor(private ref: ChangeDetectorRef) {}
@@ -62,8 +62,8 @@ export class ReportConstructorTableComponent implements OnChanges {
         );
 
         return {
-          taskName: infoFromTaskTrack.taskName,
           taskDuration: infoFromTaskTrack.taskDuration,
+          taskName: infoFromTaskTrack.taskName,
           taskPercentageWeek: infoFromTaskTrack.taskPercentageWeek,
           userNames: userNames,
           userPositions: userPositions,

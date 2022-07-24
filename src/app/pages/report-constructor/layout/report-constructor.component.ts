@@ -5,8 +5,8 @@ import { Project } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-report-constructor',
-  templateUrl: './report-constructor.component.html',
   styleUrls: ['./report-constructor.component.scss'],
+  templateUrl: './report-constructor.component.html',
 })
 export class ReportConstructorComponent {
   @Input() userType!: string | null;

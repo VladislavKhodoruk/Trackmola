@@ -19,7 +19,9 @@ import { Project } from '@shared/interfaces/interfaces';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-manager-controls-container',
+  styleUrls: ['./manager-controls.container.scss'],
   template: `<app-manager-controls
     [managerProjects]="managerProjects$ | async"
     [managerProjectsFilter]="managerProjectsFilter$ | async"
@@ -28,8 +30,6 @@ import { TrackMolaState } from '@store/trackMola.state';
     (removeProjectFilter)="onRemoveProjectFilter($event)"
     (changeManagerMainView)="onChangeManagerMainView($event)"
   ></app-manager-controls>`,
-  styleUrls: ['./manager-controls.container.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManagerControlsContainer {
   readonly managerProjects$: Observable<Project[]> =

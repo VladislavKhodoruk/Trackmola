@@ -18,7 +18,7 @@ import { TodayviewContainer } from './todayview.container';
     TodayviewContainer,
     ModalComponent,
   ],
-  imports: [CommonModule, FormsModule, IconModule, MatDialogModule],
   exports: [TodayviewContainer],
+  imports: [CommonModule, FormsModule, IconModule, MatDialogModule],
 })
 export class TodayViewModule {}

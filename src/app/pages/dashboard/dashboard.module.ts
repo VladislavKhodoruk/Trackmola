@@ -57,6 +57,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ManagerDashboardChartComponent,
     ManagerDashboardChartContainer,
   ],
+  exports: [RouterModule],
   imports: [
     ActiveTasksListModule,
     CommonModule,
@@ -75,7 +76,6 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ReactiveFormsModule,
     ButtonModule,
   ],
-  exports: [RouterModule],
   providers: [],
 })
 export class DashboardModule {}

@@ -10,7 +10,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
 
 @NgModule({
   declarations: [VacationsComponent],
-  imports: [CommonModule, IconModule, UsersPhotosModule],
   exports: [VacationsComponent],
+  imports: [CommonModule, IconModule, UsersPhotosModule],
 })
 export class VacationsModule {}

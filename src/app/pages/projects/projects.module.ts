@@ -41,6 +41,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ActiveTasksUsersComponent,
     ActiveTasksUsersContainer,
   ],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     FormsModule,
@@ -54,6 +55,5 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ToggleButtonsModule,
     VacationsModule,
   ],
-  exports: [RouterModule],
 })
 export class ProjectsModule {}

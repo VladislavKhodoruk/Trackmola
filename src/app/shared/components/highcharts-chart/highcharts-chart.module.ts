@@ -5,7 +5,7 @@ import { HighchartsChartComponent } from './highcharts-chart.component';
 
 @NgModule({
   declarations: [HighchartsChartComponent],
-  imports: [ChartModule],
   exports: [HighchartsChartComponent],
+  imports: [ChartModule],
 })
 export class HighchartsChartModule {}

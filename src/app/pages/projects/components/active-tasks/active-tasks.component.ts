@@ -23,10 +23,10 @@ import {
 } from '@shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-active-tasks',
-  templateUrl: './active-tasks.component.html',
-  styleUrls: ['./active-tasks.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-active-tasks',
+  styleUrls: ['./active-tasks.component.scss'],
+  templateUrl: './active-tasks.component.html',
 })
 export class ActiveTasksComponent {
   @Input() readonly project: Project;
@@ -77,15 +77,15 @@ export class ActiveTasksComponent {
     event.stopPropagation();
 
     this.dialog.open(AddTasktrackDialogContainer, {
-      panelClass: 'modal',
-      enterAnimationDuration,
+      autoFocus: false,
       data: {
         formTask: {
           projectName,
           taskName,
         },
       },
-      autoFocus: false,
+      enterAnimationDuration,
+      panelClass: 'modal',
     });
   }
 }

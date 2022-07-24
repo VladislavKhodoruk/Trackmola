@@ -16,6 +16,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [ReportInputComponent, ReportInputContainer],
+  exports: [ReportInputContainer],
   imports: [
     CommonModule,
     MatAutocompleteModule,
@@ -27,6 +28,5 @@ import { ButtonModule } from '@shared/components/button/button.module';
     ButtonModule,
     MatDialogModule,
   ],
-  exports: [ReportInputContainer],
 })
 export class ReportInputModule {}

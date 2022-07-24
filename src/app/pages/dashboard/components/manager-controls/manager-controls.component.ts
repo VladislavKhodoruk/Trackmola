@@ -22,10 +22,10 @@ import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
 import { Project } from '@shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-manager-controls',
-  templateUrl: './manager-controls.component.html',
-  styleUrls: ['./manager-controls.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-manager-controls',
+  styleUrls: ['./manager-controls.component.scss'],
+  templateUrl: './manager-controls.component.html',
 })
 export class ManagerControlsComponent implements OnChanges {
   @Input() readonly managerProjects: Project[];

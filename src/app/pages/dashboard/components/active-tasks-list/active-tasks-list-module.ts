@@ -15,6 +15,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     ActiveTasksListComponent,
     ActiveTaskItemComponent,
   ],
+  exports: [ActiveTasksListContainer],
   imports: [
     CommonModule,
     IconModule,
@@ -22,6 +23,5 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     ButtonModule,
     AddTasktrackDialogModule,
   ],
-  exports: [ActiveTasksListContainer],
 })
 export class ActiveTasksListModule {}

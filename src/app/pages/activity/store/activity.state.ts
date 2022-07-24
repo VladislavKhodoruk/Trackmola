@@ -9,7 +9,7 @@ export interface ActivityState {
 }
 
 export const activityState: ActivityState = {
+  choosePeriod: PeriodType.Week,
   period: getPeriod(new Date(), PeriodType.Week),
   weekReportTime: 0,
-  choosePeriod: PeriodType.Week,
 };

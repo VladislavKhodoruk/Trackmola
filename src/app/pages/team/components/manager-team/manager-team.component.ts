@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-manager-team',
-  templateUrl: './manager-team.component.html',
   styleUrls: ['./manager-team.component.scss'],
+  templateUrl: './manager-team.component.html',
 })
 export class ManagerTeamComponent {}
