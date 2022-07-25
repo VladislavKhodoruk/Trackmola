@@ -15,6 +15,8 @@ import { IconifyIcon } from '@iconify/types';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+import { filter, take } from 'rxjs';
+
 import { TaskInputComponent } from './task-input/task-input.component';
 
 import { AddTasktrackDialogContainer } from '@shared/components/add-tasktrack-dialog/add-tasktrack-dialog.container';
@@ -114,11 +116,13 @@ export class ActiveTasksComponent {
 
     dialogRef
       .afterClosed()
-      .pipe(untilDestroyed(this))
+      .pipe(
+        untilDestroyed(this),
+        take(1),
+        filter((item) => !!item)
+      )
       .subscribe((task: Task) => {
-        if (task) {
-          this.addTask.emit(task);
-        }
+        this.addTask.emit(task);
       });
   }
 }
