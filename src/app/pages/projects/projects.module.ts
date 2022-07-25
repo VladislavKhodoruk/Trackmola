@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,6 +15,7 @@ import { ActiveTasksUsersComponent } from './components/active-tasks-users/activ
 import { ActiveTasksUsersContainer } from './components/active-tasks-users/active-tasks-users.container';
 import { ActiveTasksComponent } from './components/active-tasks/active-tasks.component';
 import { ActiveTasksContainer } from './components/active-tasks/active-tasks.container';
+import { TaskInputComponent } from './components/active-tasks/task-input/task-input.component';
 import { ProjectsListComponent } from './components/projects-list/projects-list.component';
 import { ProjectsListContainer } from './components/projects-list/projects-list.container';
 import { ProjectsTeamComponent } from './components/projects-team/projects-team.component';
@@ -43,6 +45,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ProjectsTeamComponent,
     ActiveTasksUsersComponent,
     ActiveTasksUsersContainer,
+    TaskInputComponent,
     ActiveTasksUserModeComponent,
     ActiveTasksUserModeContainer,
   ],
@@ -50,6 +53,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IconModule,
     UsersPhotosModule,
     MatExpansionModule,
@@ -59,6 +63,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     RouterModule.forChild(ProjectsRoutes),
     ToggleButtonsModule,
     VacationsModule,
+    MatDialogModule,
     ProjectLabelModule,
   ],
 })
