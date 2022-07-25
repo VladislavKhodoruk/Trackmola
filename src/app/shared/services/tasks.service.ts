@@ -9,13 +9,14 @@ import {
   setDoc,
   where,
   deleteDoc,
+  updateDoc,
+  arrayUnion,
 } from 'firebase/firestore';
 import { Observable, of } from 'rxjs';
 
-import { Task } from '@pages/report/interfaces/interfaces';
 import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
-import { Period, TaskTrack } from '@shared/interfaces/interfaces';
+import { Period, TaskTrack, Task } from '@shared/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -78,6 +79,21 @@ export class TasksService {
 
   updateTask(tasktrack: TaskTrack): Observable<any> {
     setDoc(doc(this.firestore, 'taskTrack', tasktrack.id), tasktrack);
+    return of();
+  }
+
+  setTask(task: Task): Observable<any> {
+    const refTask = doc(collection(this.firestore, 'tasks'));
+    const newTask = {
+      ...task,
+      id: refTask.id,
+    };
+    setDoc(refTask, newTask);
+
+    const refProject = doc(this.firestore, 'projects', task.projectId);
+    updateDoc(refProject, {
+      taskId: arrayUnion(newTask.id),
+    });
     return of();
   }
 }
