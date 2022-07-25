@@ -91,7 +91,7 @@
         }
 
         &-color {
-          margin-right: 0.5rem;
+          margin-right: var(--offset-s);
           padding: var(--offset-m) var(--offset-xs);
 
           border-radius: var(--border-radius);
