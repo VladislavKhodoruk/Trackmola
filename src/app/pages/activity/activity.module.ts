@@ -51,6 +51,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ActivityWeekChartContainer,
     ProjectEfficiencyComponent,
   ],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     HighchartsChartModule,
@@ -61,6 +62,5 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ButtonModule,
     VacationsModule,
   ],
-  exports: [RouterModule],
 })
 export class ActivityModule {}

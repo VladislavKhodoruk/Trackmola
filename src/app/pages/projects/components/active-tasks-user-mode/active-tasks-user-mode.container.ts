@@ -14,7 +14,9 @@ import { GroupBy, Project, Task } from '@shared/interfaces/interfaces';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-active-tasks-user-mode-container',
+  styleUrls: ['./active-tasks-user-mode.container.scss'],
   template: `<app-active-tasks-user-mode
     [project]="project$ | async"
     [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
@@ -23,8 +25,6 @@ import { TrackMolaState } from '@store/trackMola.state';
     "
     [tasksInfoByTaskId]="tasksInfoByTaskId$ | async"
   ></app-active-tasks-user-mode>`,
-  styleUrls: ['./active-tasks-user-mode.container.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActiveTasksUserModeContainer {
   readonly project$: Observable<Project> =

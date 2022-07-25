@@ -7,7 +7,7 @@ import { SelectComponent } from './select.component';
 
 @NgModule({
   declarations: [SelectComponent],
-  imports: [CommonModule, MatSelectModule, FormsModule],
   exports: [SelectComponent],
+  imports: [CommonModule, MatSelectModule, FormsModule],
 })
 export class SelectModule {}

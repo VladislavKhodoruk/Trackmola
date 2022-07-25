@@ -36,10 +36,10 @@ import {
 
 @UntilDestroy()
 @Component({
-  selector: 'app-active-tasks',
-  templateUrl: './active-tasks.component.html',
-  styleUrls: ['./active-tasks.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-active-tasks',
+  styleUrls: ['./active-tasks.component.scss'],
+  templateUrl: './active-tasks.component.html',
 })
 export class ActiveTasksComponent {
   @Input() readonly project: Project;
@@ -54,7 +54,7 @@ export class ActiveTasksComponent {
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconClipboard: IconifyIcon = clipboardPlus;
   readonly iconPencil: IconifyIcon = pencilIcon;
-  readonly iconfileZip: IconifyIcon = fileZip;
+  readonly iconFileZip: IconifyIcon = fileZip;
   readonly iconQuestionMark: IconifyIcon = questionMark;
 
   readonly userType = UserType;
@@ -92,15 +92,15 @@ export class ActiveTasksComponent {
     event.stopPropagation();
 
     this.dialog.open(AddTasktrackDialogContainer, {
-      panelClass: 'modal',
-      enterAnimationDuration,
+      autoFocus: false,
       data: {
         formTask: {
           projectName,
           taskName,
         },
       },
-      autoFocus: false,
+      enterAnimationDuration,
+      panelClass: 'modal',
     });
   }
 
@@ -108,10 +108,10 @@ export class ActiveTasksComponent {
     enterAnimationDuration: string = dialogOpeningTime
   ): void {
     const dialogRef = this.dialog.open(TaskInputComponent, {
-      panelClass: 'modal',
-      enterAnimationDuration,
-      data: { project: this.project },
       autoFocus: false,
+      data: { project: this.project },
+      enterAnimationDuration,
+      panelClass: 'modal',
     });
 
     dialogRef

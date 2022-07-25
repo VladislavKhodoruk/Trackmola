@@ -21,12 +21,12 @@ import { TeamRoutes } from './team.router';
     TeamComponent,
     TeamContainer,
   ],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     EffectsModule.forFeature([]),
     StoreModule.forFeature(TEAM_STATE_NAME, TeamReducer),
     RouterModule.forChild(TeamRoutes),
   ],
-  exports: [RouterModule],
 })
 export class TeamModule {}

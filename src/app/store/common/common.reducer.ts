@@ -27,8 +27,8 @@ const commonReducer = createReducer(
     ...state,
     loadingStatus: {
       ...state.loadingStatus,
-      loaded: action.loaded,
       errorMessage: action.message,
+      loaded: action.loaded,
     },
   })),
   on(getUserDataSuccess, (state: CommonState, action) => ({
@@ -69,8 +69,8 @@ const commonReducer = createReducer(
     return {
       ...state,
       period: {
-        start: firstDay + action.value,
         end: lastDay + action.value,
+        start: firstDay + action.value,
       },
     };
   }),
@@ -80,8 +80,8 @@ const commonReducer = createReducer(
     return {
       ...state,
       period: {
-        start: firstDay - action.value,
         end: lastDay - action.value,
+        start: firstDay - action.value,
       },
     };
   })

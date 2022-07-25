@@ -12,6 +12,7 @@ import { ReportInputModule } from '../report-input/report-input.module';
 
 @NgModule({
   declarations: [AddTasktrackDialogComponent, AddTasktrackDialogContainer],
+  exports: [AddTasktrackDialogContainer],
   imports: [
     CommonModule,
     FormsModule,
@@ -19,6 +20,5 @@ import { ReportInputModule } from '../report-input/report-input.module';
     MatDialogModule,
     ReportInputModule,
   ],
-  exports: [AddTasktrackDialogContainer],
 })
 export class AddTasktrackDialogModule {}

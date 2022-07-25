@@ -1,13 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
+import { IconModule } from '@visurel/iconify-angular';
+
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { CtoDashboardComponent } from './components/cto-dashboard/cto-dashboard.component';
 import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ManagerControlsComponent } from './components/manager-controls/manager-controls.component';
+import { ManagerControlsContainer } from './components/manager-controls/manager-controls.container';
+import { ManagerDashboardChartComponent } from './components/manager-dashboard-chart/manager-dashboard-chart.component';
+import { ManagerDashboardChartContainer } from './components/manager-dashboard-chart/manager-dashboard-chart.container';
 import { ManagerDashboardComponent } from './components/manager-dashboard/manager-dashboard.component';
 import { WorkingHoursChartComponent } from './components/working-hours-chart/working-hours-chart.component';
 import { WorkingHoursChartContainer } from './components/working-hours-chart/working-hours-chart.container';
@@ -21,10 +32,12 @@ import { DASHBOARD_STATE_NAME } from './store/dashboard.selectors';
 import { ActiveTasksListModule } from '@pages/dashboard/components/active-tasks-list/active-tasks-list-module';
 import { ActivityWeekChartComponent } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.component';
 import { ActivityWeekChartContainer } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.container';
+import { ButtonModule } from '@shared/components/button/button.module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
 import { ClockModule } from '@shared/components/clock/clock.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { TodayViewModule } from '@shared/components/todayview/todayview.module';
+import { VacationsModule } from '@shared/components/vacations/vacations.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +51,13 @@ import { TodayViewModule } from '@shared/components/todayview/todayview.module';
     WorkingHoursChartContainer,
     ActivityWeekChartContainer,
     ActivityWeekChartComponent,
+    ManagerControlsContainer,
+    HeaderComponent,
+    ManagerControlsComponent,
+    ManagerDashboardChartComponent,
+    ManagerDashboardChartContainer,
   ],
+  exports: [RouterModule],
   imports: [
     ActiveTasksListModule,
     CommonModule,
@@ -49,8 +68,14 @@ import { TodayViewModule } from '@shared/components/todayview/todayview.module';
     HighchartsChartModule,
     TodayViewModule,
     ClockModule,
+    VacationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    IconModule,
+    ReactiveFormsModule,
+    ButtonModule,
   ],
-  exports: [RouterModule],
   providers: [],
 })
 export class DashboardModule {}

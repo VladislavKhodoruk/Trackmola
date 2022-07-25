@@ -49,6 +49,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ActiveTasksUserModeComponent,
     ActiveTasksUserModeContainer,
   ],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     FormsModule,
@@ -65,6 +66,5 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     MatDialogModule,
     ProjectLabelModule,
   ],
-  exports: [RouterModule],
 })
 export class ProjectsModule {}

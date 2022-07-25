@@ -16,10 +16,10 @@ import { GroupBy, Project, User, Task } from '@shared/interfaces/interfaces';
 import { RouterStateUrl } from '@store/router/custom-serializer';
 
 @Component({
-  selector: 'app-projects-list',
-  templateUrl: './projects-list.component.html',
-  styleUrls: ['./projects-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-projects-list',
+  styleUrls: ['./projects-list.component.scss'],
+  templateUrl: './projects-list.component.html',
 })
 export class ProjectsListComponent implements OnChanges {
   @Input() readonly projects: Project[];

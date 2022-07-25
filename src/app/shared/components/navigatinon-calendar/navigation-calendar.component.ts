@@ -6,8 +6,8 @@ import { User } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-navigation-calendar',
-  templateUrl: './navigation-calendar.component.html',
   styleUrls: ['./navigation-calendar.component.scss'],
+  templateUrl: './navigation-calendar.component.html',
 })
 export class NavigationCalendarComponent {
   @Input() firstDay?: Date | null;

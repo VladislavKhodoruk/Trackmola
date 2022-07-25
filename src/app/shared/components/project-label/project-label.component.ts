@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-project-label',
-  templateUrl: './project-label.component.html',
   styleUrls: ['./project-label.component.scss'],
+  templateUrl: './project-label.component.html',
 })
 export class ProjectLabelComponent {
   @Input() projectColor: string;

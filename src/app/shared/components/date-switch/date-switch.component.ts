@@ -16,8 +16,8 @@ import { Period } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-date-switch',
-  templateUrl: './date-switch.component.html',
   styleUrls: ['./date-switch.component.scss'],
+  templateUrl: './date-switch.component.html',
 })
 export class DateSwitchComponent implements OnChanges {
   @Input() period: PeriodType.Week | PeriodType.Month = PeriodType.Week;
@@ -49,8 +49,8 @@ export class DateSwitchComponent implements OnChanges {
         this.firstDay -= ONE_WEEK_IN_SECONDS;
         this.lastDay -= ONE_WEEK_IN_SECONDS;
         const firstandLastDay = {
-          start: this.firstDay,
           end: this.lastDay,
+          start: this.firstDay,
         };
         this.firstandLastDay = firstandLastDay;
         break;
@@ -75,8 +75,8 @@ export class DateSwitchComponent implements OnChanges {
         this.firstDay += ONE_WEEK_IN_SECONDS;
         this.lastDay += ONE_WEEK_IN_SECONDS;
         const firstandLastDay = {
-          start: this.firstDay,
           end: this.lastDay,
+          start: this.firstDay,
         };
         this.firstandLastDay = firstandLastDay;
         break;

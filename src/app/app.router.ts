@@ -5,67 +5,67 @@ import { AuthorizationGuard } from './pages/authorization/authorization.guard';
 import { IsAuthenticated } from '@shared/guards/IsAuthentificated.guard';
 
 export const AppRoutes: Routes = [
-  { path: '', redirectTo: 'authorization', pathMatch: 'full' },
+  { path: '', pathMatch: 'full', redirectTo: 'authorization' },
   {
-    path: 'dashboard',
+    canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/dashboard/dashboard.module').then(
         (x) => x.DashboardModule
       ),
-    canActivate: [AuthorizationGuard],
+    path: 'dashboard',
     title: 'Dashboard',
   },
   {
-    path: 'profile',
+    canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/profile/profile.module').then((x) => x.ProfileModule),
-    canActivate: [AuthorizationGuard],
+    path: 'profile',
     title: 'Profile',
   },
   {
-    path: 'activity',
+    canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/activity/activity.module').then((x) => x.ActivityModule),
-    canActivate: [AuthorizationGuard],
+    path: 'activity',
     title: 'Activity',
   },
   {
-    path: 'projects',
+    canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/projects/projects.module').then((x) => x.ProjectsModule),
-    canActivate: [AuthorizationGuard],
+    path: 'projects',
     title: 'Projects',
   },
   {
-    path: 'report',
+    canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/report/report.module').then((x) => x.ReportModule),
-    canActivate: [AuthorizationGuard],
+    path: 'report',
     title: 'Report',
   },
   {
-    path: 'team',
+    canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/team/team.module').then((x) => x.TeamModule),
-    canActivate: [AuthorizationGuard],
+    path: 'team',
     title: 'Team',
   },
   {
-    path: 'report-constructor',
+    canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/report-constructor/report-constructor.module').then(
         (x) => x.ReportConstructorModule
       ),
-    canActivate: [AuthorizationGuard],
+    path: 'report-constructor',
     title: 'Report constructor',
   },
   {
-    path: 'authorization',
+    canActivate: [IsAuthenticated],
     loadChildren: () =>
       import('./pages/authorization/authorization.module').then(
         (x) => x.AuthorizationModule
       ),
-    canActivate: [IsAuthenticated],
+    path: 'authorization',
     title: 'Authorization',
   },
   { path: '**', redirectTo: 'dashboard' },

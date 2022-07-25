@@ -6,7 +6,7 @@ import { ProjectLabelComponent } from './project-label.component';
 
 @NgModule({
   declarations: [ProjectLabelComponent],
-  imports: [CommonModule],
   exports: [ProjectLabelComponent],
+  imports: [CommonModule],
 })
 export class ProjectLabelModule {}

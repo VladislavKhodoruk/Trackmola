@@ -18,6 +18,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
 
 @NgModule({
   declarations: [ProfileContainer, ProfileComponent],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     ButtonModule,
@@ -26,6 +27,5 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     RouterModule.forChild(ProfileRoutes),
     VacationsModule,
   ],
-  exports: [RouterModule],
 })
 export class ProfileModule {}
