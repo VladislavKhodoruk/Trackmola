@@ -7,8 +7,8 @@ import { Project, Task } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-task-input',
-  templateUrl: './task-input.component.html',
   styleUrls: ['./task-input.component.scss'],
+  templateUrl: './task-input.component.html',
 })
 export class TaskInputComponent {
   iconX = x;
@@ -20,9 +20,9 @@ export class TaskInputComponent {
   ) {}
   addTask(): Task {
     return {
-      name: this.taskInput.value,
-      id: '',
       archived: false,
+      id: '',
+      name: this.taskInput.value,
       projectId: this.data.project?.id,
     };
   }

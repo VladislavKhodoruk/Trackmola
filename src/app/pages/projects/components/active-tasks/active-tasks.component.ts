@@ -54,7 +54,7 @@ export class ActiveTasksComponent {
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconClipboard: IconifyIcon = clipboardPlus;
   readonly iconPencil: IconifyIcon = pencilIcon;
-  readonly iconfileZip: IconifyIcon = fileZip;
+  readonly iconFileZip: IconifyIcon = fileZip;
   readonly iconQuestionMark: IconifyIcon = questionMark;
 
   readonly userType = UserType;
@@ -108,10 +108,10 @@ export class ActiveTasksComponent {
     enterAnimationDuration: string = dialogOpeningTime
   ): void {
     const dialogRef = this.dialog.open(TaskInputComponent, {
-      panelClass: 'modal',
-      enterAnimationDuration,
-      data: { project: this.project },
       autoFocus: false,
+      data: { project: this.project },
+      enterAnimationDuration,
+      panelClass: 'modal',
     });
 
     dialogRef
