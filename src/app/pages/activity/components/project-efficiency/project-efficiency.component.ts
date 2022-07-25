@@ -22,21 +22,37 @@ export class ProjectEfficiencyComponent {
   readonly basicOptions: Options = BASIC_OPTIONS_EFFICIENCY_PIE;
 
   get seriesData(): SeriesOptionsType[] {
-    return [
-      {
-        type: 'pie',
-        data: [
-          {
-            y: getEfficiency(this.tasks, this.startOfWeek, this.presentDay),
-            color: 'var(--primary)',
-          },
-          {
-            y: 1 - getEfficiency(this.tasks, this.startOfWeek, this.presentDay),
-            color: 'var(--gray)',
-          },
-        ],
-      },
-    ];
+    console.log( getEfficiency(this.tasks, this.startOfWeek, this.presentDay))
+    if(this.tasks, this.startOfWeek, this.presentDay) {
+      this.basicOptions.title.text = String(getEfficiency(this.tasks, this.startOfWeek, this.presentDay) * 100 + '%')
+      return [
+        {
+          type: 'pie',
+          data: [
+            {
+              y: getEfficiency(this.tasks, this.startOfWeek, this.presentDay),
+              color: 'var(--primary)',
+            },
+            {
+              y: 1 - getEfficiency(this.tasks, this.startOfWeek, this.presentDay),
+              color: 'var(--gray)',
+            },
+          ],
+        },
+      ];
+    } else {
+      return [
+        {
+          type: 'pie',
+          data: [
+            {
+              y: 0,
+              color: 'var(--primary)',
+            },
+          ],
+        },
+      ];
+    }
   }
 
   efficiency = {
