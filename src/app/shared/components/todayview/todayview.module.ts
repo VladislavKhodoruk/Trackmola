@@ -11,6 +11,8 @@ import { TodayviewComponent } from './todayview.component';
 
 import { TodayviewContainer } from './todayview.container';
 
+import { ProjectLabelModule } from '../project-label/project-label.module';
+
 @NgModule({
   declarations: [
     TodayviewComponent,
@@ -19,6 +21,12 @@ import { TodayviewContainer } from './todayview.container';
     ModalComponent,
   ],
   exports: [TodayviewContainer],
-  imports: [CommonModule, FormsModule, IconModule, MatDialogModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IconModule,
+    MatDialogModule,
+    ProjectLabelModule,
+  ],
 })
 export class TodayViewModule {}

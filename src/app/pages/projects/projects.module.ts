@@ -8,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { IconModule } from '@visurel/iconify-angular';
 
+import { ActiveTasksUserModeComponent } from './components/active-tasks-user-mode/active-tasks-user-mode.component';
+import { ActiveTasksUserModeContainer } from './components/active-tasks-user-mode/active-tasks-user-mode.container';
 import { ActiveTasksUsersComponent } from './components/active-tasks-users/active-tasks-users.component';
 import { ActiveTasksUsersContainer } from './components/active-tasks-users/active-tasks-users.container';
 import { ActiveTasksComponent } from './components/active-tasks/active-tasks.component';
@@ -24,6 +26,7 @@ import { ProjectsReducer } from './store/projects.reducer';
 import { PROJECTS_STATE_NAME } from './store/projects.selectors';
 
 import { ButtonModule } from '@shared/components/button/button.module';
+import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
@@ -40,6 +43,8 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ProjectsTeamComponent,
     ActiveTasksUsersComponent,
     ActiveTasksUsersContainer,
+    ActiveTasksUserModeComponent,
+    ActiveTasksUserModeContainer,
   ],
   exports: [RouterModule],
   imports: [
@@ -54,6 +59,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     RouterModule.forChild(ProjectsRoutes),
     ToggleButtonsModule,
     VacationsModule,
+    ProjectLabelModule,
   ],
 })
 export class ProjectsModule {}

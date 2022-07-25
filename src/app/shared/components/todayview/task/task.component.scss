@@ -34,16 +34,6 @@
     font-weight: 700;
   }
 
-  .project {
-    padding: 0 var(--offset);
-
-    font: var(--font-blocks);
-
-    background-color: var(--white);
-    border: $border-radius-button;
-    border-radius: var(--offset-l);
-  }
-
   .description {
     font: var(--font-blocks);
     word-wrap: break-word;

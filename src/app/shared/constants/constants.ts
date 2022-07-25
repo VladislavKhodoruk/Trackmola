@@ -97,3 +97,7 @@ export const MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY = 8;
 export const CLASS_DURATION_MORE_THAN_EIGHT = 'more';
 
 export const dialogOpeningTime = '300ms';
+
+export const CHAR_CREATE_COLOR = '0123456789ABCDEF';
+
+export const NUMBER_CHAR_CREATE_COLOR = 6;

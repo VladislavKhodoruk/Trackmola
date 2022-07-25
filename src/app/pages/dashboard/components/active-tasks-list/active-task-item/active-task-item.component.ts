@@ -27,6 +27,7 @@ export class ActiveTaskItemComponent {
 
   openDialog(enterAnimationDuration: string = dialogOpeningTime): void {
     this.dialog.open(AddTasktrackDialogContainer, {
+      autoFocus: false,
       data: { formTask: this.currentTask },
       enterAnimationDuration,
       panelClass: 'modal',

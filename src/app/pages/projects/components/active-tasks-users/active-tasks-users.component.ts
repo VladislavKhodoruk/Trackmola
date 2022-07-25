@@ -39,6 +39,9 @@ export class ActiveTasksUsersComponent {
   protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
     const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
       (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
+        if (taskTrack.projectId !== this.project.id) {
+          return accum;
+        }
         const date = taskTrack.date.seconds * 1000;
         if (!accum[date]) {
           accum[date] = [];
