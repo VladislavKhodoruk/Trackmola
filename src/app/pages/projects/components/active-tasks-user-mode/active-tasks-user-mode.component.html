@@ -1,0 +1,26 @@
+<section class="projects-tasks">
+  <div class="projects-tasks-header">
+    <h2 class="projects-tasks-title">active tasks</h2>
+    <app-button
+      buttonClass="button-primary project-task-user-mode"
+      label="add"
+    ></app-button>
+  </div>
+  <ul class="projects-tasks-list">
+    <li
+      *ngFor="let task of activeTaskGroupByProject[project?.id]"
+      class="projects-tasks-list-task"
+    >
+      <div class="flex">
+        <div
+          class="projects-tasks-list-task-color"
+          [style.background-color]="getRandomColor()"
+        ></div>
+        <div class="projects-tasks-list-task-name">{{ task.name }}</div>
+      </div>
+      <div class="projects-tasks-list-task-duration">
+        {{ activeTaskTracksDurationGroupByTask[task.id] }}h
+      </div>
+    </li>
+  </ul>
+</section>
