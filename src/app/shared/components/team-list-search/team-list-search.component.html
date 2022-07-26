@@ -1,22 +1,80 @@
 <div>
-  <form class="team-list" [formGroup]="form">
-    <div class="search">
-      <mat-form-field appearance="fill">
+  <form class="form-report" [formGroup]="form">
+    <div class="top">
+      <div class="top-search">
         <input
+          class="input top-search-input"
           type="text"
-          matInput
-          formControlName="project"
-          [matAutocomplete]="projects"
-          (blur)="isProject()"
+          placeholder="Search..."
+          [(ngModel)]="searchText"
         />
-        <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
-
-        <mat-autocomplete #projects="matAutocomplete">
-          <mat-option *ngFor="let option of allProjects" [value]="option">
-            {{ option }}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+        <ic-icon class="icon top-search-icon" [icon]="iconSearch"></ic-icon>
+      </div>
+      <button type="button" class="top-filter">
+        <ic-icon class="icon" [icon]="iconFilter"></ic-icon>
+      </button>
     </div>
+    <mat-form-field appearance="fill">
+      <input
+        type="text"
+        placeholder="Project"
+        matInput
+        formControlName="project"
+        [matAutocomplete]="projects"
+        (blur)="isProject()"
+      />
+      <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+
+      <mat-autocomplete #projects="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredProjectsOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input
+        type="text"
+        placeholder="Location"
+        matInput
+        formControlName="location"
+        [matAutocomplete]="locations"
+        (blur)="isLocation()"
+      />
+      <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+
+      <mat-autocomplete #locations="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredLocationsOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input
+        type="text"
+        placeholder="Position"
+        matInput
+        formControlName="position"
+        [matAutocomplete]="positions"
+        (blur)="isPosition()"
+      />
+      <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+
+      <mat-autocomplete #positions="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredPositionsOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
   </form>
 </div>

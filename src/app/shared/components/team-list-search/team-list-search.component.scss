@@ -1,2 +1,237 @@
 @import "vars/variables";
 @import "mixins";
+
+::ng-deep {
+  .cdk-overlay-pane {
+    width: 20.55rem !important;
+    margin-top: var(--offset-xs);
+    margin-left: -1.1rem;
+  }
+
+  .mat-autocomplete-panel {
+    max-height: 10rem !important;
+
+    background-color: var(--white);
+    border-radius: 0 0 var(--offset-d) var(--offset-d) !important;
+    box-shadow: $border-cdk-select !important;
+  }
+
+  .mat-option {
+    height: 2.5rem !important;
+
+    color: var(--gray2);
+
+    border: $border-input;
+
+    &:hover {
+      background-color: var(--white) !important;
+      box-shadow: $border-input-select;
+    }
+  }
+
+  .mat-selected {
+    color: var(--primary) !important;
+  }
+
+  .mat-dialog-title {
+    margin: 0 !important;
+  }
+
+  .icon-x {
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+}
+
+:host {
+  .form-report {
+    position: relative;
+    z-index: 0;
+
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    padding: var(--offset-m);
+
+    border: $border-form;
+    border-radius: var(--offset);
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+
+      margin-bottom: var(--offset-sm);
+
+      &-label {
+        cursor: pointer;
+
+        display: inline;
+
+        font-size: var(--font-main);
+        color: var(--black);
+      }
+    }
+
+    .title {
+      font: var(--font-title);
+    }
+
+    .icon-x {
+      display: flex;
+    }
+
+    .icon-x:hover {
+      cursor: pointer;
+
+      color: var(--primary-hover);
+
+      opacity: 0.8;
+    }
+  }
+  ::ng-deep {
+    .mat-form-field {
+      width: 20.5rem;
+      margin-top: var(--offset-xs);
+      margin-right: var(--offset);
+      padding: var(--offset-d) var(--offset);
+
+      font-size: var(--font-main);
+      line-height: 1;
+
+      background-color: var(--white);
+      border: $border-input;
+      border-radius: var(--border-radius-m);
+
+      &:hover {
+        box-shadow: $border-input-select;
+      }
+
+      &-warning {
+        border-color: var(--warning);
+      }
+
+      &-icon {
+        cursor: pointer;
+
+        transform: rotate(-90deg);
+
+        width: 1.5rem;
+        height: 1rem;
+
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin: auto;
+
+          path {
+            fill: var(--gray2);
+          }
+        }
+      }
+
+      .mat-form-field-wrapper {
+        padding: 0;
+      }
+
+      .mat-form-field-flex {
+        padding: 0;
+
+        background: none;
+      }
+
+      .mat-form-field-appearance-fill .mat-form-field-flex {
+        padding: 0;
+
+        border-radius: none;
+      }
+
+      .mat-form-field-infix {
+        @include flex(center, space-between);
+        padding: 0;
+
+        border-top: none;
+      }
+
+      .mat-form-field-underline {
+        display: none;
+      }
+
+      .mat-input-element {
+        color: var(--gray2);
+      }
+    }
+
+    .mat-slide-toggle-bar {
+      width: 3rem;
+      height: 1.6rem;
+
+      background-color: var(--primary-50);
+      border-radius: var(--offset-d);
+    }
+
+    .mat-slide-toggle-thumb-container {
+      top: 0.2rem;
+      left: 0.2rem;
+    }
+
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+      background-color: var(--primary);
+    }
+
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+      background-color: var(--white);
+    }
+
+    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
+      transform: translate3d(1.25rem, 0, 0);
+    }
+
+    .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
+      background-color: var(--primary);
+    }
+
+    .mat-slide-toggle.mat-checked .mat-ripple-element {
+      background-color: var(--primary);
+    }
+
+    .mat-slide-toggle-content {
+      font: var(--font-main);
+    }
+
+    .mat-form-field-invalid .mat-input-element {
+      caret-color: var(--black);
+    }
+  }
+  .top {
+    height: 100%;
+    &-search {
+      flex: 1;
+      @include flex(center, flex-start);
+      width: 100%;
+
+      &-input {
+        width: 100%;
+        padding-right: 3rem;
+      }
+
+      &-icon {
+        cursor: pointer;
+
+        margin-left: -2.5rem;
+
+        color: var(--gray2);
+      }
+    }
+    &-filter {
+      flex: 5;
+      background-color: var(--white);
+      border: $border-radius-task;
+      border-radius: var(--offset-d);
+      color: var(--primary);
+    }
+  }
+}

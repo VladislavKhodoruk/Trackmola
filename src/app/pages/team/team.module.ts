@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
+import { TeamListSearchModule } from './../../shared/components/team-list-search/team-list-search.module';
+
 import { AdminTeamComponent } from './components/admin-team/admin-team.component';
 import { CtoTeamComponent } from './components/cto-team/cto-team.component';
 import { ManagerTeamComponent } from './components/manager-team/manager-team.component';
@@ -26,6 +28,7 @@ import { TeamRoutes } from './team.router';
     EffectsModule.forFeature([]),
     StoreModule.forFeature(TEAM_STATE_NAME, TeamReducer),
     RouterModule.forChild(TeamRoutes),
+    TeamListSearchModule,
   ],
   exports: [RouterModule],
 })
