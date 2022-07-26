@@ -20,6 +20,7 @@ import { ProjectLabelModule } from '../project-label/project-label.module';
     TodayviewContainer,
     ModalComponent,
   ],
+  exports: [TodayviewContainer],
   imports: [
     CommonModule,
     FormsModule,
@@ -27,6 +28,5 @@ import { ProjectLabelModule } from '../project-label/project-label.module';
     MatDialogModule,
     ProjectLabelModule,
   ],
-  exports: [TodayviewContainer],
 })
 export class TodayViewModule {}

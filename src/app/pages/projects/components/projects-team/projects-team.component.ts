@@ -5,10 +5,10 @@ import { UserType } from '@shared/enums/enum';
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-projects-team',
-  templateUrl: './projects-team.component.html',
-  styleUrls: ['./projects-team.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-projects-team',
+  styleUrls: ['./projects-team.component.scss'],
+  templateUrl: './projects-team.component.html',
 })
 export class ProjectsTeamComponent {
   @Input() readonly projectByRoute: Project;

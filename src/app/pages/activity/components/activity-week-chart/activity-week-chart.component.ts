@@ -6,10 +6,10 @@ import { getDataForChart } from '@shared/helpers/helpers';
 import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-activity-week-chart-component',
-  templateUrl: 'activity-week-chart.html',
-  styleUrls: ['activity-week-chart.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-activity-week-chart-component',
+  styleUrls: ['activity-week-chart.scss'],
+  templateUrl: 'activity-week-chart.html',
 })
 export class ActivityWeekChartComponent {
   @Input() activeTasks: TaskTrack[];

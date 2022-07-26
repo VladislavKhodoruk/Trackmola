@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cto-report',
-  templateUrl: './cto-report.component.html',
   styleUrls: ['./cto-report.component.scss'],
+  templateUrl: './cto-report.component.html',
 })
 export class CtoReportComponent {}

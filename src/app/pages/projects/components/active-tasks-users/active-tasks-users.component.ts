@@ -16,8 +16,8 @@ import {
 
 @Component({
   selector: 'app-active-tasks-users',
-  templateUrl: './active-tasks-users.component.html',
   styleUrls: ['./active-tasks-users.component.scss'],
+  templateUrl: './active-tasks-users.component.html',
 })
 export class ActiveTasksUsersComponent {
   @Input() readonly project: Project;
@@ -39,6 +39,9 @@ export class ActiveTasksUsersComponent {
   protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
     const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
       (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
+        if (taskTrack.projectId !== this.project.id) {
+          return accum;
+        }
         const date = taskTrack.date.seconds * 1000;
         if (!accum[date]) {
           accum[date] = [];

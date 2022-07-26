@@ -20,15 +20,15 @@ import {
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-active-tasks-users-container',
+  styleUrls: ['./active-tasks-users.container.scss'],
   template: `<app-active-tasks-users
     [project]="project$ | async"
     [activeUserGroupByProject]="activeUserGroupByProject$ | async"
     [activeTaskTracksGroupByUser]="activeTaskTracksGroupByUser$ | async"
     [tasksInfoByTaskId]="tasksInfoByTaskId$ | async"
   ></app-active-tasks-users>`,
-  styleUrls: ['./active-tasks-users.container.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActiveTasksUsersContainer {
   readonly project$: Observable<Project> =

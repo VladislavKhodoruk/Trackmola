@@ -33,10 +33,10 @@ import {
 import { Task } from '@pages/report/interfaces/interfaces';
 
 @Component({
-  selector: 'app-report-input',
-  templateUrl: './report-input.component.html',
-  styleUrls: ['./report-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-report-input',
+  styleUrls: ['./report-input.component.scss'],
+  templateUrl: './report-input.component.html',
 })
 export class ReportInputComponent implements OnInit, OnChanges {
   @Input() allProjects: Project[];
@@ -61,14 +61,14 @@ export class ReportInputComponent implements OnInit, OnChanges {
   iconX = x;
 
   form = new FormGroup({
-    project: new FormControl('', Validators.required),
-    task: new FormControl('', Validators.required),
     comments: new FormControl(''),
+    duration: new FormControl(`${DurationValue.Default}`, Validators.required),
+    project: new FormControl('', Validators.required),
     role: new FormControl(
       localStorage.getItem('AuthUserRole'),
       Validators.required
     ),
-    duration: new FormControl(`${DurationValue.Default}`, Validators.required),
+    task: new FormControl('', Validators.required),
   });
 
   readonly iconAngleLeftB = angleLeftB;
@@ -216,14 +216,14 @@ export class ReportInputComponent implements OnInit, OnChanges {
 
   addTaskTrack(): void {
     const addTask: TaskTrack = {
+      comments: this.form.get('comments').value,
+      date: new Timestamp(new Date(this.currentDate).getTime() / 1000, 0),
+      duration: +this.form.get('duration').value,
       id: '',
       projectId: this.currentProjectId,
-      date: new Timestamp(new Date(this.currentDate).getTime() / 1000, 0),
-      taskId: this.currentTaskId,
-      comments: this.form.get('comments').value,
-      duration: +this.form.get('duration').value,
-      userId: localStorage.getItem('AuthUserId'),
       status: this.status,
+      taskId: this.currentTaskId,
+      userId: localStorage.getItem('AuthUserId'),
     };
     if (this.formTask) {
       this.addCurTaskTrack.emit(addTask);

@@ -7,10 +7,10 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-toggle-buttons',
-  templateUrl: 'toggle-buttons.component.html',
-  styleUrls: ['toggle-buttons.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-toggle-buttons',
+  styleUrls: ['toggle-buttons.component.scss'],
+  templateUrl: 'toggle-buttons.component.html',
 })
 export class ToggleButtonsComponent {
   @Input() labels: string[];

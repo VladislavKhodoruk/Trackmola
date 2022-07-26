@@ -1,7 +1,11 @@
 import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
-import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
+import {
+  CHAR_CREATE_COLOR,
+  NUMBER_CHAR_CREATE_COLOR,
+  SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
+} from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
 import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 
@@ -21,8 +25,8 @@ export function getPeriod(date: Date, type?: PeriodType): Period {
       endDate.setSeconds(59);
 
       return {
-        start: startDate.getTime(),
         end: endDate.getTime(),
+        start: startDate.getTime(),
       };
     }
     case PeriodType.Month: {
@@ -31,8 +35,8 @@ export function getPeriod(date: Date, type?: PeriodType): Period {
       endDate.setMinutes(59);
       endDate.setSeconds(59);
       return {
-        start: new Date(date.getFullYear(), date.getMonth(), 1).getTime(),
         end: endDate.getTime(),
+        start: new Date(date.getFullYear(), date.getMonth(), 1).getTime(),
       };
     }
   }
@@ -70,21 +74,21 @@ export function getDataForChart(
   projects: Project[]
 ): SeriesOptionsType[] {
   const weekTasksByDays: WeekType = {
-    MON: [],
-    TUE: [],
-    WED: [],
-    THU: [],
     FRI: [],
+    MON: [],
     SAT: [],
     SUN: [],
+    THU: [],
+    TUE: [],
+    WED: [],
   };
   const desiredTasks = tasks.map(
     (task: TaskTrack): ModifiedTask => ({
-      projectName: getProjectNameAndColor(task.projectId, projects)?.name,
+      date: task.date.toDate(),
+      duration: task.duration,
       projectColor: getProjectNameAndColor(task.projectId, projects)?.color,
       projectId: task.projectId,
-      duration: task.duration,
-      date: task.date.toDate(),
+      projectName: getProjectNameAndColor(task.projectId, projects)?.name,
     })
   );
   desiredTasks.forEach((task: ModifiedTask) => {
@@ -100,9 +104,18 @@ export function getDataForChart(
       (item: string, index: number) => allProjects.indexOf(item) === index
     )
     .map((project) => ({
-      type: 'column',
-      name: project,
-      data: searchInWeek(project, weekTasksByDays),
       color: getColorOfProjectByName(project, projects)?.color,
+      data: searchInWeek(project, weekTasksByDays),
+      name: project,
+      type: 'column',
     }));
+}
+
+export function getRandomColor() {
+  let color = '#';
+  for (let i = 0; i < NUMBER_CHAR_CREATE_COLOR; i++) {
+    color +=
+      CHAR_CREATE_COLOR[Math.floor(Math.random() * CHAR_CREATE_COLOR.length)];
+  }
+  return color;
 }

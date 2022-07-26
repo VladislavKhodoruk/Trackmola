@@ -4,8 +4,8 @@ import { UserType } from '@shared/enums/enum';
 
 @Component({
   selector: 'app-team',
-  templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss'],
+  templateUrl: './team.component.html',
 })
 export class TeamComponent {
   @Input() userType!: string | null;

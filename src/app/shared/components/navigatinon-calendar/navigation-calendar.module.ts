@@ -11,7 +11,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
 
 @NgModule({
   declarations: [NavigationCalendarComponent, NavigationCalendarContainer],
-  imports: [CommonModule, IconModule, ButtonModule, UsersPhotosModule],
   exports: [NavigationCalendarContainer],
+  imports: [CommonModule, IconModule, ButtonModule, UsersPhotosModule],
 })
 export class NavigationCalendarModule {}

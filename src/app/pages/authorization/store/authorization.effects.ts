@@ -25,7 +25,7 @@ export class AuthorizationEffects {
         this.authorizationService.login(action.email, action.password).pipe(
           map((data) => {
             this.store$.dispatch(loading({ status: false }));
-            this.store$.dispatch(errorMessage({ message: '', loaded: true }));
+            this.store$.dispatch(errorMessage({ loaded: true, message: '' }));
             localStorage.setItem('AuthUserId', data.user.uid);
             return loginSuccess();
           }),
@@ -34,7 +34,7 @@ export class AuthorizationEffects {
             const message = this.authorizationService.authorizationError(
               error.code
             );
-            this.store$.dispatch(errorMessage({ message, loaded: false }));
+            this.store$.dispatch(errorMessage({ loaded: false, message }));
             return of();
           })
         )

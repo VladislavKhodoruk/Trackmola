@@ -17,8 +17,8 @@ import {
 
 @Component({
   selector: 'app-todayview-component',
-  templateUrl: './todayview.component.html',
   styleUrls: ['./todayview.component.scss'],
+  templateUrl: './todayview.component.html',
 })
 export class TodayviewComponent implements OnChanges {
   @Input() taskTracks!: TaskTrack[];
@@ -81,11 +81,11 @@ export class TodayviewComponent implements OnChanges {
         (curProject) => curProject.id === curTaskTrack.projectId
       );
       const taskItem: TaskItem = {
-        id: curTaskTrack.id,
         duration: curTaskTrack.duration,
-        taskName: task?.name,
+        id: curTaskTrack.id,
         projectColor: project?.color,
         projectName: project?.name,
+        taskName: task?.name,
       };
       return [...acc, taskItem];
     }, [] as TaskItem[]);

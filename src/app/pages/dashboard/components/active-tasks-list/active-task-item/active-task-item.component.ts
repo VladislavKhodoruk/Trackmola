@@ -13,10 +13,10 @@ import { ActiveTasks } from '@shared/interfaces/interfaces';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-active-task-item',
-  templateUrl: 'active-task-item.component.html',
-  styleUrls: ['active-task-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-active-task-item',
+  styleUrls: ['active-task-item.component.scss'],
+  templateUrl: 'active-task-item.component.html',
 })
 export class ActiveTaskItemComponent {
   @Input() currentTask!: ActiveTasks;
@@ -27,10 +27,10 @@ export class ActiveTaskItemComponent {
 
   openDialog(enterAnimationDuration: string = dialogOpeningTime): void {
     this.dialog.open(AddTasktrackDialogContainer, {
-      panelClass: 'modal',
-      enterAnimationDuration,
-      data: { formTask: this.currentTask },
       autoFocus: false,
+      data: { formTask: this.currentTask },
+      enterAnimationDuration,
+      panelClass: 'modal',
     });
   }
 }

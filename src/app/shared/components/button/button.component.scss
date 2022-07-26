@@ -60,6 +60,10 @@
       padding: 0 var(--offset-ml);
     }
 
+    &-b {
+      padding: 0 var(--offset-b);
+    }
+
     &-d {
       padding: var(--offset) var(--offset-ml);
     }
@@ -178,5 +182,10 @@
 
   .project-task-question {
     padding: var(--offset) var(--offset-s);
+  }
+
+  .project-task-user-mode {
+    height: 2.5rem;
+    padding: 0 var(--offset-l);
   }
 }

@@ -23,6 +23,7 @@ import { TeamRoutes } from './team.router';
     TeamComponent,
     TeamContainer,
   ],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     EffectsModule.forFeature([]),
@@ -30,6 +31,5 @@ import { TeamRoutes } from './team.router';
     RouterModule.forChild(TeamRoutes),
     TeamListSearchModule,
   ],
-  exports: [RouterModule],
 })
 export class TeamModule {}

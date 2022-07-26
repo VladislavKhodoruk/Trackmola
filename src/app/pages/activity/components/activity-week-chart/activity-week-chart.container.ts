@@ -9,12 +9,12 @@ import { getProjects } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-activity-week-chart-container',
   template: `<app-activity-week-chart-component
     [activeTasks]="activityTasks$ | async"
     [projects]="allProjects$ | async"
   ></app-activity-week-chart-component>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActivityWeekChartContainer {
   readonly activityTasks$: Observable<TaskTrack[]> = this.store$.select(

@@ -13,6 +13,7 @@ import { ButtonModule } from '../button/button.module';
 
 @NgModule({
   declarations: [DatepickerComponent],
+  exports: [DatepickerComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,6 +22,5 @@ import { ButtonModule } from '../button/button.module';
     MatNativeDateModule,
     MatFormFieldModule,
   ],
-  exports: [DatepickerComponent],
 })
 export class DatepickerModule {}

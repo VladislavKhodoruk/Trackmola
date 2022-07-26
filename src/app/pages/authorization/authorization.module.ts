@@ -18,6 +18,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [LoginComponent, LoginContainer],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     FormsModule,
@@ -27,7 +28,6 @@ import { ButtonModule } from '@shared/components/button/button.module';
     StoreModule.forFeature(AUTH_STATE_NAME, AuthorizationReducer),
     RouterModule.forChild(authorizationRoutes),
   ],
-  exports: [RouterModule],
   providers: [AuthorizationService],
 })
 export class AuthorizationModule {}

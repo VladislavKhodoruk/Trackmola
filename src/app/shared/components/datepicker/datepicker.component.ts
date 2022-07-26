@@ -7,22 +7,22 @@ import { getPeriod } from '@shared/helpers/helpers';
 import { Period } from '@shared/interfaces/interfaces';
 
 export const MY_DATE_FORMATS = {
+  display: {
+    dateA11yLabel: 'DD',
+    dateInput: 'MM/DD/YYYY',
+    monthYearA11yLabel: 'MMMM YYYY',
+    monthYearLabel: 'MMMM',
+  },
   parse: {
     dateInput: 'MM/DD/YYYY',
-  },
-  display: {
-    dateInput: 'MM/DD/YYYY',
-    monthYearLabel: 'MMMM',
-    dateA11yLabel: 'DD',
-    monthYearA11yLabel: 'MMMM YYYY',
   },
 };
 
 @Component({
-  selector: 'app-datepicker',
-  templateUrl: './datepicker.component.html',
-  styleUrls: ['./datepicker.component.scss'],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
+  selector: 'app-datepicker',
+  styleUrls: ['./datepicker.component.scss'],
+  templateUrl: './datepicker.component.html',
 })
 export class DatepickerComponent {
   @Output() getFirstandLastDay: EventEmitter<Period> =
@@ -34,8 +34,8 @@ export class DatepickerComponent {
   onGetFirstandLastDay(): void {
     if (this.end) {
       const firstandLastDay = {
-        start: this.start.getTime(),
         end: this.end.getTime(),
+        start: this.start.getTime(),
       };
       this.period = firstandLastDay;
     }

@@ -4,7 +4,7 @@ import { ActivityContainer } from './layout/activity.container';
 
 export const ActivityRoutes: Routes = [
   {
-    path: '',
     component: ActivityContainer,
+    path: '',
   },
 ];
