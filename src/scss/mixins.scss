@@ -21,6 +21,7 @@
 
 @mixin var-range($variable, $value) {
   #{$variable}: $value;
+  #{$variable}-xxxs: calc(var(#{$variable}) / 16);
   #{$variable}-xxs: calc(var(#{$variable}) / 8);
   #{$variable}-xs: calc(var(#{$variable}) / 4);
   #{$variable}-s: calc(var(#{$variable}) / 2);

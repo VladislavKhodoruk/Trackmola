@@ -16,9 +16,7 @@ import { CtoDashboardComponent } from './components/cto-dashboard/cto-dashboard.
 import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ManagerControlsComponent } from './components/manager-controls/manager-controls.component';
-import { ManagerControlsContainer } from './components/manager-controls/manager-controls.container';
-import { ManagerDashboardChartComponent } from './components/manager-dashboard-chart/manager-dashboard-chart.component';
-import { ManagerDashboardChartContainer } from './components/manager-dashboard-chart/manager-dashboard-chart.container';
+
 import { ManagerDashboardComponent } from './components/manager-dashboard/manager-dashboard.component';
 import { WorkingHoursChartComponent } from './components/working-hours-chart/working-hours-chart.component';
 import { WorkingHoursChartContainer } from './components/working-hours-chart/working-hours-chart.container';
@@ -38,6 +36,9 @@ import { ClockModule } from '@shared/components/clock/clock.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
+import { ManagerDashboardChartComponent } from './components/manager-dashboard-chart/manager-dashboard-chart.component';
+import { ManagerDashboardChartContainer } from './components/manager-dashboard-chart/manager-dashboard-chart.container';
+import { ManagerControlsContainer } from './components/manager-controls/manager-controls.container';
 
 @NgModule({
   declarations: [

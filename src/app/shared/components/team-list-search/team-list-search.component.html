@@ -1,17 +1,23 @@
 <div>
-  <form class="form-report" [formGroup]="form">
-    <div class="top">
-      <div class="top-search">
+  <form class="form-report" [formGroup]="form" (ngSubmit)="filterUsers()">
+    <div class="form-report-top">
+      <div class="form-report-top-search">
         <input
-          class="input top-search-input"
+          class="input form-report-top-search-input"
           type="text"
           placeholder="Search..."
           [(ngModel)]="searchText"
         />
-        <ic-icon class="icon top-search-icon" [icon]="iconSearch"></ic-icon>
+        <ic-icon
+          class="icon form-report-top-search-icon"
+          [icon]="iconSearch"
+        ></ic-icon>
       </div>
-      <button type="button" class="top-filter">
-        <ic-icon class="icon" [icon]="iconFilter"></ic-icon>
+      <button class="form-report-top-filter">
+        <ic-icon
+          class="icon form-report-top-filter-icon"
+          [icon]="iconFilter"
+        ></ic-icon>
       </button>
     </div>
     <mat-form-field appearance="fill">
@@ -76,5 +82,31 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+    <div class="form-report-bottom">
+      <div class="form-report-bottom-vacation">
+        <input
+          type="checkbox"
+          id="checkbox"
+          class="form-report-bottom-vacation-checkbox"
+        />
+        <label for="checkbox"></label>
+        <ic-icon
+          [icon]="pineappleIcon"
+          class="form-report-bottom-vacation-icon"
+        ></ic-icon>
+      </div>
+      <div class="form-report-bottom-buttons">
+        <button class="form-report-bottom-buttons-reset" type="reset">
+          Reset
+        </button>
+        <button
+          class="form-report-bottom-buttons-submit"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
   </form>
 </div>

@@ -37,11 +37,13 @@
     margin: 0 !important;
   }
 
-  .icon-x {
-    svg {
-      width: 1.75rem;
-      height: 1.75rem;
-    }
+  .form-report-top-filter-icon svg {
+    height: 1.375rem;
+    width: 1.375rem;
+  }
+  .form-report-bottom-vacation-icon svg {
+    width: 2rem;
+    height: 2rem;
   }
 }
 
@@ -55,10 +57,48 @@
     flex-direction: column;
 
     height: 100%;
+    gap: 1rem;
     padding: var(--offset-m);
 
     border: $border-form;
     border-radius: var(--offset);
+
+    &-top {
+      display: flex;
+      max-width: 20.5rem;
+      gap: 1rem;
+      &-search {
+        @include flex(center, flex-start);
+        &-input {
+          max-height: 3rem;
+          width: 100%;
+        }
+
+        &-icon {
+          cursor: pointer;
+
+          margin-left: -2.5rem;
+
+          color: var(--gray2);
+        }
+      }
+
+      &-filter {
+        height: 3rem;
+        width: 3rem;
+        color: var(--primary);
+        background-color: var(--white);
+        border: $border-radius-task;
+        border-radius: var(--offset-d);
+        &:hover {
+          cursor: pointer;
+
+          color: var(--primary-hover);
+
+          border-color: var(--primary-hover);
+        }
+      }
+    }
 
     &-item {
       display: flex;
@@ -75,21 +115,81 @@
         color: var(--black);
       }
     }
+  }
 
-    .title {
-      font: var(--font-title);
-    }
-
-    .icon-x {
+  .form-report-bottom {
+    display: flex;
+    justify-content: space-between;
+    max-width: 20.5rem;
+    &-vacation {
       display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &-checkbox {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+      }
+
+      &-checkbox + label {
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+      }
+
+      &-checkbox + label::before {
+        content: "";
+        display: inline-block;
+        width: 1.5rem;
+        height: 1.5rem;
+        border: $border-checkbox-button;
+        border-radius: var(--offset-s);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+      }
+
+      &-checkbox:checked + label::before {
+        background: url("https://api.iconify.design/bi/check-lg.svg?color=%237353d0")
+          no-repeat center center / contain;
+      }
     }
 
-    .icon-x:hover {
-      cursor: pointer;
-
-      color: var(--primary-hover);
-
-      opacity: 0.8;
+    &-buttons {
+      display: flex;
+      gap: 0.5rem;
+      &-reset,
+      &-submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        height: 2rem;
+        padding: 0 var(--offset-d);
+        font: var(--font-buttonSmall);
+        text-transform: capitalize;
+        border: none;
+        border-radius: var(--border-radius-d);
+        outline: none;
+      }
+      &-reset {
+        background-color: var(--white);
+        color: var(--primary);
+        border-color: var(--primary);
+        border: $border-radius-button;
+        &:hover {
+          color: var(--primary-hover);
+          border-color: var(--primaryhover);
+        }
+      }
+      &-submit {
+        background-color: var(--primary);
+        color: var(--white);
+        &:hover {
+          background-color: var(--primary-hover);
+        }
+      }
     }
   }
 
@@ -166,79 +266,8 @@
       }
     }
 
-    .mat-slide-toggle-bar {
-      width: 3rem;
-      height: 1.6rem;
-
-      background-color: var(--primary-50);
-      border-radius: var(--offset-d);
-    }
-
-    .mat-slide-toggle-thumb-container {
-      top: 0.2rem;
-      left: 0.2rem;
-    }
-
-    .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-      background-color: var(--primary);
-    }
-
-    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
-      background-color: var(--white);
-    }
-
-    .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
-      transform: translate3d(1.25rem, 0, 0);
-    }
-
-    .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
-      background-color: var(--primary);
-    }
-
-    .mat-slide-toggle.mat-checked .mat-ripple-element {
-      background-color: var(--primary);
-    }
-
-    .mat-slide-toggle-content {
-      font: var(--font-main);
-    }
-
     .mat-form-field-invalid .mat-input-element {
       caret-color: var(--black);
-    }
-  }
-
-  .top {
-    height: 100%;
-
-    &-search {
-      @include flex(center, flex-start);
-      flex: 1;
-
-      width: 100%;
-
-      &-input {
-        width: 100%;
-        padding-right: 3rem;
-      }
-
-      &-icon {
-        cursor: pointer;
-
-        margin-left: -2.5rem;
-
-        color: var(--gray2);
-      }
-    }
-
-    &-filter {
-      flex: 5;
-
-      color: var(--primary);
-
-      background-color: var(--white);
-      border: $border-radius-task;
-      border-radius: var(--offset-d);
     }
   }
 }

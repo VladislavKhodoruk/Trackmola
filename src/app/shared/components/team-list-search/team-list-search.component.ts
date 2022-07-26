@@ -1,14 +1,20 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import check from '@iconify/icons-mdi/check';
 
 import filter from '@iconify/icons-tabler/filter';
 import searchIcon from '@iconify/icons-tabler/search';
 import angleLeftB from '@iconify/icons-uil/angle-left-b';
+import pineapple from '@iconify/icons-noto/pineapple';
+import check from '@iconify/icons-tabler/check';
 
 import { map, Observable, startWith } from 'rxjs';
 
-import { GroupBy, Project } from '@shared/interfaces/interfaces';
+import {
+  GroupBy,
+  Project,
+  User,
+  UserCard,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-team-list-search-component',
@@ -20,11 +26,13 @@ export class TeamListSearchComponent implements OnChanges {
   @Input() projectsByUsers: GroupBy<Project[]>;
   @Input() locations: string[];
   @Input() positions: string[];
+  @Input() allUsers: User[];
 
   readonly iconAngleLeftB = angleLeftB;
-  readonly iconCheck = check;
   readonly iconSearch = searchIcon;
   readonly iconFilter = filter;
+  readonly pineappleIcon = pineapple;
+  readonly iconCheck = check;
 
   allProjectsName: string[];
   currentProjectId: string;
@@ -35,6 +43,9 @@ export class TeamListSearchComponent implements OnChanges {
   filteredProjectsOptions: Observable<string[]>;
   filteredLocationsOptions: Observable<string[]>;
   filteredPositionsOptions: Observable<string[]>;
+
+  allUserCards: UserCard[];
+  filterdUserCards: UserCard[];
 
   form = new FormGroup({
     project: new FormControl(''),
@@ -54,7 +65,7 @@ export class TeamListSearchComponent implements OnChanges {
   }
   isLocation(): void {
     const isLocation = this.locations?.some(
-      (location) => location === this.form.get('project').value
+      (location) => location === this.form.get('location').value
     );
 
     if (isLocation) {
@@ -71,6 +82,40 @@ export class TeamListSearchComponent implements OnChanges {
       return;
     }
     this.form.get('position').setValue('');
+  }
+
+  filterUsers(): void {
+    const filterConfig = {
+      project: this.form.get('project').value,
+      location: this.form.get('location').value,
+      position: this.form.get('position').value,
+    };
+
+    this.filterdUserCards = this.allUserCards
+      .filter((userCard) => {
+        const currentProjects = userCard.projects.map(
+          (project) => project.name
+        );
+        if (filterConfig.project) {
+          return currentProjects.includes(String(filterConfig.project));
+        }
+        return true;
+      })
+      .filter((userCard) => {
+        if (filterConfig.location) {
+          return userCard.location === filterConfig.location;
+        }
+        return true;
+      })
+      .filter((userCard) => {
+        if (filterConfig.position) {
+          return userCard.position === filterConfig.position;
+        }
+        return true;
+      });
+    this.form.get('project').reset();
+    this.form.get('location').reset();
+    this.form.get('position').reset();
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.allProjects) {
@@ -112,6 +157,21 @@ export class TeamListSearchComponent implements OnChanges {
             return this.filterOption(value || '', this.positions);
           })
         );
+    }
+    if (changes.allUsers && this.allUsers) {
+      this.allUserCards = [];
+      this.allUsers.forEach((user) => {
+        const projects = this.projectsByUsers[user.id];
+        const currentUserCard: UserCard = {
+          userName: user.fullName,
+          projects: projects,
+          location: user.location,
+          position: user.position,
+          photo: user.photo,
+        };
+        this.allUserCards.push(currentUserCard);
+      });
+      this.filterdUserCards = this.allUserCards;
     }
   }
 
