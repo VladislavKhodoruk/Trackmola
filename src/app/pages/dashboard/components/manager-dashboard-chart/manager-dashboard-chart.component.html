@@ -1,31 +1,25 @@
 <section class="dashboard-main-tasks">
   <header class="dashboard-main-tasks-header">
-    <ng-container *ngIf="managerProjectsFilter.length">
-      <ul class="dashboard-main-tasks-header-projects-list">
-        <li
-          *ngFor="let project of managerProjectsFilter"
-          class="dashboard-main-tasks-header-projects-list-item"
-          [style.borderColor]="project.color"
-        >
-          {{ project.name }}
-        </li>
-      </ul>
+    <ng-container *ngIf="activeProjectFilter">
+      <app-project-label
+        [projectColor]="activeProjectFilter.color"
+        [projectName]="activeProjectFilter.name"
+      ></app-project-label>
     </ng-container>
-    <h2 class="dashboard-main-tasks-header-title">in progress</h2>
   </header>
   <ng-container *ngIf="tasksForManager.length">
     <ul class="dashboard-main-tasks-list">
       <li
-        *ngFor="let task of tasksForManager"
+        *ngFor="let task of tasksForManager; let i = index"
         class="dashboard-main-tasks-list-item"
         [class.dashboard-main-tasks-list-item-selected]="
           task.id === activeTask?.id
         "
-        (click)="this.selectTask.emit(task)"
+        (click)="selectTask.emit(task)"
       >
         <div
           class="dashboard-main-tasks-list-item-bar"
-          [style.backgroundColor]="task.projectInformation.color"
+          [style.backgroundColor]="tasksColors[i]"
         ></div>
         <span class="dashboard-main-tasks-list-item-name">
           {{ task.name }}

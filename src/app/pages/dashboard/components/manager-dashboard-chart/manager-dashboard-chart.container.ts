@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
@@ -7,25 +7,26 @@ import { TaskForManager } from '@pages/dashboard/interfaces/interface';
 import { setActiveTask } from '@pages/dashboard/store/dashboard.actions';
 import {
   getTasksForManager,
-  getManagerProjectsFilter,
   getActiveTask,
+  getActiveProjectFilter,
 } from '@pages/dashboard/store/dashboard.selectors';
 import { Project } from '@shared/interfaces/interfaces';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-manager-dashboard-chart-container',
   styleUrls: ['./manager-dashboard-chart.container.scss'],
   template: `<app-manager-dashboard-chart
-    [managerProjectsFilter]="managerProjectsFilter$ | async"
+    [activeProjectFilter]="activeProjectFilter$ | async"
     [tasksForManager]="tasksForManager$ | async"
     [activeTask]="activeTask$ | async"
     (selectTask)="onSelectTask($event)"
   ></app-manager-dashboard-chart>`,
 })
 export class ManagerDashboardChartContainer {
-  readonly managerProjectsFilter$: Observable<Project[]> = this.store$.select(
-    getManagerProjectsFilter
+  readonly activeProjectFilter$: Observable<Project> = this.store$.select(
+    getActiveProjectFilter
   );
 
   readonly tasksForManager$: Observable<TaskForManager[]> =

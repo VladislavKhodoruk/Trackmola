@@ -3,6 +3,7 @@ import { SeriesOptionsType } from 'highcharts';
 import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
 import {
   CHAR_CREATE_COLOR,
+  COLORS_FOR_TASKS,
   NUMBER_CHAR_CREATE_COLOR,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
@@ -118,4 +119,10 @@ export function getRandomColor() {
       CHAR_CREATE_COLOR[Math.floor(Math.random() * CHAR_CREATE_COLOR.length)];
   }
   return color;
+}
+
+export function getRandomColor2(): string {
+  const colors = COLORS_FOR_TASKS;
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
 }

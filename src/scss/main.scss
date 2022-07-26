@@ -29,6 +29,7 @@ $trackMola-theme: mat.define-light-theme(
 
 html {
   @include color-variables($base-colors);
+  @include color-variables($task-colors);
   @include var-range(--offset, $offset);
   @include var-range(--border, $border);
   @include var-range(--border-radius, $border-radius);

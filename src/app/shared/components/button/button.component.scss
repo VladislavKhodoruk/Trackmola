@@ -77,6 +77,17 @@
       padding: 0 var(--offset-s);
     }
 
+    &-ds {
+      width: 6.25rem;
+      height: 2.25rem;
+      padding: 0;
+
+      color: var(--gray2);
+
+      background-color: transparent;
+      border-color: var(--gray);
+    }
+
     &-rect {
       border-radius: 0;
     }

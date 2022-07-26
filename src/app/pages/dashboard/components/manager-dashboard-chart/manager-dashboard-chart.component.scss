@@ -13,30 +13,7 @@
     height: 100%;
 
     &-header {
-      @include flex(center, flex-start, var(--offset-b));
       width: 100%;
-
-      &-title {
-        font: var(--font-title);
-        text-transform: capitalize;
-        word-break: break-all;
-      }
-
-      &-projects-list {
-        @include flex(flex-start, flex-start, var(--offset-b));
-        flex-direction: column;
-
-        &-item {
-          max-width: max-content;
-          padding: 0 var(--offset-b);
-
-          font: var(--font-blocks);
-          word-break: break-word;
-
-          border: var(--border-s) solid var(--white);
-          border-radius: var(--border-radius-l);
-        }
-      }
     }
 
     &-list {

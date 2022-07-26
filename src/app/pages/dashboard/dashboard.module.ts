@@ -36,6 +36,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
 import { ClockModule } from '@shared/components/clock/clock.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
+import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
 import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
 
@@ -75,6 +76,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     IconModule,
     ReactiveFormsModule,
     ButtonModule,
+    ProjectLabelModule,
   ],
   providers: [],
 })
