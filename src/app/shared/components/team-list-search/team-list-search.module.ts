@@ -14,6 +14,7 @@ import { TeamListSearchContainer } from './team-list-search.container';
 import { ButtonModule } from '../button/button.module';
 @NgModule({
   declarations: [TeamListSearchContainer, TeamListSearchComponent],
+  exports: [TeamListSearchContainer],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,6 +27,5 @@ import { ButtonModule } from '../button/button.module';
     ButtonModule,
     MatDialogModule,
   ],
-  exports: [TeamListSearchContainer],
 })
 export class TeamListSearchModule {}

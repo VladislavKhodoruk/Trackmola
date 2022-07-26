@@ -38,9 +38,10 @@
   }
 
   .form-report-top-filter-icon svg {
-    height: 1.375rem;
     width: 1.375rem;
+    height: 1.375rem;
   }
+
   .form-report-bottom-vacation-icon svg {
     width: 2rem;
     height: 2rem;
@@ -55,9 +56,9 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 
     height: 100%;
-    gap: 1rem;
     padding: var(--offset-m);
 
     border: $border-form;
@@ -65,13 +66,16 @@
 
     &-top {
       display: flex;
-      max-width: 20.5rem;
       gap: 1rem;
+
+      max-width: 20.5rem;
+
       &-search {
         @include flex(center, flex-start);
+
         &-input {
-          max-height: 3rem;
           width: 100%;
+          max-height: 3rem;
         }
 
         &-icon {
@@ -84,12 +88,15 @@
       }
 
       &-filter {
-        height: 3rem;
         width: 3rem;
+        height: 3rem;
+
         color: var(--primary);
+
         background-color: var(--white);
         border: $border-radius-task;
         border-radius: var(--offset-d);
+
         &:hover {
           cursor: pointer;
 
@@ -120,34 +127,41 @@
   .form-report-bottom {
     display: flex;
     justify-content: space-between;
+
     max-width: 20.5rem;
+
     &-vacation {
       display: flex;
-      align-items: center;
       gap: 0.5rem;
+      align-items: center;
 
       &-checkbox {
         position: absolute;
         z-index: -1;
+
         opacity: 0;
       }
 
       &-checkbox + label {
+        user-select: none;
+
         display: inline-flex;
         align-items: center;
-        user-select: none;
       }
 
       &-checkbox + label::before {
         content: "";
+
         display: inline-block;
+
         width: 1.5rem;
         height: 1.5rem;
-        border: $border-checkbox-button;
-        border-radius: var(--offset-s);
+
         background-repeat: no-repeat;
         background-position: center center;
         background-size: 50% 50%;
+        border: $border-checkbox-button;
+        border-radius: var(--offset-s);
       }
 
       &-checkbox:checked + label::before {
@@ -159,33 +173,45 @@
     &-buttons {
       display: flex;
       gap: 0.5rem;
+
       &-reset,
       &-submit {
+        cursor: pointer;
+
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
+
         height: 2rem;
         padding: 0 var(--offset-d);
+
         font: var(--font-buttonSmall);
         text-transform: capitalize;
+
         border: none;
         border-radius: var(--border-radius-d);
         outline: none;
       }
+
       &-reset {
-        background-color: var(--white);
         color: var(--primary);
-        border-color: var(--primary);
+
+        background-color: var(--white);
         border: $border-radius-button;
+        border-color: var(--primary);
+
         &:hover {
           color: var(--primary-hover);
+
           border-color: var(--primaryhover);
         }
       }
+
       &-submit {
-        background-color: var(--primary);
         color: var(--white);
+
+        background-color: var(--primary);
+
         &:hover {
           background-color: var(--primary-hover);
         }

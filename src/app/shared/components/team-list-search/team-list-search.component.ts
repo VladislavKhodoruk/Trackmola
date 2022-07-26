@@ -1,11 +1,11 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
+import pineapple from '@iconify/icons-noto/pineapple';
+import check from '@iconify/icons-tabler/check';
 import filter from '@iconify/icons-tabler/filter';
 import searchIcon from '@iconify/icons-tabler/search';
 import angleLeftB from '@iconify/icons-uil/angle-left-b';
-import pineapple from '@iconify/icons-noto/pineapple';
-import check from '@iconify/icons-tabler/check';
 
 import { map, Observable, startWith } from 'rxjs';
 
@@ -18,8 +18,8 @@ import {
 
 @Component({
   selector: 'app-team-list-search-component',
-  templateUrl: './team-list-search.component.html',
   styleUrls: ['./team-list-search.component.scss'],
+  templateUrl: './team-list-search.component.html',
 })
 export class TeamListSearchComponent implements OnChanges {
   @Input() allProjects: Project[];
@@ -48,9 +48,9 @@ export class TeamListSearchComponent implements OnChanges {
   filterdUserCards: UserCard[];
 
   form = new FormGroup({
-    project: new FormControl(''),
     location: new FormControl(''),
     position: new FormControl(''),
+    project: new FormControl(''),
   });
 
   isProject(): void {
@@ -86,9 +86,9 @@ export class TeamListSearchComponent implements OnChanges {
 
   filterUsers(): void {
     const filterConfig = {
-      project: this.form.get('project').value,
       location: this.form.get('location').value,
       position: this.form.get('position').value,
+      project: this.form.get('project').value,
     };
 
     this.filterdUserCards = this.allUserCards
@@ -163,11 +163,11 @@ export class TeamListSearchComponent implements OnChanges {
       this.allUsers.forEach((user) => {
         const projects = this.projectsByUsers[user.id];
         const currentUserCard: UserCard = {
-          userName: user.fullName,
-          projects: projects,
           location: user.location,
-          position: user.position,
           photo: user.photo,
+          position: user.position,
+          projects: projects,
+          userName: user.fullName,
         };
         this.allUserCards.push(currentUserCard);
       });
