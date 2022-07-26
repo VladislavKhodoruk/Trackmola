@@ -27,8 +27,9 @@
     width: 100%;
 
     :first-child {
-      overflow: hidden;
       @include width-variables(33%, 1rem);
+      overflow: hidden;
+
       height: 100%;
     }
 

@@ -92,6 +92,7 @@
       opacity: 0.8;
     }
   }
+
   ::ng-deep {
     .mat-form-field {
       width: 20.5rem;
@@ -206,11 +207,14 @@
       caret-color: var(--black);
     }
   }
+
   .top {
     height: 100%;
+
     &-search {
-      flex: 1;
       @include flex(center, flex-start);
+      flex: 1;
+
       width: 100%;
 
       &-input {
@@ -226,12 +230,15 @@
         color: var(--gray2);
       }
     }
+
     &-filter {
       flex: 5;
+
+      color: var(--primary);
+
       background-color: var(--white);
       border: $border-radius-task;
       border-radius: var(--offset-d);
-      color: var(--primary);
     }
   }
 }
