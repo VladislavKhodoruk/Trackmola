@@ -92,14 +92,18 @@
 </section>
 
 <ng-template #activeProject>
-  <li
-    class="dashboard-controls-selected-projects-list-item"
-    [style.backgroundColor]="activeProjectFilter?.color"
-  >
-    {{ activeProjectFilter?.name }}
-    <ic-icon
-      class="dashboard-controls-selected-projects-list-item-icon pinned-off-icon"
-      [icon]="iconPinnedOff"
-      (click)="this.removeProjectFilter.emit()"
-    ></ic-icon></li
-></ng-template>
+  <ng-container *ngIf="activeProjectFilter">
+    <li
+      class="dashboard-controls-selected-projects-list-item"
+      [style.backgroundColor]="activeProjectFilter.color"
+    >
+      {{ activeProjectFilter.name }}
+      <ic-icon
+        class="dashboard-controls-selected-projects-list-item-icon pinned-off-icon"
+        [icon]="iconPinnedOff"
+        (click)="this.removeProjectFilter.emit()"
+      >
+      </ic-icon>
+    </li>
+  </ng-container>
+</ng-template>

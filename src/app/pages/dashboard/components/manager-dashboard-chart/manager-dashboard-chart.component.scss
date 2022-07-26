@@ -57,6 +57,7 @@
         @include flex(center, flex-start, var(--offset-s));
 
         cursor: pointer;
+        scroll-margin-top: #{$shadow-y};
         scroll-snap-align: start;
 
         width: 100%;
