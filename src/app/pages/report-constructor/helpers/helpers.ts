@@ -59,8 +59,8 @@ export function getInfoFromTaskTracks(
       return {
         userId,
         userName,
-        userPosition,
         userPercentageAllDurationTask,
+        userPosition,
       };
     });
   });

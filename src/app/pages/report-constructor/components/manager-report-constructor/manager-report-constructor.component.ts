@@ -32,10 +32,10 @@ import {
 } from '@shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-manager-report-constructor',
-  templateUrl: './manager-report-constructor.component.html',
-  styleUrls: ['./manager-report-constructor.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-manager-report-constructor',
+  styleUrls: ['./manager-report-constructor.component.scss'],
+  templateUrl: './manager-report-constructor.component.html',
 })
 export class ManagerReportConstructorComponent implements OnChanges {
   @Input() projects: Project[];

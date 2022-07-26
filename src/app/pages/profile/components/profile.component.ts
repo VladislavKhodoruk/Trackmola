@@ -6,8 +6,8 @@ import { User, Vacations } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
+  templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
   @Input() userInfo: User;
@@ -18,14 +18,14 @@ export class ProfileComponent {
 
   readonly vacations: Vacations[] = [
     {
-      vacationDay: new Date('2022-07-20T03:24:00'),
       fullName: 'Maria Ivakhnenko',
       photo: 'https://avatars.githubusercontent.com/u/88663763?v=4',
+      vacationDay: new Date('2022-07-20T03:24:00'),
     },
     {
-      vacationDay: new Date('2022-07-31T03:24:00'),
       fullName: 'Maria Ivakhnenko',
       photo: 'https://avatars.githubusercontent.com/u/88663763?v=4',
+      vacationDay: new Date('2022-07-31T03:24:00'),
     },
   ];
 

@@ -17,10 +17,10 @@ import {
 import { Day, Period, TaskTrack, Week } from '@shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-calendar',
+  styleUrls: ['./calendar.component.scss'],
+  templateUrl: './calendar.component.html',
 })
 export class CalendarComponent implements OnChanges, OnDestroy {
   @Input() date!: number;
@@ -89,9 +89,9 @@ export class CalendarComponent implements OnChanges, OnDestroy {
             );
 
             return {
-              value: value,
-              isTasks: isTasks,
               duration: duration,
+              isTasks: isTasks,
+              value: value,
             };
           }),
       });

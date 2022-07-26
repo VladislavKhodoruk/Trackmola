@@ -27,6 +27,7 @@ import {
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-manager-report-constructor-container',
   template: `<app-manager-report-constructor
     [projects]="projects$ | async"
@@ -38,7 +39,6 @@ import { TrackMolaState } from '@store/trackMola.state';
     (changeStoreProjectId)="changeProjectId($event)"
     (exportExel)="exportExel($event)"
   ></app-manager-report-constructor>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManagerReportConstructorContainer {
   @Input() userType: string;

@@ -9,7 +9,7 @@ import {
 import { searchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-task-name';
 import { searchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-user-photo';
 
-import { StateName } from '@shared/enums/enum';
+import { StateName, TaskStatus } from '@shared/enums/enum';
 import {
   getActiveTasks,
   getProjects,
@@ -50,10 +50,88 @@ export const getTaskWithAllParametrs = createSelector(
   getTasksTrack,
   (active, projects, tasks, users, allTaskTracks) =>
     active.map((i) => ({
-      projectName: searchName(i.projectId, projects),
       projectColor: searchProjectColor(i.projectId, projects),
-      taskName: searchTaskName(i.taskId, tasks),
+      projectName: searchName(i.projectId, projects),
       status: i.status,
+      taskName: searchTaskName(i.taskId, tasks),
       usersPhotos: searchUserPhoto(i.taskId, allTaskTracks, users),
     }))
+);
+
+export const getManadgersProjects = createSelector(getProjects, (projects) =>
+  projects.filter((project) =>
+    project.managersId.includes(localStorage.getItem('AuthUserId'))
+  )
+);
+
+export const getManagerProjectsFilter = createSelector(
+  getDashboardState,
+  getManadgersProjects,
+  ({ manager }, projects) =>
+    projects.filter((project) => manager.projectsFilter.includes(project.name))
+);
+
+export const getModeView = createSelector(
+  getDashboardState,
+  ({ manager }) => manager.modeView
+);
+
+export const projectInfoByProjectId = createSelector(getProjects, (projects) =>
+  projects.reduce((accum, project) => ({ ...accum, [project.id]: project }), {})
+);
+
+export const taskTracksDurationGroupByTask = createSelector(
+  getTasks,
+  getTasksTrack,
+  (tasks, taskTracks) =>
+    tasks.reduce((accum, task) => {
+      const activeTaskTracks = taskTracks
+        .filter((taskTrack) => taskTrack.taskId === task.id)
+        .reduce((result, { duration }) => (result += duration), 0);
+      return { ...accum, [task.id]: activeTaskTracks };
+    }, {})
+);
+
+export const taskTracksGroupByTask = createSelector(
+  getTasks,
+  getTasksTrack,
+  (tasks, taskTracks) =>
+    tasks.reduce((accum, task) => {
+      const activeTasks = taskTracks.filter(({ taskId }) => taskId === task.id);
+      return { ...accum, [task.id]: activeTasks };
+    }, {})
+);
+
+export const getTasksForManager = createSelector(
+  getTasks,
+  getManagerProjectsFilter,
+  getTasksTrack,
+  projectInfoByProjectId,
+  taskTracksDurationGroupByTask,
+  taskTracksGroupByTask,
+  (tasks, projects, taskTracks, projectInfo, durationInfo, taskTracksInfo) =>
+    projects
+      .flatMap((project) => {
+        const activeTasksId = taskTracks
+          .filter(
+            ({ projectId, status }) =>
+              projectId === project.id && status === TaskStatus.InProgress
+          )
+          .map(({ taskId }) => taskId);
+
+        return tasks
+          .filter(({ id }) => activeTasksId.includes(id))
+          .map((task) => ({
+            ...task,
+            durationInTask: durationInfo[task.id],
+            projectInformation: projectInfo[task.projectId],
+            taskTracksInTask: taskTracksInfo[task.id],
+          }));
+      })
+      .sort((a, b) => b.durationInTask - a.durationInTask)
+);
+
+export const getActiveTask = createSelector(
+  getDashboardState,
+  ({ manager }) => manager.selectedTask
 );

@@ -10,8 +10,8 @@ import { Day } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-calendar-item',
-  templateUrl: './calendar-item.component.html',
   styleUrls: ['./calendar-item.component.scss'],
+  templateUrl: './calendar-item.component.html',
 })
 export class CalendarItemComponent implements OnChanges {
   @Input() day!: Day;

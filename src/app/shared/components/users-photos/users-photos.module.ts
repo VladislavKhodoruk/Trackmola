@@ -6,7 +6,7 @@ import { UsersPhotosComponent } from './users-photos.component';
 
 @NgModule({
   declarations: [UsersPhotosComponent],
-  imports: [CommonModule, IconModule],
   exports: [UsersPhotosComponent],
+  imports: [CommonModule, IconModule],
 })
 export class UsersPhotosModule {}

@@ -4,7 +4,7 @@ import { ReportConstructorContainer } from './layout/report-constructor.containe
 
 export const ReportConstructorRoutes: Routes = [
   {
-    path: '',
     component: ReportConstructorContainer,
+    path: '',
   },
 ];

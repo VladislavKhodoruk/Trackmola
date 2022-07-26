@@ -4,10 +4,10 @@ import { IconifyIcon } from '@iconify/types';
 
 import { Vacations } from '@shared/interfaces/interfaces';
 @Component({
-  selector: 'app-vacations-component',
-  templateUrl: 'vacations.component.html',
-  styleUrls: ['vacations.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-vacations-component',
+  styleUrls: ['vacations.component.scss'],
+  templateUrl: 'vacations.component.html',
 })
 export class VacationsComponent {
   @Input() readonly vacations: Vacations[];

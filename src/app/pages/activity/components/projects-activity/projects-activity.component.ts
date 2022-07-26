@@ -7,8 +7,8 @@ import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-projects-activity',
-  templateUrl: './projects-activity.component.html',
   styleUrls: ['./projects-activity.component.scss'],
+  templateUrl: './projects-activity.component.html',
 })
 export class ProjectsActivityComponent {
   @Input() readonly myActivityProjects: Project[];
@@ -20,11 +20,11 @@ export class ProjectsActivityComponent {
     if (this.myActivityProjects.length && this.myActivityTaskTracks.length) {
       return [
         {
-          type: 'pie',
           data: this.dataForChart(
             this.myActivityProjects,
             this.myActivityTaskTracks
           ),
+          type: 'pie',
         },
       ];
     }

@@ -4,8 +4,8 @@ import { PeriodType } from '@shared/enums/enum';
 
 @Component({
   selector: 'app-employee-activity',
-  templateUrl: './employee-activity.component.html',
   styleUrls: ['./employee-activity.component.scss'],
+  templateUrl: './employee-activity.component.html',
 })
 export class EmployeeActivityComponent {
   @Input() period: string;

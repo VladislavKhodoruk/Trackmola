@@ -122,3 +122,17 @@ export const activeTaskTracksGroupByUser = createSelector(
       return { ...accum, [user.id]: activeTasks };
     }, {})
 );
+
+export const activeTaskTracksDurationGroupByTask = createSelector(
+  getTasks,
+  filteredTaskTracksByPeriod,
+  (tasks, taskTracks) =>
+    tasks.reduce((accum, task) => {
+      const activeTasks = taskTracks
+        .filter(
+          (taskTrack) => taskTrack.taskId === task.id && taskTrack.duration > 0
+        )
+        .reduce((result, taskTrack) => (result += taskTrack.duration), 0);
+      return activeTasks > 0 ? { ...accum, [task.id]: activeTasks } : accum;
+    }, {})
+);

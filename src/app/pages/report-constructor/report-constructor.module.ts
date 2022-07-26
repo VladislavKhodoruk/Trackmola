@@ -40,6 +40,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     ManagerReportConstructorContainer,
     ReportConstructorTableComponent,
   ],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     EffectsModule.forFeature([ReportConstructorEffects]),
@@ -56,6 +57,5 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     DatepickerModule,
     UsersPhotosModule,
   ],
-  exports: [RouterModule],
 })
 export class ReportConstructorModule {}

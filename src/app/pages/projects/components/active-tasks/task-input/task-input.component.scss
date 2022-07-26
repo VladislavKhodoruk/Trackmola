@@ -1,0 +1,130 @@
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .mat-dialog-container {
+    overflow: hidden;
+
+    min-width: 25vw;
+    padding: var(--offset);
+
+    border-radius: var(--offset);
+  }
+
+  .mat-dialog-title {
+    margin: 0;
+
+    text-transform: capitalize;
+  }
+
+  .icon-x {
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+}
+
+:host {
+  .top {
+    @include flex(center, space-between);
+    margin-bottom: var(--offset-m);
+  }
+
+  .title {
+    font: var(--font-title);
+  }
+
+  .middle {
+    font: var(--font-calendar);
+    text-transform: capitalize;
+  }
+
+  .project-title {
+    display: inline-block;
+
+    margin-bottom: var(--offset);
+    padding: 0 var(--offset-s);
+
+    font: var(--font-blocks);
+    word-break: break-word;
+
+    border: var(--border-s) solid var(--white);
+    border-radius: var(--border-radius-l);
+  }
+
+  .input {
+    width: 100%;
+    margin: var(--offset-xs) 0;
+
+    font: var(--font-currentBig);
+    line-height: 1;
+
+    background-color: var(--white);
+    border: var(--border-xs) solid var(--gray);
+    border-radius: var(--border-radius-m);
+  }
+
+  .buttons {
+    @include flex(stretch, flex-end);
+  }
+
+  .buttons-cancel,
+  .buttons-add {
+    gap: var(--offset-s);
+
+    width: 5rem;
+    height: 2rem;
+
+    font: var(--font-buttonMiddle);
+    color: var(--primary);
+    text-transform: capitalize;
+
+    background-color: var(--white);
+    border: $border-radius-button;
+    border-radius: var(--offset-d);
+    outline: 0;
+  }
+
+  .buttons-add {
+    margin-left: var(--offset);
+
+    color: var(--white);
+
+    background-color: var(--primary);
+  }
+
+  .icon-x {
+    display: flex;
+  }
+
+  .icon-x:hover {
+    cursor: pointer;
+
+    color: var(--primary-hover);
+
+    opacity: 0.8;
+  }
+
+  .buttons-cancel:hover,
+  .buttons-add:hover,
+  .icons:hover {
+    cursor: pointer;
+
+    opacity: 0.8;
+
+    transition: 0.2s;
+  }
+
+  .disabled {
+    cursor: no-drop;
+
+    opacity: 0.5;
+
+    &:hover {
+      cursor: no-drop;
+
+      opacity: 0.5;
+    }
+  }
+}

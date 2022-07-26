@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-project-efficiency-component',
-  templateUrl: 'project-efficiency.component.html',
   styleUrls: ['project-efficiency.scss'],
+  templateUrl: 'project-efficiency.component.html',
 })
 export class ProjectEfficiencyComponent {
   efficiency = {
-    total: 2,
     complited: 1,
-    shortages: 4,
     overtimes: 0,
+    shortages: 4,
+    total: 2,
   };
 }

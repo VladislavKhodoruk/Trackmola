@@ -4,8 +4,8 @@ import { UserType } from '@shared/enums/enum';
 
 @Component({
   selector: 'app-activity',
-  templateUrl: './activity.component.html',
   styleUrls: ['./activity.component.scss'],
+  templateUrl: './activity.component.html',
 })
 export class ActivityComponent {
   @Input() userType!: string | null;

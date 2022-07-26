@@ -8,7 +8,7 @@ import { SidebarContainer } from './sidebar.container';
 
 @NgModule({
   declarations: [SidebarContainer, SidebarComponent],
-  imports: [CommonModule, RouterModule, IconModule],
   exports: [SidebarContainer],
+  imports: [CommonModule, RouterModule, IconModule],
 })
 export class SidebarModule {}

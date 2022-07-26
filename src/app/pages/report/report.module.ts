@@ -37,6 +37,7 @@ import { TodayViewModule } from '@shared/components/todayview/todayview.module';
     ReportComponent,
     ReportContainer,
   ],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     IconModule,
@@ -49,6 +50,5 @@ import { TodayViewModule } from '@shared/components/todayview/todayview.module';
     ReportInputModule,
     TodayViewModule,
   ],
-  exports: [RouterModule],
 })
 export class ReportModule {}
