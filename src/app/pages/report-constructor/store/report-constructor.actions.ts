@@ -1,5 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
+import { ExcelData } from '../interfaces/interfaces';
+
 import { Period } from '@shared/interfaces/interfaces';
 
 export const SET_PERIOD = '[report-constructor page]set period';
@@ -15,5 +17,5 @@ export const setProject = createAction(
 
 export const exportExel = createAction(
   EXPORT_EXEL,
-  props<{ data: object[] }>()
+  props<{ data: ExcelData }>()
 );

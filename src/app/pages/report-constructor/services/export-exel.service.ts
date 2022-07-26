@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { Workbook } from 'exceljs';
@@ -7,29 +7,30 @@ import { Workbook } from 'exceljs';
 import * as fs from 'file-saver';
 import { Observable, of } from 'rxjs';
 
-import { EXEL_HEADER_DEFAULT } from '../constants/constants';
+import { EXCEL_HEADER_DEFAULT } from '../constants/constants';
+import { ExcelData } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ExportExelService {
-  exportExel(data: object[]): Observable<Action> {
-    const date = new Date();
+  exportExel(data: ExcelData): Observable<Action> {
     const workbook = new Workbook();
-    const worksheet = workbook.addWorksheet('Report');
+    const worksheet = workbook.addWorksheet(`${data.header}`);
 
-    const fname = `Report_${date.toString().slice(4, 24)}`;
+    const fname = `Report_${data.header}_${new Date(
+      data.period.start
+    ).toDateString()}-${new Date(data.period.end).toDateString()}`;
+    worksheet.addRow([fname]);
+    worksheet.mergeCells('A1', 'E1');
+    worksheet.getRow(1).fill = {
+      fgColor: { argb: 'e1eaf7' },
+      pattern: 'solid',
+      type: 'pattern',
+    };
 
     worksheet.addTable({
-      name: 'Report',
-      ref: 'A1',
-      headerRow: true,
-      totalsRow: true,
-      style: {
-        theme: null,
-        showRowStripes: false,
-      },
-      columns: EXEL_HEADER_DEFAULT.map((item, index) => {
+      columns: EXCEL_HEADER_DEFAULT.map((item, index) => {
         if (index === 2) {
           return {
             name: item,
@@ -38,23 +39,52 @@ export class ExportExelService {
         }
         return { name: item };
       }),
-      rows: data.map((item) => Object.values(item)),
+      headerRow: true,
+      name: `${data.header}`,
+      ref: 'A2',
+      rows: data.data.map((item) => Object.values(item)),
+      style: {
+        showRowStripes: false,
+        theme: null,
+      },
+      totalsRow: true,
     });
 
-    worksheet.getRow(1).height = 25;
-    worksheet.getRow(1).fill = {
-      type: 'pattern',
-      pattern: 'solid',
+    worksheet.addRow(['Team', ...data.team]);
+
+    worksheet.getRow(2).height = 25;
+    worksheet.getRow(2).fill = {
       fgColor: { argb: 'F3F7FD' },
+      pattern: 'solid',
+      type: 'pattern',
     };
 
-    for (let i = 1; i <= EXEL_HEADER_DEFAULT.length; i++) {
+    for (let i = 1; i <= data.data.length + 4; i++) {
       worksheet.getColumn(i).width = 20;
+      worksheet.getRow(i).height = 25;
       worksheet.getColumn(i).alignment = {
         horizontal: 'center',
         vertical: 'middle',
       };
-      worksheet.getRow(i).height = 25;
+      worksheet.getRow(i).border = {
+        bottom: { color: { argb: 'F3F7FD' }, style: 'thin' },
+        left: { color: { argb: 'F3F7FD' }, style: 'thin' },
+        right: { color: { argb: 'F3F7FD' }, style: 'thin' },
+        top: { color: { argb: 'F3F7FD' }, style: 'thin' },
+      };
+
+      if (i === data.data.length + 3) {
+        worksheet.getRow(i).fill = {
+          fgColor: { argb: 'ebe1f7' },
+          pattern: 'solid',
+          type: 'pattern',
+        };
+        worksheet.getRow(i + 1).fill = {
+          fgColor: { argb: 'f7ede1' },
+          pattern: 'solid',
+          type: 'pattern',
+        };
+      }
     }
 
     void workbook.xlsx.writeBuffer().then((respons) => {

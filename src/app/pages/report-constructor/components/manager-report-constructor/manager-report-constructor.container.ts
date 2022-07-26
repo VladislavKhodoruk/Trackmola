@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
+import { excelData } from '@pages/report-constructor/interfaces/interfaces';
 import {
   exportExel,
   setPeriod,
@@ -58,7 +59,7 @@ export class ManagerReportConstructorContainer {
     this.store$.dispatch(setProject({ projectId }));
   }
 
-  exportExel(data: object[]) {
+  exportExel(data: excelData) {
     this.store$.dispatch(exportExel({ data }));
   }
 }

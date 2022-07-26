@@ -1,7 +1,7 @@
-export const EXEL_HEADER_DEFAULT = [
-  'deliverables',
-  'resource',
-  'hours spend',
-  'percentage',
-  'team',
+export const EXCEL_HEADER_DEFAULT = [
+  'Deliverables',
+  'Resource',
+  'Hours spend',
+  'Percentage',
+  'Team',
 ];

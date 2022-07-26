@@ -18,7 +18,10 @@ import {
   getTeam,
   getWorksCustomPeriodHours,
 } from '@pages/report-constructor/helpers/helpers';
-import { InfoReportConstructorItem } from '@pages/report-constructor/interfaces/interfaces';
+import {
+  ExcelData,
+  InfoReportConstructorItem,
+} from '@pages/report-constructor/interfaces/interfaces';
 import { DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
@@ -48,7 +51,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
     new EventEmitter<Period>();
   @Output() changeStoreProjectId: EventEmitter<string> =
     new EventEmitter<string>();
-  @Output() exportExel: EventEmitter<object[]> = new EventEmitter<object[]>();
+  @Output() exportExel: EventEmitter<ExcelData> = new EventEmitter<ExcelData>();
 
   labels: string[] = [...Object.values(PeriodType)];
 
@@ -56,6 +59,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
 
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
+  currentProjectName: string;
   infoFromTaskTracks: InfoReportConstructorItem[];
 
   readonly TypePeriod = PeriodType;
@@ -88,6 +92,9 @@ export class ManagerReportConstructorComponent implements OnChanges {
   }
 
   getSelectedValue(currentProjectId: string): void {
+    this.currentProjectName = this.projects.find(
+      (project) => project.id === currentProjectId
+    )?.name;
     this.changeStoreProjectId.emit(currentProjectId);
   }
 
@@ -108,8 +115,9 @@ export class ManagerReportConstructorComponent implements OnChanges {
   }
 
   exportToExel() {
-    // const excelHeader = ;
-    const excelData = this.infoFromTaskTracks.flatMap((infoFromTaskTrack) => {
+    const header = this.currentProjectName;
+    const team = this.teamProject.map((user) => user.fullName);
+    const data = this.infoFromTaskTracks.flatMap((infoFromTaskTrack) => {
       const userNames = infoFromTaskTrack.usersInfo
         .flatMap(
           (track) =>
@@ -121,13 +129,18 @@ export class ManagerReportConstructorComponent implements OnChanges {
         .join('\n');
 
       return {
-        taskName: infoFromTaskTrack.taskName,
-        userPositions: userPositions,
         taskDuration: infoFromTaskTrack.taskDuration,
+        taskName: infoFromTaskTrack.taskName,
         taskPercentageWeek: `${infoFromTaskTrack.taskPercentageWeek}%`,
         userNames: userNames,
+        userPositions: userPositions,
       };
     });
-    this.exportExel.emit(excelData);
+    this.exportExel.emit({
+      data,
+      header,
+      period: this.period,
+      team,
+    });
   }
 }

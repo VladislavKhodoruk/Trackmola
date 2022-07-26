@@ -72,7 +72,14 @@ export class ReportConstructorTableComponent implements OnChanges {
     );
   }
 
-  changeSortOption(columnName: string, columnType: string): void {
+  changeSortOption(
+    columnName: string,
+    columnType: string,
+    sortMode: boolean
+  ): void {
+    if (!sortMode) {
+      return;
+    }
     this.selectedSort.ascendingSort =
       this.selectedSort.columnName === columnName
         ? !this.selectedSort.ascendingSort
