@@ -233,7 +233,7 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
     point: {
       valueSuffix: '%',
     },
-    enabled: false,
+    enabled: true,
   },
 
   legend: {

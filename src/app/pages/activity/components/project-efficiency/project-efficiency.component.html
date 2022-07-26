@@ -1,23 +1,24 @@
+<script src="../../constants/constants.ts"></script>
 <section class="project-efficiency">
   <h2 class="project-efficiency-header">Project efficiency</h2>
   <div class="project-efficiency-container">
     <div class="project-efficiency-wrapper">
-    <app-highcharts-chart
-      class="project-efficiency-chart"
-      [options]="basicOptions"
-      [data]="seriesData"
-    ></app-highcharts-chart>
-  </div>
-  <div class="project-efficiency-hart-info-text">
-    <p>
-      effect work <span>{{ efficiency.complited }}</span>
-    </p>
-    <p>
-      shortcomming <span>{{ efficiency.shortages }}</span>
-    </p>
-    <p>
-      over worked hours <span>{{ efficiency.overtimes }}</span>
-    </p>
-  </div>
+      <app-highcharts-chart
+        class="project-efficiency-chart"
+        [options]="basicOptions"
+        [data]="seriesData"
+      ></app-highcharts-chart>
+    </div>
+    <div class="project-efficiency-hart-info-text">
+      <p>
+        effect work <span>{{ efficiency.complited }}</span>
+      </p>
+      <p>
+        shortcomming <span>{{ efficiency.shortages }}</span>
+      </p>
+      <p>
+        over worked hours <span>{{ efficiency.overtimes }}</span>
+      </p>
+    </div>
   </div>
 </section>
