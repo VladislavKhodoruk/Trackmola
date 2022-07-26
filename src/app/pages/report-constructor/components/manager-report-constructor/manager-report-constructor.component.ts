@@ -18,7 +18,10 @@ import {
   getTeam,
   getWorksCustomPeriodHours,
 } from '@pages/report-constructor/helpers/helpers';
-import { InfoReportConstructorItem } from '@pages/report-constructor/interfaces/interfaces';
+import {
+  ExcelData,
+  InfoReportConstructorItem,
+} from '@pages/report-constructor/interfaces/interfaces';
 import { DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
@@ -48,6 +51,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
     new EventEmitter<Period>();
   @Output() changeStoreProjectId: EventEmitter<string> =
     new EventEmitter<string>();
+  @Output() exportExel: EventEmitter<ExcelData> = new EventEmitter<ExcelData>();
 
   labels: string[] = [...Object.values(PeriodType)];
 
@@ -55,6 +59,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
 
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
+  currentProjectName: string;
   infoFromTaskTracks: InfoReportConstructorItem[];
 
   readonly TypePeriod = PeriodType;
@@ -64,7 +69,6 @@ export class ManagerReportConstructorComponent implements OnChanges {
   readonly fileXlsIcon: IconifyIcon = fileXls;
   readonly templateIcon: IconifyIcon = templateIcon;
   readonly chartBarIcon: IconifyIcon = chartBar;
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.projects && this.projects) {
       this.selectProjectOptions = this.projects.map((project) => ({
@@ -88,6 +92,9 @@ export class ManagerReportConstructorComponent implements OnChanges {
   }
 
   getSelectedValue(currentProjectId: string): void {
+    this.currentProjectName = this.projects.find(
+      (project) => project.id === currentProjectId
+    )?.name;
     this.changeStoreProjectId.emit(currentProjectId);
   }
 
@@ -105,5 +112,35 @@ export class ManagerReportConstructorComponent implements OnChanges {
         : getPeriod(new Date(), this.periodType);
 
     this.getFirstandLastDay(this.period);
+  }
+
+  exportToExel() {
+    const header = this.currentProjectName;
+    const team = this.teamProject.map((user) => user.fullName);
+    const data = this.infoFromTaskTracks.flatMap((infoFromTaskTrack) => {
+      const userNames = infoFromTaskTrack.usersInfo
+        .flatMap(
+          (track) =>
+            `${track.userName} ${track.userPercentageAllDurationTask} %`
+        )
+        .join('\n');
+      const userPositions = infoFromTaskTrack.usersInfo
+        .flatMap((track) => track.userPosition)
+        .join('\n');
+
+      return {
+        taskDuration: infoFromTaskTrack.taskDuration,
+        taskName: infoFromTaskTrack.taskName,
+        taskPercentageWeek: `${infoFromTaskTrack.taskPercentageWeek}%`,
+        userNames: userNames,
+        userPositions: userPositions,
+      };
+    });
+    this.exportExel.emit({
+      data,
+      header,
+      period: this.period,
+      team,
+    });
   }
 }

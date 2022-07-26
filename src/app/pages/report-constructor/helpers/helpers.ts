@@ -38,8 +38,8 @@ export function getInfoFromTaskTracks(
         0
       );
       const userData = users.find((user) => user.id === userId);
-      const userName = userData.fullName;
-      const userPosition = userData.position;
+      const userName = userData?.fullName;
+      const userPosition = userData?.position;
       const userDuration = filteredTaskTracks.reduce((acc, taskTrack) => {
         if (taskTrack.userId === userId) {
           return acc + taskTrack.duration;

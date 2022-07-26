@@ -8,7 +8,11 @@
         <div
           class="flex-container"
           (click)="
-            changeSortOption(tableHeadItem.columnName, tableHeadItem.columnType)
+            changeSortOption(
+              tableHeadItem.columnName,
+              tableHeadItem.columnType,
+              tableHeadItem.icon
+            )
           "
         >
           <span class="report-constructor-table-head-item-text"
