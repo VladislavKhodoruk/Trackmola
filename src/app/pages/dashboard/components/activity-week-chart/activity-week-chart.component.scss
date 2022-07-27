@@ -2,10 +2,11 @@
 
 :host {
   .dashboard-activity {
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    overflow: hidden;
 
     height: 100%;
     padding: 2% 3% 1% 2%;

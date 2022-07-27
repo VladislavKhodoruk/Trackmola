@@ -91,14 +91,14 @@
   .working-hours {
     @include width-variables(66%, 1rem);
     @include flex(normal, center);
-    flex-direction: column;
     flex: 1;
+    flex-direction: column;
 
     height: 100%;
+    padding-bottom: 2%;
 
     border: $border-input;
     border-radius: var(--border-radius-l);
-    padding-bottom: 2%;
 
     &-title {
       margin: var(--offset);
