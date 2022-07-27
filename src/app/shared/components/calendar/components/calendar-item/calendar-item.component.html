@@ -1,14 +1,23 @@
 <div class="calendar-item" [class.selected]="selected">
   <div class="calendar-container">
     <div *ngIf="day.isTasks" class="calendar-bar">
-      <div
-        class="calendar-bar-progress"
-        [style.height.rem]="timeBar"
-        [ngClass]="more"
-      ></div>
+      <div class="calendar-bar-progress" [style.height.rem]="timeBar"></div>
     </div>
-    <div *ngIf="day.isTasks" class="tooltip">
-      <div class="tooltip-text">{{ day.duration }}h</div>
+    <div class="calendar-overtime-and-tooltip">
+      <div *ngIf="day.isTasks" class="tooltip">
+        <div class="tooltip-text">{{ day.duration }}h</div>
+      </div>
+      <div *ngIf="day.overtimeDuration" class="calendar-overtime">
+        <div class="calendar-overtime-duration">
+          {{ day.overtimeDuration }}h
+        </div>
+        <ic-icon
+          class="calendar-overtime-icon"
+          [icon]="iconFire"
+          width="1.5rem"
+          height="1.5rem"
+        ></ic-icon>
+      </div>
     </div>
   </div>
   <div class="calendar-clock-and-number">

@@ -1,5 +1,8 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
+import fireIcon from '@iconify/icons-emojione/fire';
+import { IconifyIcon } from '@iconify/types';
+
 import {
   CLASS_DURATION_MORE_THAN_EIGHT,
   MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY,
@@ -17,6 +20,7 @@ export class CalendarItemComponent implements OnChanges {
   @Input() day!: Day;
   @Input() selected!: boolean;
 
+  readonly iconFire: IconifyIcon = fireIcon;
   timeBar = 0;
   more = '';
 

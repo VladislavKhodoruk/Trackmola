@@ -73,7 +73,6 @@
 
   .calendar-number {
     margin-top: auto;
-    padding-right: var(--offset);
   }
 
   .calendar-clock-and-number {
@@ -81,6 +80,26 @@
     flex-direction: column;
 
     height: 100%;
+    min-height: 5.675rem;
+  }
+
+  .calendar-overtime-and-tooltip {
+    height: 100%;
+    min-height: 5.675rem;
+    @include flex(flex-start, space-between);
+    flex-direction: column;
+  }
+
+  .calendar-overtime {
+    margin-top: auto;
+    margin-left: var(--offset-s);
+    @include flex(flex-start, flex-end);
+
+    &-duration {
+      font: var(--font-blocks);
+      font-weight: 700;
+      color: var(--orange);
+    }
   }
 
   .more {

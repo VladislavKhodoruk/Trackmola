@@ -46,6 +46,15 @@
 }
 
 :host {
+  * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
   .form-report {
     position: relative;
     z-index: 0;
@@ -90,6 +99,44 @@
       flex-direction: column;
     }
 
+    &-status {
+      @include flex(flex-start, flex-start, var(--offset-s));
+    }
+
+    &-overtime-check {
+      margin-left: var(--offset-l);
+      @include flex(center, flex-start);
+
+      &-checkbox {
+        display: none;
+
+        &-label {
+          border-radius: var(--border-radius);
+          border: var(--border-xs) solid var(--primary) !important;
+
+          width: 1.5rem;
+          height: 1.5rem;
+
+          background-color: var(--white);
+          text-align: center;
+
+          cursor: pointer;
+
+          &::before {
+            content: url("https://api.iconify.design/tabler/check.svg?color=%237353d0");
+            font-size: 1.1rem;
+          }
+        }
+
+        &-icon {
+          margin-left: var(--offset-s);
+          @include flex(center, flex-start);
+
+          cursor: pointer;
+        }
+      }
+    }
+
     &-duration {
       @include flex(center, center);
 
@@ -99,10 +146,6 @@
       background-color: var(--white);
       border: $border-input;
       border-radius: var(--offset-d);
-
-      &-label {
-        margin-bottom: var(--offset-xs);
-      }
 
       &-input {
         width: var(--offset-dl);
@@ -202,6 +245,16 @@
         margin: 0 var(--offset-l);
       }
     }
+  }
+
+  .form-report-overtime-check-checkbox:checked
+    + .form-report-overtime-check-checkbox-label {
+    background-color: var(--primary);
+  }
+
+  .form-report-overtime-check-checkbox:checked
+    + .form-report-overtime-check-checkbox-label:before {
+    content: url("https://api.iconify.design/tabler/check.svg?color=white");
   }
 
   .cancel-button {
@@ -342,5 +395,9 @@
     color: var(--primary-hover);
 
     opacity: 0.8;
+  }
+
+  .flex-container {
+    @include flex(center, flex-start, var(--offset));
   }
 }

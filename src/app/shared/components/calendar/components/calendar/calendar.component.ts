@@ -81,17 +81,22 @@ export class CalendarComponent implements OnChanges, OnDestroy {
             const task = this.onTask(value, this.allTasks);
             const isTasks = task.length > 0;
 
-            const duration = Number(
-              task?.reduce(
-                (result, taskTrack) => (result = result + taskTrack.duration),
-                0
-              )
+            const duration = task?.reduce(
+              (result, taskTrack) => (result = result + taskTrack.duration),
+              0
+            );
+
+            const overtimeDuration = task?.reduce(
+              (result, taskTrack) =>
+                (result = result + taskTrack.overtimeDuration),
+              0
             );
 
             return {
-              duration: duration,
-              isTasks: isTasks,
-              value: value,
+              duration,
+              isTasks,
+              overtimeDuration,
+              value,
             };
           }),
       });

@@ -23,6 +23,8 @@ export interface TaskTrack {
   date: Timestamp;
   duration: number;
   id: string;
+  overtime?: boolean;
+  overtimeDuration?: number;
   projectId: string;
   status: string;
   taskId: string;
@@ -67,6 +69,7 @@ export interface Day {
   value: number;
   isTasks: boolean;
   duration: number;
+  overtimeDuration: number;
 }
 
 export interface Week {
