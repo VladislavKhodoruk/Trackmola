@@ -130,11 +130,11 @@ export class ManagerReportConstructorComponent implements OnChanges {
         .join('\n');
 
       return {
-        taskName: infoFromTaskTrack.taskName,
-        userPositions: userPositions,
         taskDuration: infoFromTaskTrack.taskDuration,
+        taskName: infoFromTaskTrack.taskName,
         taskPercentageWeek: `${infoFromTaskTrack.taskPercentageWeek}%`,
         userNames: userNames,
+        userPositions: userPositions,
       };
     });
     this.exportExel.emit({
