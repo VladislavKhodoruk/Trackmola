@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { TaskForManager } from '@pages/dashboard/interfaces/interface';
+import { setActiveTask } from '@pages/dashboard/store/dashboard.actions';
 import {
   getActiveProjectFilter,
   getTasksForManager,
@@ -12,7 +13,6 @@ import {
 
 import { Project, Vacations } from '@shared/interfaces/interfaces';
 import { TrackMolaState } from '@store/trackMola.state';
-import { setActiveTask } from '@pages/dashboard/store/dashboard.actions';
 
 @Component({
   selector: 'app-manager-dashboard-container',
