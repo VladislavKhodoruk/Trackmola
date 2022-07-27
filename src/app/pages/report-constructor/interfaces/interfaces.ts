@@ -18,9 +18,9 @@ export interface InfoReportConstructorItemUser {
 export interface InfoFromTaskTracksForTable {
   taskName: string;
   taskDuration: number;
-  taskPercentageWeek: number;
-  userNames: string[];
-  userPositions: string[];
+  taskPercentageWeek: number | string;
+  userNames: string[] | string;
+  userPositions: string[] | string;
 }
 
 export interface SortOption {
@@ -31,6 +31,6 @@ export interface SortOption {
 export interface ExcelData {
   header: string;
   period: Period;
-  data: object[];
+  data: InfoFromTaskTracksForTable[];
   team: string[];
 }
