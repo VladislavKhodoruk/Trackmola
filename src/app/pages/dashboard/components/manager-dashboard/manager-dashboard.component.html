@@ -10,7 +10,13 @@
     [activeTask]="activeTask"
     (selectTask)="selectTask.emit($event)"
   ></app-manager-dashboard-list-tasks>
-  <section>Chart</section>
+
+  <app-highcharts-chart
+    class="projects-activity-chart"
+    [data]="data"
+    [options]="basicOptions"
+    *ngIf="activeProjectFilter"
+  ></app-highcharts-chart>
 </section>
 
 <!-- <app-vacations-component

@@ -67,3 +67,30 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
     },
   },
 };
+
+export const MANAGER_DASHBOARD_CHART_TREEMAP = {
+  series: [
+    {
+      layoutAlgorithm: 'stripes',
+      levels: [
+        {
+          dataLabels: {
+            align: 'left',
+            enabled: true,
+            style: {
+              fontSize: '15px',
+              fontWeight: 'bold',
+            },
+            verticalAlign: 'top',
+          },
+          layoutAlgorithm: 'sliceAndDice',
+          level: 1,
+        },
+      ],
+      type: 'treemap',
+    },
+  ],
+  title: {
+    text: 'Fruit consumption',
+  },
+};
