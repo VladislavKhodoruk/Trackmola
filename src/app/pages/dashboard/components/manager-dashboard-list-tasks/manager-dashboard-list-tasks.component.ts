@@ -15,11 +15,11 @@ import { Project } from '@shared/interfaces/interfaces';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-manager-dashboard-chart',
-  styleUrls: ['./manager-dashboard-chart.component.scss'],
-  templateUrl: './manager-dashboard-chart.component.html',
+  selector: 'app-manager-dashboard-list-tasks',
+  styleUrls: ['./manager-dashboard-list-tasks.component.scss'],
+  templateUrl: './manager-dashboard-list-tasks.component.html',
 })
-export class ManagerDashboardChartComponent implements OnChanges {
+export class ManagerDashboardListTasksComponent implements OnChanges {
   @Input() readonly activeProjectFilter: Project;
   @Input() readonly tasksForManager: TaskForManager[];
   @Input() readonly activeTask: TaskForManager;
