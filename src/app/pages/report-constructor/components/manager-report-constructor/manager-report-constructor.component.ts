@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -129,11 +130,11 @@ export class ManagerReportConstructorComponent implements OnChanges {
         .join('\n');
 
       return {
-        taskDuration: infoFromTaskTrack.taskDuration,
         taskName: infoFromTaskTrack.taskName,
+        userPositions: userPositions,
+        taskDuration: infoFromTaskTrack.taskDuration,
         taskPercentageWeek: `${infoFromTaskTrack.taskPercentageWeek}%`,
         userNames: userNames,
-        userPositions: userPositions,
       };
     });
     this.exportExel.emit({
