@@ -45,6 +45,11 @@
       @include flex(flex-start, flex-start, var(--offset-l));
       overflow: auto;
       flex: 2;
+
+      app-activity-week-chart-container {
+        @include width-variables(33%, 1rem);
+        height: 100%;
+      }
     }
 
     &-chart {
@@ -85,9 +90,10 @@
 
   .working-hours {
     flex: 1;
-
+    @include width-variables(66%, 1rem);
     border: $border-input;
     border-radius: var(--border-radius-l);
+    height: 100%;
 
     &-title {
       margin: var(--offset);
@@ -99,7 +105,7 @@
       display: flex;
       flex: 1;
       justify-content: center;
-
+      height: 80%;
       padding: 0 var(--offset-ml);
     }
   }

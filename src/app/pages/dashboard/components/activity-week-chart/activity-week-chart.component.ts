@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { SeriesOptionsType } from 'highcharts';
 
 import { BASIC_ACTIVITY_CHART_DASHBOARD_PAGE } from '@pages/dashboard/constants/constants';
+import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,6 +11,8 @@ import { BASIC_ACTIVITY_CHART_DASHBOARD_PAGE } from '@pages/dashboard/constants/
   templateUrl: 'activity-week-chart.component.html',
 })
 export class ActivityWeekChartComponent {
+  @Input() activeTasks: TaskTrack[];
+  @Input() projects: Project[];
   basicOptions = BASIC_ACTIVITY_CHART_DASHBOARD_PAGE;
   protected get seriesData(): SeriesOptionsType[] {
     return [
