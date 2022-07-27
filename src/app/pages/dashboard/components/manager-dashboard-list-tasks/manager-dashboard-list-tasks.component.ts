@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 
 import { TaskForManager } from '@pages/dashboard/interfaces/interface';
-import { getRandomColor2 } from '@shared/helpers/helpers';
+import { getRandomColor } from '@shared/helpers/helpers';
 
 import { Project } from '@shared/interfaces/interfaces';
 
@@ -32,7 +32,7 @@ export class ManagerDashboardListTasksComponent implements OnChanges {
     if (changes.tasksForManager && this.tasksForManager.length) {
       this.tasksColors.length = 0;
       this.tasksForManager.forEach(() =>
-        this.tasksColors.push(getRandomColor2())
+        this.tasksColors.push(getRandomColor())
       );
     }
   }
