@@ -45,7 +45,7 @@ export class TeamListSearchComponent implements OnChanges {
   filteredPositionsOptions: Observable<string[]>;
 
   allUserCards: UserCard[];
-  filterdUserCards: UserCard[];
+  filteredUserCards: UserCard[];
 
   form = new FormGroup({
     location: new FormControl(''),
@@ -83,15 +83,22 @@ export class TeamListSearchComponent implements OnChanges {
     }
     this.form.get('position').setValue('');
   }
-
+  text(event: InputEvent): void {
+    this.filterUsers();
+    this.searchText = (event.target as HTMLInputElement).value;
+    this.filteredUserCards = this.filteredUserCards.filter((userCard) =>
+      userCard.userName
+        .toLocaleLowerCase()
+        .includes(this.searchText.toLowerCase())
+    );
+  }
   filterUsers(): void {
     const filterConfig = {
       location: this.form.get('location').value,
       position: this.form.get('position').value,
       project: this.form.get('project').value,
     };
-
-    this.filterdUserCards = this.allUserCards
+    this.filteredUserCards = this.allUserCards
       .filter((userCard) => {
         const currentProjects = userCard.projects.map(
           (project) => project.name
@@ -113,9 +120,6 @@ export class TeamListSearchComponent implements OnChanges {
         }
         return true;
       });
-    this.form.get('project').reset();
-    this.form.get('location').reset();
-    this.form.get('position').reset();
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.allProjects) {
@@ -171,7 +175,7 @@ export class TeamListSearchComponent implements OnChanges {
         };
         this.allUserCards.push(currentUserCard);
       });
-      this.filterdUserCards = this.allUserCards;
+      this.filteredUserCards = this.allUserCards;
     }
   }
 

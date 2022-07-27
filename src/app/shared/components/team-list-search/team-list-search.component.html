@@ -6,7 +6,7 @@
           class="input form-report-top-search-input"
           type="text"
           placeholder="Search..."
-          [(ngModel)]="searchText"
+          (input)="text($event)"
         />
         <ic-icon
           class="icon form-report-top-search-icon"
