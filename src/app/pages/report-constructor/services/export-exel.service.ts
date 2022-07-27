@@ -42,7 +42,22 @@ export class ExportExelService {
       headerRow: true,
       name: `${data.header}`,
       ref: 'A2',
-      rows: data.data.map((item) => Object.values(item)),
+      rows: data.data.map((item) => {
+        const {
+          taskDuration,
+          taskName,
+          taskPercentageWeek,
+          userNames,
+          userPositions,
+        } = item;
+        return [
+          taskName,
+          userPositions,
+          taskDuration,
+          taskPercentageWeek,
+          userNames,
+        ];
+      }),
       style: {
         showRowStripes: false,
         theme: null,
