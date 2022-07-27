@@ -22,9 +22,13 @@ export class ProjectEfficiencyComponent {
   readonly basicOptions: Options = BASIC_OPTIONS_EFFICIENCY_PIE;
 
   get seriesData(): SeriesOptionsType[] {
-    console.log( getEfficiency(this.tasks, this.startOfWeek, this.presentDay))
-    if(this.tasks, this.startOfWeek, this.presentDay) {
-      this.basicOptions.title.text = String(getEfficiency(this.tasks, this.startOfWeek, this.presentDay) * 100 + '%')
+    if ((this.tasks, this.startOfWeek, this.presentDay)) {
+      this.basicOptions.title.text =
+        String(
+          (
+            getEfficiency(this.tasks, this.startOfWeek, this.presentDay) * 100
+          ).toFixed(1)
+        ) + '%';
       return [
         {
           type: 'pie',
@@ -34,7 +38,9 @@ export class ProjectEfficiencyComponent {
               color: 'var(--primary)',
             },
             {
-              y: 1 - getEfficiency(this.tasks, this.startOfWeek, this.presentDay),
+              y:
+                1 -
+                getEfficiency(this.tasks, this.startOfWeek, this.presentDay),
               color: 'var(--gray)',
             },
           ],

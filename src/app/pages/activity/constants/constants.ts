@@ -259,41 +259,6 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
           brightness: 0,
         },
       },
-
-      // point: {
-      //   events: {
-      //     mouseOver: function(this: Point) {
-      //       const point = this as any;
-      //       this.series.chart.update({
-      //         title: {
-      //           text: `${this.percentage.toFixed(1)}%`,
-      //           style: {
-      //             color: this.color.toString(),
-      //           },
-      //         },
-      //       });
-      //       point.graphic
-      //         .attr({
-      //           ['stroke-width']: 10,
-      //           stroke: point.color,
-      //           zIndex: 3,
-      //         })
-      //         .add();
-      //     },
-      //     mouseOut: function(this: Point) {
-      //       const point = this as any;
-      //       this.series.chart.update({
-      //         title: { text: '' },
-      //       });
-      //       point.graphic
-      //         .attr({
-      //           ['stroke-width']: 1,
-      //           stroke: point.color,
-      //         })
-      //         .add();
-      //     },
-      //   },
-      // },
     },
   },
 };
