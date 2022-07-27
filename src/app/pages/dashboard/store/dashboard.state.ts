@@ -9,8 +9,9 @@ import { getPeriod } from '@shared/helpers/helpers';
 
 interface DashboardManagerState {
   projectsFilter: Project['name'][];
+  activeProjectFilter: Project | null;
   modeView: ManagerDashboardView;
-  selectedTask?: TaskForManager;
+  selectedTask: TaskForManager | null;
 }
 
 export interface DashboardState {
@@ -21,8 +22,10 @@ export interface DashboardState {
 
 export const dashboardState: DashboardState = {
   manager: {
+    activeProjectFilter: null,
     modeView: ManagerDashboardView.Table,
     projectsFilter: [],
+    selectedTask: null,
   },
   period: getPeriod(new Date(), PeriodType.Week),
   weekReportTime: 0,

@@ -4,5 +4,7 @@
   ></app-employee-dashboard>
   <app-cto-dashboard *ngSwitchCase="types.CTO"></app-cto-dashboard>
   <app-admin-dashboard *ngSwitchCase="types.Admin"></app-admin-dashboard>
-  <app-manager-dashboard *ngSwitchCase="types.Manager"></app-manager-dashboard>
+  <app-manager-dashboard-container
+    *ngSwitchCase="types.Manager"
+  ></app-manager-dashboard-container>
 </container-element>

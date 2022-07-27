@@ -2,8 +2,7 @@ import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
 import {
-  CHAR_CREATE_COLOR,
-  NUMBER_CHAR_CREATE_COLOR,
+  COLORS_FOR_TASKS,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
@@ -111,11 +110,8 @@ export function getDataForChart(
     }));
 }
 
-export function getRandomColor() {
-  let color = '#';
-  for (let i = 0; i < NUMBER_CHAR_CREATE_COLOR; i++) {
-    color +=
-      CHAR_CREATE_COLOR[Math.floor(Math.random() * CHAR_CREATE_COLOR.length)];
-  }
-  return color;
+export function getRandomColor(): string {
+  const colors = COLORS_FOR_TASKS;
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
 }
