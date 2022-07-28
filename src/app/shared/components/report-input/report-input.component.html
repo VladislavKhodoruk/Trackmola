@@ -130,6 +130,7 @@
               class="form-report-overtime-check-checkbox"
               type="checkbox"
               id="checkbox"
+              formControlName="overtime"
               (change)="changeOvertimeStatus()"
             />
             <label
@@ -287,7 +288,11 @@
         [buttonClass]="'button-primary button-m'"
         type="submit"
         label="Edit"
-        [disabled]="form.invalid"
+        [disabled]="
+          form.invalid &&
+          +form.get('duration') > 0 &&
+          +form.get('overtimeDuration') > 0
+        "
       ></app-button>
     </ng-template>
   </div>

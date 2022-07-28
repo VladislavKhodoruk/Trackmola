@@ -155,6 +155,10 @@ export class ReportInputComponent implements OnInit, OnChanges {
     )?.name;
     this.form.get('task')?.setValue(taskName);
     this.form.get('duration')?.setValue(`${this.editableTaskTrack?.duration}`);
+    this.form.get('overtime')?.setValue(this.editableTaskTrack?.overtime);
+    this.form
+      .get('overtimeDuration')
+      ?.setValue(`${this.editableTaskTrack?.overtimeDuration}`);
     this.form.get('comments')?.setValue(this.editableTaskTrack.comments);
     this.onCheckStatus(this.editableTaskTrack?.status);
   }
@@ -208,13 +212,9 @@ export class ReportInputComponent implements OnInit, OnChanges {
   }
 
   changeOvertimeStatus(): void {
-    this.form.get('overtime')?.setValue(!this.form.get('overtime').value);
-    this.form.get('overtimeDuration')?.setValue('0');
-    if (this.form.get('overtime').value) {
-      this.form.get('duration')?.setValue('0');
-      return;
+    if (!this.form.get('overtime').value) {
+      this.form.get('overtimeDuration')?.setValue('0');
     }
-    this.form.get('duration')?.setValue(`${DurationValue.Default}`);
   }
 
   addTaskTrack(): void {
@@ -258,6 +258,9 @@ export class ReportInputComponent implements OnInit, OnChanges {
   durationMinus(formComtrolName: string): void {
     const durationNumberValue = +this.form.get(`${formComtrolName}`)?.value;
     const durationStringValue = this.form.get(`${formComtrolName}`)?.value;
+    const durationMin = this.form.get('overtime').value
+      ? '0'
+      : DurationValue.Min;
     if (
       !durationStringValue ||
       durationStringValue === KeyCodeAllowedSymbol.Dot
@@ -265,7 +268,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Min);
       return;
     }
-    if (durationNumberValue <= +DurationValue.Min) {
+    if (durationNumberValue <= +durationMin) {
       return;
     }
     if (durationNumberValue === +DurationValue.Default) {
@@ -296,7 +299,10 @@ export class ReportInputComponent implements OnInit, OnChanges {
     if (durationNumberValue >= +DurationValue.Max) {
       return;
     }
-    if (durationNumberValue === DurationValue.MinStep) {
+    if (
+      durationNumberValue === DurationValue.MinStep ||
+      durationNumberValue === 0
+    ) {
       const valueInput = `${
         +this.form.get(`${formComtrolName}`)?.value + DurationValue.MinStep
       }`;

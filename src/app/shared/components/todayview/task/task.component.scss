@@ -22,6 +22,11 @@
     background-color: var(--white);
     border-radius: 0 var(--offset-s) var(--offset-s) 0;
     box-shadow: 0 0 0.2rem var(--gray);
+
+    &-time-and-overtime {
+      @include flex(flex-start, flex-start, var(--offset-xs));
+      flex-direction: column;
+    }
   }
 
   .task-top {
@@ -32,6 +37,16 @@
   .time {
     font: var(--font-blocks);
     font-weight: 700;
+  }
+
+  .overtime {
+    @include flex(flex-start, flex-start, var(--offset-xs));
+
+    &-duration {
+      font: var(--font-blocks);
+      font-weight: 700;
+      color: var(--orange);
+    }
   }
 
   .description {

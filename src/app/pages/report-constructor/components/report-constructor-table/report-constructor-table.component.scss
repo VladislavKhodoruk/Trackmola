@@ -19,8 +19,8 @@
       background-color: var(--blue2);
 
       &-item {
-        width: 20%;
-        max-width: 20%;
+        width: calc(100% / 6);
+        max-width: calc(100% / 6);
         height: 3rem;
 
         &-text {
@@ -47,6 +47,40 @@
         &-text {
           font: var(--font-current);
           text-align: center;
+        }
+      }
+
+      &-overtime {
+        @include flex(center, center);
+
+        &-duration {
+          margin-right: var(--offset-s);
+          padding: auto 0;
+          font: var(--font-blocks);
+          color: var(--orange);
+        }
+      }
+
+      &-percentage {
+        position: relative;
+        height: 3rem;
+        @include flex(center, center);
+
+        &-duration {
+          position: absolute;
+          z-index: 2;
+        }
+
+        &-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+
+          height: 100%;
+
+          border-radius: var(--border-radius);
+          background-color: var(--blue2);
         }
       }
     }

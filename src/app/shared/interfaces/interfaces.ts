@@ -8,7 +8,7 @@ export interface Project {
   fullName: string;
   managersId: string[];
   name: string;
-  taskId: string[];
+  tasksId: string[];
 }
 
 export interface Task {
@@ -84,6 +84,7 @@ export interface Period {
 export interface TaskItem {
   id: string;
   duration: number;
+  overtimeDuration: number;
   taskName: string;
   projectColor: string;
   projectName: string;

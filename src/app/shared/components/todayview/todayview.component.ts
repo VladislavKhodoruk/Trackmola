@@ -83,6 +83,7 @@ export class TodayviewComponent implements OnChanges {
       const taskItem: TaskItem = {
         duration: curTaskTrack.duration,
         id: curTaskTrack.id,
+        overtimeDuration: curTaskTrack.overtimeDuration,
         projectColor: project?.color,
         projectName: project?.name,
         taskName: task?.name,

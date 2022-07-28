@@ -114,7 +114,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
     this.getFirstandLastDay(this.period);
   }
 
-  exportToExel() {
+  exportToExel(): void {
     const header = this.currentProjectName;
     const team = this.teamProject.map((user) => user.fullName);
     const data = this.infoFromTaskTracks.flatMap((infoFromTaskTrack) => {
@@ -128,10 +128,16 @@ export class ManagerReportConstructorComponent implements OnChanges {
         .flatMap((track) => track.userPosition)
         .join('\n');
 
+      const taskOvertimeDuration =
+        infoFromTaskTrack.taskOvertimeDuration > 0
+          ? infoFromTaskTrack.taskOvertimeDuration
+          : null;
+
       return {
         taskDuration: infoFromTaskTrack.taskDuration,
         taskName: infoFromTaskTrack.taskName,
-        taskPercentageWeek: `${infoFromTaskTrack.taskPercentageWeek}%`,
+        taskOvertimeDuration: taskOvertimeDuration,
+        taskPercentageWeek: infoFromTaskTrack.taskPercentageWeek,
         userNames: userNames,
         userPositions: userPositions,
       };
