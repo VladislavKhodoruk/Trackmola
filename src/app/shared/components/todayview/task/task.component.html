@@ -2,7 +2,7 @@
   <div class="task-top">
     <div class="task-time-and-overtime">
       <div class="time">{{ taskItem?.duration }}h</div>
-      <div class="overtime">
+      <div *ngIf="taskItem?.overtimeDuration" class="overtime">
         <div class="overtime-duration">{{ taskItem?.overtimeDuration }}h</div>
         <ic-icon
           class="fire"
