@@ -1,4 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import pineapple from '@iconify/icons-noto/pineapple';
@@ -15,11 +21,42 @@ import {
   User,
   UserCard,
 } from '@shared/interfaces/interfaces';
+import {
+  animate,
+  group,
+  query,
+  stagger,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-team-list-search-component',
   styleUrls: ['./team-list-search.component.scss'],
   templateUrl: './team-list-search.component.html',
+  animations: [
+    trigger('filter', [
+      state('true', style({ height: '0', opacity: '0' })),
+      state('false', style({ opacity: '1' })),
+      transition('true <=> false', animate('200ms')),
+    ]),
+    trigger('filterAnimation', [
+      transition(':increment', [
+        query(':enter', [
+          style({ opacity: 0 }),
+          stagger(200, [animate('600ms ease-out', style({ opacity: 1 }))]),
+        ]),
+      ]),
+      transition(':decrement', [
+        query(':leave', [
+          style({ opacity: 1 }),
+          stagger(200, [animate('400ms ease-out', style({ opacity: 0 }))]),
+        ]),
+      ]),
+    ]),
+  ],
 })
 export class TeamListSearchComponent implements OnChanges {
   @Input() allProjects: Project[];
@@ -46,6 +83,8 @@ export class TeamListSearchComponent implements OnChanges {
 
   allUserCards: UserCard[];
   filteredUserCards: UserCard[];
+
+  filterState: boolean = true;
 
   form = new FormGroup({
     location: new FormControl(''),

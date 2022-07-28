@@ -1,5 +1,10 @@
 <div class="team-list">
-  <form class="form-report" [formGroup]="form" (ngSubmit)="filterUsers()">
+  <form
+    class="form-report"
+    [formGroup]="form"
+    (ngSubmit)="filterUsers()"
+    (reset)="filterUsers()"
+  >
     <div class="form-report-top">
       <div class="form-report-top-search">
         <input
@@ -13,75 +18,81 @@
           [icon]="iconSearch"
         ></ic-icon>
       </div>
-      <button class="form-report-top-filter">
+      <button
+        type="button"
+        class="form-report-top-filter"
+        (click)="filterState = !filterState"
+      >
         <ic-icon
           class="icon form-report-top-filter-icon"
           [icon]="iconFilter"
         ></ic-icon>
       </button>
     </div>
-    <mat-form-field appearance="fill">
-      <input
-        type="text"
-        placeholder="Project"
-        matInput
-        formControlName="project"
-        [matAutocomplete]="projects"
-        (blur)="isProject()"
-      />
-      <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+    <div class="form-report-filters" [@filter]="{ value: filterState }">
+      <mat-form-field appearance="fill">
+        <input
+          type="text"
+          placeholder="Project"
+          matInput
+          formControlName="project"
+          [matAutocomplete]="projects"
+          (blur)="isProject()"
+        />
+        <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
 
-      <mat-autocomplete #projects="matAutocomplete">
-        <mat-option
-          *ngFor="let option of filteredProjectsOptions | async"
-          [value]="option"
-        >
-          {{ option }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+        <mat-autocomplete #projects="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredProjectsOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <input
-        type="text"
-        placeholder="Location"
-        matInput
-        formControlName="location"
-        [matAutocomplete]="locations"
-        (blur)="isLocation()"
-      />
-      <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+      <mat-form-field appearance="fill">
+        <input
+          type="text"
+          placeholder="Location"
+          matInput
+          formControlName="location"
+          [matAutocomplete]="locations"
+          (blur)="isLocation()"
+        />
+        <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
 
-      <mat-autocomplete #locations="matAutocomplete">
-        <mat-option
-          *ngFor="let option of filteredLocationsOptions | async"
-          [value]="option"
-        >
-          {{ option }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+        <mat-autocomplete #locations="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredLocationsOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <input
-        type="text"
-        placeholder="Position"
-        matInput
-        formControlName="position"
-        [matAutocomplete]="positions"
-        (blur)="isPosition()"
-      />
-      <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+      <mat-form-field appearance="fill">
+        <input
+          type="text"
+          placeholder="Position"
+          matInput
+          formControlName="position"
+          [matAutocomplete]="positions"
+          (blur)="isPosition()"
+        />
+        <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
 
-      <mat-autocomplete #positions="matAutocomplete">
-        <mat-option
-          *ngFor="let option of filteredPositionsOptions | async"
-          [value]="option"
-        >
-          {{ option }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
+        <mat-autocomplete #positions="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredPositionsOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
     <div class="form-report-bottom">
       <div class="form-report-bottom-vacation">
         <input
@@ -109,9 +120,8 @@
       </div>
     </div>
   </form>
-  <div class="team-list-cards">
+  <div class="team-list-cards" [@filterAnimation]="filteredUserCards.length">
     <app-user-card
-      class="team-list-cards-item"
       *ngFor="let card of filteredUserCards"
       [userCard]="card"
     ></app-user-card>

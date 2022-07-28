@@ -3,24 +3,25 @@
 
 ::ng-deep {
   .card-right-top-text-icon svg {
-    width: 3rem;
-    height: 3rem;
+    @include icon-xl;
   }
 }
 
 :host {
+  --box-shadow-color: rgb(87 74 249 / 25%);
   .card {
+    &:hover {
+      cursor: pointer;
+
+      box-shadow: 0 0 0.4rem var(--box-shadow-color);
+    }
     display: flex;
 
-    margin-bottom: 1rem;
+    margin: var(--offset-s);
     padding: var(--offset);
 
     border: $border-form;
     border-radius: var(--offset-s);
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
 
     &-left {
       @include flex(center, center);
@@ -62,7 +63,7 @@
         flex-wrap: wrap;
 
         &-item {
-          margin: var(--offset-s);
+          margin: var(--offset-s) var(--offset-s) var(--offset-s) 0;
         }
       }
     }
