@@ -24,8 +24,9 @@
 
     &-left {
       @include flex(center, center);
-      flex-direction: column;
       flex: 3;
+      flex-direction: column;
+
       &-location {
         font: var(--font-card);
         color: var(--gray2);
