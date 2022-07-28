@@ -48,37 +48,36 @@ export class ManagerDashboardComponent {
   }
 
   protected get data() {
-    return [
-      {
-        data: this.dataForChart(),
-        type: 'treemap',
-      },
-    ];
-  }
-
-  private dataForChart(): DataForChartTreemap[] {
     let taskTracks: TaskForManager['taskTracksInTask'];
     let totalDuration: TaskForManager['durationInTask'];
+    let dataForChart: DataForChartTreemap[];
 
     if (this.activeTask) {
       taskTracks = this.activeTask.taskTracksInTask;
       totalDuration = this.activeTask.durationInTask;
 
-      return this.helper(taskTracks, totalDuration);
+      dataForChart = this.dataForChart(taskTracks, totalDuration);
+    } else {
+      taskTracks = this.tasksForManager.flatMap(
+        (taskTrack) => taskTrack.taskTracksInTask
+      );
+
+      totalDuration = taskTracks.reduce(
+        (result, { duration }) => (result += duration),
+        0
+      );
+      dataForChart = this.dataForChart(taskTracks, totalDuration);
     }
 
-    taskTracks = this.tasksForManager.flatMap(
-      (taskTrack) => taskTrack.taskTracksInTask
-    );
-
-    totalDuration = taskTracks.reduce(
-      (result, { duration }) => (result += duration),
-      0
-    );
-    return this.helper(taskTracks, totalDuration);
+    return [
+      {
+        data: dataForChart,
+        type: 'treemap',
+      },
+    ];
   }
 
-  private helper(
+  private dataForChart(
     taskTracks: TaskForManager['taskTracksInTask'],
     duration: TaskForManager['durationInTask']
   ): DataForChartTreemap[] {
