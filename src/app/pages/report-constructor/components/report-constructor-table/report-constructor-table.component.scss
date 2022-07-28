@@ -56,15 +56,17 @@
         &-duration {
           margin-right: var(--offset-s);
           padding: auto 0;
+
           font: var(--font-blocks);
           color: var(--orange);
         }
       }
 
       &-percentage {
-        position: relative;
-        height: 3rem;
         @include flex(center, center);
+        position: relative;
+
+        height: 3rem;
 
         &-duration {
           position: absolute;
@@ -73,14 +75,14 @@
 
         &-bar {
           position: absolute;
+          z-index: 1;
           top: 0;
           left: 0;
-          z-index: 1;
 
           height: 100%;
 
-          border-radius: var(--border-radius);
           background-color: var(--blue2);
+          border-radius: var(--border-radius);
         }
       }
     }
