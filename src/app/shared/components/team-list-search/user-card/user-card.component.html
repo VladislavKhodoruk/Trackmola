@@ -1,0 +1,33 @@
+<div class="card">
+  <div class="card-left">
+    <img
+      src="{{ userCard.photo || defaultPhoto }}"
+      class="card-left-photo"
+      alt="user photo"
+    />
+    <div class="card-left-location">{{ userCard.location }}</div>
+  </div>
+  <div class="card-right">
+    <div class="card-right-top">
+      <div class="card-right-top-text">
+        <div class="card-right-top-text-username">{{ userCard.userName }}</div>
+        <div class="card-right-top-text-position">{{ userCard.position }}</div>
+      </div>
+      <ng-template *ngIf="onVacations">
+        <ic-icon
+          [icon]="pineappleIcon"
+          class="card-right-top-text-icon"
+        ></ic-icon
+      ></ng-template>
+    </div>
+
+    <div class="card-right-projects">
+      <app-project-label
+        class="card-right-projects-item"
+        *ngFor="let project of userCard.projects"
+        [projectColor]="project.color"
+        [projectName]="project.name"
+      ></app-project-label>
+    </div>
+  </div>
+</div>

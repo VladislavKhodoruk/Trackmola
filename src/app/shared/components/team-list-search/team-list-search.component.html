@@ -1,4 +1,4 @@
-<div>
+<div class="team-list">
   <form class="form-report" [formGroup]="form" (ngSubmit)="filterUsers()">
     <div class="form-report-top">
       <div class="form-report-top-search">
@@ -109,4 +109,11 @@
       </div>
     </div>
   </form>
+  <div class="team-list-cards">
+    <app-user-card
+      class="team-list-cards-item"
+      *ngFor="let card of filteredUserCards"
+      [userCard]="card"
+    ></app-user-card>
+  </div>
 </div>
