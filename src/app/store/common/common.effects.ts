@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
-import { catchError, map, of, switchMap, take, tap } from 'rxjs';
+import { catchError, map, of, switchMap, take, tap, mergeMap } from 'rxjs';
 
 import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
@@ -72,7 +72,7 @@ export class CommonEffects {
   deleteTaskTrack$ = createEffect(() =>
     this.actions$.pipe(
       ofType(deleteTaskTrack),
-      switchMap(({ id }) => this.tasksService.removeTask(id))
+      mergeMap(({ id }) => this.tasksService.removeTask(id))
     )
   );
 

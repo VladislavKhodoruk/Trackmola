@@ -59,3 +59,40 @@ export const getTasksTrackByPeriod = createSelector(
 export const getActiveTasks = createSelector(getTasksTrackByPeriod, (tasks) =>
   tasks.filter((item) => item.status === 'in progress' || item.status === '')
 );
+
+export const getLocations = createSelector(getUsers, (users) =>
+  users.forEach((user) => user.location)
+);
+
+export const projectsByUsers = createSelector(
+  getTasksTrack,
+  getProjects,
+  getUsers,
+  (taskTracks, projects, users) =>
+    users.reduce((acum, user) => {
+      const projectsInTaskTracks = taskTracks
+        .filter(({ userId }) => userId === user.id)
+        .map(({ projectId }) => projectId);
+
+      const filteredProjects = projects.filter(({ id }) =>
+        projectsInTaskTracks.includes(id)
+      );
+
+      return {
+        ...acum,
+        [user.id]: filteredProjects,
+      };
+    }, {})
+);
+
+export const locations = createSelector(getUsers, (users) => {
+  const allLocations = users.map((user) => user.location);
+  const uniqLocations = [...new Set(allLocations)];
+  return uniqLocations;
+});
+
+export const positions = createSelector(getUsers, (users) => {
+  const allPositions = users.map((user) => user.position);
+  const uniqPositions = [...new Set(allPositions)];
+  return uniqPositions;
+});
