@@ -7,8 +7,8 @@ import {
 
 @Component({
   selector: 'app-working-hours-chart',
-  templateUrl: './working-hours-chart.component.html',
   styleUrls: ['./working-hours-chart.component.scss'],
+  templateUrl: './working-hours-chart.component.html',
 })
 export class WorkingHoursChartComponent implements OnChanges {
   @Input() weekReportTime: number;

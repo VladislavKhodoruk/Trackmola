@@ -124,6 +124,7 @@
             "format": ["camelCase"]
           }
         ],
+        "sort-keys-fix/sort-keys-fix": "warn",
         "@typescript-eslint/no-namespace": "off",
         "@typescript-eslint/no-non-null-assertion": "error",
         "@typescript-eslint/no-parameter-properties": "off",
@@ -242,7 +243,7 @@
       }
     }
   ],
-  "plugins": ["eslint-plugin-use-decorator", "prettier"],
+  "plugins": ["eslint-plugin-use-decorator", "sort-keys-fix", "prettier"],
   "settings": {
     "import/resolver": {
       "typescript": {}
@@ -262,6 +263,8 @@
         "classPropertyAccessModifiers": true
       }
     ],
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "sort-keys": ["error", "asc", { "caseSensitive": true, "natural": true }],
     "prettier/prettier": 2,
     "import/order": [
       2,

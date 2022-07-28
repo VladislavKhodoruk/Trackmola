@@ -6,7 +6,7 @@ import { ClockComponent } from './clock.component';
 
 @NgModule({
   declarations: [ClockComponent],
-  imports: [ChartModule, CommonModule],
   exports: [ClockComponent],
+  imports: [ChartModule, CommonModule],
 })
 export class ClockModule {}

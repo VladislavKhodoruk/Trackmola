@@ -5,6 +5,7 @@
       <app-button
         buttonClass="button-primary button-s"
         label="Add"
+        (buttonClick)="modalAddTask()"
       ></app-button>
     </ng-container>
   </div>
@@ -25,11 +26,11 @@
           (closed)="(!panelOpenState)"
         >
           <mat-expansion-panel-header class="project-header">
-            <mat-panel-title
-              class="project-header-title"
-              [style.borderColor]="project.color"
-            >
-              {{ project.name }}
+            <mat-panel-title>
+              <app-project-label
+                [projectColor]="project.color"
+                [projectName]="project.name"
+              ></app-project-label>
             </mat-panel-title>
             <mat-panel-description class="project-header-description">
               {{ activeTask.name }}
@@ -41,14 +42,14 @@
                   iconWidth="1.5rem"
                   iconHeight="1.5rem"
                   (buttonClick)="
-                    modalAddToReport(project.name, activeTask.name)
+                    modalAddToReport($event, project.name, activeTask.name)
                   "
                 ></app-button>
                 <ng-container *ngIf="currentUser !== userType.Employee">
                   <app-button
                     class="project-header-description-buttons-item"
                     [buttonClass]="'button-secondary button-add-to-report'"
-                    [icon]="iconfileZip"
+                    [icon]="iconFileZip"
                     iconWidth="1.5rem"
                     iconHeight="1.5rem"
                     (buttonClick)="addToReport($event)"
@@ -101,6 +102,12 @@
                   {{ taskTrack1.comments || "no comments" }}
                 </div>
               </div>
+              <ng-container *ngIf="currentUser !== userType.Employee">
+                <app-button
+                  buttonClass="button-secondary project-task-question"
+                  [icon]="iconQuestionMark"
+                ></app-button>
+              </ng-container>
             </div>
           </div>
         </mat-expansion-panel>

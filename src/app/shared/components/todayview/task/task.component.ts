@@ -13,8 +13,8 @@ import { TaskItem } from '@shared/interfaces/interfaces';
 @UntilDestroy()
 @Component({
   selector: 'app-task',
-  templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
+  templateUrl: './task.component.html',
 })
 export class TaskComponent {
   @Input() taskItem!: TaskItem | null;

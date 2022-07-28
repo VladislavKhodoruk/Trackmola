@@ -5,14 +5,14 @@ import { ProjectsContainer } from './layout/projects.container';
 
 export const ProjectsRoutes: Routes = [
   {
-    path: '',
-    component: ProjectsContainer,
     children: [
       {
-        path: ':name',
         component: ActiveTasksContainer,
+        path: ':name',
       },
     ],
+    component: ProjectsContainer,
+    path: '',
   },
   { path: '**', redirectTo: '' },
 ];

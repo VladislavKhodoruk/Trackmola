@@ -4,7 +4,7 @@ import { ReportContainer } from './layout/report.container';
 
 export const ReportRoutes: Routes = [
   {
-    path: '',
     component: ReportContainer,
+    path: '',
   },
 ];

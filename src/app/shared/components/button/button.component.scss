@@ -60,6 +60,10 @@
       padding: 0 var(--offset-ml);
     }
 
+    &-b {
+      padding: 0 var(--offset-b);
+    }
+
     &-d {
       padding: var(--offset) var(--offset-ml);
     }
@@ -71,6 +75,17 @@
     &-xs {
       height: 2.5rem;
       padding: 0 var(--offset-s);
+    }
+
+    &-ds {
+      width: 6.25rem;
+      height: 2.25rem;
+      padding: 0;
+
+      color: var(--gray2);
+
+      background-color: transparent;
+      border-color: var(--gray);
     }
 
     &-rect {
@@ -174,5 +189,14 @@
     &-selected {
       background-color: var(--primary);
     }
+  }
+
+  .project-task-question {
+    padding: var(--offset) var(--offset-s);
+  }
+
+  .project-task-user-mode {
+    height: 2.5rem;
+    padding: 0 var(--offset-l);
   }
 }

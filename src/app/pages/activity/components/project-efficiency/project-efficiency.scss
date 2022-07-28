@@ -12,6 +12,14 @@
     border: var(--border-xs) solid var(--gray);
     border-radius: var(--border-radius-l);
 
+    &-chart {
+      ::ng-deep {
+        .highcharts-legend {
+          display: none;
+        }
+      }
+    }
+
     &-header {
       height: calc(100% - 83% - 4rem);
 
@@ -24,17 +32,22 @@
       gap: 2.85rem;
 
       height: 100%;
+
+      overflow: hidden;
     }
 
     &-wrapper {
       width: calc(100% - 55% - 1.425rem);
-      height: 100%;
+      height: 120%;
     }
 
     &-hart-info-text {
+      display: flex;
       justify-content: center;
+      flex-direction: column;
 
       width: calc(100% - 45% - 1.425rem);
+      height: 70%;
     }
   }
 
@@ -48,5 +61,57 @@
 
   span {
     color: var(--primary);
+  }
+
+  @media (max-width: 1650px) {
+    .project-efficiency {
+      gap: 1.5rem;
+      padding: 3% 1% 1% 1%;
+
+      &-wrapper {
+        height: 140%;
+      }
+
+      &-hart-info-text {
+        height: 100%;
+      }
+
+      &-container {
+        gap: 0;
+        justify-content: space-around;
+
+        p {
+          font-size: var(--offset-d);
+        }
+      }
+
+      .project-efficiency-header {
+        font: var(--font-calendar);
+      }
+    }
+  }
+
+  @media (max-width: 1110px) {
+    .project-efficiency {
+      gap: 0;
+
+      &-header {
+        font: var(--font-current);
+      }
+    }
+  }
+
+  @media (min-width: 1650px) {
+    .project-efficiency {
+      padding: 2% 0 0 0;
+
+      &-wrapper {
+        height: 110%;
+      }
+
+      &-hart-info-text {
+        height: 100%;
+      }
+    }
   }
 }

@@ -1,7 +1,10 @@
 import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
-import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
+import {
+  COLORS_FOR_TASKS,
+  SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
+} from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
 import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 
@@ -21,8 +24,8 @@ export function getPeriod(date: Date, type?: PeriodType): Period {
       endDate.setSeconds(59);
 
       return {
-        start: startDate.getTime(),
         end: endDate.getTime(),
+        start: startDate.getTime(),
       };
     }
     case PeriodType.Month: {
@@ -31,8 +34,8 @@ export function getPeriod(date: Date, type?: PeriodType): Period {
       endDate.setMinutes(59);
       endDate.setSeconds(59);
       return {
-        start: new Date(date.getFullYear(), date.getMonth(), 1).getTime(),
         end: endDate.getTime(),
+        start: new Date(date.getFullYear(), date.getMonth(), 1).getTime(),
       };
     }
   }
@@ -107,6 +110,12 @@ export function getDataForChart(
     }));
 }
 
+export function getRandomColor(): string {
+  const colors = COLORS_FOR_TASKS;
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}
+
 export function getEfficiency(
   tasks: TaskTrack[],
   startOfWeek: number,
@@ -126,4 +135,43 @@ export function getEfficiency(
     efficiency = 1;
   }
   return efficiency;
+}
+
+export function outOfNorm(tasks: TaskTrack[]): void {
+  const weekTasksByDays: WeekType = {
+    MON: [],
+    TUE: [],
+    WED: [],
+    THU: [],
+    FRI: [],
+    SAT: [],
+    SUN: [],
+  };
+
+  tasks.forEach((task: TaskTrack) => {
+    const currentDay: number = task.date.toDate().getDay() - 1;
+    const day: string = SHORT_NAMES_OF_THE_WEEK_UPPERCASE[currentDay];
+    weekTasksByDays[day] = [...weekTasksByDays[day], task];
+  });
+
+  const mismatch = {
+    overtimes: 0,
+    shortages: 0,
+    working: 0,
+  };
+
+  Object.values(weekTasksByDays)
+    .map((item: TaskTrack[]) =>
+      item.reduce((acc, prev) => acc + prev.duration, 0)
+    )
+    .forEach((day) => {
+      if (day < 8) {
+        mismatch.shortages += day - 8;
+        mismatch.working += day;
+      }
+      if (day > 8) {
+        mismatch.overtimes += day - 8;
+        mismatch.working += 8;
+      }
+    });
 }

@@ -1,10 +1,23 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
 import fileZip from '@iconify/icons-tabler/file-zip';
 import pencilIcon from '@iconify/icons-tabler/pencil';
+import questionMark from '@iconify/icons-tabler/question-mark';
 
 import { IconifyIcon } from '@iconify/types';
+
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+
+import { filter, take } from 'rxjs';
+
+import { TaskInputComponent } from './task-input/task-input.component';
 
 import { AddTasktrackDialogContainer } from '@shared/components/add-tasktrack-dialog/add-tasktrack-dialog.container';
 
@@ -21,11 +34,12 @@ import {
   User,
 } from '@shared/interfaces/interfaces';
 
+@UntilDestroy()
 @Component({
-  selector: 'app-active-tasks',
-  templateUrl: './active-tasks.component.html',
-  styleUrls: ['./active-tasks.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-active-tasks',
+  styleUrls: ['./active-tasks.component.scss'],
+  templateUrl: './active-tasks.component.html',
 })
 export class ActiveTasksComponent {
   @Input() readonly project: Project;
@@ -33,12 +47,15 @@ export class ActiveTasksComponent {
   @Input() readonly activeTaskTracksGroupByTask: GroupBy<TaskTrack[]>;
   @Input() readonly usersInfoByUserId: GroupBy<User>;
 
+  @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
+
   panelOpenState = false;
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconClipboard: IconifyIcon = clipboardPlus;
   readonly iconPencil: IconifyIcon = pencilIcon;
-  readonly iconfileZip: IconifyIcon = fileZip;
+  readonly iconFileZip: IconifyIcon = fileZip;
+  readonly iconQuestionMark: IconifyIcon = questionMark;
 
   readonly userType = UserType;
   readonly currentUser: string = localStorage.getItem('AuthUserType');
@@ -67,20 +84,45 @@ export class ActiveTasksComponent {
   }
 
   protected modalAddToReport(
+    event: Event,
     projectName: Project['name'],
     taskName: Task['name'],
     enterAnimationDuration: string = dialogOpeningTime
   ): void {
+    event.stopPropagation();
+
     this.dialog.open(AddTasktrackDialogContainer, {
-      panelClass: 'modal',
-      enterAnimationDuration,
+      autoFocus: false,
       data: {
         formTask: {
           projectName,
           taskName,
         },
       },
-      autoFocus: false,
+      enterAnimationDuration,
+      panelClass: 'modal',
     });
+  }
+
+  protected modalAddTask(
+    enterAnimationDuration: string = dialogOpeningTime
+  ): void {
+    const dialogRef = this.dialog.open(TaskInputComponent, {
+      autoFocus: false,
+      data: { project: this.project },
+      enterAnimationDuration,
+      panelClass: 'modal',
+    });
+
+    dialogRef
+      .afterClosed()
+      .pipe(
+        untilDestroyed(this),
+        take(1),
+        filter((item) => !!item)
+      )
+      .subscribe((task: Task) => {
+        this.addTask.emit(task);
+      });
   }
 }

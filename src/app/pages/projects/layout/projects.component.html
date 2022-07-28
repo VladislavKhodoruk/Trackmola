@@ -48,12 +48,30 @@
 
 <div class="projects-container">
   <app-projects-list-container></app-projects-list-container>
-  <app-active-tasks-container></app-active-tasks-container>
+  <ng-container *ngIf="currentMode === projectMode.Tasks">
+    <app-active-tasks-container></app-active-tasks-container>
+  </ng-container>
+  <ng-container
+    *ngIf="
+      currentUser !== userType.Employee && currentMode === projectMode.Users
+    "
+  >
+    <app-active-tasks-users-container></app-active-tasks-users-container>
+  </ng-container>
   <div class="projects-team-and-vacations">
-    <app-projects-team
-      [usersGroupByProject]="usersGroupByProject"
-      [projectByRoute]="projectByRoute"
-    ></app-projects-team>
+    <ng-container
+      *ngIf="
+        currentUser !== userType.Employee && currentMode === projectMode.Users
+      "
+    >
+      <app-active-tasks-user-mode-container></app-active-tasks-user-mode-container>
+    </ng-container>
+    <ng-container *ngIf="currentMode === projectMode.Tasks">
+      <app-projects-team
+        [usersGroupByProject]="usersGroupByProject"
+        [projectByRoute]="projectByRoute"
+      ></app-projects-team>
+    </ng-container>
     <app-vacations-component
       class="projects-vacations"
       [vacations]="vacations"

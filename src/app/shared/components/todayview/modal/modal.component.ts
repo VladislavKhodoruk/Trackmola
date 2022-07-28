@@ -3,8 +3,8 @@ import x from '@iconify/icons-tabler/x';
 
 @Component({
   selector: 'app-modal',
-  templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
+  templateUrl: './modal.component.html',
 })
 export class ModalComponent {
   iconX = x;

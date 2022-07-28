@@ -6,13 +6,25 @@ export const MAX_VALUE_WEEK_REPORT_TIME = 100;
 
 export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
   chart: {
-    type: 'column',
     borderColor: 'var(--gray)',
     borderRadius: 15,
     borderWidth: 1,
-    margin: [70, 40, 124, 40],
-    width: 890,
     height: 575,
+    margin: [70, 40, 124, 40],
+    type: 'column',
+    width: 890,
+  },
+  legend: {
+    itemDistance: 80,
+    itemMarginBottom: 20,
+    itemStyle: {
+      color: 'var(--black)',
+      fontFamily: 'var(--font-current)',
+      fontSize: 'var(--offset-sm)',
+      fontWeight: '300',
+    },
+    symbolHeight: 26,
+    symbolPadding: 12,
   },
   plotOptions: {
     series: {
@@ -20,11 +32,11 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
     },
   },
   title: {
-    text: 'Project hours',
     style: {
       fontSize: 'var(--offset-l)',
       fontWeight: 600,
     },
+    text: 'Project hours',
     x: -300,
     y: 40,
   },
@@ -35,15 +47,15 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
     crosshair: true,
     gridLineDashStyle: null,
     gridLineWidth: 0,
-    lineWidth: 0,
     labels: {
       style: {
-        fontWeight: '500',
+        color: 'var(--gray3)',
         fontFamily: 'var(--font-calendar)',
         fontSize: 'var(--offset-sm)',
-        color: 'var(--gray3)',
+        fontWeight: '500',
       },
     },
+    lineWidth: 0,
   },
   yAxis: {
     gridLineWidth: 0,
@@ -52,18 +64,6 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
       style: {
         display: 'none',
       },
-    },
-  },
-  legend: {
-    itemDistance: 80,
-    itemMarginBottom: 20,
-    symbolHeight: 26,
-    symbolPadding: 12,
-    itemStyle: {
-      fontFamily: 'var(--font-current)',
-      fontSize: 'var(--offset-sm)',
-      color: 'var(--black)',
-      fontWeight: '300',
     },
   },
 };

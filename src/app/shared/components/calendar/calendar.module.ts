@@ -9,7 +9,7 @@ import { ClockModule } from '../clock/clock.module';
 
 @NgModule({
   declarations: [CalendarComponent, CalendarContainer, CalendarItemComponent],
-  imports: [CommonModule, ClockModule],
   exports: [CalendarContainer],
+  imports: [CommonModule, ClockModule],
 })
 export class CalendarModule {}

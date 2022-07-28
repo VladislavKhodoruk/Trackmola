@@ -17,28 +17,12 @@
       @include flex(center, flex-start, 1.25rem);
     }
 
-    .project-name {
-      overflow: hidden;
-      display: inline-block;
-
-      max-width: 10rem;
-      padding: 0 var(--offset-b);
-
-      font: var(--font-calendar);
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      object-fit: contain;
-      border: 0.2rem solid var(--rose);
-      border-radius: var(--offset-m);
-    }
-
     .task-name {
       transform: translateY(var(--offset-xs));
 
       overflow: hidden;
 
-      font: var(--font-calendar);
+      font: var(--font-blocks);
       text-overflow: ellipsis;
       white-space: nowrap;
     }

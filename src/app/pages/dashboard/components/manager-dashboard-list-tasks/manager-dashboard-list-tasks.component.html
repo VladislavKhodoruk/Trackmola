@@ -1,0 +1,33 @@
+<section class="dashboard-main-tasks">
+  <header class="dashboard-main-tasks-header">
+    <ng-container *ngIf="activeProjectFilter">
+      <app-project-label
+        [projectColor]="activeProjectFilter.color"
+        [projectName]="activeProjectFilter.name"
+      ></app-project-label>
+    </ng-container>
+  </header>
+  <ng-container *ngIf="tasksForManager.length">
+    <ul class="dashboard-main-tasks-list">
+      <li
+        *ngFor="let task of tasksForManager; let i = index"
+        class="dashboard-main-tasks-list-item"
+        [class.dashboard-main-tasks-list-item-selected]="
+          task.id === activeTask?.id
+        "
+        (click)="selectTask.emit(task)"
+      >
+        <div
+          class="dashboard-main-tasks-list-item-bar"
+          [style.backgroundColor]="tasksColors[i]"
+        ></div>
+        <span class="dashboard-main-tasks-list-item-name">
+          {{ task.name }}
+        </span>
+        <span class="dashboard-main-tasks-list-item-duration">
+          {{ task.durationInTask }}h
+        </span>
+      </li>
+    </ul>
+  </ng-container>
+</section>

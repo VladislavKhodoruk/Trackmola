@@ -29,6 +29,7 @@ import { CustomSerializer } from '@store/router/custom-serializer';
 import { environment } from 'environments/environment';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [AppComponent],
   imports: [
     BrowserModule,
@@ -54,6 +55,5 @@ import { environment } from 'environments/environment';
     ReportInputModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

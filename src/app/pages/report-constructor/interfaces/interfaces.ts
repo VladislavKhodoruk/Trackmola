@@ -1,3 +1,5 @@
+import { Period } from '@shared/interfaces/interfaces';
+
 export interface InfoReportConstructorItem {
   taskId: string;
   taskName: string;
@@ -16,12 +18,19 @@ export interface InfoReportConstructorItemUser {
 export interface InfoFromTaskTracksForTable {
   taskName: string;
   taskDuration: number;
-  taskPercentageWeek: number;
-  userNames: string[];
-  userPositions: string[];
+  taskPercentageWeek: number | string;
+  userNames: string[] | string;
+  userPositions: string[] | string;
 }
 
 export interface SortOption {
   columnName: string;
   ascendingSort: boolean;
+}
+
+export interface ExcelData {
+  header: string;
+  period: Period;
+  data: InfoFromTaskTracksForTable[];
+  team: string[];
 }

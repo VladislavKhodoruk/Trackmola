@@ -19,70 +19,45 @@ const ACTIVITY_CHART_PIE_COLORS: string[] = [
 ];
 
 export const BASIC_OPTIONS_ACTIVITY_CHART_PIE: Options = {
+  accessibility: {
+    enabled: false,
+    point: {
+      valueSuffix: '%',
+    },
+  },
+
   chart: {
     plotBackgroundColor: null,
     plotBorderWidth: 0,
     plotShadow: false,
   },
 
-  title: {
-    text: '',
-    verticalAlign: 'middle',
+  credits: {
+    enabled: false,
+  },
+
+  legend: {
     align: 'center',
-    x: 0,
-    y: 0,
-    style: {
-      font: 'var(--font-titleBig)',
-      color: 'var(--aqua)',
+    enabled: true,
+    itemDistance: 40,
+    itemMarginTop: 50,
+    itemStyle: {
+      font: 'var(--font-current)',
     },
-  },
-
-  tooltip: {
-    enabled: false,
-  },
-
-  accessibility: {
-    point: {
-      valueSuffix: '%',
-    },
-    enabled: false,
+    symbolHeight: 24,
+    symbolWidth: 24,
   },
 
   plotOptions: {
     pie: {
+      colors: ACTIVITY_CHART_PIE_COLORS,
+      cursor: 'pointer',
       dataLabels: {
         enabled: false,
       },
       innerSize: '70%',
-      colors: ACTIVITY_CHART_PIE_COLORS,
-      cursor: 'pointer',
-      showInLegend: true,
-      states: {
-        hover: {
-          halo: null,
-          brightness: 0,
-        },
-      },
       point: {
         events: {
-          mouseOver: function (this: Point) {
-            const point = this as any;
-            this.series.chart.update({
-              title: {
-                text: `${this.percentage.toFixed(1)}%`,
-                style: {
-                  color: this.color.toString(),
-                },
-              },
-            });
-            point.graphic
-              .attr({
-                ['stroke-width']: 10,
-                stroke: point.color,
-                zIndex: 3,
-              })
-              .add();
-          },
           mouseOut: function (this: Point) {
             const point = this as any;
             this.series.chart.update({
@@ -90,29 +65,54 @@ export const BASIC_OPTIONS_ACTIVITY_CHART_PIE: Options = {
             });
             point.graphic
               .attr({
-                ['stroke-width']: 1,
                 stroke: point.color,
+                ['stroke-width']: 1,
+              })
+              .add();
+          },
+          mouseOver: function (this: Point) {
+            const point = this as any;
+            this.series.chart.update({
+              title: {
+                style: {
+                  color: this.color.toString(),
+                },
+                text: `${this.percentage.toFixed(1)}%`,
+              },
+            });
+            point.graphic
+              .attr({
+                stroke: point.color,
+                ['stroke-width']: 10,
+                zIndex: 3,
               })
               .add();
           },
         },
       },
+      showInLegend: true,
+      states: {
+        hover: {
+          brightness: 0,
+          halo: null,
+        },
+      },
     },
   },
 
-  legend: {
+  title: {
     align: 'center',
-    enabled: true,
-    symbolHeight: 24,
-    symbolWidth: 24,
-    itemDistance: 40,
-    itemMarginTop: 50,
-    itemStyle: {
-      font: 'var(--font-current)',
+    style: {
+      color: 'var(--aqua)',
+      font: 'var(--font-titleBig)',
     },
+    text: '',
+    verticalAlign: 'middle',
+    x: 0,
+    y: 0,
   },
 
-  credits: {
+  tooltip: {
     enabled: false,
   },
 };
@@ -125,37 +125,37 @@ export const DEFAULT_MONTH_OVERTIME = 12;
 export const DEFAULT_HOURS_OF_REST_PER_WEEK = 128;
 
 export const WORK_HOURS_TOTAL_CARD = {
-  value: null,
-  title: 'work hours',
-  img: 'assets/img/activity/work-hours.svg',
   backgoundColor: 'var(--white)',
+  img: 'assets/img/activity/work-hours.svg',
+  numberMonthHours: getWorksMonthDefaultHours(),
+  numberWeekHours: DEFAULT_HOURS_PER_WEEK,
   progressBarColor: 'var(--primary)',
   progressBarSize: 0,
-  numberWeekHours: DEFAULT_HOURS_PER_WEEK,
-  numberMonthHours: getWorksMonthDefaultHours(),
+  title: 'work hours',
+  value: null,
 };
 
 export const OVERTIME_TOTAL_CARD = {
-  value: null,
-  title: 'overtimes',
-  img: 'assets/img/activity/overtimes.svg',
   backgoundColor: 'var(--white)',
+  img: 'assets/img/activity/overtimes.svg',
+  numberMonthHours: DEFAULT_MONTH_OVERTIME,
+  numberWeekHours: DEFAULT_WEEK_OVERTIME,
   progressBarColor: 'var(--blue1)',
   progressBarSize: 0,
-  numberWeekHours: DEFAULT_WEEK_OVERTIME,
-  numberMonthHours: DEFAULT_MONTH_OVERTIME,
+  title: 'overtimes',
+  value: null,
 };
 
 export const REST_HOURS_TOTAL_CARD = {
-  value: getRestTime(PeriodType.Week),
-  title: 'rest hours',
-  img: 'assets/img/activity/rest-hours.svg',
   backgoundColor: 'var(--blue1)',
+  img: 'assets/img/activity/rest-hours.svg',
+  numberMonthHours: getRestMonthDefaultHours(),
+  numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,
   progressBarColor: 'var(--yellow3)',
   progressBarSize:
     (getRestTime(PeriodType.Week) / DEFAULT_HOURS_OF_REST_PER_WEEK) * 100,
-  numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,
-  numberMonthHours: getRestMonthDefaultHours(),
+  title: 'rest hours',
+  value: getRestTime(PeriodType.Week),
 };
 
 export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
@@ -171,7 +171,6 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
     crosshair: true,
     gridLineDashStyle: null,
     gridLineWidth: 0,
-    lineWidth: 0,
     labels: {
       style: {
         fontWeight: '500',
@@ -214,6 +213,12 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
     text: '',
     align: 'center',
     verticalAlign: 'middle',
+    style: {
+      fontSize: 'var(--offset-l)',
+      fontFamily: '"Noto Sans", sans-serif',
+      color: 'var(--primary)',
+      fontWeight: '600',
+    },
   },
 
   tooltip: {
@@ -234,22 +239,34 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
       },
     },
   },
-  // responsive: {
-  //   rules: [
-  //     {
-  //       condition: {
-  //         maxWidth: 1200,
-  //       },
-  //       chartOptions: {
-  //         title: {
-  //           style: {
-  //             fontSize: '1rem',
-  //           },
-  //         },
-  //       },
-  //     },
-  //   ],
-  // },
+  responsive: {
+    rules: [
+      {
+        condition: {
+          maxWidth: 260,
+        },
+        chartOptions: {
+          title: {
+            style: {
+              fontSize: 'var(--offset-m)',
+            },
+          },
+        },
+      },
+      {
+        condition: {
+          maxWidth: 230,
+        },
+        chartOptions: {
+          title: {
+            style: {
+              fontSize: 'var(--offset-sm)',
+            },
+          },
+        },
+      },
+    ],
+  },
   plotOptions: {
     pie: {
       dataLabels: {

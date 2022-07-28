@@ -6,13 +6,13 @@ import {
   BASIC_OPTIONS_ACTIVITY_CHART_PIE,
   BASIC_OPTIONS_EFFICIENCY_PIE,
 } from '@pages/activity/constants/constants';
-import { getEfficiency } from '@shared/helpers/helpers';
+import { getEfficiency, outOfNorm } from '@shared/helpers/helpers';
 import { TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-project-efficiency-component',
-  templateUrl: 'project-efficiency.component.html',
   styleUrls: ['project-efficiency.scss'],
+  templateUrl: 'project-efficiency.component.html',
 })
 export class ProjectEfficiencyComponent {
   @Input() tasks: TaskTrack[];
@@ -22,6 +22,7 @@ export class ProjectEfficiencyComponent {
   readonly basicOptions: Options = BASIC_OPTIONS_EFFICIENCY_PIE;
 
   get seriesData(): SeriesOptionsType[] {
+    outOfNorm(this.tasks);
     if ((this.tasks, this.startOfWeek, this.presentDay)) {
       this.basicOptions.title.text =
         String(
@@ -62,9 +63,9 @@ export class ProjectEfficiencyComponent {
   }
 
   efficiency = {
-    total: 2,
     complited: 1,
-    shortages: 4,
     overtimes: 0,
+    shortages: 4,
+    total: 2,
   };
 }

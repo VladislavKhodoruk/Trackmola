@@ -15,7 +15,9 @@ import { getCurrentRoute } from '@store/router/router.selector';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-projects-list-container',
+  styleUrls: ['./projects-list.container.scss'],
   template: `<app-projects-list
     class="projects-list-container"
     [searchText]="searchText$ | async"
@@ -25,8 +27,6 @@ import { TrackMolaState } from '@store/trackMola.state';
     [currentRoute]="currentRoute$ | async"
     (search)="onSearch($event)"
   ></app-projects-list>`,
-  styleUrls: ['./projects-list.container.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsListContainer {
   readonly projects$: Observable<Project[]> = this.store$.select(getProjects);

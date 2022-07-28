@@ -3,8 +3,8 @@ import { map, Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-clock',
-  templateUrl: './clock.component.html',
   styleUrls: ['./clock.component.scss'],
+  templateUrl: './clock.component.html',
 })
 export class ClockComponent implements OnInit, OnDestroy {
   time: Date = new Date();

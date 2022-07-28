@@ -4,8 +4,8 @@ import { IconifyIcon } from '@iconify/types';
 
 @Component({
   selector: 'app-button',
-  templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
+  templateUrl: './button.component.html',
 })
 export class ButtonComponent {
   @Input() type = 'button';

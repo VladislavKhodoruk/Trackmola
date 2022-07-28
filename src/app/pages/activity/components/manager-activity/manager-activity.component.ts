@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-manager-activity',
-  templateUrl: './manager-activity.component.html',
   styleUrls: ['./manager-activity.component.scss'],
+  templateUrl: './manager-activity.component.html',
 })
 export class ManagerActivityComponent {}

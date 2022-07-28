@@ -27,21 +27,21 @@ export interface LoadingStatus {
 }
 
 export const initialState: CommonState = {
-  loadingStatus: {
-    loading: false,
-    loaded: false,
-    errorMessage: '',
-  },
-  user: null,
   date: new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
     new Date().getDate()
   ).getTime(),
+  loadingStatus: {
+    errorMessage: '',
+    loaded: false,
+    loading: false,
+  },
+  period: getPeriod(new Date(), PeriodType.Week),
+  projects: [],
   taskTracks: [],
   tasks: [],
-  projects: [],
+  user: null,
   users: [],
   usersInProjects: [],
-  period: getPeriod(new Date(), PeriodType.Week),
 };

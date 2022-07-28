@@ -9,37 +9,37 @@ import { NavigationItem } from '@shared/interfaces/interfaces';
 
 const NAVIGATION_BASIC_ITEMS: NavigationItem[] = [
   {
-    routeLink: 'dashboard',
     icon: layoutDashboard,
     label: 'Dashboard',
+    routeLink: 'dashboard',
   },
   {
-    routeLink: 'report',
     icon: fileTime,
     label: 'My report',
+    routeLink: 'report',
   },
   {
-    routeLink: 'activity',
     icon: chartDonut3,
     label: 'My activity',
+    routeLink: 'activity',
   },
   {
-    routeLink: 'projects',
     icon: puzzleIcon,
     label: 'Projects',
+    routeLink: 'projects',
   },
 ];
 
 const NAVIGATION_TEAM: NavigationItem = {
-  routeLink: 'team',
   icon: puzzleIcon,
   label: 'Team',
+  routeLink: 'team',
 };
 
 const NAVIGATION_REPORT_CONSTRUCTOR: NavigationItem = {
-  routeLink: 'report-constructor',
   icon: manualGearbox,
   label: 'Report constructor',
+  routeLink: 'report-constructor',
 };
 
 export const getNavigationElems = (userType: string): NavigationItem[] => {
@@ -97,3 +97,24 @@ export const MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY = 8;
 export const CLASS_DURATION_MORE_THAN_EIGHT = 'more';
 
 export const dialogOpeningTime = '300ms';
+
+export const CHAR_CREATE_COLOR = '0123456789ABCDEF';
+
+export const NUMBER_CHAR_CREATE_COLOR = 6;
+
+export const COLORS_FOR_TASKS = [
+  'var(--task-violet)',
+  'var(--task-marine)',
+  'var(--task-sea)',
+  'var(--task-violet2)',
+  'var(--task-marine2)',
+  'var(--task-sea2)',
+  'var(--task-flover)',
+  'var(--task-roses)',
+  'var(--task-landscape)',
+  'var(--task-salad)',
+  'var(--task-lips)',
+  'var(--task-peche)',
+  'var(--task-salad2)',
+  'var(--task-violet3)',
+];

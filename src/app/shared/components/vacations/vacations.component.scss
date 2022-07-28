@@ -39,7 +39,7 @@
       @include flex(flex-start, flex-start, var(--offset));
       scroll-snap-type: y mandatory;
 
-      overflow-y: scroll;
+      overflow: scroll;
       flex-direction: column;
 
       width: 100%;
@@ -47,6 +47,7 @@
 
       &::-webkit-scrollbar {
         width: #{$width-scroll};
+        height: #{$width-scroll};
 
         background-color: var(--white);
       }
