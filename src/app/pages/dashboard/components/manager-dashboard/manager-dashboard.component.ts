@@ -12,6 +12,7 @@ import {
   DataForChartTreemap,
   TaskForManager,
 } from '@pages/dashboard/interfaces/interface';
+import { COLORS_FOR_TASKS } from '@shared/constants/constants';
 import { getRandomColor } from '@shared/helpers/helpers';
 
 import {
@@ -38,11 +39,19 @@ export class ManagerDashboardComponent {
 
   basicOptions = MANAGER_DASHBOARD_CHART_TREEMAP;
 
+  tasksColors: string[] = [];
+
+  constructor() {
+    [...COLORS_FOR_TASKS].forEach(() =>
+      this.tasksColors.push(getRandomColor())
+    );
+  }
+
   protected get data() {
     return [
       {
-        ...MANAGER_DASHBOARD_CHART_TREEMAP.series[0],
         data: this.dataForChart(),
+        type: 'treemap',
       },
     ];
   }
@@ -84,16 +93,17 @@ export class ManagerDashboardComponent {
       },
       {}
     );
-    return Object.entries(usersGroupByDuration).map(([userId, userTime]) => {
-      const userPercent: number = (userTime * 100) / duration;
-      const userName: string = this.usersInfoByUserId[userId].fullName;
-
-      return {
-        color: getRandomColor(),
-        id: userId,
-        name: userName,
-        value: userPercent,
-      };
-    });
+    return Object.entries(usersGroupByDuration).map(
+      ([userId, userTime], index) => {
+        const userPercent: number = (userTime * 100) / duration;
+        const userName: string = this.usersInfoByUserId[userId].fullName;
+        return {
+          color: this.tasksColors[index],
+          id: userId,
+          name: userName,
+          value: userPercent,
+        };
+      }
+    );
   }
 }
