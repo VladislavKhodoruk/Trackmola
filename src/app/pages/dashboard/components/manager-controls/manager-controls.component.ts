@@ -31,9 +31,11 @@ export class ManagerControlsComponent implements OnChanges {
   @Input() readonly managerProjects: Project[];
   @Input() readonly managerProjectsFilter: Project[];
   @Input() readonly modeView: ManagerDashboardView;
+  @Input() readonly activeProjectFilter: Project;
 
   @Output() projectFilter = new EventEmitter<Project['name']>();
-  @Output() removeProjectFilter = new EventEmitter<Project['name']>();
+  @Output() setActiveFilterProject = new EventEmitter<Project>();
+  @Output() removeProjectFilter = new EventEmitter<void>();
   @Output() changeManagerMainView = new EventEmitter<ManagerDashboardView>();
 
   readonly iconAngleDown: IconifyIcon = angleDown;
