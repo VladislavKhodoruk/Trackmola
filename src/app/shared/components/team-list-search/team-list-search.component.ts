@@ -1,4 +1,14 @@
 import {
+  animate,
+  group,
+  query,
+  stagger,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import {
   Component,
   HostBinding,
   Input,
@@ -21,21 +31,8 @@ import {
   User,
   UserCard,
 } from '@shared/interfaces/interfaces';
-import {
-  animate,
-  group,
-  query,
-  stagger,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 
 @Component({
-  selector: 'app-team-list-search-component',
-  styleUrls: ['./team-list-search.component.scss'],
-  templateUrl: './team-list-search.component.html',
   animations: [
     trigger('filter', [
       state('true', style({ height: '0', opacity: '0' })),
@@ -57,6 +54,9 @@ import {
       ]),
     ]),
   ],
+  selector: 'app-team-list-search-component',
+  styleUrls: ['./team-list-search.component.scss'],
+  templateUrl: './team-list-search.component.html',
 })
 export class TeamListSearchComponent implements OnChanges {
   @Input() allProjects: Project[];
@@ -84,7 +84,7 @@ export class TeamListSearchComponent implements OnChanges {
   allUserCards: UserCard[];
   filteredUserCards: UserCard[];
 
-  filterState: boolean = true;
+  filterState = true;
 
   form = new FormGroup({
     location: new FormControl(''),

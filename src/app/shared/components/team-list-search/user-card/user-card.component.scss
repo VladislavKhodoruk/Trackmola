@@ -9,12 +9,8 @@
 
 :host {
   --box-shadow-color: rgb(87 74 249 / 25%);
-  .card {
-    &:hover {
-      cursor: pointer;
 
-      box-shadow: 0 0 0.4rem var(--box-shadow-color);
-    }
+  .card {
     display: flex;
 
     margin: var(--offset-s);
@@ -22,6 +18,12 @@
 
     border: $border-form;
     border-radius: var(--offset-s);
+
+    &:hover {
+      cursor: pointer;
+
+      box-shadow: 0 0 0.4rem var(--box-shadow-color);
+    }
 
     &-left {
       @include flex(center, center);

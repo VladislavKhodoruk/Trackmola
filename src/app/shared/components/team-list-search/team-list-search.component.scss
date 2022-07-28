@@ -72,9 +72,10 @@
 
     &-filters {
       @include flex(stretch, flex-start, var(--offset));
-      flex-direction: column;
       overflow: hidden;
+      flex-direction: column;
     }
+
     &-top {
       @include flex(stretch, flex-start, var(--offset));
 
@@ -134,6 +135,7 @@
 
     &-bottom {
       @include flex(stretch, space-between);
+
       &-vacation {
         @include flex(center, flex-start);
         gap: 0.5rem;
