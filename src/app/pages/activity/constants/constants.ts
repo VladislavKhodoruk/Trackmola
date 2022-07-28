@@ -162,8 +162,6 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
   chart: {
     type: 'column',
     reflow: true,
-    marginBottom: 150,
-    marginTop: 50,
   },
   title: {
     text: '',
@@ -193,9 +191,8 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
     },
   },
   legend: {
-    floating: true,
     itemDistance: 80,
-    itemMarginBottom: 50,
+    itemMarginBottom: 0,
     symbolHeight: 26,
     itemStyle: {
       fontFamily: 'var(--font-current)',
@@ -214,15 +211,9 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
   },
 
   title: {
-    text: '89.5%',
+    text: '',
     align: 'center',
     verticalAlign: 'middle',
-    style: {
-      fontFamily: '"Noto Sans", sans-serif',
-      fontSize: 'var(--offset-l)',
-      color: 'var(--primary)',
-      fontWeight: '600',
-    },
   },
 
   tooltip: {
@@ -243,7 +234,22 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
       },
     },
   },
-
+  // responsive: {
+  //   rules: [
+  //     {
+  //       condition: {
+  //         maxWidth: 1200,
+  //       },
+  //       chartOptions: {
+  //         title: {
+  //           style: {
+  //             fontSize: '1rem',
+  //           },
+  //         },
+  //       },
+  //     },
+  //   ],
+  // },
   plotOptions: {
     pie: {
       dataLabels: {
@@ -259,41 +265,6 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
           brightness: 0,
         },
       },
-
-      // point: {
-      //   events: {
-      //     mouseOver: function(this: Point) {
-      //       const point = this as any;
-      //       this.series.chart.update({
-      //         title: {
-      //           text: `${this.percentage.toFixed(1)}%`,
-      //           style: {
-      //             color: this.color.toString(),
-      //           },
-      //         },
-      //       });
-      //       point.graphic
-      //         .attr({
-      //           ['stroke-width']: 10,
-      //           stroke: point.color,
-      //           zIndex: 3,
-      //         })
-      //         .add();
-      //     },
-      //     mouseOut: function(this: Point) {
-      //       const point = this as any;
-      //       this.series.chart.update({
-      //         title: { text: '' },
-      //       });
-      //       point.graphic
-      //         .attr({
-      //           ['stroke-width']: 1,
-      //           stroke: point.color,
-      //         })
-      //         .add();
-      //     },
-      //   },
-      // },
     },
   },
 };

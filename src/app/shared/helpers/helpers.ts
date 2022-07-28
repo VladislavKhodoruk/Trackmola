@@ -58,7 +58,7 @@ export function searchInWeek(
       return day
         .filter((i: ModifiedTask) => i.projectName === currentProject)
         .map((i: ModifiedTask) => i.duration)
-        .reduce((acc, prev) => acc + prev);
+        .reduce((acc, prev) => acc + prev, 0);
     }
     if (day.length === 0 || day.length === 1) {
       return 0;
@@ -114,7 +114,7 @@ export function getEfficiency(
 ): number {
   const totalHours = tasks
     .map((task: TaskTrack) => task.duration)
-    .reduce((acc, prev) => acc + prev);
+    .reduce((acc, prev) => acc + prev, 0);
   const requiredAmount =
     (1 + new Date(presentDay).getDay() - new Date(startOfWeek).getDay()) * 8;
   let efficiency: number;

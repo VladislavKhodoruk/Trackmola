@@ -23,9 +23,12 @@ export class ProjectEfficiencyComponent {
 
   get seriesData(): SeriesOptionsType[] {
     if ((this.tasks, this.startOfWeek, this.presentDay)) {
-      this.basicOptions.title.text = String(
-        getEfficiency(this.tasks, this.startOfWeek, this.presentDay) * 100
-      );
+      this.basicOptions.title.text =
+        String(
+          (
+            getEfficiency(this.tasks, this.startOfWeek, this.presentDay) * 100
+          ).toFixed(1)
+        ) + '%';
       return [
         {
           type: 'pie',
