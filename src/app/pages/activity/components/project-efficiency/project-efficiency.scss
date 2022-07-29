@@ -30,11 +30,11 @@
     }
 
     &-container {
+      overflow: hidden;
       display: flex;
       gap: 2.5rem;
 
       height: 100%;
-      overflow: hidden;
     }
 
     &-wrapper {
@@ -43,18 +43,19 @@
     }
 
     &-hart-info-text {
+      @include width-variables(60%, 1.425rem);
       display: flex;
       flex-direction: column;
       justify-content: center;
 
-      @include width-variables(60%, 1.425rem);
       height: 70%;
     }
   }
 
   p {
-    font: var(--font-current);
     max-width: 9rem;
+
+    font: var(--font-current);
   }
 
   span {
