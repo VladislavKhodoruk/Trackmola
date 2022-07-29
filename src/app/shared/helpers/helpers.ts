@@ -1,6 +1,6 @@
 import { SeriesOptionsType } from 'highcharts';
 
-import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
+import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import {
   COLORS_FOR_TASKS,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
@@ -56,7 +56,7 @@ export function getColorOfProjectByName(proj: string, projects: Project[]) {
 
 export function searchInWeek(
   currentProject: string,
-  weekTasksByDays: WeekType
+  weekTasksByDays: ModifiedTask[] | object
 ): number[] {
   return Object.values(weekTasksByDays).map((day: [] | ModifiedTask[]) => {
     if (day.length === 1 && day[0].projectName === currentProject) {
@@ -77,17 +77,11 @@ export function getDataForChart(
   tasks: TaskTrack[],
   projects: Project[]
 ): SeriesOptionsType[] {
-  const weekTasksByDays: WeekType = {
-    MON: [],
-    TUE: [],
-    WED: [],
-    // eslint-disable-next-line sort-keys
-    THU: [],
-    // eslint-disable-next-line sort-keys
-    FRI: [],
-    SAT: [],
-    SUN: [],
-  };
+  const weekTasksByDays = {};
+  SHORT_NAMES_OF_THE_WEEK_UPPERCASE.forEach(
+    (item) => (weekTasksByDays[item] = [])
+  );
+
   const desiredTasks = tasks.map(
     (task: TaskTrack): ModifiedTask => ({
       date: task.date.toDate(),
@@ -145,17 +139,10 @@ export function getEfficiency(
 }
 
 export function outOfNorm(tasks: TaskTrack[], presentDay: number): OutOfMain {
-  const weekTasksByDays: WeekType = {
-    MON: [],
-    TUE: [],
-    WED: [],
-    // eslint-disable-next-line sort-keys
-    THU: [],
-    // eslint-disable-next-line sort-keys
-    FRI: [],
-    SAT: [],
-    SUN: [],
-  };
+  const weekTasksByDays = {};
+  SHORT_NAMES_OF_THE_WEEK_UPPERCASE.forEach(
+    (item) => (weekTasksByDays[item] = [])
+  );
 
   tasks.forEach((task: TaskTrack) => {
     const currentDay: number = task.date.toDate().getDay() - 1;
