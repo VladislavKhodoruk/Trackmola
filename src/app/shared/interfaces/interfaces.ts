@@ -11,7 +11,7 @@ export interface Project {
   fullName: string;
   managersId: string[];
   name: string;
-  taskId: string[];
+  tasksId: string[];
 }
 
 export interface Task {
@@ -26,6 +26,8 @@ export interface TaskTrack {
   date: Timestamp;
   duration: number;
   id: string;
+  overtime?: boolean;
+  overtimeDuration?: number;
   projectId: string;
   status: string;
   taskId: string;
@@ -70,6 +72,7 @@ export interface Day {
   value: number;
   isTasks: boolean;
   duration: number;
+  overtimeDuration: number;
 }
 
 export interface Week {
@@ -84,6 +87,7 @@ export interface Period {
 export interface TaskItem {
   id: string;
   duration: number;
+  overtimeDuration: number;
   taskName: string;
   projectColor: string;
   projectName: string;

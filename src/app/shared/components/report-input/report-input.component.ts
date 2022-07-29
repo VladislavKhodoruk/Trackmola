@@ -9,6 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import fireIcon from '@iconify/icons-emojione/fire';
 import check from '@iconify/icons-mdi/check';
 import microphoneIcon from '@iconify/icons-tabler/microphone';
 import minus from '@iconify/icons-tabler/minus';
@@ -16,6 +17,7 @@ import plus from '@iconify/icons-tabler/plus';
 import x from '@iconify/icons-tabler/x';
 import angleLeftB from '@iconify/icons-uil/angle-left-b';
 
+import { IconifyIcon } from '@iconify/types';
 import { Timestamp } from 'firebase/firestore';
 import { map, Observable, startWith } from 'rxjs';
 
@@ -62,7 +64,12 @@ export class ReportInputComponent implements OnInit, OnChanges {
 
   form = new FormGroup({
     comments: new FormControl(''),
-    duration: new FormControl(`${DurationValue.Default}`, Validators.required),
+    duration: new FormControl(`${DurationValue.Default}`, [
+      Validators.required,
+      Validators.min(0.1),
+    ]),
+    overtime: new FormControl(false),
+    overtimeDuration: new FormControl('0', Validators.required),
     project: new FormControl('', Validators.required),
     role: new FormControl(
       localStorage.getItem('AuthUserRole'),
@@ -71,20 +78,18 @@ export class ReportInputComponent implements OnInit, OnChanges {
     task: new FormControl('', Validators.required),
   });
 
-  readonly iconAngleLeftB = angleLeftB;
+  readonly iconAngleLeftB: IconifyIcon = angleLeftB;
 
-  readonly iconPlus = plus;
-  readonly iconMinus = minus;
+  readonly iconPlus: IconifyIcon = plus;
+  readonly iconMinus: IconifyIcon = minus;
   readonly iconMinusWidth = '1.5rem';
   readonly iconMinusHeight = '1.5rem';
 
-  readonly iconCheck = check;
-  readonly iconMicrophone = microphoneIcon;
+  readonly iconCheck: IconifyIcon = check;
+  readonly iconMicrophone: IconifyIcon = microphoneIcon;
+  readonly iconFire: IconifyIcon = fireIcon;
 
   status = '';
-  classStatusChecked = 'task-status-checked';
-  classStatusDone = '';
-  classStatusInProgress = '';
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.allProjects) {
@@ -146,6 +151,10 @@ export class ReportInputComponent implements OnInit, OnChanges {
     )?.name;
     this.form.get('task')?.setValue(taskName);
     this.form.get('duration')?.setValue(`${this.editableTaskTrack?.duration}`);
+    this.form.get('overtime')?.setValue(this.editableTaskTrack?.overtime);
+    this.form
+      .get('overtimeDuration')
+      ?.setValue(`${this.editableTaskTrack?.overtimeDuration}`);
     this.form.get('comments')?.setValue(this.editableTaskTrack.comments);
     this.onCheckStatus(this.editableTaskTrack?.status);
   }
@@ -195,22 +204,12 @@ export class ReportInputComponent implements OnInit, OnChanges {
   }
 
   public onCheckStatus(status: string): void {
-    switch (status) {
-      case this.status:
-        this.status = '';
-        this.classStatusDone = '';
-        this.classStatusInProgress = '';
-        break;
-      case 'done':
-        this.classStatusDone = this.classStatusChecked;
-        this.classStatusInProgress = '';
-        this.status = status;
-        break;
-      case 'in progress':
-        this.classStatusInProgress = this.classStatusChecked;
-        this.classStatusDone = '';
-        this.status = status;
-        break;
+    this.status = status === this.status ? '' : status;
+  }
+
+  changeOvertimeStatus(): void {
+    if (!this.form.get('overtime').value) {
+      this.form.get('overtimeDuration')?.setValue('0');
     }
   }
 
@@ -220,6 +219,8 @@ export class ReportInputComponent implements OnInit, OnChanges {
       date: new Timestamp(new Date(this.currentDate).getTime() / 1000, 0),
       duration: +this.form.get('duration').value,
       id: '',
+      overtime: this.form.get('overtime').value,
+      overtimeDuration: +this.form.get('overtimeDuration').value,
       projectId: this.currentProjectId,
       status: this.status,
       taskId: this.currentTaskId,
@@ -242,76 +243,87 @@ export class ReportInputComponent implements OnInit, OnChanges {
     this.form.get('task').reset();
     this.form.get('comments').reset();
     this.form.get('duration').setValue(DurationValue.Default);
+    this.form.get('overtimeDuration').setValue('0');
+    this.form.get('overtime').setValue(false);
   }
 
   onInputOnlyNumber(event: KeyboardEvent): boolean {
     return isInputOnlyNumber(event);
   }
 
-  durationMinus(): void {
-    const durationNumberValue = +this.form.get('duration')?.value;
-    const durationStringValue = this.form.get('duration')?.value;
+  durationMinus(formComtrolName: string): void {
+    const durationNumberValue = +this.form.get(`${formComtrolName}`)?.value;
+    const durationStringValue = this.form.get(`${formComtrolName}`)?.value;
+    const durationMin = this.form.get('overtime').value
+      ? '0'
+      : DurationValue.Min;
     if (
       !durationStringValue ||
       durationStringValue === KeyCodeAllowedSymbol.Dot
     ) {
-      this.form.get('duration')?.setValue(DurationValue.Min);
+      this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Min);
       return;
     }
-    if (durationNumberValue <= +DurationValue.Min) {
+    if (durationNumberValue <= +durationMin) {
       return;
     }
     if (durationNumberValue === +DurationValue.Default) {
       const valueInput = `${
-        Math.round(+this.form.get('duration')?.value) - DurationValue.MinStep
+        Math.round(+this.form.get(`${formComtrolName}`)?.value) -
+        DurationValue.MinStep
       }`;
-      this.form.get('duration')?.setValue(valueInput);
+      this.form.get(`${formComtrolName}`)?.setValue(valueInput);
       return;
     }
     const valueInput = `${
       Math.round(durationNumberValue) - DurationValue.Step
     }`;
-    this.form.get('duration')?.setValue(valueInput);
+    this.form.get(`${formComtrolName}`)?.setValue(valueInput);
   }
 
-  durationPlus(): void {
-    const durationNumberValue = +this.form.get('duration')?.value;
-    const durationStringValue = this.form.get('duration')?.value;
+  durationPlus(formComtrolName: string): void {
+    const durationNumberValue = +this.form.get(`${formComtrolName}`)?.value;
+    const durationStringValue = this.form.get(`${formComtrolName}`)?.value;
     if (
       !durationStringValue ||
       durationStringValue === KeyCodeAllowedSymbol.Dot
     ) {
-      this.form.get('duration')?.setValue(DurationValue.Default);
+      this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Default);
       return;
     }
 
     if (durationNumberValue >= +DurationValue.Max) {
       return;
     }
-    if (durationNumberValue === DurationValue.MinStep) {
+    if (
+      durationNumberValue === DurationValue.MinStep ||
+      durationNumberValue === 0
+    ) {
       const valueInput = `${
-        +this.form.get('duration')?.value + DurationValue.MinStep
+        +this.form.get(`${formComtrolName}`)?.value + DurationValue.MinStep
       }`;
-      this.form.get('duration')?.setValue(valueInput);
+      this.form.get(`${formComtrolName}`)?.setValue(valueInput);
       return;
     }
     const valueInput = `${
       Math.round(durationNumberValue) + DurationValue.Step
     }`;
-    this.form.get('duration')?.setValue(valueInput);
+    this.form.get(`${formComtrolName}`)?.setValue(valueInput);
   }
 
-  onSetValue(): void {
-    if (this.form.get('duration')?.value) {
+  onSetValue(formComtrolName: string): void {
+    if (this.form.get(`${formComtrolName}`)?.value) {
       return;
     }
-    this.form.get('duration')?.setValue(DurationValue.Default);
+    this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Default);
   }
 
-  onSetRightValue(): void {
-    const durationStringValue = this.form.get('duration')?.value;
-    if (+this.form.get('duration')?.value > +DurationValue.Max) {
-      this.form.get('duration')?.setValue(DurationValue.Max);
+  onSetRightValue(formComtrolName: string): void {
+    const durationStringValue: string = this.form.get(
+      `${formComtrolName}`
+    )?.value;
+    if (+this.form.get(`${formComtrolName}`)?.value > +DurationValue.Max) {
+      this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Max);
     }
     if (
       (durationStringValue.includes(KeyCodeAllowedSymbol.Dot) &&
@@ -326,7 +338,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
         0,
         onRightIndex(durationStringValue.indexOf(KeyCodeAllowedSymbol.Dot))
       );
-      this.form.get('duration')?.setValue(nowValue);
+      this.form.get(`${formComtrolName}`)?.setValue(nowValue);
       return;
     }
 
@@ -335,7 +347,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
         KeyCodeAllowedSymbol.Comma,
         KeyCodeAllowedSymbol.Dot
       );
-      this.form.get('duration')?.setValue(rightValue);
+      this.form.get(`${formComtrolName}`)?.setValue(rightValue);
     }
 
     if (durationStringValue.includes(KeyCodeAllowedSymbol.Less)) {
@@ -343,7 +355,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
         KeyCodeAllowedSymbol.Less,
         KeyCodeAllowedSymbol.Dot
       );
-      this.form.get('duration')?.setValue(rightValue);
+      this.form.get(`${formComtrolName}`)?.setValue(rightValue);
     }
 
     if (durationStringValue.includes(KeyCodeAllowedSymbol.Greater)) {
@@ -351,7 +363,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
         KeyCodeAllowedSymbol.Greater,
         KeyCodeAllowedSymbol.Dot
       );
-      this.form.get('duration')?.setValue(rightValue);
+      this.form.get(`${formComtrolName}`)?.setValue(rightValue);
     }
   }
 

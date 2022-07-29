@@ -69,6 +69,7 @@
   }
 
   .bottom-area {
+    overflow: auto;
     display: flex;
     flex: 1;
 
@@ -106,6 +107,7 @@
   }
 
   .tasks {
+    overflow: auto;
     display: flex;
     flex-direction: column-reverse;
 
