@@ -53,6 +53,7 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/scss"]
             },
+            "allowedCommonJsDependencies": ["exceljs"],
             "scripts": []
           },
           "configurations": {

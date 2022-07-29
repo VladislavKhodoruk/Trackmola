@@ -1,17 +1,25 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { getWeekReportTime } from '@pages/activity/store/activity.selectors';
+import {
+  getReportTime,
+  getReportOvertime,
+  getActivePeriod,
+} from '@pages/activity/store/activity.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-activity-total-cards-container',
   template: `<app-activity-total-cards
-    [weekReportTime]="weekReportTime$ | async"
+    [reportTime]="reportTime$ | async"
+    [reportOvertime]="reportOvertime$ | async"
+    [periodType]="periodType$ | async"
   ></app-activity-total-cards>`,
 })
 export class ActivityTotalCardsContainer {
-  weekReportTime$ = this.store$.select(getWeekReportTime);
+  reportTime$ = this.store$.select(getReportTime);
+  reportOvertime$ = this.store$.select(getReportOvertime);
+  periodType$ = this.store$.select(getActivePeriod);
 
   constructor(private store$: Store<TrackMolaState>) {}
 }

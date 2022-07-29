@@ -31,9 +31,15 @@ export class ExportExelService {
 
     worksheet.addTable({
       columns: EXCEL_HEADER_DEFAULT.map((item, index) => {
-        if (index === 2) {
+        if (index === 2 || index === 3) {
           return {
             name: item,
+            totalsRowFunction: 'sum',
+          };
+        }
+        if (index === 4) {
+          return {
+            name: `${item}, %`,
             totalsRowFunction: 'sum',
           };
         }
@@ -46,6 +52,7 @@ export class ExportExelService {
         const {
           taskDuration,
           taskName,
+          taskOvertimeDuration,
           taskPercentageWeek,
           userNames,
           userPositions,
@@ -54,6 +61,7 @@ export class ExportExelService {
           taskName,
           userPositions,
           taskDuration,
+          taskOvertimeDuration,
           taskPercentageWeek,
           userNames,
         ];
@@ -67,7 +75,6 @@ export class ExportExelService {
 
     worksheet.addRow(['Team', ...data.team]);
 
-    worksheet.getRow(2).height = 25;
     worksheet.getRow(2).fill = {
       fgColor: { argb: 'F3F7FD' },
       pattern: 'solid',

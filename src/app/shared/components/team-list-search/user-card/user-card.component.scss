@@ -1,0 +1,73 @@
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .card-right-top-text-icon svg {
+    @include icon-xl;
+  }
+}
+
+:host {
+  --box-shadow-color: rgb(87 74 249 / 25%);
+
+  .card {
+    display: flex;
+
+    margin: var(--offset-s);
+    padding: var(--offset);
+
+    border: $border-form;
+    border-radius: var(--offset-s);
+
+    &:hover {
+      cursor: pointer;
+
+      box-shadow: 0 0 0.4rem var(--box-shadow-color);
+    }
+
+    &-left {
+      @include flex(center, center);
+      flex: 3;
+      flex-direction: column;
+
+      &-location {
+        font: var(--font-card);
+        color: var(--gray2);
+      }
+
+      &-photo {
+        @include profile-photo(5rem, 5rem);
+      }
+    }
+
+    &-right {
+      flex: 7;
+
+      &-top {
+        @include flex(center, space-between);
+
+        &-text {
+          &-username {
+            font: var(--font-calendar);
+          }
+
+          &-position {
+            margin-bottom: var(--offset-s);
+
+            font: var(--font-card);
+            color: var(--gray2);
+          }
+        }
+      }
+
+      &-projects {
+        display: flex;
+        flex-wrap: wrap;
+
+        &-item {
+          margin: var(--offset-s) var(--offset-s) var(--offset-s) 0;
+        }
+      }
+    }
+  }
+}

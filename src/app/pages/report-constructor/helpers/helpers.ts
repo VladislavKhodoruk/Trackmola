@@ -40,13 +40,20 @@ export function getInfoFromTaskTracks(
       const userData = users.find((user) => user.id === userId);
       const userName = userData?.fullName;
       const userPosition = userData?.position;
-      const userDuration = filteredTaskTracks.reduce((acc, taskTrack) => {
-        if (taskTrack.userId === userId) {
-          return acc + taskTrack.duration;
-        }
-        return acc;
-      }, 0);
-      const taskPercentageWeek = +((taskDuration / worksTime) * 100).toFixed(2);
+      const userDuration = filteredTaskTracks.reduce(
+        (acc, taskTrack) =>
+          taskTrack.userId === userId ? acc + taskTrack.duration : acc,
+        0
+      );
+      const taskOvertimeDuration = filteredTaskTracks.reduce(
+        (acc, taskTrack) =>
+          taskTrack.userId === userId ? acc + taskTrack.overtimeDuration : acc,
+        0
+      );
+      const taskPercentageWeek = +(
+        ((taskDuration + taskOvertimeDuration) / worksTime) *
+        100
+      ).toFixed(2);
 
       const userPercentageAllDurationTask = +(
         (userDuration / taskDuration) *
@@ -55,6 +62,7 @@ export function getInfoFromTaskTracks(
 
       taskIdItem.taskDuration = taskDuration;
       taskIdItem.taskPercentageWeek = taskPercentageWeek;
+      taskIdItem.taskOvertimeDuration = taskOvertimeDuration;
 
       return {
         userId,

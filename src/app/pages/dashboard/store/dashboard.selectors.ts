@@ -39,7 +39,10 @@ export const getWeekReportTime = createSelector(
           taskTrack.date.seconds * 1000 >= period.start &&
           taskTrack.date.seconds * 1000 <= period.end
       )
-      .reduce((result, item) => (result += item.duration), 0)
+      .reduce(
+        (result, item) => (result += item.duration + item.overtimeDuration),
+        0
+      )
 );
 
 export const getTaskWithAllParametrs = createSelector(

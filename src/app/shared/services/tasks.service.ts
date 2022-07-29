@@ -92,7 +92,7 @@ export class TasksService {
 
     const refProject = doc(this.firestore, 'projects', task.projectId);
     updateDoc(refProject, {
-      taskId: arrayUnion(newTask.id),
+      tasksId: arrayUnion(newTask.id),
     });
     return of();
   }

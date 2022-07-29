@@ -102,65 +102,146 @@
       </div>
 
       <div class="form-report-item">
-        <label
-          class="form-report-item-label form-report-duration-label"
-          for="duration"
-          >Duration * h</label
-        >
-        <div class="form-report-container">
-          <div class="form-report-duration">
-            <button
-              class="form-report-duration-btn form-report-duration-btn-border-left"
-              type="button"
-              (mousedown)="durationMinus()"
-            >
-              <ic-icon
-                class="form-report-btn-icon"
-                [icon]="iconMinus"
-                width="1.5rem"
-                height="1.5rem"
-              ></ic-icon>
-            </button>
-            <input
-              class="form-report-duration-input"
-              id="duration"
-              name="project"
-              type="text"
-              maxlength="4"
-              formControlName="duration"
-              (keydown)="onInputOnlyNumber($event)"
-              (blur)="onSetValue()"
-              (input)="onSetRightValue()"
-            />
-            <button
-              class="form-report-duration-btn form-report-duration-btn-border-right"
-              type="button"
-              (mousedown)="durationPlus()"
-            >
-              <ic-icon
-                [icon]="iconPlus"
-                width="1.5rem"
-                height="1.5rem"
-              ></ic-icon>
-            </button>
-          </div>
+        <div class="flex-container">
           <div class="form-report-status">
             <app-button
               [icon]="iconCheck"
-              [buttonClass]="['task-status', classStatusDone]"
+              [buttonClass]="[
+                'task-status',
+                status === 'done' ? 'task-status-checked' : ''
+              ]"
               [iconClass]="'task-status-icon'"
               label="done"
               (click)="onCheckStatus('done')"
             ></app-button>
-          </div>
-          <div class="form-report-status">
             <app-button
               [icon]="iconCheck"
-              [buttonClass]="['task-status', classStatusInProgress]"
+              [buttonClass]="[
+                'task-status',
+                status === 'in progress' ? 'task-status-checked' : ''
+              ]"
               [iconClass]="'task-status-icon'"
               label="in progress"
               (click)="onCheckStatus('in progress')"
             ></app-button>
+          </div>
+          <div class="form-report-overtime-check">
+            <input
+              class="form-report-overtime-check-checkbox"
+              type="checkbox"
+              id="checkbox"
+              formControlName="overtime"
+              (change)="changeOvertimeStatus()"
+            />
+            <label
+              class="form-report-overtime-check-checkbox-label"
+              for="checkbox"
+            ></label>
+            <label
+              class="form-report-overtime-check-checkbox-icon"
+              for="checkbox"
+            >
+              <ic-icon
+                [icon]="iconFire"
+                width="1.5rem"
+                height="1.5rem"
+              ></ic-icon>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-report-item">
+        <div class="flex-container">
+          <div>
+            <span>
+              <label class="form-report-item-label" for="duration"
+                >Duration * h
+              </label>
+            </span>
+            <div class="form-report-container">
+              <div class="form-report-duration">
+                <button
+                  class="form-report-duration-btn form-report-duration-btn-border-left"
+                  type="button"
+                  (mousedown)="durationMinus('duration')"
+                >
+                  <ic-icon
+                    class="form-report-btn-icon"
+                    [icon]="iconMinus"
+                    width="1.5rem"
+                    height="1.5rem"
+                  ></ic-icon>
+                </button>
+                <input
+                  class="form-report-duration-input"
+                  id="duration"
+                  name="project"
+                  type="text"
+                  maxlength="4"
+                  formControlName="duration"
+                  (keydown)="onInputOnlyNumber($event)"
+                  (blur)="onSetValue('duration')"
+                  (input)="onSetRightValue('duration')"
+                />
+                <button
+                  class="form-report-duration-btn form-report-duration-btn-border-right"
+                  type="button"
+                  (mousedown)="durationPlus('duration')"
+                >
+                  <ic-icon
+                    [icon]="iconPlus"
+                    width="1.5rem"
+                    height="1.5rem"
+                  ></ic-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="this.form.get('overtime').value">
+            <span>
+              <label class="form-report-item-label" for="duration"
+                >Overtime Duration* h
+              </label>
+            </span>
+            <div class="form-report-container">
+              <div class="form-report-duration">
+                <button
+                  class="form-report-duration-btn form-report-duration-btn-border-left"
+                  type="button"
+                  (mousedown)="durationMinus('overtimeDuration')"
+                >
+                  <ic-icon
+                    class="form-report-btn-icon"
+                    [icon]="iconMinus"
+                    width="1.5rem"
+                    height="1.5rem"
+                  ></ic-icon>
+                </button>
+                <input
+                  class="form-report-duration-input"
+                  id="duration"
+                  name="project"
+                  type="text"
+                  maxlength="4"
+                  formControlName="overtimeDuration"
+                  (keydown)="onInputOnlyNumber($event)"
+                  (blur)="onSetValue('overtimeDuration')"
+                  (input)="onSetRightValue('overtimeDuration')"
+                />
+                <button
+                  class="form-report-duration-btn form-report-duration-btn-border-right"
+                  type="button"
+                  (mousedown)="durationPlus('overtimeDuration')"
+                >
+                  <ic-icon
+                    [icon]="iconPlus"
+                    width="1.5rem"
+                    height="1.5rem"
+                  ></ic-icon>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -207,7 +288,11 @@
         [buttonClass]="'button-primary button-m'"
         type="submit"
         label="Edit"
-        [disabled]="form.invalid"
+        [disabled]="
+          form.invalid &&
+          +form.get('duration') > 0 &&
+          +form.get('overtimeDuration') > 0
+        "
       ></app-button>
     </ng-template>
   </div>

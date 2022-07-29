@@ -9,7 +9,12 @@
   <p class="total-card-item-hours">{{ totalCardItem?.value }}</p>
   <div class="total-card-item-bar">
     <div class="total-card-item-bar-title">
-      out of {{ totalCardItem?.numberWeekHours }}
+      out of
+      {{
+        periodType === periodTypes.Week
+          ? totalCardItem?.numberWeekHours
+          : totalCardItem?.numberMonthHours
+      }}
     </div>
     <div class="total-card-item-bar-item">
       <div

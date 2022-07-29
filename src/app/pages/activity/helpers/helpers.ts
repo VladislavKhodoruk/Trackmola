@@ -12,7 +12,7 @@ export function setMidnightTime(date: Date) {
   return currentDate;
 }
 
-export function getRestTime(type?: PeriodType): number {
+export function getRestTime(type?: PeriodType | 'week' | 'month'): number {
   const date = new Date(
     new Date().getFullYear(),
     new Date().getMonth(),
@@ -42,6 +42,7 @@ export function getRestTime(type?: PeriodType): number {
         ).getDay();
         if (currentDate !== NumDay.Sunday && currentDate !== NumDay.Saturday) {
           restMonthHours += RestHours.Day;
+          continue;
         }
         restMonthHours += HOURS_IN_DAY;
       }
@@ -66,6 +67,7 @@ export function getRestMonthDefaultHours(): number {
     ).getDay();
     if (currentDate !== NumDay.Sunday && currentDate !== NumDay.Saturday) {
       restMonthDefaultHours += RestHours.Day;
+      continue;
     }
     restMonthDefaultHours += HOURS_IN_DAY;
   }
@@ -85,10 +87,13 @@ export function getWorksMonthDefaultHours(): number {
 export const getTotalCardItem = (
   totalCardItem: TotalCardItem,
   value: number,
-  overtime?: number
+  periodType: string
 ): TotalCardItem => {
-  totalCardItem.value = overtime ? value - overtime : value;
-  totalCardItem.progressBarSize = (value / totalCardItem.numberWeekHours) * 100;
+  totalCardItem.value = value;
+  totalCardItem.progressBarSize =
+    periodType === PeriodType.Week
+      ? (value / totalCardItem.numberWeekHours) * 100
+      : (value / totalCardItem.numberMonthHours) * 100;
   if (totalCardItem.progressBarSize > 100) {
     totalCardItem.progressBarSize = 100;
   }

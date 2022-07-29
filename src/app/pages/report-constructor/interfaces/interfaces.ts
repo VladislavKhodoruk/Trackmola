@@ -4,6 +4,7 @@ export interface InfoReportConstructorItem {
   taskId: string;
   taskName: string;
   taskDuration?: number;
+  taskOvertimeDuration?: number;
   taskPercentageWeek?: number;
   usersInfo?: InfoReportConstructorItemUser[];
 }
@@ -16,6 +17,7 @@ export interface InfoReportConstructorItemUser {
 }
 
 export interface InfoFromTaskTracksForTable {
+  taskOvertimeDuration?: number;
   taskName: string;
   taskDuration: number;
   taskPercentageWeek: number | string;

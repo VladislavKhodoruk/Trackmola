@@ -54,7 +54,33 @@
           {{ infoItem.taskDuration }}
         </td>
         <td class="report-constructor-table-body-item">
-          {{ infoItem.taskPercentageWeek }}%
+          <div
+            *ngIf="infoItem.taskOvertimeDuration > 0"
+            class="report-constructor-table-body-overtime"
+          >
+            <div class="report-constructor-table-body-overtime-duration">
+              {{ infoItem.taskOvertimeDuration }}
+            </div>
+            <div>
+              <ic-icon
+                class="calendar-overtime-icon"
+                [icon]="iconFire"
+                width="1.5rem"
+                height="1.5rem"
+              ></ic-icon>
+            </div>
+          </div>
+        </td>
+        <td class="report-constructor-table-body-item">
+          <div class="report-constructor-table-body-percentage">
+            <div class="report-constructor-table-body-percentage-duration">
+              {{ infoItem.taskPercentageWeek }}%
+            </div>
+            <div
+              class="report-constructor-table-body-percentage-bar"
+              [style.width.%]="infoItem.taskPercentageWeek"
+            ></div>
+          </div>
         </td>
         <td class="report-constructor-table-body-item">
           <ng-container *ngFor="let userName of infoItem.userNames">

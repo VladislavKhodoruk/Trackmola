@@ -29,7 +29,11 @@ const dashboardReducer = createReducer(
   }),
   on(setActiveProjectFilter, (state: DashboardState, { activeProject }) => ({
     ...state,
-    manager: { ...state.manager, activeProjectFilter: activeProject },
+    manager: {
+      ...state.manager,
+      activeProjectFilter: activeProject,
+      selectedTask: dashboardState.manager.selectedTask,
+    },
   })),
   on(removeProjectFilter, (state: DashboardState) => ({
     ...state,
