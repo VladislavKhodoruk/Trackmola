@@ -23,10 +23,6 @@ export const getSearchValue = createSelector(
   ({ searchValue }) => searchValue
 );
 
-export const usersInfoByUserId = createSelector(getUsers, (users) =>
-  users.reduce((accum, user) => ({ ...accum, [user.id]: user }), {})
-);
-
 export const tasksInfoByTaskId = createSelector(getTasks, (tasks) =>
   tasks.reduce((accum, task) => ({ ...accum, [task.id]: task }), {})
 );

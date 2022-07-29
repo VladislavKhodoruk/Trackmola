@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
@@ -11,16 +11,24 @@ import {
   getActiveTask,
 } from '@pages/dashboard/store/dashboard.selectors';
 
-import { Project, Vacations } from '@shared/interfaces/interfaces';
+import {
+  GroupBy,
+  Project,
+  User,
+  Vacations,
+} from '@shared/interfaces/interfaces';
+import { usersInfoByUserId } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-manager-dashboard-container',
   styleUrls: ['./manager-dashboard.container.scss'],
   template: `<app-manager-dashboard
     [vacations]="vacations"
     [activeProjectFilter]="activeProjectFilter$ | async"
     [tasksForManager]="tasksForManager$ | async"
+    [usersInfoByUserId]="usersInfoByUserId$ | async"
     [activeTask]="activeTask$ | async"
     (selectTask)="onSelectTask($event)"
   ></app-manager-dashboard>`,
@@ -64,6 +72,9 @@ export class ManagerDashboardContainer {
 
   readonly activeTask$: Observable<TaskForManager> =
     this.store$.select(getActiveTask);
+
+  readonly usersInfoByUserId$: Observable<GroupBy<User>> =
+    this.store$.select(usersInfoByUserId);
 
   constructor(private store$: Store<TrackMolaState>) {}
 

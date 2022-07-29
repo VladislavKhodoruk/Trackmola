@@ -8,7 +8,6 @@ import {
   activeTaskGroupByProject,
   activeTaskTracksGroupByTask,
   getProjectByRoute,
-  usersInfoByUserId,
 } from '@pages/projects/store/projects.selectors';
 import {
   GroupBy,
@@ -18,6 +17,7 @@ import {
   User,
 } from '@shared/interfaces/interfaces';
 
+import { usersInfoByUserId } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({

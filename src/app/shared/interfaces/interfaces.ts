@@ -1,8 +1,5 @@
 import { IconifyIcon } from '@iconify/types';
 import { Timestamp } from 'firebase/firestore';
-import { ColorString } from 'highcharts';
-
-import { positions } from './../../store/common/common.selectors';
 
 export interface Project {
   id: string;
