@@ -1,6 +1,8 @@
 <app-header></app-header>
 
-<app-manager-controls-container></app-manager-controls-container>
+<app-manager-controls-container
+  [modeView]="modeView"
+></app-manager-controls-container>
 
 <section class="dashboard-main">
   <app-manager-dashboard-list-tasks
@@ -11,12 +13,15 @@
     (selectTask)="selectTask.emit($event)"
   ></app-manager-dashboard-list-tasks>
 
-  <app-highcharts-chart
-    class="dashboard-main-chart"
-    [data]="data"
-    [options]="basicOptions"
-    *ngIf="activeProjectFilter"
-  ></app-highcharts-chart>
+  <container-element class="dashboard-main-chart" [ngSwitch]="modeView">
+    <ng-container *ngSwitchCase="managerDashboardView.Table">
+      <app-highcharts-chart
+        [data]="dataChartTreemap"
+        [options]="basicOptionsChartTreemap"
+        *ngIf="activeProjectFilter"
+      ></app-highcharts-chart>
+    </ng-container>
+  </container-element>
 </section>
 
 <!-- <app-vacations-component

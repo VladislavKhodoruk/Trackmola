@@ -10,6 +10,7 @@ import { SeriesOptionsType } from 'highcharts';
 
 import { MANAGER_DASHBOARD_CHART_TREEMAP } from '@pages/dashboard/constants/constants';
 
+import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
 import {
   DataForChartTreemap,
   TaskForManager,
@@ -36,10 +37,13 @@ export class ManagerDashboardComponent {
   @Input() readonly tasksForManager: TaskForManager[];
   @Input() readonly activeTask: TaskForManager;
   @Input() readonly usersInfoByUserId: GroupBy<User>;
+  @Input() readonly modeView: ManagerDashboardView;
 
   @Output() selectTask = new EventEmitter<TaskForManager>();
 
-  basicOptions = MANAGER_DASHBOARD_CHART_TREEMAP;
+  managerDashboardView = ManagerDashboardView;
+
+  basicOptionsChartTreemap = MANAGER_DASHBOARD_CHART_TREEMAP;
 
   tasksColors: string[] = [];
 
@@ -49,7 +53,7 @@ export class ManagerDashboardComponent {
     );
   }
 
-  protected get data(): SeriesOptionsType[] {
+  protected get dataChartTreemap(): SeriesOptionsType[] {
     let taskTracks: TaskForManager['taskTracksInTask'];
     let totalDuration: TaskForManager['durationInTask'];
     let dataForChart: DataForChartTreemap[];
@@ -57,7 +61,7 @@ export class ManagerDashboardComponent {
     if (this.activeTask) {
       taskTracks = this.activeTask.taskTracksInTask;
       totalDuration = this.activeTask.durationInTask;
-      dataForChart = this.dataForChart(taskTracks, totalDuration);
+      dataForChart = this.dataForChartTreemap(taskTracks, totalDuration);
     } else {
       taskTracks = this.tasksForManager.flatMap(
         (taskTrack) => taskTrack.taskTracksInTask
@@ -67,7 +71,7 @@ export class ManagerDashboardComponent {
         (result, { duration }) => (result += duration),
         0
       );
-      dataForChart = this.dataForChart(taskTracks, totalDuration);
+      dataForChart = this.dataForChartTreemap(taskTracks, totalDuration);
     }
 
     return [
@@ -78,7 +82,7 @@ export class ManagerDashboardComponent {
     ];
   }
 
-  private dataForChart(
+  private dataForChartTreemap(
     taskTracks: TaskForManager['taskTracksInTask'],
     duration: TaskForManager['durationInTask']
   ): DataForChartTreemap[] {

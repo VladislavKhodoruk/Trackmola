@@ -3,12 +3,14 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
+import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
 import { TaskForManager } from '@pages/dashboard/interfaces/interface';
 import { setActiveTask } from '@pages/dashboard/store/dashboard.actions';
 import {
   getActiveProjectFilter,
   getTasksForManager,
   getActiveTask,
+  getModeView,
 } from '@pages/dashboard/store/dashboard.selectors';
 
 import {
@@ -30,6 +32,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [tasksForManager]="tasksForManager$ | async"
     [usersInfoByUserId]="usersInfoByUserId$ | async"
     [activeTask]="activeTask$ | async"
+    [modeView]="modeView$ | async"
     (selectTask)="onSelectTask($event)"
   ></app-manager-dashboard>`,
 })
@@ -75,6 +78,9 @@ export class ManagerDashboardContainer {
 
   readonly usersInfoByUserId$: Observable<GroupBy<User>> =
     this.store$.select(usersInfoByUserId);
+
+  readonly modeView$: Observable<ManagerDashboardView> =
+    this.store$.select(getModeView);
 
   constructor(private store$: Store<TrackMolaState>) {}
 
