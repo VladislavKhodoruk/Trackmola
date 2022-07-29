@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { PointLabelObject } from 'highcharts';
 
 import { NAMES_OF_THE_DAYS_OF_THE_WEEK } from '@shared/constants/constants';
@@ -109,5 +111,94 @@ export const MANAGER_DASHBOARD_CHART_TREEMAP = {
   },
   title: {
     text: '',
+  },
+};
+
+export const MANAGER_DASHBOARD_CHART_X_RANGE = {
+  chart: {
+    scrollablePlotArea: {
+      minWidth: 850,
+      scrollPositionX: 1,
+    },
+    type: 'xrange',
+  },
+
+  credits: {
+    enabled: false,
+  },
+
+  plotOptions: {
+    xrange: {
+      borderRadius: 24,
+      cursor: 'pointer',
+      dataLabels: {
+        align: 'left',
+        allowOverlap: true,
+
+        enabled: true,
+        formatter: function (this) {
+          return `<div style="width: ${this.point.shapeArgs.width}px;"class="x-range-dataLabel">
+                        <div><img src=${this.point.custom.userPhoto}>
+                            ${this.point.custom.userName}
+                        </div>
+                        <span>${this.point.custom.duration}h</span>
+                  </div>`;
+        },
+
+        style: {
+          textOutline: 'none',
+        },
+
+        useHTML: true,
+      },
+
+      pointWidth: 45,
+      showInLegend: false,
+
+      tooltip: {
+        headerFormat:
+          '<span style="font-size: 10px">{point.x} - {point.x2}</span><br/>',
+        pointFormatter: function (this) {
+          return `${this.custom.userName}: <b>${this.custom.duration}h</b><br/>`;
+        },
+        xDateFormat: '%Y-%m-%d',
+      },
+    },
+  },
+
+  title: {
+    text: '',
+  },
+
+  xAxis: {
+    labels: {
+      align: 'center',
+      allowOverlap: true,
+      format: '{value:%e </br> %b}',
+      rotation: 0,
+      style: {
+        textOverflow: 'none',
+      },
+    },
+    lineWidth: 0,
+    minorTicks: false,
+    opposite: true,
+    startOnTick: false,
+    tickInterval: 0,
+    tickPixelInterval: 70,
+    tickWidth: 0,
+    tickmarkPlacement: 'on',
+    type: 'datetime',
+  },
+
+  yAxis: {
+    categories: [],
+    gridLineWidth: 0,
+    labels: {
+      enabled: false,
+    },
+    title: {
+      text: '',
+    },
   },
 };

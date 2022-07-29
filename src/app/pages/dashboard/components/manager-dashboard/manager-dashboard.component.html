@@ -21,6 +21,13 @@
         *ngIf="activeProjectFilter"
       ></app-highcharts-chart>
     </ng-container>
+    <ng-container *ngSwitchCase="managerDashboardView.Arrows">
+      <app-highcharts-chart
+        [data]="dataXRange"
+        [options]="basicOptionsChartXRange"
+        *ngIf="activeProjectFilter"
+      ></app-highcharts-chart>
+    </ng-container>
   </container-element>
 </section>
 

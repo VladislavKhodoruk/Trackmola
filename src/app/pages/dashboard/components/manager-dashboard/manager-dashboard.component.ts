@@ -8,7 +8,10 @@ import {
 
 import { SeriesOptionsType } from 'highcharts';
 
-import { MANAGER_DASHBOARD_CHART_TREEMAP } from '@pages/dashboard/constants/constants';
+import {
+  MANAGER_DASHBOARD_CHART_TREEMAP,
+  MANAGER_DASHBOARD_CHART_X_RANGE,
+} from '@pages/dashboard/constants/constants';
 
 import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
 import {
@@ -44,8 +47,67 @@ export class ManagerDashboardComponent {
   managerDashboardView = ManagerDashboardView;
 
   basicOptionsChartTreemap = MANAGER_DASHBOARD_CHART_TREEMAP;
+  basicOptionsChartXRange = MANAGER_DASHBOARD_CHART_X_RANGE;
 
   tasksColors: string[] = [];
+
+  dataXRange: SeriesOptionsType[] = [
+    {
+      data: [
+        {
+          custom: {
+            duration: '1',
+            userName: 'Andrei2',
+            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
+          },
+          x: Date.UTC(2014, 10, 21),
+          x2: Date.UTC(2014, 11, 2),
+          y: 0,
+        },
+        {
+          custom: {
+            duration: '1',
+            userName: 'Andrei2',
+            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
+          },
+          x: Date.UTC(2014, 11, 2),
+          x2: Date.UTC(2014, 11, 5),
+          y: 1,
+        },
+        {
+          custom: {
+            duration: '1',
+            userName: 'Andrei2',
+            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
+          },
+          x: Date.UTC(2014, 11, 8),
+          x2: Date.UTC(2014, 11, 9),
+          y: 2,
+        },
+        {
+          custom: {
+            duration: '1',
+            userName: 'Andrei2',
+            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
+          },
+          x: Date.UTC(2014, 11, 9),
+          x2: Date.UTC(2014, 11, 19),
+          y: 1,
+        },
+        {
+          custom: {
+            duration: '1',
+            userName: 'Andrei2',
+            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
+          },
+          x: Date.UTC(2014, 11, 10),
+          x2: Date.UTC(2014, 11, 23),
+          y: 3,
+        },
+      ],
+      type: 'xrange',
+    },
+  ];
 
   constructor() {
     [...COLORS_FOR_TASKS].forEach(() =>

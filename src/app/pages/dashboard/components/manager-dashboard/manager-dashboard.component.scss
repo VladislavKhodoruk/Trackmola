@@ -79,5 +79,22 @@
     rect {
       stroke: var(--white);
     }
+
+    .x-range-dataLabel {
+      @include flex(center, space-between);
+      padding-right: var(--offset);
+      font: var(--font-blocks);
+      font-weight: 400;
+      color: white;
+      word-break: break-word;
+
+      & div {
+        @include flex(center, flex-start, var(--offset-s));
+      }
+
+      & img {
+        @include profile-photo(2rem, 2rem);
+      }
+    }
   }
 }
