@@ -108,3 +108,9 @@ export interface Vacations {
   fullName: string;
   photo: string;
 }
+
+export interface OutOfMain {
+  overtimes: number;
+  shortages: number;
+  working: number;
+}

@@ -3,6 +3,8 @@
 :host {
   .project-efficiency {
     @include flex(normal, normal, 4rem);
+
+    overflow: hidden;
     flex-direction: column;
 
     width: 100%;
@@ -21,7 +23,7 @@
     }
 
     &-header {
-      height: calc(100% - 83% - 4rem);
+      @include height-variables(83%, 4rem);
 
       font: var(--font-title);
       text-align: center;
@@ -29,34 +31,30 @@
 
     &-container {
       display: flex;
-      gap: 2.85rem;
+      gap: 2.5rem;
 
       height: 100%;
-
       overflow: hidden;
     }
 
     &-wrapper {
-      width: calc(100% - 55% - 1.425rem);
+      @include width-variables(40%, 1.425rem);
       height: 120%;
     }
 
     &-hart-info-text {
       display: flex;
-      justify-content: center;
       flex-direction: column;
+      justify-content: center;
 
-      width: calc(100% - 45% - 1.425rem);
+      @include width-variables(60%, 1.425rem);
       height: 70%;
     }
   }
 
   p {
     font: var(--font-current);
-  }
-
-  p:first-child {
-    max-width: 8rem;
+    max-width: 9rem;
   }
 
   span {
@@ -66,7 +64,8 @@
   @media (max-width: 1650px) {
     .project-efficiency {
       gap: 1.5rem;
-      padding: 3% 1% 1% 1%;
+
+      padding: 3% 1% 1%;
 
       &-wrapper {
         height: 140%;
@@ -103,7 +102,7 @@
 
   @media (min-width: 1650px) {
     .project-efficiency {
-      padding: 2% 0 0 0;
+      padding: 2% 0 0;
 
       &-wrapper {
         height: 110%;

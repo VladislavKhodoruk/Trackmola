@@ -9,13 +9,13 @@ import { getDate, getFirstDay } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-project-efficiency-container',
   template: `<app-project-efficiency-component
     [tasks]="activeTasks$ | async"
     [startOfWeek]="startOfWeek$ | async"
     [presentDay]="presentDay$ | async"
   ></app-project-efficiency-component>`,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectEfficiencyContainer {
   readonly activeTasks$: Observable<TaskTrack[]> = this.store$.select(

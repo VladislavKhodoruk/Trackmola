@@ -2,10 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Options, SeriesOptionsType } from 'highcharts';
 
-import {
-  BASIC_OPTIONS_ACTIVITY_CHART_PIE,
-  BASIC_OPTIONS_EFFICIENCY_PIE,
-} from '@pages/activity/constants/constants';
+import { BASIC_OPTIONS_EFFICIENCY_PIE } from '@pages/activity/constants/constants';
 import { getEfficiency, outOfNorm } from '@shared/helpers/helpers';
 import { TaskTrack } from '@shared/interfaces/interfaces';
 
@@ -14,15 +11,16 @@ import { TaskTrack } from '@shared/interfaces/interfaces';
   styleUrls: ['project-efficiency.scss'],
   templateUrl: 'project-efficiency.component.html',
 })
-export class ProjectEfficiencyComponent {
+export class ProjectEfficiencyComponent implements OnChanges {
   @Input() tasks: TaskTrack[];
   @Input() startOfWeek: number;
   @Input() presentDay: number;
 
   readonly basicOptions: Options = BASIC_OPTIONS_EFFICIENCY_PIE;
 
+  public efficiency;
+
   get seriesData(): SeriesOptionsType[] {
-    outOfNorm(this.tasks);
     if ((this.tasks, this.startOfWeek, this.presentDay)) {
       this.basicOptions.title.text =
         String(
@@ -32,40 +30,43 @@ export class ProjectEfficiencyComponent {
         ) + '%';
       return [
         {
-          type: 'pie',
           data: [
             {
-              y: getEfficiency(this.tasks, this.startOfWeek, this.presentDay),
               color: 'var(--primary)',
+              y: getEfficiency(this.tasks, this.startOfWeek, this.presentDay),
             },
             {
+              color: 'var(--gray)',
               y:
                 1 -
                 getEfficiency(this.tasks, this.startOfWeek, this.presentDay),
-              color: 'var(--gray)',
             },
           ],
+          type: 'pie',
         },
       ];
     } else {
       return [
         {
-          type: 'pie',
           data: [
             {
-              y: 0,
               color: 'var(--primary)',
+              y: 0,
             },
           ],
+          type: 'pie',
         },
       ];
     }
   }
 
-  efficiency = {
-    complited: 1,
-    overtimes: 0,
-    shortages: 4,
-    total: 2,
-  };
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.tasks) {
+      this.efficiency = {
+        complited: outOfNorm(this.tasks, this.presentDay).working,
+        overtimes: outOfNorm(this.tasks, this.presentDay).overtimes,
+        shortages: outOfNorm(this.tasks, this.presentDay).shortages,
+      };
+    }
+  }
 }

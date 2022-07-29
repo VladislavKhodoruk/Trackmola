@@ -160,8 +160,19 @@ export const REST_HOURS_TOTAL_CARD = {
 
 export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
   chart: {
-    type: 'column',
     reflow: true,
+    type: 'column',
+  },
+  legend: {
+    itemDistance: 80,
+    itemMarginBottom: 10,
+    itemStyle: {
+      color: 'var(--black)',
+      fontFamily: 'var(--font-current)',
+      fontSize: 'var(--offset-sm)',
+      fontWeight: '300',
+    },
+    symbolHeight: 26,
   },
   title: {
     text: '',
@@ -173,10 +184,10 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
     gridLineWidth: 0,
     labels: {
       style: {
-        fontWeight: '500',
+        color: 'var(--gray3)',
         fontFamily: 'var(--font-calendar)',
         fontSize: 'var(--offset-sm)',
-        color: 'var(--gray3)',
+        fontWeight: '500',
       },
     },
   },
@@ -189,47 +200,21 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
       },
     },
   },
-  legend: {
-    itemDistance: 80,
-    itemMarginBottom: 0,
-    symbolHeight: 26,
-    itemStyle: {
-      fontFamily: 'var(--font-current)',
-      fontSize: 'var(--offset-sm)',
-      color: 'var(--black)',
-      fontWeight: '300',
-    },
-  },
 };
 
 export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
+  accessibility: {
+    enabled: true,
+    point: {
+      valueSuffix: '%',
+    },
+  },
+
   chart: {
     plotBackgroundColor: null,
     plotBorderWidth: 0,
     plotShadow: false,
-  },
-
-  title: {
-    text: '',
-    align: 'center',
-    verticalAlign: 'middle',
-    style: {
-      fontSize: 'var(--offset-l)',
-      fontFamily: '"Noto Sans", sans-serif',
-      color: 'var(--primary)',
-      fontWeight: '600',
-    },
-  },
-
-  tooltip: {
-    enabled: false,
-  },
-
-  accessibility: {
-    point: {
-      valueSuffix: '%',
-    },
-    enabled: true,
+    // styledMode: true,
   },
 
   legend: {
@@ -239,12 +224,28 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
       },
     },
   },
+
+  plotOptions: {
+    pie: {
+      colors: ACTIVITY_CHART_PIE_COLORS,
+      cursor: 'pointer',
+      dataLabels: {
+        enabled: false,
+      },
+      innerSize: '80%',
+      showInLegend: true,
+      states: {
+        hover: {
+          brightness: 0,
+          halo: null,
+        },
+      },
+    },
+  },
+
   responsive: {
     rules: [
       {
-        condition: {
-          maxWidth: 260,
-        },
         chartOptions: {
           title: {
             style: {
@@ -252,11 +253,11 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
             },
           },
         },
+        condition: {
+          maxWidth: 260,
+        },
       },
       {
-        condition: {
-          maxWidth: 230,
-        },
         chartOptions: {
           title: {
             style: {
@@ -264,24 +265,24 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
             },
           },
         },
+        condition: {
+          maxWidth: 230,
+        },
       },
     ],
   },
-  plotOptions: {
-    pie: {
-      dataLabels: {
-        enabled: false,
-      },
-      innerSize: '80%',
-      colors: ACTIVITY_CHART_PIE_COLORS,
-      cursor: 'pointer',
-      showInLegend: true,
-      states: {
-        hover: {
-          halo: null,
-          brightness: 0,
-        },
-      },
+  title: {
+    align: 'center',
+    style: {
+      color: 'var(--primary)',
+      fontFamily: '"Noto Sans", sans-serif',
+      fontSize: 'var(--offset-l)',
+      fontWeight: '600',
     },
+    text: '',
+    verticalAlign: 'middle',
+  },
+  tooltip: {
+    enabled: false,
   },
 };

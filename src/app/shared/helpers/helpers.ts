@@ -6,7 +6,12 @@ import {
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
-import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
+import {
+  OutOfMain,
+  Period,
+  Project,
+  TaskTrack,
+} from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
   switch (type) {
@@ -83,11 +88,11 @@ export function getDataForChart(
   };
   const desiredTasks = tasks.map(
     (task: TaskTrack): ModifiedTask => ({
-      projectName: getProjectNameAndColor(task.projectId, projects)?.name,
+      date: task.date.toDate(),
+      duration: task.duration,
       projectColor: getProjectNameAndColor(task.projectId, projects)?.color,
       projectId: task.projectId,
-      duration: task.duration,
-      date: task.date.toDate(),
+      projectName: getProjectNameAndColor(task.projectId, projects)?.name,
     })
   );
   desiredTasks.forEach((task: ModifiedTask) => {
@@ -103,10 +108,10 @@ export function getDataForChart(
       (item: string, index: number) => allProjects.indexOf(item) === index
     )
     .map((project) => ({
-      type: 'column',
-      name: project,
-      data: searchInWeek(project, weekTasksByDays),
       color: getColorOfProjectByName(project, projects)?.color,
+      data: searchInWeek(project, weekTasksByDays),
+      name: project,
+      type: 'column',
     }));
 }
 
@@ -137,7 +142,7 @@ export function getEfficiency(
   return efficiency;
 }
 
-export function outOfNorm(tasks: TaskTrack[]): void {
+export function outOfNorm(tasks: TaskTrack[], presentDay: number): OutOfMain {
   const weekTasksByDays: WeekType = {
     MON: [],
     TUE: [],
@@ -164,14 +169,15 @@ export function outOfNorm(tasks: TaskTrack[]): void {
     .map((item: TaskTrack[]) =>
       item.reduce((acc, prev) => acc + prev.duration, 0)
     )
-    .forEach((day) => {
-      if (day < 8) {
-        mismatch.shortages += day - 8;
+    .forEach((day, index) => {
+      if (day < 8 && index <= new Date(presentDay).getDay() - 1) {
+        mismatch.shortages += 8 - day;
         mismatch.working += day;
       }
-      if (day > 8) {
+      if (day > 8 && index <= new Date(presentDay).getDay() - 1) {
         mismatch.overtimes += day - 8;
         mismatch.working += 8;
       }
     });
+  return mismatch;
 }
