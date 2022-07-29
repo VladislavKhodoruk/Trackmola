@@ -61,7 +61,7 @@ export function searchInWeek(
       return day
         .filter((i: ModifiedTask) => i.projectName === currentProject)
         .map((i: ModifiedTask) => i.duration)
-        .reduce((acc, prev) => acc + prev);
+        .reduce((acc = 0, prev) => acc + prev, 0);
     }
     if (day.length === 0 || day.length === 1) {
       return 0;
@@ -73,14 +73,15 @@ export function getDataForChart(
   projects: Project[]
 ): SeriesOptionsType[] {
   const weekTasksByDays: WeekType = {
-    FRI: [],
     MON: [],
-    SAT: [],
-    SUN: [],
-    THU: [],
     TUE: [],
     WED: [],
+    THU: [],
+    FRI: [],
+    SAT: [],
+    SUN: [],
   };
+  tasks.sort((a, b) => a.date.seconds - b.date.seconds);
   const desiredTasks = tasks.map(
     (task: TaskTrack): ModifiedTask => ({
       date: task.date.toDate(),

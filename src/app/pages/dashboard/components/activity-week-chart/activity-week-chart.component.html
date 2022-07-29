@@ -1,4 +1,9 @@
-<app-highcharts-chart
-  [options]="basicOptions"
-  [data]="seriesData"
-></app-highcharts-chart>
+<section class="dashboard-activity">
+  <h2 class="dashboard-activity-header">Project hours</h2>
+  <app-highcharts-chart
+    class="dashboard-activity-chart"
+    [options]="basicOptions"
+    [data]="seriesData"
+    [idContainer]="'week-activity'"
+  ></app-highcharts-chart>
+</section>
