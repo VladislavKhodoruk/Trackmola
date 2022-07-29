@@ -1,6 +1,5 @@
 import {
   animate,
-  group,
   query,
   stagger,
   state,
@@ -8,13 +7,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import {
-  Component,
-  HostBinding,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import pineapple from '@iconify/icons-noto/pineapple';

@@ -20,7 +20,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthorizationEffects } from './pages/authorization/store/authorization.effects';
 import { SidebarModule } from './shared/components/sidebar/sidebar.module';
-import { TeamListSearchComponent } from './shared/components/team-list-search/team-list-search.component';
 import { CommonEffects } from './store/common/common.effects';
 
 import { trackMolaReducer } from './store/trackMola.state';
