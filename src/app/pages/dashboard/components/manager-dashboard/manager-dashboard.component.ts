@@ -6,6 +6,8 @@ import {
   Output,
 } from '@angular/core';
 
+import { SeriesOptionsType } from 'highcharts';
+
 import { MANAGER_DASHBOARD_CHART_TREEMAP } from '@pages/dashboard/constants/constants';
 
 import {
@@ -47,7 +49,7 @@ export class ManagerDashboardComponent {
     );
   }
 
-  protected get data() {
+  protected get data(): SeriesOptionsType[] {
     let taskTracks: TaskForManager['taskTracksInTask'];
     let totalDuration: TaskForManager['durationInTask'];
     let dataForChart: DataForChartTreemap[];
@@ -55,7 +57,6 @@ export class ManagerDashboardComponent {
     if (this.activeTask) {
       taskTracks = this.activeTask.taskTracksInTask;
       totalDuration = this.activeTask.durationInTask;
-
       dataForChart = this.dataForChart(taskTracks, totalDuration);
     } else {
       taskTracks = this.tasksForManager.flatMap(

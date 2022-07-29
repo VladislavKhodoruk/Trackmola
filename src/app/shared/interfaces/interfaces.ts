@@ -1,5 +1,8 @@
 import { IconifyIcon } from '@iconify/types';
 import { Timestamp } from 'firebase/firestore';
+import { ColorString } from 'highcharts';
+
+import { positions } from './../../store/common/common.selectors';
 
 export interface Project {
   id: string;
@@ -106,5 +109,13 @@ export interface GroupBy<T> {
 export interface Vacations {
   vacationDay: Date;
   fullName: string;
+  photo: string;
+}
+
+export interface UserCard {
+  userName: string;
+  projects: Project[];
+  location: string;
+  position: string;
   photo: string;
 }

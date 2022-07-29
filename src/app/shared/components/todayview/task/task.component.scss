@@ -4,8 +4,7 @@
 ::ng-deep {
   .icons {
     svg {
-      width: 1.375rem;
-      height: 1.375rem;
+      @include icon-s;
     }
   }
 }

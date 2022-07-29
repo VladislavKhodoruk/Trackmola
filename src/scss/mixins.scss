@@ -18,9 +18,25 @@
     --#{"" + $name}: #{$color};
   }
 }
-
+@mixin icon-s() {
+  width: 1.375rem;
+  height: 1.375rem;
+}
+@mixin icon-m() {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+@mixin icon-l() {
+  width: 2rem;
+  height: 2rem;
+}
+@mixin icon-xl() {
+  width: 3rem;
+  height: 3rem;
+}
 @mixin var-range($variable, $value) {
   #{$variable}: $value;
+  #{$variable}-xxxs: calc(var(#{$variable}) / 16);
   #{$variable}-xxs: calc(var(#{$variable}) / 8);
   #{$variable}-xs: calc(var(#{$variable}) / 4);
   #{$variable}-s: calc(var(#{$variable}) / 2);
