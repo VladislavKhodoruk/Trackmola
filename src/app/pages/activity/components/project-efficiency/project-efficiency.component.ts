@@ -3,6 +3,7 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Options, SeriesOptionsType } from 'highcharts';
 
 import { BASIC_OPTIONS_EFFICIENCY_PIE } from '@pages/activity/constants/constants';
+import { Efficiency } from '@pages/activity/interfaces/interfaces';
 import { getEfficiency, outOfNorm } from '@shared/helpers/helpers';
 import { TaskTrack } from '@shared/interfaces/interfaces';
 
@@ -18,7 +19,7 @@ export class ProjectEfficiencyComponent implements OnChanges {
 
   readonly basicOptions: Options = BASIC_OPTIONS_EFFICIENCY_PIE;
 
-  public efficiency;
+  public efficiency: Efficiency;
 
   get seriesData(): SeriesOptionsType[] {
     if ((this.tasks, this.startOfWeek, this.presentDay)) {
@@ -63,7 +64,7 @@ export class ProjectEfficiencyComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.tasks) {
       this.efficiency = {
-        complited: outOfNorm(this.tasks, this.presentDay).working,
+        completed: outOfNorm(this.tasks, this.presentDay).working,
         overtimes: outOfNorm(this.tasks, this.presentDay).overtimes,
         shortages: outOfNorm(this.tasks, this.presentDay).shortages,
       };

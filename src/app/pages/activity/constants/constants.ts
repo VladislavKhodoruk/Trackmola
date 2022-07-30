@@ -214,7 +214,6 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
     plotBackgroundColor: null,
     plotBorderWidth: 0,
     plotShadow: false,
-    // styledMode: true,
   },
 
   legend: {
@@ -271,8 +270,15 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
       },
     ],
   },
+  subtitle: {
+    style: {
+      display: 'none',
+    },
+    text: '',
+  },
   title: {
     align: 'center',
+    floating: true,
     style: {
       color: 'var(--primary)',
       fontFamily: '"Noto Sans", sans-serif',

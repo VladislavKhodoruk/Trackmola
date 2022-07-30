@@ -26,7 +26,8 @@
       @include height-variables(83%, 4rem);
 
       font: var(--font-title);
-      text-align: center;
+      text-align: left;
+      padding-left: var(--offset-l);
     }
 
     &-container {

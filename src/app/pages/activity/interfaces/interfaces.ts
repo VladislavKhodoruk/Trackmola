@@ -16,3 +16,9 @@ export interface ModifiedTask {
   date: Date;
   projectId: string;
 }
+
+export interface Efficiency {
+  completed: number;
+  overtimes: number;
+  shortages: number;
+}
