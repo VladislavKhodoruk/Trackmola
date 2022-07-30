@@ -1,9 +1,17 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { getDate } from '@store/common/common.selectors';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-report-container',
-  template: '<app-report [userType]="userType"></app-report>',
+  template: `<app-employee-report
+    [currentDate]="currentDate$ | async"
+  ></app-employee-report>`,
 })
 export class ReportContainer {
-  readonly userType: string = localStorage.getItem('AuthUserType');
+  currentDate$ = this.store$.select(getDate);
+
+  constructor(private store$: Store<TrackMolaState>) {}
 }

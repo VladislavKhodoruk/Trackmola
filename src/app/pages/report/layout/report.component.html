@@ -1,8 +1,34 @@
-<container-element [ngSwitch]="userType">
-  <app-employee-report-container
-    *ngSwitchCase="types.Employee"
-  ></app-employee-report-container>
-  <app-cto-report *ngSwitchCase="types.CTO"></app-cto-report>
-  <app-admin-report *ngSwitchCase="types.Admin"></app-admin-report>
-  <app-manager-report *ngSwitchCase="types.Manager"></app-manager-report>
-</container-element>
+<div class="report">
+  <div class="report-header">
+    <h2 class="report-header-title">My report</h2>
+
+    <div class="report-header-container">
+      <app-navigation-calendar-container></app-navigation-calendar-container>
+
+      <app-button
+        type="submit"
+        [buttonClass]="'button-primary'"
+        label="Send report for approval"
+        [disabled]="false"
+        [icon]="iconCheck"
+        iconWidth="2rem"
+        iconHeight="2rem"
+        (buttonClick)="submitReport($event)"
+      >
+      </app-button>
+    </div>
+  </div>
+
+  <app-calendar-container class="report-calendar"></app-calendar-container>
+
+  <span class="report-date">{{ currentDate | date: "MMMM d" }}</span>
+
+  <div class="report-tasks">
+    <app-report-input-container class="report-tasks-input">
+    </app-report-input-container>
+
+    <app-todayview-container
+      class="report-tasks-todayview"
+    ></app-todayview-container>
+  </div>
+</div>

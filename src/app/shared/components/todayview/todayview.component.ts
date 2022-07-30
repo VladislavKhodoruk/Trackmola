@@ -28,6 +28,7 @@ export class TodayviewComponent implements OnChanges {
 
   @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() deleteTaskTrack = new EventEmitter<string>();
+  @Output() completeTasksTrack = new EventEmitter<TaskTrack[]>();
 
   maxDuration = 100;
   taskItems: TaskItem[];
@@ -89,5 +90,14 @@ export class TodayviewComponent implements OnChanges {
       };
       return [...acc, taskItem];
     }, [] as TaskItem[]);
+  }
+
+  completeTaskTracks() {
+    const currentTaskTracks = this.getFilteredTasksTracks();
+    const newTasksTrack: TaskTrack[] = currentTaskTracks.map((taskTrack) => ({
+      ...taskTrack,
+      taskTrackStatus: 'complete',
+    }));
+    this.completeTasksTrack.emit(newTasksTrack);
   }
 }

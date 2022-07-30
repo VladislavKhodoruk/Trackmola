@@ -26,6 +26,7 @@ export interface TaskTrack {
   projectId: string;
   status: string;
   taskId: string;
+  taskTrackStatus: string;
   userId: string;
 }
 

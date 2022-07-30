@@ -227,6 +227,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       projectId: this.currentProjectId,
       status: this.status,
       taskId: this.currentTaskId,
+      taskTrackStatus: 'new',
       userId: localStorage.getItem('AuthUserId'),
     };
     if (this.formTask) {
