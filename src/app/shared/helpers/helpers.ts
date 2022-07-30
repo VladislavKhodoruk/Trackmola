@@ -1,6 +1,6 @@
 import { SeriesOptionsType } from 'highcharts';
 
-import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
+import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import {
   COLORS_FOR_TASKS,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,

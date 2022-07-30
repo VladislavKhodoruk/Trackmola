@@ -24,10 +24,10 @@
 
     &-header {
       @include height-variables(83%, 4rem);
+      padding-left: var(--offset-l);
 
       font: var(--font-title);
       text-align: left;
-      padding-left: var(--offset-l);
     }
 
     &-container {
