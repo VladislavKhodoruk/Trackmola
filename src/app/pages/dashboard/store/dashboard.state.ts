@@ -24,9 +24,9 @@ export interface DashboardState {
 export const dashboardState: DashboardState = {
   manager: {
     activeProjectFilter: null,
-    modeView: ManagerDashboardView.Arrows,
+    modeView: ManagerDashboardView.Table,
     period: getPeriod(new Date(), PeriodType.TwoWeek),
-    projectsFilter: ['TrackMola'],
+    projectsFilter: [],
     selectedTask: null,
   },
   period: getPeriod(new Date(), PeriodType.Week),
