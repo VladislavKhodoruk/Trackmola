@@ -11,10 +11,12 @@ import {
   getTasksForManager,
   getActiveTask,
   getModeView,
+  getManagerDashboardPeriod,
 } from '@pages/dashboard/store/dashboard.selectors';
 
 import {
   GroupBy,
+  Period,
   Project,
   User,
   Vacations,
@@ -33,6 +35,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [usersInfoByUserId]="usersInfoByUserId$ | async"
     [activeTask]="activeTask$ | async"
     [modeView]="modeView$ | async"
+    [period]="period$ | async"
     (selectTask)="onSelectTask($event)"
   ></app-manager-dashboard>`,
 })
@@ -81,6 +84,10 @@ export class ManagerDashboardContainer {
 
   readonly modeView$: Observable<ManagerDashboardView> =
     this.store$.select(getModeView);
+
+  readonly period$: Observable<Period> = this.store$.select(
+    getManagerDashboardPeriod
+  );
 
   constructor(private store$: Store<TrackMolaState>) {}
 

@@ -9,21 +9,28 @@ import {
 import { SeriesOptionsType } from 'highcharts';
 
 import {
+  managerDashboardChartXRange,
   MANAGER_DASHBOARD_CHART_TREEMAP,
-  MANAGER_DASHBOARD_CHART_X_RANGE,
 } from '@pages/dashboard/constants/constants';
 
 import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
 import {
   DataForChartTreemap,
+  DataForChartXRange,
   TaskForManager,
 } from '@pages/dashboard/interfaces/interface';
-import { COLORS_FOR_TASKS } from '@shared/constants/constants';
-import { getRandomColor } from '@shared/helpers/helpers';
+import {
+  COLORS_FOR_TASKS,
+  ONE_DAY_IN_SECONDS,
+  ONE_WEEK_IN_SECONDS,
+} from '@shared/constants/constants';
+import { getPeriodUTC, getWeekendsFromPeriod } from '@shared/helpers/helpers';
 
 import {
   GroupBy,
+  Period,
   Project,
+  TaskTrack,
   User,
   Vacations,
 } from '@shared/interfaces/interfaces';
@@ -41,78 +48,68 @@ export class ManagerDashboardComponent {
   @Input() readonly activeTask: TaskForManager;
   @Input() readonly usersInfoByUserId: GroupBy<User>;
   @Input() readonly modeView: ManagerDashboardView;
+  @Input() readonly period: Period;
 
   @Output() selectTask = new EventEmitter<TaskForManager>();
 
   managerDashboardView = ManagerDashboardView;
-
-  basicOptionsChartTreemap = MANAGER_DASHBOARD_CHART_TREEMAP;
-  basicOptionsChartXRange = MANAGER_DASHBOARD_CHART_X_RANGE;
-
   tasksColors: string[] = [];
-
-  dataXRange: SeriesOptionsType[] = [
-    {
-      data: [
-        {
-          custom: {
-            duration: '1',
-            userName: 'Andrei2',
-            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
-          },
-          x: Date.UTC(2014, 10, 21),
-          x2: Date.UTC(2014, 11, 2),
-          y: 0,
-        },
-        {
-          custom: {
-            duration: '1',
-            userName: 'Andrei2',
-            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
-          },
-          x: Date.UTC(2014, 11, 2),
-          x2: Date.UTC(2014, 11, 5),
-          y: 1,
-        },
-        {
-          custom: {
-            duration: '1',
-            userName: 'Andrei2',
-            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
-          },
-          x: Date.UTC(2014, 11, 8),
-          x2: Date.UTC(2014, 11, 9),
-          y: 2,
-        },
-        {
-          custom: {
-            duration: '1',
-            userName: 'Andrei2',
-            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
-          },
-          x: Date.UTC(2014, 11, 9),
-          x2: Date.UTC(2014, 11, 19),
-          y: 1,
-        },
-        {
-          custom: {
-            duration: '1',
-            userName: 'Andrei2',
-            userPhoto: 'https://avatars.githubusercontent.com/u/88663763?v=4',
-          },
-          x: Date.UTC(2014, 11, 10),
-          x2: Date.UTC(2014, 11, 23),
-          y: 3,
-        },
-      ],
-      type: 'xrange',
-    },
-  ];
+  basicOptionsChartTreemap = MANAGER_DASHBOARD_CHART_TREEMAP;
 
   constructor() {
-    [...COLORS_FOR_TASKS].forEach(() =>
-      this.tasksColors.push(getRandomColor())
+    this.tasksColors = COLORS_FOR_TASKS.reduce(
+      (accum: string[], color: string) => [...accum, color],
+      []
     );
+  }
+
+  protected get basicOptionsChartXRange() {
+    const periodType: number =
+      (new Date(this.period.end).getTime() -
+        new Date(this.period.start).getTime()) /
+      ONE_WEEK_IN_SECONDS;
+
+    const weekends: {
+      color: string;
+      from: number;
+      to: number;
+    }[] = getWeekendsFromPeriod(this.period).map(({ from, to }) => {
+      const backGroundColor = 'var(--pale-blue)';
+      return {
+        color: backGroundColor,
+        from,
+        to,
+      };
+    });
+
+    return managerDashboardChartXRange({
+      minWidthScroll: periodType < 1 ? 800 : periodType < 2 ? 1500 : 3000,
+      period: getPeriodUTC(this.period),
+      weekDays: weekends,
+    });
+  }
+
+  protected get dataXRange(): SeriesOptionsType[] {
+    let taskTracks: TaskForManager['taskTracksInTask'];
+    let dataForChart: DataForChartXRange[];
+
+    if (this.activeTask) {
+      taskTracks = this.activeTask.taskTracksInTask;
+      dataForChart = this.dataForChartXRange(taskTracks);
+    } else {
+      taskTracks = this.tasksForManager
+        .flatMap((taskTrack) => taskTrack.taskTracksInTask)
+        .sort((a, b) => a.date.seconds - b.date.seconds);
+
+      dataForChart = this.dataForChartXRange(taskTracks);
+    }
+
+    return [
+      {
+        data: dataForChart,
+        type: 'xrange',
+      },
+    ];
   }
 
   protected get dataChartTreemap(): SeriesOptionsType[] {
@@ -170,6 +167,93 @@ export class ManagerDashboardComponent {
           value: userPercent,
         };
       }
+    );
+  }
+
+  private dataForChartXRange(
+    taskTracks: TaskForManager['taskTracksInTask']
+  ): DataForChartXRange[] {
+    const taskTracksGroupByUser: GroupBy<TaskTrack[]> = taskTracks.reduce(
+      (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
+        const userId = taskTrack.userId;
+        if (!accum[userId]) {
+          accum[userId] = [];
+        }
+        accum[userId].push(taskTrack);
+        return accum;
+      },
+      {}
+    );
+
+    return Object.entries(taskTracksGroupByUser).flatMap(
+      ([userId, userTaskTracks], index) => {
+        const userInfo: User = this.usersInfoByUserId[userId];
+        return this.userTaskTracksByPeriods(userTaskTracks).map((taskTrack) => {
+          const dateStart = new Date(taskTrack[0].date.seconds * 1000);
+          const dateFinish = new Date(
+            taskTrack[taskTrack.length - 1].date.seconds * 1000
+          );
+
+          return {
+            custom: {
+              duration: taskTrack.reduce(
+                (allDuration, { duration }) => (allDuration += duration),
+                0
+              ),
+              userName: userInfo.fullName,
+              userPhoto: userInfo.photo,
+            },
+            x: Date.UTC(
+              dateStart.getFullYear(),
+              dateStart.getMonth(),
+              dateStart.getDate()
+            ),
+            x2: Date.UTC(
+              dateFinish.getFullYear(),
+              dateFinish.getMonth(),
+              dateFinish.getDate() + 1
+            ),
+            y: index,
+          };
+        });
+      }
+    );
+  }
+
+  private compareDates(dateFirst: number, dateSecond: number): boolean {
+    const date = new Date(dateFirst * 1000);
+    const date2 = new Date(dateSecond * 1000);
+    const dateUTC = Date.UTC(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    );
+    const date2UTC = Date.UTC(
+      date2.getFullYear(),
+      date2.getMonth(),
+      date2.getDate()
+    );
+    return dateUTC !== date2UTC && dateUTC !== date2UTC + ONE_DAY_IN_SECONDS;
+  }
+
+  private userTaskTracksByPeriods(taskTracks: TaskTrack[]): [TaskTrack?][] {
+    return taskTracks.reduce(
+      (
+        accum: [TaskTrack?][],
+        value: TaskTrack,
+        i: number,
+        array: TaskTrack[]
+      ) => {
+        if (
+          !i ||
+          this.compareDates(value.date.seconds, array[i - 1].date.seconds)
+        ) {
+          accum.push([]);
+        }
+        accum[accum.length - 1].push(value);
+        return accum;
+      },
+      []
     );
   }
 }

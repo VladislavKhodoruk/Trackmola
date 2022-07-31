@@ -83,6 +83,8 @@
     .x-range-dataLabel {
       @include flex(center, space-between);
       padding-right: var(--offset);
+      padding-left: var(--offset-s);
+
       font: var(--font-blocks);
       font-weight: 400;
       color: white;
@@ -94,6 +96,27 @@
 
       & img {
         @include profile-photo(2rem, 2rem);
+      }
+    }
+
+    .x-range-xAxis-label {
+      font: var(--font-blocks);
+      font-weight: 400;
+      color: #969696;
+    }
+
+    .highcharts-scrolling {
+      $width-scroll: var(--offset-s);
+
+      &::-webkit-scrollbar {
+        height: #{$width-scroll};
+
+        background-color: var(--white);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--gray4);
+        border-radius: var(--border-radius-l);
       }
     }
   }

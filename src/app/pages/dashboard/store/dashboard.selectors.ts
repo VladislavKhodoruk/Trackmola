@@ -28,6 +28,22 @@ export const getDashboardPeriod = createSelector(
   ({ period }) => period
 );
 
+export const getManagerDashboardPeriod = createSelector(
+  getDashboardState,
+  ({ manager }) => manager.period
+);
+
+export const getTasksTrackByPeriod = createSelector(
+  getTasksTrack,
+  getManagerDashboardPeriod,
+  (taskTracks, period) =>
+    taskTracks.filter(
+      (taskTrack) =>
+        taskTrack.date.seconds * 1000 >= period.start &&
+        taskTrack.date.seconds * 1000 <= period.end
+    )
+);
+
 export const getWeekReportTime = createSelector(
   getTasksTrack,
   getDashboardPeriod,
@@ -85,7 +101,7 @@ export const projectInfoByProjectId = createSelector(getProjects, (projects) =>
 
 export const taskTracksDurationGroupByTask = createSelector(
   getTasks,
-  getTasksTrack,
+  getTasksTrackByPeriod,
   (tasks, taskTracks) =>
     tasks.reduce((accum, task) => {
       const activeTaskTracks = taskTracks
@@ -97,7 +113,7 @@ export const taskTracksDurationGroupByTask = createSelector(
 
 export const taskTracksGroupByTask = createSelector(
   getTasks,
-  getTasksTrack,
+  getTasksTrackByPeriod,
   (tasks, taskTracks) =>
     tasks.reduce((accum, task) => {
       const activeTasks = taskTracks.filter(({ taskId }) => taskId === task.id);
@@ -118,7 +134,7 @@ export const getActiveProjectFilter = createSelector(
 export const getTasksForManager = createSelector(
   getTasks,
   getActiveProjectFilter,
-  getTasksTrack,
+  getTasksTrackByPeriod,
   taskTracksDurationGroupByTask,
   taskTracksGroupByTask,
   (tasks, activeProject, taskTracks, durationInfo, taskTracksInfo) => {

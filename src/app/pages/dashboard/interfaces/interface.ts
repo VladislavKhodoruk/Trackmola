@@ -11,3 +11,14 @@ export interface DataForChartTreemap {
   name: User['fullName'];
   value: number;
 }
+
+export interface DataForChartXRange {
+  custom: {
+    duration: number;
+    userName: User['fullName'];
+    userPhoto: User['photo'];
+  };
+  x: number;
+  x2: number;
+  y: number;
+}
