@@ -20,15 +20,10 @@ export class ProjectEfficiencyComponent implements OnChanges {
   readonly basicOptions: Options = BASIC_OPTIONS_EFFICIENCY_PIE;
 
   public efficiency: Efficiency;
+  public efficiencyIndex: string;
 
   get seriesData(): SeriesOptionsType[] {
     if ((this.tasks, this.startOfWeek, this.presentDay)) {
-      this.basicOptions.title.text =
-        String(
-          (
-            getEfficiency(this.tasks, this.startOfWeek, this.presentDay) * 100
-          ).toFixed(1)
-        ) + '%';
       return [
         {
           data: [
@@ -56,6 +51,12 @@ export class ProjectEfficiencyComponent implements OnChanges {
         overtimes: outOfNorm(this.tasks, this.presentDay).overtimes,
         shortages: outOfNorm(this.tasks, this.presentDay).shortages,
       };
+      this.efficiencyIndex =
+        String(
+          (
+            getEfficiency(this.tasks, this.startOfWeek, this.presentDay) * 100
+          ).toFixed(1)
+        ) + '%';
     }
   }
 }

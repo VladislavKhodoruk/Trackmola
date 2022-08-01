@@ -2,6 +2,7 @@
 
 :host {
   .project-efficiency {
+    position: relative;
     @include flex(normal, normal, 4rem);
 
     overflow: hidden;
@@ -36,6 +37,15 @@
       gap: var(--offset-dl);
 
       height: 100%;
+
+      &-indexEfficiency {
+        position: absolute;
+        top: 57%;
+        left: 28%;
+        transform: translate(-50%, -50%);
+        font: var(--font-title);
+        color: var(--primary);
+      }
     }
 
     &-wrapper {
@@ -68,10 +78,6 @@
 
       padding: 3% 1% 1%;
 
-      &-wrapper {
-        height: 140%;
-      }
-
       &-hart-info-text {
         height: 100%;
       }
@@ -80,8 +86,11 @@
         gap: 0;
         justify-content: space-around;
 
-        p {
-          font-size: var(--offset-d);
+        &-indexEfficiency {
+          top: 61%;
+          left: 30%;
+          font: var(--offset-d);
+          font-weight: 600;
         }
       }
 
@@ -106,7 +115,7 @@
       padding: 2% 0 0;
 
       &-wrapper {
-        height: 110%;
+        height: 100%;
       }
 
       &-hart-info-text {

@@ -268,6 +268,19 @@ export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
           maxWidth: 230,
         },
       },
+      {
+        chartOptions: {
+          title: {
+            style: {
+              fontSize: 'var(--offset-d)',
+            },
+            y: -5,
+          },
+        },
+        condition: {
+          maxWidth: 190,
+        },
+      },
     ],
   },
   subtitle: {

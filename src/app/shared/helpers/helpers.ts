@@ -59,7 +59,7 @@ export function searchInWeek(
   currentProject: string,
   weekTasksByDays: ModifiedTask[] | object
 ): number[] {
-  return Object.values(weekTasksByDays).map((day: ModifiedTask[] | []) => {
+  return Object.values(weekTasksByDays).map((day: ModifiedTask[]) => {
     if (day.length === 1 && day[0].projectName === currentProject) {
       return day[0].duration;
     }
