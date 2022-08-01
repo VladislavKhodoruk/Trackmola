@@ -1,1 +1,42 @@
-<p>admin-dashboard works!</p>
+<header class="dashboard-header">
+  <h1 class="dashboard-header-title">My dashboard</h1>
+  <div class="flex-container">
+    <app-toggle-buttons
+      [labels]="labelsMode"
+      [checked]="checkedMode"
+      (changeMode)="changeMode($event)"
+    ></app-toggle-buttons>
+    <div class="dashboard-header-time">
+      <h2 class="dashboard-header-date">{{ today | date: "EEEE, dd MMM" }}</h2>
+      <app-clock class="dashboard-header-clock"></app-clock>
+    </div>
+  </div>
+</header>
+<div class="dashboard-search-and-sort">
+  <input
+    class="input dashboard-search"
+    type="text"
+    placeholder="Search..."
+    [formControl]="search"
+  />
+  <div class="flex-container" *ngFor="let label of labelsSort">
+    <app-button
+      buttonClass="button-secondary"
+      [icon]="sortDescendingIcon"
+      [label]="label"
+      iconWidth="1.5rem"
+      iconHeight="1.5rem"
+      (buttonClick)="changeSort(label)"
+    ></app-button>
+  </div>
+</div>
+<main class="dashboard-main">
+  <div class="dashboard-main-user-cards">
+    <app-users-cards
+      [users]="currentUsers"
+      [taskTracksDurationGroupByUser]="taskTracksDurationGroupByUser"
+      (userCardClick)="changeCurrentUser($event)"
+    ></app-users-cards>
+  </div>
+</main>
+<footer></footer>

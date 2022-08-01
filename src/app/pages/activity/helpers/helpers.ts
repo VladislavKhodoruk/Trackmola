@@ -34,7 +34,7 @@ export function getRestTime(type?: PeriodType | 'week' | 'month'): number {
     }
     case PeriodType.Month: {
       let restMonthHours = 0;
-      for (let i = 1; i <= date.getDate(); i++) {
+      for (let i = 2; i <= date.getDate(); i++) {
         const currentDate = new Date(
           date.getFullYear(),
           date.getMonth(),

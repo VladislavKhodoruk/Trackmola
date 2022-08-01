@@ -10,7 +10,7 @@
     flex-direction: column;
 
     height: 100%;
-    padding: 7% 13% 13%;
+    padding: 5% 15% 5%;
 
     border-radius: var(--border-radius-l);
     box-shadow: $border-radius-activity-total-cards;
@@ -34,13 +34,13 @@
     }
 
     &-title {
-      font: var(--font-blocks);
+      font: var(--font-main);
       color: var(--gray2);
       text-transform: capitalize;
     }
 
     &-hours {
-      font: var(--font-titleBig);
+      font: var(--font-title);
       color: var(--black);
     }
 
@@ -55,7 +55,7 @@
         width: 80%;
         margin: 0 auto;
 
-        font: var(--font-current-small);
+        font: var(--font-currentSmall);
         color: var(--gray2);
         text-align: right;
       }

@@ -1,0 +1,101 @@
+@import "vars/variables";
+@import "mixins";
+
+:host {
+  .users-cards {
+    padding: var(--offset-xs) 0;
+    width: 100%;
+    overflow: auto;
+    @include flex(flex-start, flex-start, var(--offset));
+    flex-wrap: wrap;
+
+    &-item {
+      padding: var(--offset);
+      border: $border-input;
+      border-radius: var(--border-radius-l);
+
+      cursor: pointer;
+
+      &-header {
+        @include flex(flex-start, space-between);
+        margin-bottom: var(--offset);
+        font: var(--font-buttonSmall);
+
+        &-percentage {
+          font: var(--font-buttonSmall);
+          color: var(--primary);
+        }
+
+        &-buttons {
+          visibility: hidden;
+          margin-top: -0.5rem;
+          @include flex(flex-start, space-between, var(--offset-xs));
+        }
+      }
+
+      &-main {
+        margin-bottom: var(--offset);
+        @include flex(center, flex-start, var(--offset-xs));
+        flex-direction: column;
+
+        &-photo {
+          @include profile-photo(5rem, 5rem);
+        }
+
+        &-location {
+          margin-bottom: var(--offset-s);
+          font: var(--font-buttonMiddle);
+          color: var(--gray2);
+        }
+
+        &-name {
+          font: var(--font-main);
+          color: var(--black);
+        }
+
+        &-position {
+          font: var(--font-main);
+          font-weight: 300;
+          color: var(--gray2);
+        }
+      }
+
+      &-footer {
+        &-title {
+          text-align: right;
+          font: var(--font-buttonSmall);
+          font-weight: 300;
+          color: var(--gray2);
+        }
+
+        &-bar {
+          width: 100%;
+          height: 0.5rem;
+          margin: 0 auto;
+
+          background-color: var(--gray5);
+          border: none;
+          border-radius: var(--border-radius-xxl);
+
+          &-progress {
+            width: 0;
+            height: 100%;
+
+            border: none;
+            border-radius: var(--border-radius-xxl);
+
+            background-color: var(--primary);
+          }
+        }
+      }
+
+      &:hover {
+        box-shadow: $border-input-select;
+
+        .users-cards-item-header-buttons {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
