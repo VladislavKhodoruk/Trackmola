@@ -3,6 +3,7 @@ import { SeriesOptionsType } from 'highcharts';
 import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import {
   COLORS_FOR_TASKS,
+  OutputRate,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
@@ -58,7 +59,7 @@ export function searchInWeek(
   currentProject: string,
   weekTasksByDays: ModifiedTask[] | object
 ): number[] {
-  return Object.values(weekTasksByDays).map((day: [] | ModifiedTask[]) => {
+  return Object.values(weekTasksByDays).map((day: ModifiedTask[] | []) => {
     if (day.length === 1 && day[0].projectName === currentProject) {
       return day[0].duration;
     }
@@ -127,15 +128,10 @@ export function getEfficiency(
     .reduce((acc, prev) => acc + prev, 0);
   const requiredAmount =
     (1 + new Date(presentDay).getDay() - new Date(startOfWeek).getDay()) * 8;
-  let efficiency: number;
-  if (totalHours < requiredAmount) {
-    efficiency = totalHours / requiredAmount;
-  } else if (totalHours > requiredAmount) {
-    efficiency = totalHours / requiredAmount - 1;
-  } else {
-    efficiency = 1;
-  }
-  return efficiency;
+
+  return totalHours <= requiredAmount
+    ? totalHours / requiredAmount
+    : totalHours / requiredAmount - 1;
 }
 
 export function outOfNorm(tasks: TaskTrack[], presentDay: number): OutOfMain {
@@ -160,17 +156,20 @@ export function outOfNorm(tasks: TaskTrack[], presentDay: number): OutOfMain {
     .map((item: TaskTrack[]) =>
       item.reduce((acc, prev) => acc + prev.duration, 0)
     )
-    .forEach((day, index) => {
-      if (day <= 8 && index <= new Date(presentDay).getDay() - 1) {
-        mismatch.shortages += 8 - day;
-        mismatch.working += day;
+    .forEach((dayDuration, index) => {
+      if (dayDuration <= OutputRate && index < new Date(presentDay).getDay()) {
+        mismatch.shortages += OutputRate - dayDuration;
+        mismatch.working += dayDuration;
       }
-      if (day > 8 && index <= new Date(presentDay).getDay() - 1) {
-        mismatch.overtimes += day - 8;
-        mismatch.working += 8;
+      if (
+        dayDuration > OutputRate &&
+        index <= new Date(presentDay).getDay() - 1
+      ) {
+        mismatch.overtimes += dayDuration - OutputRate;
+        mismatch.working += OutputRate;
       }
       if (index === new Date(presentDay).getDay()) {
-        mismatch.overtimes = day;
+        mismatch.overtimes = dayDuration;
       }
     });
   return mismatch;

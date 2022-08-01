@@ -46,18 +46,6 @@ export class ProjectEfficiencyComponent implements OnChanges {
           type: 'pie',
         },
       ];
-    } else {
-      return [
-        {
-          data: [
-            {
-              color: 'var(--primary)',
-              y: 0,
-            },
-          ],
-          type: 'pie',
-        },
-      ];
     }
   }
 
