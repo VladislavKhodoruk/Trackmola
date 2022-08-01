@@ -78,9 +78,12 @@ export function getDataForChart(
   tasks: TaskTrack[],
   projects: Project[]
 ): SeriesOptionsType[] {
-  const weekTasksByDays = {};
-  SHORT_NAMES_OF_THE_WEEK_UPPERCASE.forEach(
-    (item) => (weekTasksByDays[item] = [])
+  const weekTasksByDays = SHORT_NAMES_OF_THE_WEEK_UPPERCASE.reduce(
+    (acc, prev) => {
+      acc[prev] = [];
+      return acc;
+    },
+    {}
   );
 
   const desiredTasks = tasks.map(
@@ -119,11 +122,11 @@ export function getRandomColor(): string {
 }
 
 export function getEfficiency(
-  tasks: TaskTrack[],
+  taskTrack: TaskTrack[],
   startOfWeek: number,
   presentDay: number
 ): number {
-  const totalHours = tasks
+  const totalHours = taskTrack
     .map((task: TaskTrack) => task.duration)
     .reduce((acc, prev) => acc + prev, 0);
   const requiredAmount =
@@ -139,9 +142,12 @@ export function outOfNorm(
   taskTrack: TaskTrack[],
   presentDay: number
 ): OutOfMain {
-  const weekTasksByDays = {};
-  SHORT_NAMES_OF_THE_WEEK_UPPERCASE.forEach(
-    (item) => (weekTasksByDays[item] = [])
+  const weekTasksByDays = SHORT_NAMES_OF_THE_WEEK_UPPERCASE.reduce(
+    (acc, prev) => {
+      acc[prev] = [];
+      return acc;
+    },
+    {}
   );
 
   taskTrack.forEach((task: TaskTrack) => {
