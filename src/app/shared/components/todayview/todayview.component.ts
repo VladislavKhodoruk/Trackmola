@@ -28,8 +28,6 @@ export class TodayviewComponent implements OnChanges {
 
   @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() deleteTaskTrack = new EventEmitter<string>();
-  @Output() completeTasksTrack = new EventEmitter<TaskTrack[]>();
-  @Output() submitTasksTrack = new EventEmitter<TaskTrack[]>();
 
   maxDuration = 100;
   taskItems: TaskItem[];

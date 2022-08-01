@@ -23,15 +23,14 @@ export class ReportContainer {
   taskTracks$ = this.store$.select(getTasksTrack);
   currentDate$ = this.store$.select(getDate);
 
-  putIntoStore(taskTrack: TaskTrack): void {
-    this.store$.dispatch(putTaskTrack({ taskTrack }));
-  }
-
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   constructor(
     private store$: Store<TrackMolaState>,
     private commonStore$: Store<CommonState>
   ) {}
+
+  putIntoStore(taskTrack: TaskTrack): void {
+    this.store$.dispatch(putTaskTrack({ taskTrack }));
+  }
 
   submitReport(taskstrack: TaskTrack[]) {
     taskstrack.forEach((tasktrack) =>

@@ -10,7 +10,6 @@ import {
   getTasks,
   getTasksTrack,
 } from '@store/common/common.selectors';
-import { CommonState } from '@store/common/common.state';
 import { TrackMolaState } from 'app/store/trackMola.state';
 
 @Component({
@@ -30,10 +29,7 @@ export class TodayviewContainer {
   projects$ = this.store$.select(getProjects);
   currentDate$ = this.store$.select(getDate);
 
-  constructor(
-    private store$: Store<TrackMolaState>,
-    private commonStore$: Store<CommonState>
-  ) {}
+  constructor(private store$: Store<TrackMolaState>) {}
 
   putIntoStore(taskTrack: TaskTrack): void {
     this.store$.dispatch(putTaskTrack({ taskTrack }));

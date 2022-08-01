@@ -34,7 +34,7 @@ export class ReportComponent {
     );
   }
 
-  submitReport() {
+  submitReport(): void {
     const sendedTaskTracks = this.getFilteredTasksTracks();
     const sendedTasksTrack: TaskTrack[] = sendedTaskTracks.map((taskTrack) => ({
       ...taskTrack,

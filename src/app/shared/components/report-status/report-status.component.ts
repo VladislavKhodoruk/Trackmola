@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import check from '@iconify/icons-tabler/check';
 import { IconifyIcon } from '@iconify/types';
 
@@ -12,6 +12,5 @@ export class ReportStatusComponent {
   @Input() iconWidth!: string;
   @Input() iconHeight!: string;
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
   readonly iconCheck = check;
 }
