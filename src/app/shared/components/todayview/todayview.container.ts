@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 
 import { putTaskTrack } from '@pages/report/store/report.actions';
 import { TaskTrack } from '@shared/interfaces/interfaces';
-import { deleteTaskTrack, updateTaskTrack } from '@store/common/common.actions';
+import { deleteTaskTrack } from '@store/common/common.actions';
 import {
   getDate,
   getProjects,
@@ -22,7 +22,6 @@ import { TrackMolaState } from 'app/store/trackMola.state';
     [currentDate]="currentDate$ | async"
     (taskTrack)="putIntoStore($event)"
     (deleteTaskTrack)="deleteTaskTrack($event)"
-    (completeTasksTrack)="completeTasksTrack($event)"
   ></app-todayview-component>`,
 })
 export class TodayviewContainer {
@@ -42,11 +41,5 @@ export class TodayviewContainer {
 
   deleteTaskTrack(id: string): void {
     this.store$.dispatch(deleteTaskTrack({ id }));
-  }
-
-  completeTasksTrack(taskstrack: TaskTrack[]) {
-    taskstrack.forEach((tasktrack) =>
-      this.commonStore$.dispatch(updateTaskTrack({ tasktrack }))
-    );
   }
 }

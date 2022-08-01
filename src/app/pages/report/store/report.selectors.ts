@@ -3,7 +3,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ReportState } from './report.state';
 
 import { StateName } from '@shared/enums/enum';
-import { getPeriod } from '@shared/helpers/helpers';
 
 export const REPORT_STATE_NAME = StateName.Report;
 
@@ -23,13 +22,3 @@ export const getTaskTrack = createSelector(
   getReportState,
   (state) => state.taskTrack
 );
-
-// export const taskTracksGroupByComplete = createSelector(
-//   getTaskTrack,
-//   getPeriod,
-//   (users, taskTracks) =>
-//     users.reduce((accum, user) => {
-//       const activeTasks = taskTracks.filter(({ userId }) => userId === user.id);
-//       return { ...accum, [user.id]: activeTasks };
-//     }, {})
-// );

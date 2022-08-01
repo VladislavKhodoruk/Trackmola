@@ -1,0 +1,29 @@
+@import "vars/variables";
+@import "mixins";
+
+:host {
+  .status {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin: var(--offset-l);
+
+    &.new,
+    &.new:before {
+      background: var(--warning);
+    }
+
+    &.send,
+    &.send:before {
+      background: var(--white);
+      border: var(--border-xxs) solid var(--primary);
+    }
+
+    &.approuve,
+    &.approuve:before {
+      background: var(--primary);
+    }
+  }
+}
