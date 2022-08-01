@@ -73,13 +73,13 @@ export function getDataForChart(
   projects: Project[]
 ): SeriesOptionsType[] {
   const weekTasksByDays: WeekType = {
-    MON: [],
-    TUE: [],
-    WED: [],
-    THU: [],
     FRI: [],
+    MON: [],
     SAT: [],
     SUN: [],
+    THU: [],
+    TUE: [],
+    WED: [],
   };
   tasks.sort((a, b) => a.date.seconds - b.date.seconds);
   const desiredTasks = tasks.map(

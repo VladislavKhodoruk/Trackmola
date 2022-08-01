@@ -29,29 +29,31 @@
     }
 
     &-search-and-sort {
-      height: 10%;
       @include flex(center, flex-start, var(--offset));
+      height: 10%;
     }
 
     &-search {
-      padding-right: var(--offset-l);
       width: 20%;
       max-height: 3rem;
+      padding-right: var(--offset-l);
+
       background: url("https://api.iconify.design/tabler/search.svg?color=%23808689")
         no-repeat;
       background-position: 95% 50%;
     }
 
     &-main {
+      @include flex(flex-start, space-between, var(--offset));
       height: 60%;
       margin-top: var(--offset);
       padding: var(--offset-xs);
-      @include flex(flex-start, space-between, var(--offset));
 
       &-user-cards {
-        max-height: 100%;
         overflow: auto;
         flex: 4;
+
+        max-height: 100%;
       }
 
       &-total-cards {

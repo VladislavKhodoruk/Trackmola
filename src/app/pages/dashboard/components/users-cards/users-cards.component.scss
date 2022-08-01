@@ -3,22 +3,25 @@
 
 :host {
   .users-cards {
-    padding: var(--offset-xs) 0;
-    width: 100%;
-    overflow: auto;
     @include flex(flex-start, flex-start, var(--offset));
+    overflow: auto;
     flex-wrap: wrap;
 
+    width: 100%;
+    padding: var(--offset-xs) 0;
+
     &-item {
+      cursor: pointer;
+
       padding: var(--offset);
+
       border: $border-input;
       border-radius: var(--border-radius-l);
-
-      cursor: pointer;
 
       &-header {
         @include flex(flex-start, space-between);
         margin-bottom: var(--offset);
+
         font: var(--font-buttonSmall);
 
         &-percentage {
@@ -27,16 +30,18 @@
         }
 
         &-buttons {
-          visibility: hidden;
-          margin-top: -0.5rem;
           @include flex(flex-start, space-between, var(--offset-xs));
+          margin-top: -0.5rem;
+
+          visibility: hidden;
         }
       }
 
       &-main {
-        margin-bottom: var(--offset);
         @include flex(center, flex-start, var(--offset-xs));
         flex-direction: column;
+
+        margin-bottom: var(--offset);
 
         &-photo {
           @include profile-photo(5rem, 5rem);
@@ -44,6 +49,7 @@
 
         &-location {
           margin-bottom: var(--offset-s);
+
           font: var(--font-buttonMiddle);
           color: var(--gray2);
         }
@@ -62,10 +68,10 @@
 
       &-footer {
         &-title {
-          text-align: right;
           font: var(--font-buttonSmall);
           font-weight: 300;
           color: var(--gray2);
+          text-align: right;
         }
 
         &-bar {
@@ -81,10 +87,9 @@
             width: 0;
             height: 100%;
 
+            background-color: var(--primary);
             border: none;
             border-radius: var(--border-radius-xxl);
-
-            background-color: var(--primary);
           }
         }
       }
