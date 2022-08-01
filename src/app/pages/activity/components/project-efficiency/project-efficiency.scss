@@ -47,6 +47,7 @@
       @include width-variables(60%, 1.425rem);
       @include flex(normal, center);
       flex-direction: column;
+
       height: 70%;
     }
   }

@@ -127,20 +127,24 @@ export function getEfficiency(
     .map((task: TaskTrack) => task.duration)
     .reduce((acc, prev) => acc + prev, 0);
   const requiredAmount =
-    (1 + new Date(presentDay).getDay() - new Date(startOfWeek).getDay()) * 8;
+    (1 + new Date(presentDay).getDay() - new Date(startOfWeek).getDay()) *
+    OutputRate;
 
   return totalHours <= requiredAmount
     ? totalHours / requiredAmount
     : totalHours / requiredAmount - 1;
 }
 
-export function outOfNorm(tasks: TaskTrack[], presentDay: number): OutOfMain {
+export function outOfNorm(
+  taskTrack: TaskTrack[],
+  presentDay: number
+): OutOfMain {
   const weekTasksByDays = {};
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE.forEach(
     (item) => (weekTasksByDays[item] = [])
   );
 
-  tasks.forEach((task: TaskTrack) => {
+  taskTrack.forEach((task: TaskTrack) => {
     const currentDay: number = task.date.toDate().getDay() - 1;
     const day: string = SHORT_NAMES_OF_THE_WEEK_UPPERCASE[currentDay];
     weekTasksByDays[day] = [...weekTasksByDays[day], task];
