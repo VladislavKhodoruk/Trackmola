@@ -1,0 +1,129 @@
+<div class="team-list">
+  <form
+    class="form-report"
+    [formGroup]="form"
+    (ngSubmit)="filterUsers()"
+    (reset)="filterUsers()"
+  >
+    <div class="form-report-top">
+      <div class="form-report-top-search">
+        <input
+          class="input form-report-top-search-input"
+          type="text"
+          placeholder="Search..."
+          (input)="text($event)"
+        />
+        <ic-icon
+          class="icon form-report-top-search-icon"
+          [icon]="iconSearch"
+        ></ic-icon>
+      </div>
+      <button
+        type="button"
+        class="form-report-top-filter"
+        (click)="filterState = !filterState"
+      >
+        <ic-icon
+          class="icon form-report-top-filter-icon"
+          [icon]="iconFilter"
+        ></ic-icon>
+      </button>
+    </div>
+    <div class="form-report-filters" [@filter]="{ value: filterState }">
+      <mat-form-field appearance="fill">
+        <input
+          type="text"
+          placeholder="Project"
+          matInput
+          formControlName="project"
+          [matAutocomplete]="projects"
+          (blur)="isProject()"
+        />
+        <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+
+        <mat-autocomplete #projects="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredProjectsOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <input
+          type="text"
+          placeholder="Location"
+          matInput
+          formControlName="location"
+          [matAutocomplete]="locations"
+          (blur)="isLocation()"
+        />
+        <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+
+        <mat-autocomplete #locations="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredLocationsOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <input
+          type="text"
+          placeholder="Position"
+          matInput
+          formControlName="position"
+          [matAutocomplete]="positions"
+          (blur)="isPosition()"
+        />
+        <ic-icon class="mat-form-field-icon" [icon]="iconAngleLeftB"></ic-icon>
+
+        <mat-autocomplete #positions="matAutocomplete">
+          <mat-option
+            *ngFor="let option of filteredPositionsOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div class="form-report-bottom">
+      <div class="form-report-bottom-vacation">
+        <input
+          type="checkbox"
+          id="checkbox"
+          class="form-report-bottom-vacation-checkbox"
+        />
+        <label for="checkbox"></label>
+        <ic-icon
+          [icon]="pineappleIcon"
+          class="form-report-bottom-vacation-icon"
+        ></ic-icon>
+      </div>
+      <div class="form-report-bottom-buttons">
+        <button class="form-report-bottom-buttons-reset" type="reset">
+          Reset
+        </button>
+        <button
+          class="form-report-bottom-buttons-submit"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="team-list-cards" [@filterAnimation]="filteredUserCards.length">
+    <app-user-card
+      *ngFor="let card of filteredUserCards"
+      [userCard]="card"
+    ></app-user-card>
+  </div>
+</div>

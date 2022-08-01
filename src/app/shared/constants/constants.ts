@@ -101,3 +101,22 @@ export const dialogOpeningTime = '300ms';
 export const CHAR_CREATE_COLOR = '0123456789ABCDEF';
 
 export const NUMBER_CHAR_CREATE_COLOR = 6;
+
+export const COLORS_FOR_TASKS = [
+  'var(--task-violet)',
+  'var(--task-marine)',
+  'var(--task-sea)',
+  'var(--task-violet2)',
+  'var(--task-marine2)',
+  'var(--task-sea2)',
+  'var(--task-flover)',
+  'var(--task-roses)',
+  'var(--task-landscape)',
+  'var(--task-salad)',
+  'var(--task-lips)',
+  'var(--task-peche)',
+  'var(--task-salad2)',
+  'var(--task-violet3)',
+];
+
+export const OutputRate = 8;

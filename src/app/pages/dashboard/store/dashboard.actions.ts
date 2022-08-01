@@ -11,6 +11,8 @@ export const GET_WEEK_REPORT_TIME_SUCCESS =
   '[Dashboard page] get week report time success';
 
 export const SET_PROJECT_FILTER = '[Dashboard page] set project filter';
+export const SET_ACTIVE_PROJECT_FILTER =
+  '[Dashboard page] set active project filter';
 export const REMOVE_PROJECT_FILTER = '[Dashboard page] remove project filter';
 
 export const CHANGE_MANAGER_MAIN_VIEW =
@@ -32,10 +34,12 @@ export const setProjectFilter = createAction(
   props<{ projectName: Project['name'] }>()
 );
 
-export const removeProjectFilter = createAction(
-  REMOVE_PROJECT_FILTER,
-  props<{ projectName: Project['name'] }>()
+export const setActiveProjectFilter = createAction(
+  SET_ACTIVE_PROJECT_FILTER,
+  props<{ activeProject: Project }>()
 );
+
+export const removeProjectFilter = createAction(REMOVE_PROJECT_FILTER);
 
 export const changeManagerMainView = createAction(
   CHANGE_MANAGER_MAIN_VIEW,

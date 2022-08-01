@@ -23,10 +23,6 @@ export const getSearchValue = createSelector(
   ({ searchValue }) => searchValue
 );
 
-export const usersInfoByUserId = createSelector(getUsers, (users) =>
-  users.reduce((accum, user) => ({ ...accum, [user.id]: user }), {})
-);
-
 export const tasksInfoByTaskId = createSelector(getTasks, (tasks) =>
   tasks.reduce((accum, task) => ({ ...accum, [task.id]: task }), {})
 );
@@ -130,9 +126,16 @@ export const activeTaskTracksDurationGroupByTask = createSelector(
     tasks.reduce((accum, task) => {
       const activeTasks = taskTracks
         .filter(
-          (taskTrack) => taskTrack.taskId === task.id && taskTrack.duration > 0
+          (taskTrack) =>
+            taskTrack.taskId === task.id &&
+            taskTrack.duration > 0 &&
+            taskTrack.overtimeDuration > 0
         )
-        .reduce((result, taskTrack) => (result += taskTrack.duration), 0);
+        .reduce(
+          (result, taskTrack) =>
+            (result += taskTrack.duration + taskTrack.overtimeDuration),
+          0
+        );
       return activeTasks > 0 ? { ...accum, [task.id]: activeTasks } : accum;
     }, {})
 );

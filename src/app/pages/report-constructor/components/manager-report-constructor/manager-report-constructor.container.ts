@@ -3,7 +3,9 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
+import { ExcelData } from '@pages/report-constructor/interfaces/interfaces';
 import {
+  exportExel,
   setPeriod,
   setProject,
 } from '@pages/report-constructor/store/report-constructor.actions';
@@ -36,6 +38,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [tasks]="tasks$ | async"
     (changeStorePeriod)="changePeriod($event)"
     (changeStoreProjectId)="changeProjectId($event)"
+    (exportExel)="exportExel($event)"
   ></app-manager-report-constructor>`,
 })
 export class ManagerReportConstructorContainer {
@@ -54,5 +57,9 @@ export class ManagerReportConstructorContainer {
 
   changeProjectId(projectId: string): void {
     this.store$.dispatch(setProject({ projectId }));
+  }
+
+  exportExel(data: ExcelData) {
+    this.store$.dispatch(exportExel({ data }));
   }
 }

@@ -1,20 +1,26 @@
 <section class="project-efficiency">
   <h2 class="project-efficiency-header">Project efficiency</h2>
-  <div class="project-efficiency-hart-info">
-    <img src="assets/img/activity/Circle%20diaram.svg" />
+  <div class="project-efficiency-container">
+    <div class="project-efficiency-wrapper">
+      <app-highcharts-chart
+        class="project-efficiency-chart"
+        [options]="basicOptions"
+        [data]="seriesData"
+      ></app-highcharts-chart>
+    </div>
     <div class="project-efficiency-hart-info-text">
       <p>
-        Total project <span>{{ efficiency.complited }}</span> of them:
+        Effective work hours <span>{{ efficiency.completed }}</span>
       </p>
       <p>
-        completed projects <span>{{ efficiency.complited }}</span>
+        Shortcomming <span>{{ efficiency.shortages }}</span>
       </p>
       <p>
-        shortages <span>{{ efficiency.shortages }}</span>
-      </p>
-      <p>
-        overtimes <span>{{ efficiency.overtimes }}</span>
+        Over worked hours <span>{{ efficiency.overtimes }}</span>
       </p>
     </div>
+    <p class="project-efficiency-container-indexEfficiency">
+      {{ efficiencyIndex }}
+    </p>
   </div>
 </section>

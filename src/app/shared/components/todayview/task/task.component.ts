@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import fireIcon from '@iconify/icons-emojione/fire';
 import pencil from '@iconify/icons-tabler/pencil';
 import trash from '@iconify/icons-tabler/trash';
+import { IconifyIcon } from '@iconify/types';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
@@ -22,8 +24,9 @@ export class TaskComponent {
   @Output() edit = new EventEmitter<string>();
   @Output() delete = new EventEmitter<string>();
 
-  iconTrash = trash;
-  iconPencil = pencil;
+  readonly iconTrash: IconifyIcon = trash;
+  readonly iconPencil: IconifyIcon = pencil;
+  readonly iconFire: IconifyIcon = fireIcon;
 
   constructor(public dialog: MatDialog) {}
 

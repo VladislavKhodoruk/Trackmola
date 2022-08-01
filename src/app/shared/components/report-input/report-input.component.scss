@@ -46,6 +46,12 @@
 }
 
 :host {
+  * {
+    user-select: none;
+
+    -webkit-touch-callout: none;
+  }
+
   .form-report {
     position: relative;
     z-index: 0;
@@ -90,6 +96,46 @@
       flex-direction: column;
     }
 
+    &-status {
+      @include flex(flex-start, flex-start, var(--offset-s));
+    }
+
+    &-overtime-check {
+      @include flex(center, flex-start);
+      margin-left: var(--offset-l);
+
+      &-checkbox {
+        display: none;
+
+        &-label {
+          cursor: pointer;
+
+          width: 1.5rem;
+          height: 1.5rem;
+
+          text-align: center;
+
+          background-color: var(--white);
+          border: var(--border-xs) solid var(--primary) !important;
+          border-radius: var(--border-radius);
+
+          &::before {
+            content: url("https://api.iconify.design/tabler/check.svg?color=%237353d0");
+
+            font-size: 1.1rem;
+          }
+        }
+
+        &-icon {
+          @include flex(center, flex-start);
+
+          cursor: pointer;
+
+          margin-left: var(--offset-s);
+        }
+      }
+    }
+
     &-duration {
       @include flex(center, center);
 
@@ -99,10 +145,6 @@
       background-color: var(--white);
       border: $border-input;
       border-radius: var(--offset-d);
-
-      &-label {
-        margin-bottom: var(--offset-xs);
-      }
 
       &-input {
         width: var(--offset-dl);
@@ -202,6 +244,16 @@
         margin: 0 var(--offset-l);
       }
     }
+  }
+
+  .form-report-overtime-check-checkbox:checked
+    + .form-report-overtime-check-checkbox-label {
+    background-color: var(--primary);
+  }
+
+  .form-report-overtime-check-checkbox:checked
+    + .form-report-overtime-check-checkbox-label::before {
+    content: url("https://api.iconify.design/tabler/check.svg?color=white");
   }
 
   .cancel-button {
@@ -342,5 +394,9 @@
     color: var(--primary-hover);
 
     opacity: 0.8;
+  }
+
+  .flex-container {
+    @include flex(center, flex-start, var(--offset));
   }
 }

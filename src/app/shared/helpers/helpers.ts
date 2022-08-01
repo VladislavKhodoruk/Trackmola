@@ -1,13 +1,18 @@
 import { SeriesOptionsType } from 'highcharts';
 
-import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
+import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import {
-  CHAR_CREATE_COLOR,
-  NUMBER_CHAR_CREATE_COLOR,
+  COLORS_FOR_TASKS,
+  OutputRate,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
-import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
+import {
+  OutOfMain,
+  Period,
+  Project,
+  TaskTrack,
+} from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
   switch (type) {
@@ -52,9 +57,9 @@ export function getColorOfProjectByName(proj: string, projects: Project[]) {
 
 export function searchInWeek(
   currentProject: string,
-  weekTasksByDays: WeekType
+  weekTasksByDays: ModifiedTask[] | object
 ): number[] {
-  return Object.values(weekTasksByDays).map((day: [] | ModifiedTask[]) => {
+  return Object.values(weekTasksByDays).map((day: ModifiedTask[]) => {
     if (day.length === 1 && day[0].projectName === currentProject) {
       return day[0].duration;
     }
@@ -62,7 +67,7 @@ export function searchInWeek(
       return day
         .filter((i: ModifiedTask) => i.projectName === currentProject)
         .map((i: ModifiedTask) => i.duration)
-        .reduce((acc, prev) => acc + prev);
+        .reduce((acc, prev) => acc + prev, 0);
     }
     if (day.length === 0 || day.length === 1) {
       return 0;
@@ -73,15 +78,14 @@ export function getDataForChart(
   tasks: TaskTrack[],
   projects: Project[]
 ): SeriesOptionsType[] {
-  const weekTasksByDays: WeekType = {
-    FRI: [],
-    MON: [],
-    SAT: [],
-    SUN: [],
-    THU: [],
-    TUE: [],
-    WED: [],
-  };
+  const weekTasksByDays = SHORT_NAMES_OF_THE_WEEK_UPPERCASE.reduce(
+    (acc, prev) => {
+      acc[prev] = [];
+      return acc;
+    },
+    {}
+  );
+
   const desiredTasks = tasks.map(
     (task: TaskTrack): ModifiedTask => ({
       date: task.date.toDate(),
@@ -111,11 +115,72 @@ export function getDataForChart(
     }));
 }
 
-export function getRandomColor() {
-  let color = '#';
-  for (let i = 0; i < NUMBER_CHAR_CREATE_COLOR; i++) {
-    color +=
-      CHAR_CREATE_COLOR[Math.floor(Math.random() * CHAR_CREATE_COLOR.length)];
-  }
-  return color;
+export function getRandomColor(): string {
+  const colors = COLORS_FOR_TASKS;
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}
+
+export function getEfficiency(
+  taskTrack: TaskTrack[],
+  startOfWeek: number,
+  presentDay: number
+): number {
+  const totalHours = taskTrack
+    .map((task: TaskTrack) => task.duration)
+    .reduce((acc, prev) => acc + prev, 0);
+  const requiredAmount =
+    (1 + new Date(presentDay).getDay() - new Date(startOfWeek).getDay()) *
+    OutputRate;
+
+  return totalHours <= requiredAmount
+    ? totalHours / requiredAmount
+    : totalHours / requiredAmount - 1;
+}
+
+export function outOfNorm(
+  taskTrack: TaskTrack[],
+  presentDay: number
+): OutOfMain {
+  const weekTasksByDays = SHORT_NAMES_OF_THE_WEEK_UPPERCASE.reduce(
+    (acc, prev) => {
+      acc[prev] = [];
+      return acc;
+    },
+    {}
+  );
+
+  taskTrack.forEach((task: TaskTrack) => {
+    const currentDay: number = task.date.toDate().getDay() - 1;
+    const day: string = SHORT_NAMES_OF_THE_WEEK_UPPERCASE[currentDay];
+    weekTasksByDays[day] = [...weekTasksByDays[day], task];
+  });
+
+  const mismatch = {
+    overtimes: 0,
+    shortages: 0,
+    working: 0,
+  };
+
+  Object.values(weekTasksByDays)
+    .map((item: TaskTrack[]) =>
+      item.reduce((acc, prev) => acc + prev.duration, 0)
+    )
+    .forEach((dayDuration, index) => {
+      if (dayDuration <= OutputRate && index < new Date(presentDay).getDay()) {
+        mismatch.shortages += OutputRate - dayDuration;
+        mismatch.working += dayDuration;
+      }
+      if (
+        dayDuration > OutputRate &&
+        index <= new Date(presentDay).getDay() - 1
+      ) {
+        mismatch.overtimes += dayDuration - OutputRate;
+        mismatch.working += OutputRate;
+      }
+      if (index === new Date(presentDay).getDay()) {
+        mismatch.overtimes = dayDuration;
+      }
+    });
+  return mismatch;
 }

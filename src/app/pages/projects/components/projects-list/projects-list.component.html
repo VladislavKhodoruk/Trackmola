@@ -5,7 +5,7 @@
       type="text"
       placeholder="Search..."
       [(ngModel)]="searchText"
-      (ngModelChange)="this.search.emit(searchText)"
+      (ngModelChange)="search.emit(searchText)"
     />
     <ic-icon class="icon search-icon" [icon]="iconSearch"></ic-icon>
   </div>

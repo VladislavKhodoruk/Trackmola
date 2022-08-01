@@ -8,7 +8,7 @@
   height: 100%;
 
   .dashboard-main {
-    @include flex(flex-start, flex-start, var(--offset-l));
+    @include flex(flex-start, flex-start, var(--offset-ml));
     overflow: auto;
     flex: 3;
 
@@ -20,6 +20,16 @@
 
     border: $border-input;
     border-radius: var(--border-radius-l);
+
+    &-tasks {
+      width: 30%;
+      height: 100%;
+    }
+
+    &-chart {
+      width: 70%;
+      height: 100%;
+    }
   }
 
   .dashboard-vacations {
@@ -48,6 +58,26 @@
           height: 100%;
         }
       }
+    }
+
+    .dashboard-main-chart-item-label {
+      @include flex(baseline, flex-start, var(--offset-xs));
+      flex-direction: column;
+
+      margin: 0 var(--offset-d) var(--offset-d) 1.25rem;
+
+      font: var(--font-blocks);
+      font-weight: 400;
+      color: white;
+      word-break: break-word;
+
+      & span:first-child {
+        font: var(--font-calendar);
+      }
+    }
+
+    rect {
+      stroke: var(--white);
     }
   }
 }

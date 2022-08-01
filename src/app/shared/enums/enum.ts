@@ -40,3 +40,10 @@ export enum PeriodType {
   Month = 'month',
   Custom = 'custom',
 }
+
+export enum DayType {
+  WorkDay = 'workDay',
+  DayOff = 'dayOff',
+  ShortedDay = 'shortedDay',
+  Holiday = 'holiday',
+}

@@ -12,7 +12,7 @@ import { Project, TaskTrack } from '@shared/interfaces/interfaces';
   templateUrl: 'activity-week-chart.html',
 })
 export class ActivityWeekChartComponent {
-  @Input() activeTasks: TaskTrack[];
+  @Input() activeTasks: TaskTrack[] | null;
   @Input() projects: Project[];
 
   basicOptions: Options = BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE;

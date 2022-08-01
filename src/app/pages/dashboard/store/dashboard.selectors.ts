@@ -9,7 +9,7 @@ import {
 import { searchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-task-name';
 import { searchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-user-photo';
 
-import { StateName, TaskStatus } from '@shared/enums/enum';
+import { StateName } from '@shared/enums/enum';
 import {
   getActiveTasks,
   getProjects,
@@ -39,7 +39,22 @@ export const getWeekReportTime = createSelector(
           taskTrack.date.seconds * 1000 >= period.start &&
           taskTrack.date.seconds * 1000 <= period.end
       )
-      .reduce((result, item) => (result += item.duration), 0)
+      .reduce(
+        (result, item) => (result += item.duration + item.overtimeDuration),
+        0
+      )
+);
+
+export const getWeekActiveTasks = createSelector(
+  getTasksTrack,
+  getDashboardPeriod,
+  (taskTracks, period) =>
+    taskTracks.filter(
+      (taskTrack) =>
+        taskTrack.userId === localStorage.getItem('AuthUserId') &&
+        taskTrack.date.seconds * 1000 >= period.start &&
+        taskTrack.date.seconds * 1000 <= period.end
+    )
 );
 
 export const getTaskWithAllParametrs = createSelector(
@@ -102,36 +117,37 @@ export const taskTracksGroupByTask = createSelector(
     }, {})
 );
 
-export const getTasksForManager = createSelector(
-  getTasks,
-  getManagerProjectsFilter,
-  getTasksTrack,
-  projectInfoByProjectId,
-  taskTracksDurationGroupByTask,
-  taskTracksGroupByTask,
-  (tasks, projects, taskTracks, projectInfo, durationInfo, taskTracksInfo) =>
-    projects
-      .flatMap((project) => {
-        const activeTasksId = taskTracks
-          .filter(
-            ({ projectId, status }) =>
-              projectId === project.id && status === TaskStatus.InProgress
-          )
-          .map(({ taskId }) => taskId);
-
-        return tasks
-          .filter(({ id }) => activeTasksId.includes(id))
-          .map((task) => ({
-            ...task,
-            durationInTask: durationInfo[task.id],
-            projectInformation: projectInfo[task.projectId],
-            taskTracksInTask: taskTracksInfo[task.id],
-          }));
-      })
-      .sort((a, b) => b.durationInTask - a.durationInTask)
-);
-
 export const getActiveTask = createSelector(
   getDashboardState,
   ({ manager }) => manager.selectedTask
+);
+
+export const getActiveProjectFilter = createSelector(
+  getDashboardState,
+  ({ manager }) => manager.activeProjectFilter
+);
+
+export const getTasksForManager = createSelector(
+  getTasks,
+  getActiveProjectFilter,
+  getTasksTrack,
+  taskTracksDurationGroupByTask,
+  taskTracksGroupByTask,
+  (tasks, activeProject, taskTracks, durationInfo, taskTracksInfo) => {
+    if (!activeProject) {
+      return [];
+    }
+    const activeTasksId = taskTracks
+      .filter(({ projectId }) => projectId === activeProject.id)
+      .map(({ taskId }) => taskId);
+
+    return tasks
+      .filter(({ id }) => activeTasksId.includes(id))
+      .map((task) => ({
+        ...task,
+        durationInTask: durationInfo[task.id],
+        taskTracksInTask: taskTracksInfo[task.id],
+      }))
+      .sort((a, b) => b.durationInTask - a.durationInTask);
+  }
 );

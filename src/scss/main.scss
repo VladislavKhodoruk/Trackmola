@@ -29,6 +29,7 @@ $trackMola-theme: mat.define-light-theme(
 
 html {
   @include color-variables($base-colors);
+  @include color-variables($task-colors);
   @include var-range(--offset, $offset);
   @include var-range(--border, $border);
   @include var-range(--border-radius, $border-radius);
@@ -46,6 +47,7 @@ html {
   --font-titleBig: 600 2.5rem "Noto Sans", sans-serif;
   --font-typography: 500 1.125rem "Noto Sans", sans-serif;
   --font-digitalNumbers: 400 1.375rem "Digital Numbers", normal;
+  --font-card: 400 1.25rem "Noto Sans", sans-serif;
   height: 100%;
 }
 
