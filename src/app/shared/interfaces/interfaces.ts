@@ -129,3 +129,9 @@ export interface CalendarDay {
   dayType: DayType;
   holidayName?: string;
 }
+
+export interface OutOfMain {
+  overtimes: number;
+  shortages: number;
+  working: number;
+}
