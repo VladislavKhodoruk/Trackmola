@@ -1,4 +1,4 @@
-<article class="task-wrappeer">
+<article class="task-wrapper">
   <div class="project-name-wrapper">
     <ng-container *ngIf="currentTask">
       <app-project-label
@@ -8,14 +8,15 @@
     </ng-container>
   </div>
   <p class="task-name">{{ currentTask.taskName }}</p>
-  <div [class.task-status]="currentTask.status">
-    <img
-      src="assets/img/activity/tick.svg"
-      [class.hidden]="!currentTask.status"
-      alt="tick"
-    />
-    <p>{{ currentTask.status }}</p>
-  </div>
+  <app-button
+    [label]="currentTask.status"
+    [class.task-status]="currentTask.status"
+    [class.hidden]="!currentTask.status"
+    [buttonClass]="'button-primary button-sl'"
+    [icon]="checkIcon"
+    iconWidth="1.5rem"
+    iconHeight="1.5rem"
+  ></app-button>
   <app-users-photos
     *ngIf="currentTask.usersPhotos"
     [users]="currentTask.usersPhotos"
