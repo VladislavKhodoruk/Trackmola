@@ -160,15 +160,12 @@ export const REST_HOURS_TOTAL_CARD = {
 
 export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
   chart: {
-    marginBottom: 150,
-    marginTop: 50,
     reflow: true,
     type: 'column',
   },
   legend: {
-    floating: true,
     itemDistance: 80,
-    itemMarginBottom: 50,
+    itemMarginBottom: 10,
     itemStyle: {
       color: 'var(--black)',
       fontFamily: 'var(--font-current)',
@@ -193,7 +190,6 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
         fontWeight: '500',
       },
     },
-    lineWidth: 0,
   },
   yAxis: {
     gridLineWidth: 0,
@@ -203,5 +199,109 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
         display: 'none',
       },
     },
+  },
+};
+
+export const BASIC_OPTIONS_EFFICIENCY_PIE: Options = {
+  accessibility: {
+    enabled: true,
+    point: {
+      valueSuffix: '%',
+    },
+  },
+
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: 0,
+    plotShadow: false,
+  },
+
+  legend: {
+    title: {
+      style: {
+        display: 'none',
+      },
+    },
+  },
+
+  plotOptions: {
+    pie: {
+      colors: ACTIVITY_CHART_PIE_COLORS,
+      cursor: 'pointer',
+      dataLabels: {
+        enabled: false,
+      },
+      innerSize: '80%',
+      showInLegend: true,
+      states: {
+        hover: {
+          brightness: 0,
+          halo: null,
+        },
+      },
+    },
+  },
+
+  responsive: {
+    rules: [
+      {
+        chartOptions: {
+          title: {
+            style: {
+              fontSize: 'var(--offset-m)',
+            },
+          },
+        },
+        condition: {
+          maxWidth: 260,
+        },
+      },
+      {
+        chartOptions: {
+          title: {
+            style: {
+              fontSize: 'var(--offset-sm)',
+            },
+          },
+        },
+        condition: {
+          maxWidth: 230,
+        },
+      },
+      {
+        chartOptions: {
+          title: {
+            style: {
+              fontSize: 'var(--offset-d)',
+            },
+            y: -5,
+          },
+        },
+        condition: {
+          maxWidth: 190,
+        },
+      },
+    ],
+  },
+  subtitle: {
+    style: {
+      display: 'none',
+    },
+    text: '',
+  },
+  title: {
+    align: 'center',
+    floating: true,
+    style: {
+      color: 'var(--primary)',
+      fontFamily: '"Noto Sans", sans-serif',
+      fontSize: 'var(--offset-l)',
+      fontWeight: '600',
+    },
+    text: '',
+    verticalAlign: 'middle',
+  },
+  tooltip: {
+    enabled: false,
   },
 };
