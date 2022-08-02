@@ -23,7 +23,9 @@
       }
 
       &-name {
+        @include flex(center, normal);
         overflow: hidden;
+
         width: 100%;
 
         font: var(--font-blocks);
