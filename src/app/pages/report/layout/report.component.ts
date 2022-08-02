@@ -7,9 +7,8 @@ import {
 } from '@angular/core';
 import check from '@iconify/icons-tabler/check';
 
-import { transformDate } from '../helpers/report-input-helpers';
-
-import { TaskTrack } from '@shared/interfaces/interfaces';
+import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
+import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-report',
@@ -19,6 +18,7 @@ import { TaskTrack } from '@shared/interfaces/interfaces';
 export class ReportComponent {
   @Input() taskTracks!: TaskTrack[];
   @Input() currentDate!: number;
+  @Input() period!: Period;
 
   @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() submitTasksTrack = new EventEmitter<TaskTrack[]>();
@@ -29,8 +29,9 @@ export class ReportComponent {
     return this.taskTracks?.filter(
       (curTaskTrack) =>
         curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
-        transformDate(curTaskTrack.date.seconds * 1000).getTime() ===
-          transformDate(this.currentDate).getTime()
+        curTaskTrack.date.seconds * 1000 >=
+          this.period.start - ONE_WEEK_IN_SECONDS &&
+        curTaskTrack.date.seconds * 1000 <= this.period.end
     );
   }
 
