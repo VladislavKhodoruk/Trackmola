@@ -6,8 +6,13 @@ import {
   Output,
 } from '@angular/core';
 
+import { Timestamp } from 'firebase/firestore';
+
 import { transformDate } from '@pages/report/helpers/report-input-helpers';
-import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
+import {
+  MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY,
+  ONE_DAY_IN_SECONDS,
+} from '@shared/constants/constants';
 import {
   Project,
   TaskItem,
@@ -28,19 +33,41 @@ export class TodayviewComponent implements OnChanges {
 
   @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() deleteTaskTrack = new EventEmitter<string>();
+  @Output() addCurTaskTrack = new EventEmitter<TaskTrack>();
 
   maxDuration = 100;
   taskItems: TaskItem[];
   taskItemsAreEmpty = true;
+  isToday: boolean;
 
   maximumNumberOfHoursInADay = MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY;
 
   ngOnChanges(): void {
     this.taskItems = this.createTaskItems();
-    const isToday =
+    this.isToday =
       transformDate(this.currentDate).getTime() ===
       transformDate(new Date().getTime()).getTime();
-    this.taskItemsAreEmpty = !this.taskItems.length || isToday;
+    this.taskItemsAreEmpty = !this.taskItems.length || this.isToday;
+  }
+
+  repeatToCurrentDay(date: number = this.currentDate): void {
+    const currentTaskTracks = this.getFilteredTasksTracks(date);
+    currentTaskTracks.forEach((tasktrack) => {
+      const addTask = {
+        ...tasktrack,
+        date: new Timestamp(new Date().getTime() / 1000, 0),
+        taskTrackStatus: 'new',
+      };
+      this.addCurTaskTrack.emit(addTask);
+    });
+  }
+
+  repeatThePreviousDay(): void {
+    let date = this.currentDate;
+    while (!this.getFilteredTasksTracks(date).length) {
+      date -= ONE_DAY_IN_SECONDS;
+    }
+    this.repeatToCurrentDay(date);
   }
 
   editTaskTrack(id: string): void {
@@ -62,12 +89,12 @@ export class TodayviewComponent implements OnChanges {
     return (this.totalDuration / MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY) * 100;
   }
 
-  getFilteredTasksTracks(): TaskTrack[] {
+  getFilteredTasksTracks(date: number = this.currentDate): TaskTrack[] {
     return this.taskTracks?.filter(
       (curTaskTrack) =>
         curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
         transformDate(curTaskTrack.date.seconds * 1000).getTime() ===
-          transformDate(this.currentDate).getTime()
+          transformDate(date).getTime()
     );
   }
 
