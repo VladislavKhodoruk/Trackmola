@@ -41,3 +41,8 @@ export enum PeriodType {
   Month = 'month',
   Custom = 'custom',
 }
+
+export enum ChartType {
+  Xrange = 'xrange',
+  Treemap = 'treemap',
+}

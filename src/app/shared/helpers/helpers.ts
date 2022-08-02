@@ -4,22 +4,24 @@ import { ModifiedTask, WeekType } from '@pages/activity/interfaces/interfaces';
 import {
   COLORS_FOR_TASKS,
   NUMBER_OF_DAYS_IN_A_WEEK,
-  ONE_DAY_IN_SECONDS,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
-import { PeriodType } from '@shared/enums/enum';
+import { NumDay, PeriodType } from '@shared/enums/enum';
 import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
   switch (type) {
     case PeriodType.Week: {
       const dayOfWeek = date.getDay();
-      const startDay = date.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
+      const startDay =
+        date.getDate() -
+        dayOfWeek +
+        (dayOfWeek === NumDay.Sunday ? -NumDay.Saturday : NumDay.Monday);
       const startDate = new Date(date.getFullYear(), date.getMonth(), startDay);
       const endDate = new Date(
         date.getFullYear(),
         date.getMonth(),
-        startDay + 6
+        startDay + NumDay.Saturday
       );
       endDate.setHours(23);
       endDate.setMinutes(59);
@@ -32,7 +34,10 @@ export function getPeriod(date: Date, type?: PeriodType): Period {
     }
     case PeriodType.TwoWeek: {
       const dayOfWeek = date.getDay();
-      const startDay = date.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
+      const startDay =
+        date.getDate() -
+        dayOfWeek +
+        (dayOfWeek === NumDay.Sunday ? -NumDay.Saturday : NumDay.Monday);
       const startDate = new Date(
         date.getFullYear(),
         date.getMonth(),
@@ -41,7 +46,7 @@ export function getPeriod(date: Date, type?: PeriodType): Period {
       const endDate = new Date(
         date.getFullYear(),
         date.getMonth(),
-        startDay + 6
+        startDay + NumDay.Saturday
       );
       endDate.setHours(23);
       endDate.setMinutes(59);
@@ -81,35 +86,6 @@ export function getPeriodUTC(period: Period): Period {
     end: endUTC,
     start: startUTC,
   };
-}
-
-export function getWeekendsFromPeriod(
-  period: Period
-): { from: number; to: number }[] {
-  const start = new Date(period.start);
-
-  const totalDays = Math.round(
-    (period.end - period.start) / ONE_DAY_IN_SECONDS
-  );
-
-  const weekends: { from: number; to: number }[] = [];
-
-  for (let i = 0; i < totalDays; i++) {
-    const date = new Date(
-      start.getFullYear(),
-      start.getMonth(),
-      start.getDate() + i
-    );
-
-    if (date.getDay() === 6 || date.getDay() === 0) {
-      const weekend = {
-        from: Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
-        to: Date.UTC(date.getFullYear(), date.getMonth(), date.getDate() + 1),
-      };
-      weekends.push(weekend);
-    }
-  }
-  return weekends;
 }
 
 export function getProjectNameAndColor(id: string, projects: Project[]) {

@@ -9,6 +9,7 @@
 
   .dashboard-main {
     @include flex(flex-start, flex-start, var(--offset-ml));
+    @include scroll-bar;
     overflow: auto;
     flex: 3;
 
@@ -27,8 +28,28 @@
     }
 
     &-chart {
+      @include scroll-bar;
+
       width: 70%;
       height: 100%;
+
+      &-period {
+        @include flex(flex-start, flex-start);
+        height: 3.65rem;
+
+        &-day {
+          @include flex(center, center);
+          height: 100%;
+
+          font: var(--font-blocks);
+          font-weight: 400;
+          color: var(--gray3);
+
+          &-weekend {
+            background: var(--pale-blue);
+          }
+        }
+      }
     }
   }
 
@@ -50,14 +71,16 @@
 
         padding: 0 0 var(--offset) 0 !important;
 
-        &::-webkit-scrollbar {
-          height: #{$height-scroll};
-        }
-
         &-item {
           height: 100%;
         }
       }
+    }
+
+    .chart-container {
+      overflow: visible !important;
+
+      height: auto !important;
     }
 
     .dashboard-main-chart-item-label {
@@ -68,7 +91,7 @@
 
       font: var(--font-blocks);
       font-weight: 400;
-      color: white;
+      color: var(--white);
       word-break: break-word;
 
       & span:first-child {
@@ -99,25 +122,8 @@
       }
     }
 
-    .x-range-xAxis-label {
-      font: var(--font-blocks);
-      font-weight: 400;
-      color: #969696;
-    }
-
     .highcharts-scrolling {
-      $width-scroll: var(--offset-s);
-
-      &::-webkit-scrollbar {
-        height: #{$width-scroll};
-
-        background-color: var(--white);
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--gray4);
-        border-radius: var(--border-radius-l);
-      }
+      @include scroll-bar;
     }
   }
 }

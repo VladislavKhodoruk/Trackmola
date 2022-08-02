@@ -47,7 +47,7 @@
 
     &-list {
       @include flex(flex-start, flex-start, var(--offset));
-
+      @include scroll-bar;
       overflow-y: scroll;
       flex-direction: column;
 
@@ -57,17 +57,6 @@
       margin-right: calc((#{$width-scroll} * -1) + (#{$gap-scroll} * -1));
 
       background-color: var(--white);
-
-      &::-webkit-scrollbar {
-        width: var(--offset-s);
-
-        background-color: var(--white);
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--gray4);
-        border-radius: var(--border-radius-l);
-      }
 
       &-item {
         width: calc(100% - #{$gap-scroll});

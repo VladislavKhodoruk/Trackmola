@@ -1,4 +1,4 @@
-import { Task, TaskTrack, User } from '@shared/interfaces/interfaces';
+import { Period, Task, TaskTrack, User } from '@shared/interfaces/interfaces';
 
 export interface TaskForManager extends Task {
   durationInTask: number;
@@ -13,6 +13,7 @@ export interface DataForChartTreemap {
 }
 
 export interface DataForChartXRange {
+  color: string;
   custom: {
     duration: number;
     userName: User['fullName'];
@@ -21,4 +22,17 @@ export interface DataForChartXRange {
   x: number;
   x2: number;
   y: number;
+}
+
+export interface XRangeConfig {
+  marginRight: number;
+  height: number;
+  width: number;
+  period: Period;
+  weekDays: DaysByPeriod['weekends'];
+}
+
+export interface DaysByPeriod {
+  days: number[];
+  weekends: { from: number; to: number; color?: string }[];
 }
