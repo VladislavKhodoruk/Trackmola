@@ -12,5 +12,5 @@ export class ReportStatusComponent {
   @Input() iconWidth!: string;
   @Input() iconHeight!: string;
 
-  readonly iconCheck = check;
+  readonly iconCheck: IconifyIcon = check;
 }
