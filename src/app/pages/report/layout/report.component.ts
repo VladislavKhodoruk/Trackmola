@@ -6,6 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import check from '@iconify/icons-tabler/check';
+import { IconifyIcon } from '@iconify/types';
 
 import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
 import { Period, TaskTrack } from '@shared/interfaces/interfaces';
@@ -23,7 +24,7 @@ export class ReportComponent {
   @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() submitTasksTrack = new EventEmitter<TaskTrack[]>();
 
-  iconCheck = check;
+  readonly iconCheck: IconifyIcon = check;
 
   getFilteredTasksTracks(): TaskTrack[] {
     return this.taskTracks?.filter(
