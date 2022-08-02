@@ -1,5 +1,8 @@
 import { IconifyIcon } from '@iconify/types';
+
 import { Timestamp } from 'firebase/firestore';
+
+import { DayType } from '@shared/enums/enum';
 
 export interface Project {
   id: string;
@@ -28,6 +31,7 @@ export interface TaskTrack {
   projectId: string;
   status: string;
   taskId: string;
+  taskTrackStatus: string;
   userId: string;
 }
 
@@ -120,4 +124,16 @@ export interface UserCard {
   location: string;
   position: string;
   photo: string;
+}
+
+export interface CalendarDay {
+  date: string;
+  dayType: DayType;
+  holidayName?: string;
+}
+
+export interface OutOfMain {
+  overtimes: number;
+  shortages: number;
+  working: number;
 }

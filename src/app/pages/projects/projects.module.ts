@@ -16,6 +16,8 @@ import { ActiveTasksUsersContainer } from './components/active-tasks-users/activ
 import { ActiveTasksComponent } from './components/active-tasks/active-tasks.component';
 import { ActiveTasksContainer } from './components/active-tasks/active-tasks.container';
 import { TaskInputComponent } from './components/active-tasks/task-input/task-input.component';
+import { ApproveModalComponent } from './components/approve-modal/approve-modal.component';
+import { ApproveModalContainer } from './components/approve-modal/approve-modal.container';
 import { ProjectsListComponent } from './components/projects-list/projects-list.component';
 import { ProjectsListContainer } from './components/projects-list/projects-list.container';
 import { ProjectsTeamComponent } from './components/projects-team/projects-team.component';
@@ -48,6 +50,8 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     TaskInputComponent,
     ActiveTasksUserModeComponent,
     ActiveTasksUserModeContainer,
+    ApproveModalContainer,
+    ApproveModalComponent,
   ],
   exports: [RouterModule],
   imports: [
