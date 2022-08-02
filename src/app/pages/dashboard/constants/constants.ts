@@ -1,4 +1,14 @@
-import { PointLabelObject } from 'highcharts';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+import {
+  Options,
+  PointLabelObject,
+  Tooltip,
+  TooltipPositionerPointObject,
+} from 'highcharts';
+
+import { XRangeConfig } from '../interfaces/interface';
 
 import { NAMES_OF_THE_DAYS_OF_THE_WEEK } from '@shared/constants/constants';
 
@@ -103,3 +113,127 @@ export const MANAGER_DASHBOARD_CHART_TREEMAP = {
     text: '',
   },
 };
+
+export function managerDashboardChartXRange(config: XRangeConfig): Options {
+  const { marginRight, width, height, period, weekDays } = config;
+  return {
+    chart: {
+      height: height,
+      margin: 0,
+      marginBottom: -1,
+      marginRight: marginRight,
+      marginTop: -1,
+      type: 'xrange',
+
+      width: width,
+    },
+    credits: {
+      enabled: false,
+    },
+
+    plotOptions: {
+      xrange: {
+        borderRadius: 24,
+        cursor: 'pointer',
+
+        dataLabels: {
+          align: 'left',
+          allowOverlap: true,
+          enabled: true,
+          formatter: function (this) {
+            const point = this.point as any;
+            if (point.shapeArgs.width > 200) {
+              return `<div style="width: ${point.shapeArgs.width}px;"class="x-range-dataLabel">
+                          <div><img src=${point.custom.userPhoto}>
+                               ${point.custom.userName}
+                          </div>
+                          <span>${point.custom.duration}h</span>
+                      </div>`;
+            }
+            return `<div style="width: ${point.shapeArgs.width}px;"class="x-range-dataLabel">
+                        <div><img src=${point.custom.userPhoto}></div>
+                        <span>${point.custom.duration}h</span>
+                    </div>`;
+          },
+          padding: 0,
+
+          style: {
+            textOutline: 'none',
+          },
+
+          useHTML: true,
+        },
+        pointPadding: 0,
+        pointWidth: 45,
+        showInLegend: false,
+        tooltip: {
+          headerFormat:
+            '<span style="font-size: 10px">{point.x} - {point.x2}</span><br/>',
+          pointFormatter: function (this) {
+            const that = this as any;
+            return `${that.custom.userName}: <b>${that.custom.duration}h</b><br/>`;
+          },
+          xDateFormat: '%d.%m.%Y',
+        },
+      },
+    },
+
+    title: {
+      text: '',
+    },
+
+    tooltip: {
+      hideDelay: 100,
+      outside: true,
+      positioner: function (
+        this: Tooltip,
+        labelWidth: number,
+        labelHeight: number,
+        point: TooltipPositionerPointObject
+      ) {
+        return {
+          x:
+            point.plotX +
+            this.chart.container.getBoundingClientRect().left -
+            labelWidth / 2,
+          y: this.chart.container.getBoundingClientRect().top - labelHeight,
+        };
+      },
+    },
+
+    xAxis: {
+      dateTimeLabelFormats: {
+        day: '%e %b',
+      },
+      endOnTick: false,
+      gridLineWidth: 0,
+      labels: {
+        enabled: false,
+      },
+      lineWidth: 0,
+      max: period.end,
+      min: period.start,
+      opposite: true,
+      plotBands: weekDays,
+      scrollbar: {
+        enabled: true,
+      },
+      showLastLabel: false,
+      startOnTick: true,
+      tickInterval: 24 * 3600 * 1000,
+      tickLength: 0,
+      type: 'datetime',
+    },
+
+    yAxis: {
+      categories: [],
+      gridLineWidth: 0,
+      labels: {
+        enabled: false,
+      },
+      title: {
+        text: '',
+      },
+    },
+  };
+}

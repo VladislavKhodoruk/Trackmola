@@ -1,5 +1,8 @@
+@import "mixins";
+
 :host {
   .active-task-wrapper {
+    @include scroll-bar;
     overflow: auto;
 
     width: 100%;
@@ -19,14 +22,5 @@
     &-list {
       margin: var(--offset-s) 0;
     }
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--gray4);
-    border-radius: var(--offset-s);
-  }
-
-  ::-webkit-scrollbar {
-    width: var(--offset-s);
   }
 }

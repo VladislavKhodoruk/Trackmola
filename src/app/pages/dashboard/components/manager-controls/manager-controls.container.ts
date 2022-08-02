@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
@@ -13,7 +13,6 @@ import {
 import {
   getManagerProjectsFilter,
   getManadgersProjects,
-  getModeView,
   getActiveProjectFilter,
 } from '@pages/dashboard/store/dashboard.selectors';
 import { Project } from '@shared/interfaces/interfaces';
@@ -27,8 +26,8 @@ import { TrackMolaState } from '@store/trackMola.state';
   template: `<app-manager-controls
     [managerProjects]="managerProjects$ | async"
     [managerProjectsFilter]="managerProjectsFilter$ | async"
-    [modeView]="modeView$ | async"
     [activeProjectFilter]="activeProjectFilter$ | async"
+    [modeView]="modeView"
     (projectFilter)="onProjectFilter($event)"
     (removeProjectFilter)="onRemoveProjectFilter()"
     (setActiveFilterProject)="onSetActiveFilterProject($event)"
@@ -36,15 +35,14 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-manager-controls>`,
 })
 export class ManagerControlsContainer {
+  @Input() readonly modeView: ManagerDashboardView;
+
   readonly managerProjects$: Observable<Project[]> =
     this.store$.select(getManadgersProjects);
 
   readonly managerProjectsFilter$: Observable<Project[]> = this.store$.select(
     getManagerProjectsFilter
   );
-
-  readonly modeView$: Observable<ManagerDashboardView> =
-    this.store$.select(getModeView);
 
   readonly activeProjectFilter$: Observable<Project> = this.store$.select(
     getActiveProjectFilter
