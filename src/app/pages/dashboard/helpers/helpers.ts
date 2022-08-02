@@ -10,10 +10,7 @@ import { GroupBy, Period, TaskTrack } from '@shared/interfaces/interfaces';
 export function isWeekend(day: number): boolean {
   const date: Date = new Date(day);
 
-  if (date.getDay() === NumDay.Saturday || date.getDay() === NumDay.Sunday) {
-    return true;
-  }
-  return false;
+  return date.getDay() === NumDay.Saturday || date.getDay() === NumDay.Sunday;
 }
 
 export function daysInPeriod(period: Period): DaysByPeriod {
