@@ -18,13 +18,7 @@ export const MAX_VALUE_WEEK_REPORT_TIME = 100;
 
 export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
   chart: {
-    borderColor: 'var(--gray)',
-    borderRadius: 15,
-    borderWidth: 1,
-    height: 575,
-    margin: [70, 40, 124, 40],
     type: 'column',
-    width: 890,
   },
   legend: {
     itemDistance: 80,
@@ -48,9 +42,7 @@ export const BASIC_ACTIVITY_CHART_DASHBOARD_PAGE = {
       fontSize: 'var(--offset-l)',
       fontWeight: 600,
     },
-    text: 'Project hours',
-    x: -300,
-    y: 40,
+    text: '',
   },
   xAxis: {
     categories: NAMES_OF_THE_DAYS_OF_THE_WEEK.map((i) =>

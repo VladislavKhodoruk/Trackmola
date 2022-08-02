@@ -280,6 +280,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
   {
@@ -292,6 +293,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -304,6 +306,29 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
+    userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
+  },
+  {
+    comments: '',
+    date: new Timestamp(1658791600, 0),
+    duration: 3,
+    id: '96EIUKidaB6vHHBqq8RN',
+    projectId: 'DAK4rhvLhUoROKPuKMIz',
+    status: '',
+    taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
+    userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
+  },
+  {
+    comments: '',
+    date: new Timestamp(1658891600, 0),
+    duration: 3,
+    id: '96EIUKidaB6vHHBqq8RN',
+    projectId: 'DAK4rhvLhUoROKPuKMIz',
+    status: '',
+    taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -316,6 +341,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -328,6 +354,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -340,6 +367,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -352,6 +380,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -364,6 +393,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -376,6 +406,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
   {
@@ -388,6 +419,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -400,6 +432,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -412,6 +445,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -424,6 +458,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: 'xBgaMXjSCTN8snri41dW',
+    taskTrackStatus: 'new',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
   {
@@ -438,6 +473,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: 'in progress',
     taskId: 'xBgaMXjSCTN8snri41dW',
+    taskTrackStatus: 'new',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
   {
@@ -450,6 +486,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: '0N9SBvw8R48Ybb1rw3T4',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -464,6 +501,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: 'in progress',
     taskId: 'xBgaMXjSCTN8snri41dW',
+    taskTrackStatus: 'new',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
   {
@@ -476,6 +514,40 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: 'in progress',
     taskId: '0N9SBvw8R48Ybb1rw3T4',
+    taskTrackStatus: 'new',
+    userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
+  },
+  {
+    comments: '',
+    date: new Timestamp(1658922697, 0),
+    duration: 3,
+    id: 'VUW0ERxrxYJlQcU3IhQ7',
+    projectId: 'pdCsdrXhodWnZieCfp6O',
+    status: 'in progress',
+    taskId: '0N9SBvw8R48Ybb1rw3T4',
+    taskTrackStatus: 'new',
+    userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
+  },
+  {
+    comments: '',
+    date: new Timestamp(1658812903, 0),
+    duration: 6,
+    id: 'VUW0ERxrxYJlQcU3IhQ7',
+    projectId: 'pdCsdrXhodWnZieCfp6O',
+    status: 'in progress',
+    taskId: '0N9SBvw8R48Ybb1rw3T4',
+    taskTrackStatus: 'new',
+    userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
+  },
+  {
+    comments: '',
+    date: new Timestamp(1658712903, 0),
+    duration: 6,
+    id: 'VUW0ERxrxYJlQcU3IhQ7',
+    projectId: 'pdCsdrXhodWnZieCfp6O',
+    status: 'in progress',
+    taskId: '0N9SBvw8R48Ybb1rw3T4',
+    taskTrackStatus: 'new',
     userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
   },
   {
@@ -488,6 +560,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: 'in progress',
     taskId: 'xBgaMXjSCTN8snri41dW',
+    taskTrackStatus: 'new',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
   {
@@ -500,6 +573,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: '33vqSse9t7ZBt7L9dU4E',
+    taskTrackStatus: 'new',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
   {
@@ -512,6 +586,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
   {
@@ -524,6 +599,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'DAK4rhvLhUoROKPuKMIz',
     status: '',
     taskId: 'gJGIgdv9AagjEnE3ZD2u',
+    taskTrackStatus: 'new',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
   {
@@ -536,6 +612,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: '0N9SBvw8R48Ybb1rw3T4',
+    taskTrackStatus: 'new',
     userId: 'ZI4fLQuaHfduoEdxAj7YevkrSq62',
   },
   {
@@ -548,6 +625,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: '33vqSse9t7ZBt7L9dU4E',
+    taskTrackStatus: 'new',
     userId: 'ZI4fLQuaHfduoEdxAj7YevkrSq62',
   },
   {
@@ -560,6 +638,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: '33vqSse9t7ZBt7L9dU4E',
+    taskTrackStatus: 'new',
     userId: 'ZI4fLQuaHfduoEdxAj7YevkrSq62',
   },
   {
@@ -572,6 +651,7 @@ export const mockTaskTracks: TaskTrack[] = [
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: '',
     taskId: 'XgtweOoksn6fBDSE8i04',
+    taskTrackStatus: 'new',
     userId: 'ZI4fLQuaHfduoEdxAj7YevkrSq62',
   },
 ];

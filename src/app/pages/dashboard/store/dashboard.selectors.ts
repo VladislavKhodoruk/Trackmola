@@ -61,6 +61,18 @@ export const getWeekReportTime = createSelector(
       )
 );
 
+export const getWeekActiveTasks = createSelector(
+  getTasksTrack,
+  getDashboardPeriod,
+  (taskTracks, period) =>
+    taskTracks.filter(
+      (taskTrack) =>
+        taskTrack.userId === localStorage.getItem('AuthUserId') &&
+        taskTrack.date.seconds * 1000 >= period.start &&
+        taskTrack.date.seconds * 1000 <= period.end
+    )
+);
+
 export const getTaskWithAllParametrs = createSelector(
   getActiveTasks,
   getProjects,

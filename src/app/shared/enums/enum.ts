@@ -46,3 +46,10 @@ export enum ChartType {
   Xrange = 'xrange',
   Treemap = 'treemap',
 }
+
+export enum DayType {
+  WorkDay = 'workDay',
+  DayOff = 'dayOff',
+  ShortedDay = 'shortedDay',
+  Holiday = 'holiday',
+}
