@@ -254,9 +254,6 @@ export class ReportInputComponent implements OnInit, OnChanges {
   durationMinus(formComtrolName: string): void {
     const durationNumberValue = +this.form.get(`${formComtrolName}`)?.value;
     const durationStringValue = this.form.get(`${formComtrolName}`)?.value;
-    const durationMin = this.form.get('overtime').value
-      ? '0'
-      : DurationValue.Min;
     if (
       !durationStringValue ||
       durationStringValue === KeyCodeAllowedSymbol.Dot
@@ -264,26 +261,56 @@ export class ReportInputComponent implements OnInit, OnChanges {
       this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Min);
       return;
     }
-    if (durationNumberValue <= +durationMin) {
+    if (
+      formComtrolName === 'overtimeDuration' &&
+      +this.form.get('overtimeDuration')?.value <= 0
+    ) {
       return;
     }
-    if (durationNumberValue === +DurationValue.Default) {
+    if (
+      formComtrolName === 'duration' &&
+      +this.form.get(`${formComtrolName}`)?.value <= +DurationValue.Min
+    ) {
+      return;
+    }
+    if (durationNumberValue <= +DurationValue.Default) {
       const valueInput = `${
-        Math.round(+this.form.get(`${formComtrolName}`)?.value) -
-        DurationValue.MinStep
+        +this.form.get(`${formComtrolName}`)?.value - DurationValue.MinStep
       }`;
       this.form.get(`${formComtrolName}`)?.setValue(valueInput);
+      if (
+        +this.form.get('overtimeDuration')?.value >=
+        +this.form.get('duration')?.value
+      ) {
+        this.form
+          .get('overtimeDuration')
+          ?.setValue(this.form.get('duration')?.value);
+      }
       return;
     }
     const valueInput = `${
       Math.round(durationNumberValue) - DurationValue.Step
     }`;
     this.form.get(`${formComtrolName}`)?.setValue(valueInput);
+    if (
+      +this.form.get('overtimeDuration')?.value >=
+      +this.form.get('duration')?.value
+    ) {
+      this.form
+        .get('overtimeDuration')
+        ?.setValue(this.form.get('duration')?.value);
+    }
   }
 
   durationPlus(formComtrolName: string): void {
     const durationNumberValue = +this.form.get(`${formComtrolName}`)?.value;
     const durationStringValue = this.form.get(`${formComtrolName}`)?.value;
+    if (
+      formComtrolName === 'overtimeDuration' &&
+      durationNumberValue >= +this.form.get('duration')?.value
+    ) {
+      return;
+    }
     if (
       !durationStringValue ||
       durationStringValue === KeyCodeAllowedSymbol.Dot
@@ -364,6 +391,16 @@ export class ReportInputComponent implements OnInit, OnChanges {
         KeyCodeAllowedSymbol.Dot
       );
       this.form.get(`${formComtrolName}`)?.setValue(rightValue);
+    }
+
+    if (
+      +this.form.get('overtimeDuration')?.value >=
+      +this.form.get('duration')?.value
+    ) {
+      this.form
+        .get('overtimeDuration')
+        ?.setValue(this.form.get('duration')?.value);
+      return;
     }
   }
 
