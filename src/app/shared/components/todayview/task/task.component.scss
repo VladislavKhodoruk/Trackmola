@@ -62,6 +62,8 @@
   .icons {
     display: none;
 
+    user-select: none;
+
     color: var(--gray);
 
     &:last-of-type {

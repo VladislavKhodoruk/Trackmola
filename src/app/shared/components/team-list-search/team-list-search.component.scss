@@ -141,37 +141,47 @@
         gap: 0.5rem;
 
         &-checkbox {
-          position: absolute;
-          z-index: -1;
+          display: none;
 
-          opacity: 0;
+          &-label {
+            cursor: pointer;
+
+            width: 1.5rem;
+            height: 1.5rem;
+
+            text-align: center;
+
+            background-color: var(--white);
+            border: var(--border-xs) solid var(--primary) !important;
+            border-radius: var(--border-radius);
+
+            &::before {
+              content: url("https://api.iconify.design/tabler/check.svg?color=%237353d0");
+
+              font-size: 1.1rem;
+            }
+            &-icon {
+              cursor: pointer;
+              user-select: none;
+            }
+          }
+
+          &-icon {
+            @include flex(center, flex-start);
+
+            cursor: pointer;
+
+            margin-left: var(--offset-s);
+          }
+        }
+        .form-report-bottom-vacation-checkbox:checked
+          + .form-report-bottom-vacation-checkbox-label {
+          background-color: var(--primary);
         }
 
-        &-checkbox + label {
-          user-select: none;
-
-          display: inline-flex;
-          align-items: center;
-        }
-
-        &-checkbox + label::before {
-          content: "";
-
-          display: inline-block;
-
-          width: 1.5rem;
-          height: 1.5rem;
-
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-size: 50% 50%;
-          border: $border-checkbox-button;
-          border-radius: var(--offset-s);
-        }
-
-        &-checkbox:checked + label::before {
-          background: url("https://api.iconify.design/bi/check-lg.svg?color=%237353d0")
-            no-repeat center center / contain;
+        .form-report-bottom-vacation-checkbox:checked
+          + .form-report-bottom-vacation-checkbox-label::before {
+          content: url("https://api.iconify.design/tabler/check.svg?color=white");
         }
       }
 

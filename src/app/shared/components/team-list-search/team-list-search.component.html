@@ -100,11 +100,19 @@
           id="checkbox"
           class="form-report-bottom-vacation-checkbox"
         />
-        <label for="checkbox"></label>
-        <ic-icon
-          [icon]="pineappleIcon"
-          class="form-report-bottom-vacation-icon"
-        ></ic-icon>
+        <label
+          for="checkbox"
+          class="form-report-bottom-vacation-checkbox-label"
+        ></label>
+        <label
+          for="checkbox"
+          class="form-report-bottom-vacation-checkbox-label-icon"
+        >
+          <ic-icon
+            [icon]="pineappleIcon"
+            class="form-report-bottom-vacation-icon"
+          ></ic-icon>
+        </label>
       </div>
       <div class="form-report-bottom-buttons">
         <button class="form-report-bottom-buttons-reset" type="reset">
@@ -122,6 +130,7 @@
   </form>
   <div class="team-list-cards" [@filterAnimation]="filteredUserCards.length">
     <app-user-card
+      (userId)="setPickedUser($event)"
       *ngFor="let card of filteredUserCards"
       [userCard]="card"
     ></app-user-card>

@@ -1,0 +1,24 @@
+<ul class="projects-list">
+  <ng-container
+    *ngIf="projectsByUsers && projectsByUsers[pickedUser?.id]?.length"
+  >
+    <li
+      *ngFor="let project of projectsByUsers[pickedUser.id]"
+      class="projects-list-item"
+    >
+      <div class="projects-list-item-header">
+        <ng-container *ngIf="project">
+          <app-project-label
+            [projectColor]="project.color"
+            [projectName]="project.name"
+          ></app-project-label>
+        </ng-container>
+        <app-users-photos
+          [users]="usersByProject[project.id]"
+          size="2"
+        ></app-users-photos>
+      </div>
+      <p class="projects-list-item-name">{{ project.fullName }}</p>
+    </li>
+  </ng-container>
+</ul>

@@ -1,1 +1,18 @@
-<app-team-list-search-container></app-team-list-search-container>
+<div class="team">
+  <div class="team-list">
+    <app-team-list-search-container></app-team-list-search-container>
+  </div>
+  <div class="team-right">
+    <app-visit-card [user]="pickedUser"></app-visit-card>
+    <div class="team-right-bottom">
+      <app-users-projects-component
+        [usersByProject]="usersByProject"
+        [projectsByUsers]="projectsByUsers"
+        [pickedUser]="pickedUser"
+      ></app-users-projects-component>
+      <app-vacations-component
+        [vacations]="vacations"
+      ></app-vacations-component>
+    </div>
+  </div>
+</div>

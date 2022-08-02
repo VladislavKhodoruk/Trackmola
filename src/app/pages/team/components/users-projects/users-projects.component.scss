@@ -1,0 +1,42 @@
+@import "mixins";
+@import "vars/variables";
+
+.projects-list {
+  @include flex(flex-start, flex-start, var(--offset-m));
+  flex-direction: column;
+
+  &-item {
+    @include flex(flex-start, center, var(--offset-d));
+    cursor: pointer;
+    scroll-margin-top: var(--offset-d);
+    scroll-snap-align: start;
+
+    flex-direction: column;
+
+    width: calc(100%);
+    max-width: calc(100%);
+    padding: var(--offset) var(--offset-m);
+
+    background-color: var(--white);
+    border: var(--border-xxs) solid var(--gray);
+    border-radius: var(--border-radius);
+
+    &-header {
+      @include flex(flex-start, space-between, var(--offset));
+      flex-wrap: wrap;
+
+      width: 100%;
+    }
+
+    &-name {
+      font: var(--font-main);
+      font-size: 1.25rem;
+    }
+
+    &-description {
+      font: var(--font-main);
+      font-size: 1.25rem;
+      color: var(--gray2);
+    }
+  }
+}
