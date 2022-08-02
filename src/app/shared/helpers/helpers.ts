@@ -3,7 +3,8 @@ import { SeriesOptionsType } from 'highcharts';
 import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import {
   COLORS_FOR_TASKS,
-  OutputRate,
+  HIGHEST_KPI,
+  OUTPUT_RATE,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
@@ -146,9 +147,9 @@ export function getEfficiency(
   const allHoursByDays = Object.values(sortTaskByDays(taskTrack))
     .map((i: TaskTrack[]) => i.reduce((acc, prev) => acc + prev.duration, 0))
     .map((dayHours) =>
-      dayHours / OutputRate >= 1
-        ? 1 - (dayHours / OutputRate - 1)
-        : dayHours / OutputRate
+      dayHours / OUTPUT_RATE >= HIGHEST_KPI
+        ? HIGHEST_KPI - (dayHours / OUTPUT_RATE - HIGHEST_KPI)
+        : dayHours / OUTPUT_RATE
     )
     .reduce((acc, prev) => acc + prev, 0);
 
@@ -170,13 +171,13 @@ export function outOfNorm(
       item.reduce((acc, prev) => acc + prev.duration, 0)
     )
     .forEach((dayDuration, index) => {
-      if (dayDuration <= OutputRate && index < new Date(presentDay).getDay()) {
-        mismatch.shortages += OutputRate - dayDuration;
+      if (dayDuration <= OUTPUT_RATE && index < new Date(presentDay).getDay()) {
+        mismatch.shortages += OUTPUT_RATE - dayDuration;
         mismatch.working += dayDuration;
       }
-      if (dayDuration > OutputRate) {
-        mismatch.overtimes += dayDuration - OutputRate;
-        mismatch.working += OutputRate;
+      if (dayDuration > OUTPUT_RATE) {
+        mismatch.overtimes += dayDuration - OUTPUT_RATE;
+        mismatch.working += OUTPUT_RATE;
       }
     });
   return mismatch;
