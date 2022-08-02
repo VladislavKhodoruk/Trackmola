@@ -53,12 +53,12 @@ export class TodayviewComponent implements OnChanges {
   repeatToCurrentDay(date: number = this.currentDate): void {
     const currentTaskTracks = this.getFilteredTasksTracks(date);
     currentTaskTracks.forEach((tasktrack) => {
-      const addTask = {
+      const addTaskTrack = {
         ...tasktrack,
         date: new Timestamp(new Date().getTime() / 1000, 0),
         taskTrackStatus: 'new',
       };
-      this.addCurTaskTrack.emit(addTask);
+      this.addCurTaskTrack.emit(addTaskTrack);
     });
   }
 
