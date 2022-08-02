@@ -1,6 +1,6 @@
-import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { setUser } from '@pages/team/store/team.actions';
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';

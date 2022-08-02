@@ -16,11 +16,11 @@ import { TeamReducer } from './store/team.reducer';
 import { TEAM_STATE_NAME } from './store/team.selectors';
 import { TeamRoutes } from './team.router';
 
-import { VacationsModule } from '@shared/components/vacations/vacations.module';
-import { VisitCardModule } from '@shared/components/visit-card/visit-card.module';
 import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
 import { TeamListSearchModule } from '@shared/components/team-list-search/team-list-search.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
+import { VacationsModule } from '@shared/components/vacations/vacations.module';
+import { VisitCardModule } from '@shared/components/visit-card/visit-card.module';
 
 @NgModule({
   declarations: [

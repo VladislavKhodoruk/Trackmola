@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import { Observable } from 'rxjs';
+
 import { usersGroupByProject } from '@pages/projects/store/projects.selectors';
 import { getUser } from '@pages/team/store/team.selectors';
 import { TeamState } from '@pages/team/store/team.state';
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 import { projectsByUsers } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-manager-team-container',
