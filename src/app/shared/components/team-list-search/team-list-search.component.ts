@@ -65,7 +65,7 @@ export class TeamListSearchComponent implements OnChanges {
   @Input() positions: string[];
   @Input() allUsers: User[];
 
-  @Output() pickedUser = new EventEmitter<User>();
+  @Output() pickUser = new EventEmitter<User>();
 
   readonly iconAngleLeftB = angleLeftB;
   readonly iconSearch = searchIcon;
@@ -93,9 +93,9 @@ export class TeamListSearchComponent implements OnChanges {
     position: new FormControl(''),
     project: new FormControl(''),
   });
-  setPickedUser(id: string) {
+  setPickedUser(id: string): void {
     const user = this.allUsers.find((currentUser) => currentUser.id === id);
-    this.pickedUser.emit(user);
+    this.pickUser.emit(user);
   }
   isProject(): void {
     const isProject = this.allProjects?.some(
@@ -138,7 +138,7 @@ export class TeamListSearchComponent implements OnChanges {
     const defaultUser = this.allUsers.find(
       (user) => user.fullName === this.filteredUserCards[0].userName
     );
-    this.pickedUser.emit(defaultUser);
+    this.pickUser.emit(defaultUser);
   }
   filterUsers(): void {
     const filterConfig = {
@@ -172,7 +172,7 @@ export class TeamListSearchComponent implements OnChanges {
     const defaultUser = this.allUsers.find(
       (user) => user.fullName === this.filteredUserCards[0].userName
     );
-    this.pickedUser.emit(defaultUser);
+    this.pickUser.emit(defaultUser);
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.allProjects) {
@@ -219,13 +219,14 @@ export class TeamListSearchComponent implements OnChanges {
       this.allUserCards = [];
       this.allUsers.forEach((user) => {
         const projects = this.projectsByUsers[user.id];
+        const { id, location, photo, position, fullName } = user;
         const currentUserCard: UserCard = {
-          id: user.id,
-          location: user.location,
-          photo: user.photo,
-          position: user.position,
-          projects: projects,
-          userName: user.fullName,
+          id,
+          location,
+          photo,
+          position,
+          projects,
+          userName: fullName,
         };
         this.allUserCards.push(currentUserCard);
       });
@@ -235,7 +236,7 @@ export class TeamListSearchComponent implements OnChanges {
       const defaultUser = this.allUsers.find(
         (user) => user.fullName === this.filteredUserCards[0].userName
       );
-      this.pickedUser.emit(defaultUser);
+      this.pickUser.emit(defaultUser);
     }
   }
 

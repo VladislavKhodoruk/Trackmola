@@ -20,7 +20,7 @@ html {
       display: flex;
       flex: 2;
       flex-direction: column;
-      gap: 1rem;
+      gap: var(--offset);
 
       &-bottom {
         overflow: hidden;
@@ -32,7 +32,7 @@ html {
       overflow-y: auto;
       flex: 3;
 
-      padding-right: 1rem;
+      padding-right: var(--offset);
     }
 
     app-vacations-component {

@@ -1,4 +1,4 @@
-<div class="card" (click)="userId.emit(userCard.id)">
+<div class="card" (click)="setUserId.emit(userCard.id)">
   <div class="card-left">
     <img
       src="{{ userCard.photo || defaultPhoto }}"

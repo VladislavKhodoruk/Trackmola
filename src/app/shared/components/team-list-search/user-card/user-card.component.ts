@@ -13,7 +13,7 @@ import { User, UserCard } from '@shared/interfaces/interfaces';
 export class UserCardComponent {
   @Input() userCard: UserCard;
 
-  @Output() userId = new EventEmitter<string>();
+  @Output() setUserId = new EventEmitter<string>();
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly pineappleIcon = pineapple;

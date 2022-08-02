@@ -4,8 +4,10 @@ import { Store } from '@ngrx/store';
 import { usersGroupByProject } from '@pages/projects/store/projects.selectors';
 import { getUser } from '@pages/team/store/team.selectors';
 import { TeamState } from '@pages/team/store/team.state';
+import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 import { projectsByUsers } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-manager-team-container',
@@ -16,11 +18,13 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-manager-team-component>`,
 })
 export class ManagerTeamContainer {
-  pickedUser$ = this.teamStore$.select(getUser);
+  readonly pickedUser$: Observable<User> = this.teamStore$.select(getUser);
 
-  projectsByUsers$ = this.store$.select(projectsByUsers);
+  readonly projectsByUsers$: Observable<GroupBy<Project[]>> =
+    this.store$.select(projectsByUsers);
 
-  usersByProject$ = this.store$.select(usersGroupByProject);
+  readonly usersByProject$: Observable<GroupBy<User[]>> =
+    this.store$.select(usersGroupByProject);
 
   constructor(
     private store$: Store<TrackMolaState>,

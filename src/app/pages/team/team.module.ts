@@ -4,12 +4,6 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { ProjectLabelModule } from './../../shared/components/project-label/project-label.module';
-
-import { TeamListSearchModule } from './../../shared/components/team-list-search/team-list-search.module';
-import { UsersPhotosModule } from './../../shared/components/users-photos/users-photos.module';
-import { ProjectsListContainer } from './../projects/components/projects-list/projects-list.container';
-
 import { AdminTeamComponent } from './components/admin-team/admin-team.component';
 import { CtoTeamComponent } from './components/cto-team/cto-team.component';
 import { ManagerTeamComponent } from './components/manager-team/manager-team.component';
@@ -24,6 +18,9 @@ import { TeamRoutes } from './team.router';
 
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
 import { VisitCardModule } from '@shared/components/visit-card/visit-card.module';
+import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
+import { TeamListSearchModule } from '@shared/components/team-list-search/team-list-search.module';
+import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 
 @NgModule({
   declarations: [

@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import {
-  projectsByUsers,
-  getUser,
-} from './../../../../store/common/common.selectors';
-
 import { usersGroupByProject } from '@pages/projects/store/projects.selectors';
+import { getUser } from '@pages/team/store/team.selectors';
 import { TeamState } from '@pages/team/store/team.state';
+import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
+import { projectsByUsers } from '@store/common/common.selectors';
 
 import { TrackMolaState } from '@store/trackMola.state';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users-projects-container',
@@ -20,11 +19,13 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-users-projects-component>`,
 })
 export class UsersProjectsContainer {
-  pickedUser$ = this.teamStore$.select(getUser);
+  readonly pickedUser$: Observable<User> = this.teamStore$.select(getUser);
 
-  projectsByUsers$ = this.store$.select(projectsByUsers);
+  readonly projectsByUsers$: Observable<GroupBy<Project[]>> =
+    this.store$.select(projectsByUsers);
 
-  usersByProject$ = this.store$.select(usersGroupByProject);
+  readonly usersByProject$: Observable<GroupBy<User[]>> =
+    this.store$.select(usersGroupByProject);
 
   constructor(
     private store$: Store<TrackMolaState>,

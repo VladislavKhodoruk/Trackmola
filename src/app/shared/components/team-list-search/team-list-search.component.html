@@ -130,7 +130,7 @@
   </form>
   <div class="team-list-cards" [@filterAnimation]="filteredUserCards.length">
     <app-user-card
-      (userId)="setPickedUser($event)"
+      (setUserId)="setPickedUser($event)"
       *ngFor="let card of filteredUserCards"
       [userCard]="card"
     ></app-user-card>
