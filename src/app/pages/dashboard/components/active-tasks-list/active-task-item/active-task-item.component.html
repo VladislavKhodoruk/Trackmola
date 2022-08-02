@@ -1,6 +1,6 @@
 <article class="task-wrapper">
   <div class="task-wrapper-info">
-    <div class="project-name-wrapper">
+    <div class="task-wrapper-info-project">
       <ng-container *ngIf="currentTask">
         <app-project-label
           [projectColor]="currentTask.projectColor"
@@ -8,7 +8,7 @@
         ></app-project-label>
       </ng-container>
     </div>
-    <p class="task-name">{{ currentTask.taskName }}</p>
+    <p class="task-wrapper-info-name">{{ currentTask.taskName }}</p>
   </div>
   <div class="task-wrapper-buttons">
     <app-button
@@ -17,8 +17,8 @@
       [class.hidden]="!currentTask.status"
       [buttonClass]="'button-primary button-sl'"
       [icon]="checkIcon"
-      iconWidth="1.5rem"
-      iconHeight="1.5rem"
+      iconWidth="1rem"
+      iconHeight="1rem"
     ></app-button>
     <app-users-photos
       *ngIf="currentTask.usersPhotos"

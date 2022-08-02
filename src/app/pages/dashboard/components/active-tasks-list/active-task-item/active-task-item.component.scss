@@ -3,7 +3,6 @@
 :host {
   .task-wrapper {
     display: flex;
-    grid-gap: var(--offset);
 
     margin-right: var(--offset);
     margin-bottom: var(--offset);
@@ -12,25 +11,25 @@
     border: var(--offset-xxs) solid var(--gray);
     border-radius: var(--offset-s);
 
-    .project-name-wrapper {
-      @include flex(center, flex-start, 1.25rem);
-    }
-
-    .task-name {
-      width: 100%;
-      transform: translateY(var(--offset-xs));
-
-      overflow: hidden;
-
-      font: var(--font-blocks);
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
     &-info {
       display: flex;
+      gap: var(--offset);
+
       width: 100%;
-      gap: 1rem;
+
+      &-project {
+        @include flex(center, flex-start, 1.25rem);
+        min-width: 10rem;
+      }
+
+      &-name {
+        overflow: hidden;
+        width: 100%;
+
+        font: var(--font-blocks);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
 
     .task-status {
@@ -61,8 +60,8 @@
 
     &-buttons {
       display: flex;
-      align-items: center;
       gap: 1rem;
+      align-items: center;
     }
   }
 }
