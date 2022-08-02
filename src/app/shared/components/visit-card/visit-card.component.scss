@@ -5,13 +5,18 @@
   .profile-visit-card {
     display: flex;
     flex-direction: column;
+
     padding: var(--offset-d);
+
     border: $border-input;
     border-radius: var(--border-radius-l);
+
     &-name {
       display: flex;
       justify-content: flex-start;
+
       margin: var(--offset-m) 0 var(--offset-m) var(--offset-m);
+
       &-text {
         font: var(--font-title);
         color: var(--black);
@@ -20,6 +25,7 @@
 
     &-info {
       display: flex;
+
       &-photo {
         @include flex(center, center);
         margin: 0 var(--offset-m);
@@ -31,19 +37,24 @@
 
       &-text {
         display: flex;
-        justify-content: space-between;
         flex-wrap: wrap;
+        justify-content: space-between;
+
         padding-bottom: var(--offset-m);
       }
     }
   }
+
   .profile-info {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: var(--offset-s) var(--offset-m);
+
     width: calc(100% / 3);
+    margin: var(--offset-s) var(--offset-m);
+
     word-wrap: break-word;
+
     &-title {
       margin: var(--offset-d) 0;
 

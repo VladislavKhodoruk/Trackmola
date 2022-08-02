@@ -160,6 +160,7 @@
 
               font-size: 1.1rem;
             }
+
             &-icon {
               cursor: pointer;
               user-select: none;
@@ -174,6 +175,7 @@
             margin-left: var(--offset-s);
           }
         }
+
         .form-report-bottom-vacation-checkbox:checked
           + .form-report-bottom-vacation-checkbox-label {
           background-color: var(--primary);
