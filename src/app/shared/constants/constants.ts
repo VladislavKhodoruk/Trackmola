@@ -118,3 +118,5 @@ export const COLORS_FOR_TASKS = [
   'var(--task-salad2)',
   'var(--task-violet3)',
 ];
+
+export const OutputRate = 8;

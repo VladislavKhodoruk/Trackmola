@@ -24,6 +24,7 @@
 
   .projects-list {
     @include flex(flex-start, flex-start, var(--offset-m));
+    @include scroll-bar;
 
     $width-scroll: var(--offset-s);
     $gap-scroll: calc(var(--offset-l) / 2 - #{$width-scroll} / 2);
@@ -47,17 +48,6 @@
     margin: calc(#{$shadow-y} * -1) calc(#{$gap-scroll} * -1)
       calc(#{$shadow-y} * -1) calc(#{$shadow-left} * -1);
     padding: #{$shadow-y} #{$gap-scroll} #{$shadow-y} #{$shadow-left};
-
-    &::-webkit-scrollbar {
-      width: #{$width-scroll};
-
-      background-color: var(--white);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--gray4);
-      border-radius: var(--border-radius-l);
-    }
 
     &-item {
       @include flex(flex-start, center, var(--offset-d));
