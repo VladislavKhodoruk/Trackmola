@@ -224,6 +224,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       projectId: this.currentProjectId,
       status: this.status,
       taskId: this.currentTaskId,
+      taskTrackStatus: 'new',
       userId: localStorage.getItem('AuthUserId'),
     };
     if (this.formTask) {
@@ -251,44 +252,67 @@ export class ReportInputComponent implements OnInit, OnChanges {
     return isInputOnlyNumber(event);
   }
 
-  durationMinus(formComtrolName: string): void {
-    const durationNumberValue = +this.form.get(`${formComtrolName}`)?.value;
-    const durationStringValue = this.form.get(`${formComtrolName}`)?.value;
-    const durationMin = this.form.get('overtime').value
-      ? '0'
-      : DurationValue.Min;
+  durationMinus(formControlName: string): void {
+    const durationNumberValue = +this.form.get(`${formControlName}`)?.value;
+    const durationStringValue = this.form.get(`${formControlName}`)?.value;
     if (
       !durationStringValue ||
       durationStringValue === KeyCodeAllowedSymbol.Dot
     ) {
-      this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Min);
+      this.form.get(`${formControlName}`)?.setValue(DurationValue.Min);
       return;
     }
-    if (durationNumberValue <= +durationMin) {
+    if (
+      (formControlName === 'overtimeDuration' &&
+        +this.form.get('overtimeDuration')?.value <= 0) ||
+      (formControlName === 'duration' &&
+        +this.form.get(`${formControlName}`)?.value <= +DurationValue.Min)
+    ) {
       return;
     }
-    if (durationNumberValue === +DurationValue.Default) {
+    if (durationNumberValue <= +DurationValue.Default) {
       const valueInput = `${
-        Math.round(+this.form.get(`${formComtrolName}`)?.value) -
-        DurationValue.MinStep
+        +this.form.get(`${formControlName}`)?.value - DurationValue.MinStep
       }`;
-      this.form.get(`${formComtrolName}`)?.setValue(valueInput);
+      this.form.get(`${formControlName}`)?.setValue(valueInput);
+      if (
+        +this.form.get('overtimeDuration')?.value >=
+        +this.form.get('duration')?.value
+      ) {
+        this.form
+          .get('overtimeDuration')
+          ?.setValue(this.form.get('duration')?.value);
+      }
       return;
     }
     const valueInput = `${
       Math.round(durationNumberValue) - DurationValue.Step
     }`;
-    this.form.get(`${formComtrolName}`)?.setValue(valueInput);
+    this.form.get(`${formControlName}`)?.setValue(valueInput);
+    if (
+      +this.form.get('overtimeDuration')?.value >=
+      +this.form.get('duration')?.value
+    ) {
+      this.form
+        .get('overtimeDuration')
+        ?.setValue(this.form.get('duration')?.value);
+    }
   }
 
-  durationPlus(formComtrolName: string): void {
-    const durationNumberValue = +this.form.get(`${formComtrolName}`)?.value;
-    const durationStringValue = this.form.get(`${formComtrolName}`)?.value;
+  durationPlus(formControlName: string): void {
+    const durationNumberValue = +this.form.get(`${formControlName}`)?.value;
+    const durationStringValue = this.form.get(`${formControlName}`)?.value;
+    if (
+      formControlName === 'overtimeDuration' &&
+      durationNumberValue >= +this.form.get('duration')?.value
+    ) {
+      return;
+    }
     if (
       !durationStringValue ||
       durationStringValue === KeyCodeAllowedSymbol.Dot
     ) {
-      this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Default);
+      this.form.get(`${formControlName}`)?.setValue(DurationValue.Default);
       return;
     }
 
@@ -300,30 +324,30 @@ export class ReportInputComponent implements OnInit, OnChanges {
       durationNumberValue === 0
     ) {
       const valueInput = `${
-        +this.form.get(`${formComtrolName}`)?.value + DurationValue.MinStep
+        +this.form.get(`${formControlName}`)?.value + DurationValue.MinStep
       }`;
-      this.form.get(`${formComtrolName}`)?.setValue(valueInput);
+      this.form.get(`${formControlName}`)?.setValue(valueInput);
       return;
     }
     const valueInput = `${
       Math.round(durationNumberValue) + DurationValue.Step
     }`;
-    this.form.get(`${formComtrolName}`)?.setValue(valueInput);
+    this.form.get(`${formControlName}`)?.setValue(valueInput);
   }
 
-  onSetValue(formComtrolName: string): void {
-    if (this.form.get(`${formComtrolName}`)?.value) {
+  onSetValue(formControlName: string): void {
+    if (this.form.get(`${formControlName}`)?.value) {
       return;
     }
-    this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Default);
+    this.form.get(`${formControlName}`)?.setValue(DurationValue.Default);
   }
 
-  onSetRightValue(formComtrolName: string): void {
+  onSetRightValue(formControlName: string): void {
     const durationStringValue: string = this.form.get(
-      `${formComtrolName}`
+      `${formControlName}`
     )?.value;
-    if (+this.form.get(`${formComtrolName}`)?.value > +DurationValue.Max) {
-      this.form.get(`${formComtrolName}`)?.setValue(DurationValue.Max);
+    if (+this.form.get(`${formControlName}`)?.value > +DurationValue.Max) {
+      this.form.get(`${formControlName}`)?.setValue(DurationValue.Max);
     }
     if (
       (durationStringValue.includes(KeyCodeAllowedSymbol.Dot) &&
@@ -338,7 +362,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
         0,
         onRightIndex(durationStringValue.indexOf(KeyCodeAllowedSymbol.Dot))
       );
-      this.form.get(`${formComtrolName}`)?.setValue(nowValue);
+      this.form.get(`${formControlName}`)?.setValue(nowValue);
       return;
     }
 
@@ -347,7 +371,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
         KeyCodeAllowedSymbol.Comma,
         KeyCodeAllowedSymbol.Dot
       );
-      this.form.get(`${formComtrolName}`)?.setValue(rightValue);
+      this.form.get(`${formControlName}`)?.setValue(rightValue);
     }
 
     if (durationStringValue.includes(KeyCodeAllowedSymbol.Less)) {
@@ -355,7 +379,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
         KeyCodeAllowedSymbol.Less,
         KeyCodeAllowedSymbol.Dot
       );
-      this.form.get(`${formComtrolName}`)?.setValue(rightValue);
+      this.form.get(`${formControlName}`)?.setValue(rightValue);
     }
 
     if (durationStringValue.includes(KeyCodeAllowedSymbol.Greater)) {
@@ -363,7 +387,16 @@ export class ReportInputComponent implements OnInit, OnChanges {
         KeyCodeAllowedSymbol.Greater,
         KeyCodeAllowedSymbol.Dot
       );
-      this.form.get(`${formComtrolName}`)?.setValue(rightValue);
+      this.form.get(`${formControlName}`)?.setValue(rightValue);
+    }
+
+    if (
+      +this.form.get('overtimeDuration')?.value >=
+      +this.form.get('duration')?.value
+    ) {
+      this.form
+        .get('overtimeDuration')
+        ?.setValue(this.form.get('duration')?.value);
     }
   }
 

@@ -37,8 +37,14 @@ export enum NumDay {
 
 export enum PeriodType {
   Week = 'week',
+  TwoWeek = 'two week',
   Month = 'month',
   Custom = 'custom',
+}
+
+export enum ChartType {
+  Xrange = 'xrange',
+  Treemap = 'treemap',
 }
 
 export enum DayType {

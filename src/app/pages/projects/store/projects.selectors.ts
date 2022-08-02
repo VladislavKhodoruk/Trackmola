@@ -131,11 +131,7 @@ export const activeTaskTracksDurationGroupByTask = createSelector(
             taskTrack.duration > 0 &&
             taskTrack.overtimeDuration > 0
         )
-        .reduce(
-          (result, taskTrack) =>
-            (result += taskTrack.duration + taskTrack.overtimeDuration),
-          0
-        );
+        .reduce((result, taskTrack) => (result += taskTrack.duration), 0);
       return activeTasks > 0 ? { ...accum, [task.id]: activeTasks } : accum;
     }, {})
 );

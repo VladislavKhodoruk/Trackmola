@@ -3,15 +3,15 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 
-import { TaskForManager } from '@pages/dashboard/interfaces/interface';
-import { getRandomColor } from '@shared/helpers/helpers';
+import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
+import { taskTracksByUser } from '@pages/dashboard/helpers/helpers';
 
-import { Project } from '@shared/interfaces/interfaces';
+import { TaskForManager } from '@pages/dashboard/interfaces/interface';
+
+import { Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,21 +19,19 @@ import { Project } from '@shared/interfaces/interfaces';
   styleUrls: ['./manager-dashboard-list-tasks.component.scss'],
   templateUrl: './manager-dashboard-list-tasks.component.html',
 })
-export class ManagerDashboardListTasksComponent implements OnChanges {
+export class ManagerDashboardListTasksComponent {
   @Input() readonly activeProjectFilter: Project;
   @Input() readonly tasksForManager: TaskForManager[];
   @Input() readonly activeTask: TaskForManager;
+  @Input() readonly modeView: ManagerDashboardView;
+  @Input() readonly colors: string[];
+  @Input() readonly chartXRangeHeight: number;
 
   @Output() selectTask = new EventEmitter<TaskForManager>();
 
-  tasksColors: string[] = [];
+  managerDashboardView = ManagerDashboardView;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.tasksForManager && this.tasksForManager.length) {
-      this.tasksColors.length = 0;
-      this.tasksForManager.forEach(() =>
-        this.tasksColors.push(getRandomColor())
-      );
-    }
+  protected taskTracksByUserLength(taskTracks: TaskTrack[]): number {
+    return taskTracksByUser(taskTracks).length;
   }
 }
