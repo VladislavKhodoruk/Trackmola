@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { TrackMolaState } from '@store/trackMola.state';
 import { Observable } from 'rxjs';
-import { PeriodType } from '@shared/enums/enum';
-import { getActivePeriod } from '@pages/activity/store/activity.selectors';
+
 import {
   changeActivityPeriodSuccess,
   getWeekReportTime,
 } from '@pages/activity/store/activity.actions';
+import { getActivePeriod } from '@pages/activity/store/activity.selectors';
+import { PeriodType } from '@shared/enums/enum';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   selector: 'app-activity-container',

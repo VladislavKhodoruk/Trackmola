@@ -2,7 +2,6 @@ import { IconifyIcon } from '@iconify/types';
 
 import { Timestamp } from 'firebase/firestore';
 
-import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
 import { DayType, WeekDays } from '@shared/enums/enum';
 
 export interface Project {

@@ -30,42 +30,24 @@ const NAVIGATION_BASIC_ITEMS: NavigationItem[] = [
   },
 ];
 
-const NAVIGATION_TEAM: NavigationItem = {
-  icon: puzzleIcon,
-  label: 'Team',
-  routeLink: 'team',
-};
+const NAVIGATION_MANAGER_ITEMS: NavigationItem[] = [
+  ...NAVIGATION_BASIC_ITEMS,
+  {
+    icon: puzzleIcon,
+    label: 'Team',
+    routeLink: 'team',
+  },
+  {
+    icon: manualGearbox,
+    label: 'Report constructor',
+    routeLink: 'report-constructor',
+  },
+];
 
-const NAVIGATION_REPORT_CONSTRUCTOR: NavigationItem = {
-  icon: manualGearbox,
-  label: 'Report constructor',
-  routeLink: 'report-constructor',
-};
-
-export const getNavigationElems = (userType: string): NavigationItem[] => {
-  switch (userType) {
-    case UserType.Employee:
-      return NAVIGATION_BASIC_ITEMS;
-    case UserType.CTO:
-      return [
-        ...NAVIGATION_BASIC_ITEMS,
-        NAVIGATION_TEAM,
-        NAVIGATION_REPORT_CONSTRUCTOR,
-      ];
-    case UserType.Manager:
-      return [
-        ...NAVIGATION_BASIC_ITEMS,
-        NAVIGATION_TEAM,
-        NAVIGATION_REPORT_CONSTRUCTOR,
-      ];
-    case UserType.Admin:
-      return [
-        ...NAVIGATION_BASIC_ITEMS,
-        NAVIGATION_TEAM,
-        NAVIGATION_REPORT_CONSTRUCTOR,
-      ];
-  }
-};
+export const getNavigationElems = (userType: string): NavigationItem[] =>
+  userType === UserType.Employee
+    ? NAVIGATION_BASIC_ITEMS
+    : NAVIGATION_MANAGER_ITEMS;
 
 export const DEFAULT_PHOTO_URL = 'assets/img/user.png';
 export const MAX_USERS_PHOTO = 4;
