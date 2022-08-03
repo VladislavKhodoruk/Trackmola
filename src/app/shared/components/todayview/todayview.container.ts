@@ -3,13 +3,14 @@ import { Store } from '@ngrx/store';
 
 import { putTaskTrack } from '@pages/report/store/report.actions';
 import { TaskTrack } from '@shared/interfaces/interfaces';
-import { deleteTaskTrack } from '@store/common/common.actions';
+import { addTaskTrack, deleteTaskTrack } from '@store/common/common.actions';
 import {
   getDate,
   getProjects,
   getTasks,
   getTasksTrack,
 } from '@store/common/common.selectors';
+import { CommonState } from '@store/common/common.state';
 import { TrackMolaState } from 'app/store/trackMola.state';
 
 @Component({
@@ -21,6 +22,7 @@ import { TrackMolaState } from 'app/store/trackMola.state';
     [currentDate]="currentDate$ | async"
     (taskTrack)="putIntoStore($event)"
     (deleteTaskTrack)="deleteTaskTrack($event)"
+    (addCurTaskTrack)="addCurTaskTrack($event)"
   ></app-todayview-component>`,
 })
 export class TodayviewContainer {
@@ -29,7 +31,10 @@ export class TodayviewContainer {
   projects$ = this.store$.select(getProjects);
   currentDate$ = this.store$.select(getDate);
 
-  constructor(private store$: Store<TrackMolaState>) {}
+  constructor(
+    private store$: Store<TrackMolaState>,
+    private commonStore$: Store<CommonState>
+  ) {}
 
   putIntoStore(taskTrack: TaskTrack): void {
     this.store$.dispatch(putTaskTrack({ taskTrack }));
@@ -37,5 +42,9 @@ export class TodayviewContainer {
 
   deleteTaskTrack(id: string): void {
     this.store$.dispatch(deleteTaskTrack({ id }));
+  }
+
+  addCurTaskTrack(tasktrack: TaskTrack): void {
+    this.commonStore$.dispatch(addTaskTrack({ tasktrack }));
   }
 }
