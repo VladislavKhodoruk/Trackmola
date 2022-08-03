@@ -1,29 +1,61 @@
+import { Autolinker, AutolinkerConfig } from 'autolinker';
 import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import {
   COLORS_FOR_TASKS,
-  OutputRate,
+  NUMBER_OF_DAYS_IN_A_WEEK,
+  HIGHEST_KPI,
+  OUTPUT_RATE,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
-import { PeriodType } from '@shared/enums/enum';
+import { NumDay, PeriodType } from '@shared/enums/enum';
 import {
-  OutOfMain,
   Period,
   Project,
   TaskTrack,
+  OutOfMain,
+  TaskByWeekDays,
 } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
   switch (type) {
     case PeriodType.Week: {
       const dayOfWeek = date.getDay();
-      const startDay = date.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
+      const startDay =
+        date.getDate() -
+        dayOfWeek +
+        (dayOfWeek === NumDay.Sunday ? -NumDay.Saturday : NumDay.Monday);
       const startDate = new Date(date.getFullYear(), date.getMonth(), startDay);
       const endDate = new Date(
         date.getFullYear(),
         date.getMonth(),
-        startDay + 6
+        startDay + NumDay.Saturday
+      );
+      endDate.setHours(23);
+      endDate.setMinutes(59);
+      endDate.setSeconds(59);
+
+      return {
+        end: endDate.getTime(),
+        start: startDate.getTime(),
+      };
+    }
+    case PeriodType.TwoWeek: {
+      const dayOfWeek = date.getDay();
+      const startDay =
+        date.getDate() -
+        dayOfWeek +
+        (dayOfWeek === NumDay.Sunday ? -NumDay.Saturday : NumDay.Monday);
+      const startDate = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        startDay - NUMBER_OF_DAYS_IN_A_WEEK
+      );
+      const endDate = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        startDay + NumDay.Saturday
       );
       endDate.setHours(23);
       endDate.setMinutes(59);
@@ -45,6 +77,24 @@ export function getPeriod(date: Date, type?: PeriodType): Period {
       };
     }
   }
+}
+
+export function getPeriodUTC(period: Period): Period {
+  const startUTC = Date.UTC(
+    new Date(period.start).getFullYear(),
+    new Date(period.start).getMonth(),
+    new Date(period.start).getDate()
+  );
+  const endUTC = Date.UTC(
+    new Date(period.end).getUTCFullYear(),
+    new Date(period.end).getUTCMonth(),
+    new Date(period.end).getUTCDate() + 1
+  );
+
+  return {
+    end: endUTC,
+    start: startUTC,
+  };
 }
 
 export function getProjectNameAndColor(id: string, projects: Project[]) {
@@ -121,27 +171,7 @@ export function getRandomColor(): string {
   return colors[randomIndex];
 }
 
-export function getEfficiency(
-  taskTrack: TaskTrack[],
-  startOfWeek: number,
-  presentDay: number
-): number {
-  const totalHours = taskTrack
-    .map((task: TaskTrack) => task.duration)
-    .reduce((acc, prev) => acc + prev, 0);
-  const requiredAmount =
-    (1 + new Date(presentDay).getDay() - new Date(startOfWeek).getDay()) *
-    OutputRate;
-
-  return totalHours <= requiredAmount
-    ? totalHours / requiredAmount
-    : totalHours / requiredAmount - 1;
-}
-
-export function outOfNorm(
-  taskTrack: TaskTrack[],
-  presentDay: number
-): OutOfMain {
+export function sortTaskByDays(taskTrack: TaskTrack[]): TaskByWeekDays {
   const weekTasksByDays = SHORT_NAMES_OF_THE_WEEK_UPPERCASE.reduce(
     (acc, prev) => {
       acc[prev] = [];
@@ -156,31 +186,55 @@ export function outOfNorm(
     weekTasksByDays[day] = [...weekTasksByDays[day], task];
   });
 
+  return weekTasksByDays as TaskByWeekDays;
+}
+
+export function getEfficiency(
+  taskTrack: TaskTrack[],
+  startOfWeek: number,
+  presentDay: number
+): number {
+  const allHoursByDays = Object.values(sortTaskByDays(taskTrack))
+    .map((i: TaskTrack[]) => i.reduce((acc, prev) => acc + prev.duration, 0))
+    .map((dayHours) =>
+      dayHours / OUTPUT_RATE >= HIGHEST_KPI
+        ? HIGHEST_KPI - (dayHours / OUTPUT_RATE - HIGHEST_KPI)
+        : dayHours / OUTPUT_RATE
+    )
+    .reduce((acc, prev) => acc + prev, 0);
+
+  return allHoursByDays / new Date(presentDay).getDay();
+}
+
+export function outOfNorm(
+  taskTrack: TaskTrack[],
+  presentDay: number
+): OutOfMain {
   const mismatch = {
     overtimes: 0,
     shortages: 0,
     working: 0,
   };
 
-  Object.values(weekTasksByDays)
+  Object.values(sortTaskByDays(taskTrack))
     .map((item: TaskTrack[]) =>
       item.reduce((acc, prev) => acc + prev.duration, 0)
     )
     .forEach((dayDuration, index) => {
-      if (dayDuration <= OutputRate && index < new Date(presentDay).getDay()) {
-        mismatch.shortages += OutputRate - dayDuration;
+      if (dayDuration <= OUTPUT_RATE && index < new Date(presentDay).getDay()) {
+        mismatch.shortages += OUTPUT_RATE - dayDuration;
         mismatch.working += dayDuration;
       }
-      if (
-        dayDuration > OutputRate &&
-        index <= new Date(presentDay).getDay() - 1
-      ) {
-        mismatch.overtimes += dayDuration - OutputRate;
-        mismatch.working += OutputRate;
-      }
-      if (index === new Date(presentDay).getDay()) {
-        mismatch.overtimes = dayDuration;
+      if (dayDuration > OUTPUT_RATE) {
+        mismatch.overtimes += dayDuration - OUTPUT_RATE;
+        mismatch.working += OUTPUT_RATE;
       }
     });
   return mismatch;
+}
+
+export function urlReplacer(text: string): string {
+  const options: AutolinkerConfig = { className: 'link' };
+  const replacer: Autolinker = new Autolinker(options);
+  return replacer.link(text);
 }

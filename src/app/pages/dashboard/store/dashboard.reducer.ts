@@ -47,10 +47,25 @@ const dashboardReducer = createReducer(
     ...state,
     manager: { ...state.manager, modeView: mode },
   })),
-  on(setActiveTask, (state: DashboardState, { task }) => ({
-    ...state,
-    manager: { ...state.manager, selectedTask: task },
-  })),
+  on(setActiveTask, (state: DashboardState, { task }) => {
+    if (
+      state.manager.selectedTask &&
+      state.manager.selectedTask.id === task.id
+    ) {
+      return {
+        ...state,
+        manager: {
+          ...state.manager,
+          selectedTask: dashboardState.manager.selectedTask,
+        },
+      };
+    }
+
+    return {
+      ...state,
+      manager: { ...state.manager, selectedTask: task },
+    };
+  }),
   on(clearDashboardState, () => ({
     ...dashboardState,
   }))

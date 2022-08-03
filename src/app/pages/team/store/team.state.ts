@@ -1,5 +1,9 @@
+import { User } from '@shared/interfaces/interfaces';
+
 export interface TeamState {
-  [key: string]: string;
+  user: User | null;
 }
 
-export const teamState: TeamState = {};
+export const teamState: TeamState = {
+  user: null,
+};

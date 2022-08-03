@@ -120,7 +120,7 @@
           border-radius: var(--border-radius);
 
           &::before {
-            content: url("https://api.iconify.design/tabler/check.svg?color=%237353d0");
+            content: "";
 
             font-size: 1.1rem;
           }
@@ -247,13 +247,8 @@
   }
 
   .form-report-overtime-check-checkbox:checked
-    + .form-report-overtime-check-checkbox-label {
-    background-color: var(--primary);
-  }
-
-  .form-report-overtime-check-checkbox:checked
     + .form-report-overtime-check-checkbox-label::before {
-    content: url("https://api.iconify.design/tabler/check.svg?color=white");
+    content: url("https://api.iconify.design/tabler/check.svg?color=%237353d0");
   }
 
   .cancel-button {

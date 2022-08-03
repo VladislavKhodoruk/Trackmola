@@ -72,6 +72,13 @@
       padding: 0 var(--offset-m);
     }
 
+    &-sl {
+      height: 2rem;
+      padding: 0 var(--offset);
+
+      border-radius: var(--offset-l);
+    }
+
     &-xs {
       height: 2.5rem;
       padding: 0 var(--offset-s);
@@ -138,14 +145,16 @@
     height: 2rem;
     padding: 0 0.5rem;
 
-    font-size: var(--font-main);
+    font-size: var(--font-currentSmall);
+    font-weight: 500;
     color: var(--primary);
 
-    border: none;
+    background-color: var(--white);
+    border: $border-button;
     border-radius: var(--border-radius-l);
 
     &:hover {
-      background-color: var(--gray4);
+      box-shadow: $border-input-select;
     }
 
     &-icon {
@@ -158,7 +167,7 @@
       background-color: var(--primary);
 
       &:hover {
-        background-color: var(--primary-hover);
+        box-shadow: $border-input-select;
       }
     }
 

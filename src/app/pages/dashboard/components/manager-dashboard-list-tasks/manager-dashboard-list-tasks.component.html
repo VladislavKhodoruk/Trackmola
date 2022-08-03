@@ -8,18 +8,33 @@
     </ng-container>
   </header>
   <ng-container *ngIf="tasksForManager.length">
-    <ul class="dashboard-main-tasks-list">
+    <ul
+      class="dashboard-main-tasks-list"
+      [style.overflowY]="
+        modeView === managerDashboardView.Table ? 'scroll' : 'visible'
+      "
+    >
       <li
-        *ngFor="let task of tasksForManager; let i = index"
         class="dashboard-main-tasks-list-item"
+        *ngFor="let task of tasksForManager"
         [class.dashboard-main-tasks-list-item-selected]="
           task.id === activeTask?.id
+        "
+        [style.minHeight.px]="
+          modeView === managerDashboardView.Table
+            ? chartXRangeHeight
+            : chartXRangeHeight * taskTracksByUserLength(task.taskTracksInTask)
+        "
+        [style.maxHeight.px]="
+          modeView === managerDashboardView.Table
+            ? chartXRangeHeight
+            : chartXRangeHeight * taskTracksByUserLength(task.taskTracksInTask)
         "
         (click)="selectTask.emit(task)"
       >
         <div
           class="dashboard-main-tasks-list-item-bar"
-          [style.backgroundColor]="tasksColors[i]"
+          [style.backgroundColor]="colors[task.id]"
         ></div>
         <span class="dashboard-main-tasks-list-item-name">
           {{ task.name }}

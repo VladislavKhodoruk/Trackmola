@@ -12,6 +12,7 @@ interface DashboardManagerState {
   activeProjectFilter: Project | null;
   modeView: ManagerDashboardView;
   selectedTask: TaskForManager | null;
+  period: Period;
 }
 
 export interface DashboardState {
@@ -24,6 +25,7 @@ export const dashboardState: DashboardState = {
   manager: {
     activeProjectFilter: null,
     modeView: ManagerDashboardView.Table,
+    period: getPeriod(new Date(), PeriodType.TwoWeek),
     projectsFilter: [],
     selectedTask: null,
   },
