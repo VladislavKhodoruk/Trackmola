@@ -44,7 +44,7 @@ export class TodayviewContainer {
     this.store$.dispatch(deleteTaskTrack({ id }));
   }
 
-  addCurTaskTrack(tasktrack: TaskTrack) {
+  addCurTaskTrack(tasktrack: TaskTrack): void {
     this.commonStore$.dispatch(addTaskTrack({ tasktrack }));
   }
 }
