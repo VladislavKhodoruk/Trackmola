@@ -72,6 +72,13 @@
       padding: 0 var(--offset-m);
     }
 
+    &-sl {
+      height: 2rem;
+      padding: 0 var(--offset);
+
+      border-radius: var(--offset-l);
+    }
+
     &-xs {
       height: 2.5rem;
       padding: 0 var(--offset-s);

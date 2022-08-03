@@ -1,33 +1,38 @@
-<article class="task-wrappeer">
-  <div class="project-name-wrapper">
-    <ng-container *ngIf="currentTask">
-      <app-project-label
-        [projectColor]="currentTask.projectColor"
-        [projectName]="currentTask.projectName"
-      ></app-project-label>
-    </ng-container>
+<article class="task-wrapper">
+  <div class="task-wrapper-info">
+    <div class="task-wrapper-info-project">
+      <ng-container *ngIf="currentTask">
+        <app-project-label
+          [projectColor]="currentTask.projectColor"
+          [projectName]="currentTask.projectName"
+        ></app-project-label>
+      </ng-container>
+    </div>
+    <p class="task-wrapper-info-name">{{ currentTask.taskName }}</p>
   </div>
-  <p class="task-name">{{ currentTask.taskName }}</p>
-  <div [class.task-status]="currentTask.status">
-    <img
-      src="assets/img/activity/tick.svg"
+  <div class="task-wrapper-buttons">
+    <app-button
+      [label]="currentTask.status"
+      [class.task-status]="currentTask.status"
       [class.hidden]="!currentTask.status"
-      alt="tick"
-    />
-    <p>{{ currentTask.status }}</p>
+      [buttonClass]="'button-primary button-sl'"
+      [icon]="checkIcon"
+      iconWidth="1rem"
+      iconHeight="1rem"
+    ></app-button>
+    <app-users-photos
+      *ngIf="currentTask.usersPhotos"
+      [users]="currentTask.usersPhotos"
+      size="2"
+    ></app-users-photos>
+    <app-button
+      class="form-report-footer-voice"
+      [buttonClass]="'button-primary button-xs'"
+      type="button"
+      [icon]="clipButton"
+      iconWidth="1.5rem"
+      iconHeight="1.5rem"
+      (click)="openDialog()"
+    ></app-button>
   </div>
-  <app-users-photos
-    *ngIf="currentTask.usersPhotos"
-    [users]="currentTask.usersPhotos"
-    size="2"
-  ></app-users-photos>
-  <app-button
-    class="form-report-footer-voice"
-    [buttonClass]="'button-primary button-xs'"
-    type="button"
-    [icon]="clipButton"
-    iconWidth="1.5rem"
-    iconHeight="1.5rem"
-    (click)="openDialog()"
-  ></app-button>
 </article>

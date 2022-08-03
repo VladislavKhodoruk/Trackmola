@@ -109,6 +109,11 @@ export class ExportExelService {
       }
     }
 
+    worksheet.getColumn(1).alignment = {
+      horizontal: 'left',
+      vertical: 'middle',
+    };
+
     void workbook.xlsx.writeBuffer().then((respons) => {
       const blob = new Blob([respons], {
         type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',

@@ -2,7 +2,8 @@ import { IconifyIcon } from '@iconify/types';
 
 import { Timestamp } from 'firebase/firestore';
 
-import { DayType } from '@shared/enums/enum';
+import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
+import { DayType, WeekDays } from '@shared/enums/enum';
 
 export interface Project {
   id: string;
@@ -137,3 +138,7 @@ export interface OutOfMain {
   shortages: number;
   working: number;
 }
+
+export type TaskByWeekDays = {
+  [key in WeekDays]: TaskTrack[] | [];
+};
