@@ -1,0 +1,104 @@
+@import "mixins";
+
+::ng-deep {
+  .holidays-header-icon svg {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+  }
+}
+
+:host {
+  $width-scroll: var(--offset-s);
+
+  width: 100%;
+  height: 100%;
+
+  .holidays {
+    @include flex(flex-start, flex-start, var(--offset));
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    padding: var(--offset-m) #{$width-scroll} var(--offset-m) var(--offset);
+
+    &-header {
+      @include flex(center, flex-start, var(--offset-s));
+      width: 100%;
+
+      &-title {
+        font: var(--font-title);
+      }
+    }
+
+    &-list {
+      @include flex(flex-start, flex-start, var(--offset));
+      @include scroll-bar;
+      scroll-snap-type: y mandatory;
+
+      overflow: scroll;
+
+      width: 100%;
+      padding-right: var(--offset);
+
+      &-item {
+        @include flex(center, flex-start);
+        scroll-snap-align: start;
+
+        min-width: 21.5rem;
+        min-height: 7.5rem;
+
+        background-color: var(--pale-blue);
+        border-radius: var(--border-radius-l);
+
+        &-circle {
+          transform: translateX(-0.4rem);
+
+          width: 1rem;
+          height: 2rem;
+
+          background-color: var(--white);
+          border-radius: 50%;
+        }
+
+        &-icon-and-locations {
+          @include flex(center, flex-start);
+          flex-direction: column;
+        }
+
+        &-locations {
+          @include flex(center, flex-start, var(--offset-xs));
+        }
+
+        &-wrapper {
+          @include flex(center, space-between);
+          width: 100%;
+          margin-left: var(--offset-s);
+          padding: var(--offset-sm) var(--offset) var(--offset-sm)
+            var(--offset-m);
+
+          border-left: var(--offset-xxs) dashed var(--gray);
+
+          &-info {
+            height: 100%;
+            &-day {
+              font: var(--font-calendar);
+              color: var(--primary);
+            }
+
+            &-name {
+              font: var(--font-current);
+              color: var(--black);
+            }
+          }
+
+          &-photo {
+            @include profile-photo(5rem, 5rem);
+          }
+        }
+      }
+    }
+  }
+}
