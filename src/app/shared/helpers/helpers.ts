@@ -14,6 +14,7 @@ import {
   Project,
   TaskTrack,
   OutOfMain,
+  TaskByWeekDays,
 } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
@@ -169,7 +170,7 @@ export function getRandomColor(): string {
   return colors[randomIndex];
 }
 
-export function sortTaskByDays(taskTrack: TaskTrack[]) {
+export function sortTaskByDays(taskTrack: TaskTrack[]): TaskByWeekDays {
   const weekTasksByDays = SHORT_NAMES_OF_THE_WEEK_UPPERCASE.reduce(
     (acc, prev) => {
       acc[prev] = [];
@@ -183,7 +184,8 @@ export function sortTaskByDays(taskTrack: TaskTrack[]) {
     const day: string = SHORT_NAMES_OF_THE_WEEK_UPPERCASE[currentDay];
     weekTasksByDays[day] = [...weekTasksByDays[day], task];
   });
-  return weekTasksByDays;
+
+  return weekTasksByDays as TaskByWeekDays;
 }
 
 export function getEfficiency(

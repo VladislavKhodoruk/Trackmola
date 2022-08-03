@@ -53,3 +53,13 @@ export enum DayType {
   ShortedDay = 'shortedDay',
   Holiday = 'holiday',
 }
+
+export enum WeekDays {
+  MON = 'MON',
+  TUE = 'TUE',
+  WED = 'WED',
+  THU = 'THU',
+  FRI = 'FRI',
+  SAT = 'SAT',
+  SUN = 'SUN',
+}
