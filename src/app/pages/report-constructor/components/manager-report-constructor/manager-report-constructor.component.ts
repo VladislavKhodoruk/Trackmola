@@ -54,7 +54,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
     new EventEmitter<string>();
   @Output() exportExel: EventEmitter<ExcelData> = new EventEmitter<ExcelData>();
 
-  labels: string[] = [...Object.values(PeriodType)];
+  labels: string[] = [PeriodType.Week, PeriodType.Month, PeriodType.Custom];
 
   teamProject: User[];
 
