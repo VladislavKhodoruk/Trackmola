@@ -1,4 +1,4 @@
-import Autolinker, { AutolinkerConfig } from 'autolinker';
+import { Autolinker, AutolinkerConfig } from 'autolinker';
 import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
