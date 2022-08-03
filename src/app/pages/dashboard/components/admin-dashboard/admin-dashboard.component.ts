@@ -63,7 +63,7 @@ export class AdminDashboardComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(): void {
-    this.currentUsers = [...this.users, ...this.users, ...this.users];
+    this.currentUsers = this.users;
     this.currentUser = this.currentUsers[1];
     this.totalCardItems = [
       getTotalCardItem(

@@ -30,7 +30,7 @@
 
     &-search-and-sort {
       @include flex(center, flex-start, var(--offset));
-      height: 10%;
+      height: 7%;
     }
 
     &-search {
@@ -45,8 +45,8 @@
 
     &-main {
       @include flex(flex-start, space-between, var(--offset));
-      height: 60%;
-      margin-top: var(--offset);
+      height: calc(93% - 22.5rem);
+      margin: var(--offset) 0;
       padding: var(--offset-xs);
 
       &-user-cards {
@@ -68,6 +68,10 @@
           margin-bottom: 0;
         }
       }
+    }
+
+    &-footer {
+      @include flex(flex-start, space-between, var(--offset));
     }
   }
 

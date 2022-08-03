@@ -129,10 +129,18 @@ export interface CalendarDay {
   date: string;
   dayType: DayType;
   holidayName?: string;
+  holidayImg?: IconifyIcon;
 }
 
 export interface OutOfMain {
   overtimes: number;
   shortages: number;
   working: number;
+}
+
+export interface Holiday {
+  date: Date;
+  holidayImg: IconifyIcon;
+  holidayName: string;
+  locations: string[];
 }
