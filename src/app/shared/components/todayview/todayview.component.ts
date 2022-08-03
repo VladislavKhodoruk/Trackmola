@@ -29,11 +29,11 @@ export class TodayviewComponent implements OnChanges {
   @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() deleteTaskTrack = new EventEmitter<string>();
 
-  maxDuration = 100;
   taskItems: TaskItem[];
   taskItemsAreEmpty = true;
 
-  maximumNumberOfHoursInADay = MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY;
+  readonly maximumNumberOfHoursInADay = MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY;
+  readonly maxDuration = 100;
 
   ngOnChanges(): void {
     this.taskItems = this.createTaskItems();

@@ -7,7 +7,14 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import pineapple from '@iconify/icons-noto/pineapple';
@@ -58,6 +65,8 @@ export class TeamListSearchComponent implements OnChanges {
   @Input() positions: string[];
   @Input() allUsers: User[];
 
+  @Output() pickUser = new EventEmitter<User>();
+
   readonly iconAngleLeftB = angleLeftB;
   readonly iconSearch = searchIcon;
   readonly iconFilter = filter;
@@ -84,7 +93,10 @@ export class TeamListSearchComponent implements OnChanges {
     position: new FormControl(''),
     project: new FormControl(''),
   });
-
+  setPickedUser(id: string): void {
+    const user = this.allUsers.find((currentUser) => currentUser.id === id);
+    this.pickUser.emit(user);
+  }
   isProject(): void {
     const isProject = this.allProjects?.some(
       (project) => project.name === this.form.get('project').value
@@ -123,6 +135,10 @@ export class TeamListSearchComponent implements OnChanges {
         .toLocaleLowerCase()
         .includes(this.searchText.toLowerCase())
     );
+    const defaultUser = this.allUsers.find(
+      (user) => user.fullName === this.filteredUserCards[0].userName
+    );
+    this.pickUser.emit(defaultUser);
   }
   filterUsers(): void {
     const filterConfig = {
@@ -131,6 +147,7 @@ export class TeamListSearchComponent implements OnChanges {
       project: this.form.get('project').value,
     };
     this.filteredUserCards = this.allUserCards
+      .sort((a, b) => (a.userName > b.userName ? 1 : -1))
       .filter((userCard) => {
         const currentProjects = userCard.projects.map(
           (project) => project.name
@@ -152,6 +169,10 @@ export class TeamListSearchComponent implements OnChanges {
         }
         return true;
       });
+    const defaultUser = this.allUsers.find(
+      (user) => user.fullName === this.filteredUserCards[0].userName
+    );
+    this.pickUser.emit(defaultUser);
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.allProjects) {
@@ -198,16 +219,24 @@ export class TeamListSearchComponent implements OnChanges {
       this.allUserCards = [];
       this.allUsers.forEach((user) => {
         const projects = this.projectsByUsers[user.id];
+        const { id, location, photo, position, fullName } = user;
         const currentUserCard: UserCard = {
-          location: user.location,
-          photo: user.photo,
-          position: user.position,
-          projects: projects,
-          userName: user.fullName,
+          id,
+          location,
+          photo,
+          position,
+          projects,
+          userName: fullName,
         };
         this.allUserCards.push(currentUserCard);
       });
-      this.filteredUserCards = this.allUserCards;
+      this.filteredUserCards = this.allUserCards.sort((a, b) =>
+        a.userName > b.userName ? 1 : -1
+      );
+      const defaultUser = this.allUsers.find(
+        (user) => user.fullName === this.filteredUserCards[0].userName
+      );
+      this.pickUser.emit(defaultUser);
     }
   }
 

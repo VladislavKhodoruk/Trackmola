@@ -1,0 +1,48 @@
+<section class="profile-visit-card">
+  <div class="profile-visit-card-name">
+    <p class="profile-visit-card-name-text">{{ user?.fullName }}</p>
+  </div>
+  <div class="profile-visit-card-info">
+    <div class="profile-visit-card-info-photo">
+      <img
+        class="profile-visit-card-info-photo-avatar"
+        src="{{ user?.photo || defaultPhoto }}"
+      />
+    </div>
+    <div class="profile-visit-card-info-text">
+      <div class="profile-info">
+        <h2 class="profile-info-title">Job position</h2>
+        <div class="profile-info-data">{{ user?.position }}</div>
+      </div>
+
+      <div class="profile-info">
+        <h2 class="profile-info-title">First day</h2>
+        <div class="profile-info-data">
+          {{ this.user?.startDate?.seconds * 1000 | date }}
+        </div>
+      </div>
+
+      <div class="profile-info">
+        <h2 class="profile-info-title">Qualification</h2>
+        <div class="profile-info-data">{{ user?.qualification }}</div>
+      </div>
+
+      <div class="profile-info">
+        <h2 class="profile-info-title">Location</h2>
+        <div class="profile-info-data">{{ user?.location }}</div>
+      </div>
+
+      <div class="profile-info">
+        <h2 class="profile-info-title">Email</h2>
+        <div class="profile-info-data">{{ user?.email }}</div>
+      </div>
+
+      <div class="profile-info">
+        <h2 class="profile-info-title">Birthday</h2>
+        <div class="profile-info-data">
+          {{ this.user?.birthday?.seconds * 1000 | date }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

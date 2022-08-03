@@ -60,6 +60,8 @@
   }
 
   .icons {
+    user-select: none;
+
     display: none;
 
     color: var(--gray);
