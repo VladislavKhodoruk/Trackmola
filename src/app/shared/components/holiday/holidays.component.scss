@@ -4,6 +4,7 @@
   .holidays-header-icon svg {
     width: 3rem;
     height: 3rem;
+
     border-radius: 100%;
   }
 }
@@ -83,6 +84,7 @@
 
           &-info {
             height: 100%;
+
             &-day {
               font: var(--font-calendar);
               color: var(--primary);
