@@ -13,6 +13,7 @@
         <ic-icon
           class="dashboard-controls-project-icon angle-down-icon"
           [icon]="iconAngleDown"
+          (click)="focusProjectInput()"
         ></ic-icon>
         <mat-autocomplete autoActiveFirstOption #projects="matAutocomplete">
           <mat-option
