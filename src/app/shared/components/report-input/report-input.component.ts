@@ -103,6 +103,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
             this.currentProjectId = this.allProjects?.find(
               (project) => project.name === this.form.get('project').value
             )?.id;
+            this.form.get('task').setValue('');
             this.filteredTasksOptions = this.form
               .get('task')
               ?.valueChanges.pipe(
@@ -187,20 +188,22 @@ export class ReportInputComponent implements OnInit, OnChanges {
   private filterOption(value: string, options: string[]): string[] {
     const filterValue = value.toLowerCase();
 
-    return options.filter((option) =>
-      option?.toLowerCase().includes(filterValue)
-    );
+    return options.some((item) => item.toLowerCase() === filterValue)
+      ? options
+      : options.filter((option) => option?.toLowerCase().includes(filterValue));
   }
 
   private filterTasks(value: string): string[] {
     const filterValue = value.toLowerCase();
 
     const tasksArr = this.allTasks?.filter(
-      (task) =>
-        task.name.toLowerCase().includes(filterValue) &&
-        task.projectId === this.currentProjectId
+      (task) => task.projectId === this.currentProjectId
     );
-    return tasksArr.map((task) => task.name);
+    return tasksArr?.some((item) => item.name.toLowerCase() === filterValue)
+      ? tasksArr.map((item) => item.name)
+      : tasksArr
+          .map((item) => item.name)
+          .filter((item) => item.toLowerCase().includes(filterValue));
   }
 
   public onCheckStatus(status: string): void {
@@ -401,11 +404,16 @@ export class ReportInputComponent implements OnInit, OnChanges {
   }
 
   isProjects(): void {
-    const isProject = this.allProjects?.some(
-      (project) => project.name === this.form.get('project').value
+    const project = this.allProjects?.find(
+      (item) =>
+        item.name.toLowerCase() === this.form.get('project').value.toLowerCase()
     );
 
-    if (isProject) {
+    if (
+      project?.name.toLowerCase() ===
+      this.form.get('project').value.toLowerCase()
+    ) {
+      this.form.get('project').setValue(project.name);
       return;
     }
 
@@ -414,13 +422,16 @@ export class ReportInputComponent implements OnInit, OnChanges {
   }
 
   isTasks(): void {
-    const isTask = this.allTasks?.some(
-      (task) =>
-        task.name === this.form.get('task').value &&
-        task.projectId === this.currentProjectId
+    const task = this.allTasks?.find(
+      (item) =>
+        item.name === this.form.get('task').value &&
+        item.projectId === this.currentProjectId
     );
 
-    if (isTask) {
+    if (
+      task?.name.toLowerCase() === this.form.get('task').value.toLowerCase()
+    ) {
+      this.form.get('task').setValue(task.name);
       return;
     }
 

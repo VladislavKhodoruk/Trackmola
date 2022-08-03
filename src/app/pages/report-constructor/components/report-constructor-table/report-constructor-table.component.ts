@@ -85,10 +85,9 @@ export class ReportConstructorTableComponent implements OnChanges {
       (acc, item) => (acc += item.taskOvertimeDuration),
       0
     )}`;
-    const totalTaskPercentageWeek = `${this.infoFromTaskTracksForTable.reduce(
-      (acc, item) => (acc += +item.taskPercentageWeek),
-      0
-    )}`;
+    const totalTaskPercentageWeek = `${this.infoFromTaskTracksForTable
+      .reduce((acc, item) => (acc += +item.taskPercentageWeek), 0)
+      .toFixed(2)}`;
     this.total = [
       'Total',
       '',

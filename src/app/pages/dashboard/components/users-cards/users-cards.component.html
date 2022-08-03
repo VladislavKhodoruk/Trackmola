@@ -1,0 +1,53 @@
+<section class="users-cards">
+  <div
+    *ngFor="let user of users"
+    class="users-cards-item"
+    (click)="userCardClick.emit(user)"
+  >
+    <div class="users-cards-item-header">
+      <div class="users-cards-item-header-kpi">
+        KPI &nbsp;<span class="users-cards-item-header-percentage">0%</span>
+      </div>
+      <div class="users-cards-item-header-buttons">
+        <app-button
+          buttonClass="button-secondary button-xs"
+          [icon]="iconBellRinging"
+          iconHeight="1.5rem"
+          iconWidth="1.25rem"
+        ></app-button>
+        <app-button
+          buttonClass="button-primary button-xs"
+          [icon]="iconFileImport"
+          iconHeight="1.5rem"
+          iconWidth="1.5rem"
+        ></app-button>
+      </div>
+    </div>
+    <div class="users-cards-item-main">
+      <img
+        class="users-cards-item-main-photo"
+        src="{{ user?.photo || defaultPhoto }}"
+        alt="user photo"
+      />
+      <div class="users-cards-item-main-location">{{ user?.location }}</div>
+      <div class="users-cards-item-main-name">{{ user?.fullName }}</div>
+      <div class="users-cards-item-main-position">{{ user?.position }}</div>
+    </div>
+    <div class="users-cards-item-footer">
+      <div class="users-cards-item-footer-title">
+        out of {{ getWorkMonthDefaultHours() }}
+      </div>
+      <div class="users-cards-item-footer-bar">
+        <div
+          class="users-cards-item-footer-bar-progress"
+          [style.width.%]="
+            ((taskTracksDurationGroupByUser[user?.id].duration +
+              taskTracksDurationGroupByUser[user?.id].overtimeDuration) /
+              getWorkMonthDefaultHours()) *
+            100
+          "
+        ></div>
+      </div>
+    </div>
+  </div>
+</section>

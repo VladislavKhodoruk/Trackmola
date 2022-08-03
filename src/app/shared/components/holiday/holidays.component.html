@@ -1,0 +1,30 @@
+<section class="holidays">
+  <header class="holidays-header">
+    <ic-icon [icon]="pineappleIcon" class="holidays-header-icon"></ic-icon>
+    <h2 class="holidays-header-title">holidays</h2>
+  </header>
+  <ul class="holidays-list">
+    <li class="holidays-list-item" *ngFor="let holiday of holidays">
+      <div class="holidays-list-item-circle"></div>
+      <div class="holidays-list-item-wrapper">
+        <div class="holidays-list-item-wrapper-info">
+          <p class="holidays-list-item-wrapper-info-day">
+            {{ holiday.date | date: "d MMM" }}
+          </p>
+          <p class="holidays-list-item-wrapper-info-name">
+            {{ holiday.holidayName }}
+          </p>
+        </div>
+        <div class="holidays-list-item-icon-and-locations">
+          <ic-icon
+            class="holidays-header-icon"
+            [icon]="holiday.holidayImg"
+          ></ic-icon>
+          <div class="holidays-list-item-locations">
+            <div *ngFor="let location of holiday.locations">{{ location }}</div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>

@@ -2,7 +2,6 @@ import { IconifyIcon } from '@iconify/types';
 
 import { Timestamp } from 'firebase/firestore';
 
-import { SHORT_NAMES_OF_THE_WEEK_UPPERCASE } from '@shared/constants/constants';
 import { DayType, WeekDays } from '@shared/enums/enum';
 
 export interface Project {
@@ -131,6 +130,7 @@ export interface CalendarDay {
   date: string;
   dayType: DayType;
   holidayName?: string;
+  holidayImg?: IconifyIcon;
 }
 
 export interface OutOfMain {
@@ -139,6 +139,12 @@ export interface OutOfMain {
   working: number;
 }
 
+export interface Holiday {
+  date: Date;
+  holidayImg: IconifyIcon;
+  holidayName: string;
+  locations: string[];
+}
 export type TaskByWeekDays = {
   [key in WeekDays]: TaskTrack[] | [];
 };

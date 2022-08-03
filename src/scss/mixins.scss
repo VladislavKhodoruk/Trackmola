@@ -49,7 +49,7 @@
   #{$variable}-dl: calc(var(#{$variable}) * 2.5);
   #{$variable}-ml: calc(var(#{$variable}) * 3);
   #{$variable}-xl: calc(var(#{$variable}) * 4);
-  #{$variable}-xl: calc(var(#{$variable}) * 6);
+  #{$variable}-xxl: calc(var(#{$variable}) * 6);
 }
 
 @mixin width-variables($width, $indent) {

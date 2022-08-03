@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { IconModule } from '@visurel/iconify-angular';
 
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminDashboardContainer } from './components/admin-dashboard/admin-dashboard.container';
 import { CtoDashboardComponent } from './components/cto-dashboard/cto-dashboard.component';
 import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,6 +22,7 @@ import { ManagerControlsContainer } from './components/manager-controls/manager-
 import { ManagerDashboardListTasksComponent } from './components/manager-dashboard-list-tasks/manager-dashboard-list-tasks.component';
 import { ManagerDashboardComponent } from './components/manager-dashboard/manager-dashboard.component';
 import { ManagerDashboardContainer } from './components/manager-dashboard/manager-dashboard.container';
+import { UsersCardsComponent } from './components/users-cards/users-cards.component';
 import { WorkingHoursChartComponent } from './components/working-hours-chart/working-hours-chart.component';
 import { WorkingHoursChartContainer } from './components/working-hours-chart/working-hours-chart.container';
 import { DashboardRoutes } from './dashboard.router';
@@ -37,8 +39,10 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
 import { ClockModule } from '@shared/components/clock/clock.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
+import { HolidaysModule } from '@shared/components/holiday/holidays.module';
 import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
 import { TodayViewModule } from '@shared/components/todayview/todayview.module';
+import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
 
 @NgModule({
@@ -58,6 +62,8 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     HeaderComponent,
     ManagerControlsComponent,
     ManagerDashboardListTasksComponent,
+    UsersCardsComponent,
+    AdminDashboardContainer,
   ],
   exports: [RouterModule],
   imports: [
@@ -75,9 +81,12 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     MatFormFieldModule,
     MatInputModule,
     IconModule,
+    FormsModule,
     ReactiveFormsModule,
     ButtonModule,
     ProjectLabelModule,
+    ToggleButtonsModule,
+    HolidaysModule,
   ],
   providers: [],
 })
