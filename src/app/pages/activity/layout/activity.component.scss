@@ -1,0 +1,68 @@
+@import "mixins";
+
+:host {
+  @include flex(flex-start, flex-start);
+  flex-direction: column;
+  gap: var(--offset-l);
+
+  height: 100%;
+
+  .header-wrapper {
+    @include flex(center, flex-start, var(--offset-l));
+    height: 5rem;
+
+    h1 {
+      font: var(--font-titleBig);
+    }
+
+    .choose-Period-buttons {
+      transform: translateY(var(--offset-s));
+    }
+  }
+
+  .container {
+    @include flex(flex-start, space-evenly, var(--offset-l));
+
+    @include height-variables(38%, 5rem);
+    width: 100%;
+
+    :first-child {
+      @include width-variables(33%, 1rem);
+      overflow: hidden;
+
+      height: 100%;
+    }
+
+    :last-child {
+      @include width-variables(67%, 1rem);
+      height: 100%;
+    }
+  }
+
+  .cards {
+    @include flex(flex-start, flex-start, var(--offset-l));
+
+    @include height-variables(62%, 5rem);
+    width: 100%;
+  }
+
+  app-activity-total-cards-container {
+    @include width-variables(33%, 1rem);
+    height: 100%;
+  }
+
+  app-project-efficiency-container {
+    @include width-variables(67%, 1rem);
+    height: 100%;
+  }
+
+  .total-card-item-img:last-child {
+    background-color: #04e4cc;
+  }
+
+  ::ng-deep {
+    .highcharts-credits {
+      display: none;
+    }
+  }
+}
