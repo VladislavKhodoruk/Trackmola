@@ -61,9 +61,7 @@
     }
 
     &-buttons {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
+      @include flex(center, normal, var(--offset));
     }
   }
 }
