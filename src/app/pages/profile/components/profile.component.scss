@@ -21,6 +21,7 @@
 
     &-header-content {
       @include flex(center, space-between);
+      margin-bottom: var(--offset-d);
     }
 
     &-article-weekends {

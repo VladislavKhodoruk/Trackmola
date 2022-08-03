@@ -118,6 +118,7 @@ export interface Vacations {
 }
 
 export interface UserCard {
+  id: string;
   userName: string;
   projects: Project[];
   location: string;

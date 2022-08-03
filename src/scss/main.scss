@@ -120,3 +120,8 @@ input:-webkit-autofill:active {
 .icon {
   @include flex(center, center);
 }
+
+.link {
+  color: var(--primary);
+  font: var(--font-currentSmall);
+}

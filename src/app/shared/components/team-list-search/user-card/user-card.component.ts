@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import pineapple from '@iconify/icons-noto/pineapple';
 
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
-import { UserCard } from '@shared/interfaces/interfaces';
+import { User, UserCard } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-user-card',
@@ -12,6 +12,8 @@ import { UserCard } from '@shared/interfaces/interfaces';
 })
 export class UserCardComponent {
   @Input() userCard: UserCard;
+
+  @Output() setUserId = new EventEmitter<string>();
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly pineappleIcon = pineapple;

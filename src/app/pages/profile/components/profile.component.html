@@ -11,52 +11,7 @@
     </app-button>
   </div>
 
-  <section class="profile-visit-card">
-    <ng-container *ngIf="userInfo">
-      <div class="profile-avatar-container">
-        <img
-          class="profile-avatar"
-          src="{{ userInfo.photo || defaultPhoto }}"
-        />
-      </div>
-
-      <div class="profile-main-infos">
-        <div class="profile-info">
-          <h2 class="profile-title">Display Name</h2>
-          <p class="profile-data">{{ userInfo.fullName }}</p>
-        </div>
-
-        <div class="profile-info">
-          <h2 class="profile-title">Location</h2>
-          <p class="profile-data">{{ userInfo.location }}</p>
-        </div>
-        <div class="profile-info">
-          <h2 class="profile-title">Email</h2>
-          <p class="profile-data">{{ userInfo.email }}</p>
-        </div>
-        <div class="profile-info">
-          <h2 class="profile-title">Date of birth</h2>
-          <p class="profile-data">
-            {{ this.userInfo.birthday.seconds * 1000 | date }}
-          </p>
-        </div>
-        <div class="profile-info">
-          <h2 class="profile-title">Start date of work</h2>
-          <p class="profile-data">
-            {{ this.userInfo.startDate?.seconds * 1000 | date }}
-          </p>
-        </div>
-        <div class="profile-info">
-          <h2 class="profile-title">Job position</h2>
-          <p class="profile-data">{{ userInfo.position }}</p>
-        </div>
-        <div class="profile-info">
-          <h2 class="profile-title">Qualification</h2>
-          <p class="profile-data">{{ userInfo.qualification }}</p>
-        </div>
-      </div>
-    </ng-container>
-  </section>
+  <app-visit-card [user]="userInfo"></app-visit-card>
 
   <section class="profile-all-info">
     <article class="profile-article-instruction">
