@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  OnChanges,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -14,11 +13,6 @@ import { IconifyIcon } from '@iconify/types';
 
 import { Subscription } from 'rxjs';
 
-import {
-  OVERTIME_TOTAL_CARD,
-  WORK_HOURS_TOTAL_CARD,
-} from '@pages/activity/constants/constants';
-import { getTotalCardItem } from '@pages/activity/helpers/helpers';
 import { TotalCardItem } from '@pages/activity/interfaces/interfaces';
 import { AdminSortMode } from '@pages/dashboard/enums/enum';
 import { PeriodType, UserType } from '@shared/enums/enum';
@@ -30,7 +24,7 @@ import { User, GroupBy } from '@shared/interfaces/interfaces';
   styleUrls: ['./admin-dashboard.component.scss'],
   templateUrl: './admin-dashboard.component.html',
 })
-export class AdminDashboardComponent implements OnInit, OnChanges, OnDestroy {
+export class AdminDashboardComponent implements OnInit, OnDestroy {
   @Input() users!: User[];
   @Input() taskTracksDurationGroupByUser!: GroupBy<{
     duration: number;
@@ -62,26 +56,6 @@ export class AdminDashboardComponent implements OnInit, OnChanges, OnDestroy {
     this.checkedMode = type;
   }
 
-  ngOnChanges(): void {
-    this.currentUsers = this.users;
-    this.currentUser = this.currentUsers[1];
-    this.totalCardItems = [
-      getTotalCardItem(
-        WORK_HOURS_TOTAL_CARD,
-        this.taskTracksDurationGroupByUser[this.currentUser?.id]?.duration +
-          this.taskTracksDurationGroupByUser[this.currentUser?.id]
-            ?.overtimeDuration,
-        PeriodType.Month
-      ),
-      getTotalCardItem(
-        OVERTIME_TOTAL_CARD,
-        this.taskTracksDurationGroupByUser[this.currentUser?.id]
-          ?.overtimeDuration,
-        PeriodType.Month
-      ),
-    ];
-  }
-
   ngOnInit(): void {
     this.subscription = this.search.valueChanges.subscribe(
       (value) =>
@@ -99,24 +73,5 @@ export class AdminDashboardComponent implements OnInit, OnChanges, OnDestroy {
     this.sortMode.ascendingSort =
       this.sortMode.sortName === sortName ? !this.sortMode.ascendingSort : true;
     this.sortMode.sortName = sortName;
-  }
-
-  changeCurrentUser(user: User): void {
-    this.currentUser = user;
-    this.totalCardItems = [
-      getTotalCardItem(
-        WORK_HOURS_TOTAL_CARD,
-        this.taskTracksDurationGroupByUser[this.currentUser?.id]?.duration +
-          this.taskTracksDurationGroupByUser[this.currentUser?.id]
-            ?.overtimeDuration,
-        PeriodType.Month
-      ),
-      getTotalCardItem(
-        OVERTIME_TOTAL_CARD,
-        this.taskTracksDurationGroupByUser[this.currentUser?.id]
-          ?.overtimeDuration,
-        PeriodType.Month
-      ),
-    ];
   }
 }

@@ -33,9 +33,8 @@
 <main class="dashboard-main">
   <div class="dashboard-main-user-cards">
     <app-users-cards
-      [users]="currentUsers"
+      [users]="users"
       [taskTracksDurationGroupByUser]="taskTracksDurationGroupByUser"
-      (userCardClick)="changeCurrentUser($event)"
     ></app-users-cards>
   </div>
 </main>
