@@ -119,4 +119,5 @@ export const COLORS_FOR_TASKS = [
   'var(--task-violet3)',
 ];
 
-export const OutputRate = 8;
+export const OUTPUT_RATE = 8;
+export const HIGHEST_KPI = 1;
