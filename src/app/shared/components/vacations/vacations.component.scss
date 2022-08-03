@@ -37,6 +37,7 @@
 
     &-list {
       @include flex(flex-start, flex-start, var(--offset));
+      @include scroll-bar;
       scroll-snap-type: y mandatory;
 
       overflow: scroll;
@@ -44,18 +45,6 @@
 
       width: 100%;
       padding-right: var(--offset);
-
-      &::-webkit-scrollbar {
-        width: #{$width-scroll};
-        height: #{$width-scroll};
-
-        background-color: var(--white);
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--gray4);
-        border-radius: var(--border-radius-l);
-      }
 
       &-item {
         @include flex(center, flex-start);

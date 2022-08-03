@@ -23,11 +23,7 @@ export class ActivityTotalCardsComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.totalCardItems = [
-      getTotalCardItem(
-        WORK_HOURS_TOTAL_CARD,
-        this.reportTime + this.reportOvertime,
-        this.periodType
-      ),
+      getTotalCardItem(WORK_HOURS_TOTAL_CARD, this.reportTime, this.periodType),
       getTotalCardItem(
         OVERTIME_TOTAL_CARD,
         this.reportOvertime,

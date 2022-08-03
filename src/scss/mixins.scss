@@ -59,3 +59,17 @@
 @mixin height-variables($height, $indent) {
   height: calc(100% - #{$height} - #{$indent});
 }
+
+@mixin scroll-bar($width: var(--offset-s), $height: var(--offset-s)) {
+  &::-webkit-scrollbar {
+    width: #{$width};
+    height: #{$height};
+
+    background-color: var(--white);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray4);
+    border-radius: var(--border-radius-l);
+  }
+}

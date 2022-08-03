@@ -3,7 +3,7 @@
 
 :host {
   .dashboard-main-tasks {
-    @include flex(flex-start, flex-start, 1.625rem);
+    @include flex(flex-start, flex-start);
     flex-direction: column;
 
     width: 100%;
@@ -11,10 +11,12 @@
 
     &-header {
       width: 100%;
+      min-height: 3.65rem;
     }
 
     &-list {
-      @include flex(flex-start, flex-start, var(--offset-s));
+      @include flex(flex-start, flex-start);
+      @include scroll-bar;
 
       $width-scroll: var(--offset-s);
       $gap-scroll: calc(var(--offset-l) / 2 - #{$width-scroll} / 2);
@@ -26,7 +28,6 @@
         ) var(--shadow-project-selected);
       scroll-snap-type: y mandatory;
 
-      overflow-y: scroll;
       flex-direction: column;
 
       width: calc(
@@ -39,23 +40,14 @@
         calc(#{$shadow-y} * -1) calc(#{$shadow-left} * -1);
       padding: #{$shadow-y} #{$gap-scroll} #{$shadow-y} #{$shadow-left};
 
-      &::-webkit-scrollbar {
-        width: #{$width-scroll};
-
-        background-color: var(--white);
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--gray4);
-        border-radius: var(--border-radius-l);
-      }
-
       &-item {
         @include flex(center, flex-start, var(--offset-s));
 
         cursor: pointer;
         scroll-margin-top: #{$shadow-y};
         scroll-snap-align: start;
+
+        flex: 1;
 
         width: 100%;
         padding: var(--offset-s);
@@ -68,7 +60,7 @@
           width: 0.375rem;
           height: 100%;
 
-          border-radius: 8px;
+          border-radius: var(--border-radius);
         }
 
         &-name {
