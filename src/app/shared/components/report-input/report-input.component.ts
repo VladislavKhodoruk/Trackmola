@@ -187,9 +187,9 @@ export class ReportInputComponent implements OnInit, OnChanges {
   private filterOption(value: string, options: string[]): string[] {
     const filterValue = value.toLowerCase();
 
-    return options.filter((option) =>
-      option?.toLowerCase().includes(filterValue)
-    );
+    return options.some((item) => item.toLowerCase() === value.toLowerCase())
+      ? options
+      : options.filter((option) => option?.toLowerCase().includes(filterValue));
   }
 
   private filterTasks(value: string): string[] {
@@ -401,11 +401,13 @@ export class ReportInputComponent implements OnInit, OnChanges {
   }
 
   isProjects(): void {
-    const isProject = this.allProjects?.some(
-      (project) => project.name === this.form.get('project').value
+    const project = this.allProjects?.find(
+      (item) =>
+        item.name.toLowerCase() === this.form.get('project').value.toLowerCase()
     );
 
-    if (isProject) {
+    if (project) {
+      this.form.get('project').setValue(project.name);
       return;
     }
 
@@ -414,13 +416,14 @@ export class ReportInputComponent implements OnInit, OnChanges {
   }
 
   isTasks(): void {
-    const isTask = this.allTasks?.some(
-      (task) =>
-        task.name === this.form.get('task').value &&
-        task.projectId === this.currentProjectId
+    const task = this.allTasks?.find(
+      (item) =>
+        item.name === this.form.get('task').value &&
+        item.projectId === this.currentProjectId
     );
 
-    if (isTask) {
+    if (task) {
+      this.form.get('task').setValue(task.name);
       return;
     }
 
