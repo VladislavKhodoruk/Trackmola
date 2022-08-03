@@ -1,3 +1,4 @@
+import Autolinker from 'autolinker';
 import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
@@ -230,4 +231,10 @@ export function outOfNorm(
       }
     });
   return mismatch;
+}
+
+export function urlReplacer(text: string): string {
+  const options = { className: 'link' };
+  const replacer = new Autolinker(options);
+  return replacer.link(text);
 }
