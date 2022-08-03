@@ -18,7 +18,12 @@
           size="2"
         ></app-users-photos>
       </div>
-      <p class="projects-list-item-name">{{ project.fullName }}</p>
+      <div class="projects-list-item-bottom">
+        <p class="projects-list-item-bottom-name">{{ project.fullName }}</p>
+        <p class="projects-list-item-bottom-tracked-time">
+          tracked time {{ trackedTimeByProjects[project.id] }}h
+        </p>
+      </div>
     </li>
   </ng-container>
 </ul>

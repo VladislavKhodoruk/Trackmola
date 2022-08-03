@@ -99,3 +99,22 @@ export const positions = createSelector(getUsers, (users) => {
   const uniqPositions = [...new Set(allPositions)];
   return uniqPositions;
 });
+
+export const trackedTimeByProjects = createSelector(
+  getTasksTrack,
+  getProjects,
+  (taskTracks, projects) =>
+    projects.reduce((acum, project) => {
+      const taskTracksInProjects = taskTracks.filter(
+        ({ projectId }) => projectId === project.id
+      );
+      const trackedTime = taskTracksInProjects.reduce(
+        (acc, tasktrack) => acc + tasktrack.duration,
+        0
+      );
+      return {
+        ...acum,
+        [project.id]: trackedTime,
+      };
+    }, {})
+);

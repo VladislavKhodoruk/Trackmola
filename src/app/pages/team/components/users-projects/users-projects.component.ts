@@ -1,6 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
+import {
+  GroupBy,
+  Project,
+  TaskTrack,
+  User,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-users-projects-component',
@@ -11,4 +16,5 @@ export class UsersProjectsComponent {
   @Input() pickedUser: User;
   @Input() projectsByUsers: GroupBy<Project[]>;
   @Input() usersByProject: GroupBy<User[]>;
+  @Input() trackedTimeByProjects: GroupBy<number>;
 }

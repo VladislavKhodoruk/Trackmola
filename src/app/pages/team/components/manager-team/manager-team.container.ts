@@ -7,7 +7,11 @@ import { usersGroupByProject } from '@pages/projects/store/projects.selectors';
 import { getUser } from '@pages/team/store/team.selectors';
 import { TeamState } from '@pages/team/store/team.state';
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
-import { projectsByUsers } from '@store/common/common.selectors';
+import {
+  projectsByUsers,
+  trackedTimeByProjects,
+} from '@store/common/common.selectors';
+import { CommonState } from '@store/common/common.state';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
@@ -16,6 +20,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [pickedUser]="pickedUser$ | async"
     [projectsByUsers]="projectsByUsers$ | async"
     [usersByProject]="usersByProject$ | async"
+    [trackedTimeByProjects]="trackedTimeByProjects$ | async"
   ></app-manager-team-component>`,
 })
 export class ManagerTeamContainer {
@@ -27,8 +32,12 @@ export class ManagerTeamContainer {
   readonly usersByProject$: Observable<GroupBy<User[]>> =
     this.store$.select(usersGroupByProject);
 
+  readonly trackedTimeByProjects$: Observable<GroupBy<number>> =
+    this.commonStore$.select(trackedTimeByProjects);
+
   constructor(
     private store$: Store<TrackMolaState>,
-    private teamStore$: Store<TeamState>
+    private teamStore$: Store<TeamState>,
+    private commonStore$: Store<CommonState>
   ) {}
 }

@@ -28,15 +28,21 @@
       width: 100%;
     }
 
-    &-name {
-      font: var(--font-main);
-      font-size: 1.25rem;
-    }
+    &-bottom {
+      display: flex;
+      flex-direction: column;
 
-    &-description {
-      font: var(--font-main);
-      font-size: 1.25rem;
-      color: var(--gray2);
+      &-name {
+        margin-bottom: var(--offset-xs);
+
+        font: var(--font-main);
+        font-size: 1.25rem;
+      }
+
+      &-tracked-time {
+        font: var(--font-card);
+        color: var(--gray2);
+      }
     }
   }
 }
