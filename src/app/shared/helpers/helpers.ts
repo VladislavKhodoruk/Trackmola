@@ -1,4 +1,4 @@
-import Autolinker from 'autolinker';
+import Autolinker, { AutolinkerConfig } from 'autolinker';
 import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
@@ -234,7 +234,7 @@ export function outOfNorm(
 }
 
 export function urlReplacer(text: string): string {
-  const options = { className: 'link' };
-  const replacer = new Autolinker(options);
+  const options: AutolinkerConfig = { className: 'link' };
+  const replacer: Autolinker = new Autolinker(options);
   return replacer.link(text);
 }
