@@ -1,6 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
+import checkIcon from '@iconify/icons-mdi/check';
 import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
 
 import { IconifyIcon } from '@iconify/types';
@@ -22,6 +23,7 @@ export class ActiveTaskItemComponent {
   @Input() currentTask!: ActiveTasks;
 
   readonly clipButton: IconifyIcon = clipboardPlus;
+  readonly checkIcon: IconifyIcon = checkIcon;
 
   constructor(public dialog: MatDialog) {}
 

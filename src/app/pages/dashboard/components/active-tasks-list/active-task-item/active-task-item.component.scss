@@ -1,10 +1,8 @@
 @import "mixins";
 
 :host {
-  .task-wrappeer {
-    display: grid;
-    grid-gap: var(--offset);
-    grid-template-columns: 10fr 34fr 8.2fr 4fr 2.5rem;
+  .task-wrapper {
+    display: flex;
 
     margin-right: var(--offset);
     margin-bottom: var(--offset);
@@ -13,33 +11,38 @@
     border: var(--offset-xxs) solid var(--gray);
     border-radius: var(--offset-s);
 
-    .project-name-wrapper {
-      @include flex(center, flex-start, 1.25rem);
-    }
+    &-info {
+      display: flex;
+      gap: var(--offset);
 
-    .task-name {
-      transform: translateY(var(--offset-xs));
+      width: 100%;
 
-      overflow: hidden;
+      &-project {
+        @include flex(center, flex-start, 1.25rem);
+        min-width: 10rem;
+      }
 
-      font: var(--font-blocks);
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      &-name {
+        @include flex(center, normal);
+        overflow: hidden;
+
+        width: 100%;
+
+        font: var(--font-blocks);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
     }
 
     .task-status {
       @include flex(center, space-evenly);
       position: relative;
 
-      min-width: 100%;
       max-height: var(--offset-ml);
 
       font: var(--font-buttonSmall);
       color: var(--primary);
       white-space: nowrap;
-
-      border: var(--border-xxs) solid var(--primary);
-      border-radius: var(--offset-m);
     }
 
     .hidden {
@@ -48,7 +51,6 @@
 
     app-users-photos {
       position: relative;
-      transform: translateY(var(--border-m));
 
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -57,11 +59,9 @@
     .button-add-to-report {
       transform: translateY(0.2rem);
     }
-  }
 
-  @media (max-width: 1110px) {
-    .task-wrappeer {
-      grid-template-columns: 5rem 5rem 5rem 1fr 2rem;
+    &-buttons {
+      @include flex(center, normal, var(--offset));
     }
   }
 }

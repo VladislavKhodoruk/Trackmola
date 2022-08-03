@@ -4,8 +4,9 @@ import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import {
   COLORS_FOR_TASKS,
   NUMBER_OF_DAYS_IN_A_WEEK,
+  HIGHEST_KPI,
+  OUTPUT_RATE,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
-  OutputRate,
 } from '@shared/constants/constants';
 import { NumDay, PeriodType } from '@shared/enums/enum';
 import {
@@ -13,6 +14,7 @@ import {
   Project,
   TaskTrack,
   OutOfMain,
+  TaskByWeekDays,
 } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
@@ -168,27 +170,7 @@ export function getRandomColor(): string {
   return colors[randomIndex];
 }
 
-export function getEfficiency(
-  taskTrack: TaskTrack[],
-  startOfWeek: number,
-  presentDay: number
-): number {
-  const totalHours = taskTrack
-    .map((task: TaskTrack) => task.duration)
-    .reduce((acc, prev) => acc + prev, 0);
-  const requiredAmount =
-    (1 + new Date(presentDay).getDay() - new Date(startOfWeek).getDay()) *
-    OutputRate;
-
-  return totalHours <= requiredAmount
-    ? totalHours / requiredAmount
-    : totalHours / requiredAmount - 1;
-}
-
-export function outOfNorm(
-  taskTrack: TaskTrack[],
-  presentDay: number
-): OutOfMain {
+export function sortTaskByDays(taskTrack: TaskTrack[]): TaskByWeekDays {
   const weekTasksByDays = SHORT_NAMES_OF_THE_WEEK_UPPERCASE.reduce(
     (acc, prev) => {
       acc[prev] = [];
@@ -203,30 +185,48 @@ export function outOfNorm(
     weekTasksByDays[day] = [...weekTasksByDays[day], task];
   });
 
+  return weekTasksByDays as TaskByWeekDays;
+}
+
+export function getEfficiency(
+  taskTrack: TaskTrack[],
+  startOfWeek: number,
+  presentDay: number
+): number {
+  const allHoursByDays = Object.values(sortTaskByDays(taskTrack))
+    .map((i: TaskTrack[]) => i.reduce((acc, prev) => acc + prev.duration, 0))
+    .map((dayHours) =>
+      dayHours / OUTPUT_RATE >= HIGHEST_KPI
+        ? HIGHEST_KPI - (dayHours / OUTPUT_RATE - HIGHEST_KPI)
+        : dayHours / OUTPUT_RATE
+    )
+    .reduce((acc, prev) => acc + prev, 0);
+
+  return allHoursByDays / new Date(presentDay).getDay();
+}
+
+export function outOfNorm(
+  taskTrack: TaskTrack[],
+  presentDay: number
+): OutOfMain {
   const mismatch = {
     overtimes: 0,
     shortages: 0,
     working: 0,
   };
 
-  Object.values(weekTasksByDays)
+  Object.values(sortTaskByDays(taskTrack))
     .map((item: TaskTrack[]) =>
       item.reduce((acc, prev) => acc + prev.duration, 0)
     )
     .forEach((dayDuration, index) => {
-      if (dayDuration <= OutputRate && index < new Date(presentDay).getDay()) {
-        mismatch.shortages += OutputRate - dayDuration;
+      if (dayDuration <= OUTPUT_RATE && index < new Date(presentDay).getDay()) {
+        mismatch.shortages += OUTPUT_RATE - dayDuration;
         mismatch.working += dayDuration;
       }
-      if (
-        dayDuration > OutputRate &&
-        index <= new Date(presentDay).getDay() - 1
-      ) {
-        mismatch.overtimes += dayDuration - OutputRate;
-        mismatch.working += OutputRate;
-      }
-      if (index === new Date(presentDay).getDay()) {
-        mismatch.overtimes = dayDuration;
+      if (dayDuration > OUTPUT_RATE) {
+        mismatch.overtimes += dayDuration - OUTPUT_RATE;
+        mismatch.working += OUTPUT_RATE;
       }
     });
   return mismatch;
