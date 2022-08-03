@@ -32,21 +32,26 @@
         (buttonClick)="addProjectToFilter()"
       ></app-button>
     </div>
-    <div
-      class="dashboard-controls-selected-projects"
-      *ngIf="managerProjectsFilter.length"
-    >
-      <ul class="dashboard-controls-selected-projects-list">
+    <div class="dashboard-controls-filter" *ngIf="managerProjectsFilter.length">
+      <ul class="dashboard-controls-filter-list">
         <ng-container *ngFor="let project of managerProjectsFilter">
-          <app-button
+          <li
+            class="dashboard-controls-filter-list-item"
+            [style.borderColor]="project.color"
             *ngIf="
               activeProjectFilter?.name !== project.name;
               else activeProject
             "
-            [buttonClass]="'button-secondary button-ds'"
-            [label]="project.name"
             (click)="setActiveFilterProject.emit(project)"
-          ></app-button>
+          >
+            {{ project.name }}
+            <ic-icon
+              class="dashboard-controls-filter-list-item-icon pinned-off-icon"
+              [icon]="iconPinnedOff"
+              (click)="removeProjectFromFilter($event, project)"
+            >
+            </ic-icon>
+          </li>
         </ng-container>
       </ul>
     </div>
@@ -94,14 +99,14 @@
 <ng-template #activeProject>
   <ng-container *ngIf="activeProjectFilter">
     <li
-      class="dashboard-controls-selected-projects-list-item"
+      class="dashboard-controls-filter-list-item-selected"
       [style.backgroundColor]="activeProjectFilter.color"
     >
       {{ activeProjectFilter.name }}
       <ic-icon
-        class="dashboard-controls-selected-projects-list-item-icon pinned-off-icon"
+        class="dashboard-controls-filter-list-item-selected-icon pinned-off-icon"
         [icon]="iconPinnedOff"
-        (click)="this.removeProjectFilter.emit()"
+        (click)="this.removeActiveProject.emit()"
       >
       </ic-icon>
     </li>
