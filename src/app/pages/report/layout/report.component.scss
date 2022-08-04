@@ -23,8 +23,8 @@
     }
 
     &-navigation {
-      margin-bottom: var(--offset);
       @include flex(center, space-between);
+      margin-bottom: var(--offset);
 
       &-info {
         @include flex(center, space-between);
