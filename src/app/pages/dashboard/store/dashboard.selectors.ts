@@ -9,7 +9,8 @@ import {
 import { searchTaskName } from '@pages/dashboard/components/active-tasks-list/helpers/search-task-name';
 import { searchUserPhoto } from '@pages/dashboard/components/active-tasks-list/helpers/search-user-photo';
 
-import { StateName } from '@shared/enums/enum';
+import { PeriodType, StateName, UserType } from '@shared/enums/enum';
+import { getPeriod } from '@shared/helpers/helpers';
 import {
   getActiveTasks,
   getProjects,
@@ -28,6 +29,22 @@ export const getDashboardPeriod = createSelector(
   ({ period }) => period
 );
 
+export const getManagerDashboardPeriod = createSelector(
+  getDashboardState,
+  ({ manager }) => manager.period
+);
+
+export const getTasksTrackByPeriod = createSelector(
+  getTasksTrack,
+  getManagerDashboardPeriod,
+  (taskTracks, period) =>
+    taskTracks.filter(
+      (taskTrack) =>
+        taskTrack.date.seconds * 1000 >= period.start &&
+        taskTrack.date.seconds * 1000 <= period.end
+    )
+);
+
 export const getWeekReportTime = createSelector(
   getTasksTrack,
   getDashboardPeriod,
@@ -39,10 +56,7 @@ export const getWeekReportTime = createSelector(
           taskTrack.date.seconds * 1000 >= period.start &&
           taskTrack.date.seconds * 1000 <= period.end
       )
-      .reduce(
-        (result, item) => (result += item.duration + item.overtimeDuration),
-        0
-      )
+      .reduce((result, item) => (result += item.duration), 0)
 );
 
 export const getWeekActiveTasks = createSelector(
@@ -97,7 +111,7 @@ export const projectInfoByProjectId = createSelector(getProjects, (projects) =>
 
 export const taskTracksDurationGroupByTask = createSelector(
   getTasks,
-  getTasksTrack,
+  getTasksTrackByPeriod,
   (tasks, taskTracks) =>
     tasks.reduce((accum, task) => {
       const activeTaskTracks = taskTracks
@@ -109,7 +123,7 @@ export const taskTracksDurationGroupByTask = createSelector(
 
 export const taskTracksGroupByTask = createSelector(
   getTasks,
-  getTasksTrack,
+  getTasksTrackByPeriod,
   (tasks, taskTracks) =>
     tasks.reduce((accum, task) => {
       const activeTasks = taskTracks.filter(({ taskId }) => taskId === task.id);
@@ -130,7 +144,7 @@ export const getActiveProjectFilter = createSelector(
 export const getTasksForManager = createSelector(
   getTasks,
   getActiveProjectFilter,
-  getTasksTrack,
+  getTasksTrackByPeriod,
   taskTracksDurationGroupByTask,
   taskTracksGroupByTask,
   (tasks, activeProject, taskTracks, durationInfo, taskTracksInfo) => {
@@ -150,4 +164,44 @@ export const getTasksForManager = createSelector(
       }))
       .sort((a, b) => b.durationInTask - a.durationInTask);
   }
+);
+
+export const getUsersWithoutAdminCTO = createSelector(getUsers, (users) =>
+  users.filter(
+    (item) => item.role !== UserType.Admin && item.role !== UserType.CTO
+  )
+);
+
+export const getTaskTracksByMonth = createSelector(
+  getTasksTrack,
+  (taskTracks) =>
+    taskTracks.filter((taskTrack) => {
+      const period = getPeriod(new Date(), PeriodType.Month);
+      return (
+        taskTrack.date.seconds * 1000 >= period.start &&
+        taskTrack.date.seconds * 1000 <= period.end
+      );
+    })
+);
+
+export const getTaskTracksDurationGroupByUser = createSelector(
+  getUsers,
+  getTaskTracksByMonth,
+  (users, taskTracks) =>
+    users.reduce((accum, user) => {
+      const activeTaskTracks = taskTracks.filter(
+        ({ userId }) => userId === user.id
+      );
+
+      const duration = activeTaskTracks.reduce(
+        (result, taskTrack) => (result += taskTrack.duration),
+        0
+      );
+
+      const overtimeDuration = activeTaskTracks.reduce(
+        (result, taskTrack) => (result += taskTrack.overtimeDuration),
+        0
+      );
+      return { ...accum, [user.id]: { duration, overtimeDuration } };
+    }, {})
 );

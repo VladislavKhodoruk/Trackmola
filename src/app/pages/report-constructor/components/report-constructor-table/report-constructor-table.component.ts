@@ -28,6 +28,7 @@ import { TableHeadItem } from '@pages/report-constructor/models/models';
 export class ReportConstructorTableComponent implements OnChanges {
   @Input() infoFromTaskTracks: InfoReportConstructorItem[];
   infoFromTaskTracksForTable: InfoFromTaskTracksForTable[];
+  total: string[];
 
   readonly iconFire: IconifyIcon = fireIcon;
   readonly sortDescendingIcon: IconifyIcon = sortDescending;
@@ -76,6 +77,24 @@ export class ReportConstructorTableComponent implements OnChanges {
         };
       }
     );
+    const totalTaskDuration = `${this.infoFromTaskTracksForTable.reduce(
+      (acc, item) => (acc += item.taskDuration),
+      0
+    )}`;
+    const totalTaskOvertimeDuration = `${this.infoFromTaskTracksForTable.reduce(
+      (acc, item) => (acc += item.taskOvertimeDuration),
+      0
+    )}`;
+    const totalTaskPercentageWeek = `${this.infoFromTaskTracksForTable
+      .reduce((acc, item) => (acc += +item.taskPercentageWeek), 0)
+      .toFixed(2)}`;
+    this.total = [
+      'Total',
+      '',
+      totalTaskDuration,
+      totalTaskOvertimeDuration,
+      totalTaskPercentageWeek,
+    ];
   }
 
   changeSortOption(

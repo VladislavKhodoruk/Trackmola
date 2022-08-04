@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { UserType } from '@shared/enums/enum';
+import { PeriodType, UserType } from '@shared/enums/enum';
 
 @Component({
   selector: 'app-activity',
@@ -9,5 +9,11 @@ import { UserType } from '@shared/enums/enum';
 })
 export class ActivityComponent {
   @Input() userType!: string | null;
+
+  @Input() period: string;
+
+  @Output() selectPeriod = new EventEmitter<PeriodType>();
+
   types = UserType;
+  labels = [PeriodType.Week, PeriodType.Month];
 }

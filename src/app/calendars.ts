@@ -1,3 +1,14 @@
+import butterflyIcon from '@iconify/icons-noto/butterfly';
+import christmasTree from '@iconify/icons-noto/christmas-tree';
+import fireworksIcon from '@iconify/icons-noto/fireworks';
+import hammerAndPick from '@iconify/icons-noto/hammer-and-pick';
+import hatchingChick from '@iconify/icons-noto/hatching-chick';
+import jackOLantern from '@iconify/icons-noto/jack-o-lantern';
+import pineappleIcon from '@iconify/icons-noto/pineapple';
+import smilingFaceWithHalo from '@iconify/icons-noto/smiling-face-with-halo';
+import sparklerIcon from '@iconify/icons-noto/sparkler';
+import wrappedGift from '@iconify/icons-noto/wrapped-gift';
+
 import { DayType } from '@shared/enums/enum';
 import { CalendarDay, GroupBy } from '@shared/interfaces/interfaces';
 
@@ -6,6 +17,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'New year',
     },
     { date: '2022-01-02T03:00:00.000Z', dayType: DayType.DayOff },
@@ -16,6 +28,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-07T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'Christmas',
     },
     { date: '2022-01-08T03:00:00.000Z', dayType: DayType.DayOff },
@@ -80,6 +93,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-03-08T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: butterflyIcon,
       holidayName: 'International Womens Day',
     },
     { date: '2022-03-09T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -138,12 +152,14 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-05-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: hammerAndPick,
       holidayName: 'Labor Day',
     },
     { date: '2022-05-02T03:00:00.000Z', dayType: DayType.DayOff },
     {
       date: '2022-05-03T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: smilingFaceWithHalo,
       holidayName: 'Radunitsa',
     },
     { date: '2022-05-04T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -154,6 +170,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-05-09T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: sparklerIcon,
       holidayName: 'Victory Day',
     },
     { date: '2022-05-10T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -213,6 +230,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-07-03T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: fireworksIcon,
       holidayName: 'Independence Day',
     },
     { date: '2022-07-04T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -344,6 +362,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-11-07T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: sparklerIcon,
       holidayName: 'October Revolution Day',
     },
     { date: '2022-11-08T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -396,6 +415,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-12-25T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'Christmas',
     },
     { date: '2022-12-26T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -409,6 +429,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'New year',
     },
     { date: '2022-01-02T03:00:00.000Z', dayType: DayType.DayOff },
@@ -418,6 +439,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-06T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: smilingFaceWithHalo,
       holidayName: 'Epiphany',
     },
     { date: '2022-01-07T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -482,6 +504,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-03-07T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: pineappleIcon,
       holidayName: 'Green Monday',
     },
     { date: '2022-03-08T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -504,6 +527,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-03-25T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: fireworksIcon,
       holidayName: 'Greece Independence Day',
     },
     { date: '2022-03-26T03:00:00.000Z', dayType: DayType.DayOff },
@@ -515,6 +539,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-04-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: fireworksIcon,
       holidayName: 'Cyprus National Day',
     },
     { date: '2022-04-02T03:00:00.000Z', dayType: DayType.DayOff },
@@ -540,6 +565,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-04-22T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: pineappleIcon,
       holidayName: 'Good Friday',
     },
     { date: '2022-04-23T03:00:00.000Z', dayType: DayType.DayOff },
@@ -547,11 +573,13 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-04-25T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: hatchingChick,
       holidayName: 'Easter Monday',
     },
     {
       date: '2022-04-26T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: hatchingChick,
       holidayName: 'Easter Tuesday',
     },
     { date: '2022-04-27T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -561,6 +589,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-05-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: hammerAndPick,
       holidayName: 'Labor Day',
     },
     { date: '2022-05-02T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -608,6 +637,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-06-13T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: smilingFaceWithHalo,
       holidayName: 'Orthodox Monday of Pentecost',
     },
     { date: '2022-06-14T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -675,6 +705,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-08-15T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: smilingFaceWithHalo,
       holidayName: 'Assumption of the Virgin Mary',
     },
     { date: '2022-08-16T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -726,6 +757,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-10-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: fireworksIcon,
       holidayName: 'Cyprus Independence Day',
     },
     { date: '2022-10-02T03:00:00.000Z', dayType: DayType.DayOff },
@@ -757,6 +789,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-10-28T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: sparklerIcon,
       holidayName: 'Ochiday',
     },
     { date: '2022-10-29T03:00:00.000Z', dayType: DayType.DayOff },
@@ -819,11 +852,13 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-12-25T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'Christmas',
     },
     {
       date: '2022-12-26T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: wrappedGift,
       holidayName: 'Boxing Day',
     },
     { date: '2022-12-27T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -836,6 +871,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'New year',
     },
     { date: '2022-01-02T03:00:00.000Z', dayType: DayType.DayOff },
@@ -845,6 +881,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-06T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: smilingFaceWithHalo,
       holidayName: 'Baptism',
     },
     { date: '2022-01-07T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -950,11 +987,13 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-04-17T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: smilingFaceWithHalo,
       holidayName: 'Easter',
     },
     {
       date: '2022-04-18T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: smilingFaceWithHalo,
       holidayName: 'Easter Monday',
     },
     { date: '2022-04-19T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -972,12 +1011,14 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-05-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: hammerAndPick,
       holidayName: 'Labor Day',
     },
     { date: '2022-05-02T03:00:00.000Z', dayType: DayType.WorkDay },
     {
       date: '2022-05-03T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: fireworksIcon,
       holidayName: 'Constitution day',
     },
     { date: '2022-05-04T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1015,6 +1056,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-06-05T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'Green Christmas time',
     },
     { date: '2022-06-06T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1030,6 +1072,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-06-16T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'God chyalo',
     },
     { date: '2022-06-17T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1094,6 +1137,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-08-15T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: sparklerIcon,
       holidayName: 'Polish Army Day',
     },
     { date: '2022-08-16T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1176,6 +1220,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-11-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: jackOLantern,
       holidayName: 'All Saints Day',
     },
     { date: '2022-11-02T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1190,6 +1235,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-11-11T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: fireworksIcon,
       holidayName: 'Independence Day',
     },
     { date: '2022-11-12T03:00:00.000Z', dayType: DayType.DayOff },
@@ -1238,11 +1284,13 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-12-25T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'Christmas',
     },
     {
       date: '2022-12-26T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'Christmas',
     },
     { date: '2022-12-27T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1255,6 +1303,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'New year',
     },
     { date: '2022-01-02T03:00:00.000Z', dayType: DayType.DayOff },
@@ -1265,6 +1314,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-07T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'Christmas',
     },
     { date: '2022-01-08T03:00:00.000Z', dayType: DayType.DayOff },
@@ -1316,6 +1366,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-02-23T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: sparklerIcon,
       holidayName: 'Defender of the Fatherland Day',
     },
     { date: '2022-02-24T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1333,6 +1384,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-03-08T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: butterflyIcon,
       holidayName: 'International Womens Day',
     },
     { date: '2022-03-09T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1391,12 +1443,14 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-05-01T03:00:00.000Z',
       dayType: DayType.Holiday,
-      holidayName: 'Spring and Labour Day',
+      holidayImg: hammerAndPick,
+      holidayName: 'Labor Day',
     },
     { date: '2022-05-02T03:00:00.000Z', dayType: DayType.DayOff },
     {
       date: '2022-05-03T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: smilingFaceWithHalo,
       holidayName: 'Radunitsa',
     },
     { date: '2022-05-04T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1407,6 +1461,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-05-09T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: sparklerIcon,
       holidayName: 'Victory Day',
     },
     { date: '2022-05-10T03:00:00.000Z', dayType: DayType.DayOff },
@@ -1445,6 +1500,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-06-12T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: fireworksIcon,
       holidayName: 'Russia Day',
     },
     { date: '2022-06-13T03:00:00.000Z', dayType: DayType.DayOff },
@@ -1594,6 +1650,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-11-04T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: fireworksIcon,
       holidayName: 'National Unity Day',
     },
     { date: '2022-11-05T03:00:00.000Z', dayType: DayType.DayOff },
@@ -1658,6 +1715,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'New year',
     },
     { date: '2022-01-02T03:00:00.000Z', dayType: DayType.DayOff },
@@ -1668,6 +1726,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-01-07T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'Christmas',
     },
     { date: '2022-01-08T03:00:00.000Z', dayType: DayType.DayOff },
@@ -1732,6 +1791,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-03-08T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: butterflyIcon,
       holidayName: 'International Womens Day',
     },
     { date: '2022-03-09T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1790,6 +1850,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-05-01T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: hammerAndPick,
       holidayName: 'Labor Day',
     },
     { date: '2022-05-02T03:00:00.000Z', dayType: DayType.DayOff },
@@ -1802,6 +1863,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-05-09T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: sparklerIcon,
       holidayName: 'Victory Day',
     },
     { date: '2022-05-10T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1913,6 +1975,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-08-24T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: fireworksIcon,
       holidayName: 'Ukraines Independence Day',
     },
     { date: '2022-08-25T03:00:00.000Z', dayType: DayType.WorkDay },
@@ -1968,6 +2031,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-10-14T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: sparklerIcon,
       holidayName: 'Defenders Day of Ukraine',
     },
     { date: '2022-10-15T03:00:00.000Z', dayType: DayType.DayOff },
@@ -2044,6 +2108,7 @@ export const groupByDate: GroupBy<CalendarDay[]> = {
     {
       date: '2022-12-25T03:00:00.000Z',
       dayType: DayType.Holiday,
+      holidayImg: christmasTree,
       holidayName: 'Christmas',
     },
     { date: '2022-12-26T03:00:00.000Z', dayType: DayType.DayOff },

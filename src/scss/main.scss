@@ -81,7 +81,6 @@ input:-webkit-autofill:active {
 }
 
 .input {
-  @include flex(center, flex-start);
   padding: 0 var(--offset);
   height: 4rem;
   outline: none;
@@ -120,4 +119,9 @@ input:-webkit-autofill:active {
 
 .icon {
   @include flex(center, center);
+}
+
+.link {
+  color: var(--primary);
+  font: var(--font-currentSmall);
 }

@@ -1,0 +1,85 @@
+@import "vars/variables";
+@import "mixins";
+
+:host {
+  .dashboard {
+    &-header {
+      @include flex(center, space-between);
+      height: 5rem;
+      margin-bottom: var(--offset-l);
+
+      &-title {
+        font: var(--font-titleBig);
+      }
+
+      &-date {
+        font: var(--font-title);
+      }
+
+      &-time {
+        @include flex(center, flex-start, var(--offset-l));
+      }
+
+      &-clock {
+        padding: var(--offset-xs);
+
+        background-color: var(--blue2);
+        border-radius: var(--border-radius);
+      }
+    }
+
+    &-search-and-sort {
+      @include flex(center, flex-start, var(--offset));
+      height: 7%;
+    }
+
+    &-search {
+      width: 20%;
+      max-height: 3rem;
+      padding-right: var(--offset-l);
+
+      background: url("https://api.iconify.design/tabler/search.svg?color=%23808689")
+        no-repeat;
+      background-position: 95% 50%;
+    }
+
+    &-main {
+      @include flex(flex-start, space-between, var(--offset));
+      height: calc(93% - 22.5rem);
+      margin: var(--offset) 0;
+      padding: var(--offset-xs);
+
+      &-user-cards {
+        overflow: auto;
+        flex: 4;
+
+        max-height: 100%;
+      }
+
+      &-total-cards {
+        flex: 0.75;
+
+        &-item {
+          max-height: 100%;
+          margin-bottom: var(--offset);
+        }
+
+        &-item:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &-footer {
+      @include flex(flex-start, space-between, var(--offset));
+    }
+  }
+
+  app-activity-total-cards-item {
+    width: 90%;
+  }
+
+  .flex-container {
+    @include flex(center, flex-end, var(--offset));
+  }
+}

@@ -1,0 +1,106 @@
+@import "vars/variables";
+@import "mixins";
+
+:host {
+  .users-cards {
+    @include flex(flex-start, flex-start, var(--offset));
+    overflow: auto;
+    flex-wrap: wrap;
+
+    width: 100%;
+    padding: var(--offset-xs) 0;
+
+    &-item {
+      cursor: pointer;
+
+      padding: var(--offset);
+
+      border: $border-input;
+      border-radius: var(--border-radius-l);
+
+      &-header {
+        @include flex(flex-start, space-between);
+        margin-bottom: var(--offset);
+
+        font: var(--font-buttonSmall);
+
+        &-percentage {
+          font: var(--font-buttonSmall);
+          color: var(--primary);
+        }
+
+        &-buttons {
+          @include flex(flex-start, space-between, var(--offset-xs));
+          margin-top: -0.5rem;
+
+          visibility: hidden;
+        }
+      }
+
+      &-main {
+        @include flex(center, flex-start, var(--offset-xs));
+        flex-direction: column;
+
+        margin-bottom: var(--offset);
+
+        &-photo {
+          @include profile-photo(5rem, 5rem);
+        }
+
+        &-location {
+          margin-bottom: var(--offset-s);
+
+          font: var(--font-buttonMiddle);
+          color: var(--gray2);
+        }
+
+        &-name {
+          font: var(--font-main);
+          color: var(--black);
+        }
+
+        &-position {
+          font: var(--font-main);
+          font-weight: 300;
+          color: var(--gray2);
+        }
+      }
+
+      &-footer {
+        &-title {
+          font: var(--font-buttonSmall);
+          font-weight: 300;
+          color: var(--gray2);
+          text-align: right;
+        }
+
+        &-bar {
+          width: 100%;
+          height: 0.5rem;
+          margin: 0 auto;
+
+          background-color: var(--gray5);
+          border: none;
+          border-radius: var(--border-radius-xxl);
+
+          &-progress {
+            width: 0;
+            height: 100%;
+
+            background-color: var(--primary);
+            border: none;
+            border-radius: var(--border-radius-xxl);
+          }
+        }
+      }
+
+      &:hover {
+        box-shadow: $border-input-select;
+
+        .users-cards-item-header-buttons {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}

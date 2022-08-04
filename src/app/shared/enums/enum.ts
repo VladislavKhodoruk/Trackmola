@@ -1,6 +1,6 @@
 export enum UserType {
   Employee = 'employee',
-  CTO = 'cto',
+  CTO = 'CTO',
   Manager = 'manager',
   Admin = 'admin',
 }
@@ -37,8 +37,14 @@ export enum NumDay {
 
 export enum PeriodType {
   Week = 'week',
+  TwoWeek = 'two week',
   Month = 'month',
   Custom = 'custom',
+}
+
+export enum ChartType {
+  Xrange = 'xrange',
+  Treemap = 'treemap',
 }
 
 export enum DayType {
@@ -46,4 +52,14 @@ export enum DayType {
   DayOff = 'dayOff',
   ShortedDay = 'shortedDay',
   Holiday = 'holiday',
+}
+
+export enum WeekDays {
+  MON = 'MON',
+  TUE = 'TUE',
+  WED = 'WED',
+  THU = 'THU',
+  FRI = 'FRI',
+  SAT = 'SAT',
+  SUN = 'SUN',
 }

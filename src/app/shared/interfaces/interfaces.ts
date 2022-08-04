@@ -2,7 +2,7 @@ import { IconifyIcon } from '@iconify/types';
 
 import { Timestamp } from 'firebase/firestore';
 
-import { DayType } from '@shared/enums/enum';
+import { DayType, WeekDays } from '@shared/enums/enum';
 
 export interface Project {
   id: string;
@@ -118,6 +118,7 @@ export interface Vacations {
 }
 
 export interface UserCard {
+  id: string;
   userName: string;
   projects: Project[];
   location: string;
@@ -129,6 +130,7 @@ export interface CalendarDay {
   date: string;
   dayType: DayType;
   holidayName?: string;
+  holidayImg?: IconifyIcon;
 }
 
 export interface OutOfMain {
@@ -136,3 +138,13 @@ export interface OutOfMain {
   shortages: number;
   working: number;
 }
+
+export interface Holiday {
+  date: Date;
+  holidayImg: IconifyIcon;
+  holidayName: string;
+  locations: string[];
+}
+export type TaskByWeekDays = {
+  [key in WeekDays]: TaskTrack[] | [];
+};

@@ -5,6 +5,7 @@ import {
   Input,
   OnChanges,
   Output,
+  Renderer2,
   SimpleChanges,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -35,7 +36,8 @@ export class ManagerControlsComponent implements OnChanges {
 
   @Output() projectFilter = new EventEmitter<Project['name']>();
   @Output() setActiveFilterProject = new EventEmitter<Project>();
-  @Output() removeProjectFilter = new EventEmitter<void>();
+  @Output() removeProjectFilter = new EventEmitter<Project>();
+  @Output() removeActiveProject = new EventEmitter<void>();
   @Output() changeManagerMainView = new EventEmitter<ManagerDashboardView>();
 
   readonly iconAngleDown: IconifyIcon = angleDown;
@@ -44,11 +46,22 @@ export class ManagerControlsComponent implements OnChanges {
   readonly iconTable: IconifyIcon = tableIcon;
   readonly iconChartArrows: IconifyIcon = chartArrows;
 
-  managerDashboardView = ManagerDashboardView;
+  readonly managerDashboardView = ManagerDashboardView;
 
-  projectInput = new FormControl('');
+  projectInput: FormControl<string> = new FormControl('');
 
   filteredProjects: Observable<Project[]>;
+
+  constructor(private renderer: Renderer2) {}
+
+  protected focusProjectInput(): void {
+    const projectInput: HTMLElement = this.renderer.selectRootElement(
+      '.dashboard-controls-project-input'
+    );
+    return projectInput.ariaExpanded === 'true'
+      ? projectInput.blur()
+      : projectInput.focus();
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.managerProjects) {
@@ -70,5 +83,10 @@ export class ManagerControlsComponent implements OnChanges {
       this.projectFilter.emit(this.projectInput.value);
       this.projectInput.reset();
     }
+  }
+
+  protected removeProjectFromFilter(event: Event, project: Project): void {
+    event.stopPropagation();
+    this.removeProjectFilter.emit(project);
   }
 }

@@ -15,7 +15,7 @@ export class UsersPhotosComponent {
   @Input() readonly users!: User[];
   @Input() readonly size: number;
   @Input() readonly classPhoto: string;
+  @Input() maxUsersPhoto: number = MAX_USERS_PHOTO;
 
-  readonly maxUsersPhoto: number = MAX_USERS_PHOTO;
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
 }

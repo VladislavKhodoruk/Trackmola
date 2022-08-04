@@ -3,11 +3,12 @@ import { Action, createReducer, on } from '@ngrx/store';
 import {
   getWeekReportTimeSuccess,
   setProjectFilter,
-  removeProjectFilter,
+  removeActiveProject,
   changeManagerMainView,
   setActiveTask,
   clearDashboardState,
   setActiveProjectFilter,
+  removeProjectFilter,
 } from './dashboard.actions';
 import { DashboardState, dashboardState } from './dashboard.state';
 
@@ -35,7 +36,20 @@ const dashboardReducer = createReducer(
       selectedTask: dashboardState.manager.selectedTask,
     },
   })),
-  on(removeProjectFilter, (state: DashboardState) => ({
+  on(removeProjectFilter, (state: DashboardState, { project }) => {
+    const newFilter = state.manager.projectsFilter.filter(
+      (projectName) => projectName !== project.name
+    );
+
+    return {
+      ...state,
+      manager: {
+        ...state.manager,
+        projectsFilter: newFilter,
+      },
+    };
+  }),
+  on(removeActiveProject, (state: DashboardState) => ({
     ...state,
     manager: {
       ...state.manager,
@@ -47,10 +61,25 @@ const dashboardReducer = createReducer(
     ...state,
     manager: { ...state.manager, modeView: mode },
   })),
-  on(setActiveTask, (state: DashboardState, { task }) => ({
-    ...state,
-    manager: { ...state.manager, selectedTask: task },
-  })),
+  on(setActiveTask, (state: DashboardState, { task }) => {
+    if (
+      state.manager.selectedTask &&
+      state.manager.selectedTask.id === task.id
+    ) {
+      return {
+        ...state,
+        manager: {
+          ...state.manager,
+          selectedTask: dashboardState.manager.selectedTask,
+        },
+      };
+    }
+
+    return {
+      ...state,
+      manager: { ...state.manager, selectedTask: task },
+    };
+  }),
   on(clearDashboardState, () => ({
     ...dashboardState,
   }))

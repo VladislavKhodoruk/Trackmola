@@ -98,12 +98,14 @@
                     {{ usersInfoByUserId[taskTrack1.userId]?.fullName }}
                   </span>
                   <span class="activeTask-description-header-duration">
-                    {{ taskTrack1.duration + taskTrack1.overtimeDuration }}h
+                    {{ taskTrack1.duration }}h
                   </span>
                 </div>
-                <div class="activeTask-description-comment">
-                  {{ taskTrack1.comments || "no comments" }}
-                </div>
+
+                <div
+                  class="activeTask-description-comment"
+                  [innerHTML]="searchLink(taskTrack1.comments)"
+                ></div>
               </div>
               <ng-container *ngIf="currentUser !== userType.Employee">
                 <app-button

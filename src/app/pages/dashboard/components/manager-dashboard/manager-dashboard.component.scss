@@ -9,6 +9,7 @@
 
   .dashboard-main {
     @include flex(flex-start, flex-start, var(--offset-ml));
+    @include scroll-bar;
     overflow: auto;
     flex: 3;
 
@@ -27,8 +28,28 @@
     }
 
     &-chart {
+      @include scroll-bar;
+
       width: 70%;
       height: 100%;
+
+      &-period {
+        @include flex(flex-start, flex-start);
+        height: 3.65rem;
+
+        &-day {
+          @include flex(center, center);
+          height: 100%;
+
+          font: var(--font-blocks);
+          font-weight: 400;
+          color: var(--gray3);
+
+          &-weekend {
+            background: var(--pale-blue);
+          }
+        }
+      }
     }
   }
 
@@ -50,14 +71,16 @@
 
         padding: 0 0 var(--offset) 0 !important;
 
-        &::-webkit-scrollbar {
-          height: #{$height-scroll};
-        }
-
         &-item {
           height: 100%;
         }
       }
+    }
+
+    .chart-container {
+      overflow: visible !important;
+
+      height: auto !important;
     }
 
     .dashboard-main-chart-item-label {
@@ -68,7 +91,7 @@
 
       font: var(--font-blocks);
       font-weight: 400;
-      color: white;
+      color: var(--white);
       word-break: break-word;
 
       & span:first-child {
@@ -78,6 +101,29 @@
 
     rect {
       stroke: var(--white);
+    }
+
+    .x-range-dataLabel {
+      @include flex(center, space-between);
+      padding-right: var(--offset);
+      padding-left: var(--offset-s);
+
+      font: var(--font-blocks);
+      font-weight: 400;
+      color: white;
+      word-break: break-word;
+
+      & div {
+        @include flex(center, flex-start, var(--offset-s));
+      }
+
+      & img {
+        @include profile-photo(2rem, 2rem);
+      }
+    }
+
+    .highcharts-scrolling {
+      @include scroll-bar;
     }
   }
 }

@@ -50,10 +50,7 @@ export function getInfoFromTaskTracks(
           taskTrack.userId === userId ? acc + taskTrack.overtimeDuration : acc,
         0
       );
-      const taskPercentageWeek = +(
-        ((taskDuration + taskOvertimeDuration) / worksTime) *
-        100
-      ).toFixed(2);
+      const taskPercentageWeek = +((taskDuration / worksTime) * 100).toFixed(2);
 
       const userPercentageAllDurationTask = +(
         (userDuration / taskDuration) *

@@ -26,6 +26,7 @@ import {
   dialogOpeningTime,
 } from '@shared/constants/constants';
 import { UserType } from '@shared/enums/enum';
+import { urlReplacer } from '@shared/helpers/helpers';
 import {
   GroupBy,
   Project,
@@ -125,5 +126,9 @@ export class ActiveTasksComponent {
       .subscribe((task: Task) => {
         this.addTask.emit(task);
       });
+  }
+
+  protected searchLink(text: string): string {
+    return urlReplacer(text) || 'no comment';
   }
 }

@@ -49,7 +49,7 @@
   #{$variable}-dl: calc(var(#{$variable}) * 2.5);
   #{$variable}-ml: calc(var(#{$variable}) * 3);
   #{$variable}-xl: calc(var(#{$variable}) * 4);
-  #{$variable}-xl: calc(var(#{$variable}) * 6);
+  #{$variable}-xxl: calc(var(#{$variable}) * 6);
 }
 
 @mixin width-variables($width, $indent) {
@@ -58,4 +58,18 @@
 
 @mixin height-variables($height, $indent) {
   height: calc(100% - #{$height} - #{$indent});
+}
+
+@mixin scroll-bar($width: var(--offset-s), $height: var(--offset-s)) {
+  &::-webkit-scrollbar {
+    width: #{$width};
+    height: #{$height};
+
+    background-color: var(--white);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray4);
+    border-radius: var(--border-radius-l);
+  }
 }

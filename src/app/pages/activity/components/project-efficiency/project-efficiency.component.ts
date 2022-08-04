@@ -19,7 +19,7 @@ export class ProjectEfficiencyComponent implements OnChanges {
 
   readonly basicOptions: Options = BASIC_OPTIONS_EFFICIENCY_PIE;
 
-  public efficiency: Efficiency;
+  public efficiencyHours: Efficiency;
   public efficiencyIndex: string;
 
   get seriesData(): SeriesOptionsType[] {
@@ -46,7 +46,7 @@ export class ProjectEfficiencyComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.tasks) {
-      this.efficiency = {
+      this.efficiencyHours = {
         completed: outOfNorm(this.tasks, this.presentDay).working,
         overtimes: outOfNorm(this.tasks, this.presentDay).overtimes,
         shortages: outOfNorm(this.tasks, this.presentDay).shortages,
