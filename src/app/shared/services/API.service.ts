@@ -16,6 +16,8 @@ import {
   getAllTaskTracksSuccess,
   getAllUsers,
   getAllUsersSuccess,
+  getAllVacations,
+  getAllVacationsSuccess,
 } from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
 import {
@@ -39,6 +41,7 @@ export class APIService {
     const refTaskTrack = collection(this.firestore, 'taskTrack');
     const refTasks = collection(this.firestore, 'tasks');
     const refProjects = collection(this.firestore, 'projects');
+    const refVacations = collection(this.firestore, 'vacations');
 
     onSnapshot(
       query(refTaskTrack),
@@ -76,6 +79,20 @@ export class APIService {
           projects.push(item.data());
         });
         this.store$.dispatch(getAllProjectsSuccess({ projects }));
+      },
+      (error) => {
+        console.log('error :>> ', error);
+      }
+    );
+
+    onSnapshot(
+      query(refVacations),
+      (respons) => {
+        const vacations = [];
+        respons.forEach((item) => {
+          vacations.push(item.data());
+        });
+        this.store$.dispatch(getAllVacationsSuccess({ vacations }));
       },
       (error) => {
         console.log('error :>> ', error);

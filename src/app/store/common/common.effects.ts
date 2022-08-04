@@ -17,8 +17,11 @@ import {
   deleteTaskTrack,
   updateTaskTrack,
   addTaskTrack,
+  getAllVacations,
+  getAllVacationsSuccess,
 } from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
+import { VacationsService } from '@shared/services/vacations.service';
 
 @Injectable()
 export class CommonEffects {
@@ -90,11 +93,24 @@ export class CommonEffects {
     )
   );
 
+  getAllVacations$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getAllVacations),
+      switchMap(() =>
+        this.vacationsService.allVacations$.pipe(
+          take(1),
+          map((vacations) => getAllVacationsSuccess({ vacations }))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private usersService: UsersService,
     private tasksService: TasksService,
     private store$: Store<TrackMolaState>,
-    private router: Router
+    private router: Router,
+    private vacationsService: VacationsService
   ) {}
 }

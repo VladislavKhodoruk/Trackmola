@@ -12,6 +12,7 @@ import {
   previousWeek,
   setPeriod,
   getAllUsersSuccess,
+  getAllVacationsSuccess,
 } from './common.actions';
 import { initialState, CommonState } from './common.state';
 
@@ -84,7 +85,11 @@ const commonReducer = createReducer(
         start: firstDay - action.value,
       },
     };
-  })
+  }),
+  on(getAllVacationsSuccess, (state: CommonState, { vacations }) => ({
+    ...state,
+    vacations,
+  }))
 );
 
 export function CommonReducer(state: CommonState | undefined, action: Action) {

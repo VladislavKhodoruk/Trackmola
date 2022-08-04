@@ -148,3 +148,12 @@ export interface Holiday {
 export type TaskByWeekDays = {
   [key in WeekDays]: TaskTrack[] | [];
 };
+
+export interface Vacation {
+  color: string;
+  comment: string;
+  periodStart: Timestamp;
+  periodEnd: Timestamp;
+  type: string;
+  userId: string;
+}
