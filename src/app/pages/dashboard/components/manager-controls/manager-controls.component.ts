@@ -45,15 +45,15 @@ export class ManagerControlsComponent implements OnChanges {
   readonly iconTable: IconifyIcon = tableIcon;
   readonly iconChartArrows: IconifyIcon = chartArrows;
 
-  managerDashboardView = ManagerDashboardView;
+  readonly managerDashboardView = ManagerDashboardView;
 
-  projectInput = new FormControl('');
+  readonly projectInput: FormControl<string> = new FormControl('');
 
   filteredProjects: Observable<Project[]>;
 
   constructor(private renderer: Renderer2) {}
 
-  focusProjectInput() {
+  protected focusProjectInput(): void {
     const projectInput: HTMLElement = this.renderer.selectRootElement(
       '.dashboard-controls-project-input'
     );
