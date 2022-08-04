@@ -110,23 +110,21 @@
       text-transform: capitalize;
     }
 
-    
-
     .icon-x {
       display: flex;
+
       svg {
         width: 1.75rem;
         height: 1.75rem;
       }
     }
-    
 
-  .icon-x:hover {
-    cursor: pointer;
+    .icon-x:hover {
+      cursor: pointer;
 
-    color: var(--primary-hover);
+      color: var(--primary-hover);
 
-    opacity: 0.8;
-  }
+      opacity: 0.8;
+    }
   }
 }
