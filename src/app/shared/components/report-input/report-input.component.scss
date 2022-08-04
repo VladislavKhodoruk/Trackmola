@@ -306,8 +306,9 @@
       }
 
       .mat-form-field-flex {
-        padding: 0;
         align-items: center;
+
+        padding: 0;
 
         background: none;
       }
@@ -398,9 +399,9 @@
   }
 
   .datepicker {
+    width: 100%;
     margin-bottom: var(--offset-sm);
     padding: var(--offset-xs) var(--offset);
-    width: 100%;
   }
 
   .flex-container {
