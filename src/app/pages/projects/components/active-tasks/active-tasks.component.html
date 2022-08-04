@@ -1,5 +1,5 @@
 <section class="activeTasks">
-  <div class="flex-container">
+  <div class="flex-container" *ngIf="!modalView">
     <h2 class="activeTasks-header">active tasks</h2>
     <ng-container *ngIf="currentUser !== 'employee'">
       <app-button
@@ -34,7 +34,10 @@
             </mat-panel-title>
             <mat-panel-description class="project-header-description">
               {{ activeTask.name }}
-              <div class="project-header-description-buttons">
+              <div
+                class="project-header-description-buttons"
+                *ngIf="!modalView"
+              >
                 <app-button
                   class="project-header-description-buttons-item"
                   [buttonClass]="'button-primary button-add-to-report'"

@@ -33,6 +33,7 @@ export class TaskComponent {
   openDialog(enterAnimationDuration: string = dialogOpeningTime): void {
     const dialogRef = this.dialog.open(ModalComponent, {
       enterAnimationDuration,
+      panelClass: 'modalTask',
     });
     dialogRef
       .afterClosed()

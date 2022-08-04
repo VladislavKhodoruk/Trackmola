@@ -50,8 +50,8 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     TaskInputComponent,
     ActiveTasksUserModeComponent,
     ActiveTasksUserModeContainer,
-    ApproveModalContainer,
     ApproveModalComponent,
+    ApproveModalContainer,
   ],
   exports: [RouterModule],
   imports: [

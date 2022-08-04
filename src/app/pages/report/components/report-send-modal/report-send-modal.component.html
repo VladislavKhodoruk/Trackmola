@@ -1,0 +1,24 @@
+<p>report-approve-modal works!</p>
+
+<app-taskTracks></app-taskTracks>
+
+<!-- <app-todayview-container></app-todayview-container> -->
+<!-- *ngFor="let taskItem of taskItems"
+[taskItem]="taskItem" -->
+
+<div mat-dialog-actions class="buttons">
+  <button mat-button [mat-dialog-close]="false" class="buttons-cancel">
+    Cancel
+  </button>
+  <app-button
+    mat-button
+    class="'button-primary'"
+    [mat-dialog-close]="false"
+    type="submit"
+    label="Send"
+    [disabled]="false"
+    iconWidth="2rem"
+    iconHeight="2rem"
+    (buttonClick)="submitReport()"
+  ></app-button>
+</div>

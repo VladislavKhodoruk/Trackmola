@@ -1,0 +1,89 @@
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .icons {
+    svg {
+      @include icon-s;
+    }
+  }
+}
+
+:host {
+  --box-shadow-color: rgb(87 74 249 / 25%);
+
+  .task {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 0 var(--offset) 0;
+    padding: var(--offset) var(--offset) 0 var(--offset-l);
+
+    background-color: var(--white);
+    border-radius: 0 var(--offset-s) var(--offset-s) 0;
+    box-shadow: 0 0 0.2rem var(--gray);
+
+    &-time-and-overtime {
+      @include flex(flex-start, flex-start, var(--offset-xs));
+      flex-direction: column;
+    }
+  }
+
+  .task-top {
+    @include flex(flex-start, flex-start, var(--offset));
+    width: 100%;
+  }
+
+  .time {
+    font: var(--font-blocks);
+    font-weight: 700;
+  }
+
+  .overtime {
+    @include flex(flex-start, flex-start, var(--offset-xs));
+
+    &-duration {
+      font: var(--font-blocks);
+      font-weight: 700;
+      color: var(--orange);
+    }
+  }
+
+  .description {
+    font: var(--font-blocks);
+    word-wrap: break-word;
+  }
+
+  .buttons {
+    @include flex(flex-end, flex-end);
+    height: 1.125rem;
+    margin-top: var(--offset);
+  }
+
+  .icons {
+    display: none;
+
+    color: var(--gray);
+
+    &:last-of-type {
+      margin-left: var(--offset-s);
+    }
+  }
+
+  .icons:hover {
+    cursor: pointer;
+
+    color: var(--primary);
+
+    transition: 0.2s;
+  }
+
+  .task:hover {
+    cursor: pointer;
+
+    box-shadow: 0 0 0.4rem var(--box-shadow-color);
+
+    .icons {
+      display: block;
+    }
+  }
+}

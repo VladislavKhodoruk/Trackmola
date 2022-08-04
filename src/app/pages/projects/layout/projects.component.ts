@@ -1,14 +1,29 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import checksIcon from '@iconify/icons-tabler/checks';
 import messagePlus from '@iconify/icons-tabler/message-plus';
 import angleRight from '@iconify/icons-uil/angle-right';
 
+import { untilDestroyed } from '@ngneat/until-destroy';
+
+import { take, filter } from 'rxjs';
+
+import { ApproveModalContainer } from '../components/approve-modal/approve-modal.container';
 import { ProjectMode } from '../enums/enums';
 
+import { dialogOpeningTime } from '@shared/constants/constants';
 import { UserType } from '@shared/enums/enum';
 import {
   GroupBy,
   Project,
+  TaskItem,
+  TaskTrack,
   User,
   Vacations,
 } from '@shared/interfaces/interfaces';
@@ -20,8 +35,19 @@ import {
   templateUrl: './projects.component.html',
 })
 export class ProjectsComponent {
+  @Input() taskItem!: TaskItem | null;
   @Input() readonly projectByRoute: Project;
   @Input() readonly usersGroupByProject: GroupBy<User[]>;
+
+  @Input() readonly project: Project;
+  @Input() readonly activeTaskGroupByProject: GroupBy<Task[]>;
+  @Input() readonly activeTaskTracksGroupByTask: GroupBy<TaskTrack[]>;
+  @Input() readonly usersInfoByUserId: GroupBy<User>;
+
+  @Output() delete = new EventEmitter<string>();
+  @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
+
+  panelOpenState = false;
 
   readonly projectMode = ProjectMode;
   currentMode: string = ProjectMode.Tasks;
@@ -64,7 +90,28 @@ export class ProjectsComponent {
     },
   ];
 
+  constructor(public dialog: MatDialog) {}
+
   changeMode(mode: string): void {
     this.currentMode = mode;
+  }
+
+  modalApproveHours(enterAnimationDuration: string = dialogOpeningTime): void {
+    const dialogRef = this.dialog.open(ApproveModalContainer, {
+      autoFocus: false,
+      data: { project: this.project },
+      enterAnimationDuration,
+      panelClass: 'modalApprove',
+    });
+    dialogRef
+      .afterClosed()
+      .pipe(
+        untilDestroyed(this),
+        take(1),
+        filter((item) => !!item)
+      )
+      .subscribe((task: Task) => {
+        this.addTask.emit(task);
+      });
   }
 }

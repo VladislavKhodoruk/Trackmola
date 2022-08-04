@@ -1,18 +1,16 @@
-import {
-  Component,
-  EventEmitter,
-  Inject,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import x from '@iconify/icons-tabler/x';
 
 import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
 
-import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
+import {
+  GroupBy,
+  Period,
+  Project,
+  TaskItem,
+  TaskTrack,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-report-send-modal',
@@ -21,7 +19,7 @@ import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
 })
 export class ReportSendModalComponent {
   @Input() taskTracks!: TaskTrack[];
-  @Input() currentDate!: number;
+  @Input() readonly activeTaskTracksGroupByDate: GroupBy<TaskTrack[]>;
   @Input() period!: Period;
 
   @Output() taskTrack = new EventEmitter<TaskTrack>();
@@ -29,14 +27,30 @@ export class ReportSendModalComponent {
 
   @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
 
+  taskItems: TaskItem[];
   iconX = x;
   panelOpenState = false;
 
-  taskInput = new FormControl('', Validators.required);
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { project: Project }
   ) {}
+
+  protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
+    const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
+      (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
+        const date = taskTrack.date.seconds * 1000;
+        if (!accum[date]) {
+          accum[date] = [];
+        }
+        accum[date].push(taskTrack);
+        return accum;
+      },
+      {}
+    );
+
+    return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
+  }
 
   getFilteredTasksTracks(): TaskTrack[] {
     return this.taskTracks?.filter(

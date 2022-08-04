@@ -1,0 +1,18 @@
+<div class="task">
+  <div class="task-top">
+    <div class="task-time-and-overtime">
+      <div class="time">{{ taskItem?.duration }}h</div>
+      <div *ngIf="taskItem?.overtimeDuration" class="overtime">
+        <div class="overtime-duration">{{ taskItem?.overtimeDuration }}h</div>
+        <ic-icon
+          class="fire"
+          [icon]="iconFire"
+          width="1.5rem"
+          height="1.5rem"
+        ></ic-icon>
+      </div>
+    </div>
+    <ng-container *ngIf="taskItem"> </ng-container>
+    <div class="description">{{ taskItem?.taskName }}</div>
+  </div>
+</div>

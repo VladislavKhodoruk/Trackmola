@@ -5,10 +5,12 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import check from '@iconify/icons-tabler/check';
 import { IconifyIcon } from '@iconify/types';
 
-import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
+import { ReportSendModalContainer } from '../components/report-send-modal/report-send-modal.container';
+
 import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,22 +28,9 @@ export class ReportComponent {
 
   readonly iconCheck: IconifyIcon = check;
 
-  getFilteredTasksTracks(): TaskTrack[] {
-    return this.taskTracks?.filter(
-      (curTaskTrack) =>
-        curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
-        curTaskTrack.date.seconds * 1000 >=
-          this.period.start - ONE_WEEK_IN_SECONDS &&
-        curTaskTrack.date.seconds * 1000 <= this.period.end
-    );
-  }
+  constructor(public dialog: MatDialog) {}
 
-  submitReport(): void {
-    const sendedTaskTracks = this.getFilteredTasksTracks();
-    const sendedTasksTrack: TaskTrack[] = sendedTaskTracks.map((taskTrack) => ({
-      ...taskTrack,
-      taskTrackStatus: 'sended',
-    }));
-    this.submitTasksTrack.emit(sendedTasksTrack);
+  modalSendReport(): void {
+    this.dialog.open(ReportSendModalContainer);
   }
 }
