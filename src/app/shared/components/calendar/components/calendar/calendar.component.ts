@@ -29,12 +29,13 @@ export class CalendarComponent implements OnChanges, OnDestroy {
   @Input() allTasks!: TaskTrack[] | null;
   @Input() firstDay!: Period['start'];
   @Input() numPreviousWeek!: number;
-  @Input() editableTaskTrack: TaskTrack;
+  @Input() editableTaskTrack!: TaskTrack;
   @Input() readonly currentRoute: RouterStateUrl;
 
   @Output() changeDate = new EventEmitter<number>();
   @Output() taskTrack = new EventEmitter<TaskTrack>();
 
+  taskTrack1: TaskTrack;
   day!: Day;
   currentWeeks: Week[] = [];
   namesDaysWeek = NAMES_OF_THE_DAYS_OF_THE_WEEK;
@@ -47,6 +48,10 @@ export class CalendarComponent implements OnChanges, OnDestroy {
       this.taskTrack.emit(null);
     }
   }
+
+  // ngAfterViewChecked() {
+  //   this.changeDetector.detectChanges();
+  // }
 
   ngOnDestroy(): void {
     this.onChangeDate(

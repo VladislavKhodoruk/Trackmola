@@ -247,6 +247,17 @@
       </div>
     </div>
     <div class="form-report-side-right">
+      <ng-container *ngIf="editableTaskTrack">
+        <label class="form-report-item-label" for="duration">date * </label>
+        <mat-form-field appearance="fill" class="datepicker">
+          <input matInput [matDatepicker]="picker" formControlName="date" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </ng-container>
       <label class="form-report-comments-label" for="role">Comments</label>
       <textarea
         class="form-report-comments-input"
