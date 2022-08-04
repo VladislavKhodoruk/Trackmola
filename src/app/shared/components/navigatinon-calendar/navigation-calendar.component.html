@@ -4,6 +4,7 @@
     [icon]="iconArrowNarrowLeft"
     iconWidth="1.5rem"
     iconHeight="1.5rem"
+    [disabled]="editableTaskTrack"
     (buttonClick)="previousWeek.emit()"
   ></app-button>
   <span class="report-week-interval">
@@ -16,6 +17,7 @@
     [icon]="iconArrowNarrowRight"
     iconWidth="1.5rem"
     iconHeight="1.5rem"
+    [disabled]="editableTaskTrack"
     (buttonClick)="nextWeek.emit()"
   ></app-button>
 </div>
