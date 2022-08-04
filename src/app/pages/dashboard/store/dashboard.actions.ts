@@ -4,6 +4,7 @@ import { ManagerDashboardView } from '../enums/enum';
 
 import { TaskForManager } from '../interfaces/interface';
 
+import { UserType } from '@shared/enums/enum';
 import { Project } from '@shared/interfaces/interfaces';
 
 export const GET_WEEK_REPORT_TIME = '[Dashboard page] get week report time';
@@ -21,6 +22,11 @@ export const CHANGE_MANAGER_MAIN_VIEW =
   '[Dashboard page] change manager main view';
 
 export const SET_ACTIVE_TASK = '[Dashboard page] set active task';
+
+export const GET_DASHBOARD_MODE_VIEW =
+  '[Dashboard page] get dashboard mode view';
+
+export const CHANGE_DASHBOARD_VIEW = '[Dashboard page] change dashboard view';
 
 export const CLEAR_DASHBOARD_STATE = '[Dashboard page] clear dashboard state';
 
@@ -56,6 +62,11 @@ export const changeManagerMainView = createAction(
 export const setActiveTask = createAction(
   SET_ACTIVE_TASK,
   props<{ task: TaskForManager }>()
+);
+
+export const changeDashboardView = createAction(
+  CHANGE_DASHBOARD_VIEW,
+  props<{ dashboardView: UserType }>()
 );
 
 export const clearDashboardState = createAction(CLEAR_DASHBOARD_STATE);

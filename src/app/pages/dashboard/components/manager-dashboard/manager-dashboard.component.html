@@ -1,5 +1,3 @@
-<app-header></app-header>
-
 <app-manager-controls-container
   [modeView]="modeView"
 ></app-manager-controls-container>
@@ -43,9 +41,9 @@
         </div>
       </ng-container>
       <ng-container *ngIf="!activeTask">
-        <ng-container *ngFor="let task of tasksForManager">
+        <ng-container *ngFor="let task of tasksForManager; let i = index">
           <ng-container
-            *ngFor="let taskTrack of getTaskTracksByUser(task.taskTracksInTask)"
+            *ngFor="let taskTrack of taskTracksByUserFromTasksForManager[i]"
           >
             <app-highcharts-chart
               [data]="dataXRangeAllTasks(taskTrack)"
@@ -56,11 +54,7 @@
         </ng-container>
       </ng-container>
       <ng-container *ngIf="activeTask">
-        <ng-container
-          *ngFor="
-            let taskTrack of getTaskTracksByUser(activeTask.taskTracksInTask)
-          "
-        >
+        <ng-container *ngFor="let taskTrack of taskTracksByUserFromActiveTask">
           <app-highcharts-chart
             [data]="dataXRangeAllTasks(taskTrack)"
             [options]="basicOptionsChartXRange"

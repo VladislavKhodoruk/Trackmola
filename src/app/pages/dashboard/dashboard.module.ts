@@ -16,6 +16,7 @@ import { AdminDashboardContainer } from './components/admin-dashboard/admin-dash
 import { CtoDashboardComponent } from './components/cto-dashboard/cto-dashboard.component';
 import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HeaderContainer } from './components/header/header.container';
 import { ManagerControlsComponent } from './components/manager-controls/manager-controls.component';
 
 import { ManagerControlsContainer } from './components/manager-controls/manager-controls.container';
@@ -60,6 +61,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ActivityWeekChartComponent,
     ManagerControlsContainer,
     HeaderComponent,
+    HeaderContainer,
     ManagerControlsComponent,
     ManagerDashboardListTasksComponent,
     UsersCardsComponent,

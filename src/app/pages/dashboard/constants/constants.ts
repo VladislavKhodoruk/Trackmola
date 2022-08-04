@@ -10,7 +10,10 @@ import {
 
 import { XRangeConfig } from '../interfaces/interface';
 
-import { NAMES_OF_THE_DAYS_OF_THE_WEEK } from '@shared/constants/constants';
+import {
+  COLORS_FOR_TASKS,
+  NAMES_OF_THE_DAYS_OF_THE_WEEK,
+} from '@shared/constants/constants';
 
 export const DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK = 40;
 
@@ -84,20 +87,22 @@ export const MANAGER_DASHBOARD_CHART_TREEMAP = {
   credits: {
     enabled: false,
   },
-
   plotOptions: {
     treemap: {
       borderColor: 'white',
       borderRadius: 8,
       borderWidth: 10,
+      colorByPoint: true,
+      colors: COLORS_FOR_TASKS,
       cursor: 'pointer',
       dataLabels: {
         align: 'left',
         allowOverlap: false,
         enabled: true,
         formatter: function (this: PointLabelObject) {
+          const point = this.point as any;
           const percent = +this.point.value.toFixed(2);
-          if (percent < 5) return '';
+          if (percent < 5 || point.shapeArgs.width < 100) return '';
           return `<span class="dashboard-main-chart-item-label"><span>${percent}%</span>${this.point.name}</span>`;
         },
         padding: 0,
@@ -109,6 +114,7 @@ export const MANAGER_DASHBOARD_CHART_TREEMAP = {
       },
     },
   },
+
   title: {
     text: '',
   },
