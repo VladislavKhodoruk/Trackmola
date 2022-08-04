@@ -186,15 +186,6 @@ export class ManagerDashboardComponent implements OnChanges {
     ];
   }
 
-  protected dataXRangeAllTasksNull(): SeriesOptionsType[] {
-    return [
-      {
-        data: [],
-        type: ChartType.Xrange,
-      },
-    ];
-  }
-
   private dataForChartXRange(
     taskTracks: [string, TaskTrack[]]
   ): DataForChartXRange[] {
