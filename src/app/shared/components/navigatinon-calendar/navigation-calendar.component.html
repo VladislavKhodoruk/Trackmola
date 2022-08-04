@@ -10,11 +10,6 @@
     Week {{ firstDay | date: "dd MMM" }} -
     {{ lastDay | date: "dd MMM" }}
   </span>
-  <app-users-photos
-    *ngIf="usersInProject.length"
-    [users]="usersInProject"
-    size="3"
-  ></app-users-photos>
 
   <app-button
     [buttonClass]="'button-secondary button-navigation-icon'"
