@@ -35,7 +35,8 @@ export class ManagerControlsComponent implements OnChanges {
 
   @Output() projectFilter = new EventEmitter<Project['name']>();
   @Output() setActiveFilterProject = new EventEmitter<Project>();
-  @Output() removeProjectFilter = new EventEmitter<void>();
+  @Output() removeProjectFilter = new EventEmitter<Project>();
+  @Output() removeActiveProject = new EventEmitter<void>();
   @Output() changeManagerMainView = new EventEmitter<ManagerDashboardView>();
 
   readonly iconAngleDown: IconifyIcon = angleDown;
@@ -70,5 +71,10 @@ export class ManagerControlsComponent implements OnChanges {
       this.projectFilter.emit(this.projectInput.value);
       this.projectInput.reset();
     }
+  }
+
+  protected removeProjectFromFilter(event: Event, project: Project): void {
+    event.stopPropagation();
+    this.removeProjectFilter.emit(project);
   }
 }
