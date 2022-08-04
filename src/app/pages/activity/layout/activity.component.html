@@ -1,8 +1,17 @@
-<container-element [ngSwitch]="userType">
-  <app-employee-activity-container
-    *ngSwitchCase="types.Employee"
-  ></app-employee-activity-container>
-  <app-cto-activity *ngSwitchCase="types.CTO"></app-cto-activity>
-  <app-admin-activity *ngSwitchCase="types.Admin"></app-admin-activity>
-  <app-manager-activity *ngSwitchCase="types.Manager"></app-manager-activity>
-</container-element>
+<div class="header-wrapper">
+  <h1>My Activity</h1>
+  <app-toggle-buttons
+    class="choose-period-buttons"
+    [labels]="labels"
+    [checked]="period"
+    (changeMode)="selectPeriod.emit($event)"
+  ></app-toggle-buttons>
+</div>
+<div class="container">
+  <app-activity-week-chart-container></app-activity-week-chart-container>
+  <app-projects-activity-container></app-projects-activity-container>
+</div>
+<div class="cards">
+  <app-activity-total-cards-container></app-activity-total-cards-container>
+  <app-project-efficiency-container></app-project-efficiency-container>
+</div>
