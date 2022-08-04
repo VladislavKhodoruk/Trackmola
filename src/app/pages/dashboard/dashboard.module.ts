@@ -1,9 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -39,9 +36,11 @@ import { ActivityWeekChartContainer } from '@pages/dashboard/components/activity
 import { ButtonModule } from '@shared/components/button/button.module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
 import { ClockModule } from '@shared/components/clock/clock.module';
+import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { HolidaysModule } from '@shared/components/holiday/holidays.module';
 import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
+import { SelectModule } from '@shared/components/select/select.module';
 import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
@@ -79,9 +78,6 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     TodayViewModule,
     ClockModule,
     VacationsModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
     IconModule,
     FormsModule,
     ReactiveFormsModule,
@@ -89,6 +85,8 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ProjectLabelModule,
     ToggleButtonsModule,
     HolidaysModule,
+    SelectModule,
+    DatepickerModule,
   ],
   providers: [],
 })
