@@ -47,7 +47,7 @@ export class ManagerControlsComponent implements OnChanges {
 
   readonly managerDashboardView = ManagerDashboardView;
 
-  readonly projectInput: FormControl<string> = new FormControl('');
+  projectInput: FormControl<string> = new FormControl('');
 
   filteredProjects: Observable<Project[]>;
 
