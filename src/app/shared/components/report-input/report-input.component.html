@@ -285,14 +285,16 @@
     ></app-button>
     <ng-template #edit>
       <app-button
+        class="cancel-button"
+        [buttonClass]="'button-secondary button-m'"
+        label="Cancel"
+        (buttonClick)="editCancel()"
+      ></app-button>
+      <app-button
         [buttonClass]="'button-primary button-m'"
         type="submit"
         label="Save"
-        [disabled]="
-          form.invalid &&
-          +form.get('duration') > 0 &&
-          +form.get('overtimeDuration') > 0
-        "
+        [disabled]="form.invalid && +form.get('duration') > 0"
       ></app-button>
     </ng-template>
   </div>

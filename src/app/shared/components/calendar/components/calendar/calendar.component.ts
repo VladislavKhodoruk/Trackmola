@@ -14,7 +14,9 @@ import {
   NUMBER_OF_DAYS_IN_A_WEEK,
   ONE_DAY_IN_SECONDS,
 } from '@shared/constants/constants';
+import { StateName } from '@shared/enums/enum';
 import { Day, Period, TaskTrack, Week } from '@shared/interfaces/interfaces';
+import { RouterStateUrl } from '@store/router/custom-serializer';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,8 +29,11 @@ export class CalendarComponent implements OnChanges, OnDestroy {
   @Input() allTasks!: TaskTrack[] | null;
   @Input() firstDay!: Period['start'];
   @Input() numPreviousWeek!: number;
+  @Input() editableTaskTrack: TaskTrack;
+  @Input() readonly currentRoute: RouterStateUrl;
 
   @Output() changeDate = new EventEmitter<number>();
+  @Output() taskTrack = new EventEmitter<TaskTrack>();
 
   day!: Day;
   currentWeeks: Week[] = [];
@@ -37,6 +42,9 @@ export class CalendarComponent implements OnChanges, OnDestroy {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.allTasks || changes.firstDay) {
       this.generateWeeks(new Date(this.firstDay), this.numPreviousWeek);
+    }
+    if (changes.currentRoute && this.currentRoute.url !== StateName.Report) {
+      this.taskTrack.emit(null);
     }
   }
 
@@ -120,6 +128,9 @@ export class CalendarComponent implements OnChanges, OnDestroy {
   }
 
   onChangeDate(day: number): void {
+    if (this.editableTaskTrack) {
+      return;
+    }
     this.changeDate.emit(day);
   }
 }

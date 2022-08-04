@@ -48,6 +48,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
   @Input() formTask: ActiveTasks;
   @Input() taskTracks: TaskTrack[];
 
+  @Output() taskTrack = new EventEmitter<TaskTrack>();
   @Output() editTaskTrack = new EventEmitter<TaskTrack>();
   @Output() addCurTaskTrack = new EventEmitter<TaskTrack>();
   @Output() closeDialog = new EventEmitter();
@@ -238,17 +239,11 @@ export class ReportInputComponent implements OnInit, OnChanges {
     if (this.editableTaskTrack) {
       addTask.id = this.editableTaskTrack.id;
       this.editTaskTrack.emit(addTask);
-      this.editableTaskTrack = null;
+      this.removeEditableTaskTrack();
     } else {
       this.addCurTaskTrack.emit(addTask);
     }
-    this.onCheckStatus(this.status);
-    this.form.get('project').reset();
-    this.form.get('task').reset();
-    this.form.get('comments').reset();
-    this.form.get('duration').setValue(DurationValue.Default);
-    this.form.get('overtimeDuration').setValue('0');
-    this.form.get('overtime').setValue(false);
+    this.resetForm();
   }
 
   onInputOnlyNumber(event: KeyboardEvent): boolean {
@@ -436,5 +431,25 @@ export class ReportInputComponent implements OnInit, OnChanges {
     }
 
     this.form.get('task').setValue('');
+  }
+
+  removeEditableTaskTrack(): void {
+    this.editableTaskTrack = null;
+    this.taskTrack.emit(this.editableTaskTrack);
+  }
+
+  resetForm(): void {
+    this.onCheckStatus(this.status);
+    this.form.get('project').reset();
+    this.form.get('task').reset();
+    this.form.get('comments').reset();
+    this.form.get('duration').setValue(DurationValue.Default);
+    this.form.get('overtimeDuration').setValue('0');
+    this.form.get('overtime').setValue(false);
+  }
+
+  editCancel(): void {
+    this.resetForm();
+    this.removeEditableTaskTrack();
   }
 }

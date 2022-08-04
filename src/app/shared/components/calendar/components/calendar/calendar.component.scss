@@ -23,4 +23,10 @@
     font-size: var(--font-calendar);
     color: #969696;
   }
+
+  .disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    user-select: none;
+  }
 }
