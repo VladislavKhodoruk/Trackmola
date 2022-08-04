@@ -3,8 +3,6 @@
     <h2 class="report-header-title">My report</h2>
 
     <div class="report-header-container">
-      <app-navigation-calendar-container></app-navigation-calendar-container>
-
       <app-button
         type="submit"
         [buttonClass]="'button-primary'"
@@ -16,6 +14,31 @@
         (buttonClick)="submitReport()"
       >
       </app-button>
+    </div>
+  </div>
+  <div class="report-navigation">
+    <app-navigation-calendar-container></app-navigation-calendar-container>
+    <div class="report-navigation-info">
+      <div class="report-navigation-info-bar">
+        <div class="flex-container">
+          <div class="report-navigation-info-bar-title">working hours</div>
+          <div class="report-navigation-info-bar-info">
+            out of {{ defaultWeekWorkHours }}
+          </div>
+        </div>
+        <div class="report-navigation-info-bar-item">
+          <div
+            class="report-navigation-info-bar-progress"
+            [style.width.%]="(weekReportDuration / defaultWeekWorkHours) * 100"
+          ></div>
+        </div>
+      </div>
+      <app-users-photos
+        class="report-navigation-info-photos"
+        *ngIf="usersInProject.length"
+        [users]="usersInProject"
+        size="3"
+      ></app-users-photos>
     </div>
   </div>
 

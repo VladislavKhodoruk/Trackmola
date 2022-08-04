@@ -6,9 +6,10 @@ import { Observable } from 'rxjs';
 import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
 import {
   setProjectFilter,
-  removeProjectFilter,
+  removeActiveProject,
   changeManagerMainView,
   setActiveProjectFilter,
+  removeProjectFilter,
 } from '@pages/dashboard/store/dashboard.actions';
 import {
   getManagerProjectsFilter,
@@ -29,7 +30,8 @@ import { TrackMolaState } from '@store/trackMola.state';
     [activeProjectFilter]="activeProjectFilter$ | async"
     [modeView]="modeView"
     (projectFilter)="onProjectFilter($event)"
-    (removeProjectFilter)="onRemoveProjectFilter()"
+    (removeProjectFilter)="onRemoveProjectFilter($event)"
+    (removeActiveProject)="onRemoveActiveProject()"
     (setActiveFilterProject)="onSetActiveFilterProject($event)"
     (changeManagerMainView)="onChangeManagerMainView($event)"
   ></app-manager-controls>`,
@@ -58,8 +60,12 @@ export class ManagerControlsContainer {
     this.store$.dispatch(setActiveProjectFilter({ activeProject }));
   }
 
-  public onRemoveProjectFilter(): void {
-    this.store$.dispatch(removeProjectFilter());
+  public onRemoveProjectFilter(project: Project): void {
+    this.store$.dispatch(removeProjectFilter({ project }));
+  }
+
+  public onRemoveActiveProject(): void {
+    this.store$.dispatch(removeActiveProject());
   }
 
   public onChangeManagerMainView(mode: ManagerDashboardView): void {

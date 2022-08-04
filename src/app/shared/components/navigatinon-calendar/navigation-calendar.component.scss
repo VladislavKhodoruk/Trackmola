@@ -5,9 +5,10 @@
     @include flex(center, space-between, var(--offset-m));
 
     &-interval {
-      width: 14rem;
+      width: 16rem;
 
       font: var(--font-calendar);
+      text-align: center;
     }
   }
 }

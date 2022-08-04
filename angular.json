@@ -53,7 +53,17 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/scss"]
             },
-            "allowedCommonJsDependencies": ["exceljs"],
+            "allowedCommonJsDependencies": [
+              "exceljs",
+              "@iconify/icons-tabler",
+              "@iconify/icons-uil",
+              "@iconify/icons-emojione",
+              "@iconify/icons-mdi",
+              "@iconify/icons-noto",
+              "highcharts",
+              "file-saver",
+              "lodash"
+            ],
             "scripts": []
           },
           "configurations": {

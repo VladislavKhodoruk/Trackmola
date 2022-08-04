@@ -4,23 +4,20 @@
     [icon]="iconArrowNarrowLeft"
     iconWidth="1.5rem"
     iconHeight="1.5rem"
+    [disabled]="editableTaskTrack"
     (buttonClick)="previousWeek.emit()"
   ></app-button>
   <span class="report-week-interval">
     Week {{ firstDay | date: "dd MMM" }} -
     {{ lastDay | date: "dd MMM" }}
   </span>
-  <app-users-photos
-    *ngIf="usersInProject.length"
-    [users]="usersInProject"
-    size="3"
-  ></app-users-photos>
 
   <app-button
     [buttonClass]="'button-secondary button-navigation-icon'"
     [icon]="iconArrowNarrowRight"
     iconWidth="1.5rem"
     iconHeight="1.5rem"
+    [disabled]="editableTaskTrack"
     (buttonClick)="nextWeek.emit()"
   ></app-button>
 </div>
