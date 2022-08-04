@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import {
-  DEFAULT_PHOTO_URL,
-  ONE_WEEK_IN_SECONDS,
-} from '@shared/constants/constants';
+import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
 import {
@@ -20,7 +17,6 @@ import { TrackMolaState } from '@store/trackMola.state';
   template: `<app-navigation-calendar
     [firstDay]="firstDay$ | async"
     [lastDay]="lastDay$ | async"
-    [usersInProject]="usersInProject$"
     (previousWeek)="onPreviousWeek()"
     (nextWeek)="onNextWeek()"
   ></app-navigation-calendar>`,
@@ -28,12 +24,6 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class NavigationCalendarContainer {
   readonly firstDay$ = this.store$.select(getFirstDay);
   readonly lastDay$ = this.store$.select(getLastDay);
-
-  readonly usersInProject$ = [
-    { photo: DEFAULT_PHOTO_URL },
-    { photo: DEFAULT_PHOTO_URL },
-    { photo: DEFAULT_PHOTO_URL },
-  ];
 
   constructor(private store$: Store<TrackMolaState>) {
     this.store$.dispatch(
