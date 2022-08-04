@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -24,7 +25,7 @@ import { User, GroupBy } from '@shared/interfaces/interfaces';
   styleUrls: ['./admin-dashboard.component.scss'],
   templateUrl: './admin-dashboard.component.html',
 })
-export class AdminDashboardComponent implements OnInit, OnDestroy {
+export class AdminDashboardComponent implements OnChanges, OnInit, OnDestroy {
   @Input() users!: User[];
   @Input() taskTracksDurationGroupByUser!: GroupBy<{
     duration: number;
@@ -41,7 +42,6 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   readonly labelsMode = [UserType.Employee, UserType.Manager, UserType.Admin];
   readonly labelsSort = [...Object.values(AdminSortMode)];
 
-  currentUser: User;
   currentUsers: User[];
   checkedMode = UserType.Admin;
   search = new FormControl('');
@@ -54,6 +54,10 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
 
   changeMode(type: UserType): void {
     this.checkedMode = type;
+  }
+
+  ngOnChanges(): void {
+    this.currentUsers = this.users;
   }
 
   ngOnInit(): void {
