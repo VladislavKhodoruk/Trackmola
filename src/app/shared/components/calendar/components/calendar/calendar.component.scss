@@ -11,11 +11,11 @@
 
   table,
   th {
+    cursor: pointer;
+
     border-collapse: collapse;
 
     border: $border-table;
-
-    cursor: pointer;
   }
 
   th {
