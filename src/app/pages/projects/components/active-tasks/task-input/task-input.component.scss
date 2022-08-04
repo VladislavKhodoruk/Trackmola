@@ -3,11 +3,7 @@
 
 ::ng-deep {
   .mat-dialog-container {
-    overflow: hidden;
-
-    min-width: 25vw;
-    padding: var(--offset);
-
+    padding: 0;
     border-radius: var(--offset);
   }
 
@@ -26,6 +22,10 @@
 }
 
 :host {
+  .wrapper {
+    padding: var(--offset);
+  }
+
   .top {
     @include flex(center, space-between);
     margin-bottom: var(--offset-m);
