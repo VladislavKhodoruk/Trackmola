@@ -21,7 +21,6 @@
 
   .calendar-item {
     @include flex(flex-start, space-between);
-    cursor: pointer;
 
     width: 100%;
     height: 100%;
