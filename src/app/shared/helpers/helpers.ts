@@ -237,6 +237,6 @@ export function outOfNorm(
 export function urlReplacer(text: string): string {
   const options: AutolinkerConfig = { className: 'link' };
   const replacer: Autolinker = new Autolinker(options);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
   return replacer.link(text);
 }
