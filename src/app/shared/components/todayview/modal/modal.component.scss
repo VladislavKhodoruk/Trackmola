@@ -4,6 +4,7 @@
 ::ng-deep {
   .mat-dialog-container {
     overflow: inherit;
+
     border-radius: var(--offset);
   }
 
@@ -23,6 +24,7 @@
   .delete-modal {
     padding: var(--offset);
   }
+
   .top {
     @include flex(center, space-between);
     margin-bottom: var(--offset-m);
