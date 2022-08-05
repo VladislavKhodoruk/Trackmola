@@ -6,6 +6,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
+import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 import angleLeftB from '@iconify/icons-uil/angle-left-b';
 import { Observable } from 'rxjs';
 
@@ -15,12 +16,8 @@ import {
   ROLES,
 } from '@shared/constants/constants';
 import { SelectOptions, User } from '@shared/interfaces/interfaces';
-import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 
 @Component({
-  selector: 'app-visit-card-component',
-  styleUrls: ['./visit-card.component.scss'],
-  templateUrl: './visit-card.component.html',
   providers: [
     {
       provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
@@ -28,6 +25,9 @@ import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete
       useValue: { overlayPanelClass: 'visitClass' },
     },
   ],
+  selector: 'app-visit-card-component',
+  styleUrls: ['./visit-card.component.scss'],
+  templateUrl: './visit-card.component.html',
 })
 export class VisitCardComponent implements OnChanges {
   @Input() user!: User;
