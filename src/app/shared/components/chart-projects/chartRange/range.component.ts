@@ -44,7 +44,7 @@ export class RangeComponent implements OnChanges {
   @Input() readonly marginRight: number;
   @Input() readonly chartXRangeHeight: number;
   @Input() readonly colors: GroupBy<string>;
-  @Input() readonly users: User[];
+  @Input() readonly users: GroupBy<User>;
 
   taskTracksByUserFromTasks: [string, TaskTrack[]][][];
 

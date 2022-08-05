@@ -23,7 +23,7 @@ export class ChartProjectsComponent implements OnChanges {
   @Input() readonly project: Project;
   @Input() readonly tasks: TaskForManager[];
   @Input() readonly modeView: ManagerDashboardView;
-  @Input() readonly users: User[];
+  @Input() readonly users: GroupBy<User>;
   @Input() readonly period: Period;
 
   chartXRangeMarginRight = 24;

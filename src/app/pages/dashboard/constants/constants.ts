@@ -103,7 +103,7 @@ export const MANAGER_DASHBOARD_CHART_TREEMAP = {
           const point = this.point as any;
           const percent = +this.point.value.toFixed(2);
           if (percent < 5 || point.shapeArgs.width < 100) return '';
-          return `<span class="dashboard-main-chart-item-label"><span>${percent}%</span>${this.point.name}</span>`;
+          return `<span class="treemap-chart-item-label"><span>${percent}%</span>${this.point.name}</span>`;
         },
         padding: 0,
         useHTML: true,

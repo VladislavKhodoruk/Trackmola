@@ -19,7 +19,7 @@ import { GroupBy, User } from '@shared/interfaces/interfaces';
 export class TreemapComponent {
   @Input() readonly tasks: TaskForManager[];
   @Input() readonly activeTask: TaskForManager;
-  @Input() readonly users: User[];
+  @Input() readonly users: GroupBy<User>;
 
   basicOptionsChartTreemap = MANAGER_DASHBOARD_CHART_TREEMAP;
 

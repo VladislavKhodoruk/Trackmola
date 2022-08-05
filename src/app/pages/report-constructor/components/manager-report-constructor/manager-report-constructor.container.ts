@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
+import { TaskForManager } from '@pages/dashboard/interfaces/interface';
 import { ExcelData } from '@pages/report-constructor/interfaces/interfaces';
 import {
   changeChartViewMode,
@@ -13,6 +14,7 @@ import {
 } from '@pages/report-constructor/store/report-constructor.actions';
 import {
   getChartViewMode,
+  getDateForChart,
   getPeriod,
   getTaskTracks,
   getViewMode,
@@ -24,11 +26,13 @@ import {
   TaskTrack,
   User,
   Task,
+  GroupBy,
 } from '@shared/interfaces/interfaces';
 import {
   getProjects,
   getTasks,
   getUsers,
+  usersInfoByUserId,
 } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -43,6 +47,8 @@ import { TrackMolaState } from '@store/trackMola.state';
     [tasks]="tasks$ | async"
     [viewMode]="viewMode$ | async"
     [chartViewMode]="chartViewMode$ | async"
+    [dateForChart]="dateForChart$ | async"
+    [usersInfoByUserId]="usersInfoByUserId$ | async"
     (changeStorePeriod)="changePeriod($event)"
     (changeStoreProjectId)="changeProjectId($event)"
     (exportExel)="exportExel($event)"
@@ -61,6 +67,10 @@ export class ManagerReportConstructorContainer {
   readonly viewMode$: Observable<ViewMode> = this.store$.select(getViewMode);
   readonly chartViewMode$: Observable<ChartViewMode> =
     this.store$.select(getChartViewMode);
+  readonly dateForChart$: Observable<TaskForManager[]> =
+    this.store$.select(getDateForChart);
+  readonly usersInfoByUserId$: Observable<GroupBy<User>> =
+    this.store$.select(usersInfoByUserId);
 
   constructor(private store$: Store<TrackMolaState>) {}
 

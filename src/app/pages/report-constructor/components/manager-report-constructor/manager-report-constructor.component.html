@@ -134,6 +134,14 @@
     [infoFromTaskTracks]="infoFromTaskTracks"
     *ngIf="viewMode === reportConstructorView.Table"
   ></app-report-constructor-table>
+  <app-chart-projects
+    *ngIf="viewMode === reportConstructorView.Chart"
+    [project]="currentProject"
+    [modeView]="chartViewMode"
+    [tasks]="dateForChart"
+    [users]="usersInfoByUserId"
+    [period]="period"
+  ></app-chart-projects>
 </main>
 <footer class="report-constructor-team">
   <app-users-photos

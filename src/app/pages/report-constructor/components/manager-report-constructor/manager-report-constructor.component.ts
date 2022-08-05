@@ -15,6 +15,8 @@ import tableIcon from '@iconify/icons-tabler/table';
 import templateIcon from '@iconify/icons-tabler/template';
 import { IconifyIcon } from '@iconify/types';
 
+import { TaskForManager } from '@pages/dashboard/interfaces/interface';
+
 import {
   getInfoFromTaskTracks,
   getTeam,
@@ -35,6 +37,7 @@ import {
   TaskTrack,
   User,
   Task,
+  GroupBy,
 } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -51,6 +54,8 @@ export class ManagerReportConstructorComponent implements OnChanges {
   @Input() readonly tasks: Task[];
   @Input() readonly viewMode: ViewMode;
   @Input() readonly chartViewMode: ChartViewMode;
+  @Input() readonly dateForChart: TaskForManager[];
+  @Input() readonly usersInfoByUserId: GroupBy<User>;
 
   @Output() changeStorePeriod: EventEmitter<Period> =
     new EventEmitter<Period>();
@@ -72,6 +77,7 @@ export class ManagerReportConstructorComponent implements OnChanges {
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
   currentProjectName: string;
+  currentProject: Project;
   infoFromTaskTracks: InfoReportConstructorItem[];
 
   readonly TypePeriod = PeriodType;
@@ -110,6 +116,9 @@ export class ManagerReportConstructorComponent implements OnChanges {
     this.currentProjectName = this.projects.find(
       (project) => project.id === currentProjectId
     )?.name;
+    this.currentProject = this.projects.find(
+      (project) => project.id === currentProjectId
+    );
     this.changeStoreProjectId.emit(currentProjectId);
   }
 
