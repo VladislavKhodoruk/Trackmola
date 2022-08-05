@@ -21,7 +21,6 @@ import { SelectOptions, User } from '@shared/interfaces/interfaces';
   providers: [
     {
       provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
-
       useValue: { overlayPanelClass: 'visitClass' },
     },
   ],
@@ -47,7 +46,7 @@ export class VisitCardComponent implements OnChanges {
 
   roles$ = new Observable((observer) => observer.next(ROLES));
 
-  protected getSelectedValue(selectedRole: string): void {
+  protected getSelectedRoleValue(selectedRole: string): void {
     let role = selectedRole;
     this.selectedRole = role;
     if (role !== 'CTO') {
@@ -66,7 +65,7 @@ export class VisitCardComponent implements OnChanges {
         value: role,
         viewValue: role,
       }));
-      this.getSelectedValue(this.user.role);
+      this.getSelectedRoleValue(this.user.role);
     }
   }
 }

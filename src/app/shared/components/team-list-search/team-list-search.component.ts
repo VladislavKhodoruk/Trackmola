@@ -56,7 +56,6 @@ import {
   providers: [
     {
       provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
-
       useValue: { overlayPanelClass: 'teamClass' },
     },
   ],
