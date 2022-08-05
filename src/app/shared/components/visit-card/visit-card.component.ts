@@ -40,21 +40,20 @@ export class VisitCardComponent implements OnChanges {
   roles$ = new Observable((observer) => observer.next(ROLES));
 
   protected getSelectedValue(selectedRole: string): void {
-    this.selectedRole = selectedRole;
-    if (selectedRole !== 'CTO') {
-      selectedRole = selectedRole.toLowerCase();
+    let role = selectedRole;
+    this.selectedRole = role;
+    if (role !== 'CTO') {
+      role = role.toLowerCase();
     }
-    const newUser = { ...this.user, role: selectedRole };
+    const newUser = { ...this.user, role };
     this.setRole.emit(newUser);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.user && this.user) {
       this.contractEnds =
-        this.user.endDate.seconds * 1000 - new Date().getTime() >=
-        ONE_MONTH_IN_SECONDS
-          ? false
-          : true;
+        this.user.endDate.seconds * 1000 - new Date().getTime() <
+        ONE_MONTH_IN_SECONDS;
       this.selectRolesOptions = ROLES.map((role) => ({
         value: role,
         viewValue: role,

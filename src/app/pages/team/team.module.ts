@@ -1,17 +1,12 @@
 import { CommonModule } from '@angular/common';
-
 import { NgModule } from '@angular/core';
-
 import { RouterModule } from '@angular/router';
-
 import { EffectsModule } from '@ngrx/effects';
-
 import { StoreModule } from '@ngrx/store';
 
 import { AdminTeamComponent } from './components/admin-team/admin-team.component';
 import { AdminTeamContainer } from './components/admin-team/admin-team.container';
 import { CtoTeamComponent } from './components/cto-team/cto-team.component';
-
 import { ManagerTeamComponent } from './components/manager-team/manager-team.component';
 import { ManagerTeamContainer } from './components/manager-team/manager-team.container';
 import { UsersProjectsComponent } from './components/users-projects/users-projects.component';

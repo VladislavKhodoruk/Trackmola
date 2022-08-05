@@ -6,7 +6,7 @@ export const mockUsers: User[] = [
   {
     birthday: new Timestamp(900795600, 465000000),
     email: 'mivakhnenko@datamola.com',
-    endDate: new Timestamp(1654050800, 882000000),
+    endDate: new Timestamp(1661050800, 882000000),
     fullName: 'Maria Ivakhnenko',
     id: 'FyTQtfAXBMPaa3yKJ4TmVVgTA872',
     location: 'Minsk',
@@ -20,7 +20,7 @@ export const mockUsers: User[] = [
   {
     birthday: new Timestamp(751672800, 367000000),
     email: 'vchistiakov@datamola.com',
-    endDate: new Timestamp(1654050800, 313000000),
+    endDate: new Timestamp(1664050800, 313000000),
     fullName: 'Vitalii Chistiakov',
     id: 'P4SeopCIcgbAmGkoS8JE0Rq0t1v1',
     location: 'Minsk',
@@ -30,14 +30,14 @@ export const mockUsers: User[] = [
     position: 'Admin',
     qualification: 'middle',
     role: 'Admin',
-    startDate: new Timestamp(1654030800, 313000000),
+    startDate: new Timestamp(1664030800, 313000000),
 
     timeZone: '+3',
   },
   {
     birthday: new Timestamp(1025125200, 844000000),
     email: 'vkhodoruk@datamola.com',
-    endDate: new Timestamp(1654050800, 283000000),
+    endDate: new Timestamp(1664050800, 283000000),
     fullName: 'Vladislav Khodoruk',
     id: 'Y2nsuR3ejZMJxvxHnVZ1hjQlbV32',
     location: 'Minsk',
@@ -54,7 +54,7 @@ export const mockUsers: User[] = [
   {
     birthday: new Timestamp(802904400, 31000000),
     email: 'kborisenok@datamola.com',
-    endDate: new Timestamp(1654050800, 517000000),
+    endDate: new Timestamp(1664050800, 517000000),
     fullName: 'Kirill Borisenok',
     id: 'ZI4fLQuaHfduoEdxAj7YevkrSq62',
     location: 'Bobruisk',
@@ -70,7 +70,7 @@ export const mockUsers: User[] = [
   {
     birthday: new Timestamp(867904915, 371000000),
     email: 'ashinkarev@datamola.com',
-    endDate: new Timestamp(1654050800, 259000000),
+    endDate: new Timestamp(1661050800, 259000000),
     fullName: 'Andrei Shinkarev',
     id: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
     location: 'Mogilev',
@@ -87,7 +87,7 @@ export const mockUsers: User[] = [
   {
     birthday: new Timestamp(773010000, 772000000),
     email: 'employee@google.com',
-    endDate: new Timestamp(1654050800, 211000000),
+    endDate: new Timestamp(1661050800, 211000000),
     fullName: 'Elon Mask',
     id: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
     location: 'Minsk',

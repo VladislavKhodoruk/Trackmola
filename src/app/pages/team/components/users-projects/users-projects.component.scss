@@ -16,8 +16,6 @@
       @include flex(flex-start, center, var(--offset-d));
 
       cursor: pointer;
-      scroll-margin-top: var(--offset-d);
-      scroll-snap-align: start;
 
       flex-direction: column;
 

@@ -8,7 +8,6 @@ import { getUser } from '@pages/team/store/team.selectors';
 import { TeamState } from '@pages/team/store/team.state';
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 import { projectsByUsers } from '@store/common/common.selectors';
-
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({

@@ -9,6 +9,7 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 
+import { Action } from '@ngrx/store';
 import { User as UserFirebase } from 'firebase/auth';
 
 import { setDoc } from 'firebase/firestore';
@@ -62,7 +63,7 @@ export class UsersService {
     return collectionData(ref) as Observable<User[]>;
   }
 
-  public editUser(user: User): Observable<any> {
+  public editUser(user: User): Observable<Action> {
     setDoc(doc(this.firestore, 'users', user.id), user);
     return of();
   }
