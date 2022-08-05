@@ -2,7 +2,7 @@
 @import "vars/variables";
 
 :host {
-  @include scroll-bar();
+  @include scroll-bar;
 
   margin-right: var(--offset);
 
@@ -14,11 +14,12 @@
 
     &-item {
       @include flex(flex-start, center, var(--offset-d));
-      flex-direction: column;
 
       cursor: pointer;
       scroll-margin-top: var(--offset-d);
       scroll-snap-align: start;
+
+      flex-direction: column;
 
       width: calc(100%);
       max-width: calc(100%);

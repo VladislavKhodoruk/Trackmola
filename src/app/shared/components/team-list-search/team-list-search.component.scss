@@ -55,7 +55,7 @@
     height: 100%;
 
     &-cards {
-      @include scroll-bar();
+      @include scroll-bar;
       overflow-y: auto;
       display: flex;
       flex: 1;
