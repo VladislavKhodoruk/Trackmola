@@ -39,6 +39,7 @@ export class APIService {
     const refTaskTrack = collection(this.firestore, 'taskTrack');
     const refTasks = collection(this.firestore, 'tasks');
     const refProjects = collection(this.firestore, 'projects');
+    const refUsers = collection(this.firestore, 'users');
 
     onSnapshot(
       query(refTaskTrack),
@@ -76,6 +77,20 @@ export class APIService {
           projects.push(item.data());
         });
         this.store$.dispatch(getAllProjectsSuccess({ projects }));
+      },
+      (error) => {
+        console.log('error :>> ', error);
+      }
+    );
+
+    onSnapshot(
+      query(refUsers),
+      (respons) => {
+        const users = [];
+        respons.forEach((item) => {
+          users.push(item.data());
+        });
+        this.store$.dispatch(getAllUsersSuccess({ users }));
       },
       (error) => {
         console.log('error :>> ', error);

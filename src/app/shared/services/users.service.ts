@@ -11,6 +11,7 @@ import {
 
 import { User as UserFirebase } from 'firebase/auth';
 
+import { setDoc } from 'firebase/firestore';
 import { from, Observable, of, switchMap } from 'rxjs';
 
 import { AuthorizationService } from '@pages/authorization/services/authorization.service';
@@ -59,5 +60,10 @@ export class UsersService {
     const ref = collection(this.firestore, 'users');
 
     return collectionData(ref) as Observable<User[]>;
+  }
+
+  public editUser(user: User): Observable<any> {
+    setDoc(doc(this.firestore, 'users', user.id), user);
+    return of();
   }
 }

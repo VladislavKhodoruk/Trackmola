@@ -1,25 +1,86 @@
 @import "vars/variables";
 @import "mixins";
 
+::ng-deep {
+  .cdk-overlay-pane {
+    width: 20.5rem !important;
+    margin-top: var(--offset-xs);
+    margin-left: -1.1rem;
+  }
+
+  .mat-autocomplete-panel {
+    max-height: 10rem !important;
+
+    background-color: var(--white);
+    border-radius: 0 0 var(--offset-d) var(--offset-d) !important;
+    box-shadow: $border-cdk-select !important;
+  }
+
+  .mat-option {
+    height: 2.5rem !important;
+
+    color: var(--gray2);
+
+    border: $border-input;
+
+    &:hover {
+      background-color: var(--white) !important;
+      box-shadow: $border-input-select;
+    }
+  }
+
+  .mat-selected {
+    color: var(--primary) !important;
+  }
+
+  .mat-dialog-title {
+    margin: 0 !important;
+  }
+
+  .form-report-top-filter-icon svg {
+    @include icon-s;
+  }
+
+  .form-report-bottom-vacation-icon svg {
+    @include icon-l;
+  }
+}
+
 :host {
   .profile-visit-card {
     display: flex;
     flex-direction: column;
-
-    padding: var(--offset-d);
 
     border: $border-input;
     border-radius: var(--border-radius-l);
 
     &-name {
       display: flex;
-      justify-content: flex-start;
+      align-items: center;
 
-      margin: var(--offset-m) 0 var(--offset-m) var(--offset-m);
+      margin: var(--offset);
 
       &-text {
+        width: 18rem;
         font: var(--font-title);
         color: var(--black);
+      }
+    }
+
+    &-alert {
+      display: flex;
+      align-items: center;
+      flex: 1;
+
+      height: 1.75rem;
+      margin-left: var(--offset-xl);
+
+      background-color: var(--alert);
+      color: var(--orange);
+      font: var(--font-alert);
+
+      &-icon {
+        margin: 0 var(--offset-d);
       }
     }
 
@@ -28,7 +89,7 @@
 
       &-photo {
         @include flex(center, center);
-        margin: 0 var(--offset-m);
+        margin: 0 0 0 var(--offset-m);
       }
 
       &-photo-avatar {
@@ -40,7 +101,7 @@
         flex-wrap: wrap;
         justify-content: space-between;
 
-        padding-bottom: var(--offset-m);
+        padding-bottom: 0;
       }
     }
   }
@@ -64,6 +125,79 @@
 
     &-data {
       font: var(--font-card);
+    }
+  }
+  ::ng-deep {
+    .mat-form-field {
+      padding: var(--offset-d) var(--offset);
+
+      font-size: var(--font-main);
+      line-height: 1;
+
+      background-color: var(--white);
+      border: $border-input;
+      border-radius: var(--border-radius-m);
+
+      &:hover {
+        box-shadow: $border-input-select;
+      }
+
+      &-warning {
+        border-color: var(--warning);
+      }
+
+      &-icon {
+        cursor: pointer;
+
+        transform: rotate(-90deg);
+
+        width: 1.5rem;
+        height: 1rem;
+
+        svg {
+          @include icon-m;
+          margin: auto;
+
+          path {
+            fill: var(--gray2);
+          }
+        }
+      }
+
+      .mat-form-field-wrapper {
+        padding: 0;
+      }
+
+      .mat-form-field-flex {
+        padding: 0;
+
+        background: none;
+      }
+
+      .mat-form-field-appearance-fill .mat-form-field-flex {
+        padding: 0;
+
+        border-radius: none;
+      }
+
+      .mat-form-field-infix {
+        @include flex(center, space-between);
+        padding: 0;
+
+        border-top: none;
+      }
+
+      .mat-form-field-underline {
+        display: none;
+      }
+
+      .mat-input-element {
+        color: var(--gray2);
+      }
+    }
+
+    .mat-form-field-invalid .mat-input-element {
+      caret-color: var(--black);
     }
   }
 }

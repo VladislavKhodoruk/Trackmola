@@ -9,6 +9,7 @@ html {
 :host {
   .team {
     @include flex(stretch, flex-start, var(--offset));
+
     width: 100%;
     height: 100%;
 
@@ -31,8 +32,6 @@ html {
     app-users-projects-component {
       overflow-y: auto;
       flex: 3;
-
-      padding-right: var(--offset);
     }
 
     app-vacations-component {

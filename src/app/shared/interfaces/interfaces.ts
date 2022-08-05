@@ -46,6 +46,7 @@ export interface User {
   qualification: string;
   role: string;
   startDate: Timestamp;
+  endDate: Timestamp;
   timeZone: string;
 }
 

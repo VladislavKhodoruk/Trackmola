@@ -71,6 +71,7 @@ export const DEFAULT_PHOTO_URL = 'assets/img/user.png';
 export const MAX_USERS_PHOTO = 4;
 export const ONE_DAY_IN_SECONDS = 86400000;
 export const ONE_WEEK_IN_SECONDS = ONE_DAY_IN_SECONDS * 7;
+export const ONE_MONTH_IN_SECONDS = ONE_WEEK_IN_SECONDS * 4;
 export const DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK = 40;
 
 export const NAMES_OF_THE_DAYS_OF_THE_WEEK = [
@@ -121,3 +122,5 @@ export const COLORS_FOR_TASKS = [
 
 export const OUTPUT_RATE = 8;
 export const HIGHEST_KPI = 1;
+
+export const ROLES = ['employee', 'manager', 'admin', 'CTO'];

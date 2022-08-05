@@ -1,47 +1,55 @@
 @import "mixins";
 @import "vars/variables";
 
-.projects-list {
-  @include flex(flex-start, flex-start, var(--offset-m));
-  flex-direction: column;
+:host {
+  @include scroll-bar();
 
-  &-item {
-    @include flex(flex-start, center, var(--offset-d));
-    cursor: pointer;
-    scroll-margin-top: var(--offset-d);
-    scroll-snap-align: start;
+  margin-right: var(--offset);
 
+  .projects-list {
+    @include flex(flex-start, flex-start, var(--offset-m));
     flex-direction: column;
 
-    width: calc(100%);
-    max-width: calc(100%);
-    padding: var(--offset) var(--offset-m);
+    width: calc(100% - var(--offset-s));
 
-    background-color: var(--white);
-    border: var(--border-xxs) solid var(--gray);
-    border-radius: var(--border-radius);
-
-    &-header {
-      @include flex(flex-start, space-between, var(--offset));
-      flex-wrap: wrap;
-
-      width: 100%;
-    }
-
-    &-bottom {
-      display: flex;
+    &-item {
+      @include flex(flex-start, center, var(--offset-d));
       flex-direction: column;
 
-      &-name {
-        margin-bottom: var(--offset-xs);
+      cursor: pointer;
+      scroll-margin-top: var(--offset-d);
+      scroll-snap-align: start;
 
-        font: var(--font-main);
-        font-size: 1.25rem;
+      width: calc(100%);
+      max-width: calc(100%);
+      padding: var(--offset) var(--offset-m);
+
+      background-color: var(--white);
+      border: var(--border-xxs) solid var(--gray);
+      border-radius: var(--border-radius);
+
+      &-header {
+        @include flex(flex-start, space-between, var(--offset));
+        flex-wrap: wrap;
+
+        width: 100%;
       }
 
-      &-tracked-time {
-        font: var(--font-card);
-        color: var(--gray2);
+      &-bottom {
+        display: flex;
+        flex-direction: column;
+
+        &-name {
+          margin-bottom: var(--offset-xs);
+
+          font: var(--font-main);
+          font-size: 1.25rem;
+        }
+
+        &-tracked-time {
+          font: var(--font-card);
+          color: var(--gray2);
+        }
       }
     }
   }

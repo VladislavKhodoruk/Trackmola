@@ -1,15 +1,65 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import angleLeftB from '@iconify/icons-uil/angle-left-b';
+import { Observable } from 'rxjs';
 
-import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
-import { User } from '@shared/interfaces/interfaces';
+import {
+  DEFAULT_PHOTO_URL,
+  ONE_MONTH_IN_SECONDS,
+  ROLES,
+} from '@shared/constants/constants';
+import { SelectOptions, User } from '@shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-visit-card',
+  selector: 'app-visit-card-component',
   styleUrls: ['./visit-card.component.scss'],
   templateUrl: './visit-card.component.html',
 })
-export class VisitCardComponent {
+export class VisitCardComponent implements OnChanges {
   @Input() user!: User;
+  @Input() adminMode: boolean;
+
+  @Output() setRole = new EventEmitter<User>();
+
+  contractEnds: boolean;
+
+  selectRolesOptions: SelectOptions[];
+  selectedRole: string;
+  currentProjectName: string;
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
+  readonly iconAngleLeftB = angleLeftB;
+  readonly roles = ROLES;
+
+  roles$ = new Observable((observer) => observer.next(ROLES));
+
+  protected getSelectedValue(selectedRole: string): void {
+    this.selectedRole = selectedRole;
+    if (selectedRole !== 'CTO') {
+      selectedRole = selectedRole.toLowerCase();
+    }
+    const newUser = { ...this.user, role: selectedRole };
+    this.setRole.emit(newUser);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.user && this.user) {
+      this.contractEnds =
+        this.user.endDate.seconds * 1000 - new Date().getTime() >=
+        ONE_MONTH_IN_SECONDS
+          ? false
+          : true;
+      this.selectRolesOptions = ROLES.map((role) => ({
+        value: role,
+        viewValue: role,
+      }));
+      this.getSelectedValue(this.user.role);
+    }
+  }
 }
