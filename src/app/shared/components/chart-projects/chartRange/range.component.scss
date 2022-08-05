@@ -21,5 +21,11 @@
         @include profile-photo(2rem, 2rem);
       }
     }
+
+    .chart-container {
+      overflow: visible !important;
+
+      height: auto !important;
+    }
   }
 }

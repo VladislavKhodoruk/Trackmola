@@ -25,12 +25,4 @@
     width: 70%;
     height: 100%;
   }
-
-  ::ng-deep {
-    .chart-container {
-      overflow: visible !important;
-
-      height: auto !important;
-    }
-  }
 }
