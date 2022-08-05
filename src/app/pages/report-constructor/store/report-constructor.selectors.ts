@@ -33,3 +33,13 @@ export const getTaskTracks = createSelector(
         taskTrack.date.seconds * 1000 <= period.end
     )
 );
+
+export const getViewMode = createSelector(
+  getProjectsState,
+  ({ viewMode }) => viewMode
+);
+
+export const getChartViewMode = createSelector(
+  getProjectsState,
+  ({ chartViewMode }) => chartViewMode
+);

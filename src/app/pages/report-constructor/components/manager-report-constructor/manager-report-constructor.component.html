@@ -54,20 +54,85 @@
     </div>
   </div>
   <div class="container">
-    <app-button
-      class="report-constructor-header-switcher-period-item"
-      buttonClass="button-primary button-xs button-right-border-straight"
-      [icon]="templateIcon"
-      iconWidth="1.5rem"
-      iconHeight="1.5rem"
-    ></app-button>
-    <app-button
-      class="report-constructor-header-switcher-period-item"
-      buttonClass="button-primary button-xs button-left-border-straight period-switcher"
-      [icon]="chartBarIcon"
-      iconWidth="1.5rem"
-      iconHeight="1.5rem"
-    ></app-button>
+    <div
+      class="report-constructor-chart-view"
+      *ngIf="viewMode === reportConstructorView.Chart"
+    >
+      <ng-container *ngIf="chartViewMode === chartView.Table">
+        <app-button
+          class="dashboard-controls-main-view-table"
+          buttonClass="button-primary button-xs button-right-border-straight"
+          [icon]="iconTable"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeChartViewMode.emit(chartView.Table)"
+        ></app-button>
+        <app-button
+          class="dashboard-controls-main-view-table-arrows"
+          buttonClass="button-primary button-half-of-primary button-xs button-left-border-straight"
+          [icon]="iconChartArrows"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeChartViewMode.emit(chartView.Arrows)"
+        ></app-button
+      ></ng-container>
+      <ng-container *ngIf="chartViewMode === chartView.Arrows">
+        <app-button
+          class="dashboard-controls-main-view-table"
+          buttonClass="button-primary button-half-of-primary button-xs button-right-border-straight"
+          [icon]="iconTable"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeChartViewMode.emit(chartView.Table)"
+        ></app-button>
+        <app-button
+          class="dashboard-controls-main-view-table-arrows"
+          buttonClass="button-primary  button-xs button-left-border-straight"
+          [icon]="iconChartArrows"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeChartViewMode.emit(chartView.Arrows)"
+        ></app-button
+      ></ng-container>
+    </div>
+    <ng-container *ngIf="viewMode === reportConstructorView.Table">
+      <div class="report-constructor-switcher-mode">
+        <app-button
+          class="report-constructor-switcher-mode-item"
+          buttonClass="button-primary button-xs button-right-border-straight"
+          [icon]="templateIcon"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeViewMode.emit(reportConstructorView.Table)"
+        ></app-button>
+        <app-button
+          class="report-constructor-switcher-mode-item"
+          buttonClass="button-primary button-half-of-primary button-xs button-left-border-straight"
+          [icon]="chartBarIcon"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeViewMode.emit(reportConstructorView.Chart)"
+        ></app-button></div
+    ></ng-container>
+    <ng-container *ngIf="viewMode === reportConstructorView.Chart">
+      <div class="report-constructor-switcher-mode">
+        <app-button
+          class="report-constructor-switcher-mode-item"
+          buttonClass="button-primary button-half-of-primary button-xs button-right-border-straight"
+          [icon]="templateIcon"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeViewMode.emit(reportConstructorView.Table)"
+        ></app-button>
+        <app-button
+          class="report-constructor-switcher-mode-item"
+          buttonClass="button-primary button-xs button-left-border-straight "
+          [icon]="chartBarIcon"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeViewMode.emit(reportConstructorView.Chart)"
+        ></app-button></div
+    ></ng-container>
   </div>
 </div>
 <div class="report-constructor-table">

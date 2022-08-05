@@ -5,13 +5,17 @@ import { Observable } from 'rxjs';
 
 import { ExcelData } from '@pages/report-constructor/interfaces/interfaces';
 import {
+  changeChartViewMode,
+  changeViewMode,
   exportExel,
   setPeriod,
   setProject,
 } from '@pages/report-constructor/store/report-constructor.actions';
 import {
+  getChartViewMode,
   getPeriod,
   getTaskTracks,
+  getViewMode,
 } from '@pages/report-constructor/store/report-constructor.selectors';
 import {
   Period,
@@ -26,6 +30,7 @@ import {
   getUsers,
 } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
+import { ChartViewMode, ViewMode } from '@pages/report/enums/enum';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,30 +41,46 @@ import { TrackMolaState } from '@store/trackMola.state';
     [taskTracks]="taskTracks$ | async"
     [users]="users$ | async"
     [tasks]="tasks$ | async"
+    [viewMode]="viewMode$ | async"
+    [chartViewMode]="chartViewMode$ | async"
     (changeStorePeriod)="changePeriod($event)"
     (changeStoreProjectId)="changeProjectId($event)"
     (exportExel)="exportExel($event)"
+    (changeViewMode)="onChangeViewMode($event)"
+    (changeChartViewMode)="onChangeChartViewMode($event)"
   ></app-manager-report-constructor>`,
 })
 export class ManagerReportConstructorContainer {
   @Input() userType: string;
-  projects$: Observable<Project[]> = this.store$.select(getProjects);
-  period$: Observable<Period> = this.store$.select(getPeriod);
-  users$: Observable<User[]> = this.store$.select(getUsers);
-  taskTracks$: Observable<TaskTrack[]> = this.store$.select(getTaskTracks);
-  tasks$: Observable<Task[]> = this.store$.select(getTasks);
+  readonly projects$: Observable<Project[]> = this.store$.select(getProjects);
+  readonly period$: Observable<Period> = this.store$.select(getPeriod);
+  readonly users$: Observable<User[]> = this.store$.select(getUsers);
+  readonly taskTracks$: Observable<TaskTrack[]> =
+    this.store$.select(getTaskTracks);
+  readonly tasks$: Observable<Task[]> = this.store$.select(getTasks);
+  readonly viewMode$: Observable<ViewMode> = this.store$.select(getViewMode);
+  readonly chartViewMode$: Observable<ChartViewMode> =
+    this.store$.select(getChartViewMode);
 
   constructor(private store$: Store<TrackMolaState>) {}
 
-  changePeriod(period: Period): void {
+  protected changePeriod(period: Period): void {
     this.store$.dispatch(setPeriod({ period }));
   }
 
-  changeProjectId(projectId: string): void {
+  protected changeProjectId(projectId: string): void {
     this.store$.dispatch(setProject({ projectId }));
   }
 
-  exportExel(data: ExcelData) {
+  protected exportExel(data: ExcelData): void {
     this.store$.dispatch(exportExel({ data }));
+  }
+
+  protected onChangeViewMode(viewMode: ViewMode): void {
+    this.store$.dispatch(changeViewMode({ viewMode }));
+  }
+
+  protected onChangeChartViewMode(chartViewMode: ChartViewMode): void {
+    this.store$.dispatch(changeChartViewMode({ chartViewMode }));
   }
 }
