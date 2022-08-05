@@ -9,6 +9,8 @@ import {
   clearDashboardState,
   setActiveProjectFilter,
   removeProjectFilter,
+  changeDashboardView,
+  changeManagerPeriod,
 } from './dashboard.actions';
 import { DashboardState, dashboardState } from './dashboard.state';
 
@@ -45,6 +47,7 @@ const dashboardReducer = createReducer(
       ...state,
       manager: {
         ...state.manager,
+        activeProjectFilter: dashboardState.manager.activeProjectFilter,
         projectsFilter: newFilter,
       },
     };
@@ -80,6 +83,14 @@ const dashboardReducer = createReducer(
       manager: { ...state.manager, selectedTask: task },
     };
   }),
+  on(changeDashboardView, (state: DashboardState, { dashboardView }) => ({
+    ...state,
+    dashboardView,
+  })),
+  on(changeManagerPeriod, (state: DashboardState, { period }) => ({
+    ...state,
+    manager: { ...state.manager, period },
+  })),
   on(clearDashboardState, () => ({
     ...dashboardState,
   }))

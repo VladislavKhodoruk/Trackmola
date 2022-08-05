@@ -9,7 +9,6 @@ import { HOURS_IN_DAY } from '@pages/activity/constants/constants';
 import { getRestMonthDefaultHours } from '@pages/activity/helpers/helpers';
 
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
-import { UserType } from '@shared/enums/enum';
 import { User } from '@shared/interfaces/interfaces';
 
 @Component({

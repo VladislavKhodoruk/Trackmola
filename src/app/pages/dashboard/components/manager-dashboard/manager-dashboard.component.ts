@@ -29,7 +29,6 @@ import {
   DaysByPeriod,
   TaskForManager,
 } from '@pages/dashboard/interfaces/interface';
-import { COLORS_FOR_TASKS } from '@shared/constants/constants';
 import { ChartType } from '@shared/enums/enum';
 import { getPeriodUTC, getRandomColor } from '@shared/helpers/helpers';
 
@@ -67,15 +66,25 @@ export class ManagerDashboardComponent implements OnChanges {
   managerDashboardView = ManagerDashboardView;
   tasksColors: GroupBy<string>;
   basicOptionsChartTreemap = MANAGER_DASHBOARD_CHART_TREEMAP;
+  taskTracksByUserFromTasksForManager: [string, TaskTrack[]][][];
+  taskTracksByUserFromActiveTask: [string, TaskTrack[]][];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.tasksForManager && this.tasksForManager.length) {
       this.tasksColors = this.tasksForManager.reduce(
-        (accum, task, index) => ({
+        (accum, task) => ({
           ...accum,
-          [task.id]: COLORS_FOR_TASKS[index],
+          [task.id]: getRandomColor(),
         }),
         {}
+      );
+      this.taskTracksByUserFromTasksForManager = this.tasksForManager.map(
+        (task) => taskTracksByUser(task.taskTracksInTask)
+      );
+    }
+    if (changes.activeTask && this.activeTask) {
+      this.taskTracksByUserFromActiveTask = taskTracksByUser(
+        this.activeTask.taskTracksInTask
       );
     }
   }
@@ -107,12 +116,6 @@ export class ManagerDashboardComponent implements OnChanges {
   protected get chartXRangeWidth(): number {
     const weeks: number = weeksInPeriod(this.period);
     return this.minChartXRangeWidth * weeks;
-  }
-
-  protected getTaskTracksByUser(
-    taskTracks: TaskTrack[]
-  ): [string, TaskTrack[]][] {
-    return taskTracksByUser(taskTracks);
   }
 
   protected get dataChartTreemap(): SeriesOptionsType[] {
@@ -159,11 +162,12 @@ export class ManagerDashboardComponent implements OnChanges {
       },
       {}
     );
-    return Object.entries(usersGroupByDuration).map(([userId, userTime]) => {
+    const usersGroupByDurationArray = Object.entries(usersGroupByDuration);
+
+    return usersGroupByDurationArray.map(([userId, userTime]) => {
       const userPercent: number = (userTime * 100) / duration;
       const userName: string = this.usersInfoByUserId[userId].fullName;
       return {
-        color: getRandomColor(),
         id: userId,
         name: userName,
         value: userPercent,
@@ -187,9 +191,11 @@ export class ManagerDashboardComponent implements OnChanges {
   ): DataForChartXRange[] {
     const userId: User['id'] = taskTracks[0];
     const taskId: Task['id'] = taskTracks[1][0].taskId;
-    const test: [TaskTrack?][] = taskTracksByPeriods(taskTracks[1]);
+    const taskTracksSortedByPeriods: [TaskTrack?][] = taskTracksByPeriods(
+      taskTracks[1]
+    );
 
-    return test.map((taskTrackByPeriod) => {
+    return taskTracksSortedByPeriods.map((taskTrackByPeriod) => {
       const dateStart: Date = new Date(
         taskTrackByPeriod.at(0).date.seconds * 1000
       );

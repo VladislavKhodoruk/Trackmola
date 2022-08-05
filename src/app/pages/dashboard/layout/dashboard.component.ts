@@ -8,6 +8,7 @@ import { UserType } from '@shared/enums/enum';
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {
-  @Input() userType!: string | null;
-  types = UserType;
+  @Input() dashboardView: UserType;
+
+  readonly types: typeof UserType = UserType;
 }

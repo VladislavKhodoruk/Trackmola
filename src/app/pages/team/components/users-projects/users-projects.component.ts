@@ -1,11 +1,6 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import {
-  GroupBy,
-  Project,
-  TaskTrack,
-  User,
-} from '@shared/interfaces/interfaces';
+import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-users-projects-component',
