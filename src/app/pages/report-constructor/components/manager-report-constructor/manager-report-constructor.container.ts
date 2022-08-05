@@ -17,6 +17,7 @@ import {
   getTaskTracks,
   getViewMode,
 } from '@pages/report-constructor/store/report-constructor.selectors';
+import { ChartViewMode, ViewMode } from '@pages/report/enums/enum';
 import {
   Period,
   Project,
@@ -30,7 +31,6 @@ import {
   getUsers,
 } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
-import { ChartViewMode, ViewMode } from '@pages/report/enums/enum';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
