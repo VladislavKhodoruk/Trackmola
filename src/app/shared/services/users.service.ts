@@ -63,7 +63,7 @@ export class UsersService {
     return collectionData(ref) as Observable<User[]>;
   }
 
-  public editUser(user: User): Observable<Action> {
+  public editUser(user: User): Observable<any> {
     setDoc(doc(this.firestore, 'users', user.id), user);
     return of();
   }

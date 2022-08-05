@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { switchMap } from 'rxjs';
 
-import { updateUser, updateUserSuccess } from './team.actions';
+import { updateUser } from './team.actions';
 
 import { UsersService } from '@shared/services/users.service';
 

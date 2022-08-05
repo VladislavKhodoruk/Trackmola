@@ -8,4 +8,3 @@ export const UPDATE_USER = '[team page] update user';
 export const setUser = createAction(SET_USER, props<{ user: User }>());
 
 export const updateUser = createAction(UPDATE_USER, props<{ user: User }>());
-export const updateUserSuccess = createAction(UPDATE_USER);

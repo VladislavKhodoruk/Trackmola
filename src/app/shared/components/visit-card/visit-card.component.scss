@@ -2,8 +2,8 @@
 @import "mixins";
 
 ::ng-deep {
-  .cdk-overlay-pane {
-    width: 20.5rem !important;
+  .cdk-overlay-panel.visitClass {
+    width: 11.5rem !important;
     margin-top: var(--offset-xs);
     margin-left: -1.1rem;
   }
@@ -31,6 +31,14 @@
 
   .mat-selected {
     color: var(--primary) !important;
+  }
+
+  .mat-select-value-text {
+    text-transform: capitalize;
+  }
+
+  .mat-option-text {
+    text-transform: capitalize;
   }
 
   .mat-dialog-title {

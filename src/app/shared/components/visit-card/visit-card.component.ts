@@ -15,11 +15,19 @@ import {
   ROLES,
 } from '@shared/constants/constants';
 import { SelectOptions, User } from '@shared/interfaces/interfaces';
+import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-visit-card-component',
   styleUrls: ['./visit-card.component.scss'],
   templateUrl: './visit-card.component.html',
+  providers: [
+    {
+      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
+
+      useValue: { overlayPanelClass: 'visitClass' },
+    },
+  ],
 })
 export class VisitCardComponent implements OnChanges {
   @Input() user!: User;
@@ -53,7 +61,7 @@ export class VisitCardComponent implements OnChanges {
     if (changes.user && this.user) {
       this.contractEnds =
         this.user.endDate.seconds * 1000 - new Date().getTime() <
-        ONE_MONTH_IN_SECONDS;
+        ONE_MONTH_IN_SECONDS * 1.5;
       this.selectRolesOptions = ROLES.map((role) => ({
         value: role,
         viewValue: role,
