@@ -5,7 +5,6 @@ import {
   setProjectFilter,
   removeActiveProject,
   changeManagerMainView,
-  setActiveTask,
   clearDashboardState,
   setActiveProjectFilter,
   removeProjectFilter,
@@ -35,7 +34,6 @@ const dashboardReducer = createReducer(
     manager: {
       ...state.manager,
       activeProjectFilter: activeProject,
-      selectedTask: dashboardState.manager.selectedTask,
     },
   })),
   on(removeProjectFilter, (state: DashboardState, { project }) => {
@@ -57,32 +55,13 @@ const dashboardReducer = createReducer(
     manager: {
       ...state.manager,
       activeProjectFilter: dashboardState.manager.activeProjectFilter,
-      selectedTask: dashboardState.manager.selectedTask,
     },
   })),
   on(changeManagerMainView, (state: DashboardState, { mode }) => ({
     ...state,
     manager: { ...state.manager, modeView: mode },
   })),
-  on(setActiveTask, (state: DashboardState, { task }) => {
-    if (
-      state.manager.selectedTask &&
-      state.manager.selectedTask.id === task.id
-    ) {
-      return {
-        ...state,
-        manager: {
-          ...state.manager,
-          selectedTask: dashboardState.manager.selectedTask,
-        },
-      };
-    }
 
-    return {
-      ...state,
-      manager: { ...state.manager, selectedTask: task },
-    };
-  }),
   on(changeDashboardView, (state: DashboardState, { dashboardView }) => ({
     ...state,
     dashboardView,

@@ -131,11 +131,6 @@ export const taskTracksGroupByTask = createSelector(
     }, {})
 );
 
-export const getActiveTask = createSelector(
-  getDashboardState,
-  ({ manager }) => manager.selectedTask
-);
-
 export const getActiveProjectFilter = createSelector(
   getDashboardState,
   ({ manager }) => manager.activeProjectFilter
