@@ -2,10 +2,6 @@
 @import "vars/variables";
 
 :host {
-  .container {
-    @include flex(center, flex-start, var(--offset-l));
-  }
-
   .report-constructor-table {
     overflow: auto;
 
@@ -30,13 +26,25 @@
     }
   }
 
-  .report-constructor-navigation {
+  .report-constructor-controls {
     @include flex(center, space-between);
     margin-bottom: var(--offset-l);
 
-    &-select {
+    &-container {
+      @include flex(center, flex-start, var(--offset-l));
+    }
+
+    &-project {
       display: flex;
       flex-direction: column;
+    }
+
+    &-view-switcher {
+      @include flex(center, flex-start, 0.375rem);
+    }
+
+    &-view-chart {
+      @include flex(center, flex-start, 0.375rem);
     }
   }
 

@@ -29,16 +29,16 @@
   </div>
 </header>
 <div>Projects</div>
-<div class="report-constructor-navigation">
-  <div class="container">
-    <div class="report-constructor-navigation-select">
+<section class="report-constructor-controls">
+  <div class="report-constructor-controls-container">
+    <div class="report-constructor-controls-project">
       <app-select
         [options]="selectProjectOptions"
         [selectedValue]="currentProjectId"
         (getSelectedValue)="getSelectedValue($event)"
       ></app-select>
     </div>
-    <div class="report-constructor-navigation-date-switch">
+    <div class="report-constructor-controls-date-switch">
       <app-date-switch
         *ngIf="
           periodType === TypePeriod.Week || periodType === TypePeriod.Month
@@ -53,14 +53,15 @@
       ></app-datepicker>
     </div>
   </div>
-  <div class="container">
+  <div
+    class="report-constructor-controls-container report-constructor-controls-view"
+  >
     <div
-      class="report-constructor-chart-view"
+      class="report-constructor-controls-view-chart"
       *ngIf="viewMode === reportConstructorView.Chart"
     >
       <ng-container *ngIf="chartViewMode === chartView.Table">
         <app-button
-          class="dashboard-controls-main-view-table"
           buttonClass="button-primary button-xs button-right-border-straight"
           [icon]="iconTable"
           iconWidth="1.5rem"
@@ -68,7 +69,6 @@
           (buttonClick)="changeChartViewMode.emit(chartView.Table)"
         ></app-button>
         <app-button
-          class="dashboard-controls-main-view-table-arrows"
           buttonClass="button-primary button-half-of-primary button-xs button-left-border-straight"
           [icon]="iconChartArrows"
           iconWidth="1.5rem"
@@ -78,7 +78,6 @@
       ></ng-container>
       <ng-container *ngIf="chartViewMode === chartView.Arrows">
         <app-button
-          class="dashboard-controls-main-view-table"
           buttonClass="button-primary button-half-of-primary button-xs button-right-border-straight"
           [icon]="iconTable"
           iconWidth="1.5rem"
@@ -86,7 +85,6 @@
           (buttonClick)="changeChartViewMode.emit(chartView.Table)"
         ></app-button>
         <app-button
-          class="dashboard-controls-main-view-table-arrows"
           buttonClass="button-primary  button-xs button-left-border-straight"
           [icon]="iconChartArrows"
           iconWidth="1.5rem"
@@ -95,10 +93,9 @@
         ></app-button
       ></ng-container>
     </div>
-    <ng-container *ngIf="viewMode === reportConstructorView.Table">
-      <div class="report-constructor-switcher-mode">
+    <div class="report-constructor-controls-view-switcher">
+      <ng-container *ngIf="viewMode === reportConstructorView.Table">
         <app-button
-          class="report-constructor-switcher-mode-item"
           buttonClass="button-primary button-xs button-right-border-straight"
           [icon]="templateIcon"
           iconWidth="1.5rem"
@@ -106,18 +103,15 @@
           (buttonClick)="changeViewMode.emit(reportConstructorView.Table)"
         ></app-button>
         <app-button
-          class="report-constructor-switcher-mode-item"
           buttonClass="button-primary button-half-of-primary button-xs button-left-border-straight"
           [icon]="chartBarIcon"
           iconWidth="1.5rem"
           iconHeight="1.5rem"
           (buttonClick)="changeViewMode.emit(reportConstructorView.Chart)"
-        ></app-button></div
-    ></ng-container>
-    <ng-container *ngIf="viewMode === reportConstructorView.Chart">
-      <div class="report-constructor-switcher-mode">
+        ></app-button>
+      </ng-container>
+      <ng-container *ngIf="viewMode === reportConstructorView.Chart">
         <app-button
-          class="report-constructor-switcher-mode-item"
           buttonClass="button-primary button-half-of-primary button-xs button-right-border-straight"
           [icon]="templateIcon"
           iconWidth="1.5rem"
@@ -125,26 +119,27 @@
           (buttonClick)="changeViewMode.emit(reportConstructorView.Table)"
         ></app-button>
         <app-button
-          class="report-constructor-switcher-mode-item"
           buttonClass="button-primary button-xs button-left-border-straight "
           [icon]="chartBarIcon"
           iconWidth="1.5rem"
           iconHeight="1.5rem"
           (buttonClick)="changeViewMode.emit(reportConstructorView.Chart)"
-        ></app-button></div
-    ></ng-container>
+        ></app-button>
+      </ng-container>
+    </div>
   </div>
-</div>
-<div class="report-constructor-table">
+</section>
+<main class="report-constructor-table">
   <app-report-constructor-table
     [infoFromTaskTracks]="infoFromTaskTracks"
+    *ngIf="viewMode === reportConstructorView.Table"
   ></app-report-constructor-table>
-</div>
-<div class="report-constructor-team">
+</main>
+<footer class="report-constructor-team">
   <app-users-photos
     classPhoto="photos-normal"
     [users]="teamProject"
     size="3"
     [maxUsersPhoto]="teamProject.length"
   ></app-users-photos>
-</div>
+</footer>
