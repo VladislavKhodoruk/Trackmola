@@ -5,6 +5,7 @@
   .team-header-buttons-item svg {
     @include icon-xs;
   }
+
   .team-header-buttons-item-file svg {
     @include icon-s;
   }
@@ -60,8 +61,10 @@
           font-size: 1.25rem;
         }
       }
+
       &-buttons {
         @include flex(center, center, var(--offset-b));
+
         &-button {
           width: 3rem;
           height: 3rem;
