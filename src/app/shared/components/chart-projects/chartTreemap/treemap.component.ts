@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { SeriesOptionsType } from 'highcharts';
 
-import { MANAGER_DASHBOARD_CHART_TREEMAP } from '@pages/dashboard/constants/constants';
 import {
   DataForChartTreemap,
   TaskForManager,
 } from '@pages/dashboard/interfaces/interface';
+import { MANAGER_DASHBOARD_CHART_TREEMAP } from '@shared/constants/constants';
 import { ChartType } from '@shared/enums/enum';
 import { GroupBy, User } from '@shared/interfaces/interfaces';
 

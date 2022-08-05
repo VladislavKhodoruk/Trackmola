@@ -20,6 +20,7 @@ import {
   OutOfMain,
   TaskByWeekDays,
   GroupBy,
+  TaskTracksByUser,
 } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
@@ -290,9 +291,7 @@ export function weeksInPeriod(period: Period): number {
   );
 }
 
-export function taskTracksByUser(
-  taskTracks: TaskTrack[]
-): [string, TaskTrack[]][] {
+export function taskTracksByUser(taskTracks: TaskTrack[]): TaskTracksByUser[] {
   const taskTracksGroupByUser: GroupBy<TaskTrack[]> = taskTracks.reduce(
     (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
       const userId = taskTrack.userId;
@@ -304,7 +303,11 @@ export function taskTracksByUser(
     },
     {}
   );
-  return Object.entries(taskTracksGroupByUser);
+
+  return Object.keys(taskTracksGroupByUser).map((key) => ({
+    taskTracks: taskTracksGroupByUser[key],
+    userId: key,
+  }));
 }
 
 export function compareTwoDates(

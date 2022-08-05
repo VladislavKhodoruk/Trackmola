@@ -8,12 +8,11 @@ import {
 
 import { Options, SeriesOptionsType } from 'highcharts';
 
-import { managerDashboardChartXRange } from '@pages/dashboard/constants/constants';
-
 import {
   DataForChartXRange,
   TaskForManager,
 } from '@pages/dashboard/interfaces/interface';
+import { managerDashboardChartXRange } from '@shared/constants/constants';
 import { ChartType } from '@shared/enums/enum';
 import {
   daysInPeriod,
@@ -28,6 +27,7 @@ import {
   User,
   Task,
   GroupBy,
+  TaskTracksByUser,
 } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -46,7 +46,7 @@ export class RangeComponent implements OnChanges {
   @Input() readonly colors: GroupBy<string>;
   @Input() readonly users: GroupBy<User>;
 
-  taskTracksByUserFromTasks: [string, TaskTrack[]][][];
+  taskTracksByUserFromTasks: TaskTracksByUser[][];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.tasks && this.tasks.length) {
@@ -61,7 +61,7 @@ export class RangeComponent implements OnChanges {
     return this.minWidth * weeks;
   }
 
-  protected get taskTracksByUserFromActiveTask(): [string, TaskTrack[]][] {
+  protected get taskTracksByUserFromActiveTask(): TaskTracksByUser[] {
     if (this.activeTask) {
       return taskTracksByUser(this.activeTask.taskTracksInTask);
     }
@@ -84,7 +84,7 @@ export class RangeComponent implements OnChanges {
   }
 
   protected dataXRangeAllTasks(
-    taskTracks: [string, TaskTrack[]]
+    taskTracks: TaskTracksByUser
   ): SeriesOptionsType[] {
     return [
       {
@@ -95,12 +95,12 @@ export class RangeComponent implements OnChanges {
   }
 
   private dataForChartXRange(
-    taskTracks: [string, TaskTrack[]]
+    taskTracks: TaskTracksByUser
   ): DataForChartXRange[] {
-    const userId: User['id'] = taskTracks[0];
-    const taskId: Task['id'] = taskTracks[1][0].taskId;
+    const userId: User['id'] = taskTracks.userId;
+    const taskId: Task['id'] = taskTracks.taskTracks[0].taskId;
     const taskTracksSortedByPeriods: [TaskTrack?][] = taskTracksByPeriods(
-      taskTracks[1]
+      taskTracks.taskTracks
     );
 
     return taskTracksSortedByPeriods.map((taskTrackByPeriod) => {
