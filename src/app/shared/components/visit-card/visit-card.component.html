@@ -5,7 +5,7 @@
       <app-select
         [options]="selectRolesOptions"
         [selectedValue]="selectedRole"
-        (getSelectedValue)="getSelectedValue($event)"
+        (getSelectedValue)="getSelectedRoleValue($event)"
       ></app-select>
     </ng-container>
     <ng-container *ngIf="adminMode && contractEnds">
