@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconModule } from '@visurel/iconify-angular';
+
+import { ButtonModule } from './../../shared/components/button/button.module';
 
 import { AdminTeamComponent } from './components/admin-team/admin-team.component';
 import { CtoTeamComponent } from './components/cto-team/cto-team.component';
@@ -44,6 +47,8 @@ import { VisitCardModule } from '@shared/components/visit-card/visit-card.module
     ProjectLabelModule,
     UsersPhotosModule,
     VacationsModule,
+    IconModule,
+    ButtonModule,
   ],
 })
 export class TeamModule {}
