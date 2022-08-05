@@ -25,6 +25,7 @@ import {
   mockTasks,
   mockUsers,
   mockTaskTracks,
+  mockVacations,
 } from 'app/mockdata';
 
 @Injectable({
@@ -109,5 +110,6 @@ export class APIService {
     this.store$.dispatch(
       getAllTaskTracksSuccess({ taskTracks: mockTaskTracks })
     );
+    this.store$.dispatch(getAllVacationsSuccess({ vacations: mockVacations }));
   }
 }

@@ -9,16 +9,37 @@
         <div class="vacations-list-item-circle"></div>
         <div class="vacations-list-item-wrapper">
           <div class="vacations-list-item-wrapper-info">
-            <p class="vacations-list-item-wrapper-info-day">
-              {{ vacation.vacationDay | date: "d MMM" }}
+            <p
+              class="vacations-list-item-wrapper-info-day"
+              *ngIf="
+                vacation.periodStart.toDate().getDay() !==
+                  vacation.periodEnd.toDate().getDay();
+                else unset
+              "
+            >
+              {{ vacation.periodStart.toDate() | date: "d MMM" }} -
+              {{ vacation.periodEnd.toDate() | date: "d MMM" }}
             </p>
+            <ng-template #unset>
+              <p class="vacations-list-item-wrapper-info-day">
+                {{ vacation.periodStart.toDate() | date: "d MMM" }}
+              </p>
+            </ng-template>
             <p class="vacations-list-item-wrapper-info-employee">
-              {{ vacation.fullName }}
+              {{ vacation.type }}
             </p>
           </div>
           <img
-            src="{{ vacation.photo }}"
+            *ngIf="href === '/profile'"
+            src="{{ userPhoto }}"
             class="vacations-list-item-wrapper-photo"
+            alt="photo"
+          />
+          <img
+            *ngIf="href !== '/profile'"
+            src="{{ vacation.userId }}"
+            class="vacations-list-item-wrapper-photo"
+            alt="photo"
           />
         </div>
       </li>

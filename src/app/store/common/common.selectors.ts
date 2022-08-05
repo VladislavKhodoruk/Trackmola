@@ -32,6 +32,11 @@ export const getLastDay = createSelector(getPeriod, (period) => period.end);
 
 export const getDate = createSelector(getCommonState, (state) => state.date);
 
+export const getVacations = createSelector(
+  getCommonState,
+  (state) => state.vacations
+);
+
 export const getTasksTrack = createSelector(
   getCommonState,
   ({ taskTracks }) => taskTracks
@@ -117,4 +122,10 @@ export const trackedTimeByProjects = createSelector(
         [project.id]: trackedTime,
       };
     }, {})
+);
+
+export const getCurrentVacations = createSelector(getVacations, (vacations) =>
+  vacations.filter(
+    (vacation) => vacation.userId === localStorage.getItem('AuthUserId')
+  )
 );

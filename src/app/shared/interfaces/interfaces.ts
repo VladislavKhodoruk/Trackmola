@@ -151,9 +151,9 @@ export type TaskByWeekDays = {
 
 export interface Vacation {
   color: string;
-  comment: string;
+  comment?: string;
   periodStart: Timestamp;
-  periodEnd: Timestamp;
+  periodEnd?: Timestamp;
   type: string;
   userId: string;
 }

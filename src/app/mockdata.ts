@@ -1,6 +1,12 @@
 import { Timestamp } from 'firebase/firestore';
 
-import { User, Task, TaskTrack, Project } from '@shared/interfaces/interfaces';
+import {
+  User,
+  Task,
+  TaskTrack,
+  Project,
+  Vacation,
+} from '@shared/interfaces/interfaces';
 
 export const mockUsers: User[] = [
   {
@@ -751,5 +757,64 @@ export const mockProjects: Project[] = [
       'wwwKItkbi4XLCeph58X6',
       'xBgaMXjSCTN8snri41dW',
     ],
+  },
+];
+
+export const mockVacations: Vacation[] = [
+  {
+    color: '#F4914A',
+    comment: '',
+    periodEnd: new Timestamp(1660078799, 0),
+    periodStart: new Timestamp(1659992400, 0),
+    type: 'unpaid',
+    userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
+  },
+  {
+    color: '#F4BF4A',
+    comment: '',
+    periodEnd: new Timestamp(1660165199, 0),
+    periodStart: new Timestamp(1660078800, 0),
+    type: 'paid',
+    userId: 'FyTQtfAXBMPaa3yKJ4TmVVgTA872',
+  },
+  {
+    color: '#f4bf4a',
+    comment: '',
+    periodEnd: new Timestamp(1660078799, 0),
+    periodStart: new Timestamp(1659992400, 0),
+    type: 'paid',
+    userId: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
+  },
+  {
+    color: '#F4914A',
+    comment: '',
+    periodEnd: new Timestamp(1660856399, 0),
+    periodStart: new Timestamp(1660424400, 0),
+    type: 'unpaid',
+    userId: 'P4SeopCIcgbAmGkoS8JE0Rq0t1v1',
+  },
+  {
+    color: '#F4CF4A',
+    comment: '',
+    periodEnd: new Timestamp(1660510799, 0),
+    periodStart: new Timestamp(1660424400, 0),
+    type: 'other',
+    userId: 'Y2nsuR3ejZMJxvxHnVZ1hjQlbV32',
+  },
+  {
+    color: '#F4914A',
+    comment: '',
+    periodEnd: new Timestamp(1660856399, 0),
+    periodStart: new Timestamp(1660165200, 0),
+    type: 'paid',
+    userId: 'ZI4fLQuaHfduoEdxAj7YevkrSq62',
+  },
+  {
+    color: '#95CE7A',
+    comment: '',
+    periodEnd: new Timestamp(1660165199, 0),
+    periodStart: new Timestamp(1660078800, 0),
+    type: 'sick',
+    userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },
 ];

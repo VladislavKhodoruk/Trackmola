@@ -1,6 +1,8 @@
 import { Autolinker, AutolinkerConfig } from 'autolinker';
 import { SeriesOptionsType } from 'highcharts';
 
+import { groupByDate } from '../../calendars';
+
 import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import {
   COLORS_FOR_TASKS,
@@ -16,6 +18,8 @@ import {
   TaskTrack,
   OutOfMain,
   TaskByWeekDays,
+  GroupBy,
+  CalendarDay,
 } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
@@ -237,4 +241,16 @@ export function urlReplacer(text: string): string {
   const options: AutolinkerConfig = { className: 'link' };
   const replacer: Autolinker = new Autolinker(options);
   return replacer.link(text);
+}
+
+export function getCurrentHolidays(location: string): CalendarDay[] {
+  if (
+    location === 'Minsk' ||
+    location === 'Mogilev' ||
+    location === 'Bobruisk'
+  ) {
+    return groupByDate.BY.filter(
+      (day) => day.date >= new Date().toISOString() && day.dayType === 'holiday'
+    );
+  }
 }

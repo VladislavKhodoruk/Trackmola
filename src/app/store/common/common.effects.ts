@@ -7,6 +7,7 @@ import { catchError, map, of, switchMap, take, tap, mergeMap } from 'rxjs';
 
 import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
+import { VacationsService } from '@shared/services/vacations.service';
 import {
   errorMessage,
   getUserData,
@@ -21,7 +22,6 @@ import {
   getAllVacationsSuccess,
 } from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
-import { VacationsService } from '@shared/services/vacations.service';
 
 @Injectable()
 export class CommonEffects {

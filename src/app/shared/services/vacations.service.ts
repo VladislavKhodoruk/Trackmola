@@ -6,6 +6,7 @@ import {
   query,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
 import { Vacation } from '@shared/interfaces/interfaces';
 
 @Injectable({
