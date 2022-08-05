@@ -2,7 +2,6 @@
 @import "mixins";
 
 ::ng-deep {
-  .angle-down-icon svg,
   .pinned-off-icon svg {
     width: 1.5rem;
     height: 1.5rem;
@@ -11,6 +10,20 @@
 
 :host {
   width: 100%;
+
+  %dashboard-controls-filter-list-item {
+    @include flex(center, flex-start, var(--offset-l));
+    cursor: pointer;
+
+    height: 100%;
+    padding: 0 var(--offset-s) 0 var(--offset-d);
+
+    font: var(--font-typography);
+    color: var(--gray2);
+
+    border: solid var(--border-s) var(--gray);
+    border-radius: var(--border-radius);
+  }
 
   .dashboard-controls {
     @include flex(center, space-between, var(--offset));
@@ -31,10 +44,6 @@
 
         &-container {
           @include flex(center, flex-start);
-
-          &:focus-within .angle-down-icon {
-            transform: rotate(180deg);
-          }
         }
       }
 
@@ -49,7 +58,7 @@
       }
     }
 
-    &-selected-projects {
+    &-filter {
       @include flex(center, flex-start, 2.25rem);
       flex: 1;
 
@@ -64,27 +73,52 @@
         height: 2.25rem;
 
         &-item {
-          @include flex(center, flex-start, var(--offset-l));
+          @extend %dashboard-controls-filter-list-item;
 
-          height: 100%;
-          padding: 0 var(--offset-s) 0 var(--offset-d);
+          &-selected {
+            @extend %dashboard-controls-filter-list-item;
+            color: var(--white);
 
-          font: var(--font-typography);
-          color: var(--white);
+            border: none;
 
-          border-radius: var(--border-radius);
+            &-icon {
+              cursor: pointer;
+
+              display: flex;
+
+              color: var(--white);
+
+              &:hover {
+                color: var(--gray2);
+              }
+            }
+          }
 
           &-icon {
             cursor: pointer;
 
             display: flex;
+
+            color: var(--gray);
+
+            &:hover {
+              color: var(--gray2);
+            }
+          }
+
+          &:not(:hover) {
+            border-color: var(--gray) !important;
           }
         }
       }
     }
 
     &-main-view {
-      @include flex(flex-start, flex-start, 0.375rem);
+      @include flex(center, flex-start, 0.375rem);
+    }
+
+    &-period-and-view {
+      @include flex(center, flex-start, var(--offset));
     }
   }
 }

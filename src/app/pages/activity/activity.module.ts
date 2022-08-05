@@ -10,13 +10,8 @@ import { ActivityRoutes } from './activity.router';
 import { ActivityTotalCardsItemComponent } from './components/activity-total-cards/activity-total-cards-item/activity-total-cards-item.component';
 import { ActivityTotalCardsComponent } from './components/activity-total-cards/activity-total-cards.component';
 import { ActivityTotalCardsContainer } from './components/activity-total-cards/activity-total-cards.container';
-import { AdminActivityComponent } from './components/admin-activity/admin-activity.component';
-import { CtoActivityComponent } from './components/cto-activity/cto-activity.component';
-import { EmployeeActivityComponent } from './components/employee-activity/employee-activity.component';
-import { EmployeeActivityContainer } from './components/employee-activity/employee-activity.container';
-import { ManagerActivityComponent } from './components/manager-activity/manager-activity.component';
-import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
 
+import { ProjectsActivityComponent } from './components/projects-activity/projects-activity.component';
 import { ProjectsActivityContainer } from './components/projects-activity/projects-activity.container';
 
 import { ActivityComponent } from './layout/activity.component';
@@ -36,11 +31,6 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
 
 @NgModule({
   declarations: [
-    EmployeeActivityComponent,
-    EmployeeActivityContainer,
-    CtoActivityComponent,
-    AdminActivityComponent,
-    ManagerActivityComponent,
     ActivityContainer,
     ActivityComponent,
     ProjectsActivityComponent,

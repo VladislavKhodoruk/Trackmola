@@ -2,26 +2,11 @@
   <div class="dashboard-controls-container">
     <div class="dashboard-controls-project">
       <div class="dashboard-controls-project-input-container">
-        <input
-          type="text"
-          class="input dashboard-controls-project-input"
-          placeholder="Project"
-          aria-label="project"
-          [formControl]="projectInput"
-          [matAutocomplete]="projects"
-        />
-        <ic-icon
-          class="dashboard-controls-project-icon angle-down-icon"
-          [icon]="iconAngleDown"
-        ></ic-icon>
-        <mat-autocomplete autoActiveFirstOption #projects="matAutocomplete">
-          <mat-option
-            *ngFor="let project of filteredProjects | async"
-            [value]="project.name"
-          >
-            {{ project.name }}
-          </mat-option>
-        </mat-autocomplete>
+        <app-select
+          [options]="selectProjectOptions"
+          [selectedValue]="selectedProject"
+          (getSelectedValue)="getSelectedValue($event)"
+        ></app-select>
       </div>
       <app-button
         class="dashboard-controls-project-button-add-to-filter"
@@ -32,76 +17,93 @@
         (buttonClick)="addProjectToFilter()"
       ></app-button>
     </div>
-    <div
-      class="dashboard-controls-selected-projects"
-      *ngIf="managerProjectsFilter.length"
-    >
-      <ul class="dashboard-controls-selected-projects-list">
+    <div class="dashboard-controls-filter" *ngIf="managerProjectsFilter.length">
+      <ul class="dashboard-controls-filter-list">
         <ng-container *ngFor="let project of managerProjectsFilter">
-          <app-button
+          <li
+            class="dashboard-controls-filter-list-item"
+            [style.borderColor]="project.color"
             *ngIf="
               activeProjectFilter?.name !== project.name;
               else activeProject
             "
-            [buttonClass]="'button-secondary button-ds'"
-            [label]="project.name"
             (click)="setActiveFilterProject.emit(project)"
-          ></app-button>
+          >
+            {{ project.name }}
+            <ic-icon
+              class="dashboard-controls-filter-list-item-icon pinned-off-icon"
+              [icon]="iconPinnedOff"
+              (click)="removeProjectFromFilter($event, project)"
+            >
+            </ic-icon>
+          </li>
         </ng-container>
       </ul>
     </div>
   </div>
-  <div class="dashboard-controls-main-view">
-    <ng-container *ngIf="modeView === managerDashboardView.Table">
-      <app-button
-        class="dashboard-controls-main-view-table"
-        buttonClass="button-primary button-xs button-right-border-straight"
-        [icon]="iconTable"
-        iconWidth="1.5rem"
-        iconHeight="1.5rem"
-        (buttonClick)="changeManagerMainView.emit(managerDashboardView.Table)"
-      ></app-button>
-      <app-button
-        class="dashboard-controls-main-view-table-arrows"
-        buttonClass="button-primary button-half-of-primary button-xs button-left-border-straight"
-        [icon]="iconChartArrows"
-        iconWidth="1.5rem"
-        iconHeight="1.5rem"
-        (buttonClick)="changeManagerMainView.emit(managerDashboardView.Arrows)"
-      ></app-button>
-    </ng-container>
-    <ng-container *ngIf="modeView === managerDashboardView.Arrows">
-      <app-button
-        class="dashboard-controls-main-view-table"
-        buttonClass="button-primary button-half-of-primary button-xs button-right-border-straight"
-        [icon]="iconTable"
-        iconWidth="1.5rem"
-        iconHeight="1.5rem"
-        (buttonClick)="changeManagerMainView.emit(managerDashboardView.Table)"
-      ></app-button>
-      <app-button
-        class="dashboard-controls-main-view-table-arrows"
-        buttonClass="button-primary button-xs button-left-border-straight"
-        [icon]="iconChartArrows"
-        iconWidth="1.5rem"
-        iconHeight="1.5rem"
-        (buttonClick)="changeManagerMainView.emit(managerDashboardView.Arrows)"
-      ></app-button>
-    </ng-container>
+
+  <div class="dashboard-controls-period-and-view">
+    <app-datepicker
+      (getFirstandLastDay)="changePeriod.emit($event)"
+    ></app-datepicker>
+
+    <div class="dashboard-controls-main-view">
+      <ng-container *ngIf="modeView === managerDashboardView.Table">
+        <app-button
+          class="dashboard-controls-main-view-table"
+          buttonClass="button-primary button-xs button-right-border-straight"
+          [icon]="iconTable"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeManagerMainView.emit(managerDashboardView.Table)"
+        ></app-button>
+        <app-button
+          class="dashboard-controls-main-view-table-arrows"
+          buttonClass="button-primary button-half-of-primary button-xs button-left-border-straight"
+          [icon]="iconChartArrows"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="
+            changeManagerMainView.emit(managerDashboardView.Arrows)
+          "
+        ></app-button>
+      </ng-container>
+      <ng-container *ngIf="modeView === managerDashboardView.Arrows">
+        <app-button
+          class="dashboard-controls-main-view-table"
+          buttonClass="button-primary button-half-of-primary button-xs button-right-border-straight"
+          [icon]="iconTable"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="changeManagerMainView.emit(managerDashboardView.Table)"
+        ></app-button>
+        <app-button
+          class="dashboard-controls-main-view-table-arrows"
+          buttonClass="button-primary button-xs button-left-border-straight"
+          [icon]="iconChartArrows"
+          iconWidth="1.5rem"
+          iconHeight="1.5rem"
+          (buttonClick)="
+            changeManagerMainView.emit(managerDashboardView.Arrows)
+          "
+        ></app-button>
+      </ng-container>
+    </div>
   </div>
 </section>
 
 <ng-template #activeProject>
   <ng-container *ngIf="activeProjectFilter">
     <li
-      class="dashboard-controls-selected-projects-list-item"
+      class="dashboard-controls-filter-list-item-selected"
       [style.backgroundColor]="activeProjectFilter.color"
+      (click)="this.removeActiveProject.emit()"
     >
       {{ activeProjectFilter.name }}
       <ic-icon
-        class="dashboard-controls-selected-projects-list-item-icon pinned-off-icon"
+        class="dashboard-controls-filter-list-item-selected-icon pinned-off-icon"
         [icon]="iconPinnedOff"
-        (click)="this.removeProjectFilter.emit()"
+        (click)="removeProjectFromFilter($event, activeProjectFilter)"
       >
       </ic-icon>
     </li>

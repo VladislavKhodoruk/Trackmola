@@ -205,3 +205,8 @@ export const getTaskTracksDurationGroupByUser = createSelector(
       return { ...accum, [user.id]: { duration, overtimeDuration } };
     }, {})
 );
+
+export const getDashboardView = createSelector(
+  getDashboardState,
+  ({ dashboardView }) => dashboardView
+);

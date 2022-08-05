@@ -6,16 +6,18 @@ import { Observable } from 'rxjs';
 import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
 import {
   setProjectFilter,
-  removeProjectFilter,
+  removeActiveProject,
   changeManagerMainView,
   setActiveProjectFilter,
+  removeProjectFilter,
+  changeManagerPeriod,
 } from '@pages/dashboard/store/dashboard.actions';
 import {
   getManagerProjectsFilter,
   getManadgersProjects,
   getActiveProjectFilter,
 } from '@pages/dashboard/store/dashboard.selectors';
-import { Project } from '@shared/interfaces/interfaces';
+import { Period, Project } from '@shared/interfaces/interfaces';
 
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -29,9 +31,11 @@ import { TrackMolaState } from '@store/trackMola.state';
     [activeProjectFilter]="activeProjectFilter$ | async"
     [modeView]="modeView"
     (projectFilter)="onProjectFilter($event)"
-    (removeProjectFilter)="onRemoveProjectFilter()"
+    (removeProjectFilter)="onRemoveProjectFilter($event)"
+    (removeActiveProject)="onRemoveActiveProject()"
     (setActiveFilterProject)="onSetActiveFilterProject($event)"
     (changeManagerMainView)="onChangeManagerMainView($event)"
+    (changePeriod)="onChangePeriod($event)"
   ></app-manager-controls>`,
 })
 export class ManagerControlsContainer {
@@ -58,11 +62,19 @@ export class ManagerControlsContainer {
     this.store$.dispatch(setActiveProjectFilter({ activeProject }));
   }
 
-  public onRemoveProjectFilter(): void {
-    this.store$.dispatch(removeProjectFilter());
+  public onRemoveProjectFilter(project: Project): void {
+    this.store$.dispatch(removeProjectFilter({ project }));
+  }
+
+  public onRemoveActiveProject(): void {
+    this.store$.dispatch(removeActiveProject());
   }
 
   public onChangeManagerMainView(mode: ManagerDashboardView): void {
     this.store$.dispatch(changeManagerMainView({ mode }));
+  }
+
+  public onChangePeriod(period: Period): void {
+    this.store$.dispatch(changeManagerPeriod({ period }));
   }
 }

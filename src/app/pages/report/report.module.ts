@@ -20,6 +20,7 @@ import { NavigationCalendarModule } from '@shared/components/navigatinon-calenda
 
 import { ReportInputModule } from '@shared/components/report-input/report-input.module';
 import { TodayViewModule } from '@shared/components/todayview/todayview.module';
+import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 
 @NgModule({
   declarations: [ReportComponent, ReportContainer],
@@ -35,6 +36,7 @@ import { TodayViewModule } from '@shared/components/todayview/todayview.module';
     CalendarModule,
     ReportInputModule,
     TodayViewModule,
+    UsersPhotosModule,
   ],
 })
 export class ReportModule {}

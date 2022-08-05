@@ -4,7 +4,7 @@ import { ManagerDashboardView } from '../enums/enum';
 
 import { TaskForManager } from '../interfaces/interface';
 
-import { PeriodType } from '@shared/enums/enum';
+import { PeriodType, UserType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
 
 interface DashboardManagerState {
@@ -19,9 +19,11 @@ export interface DashboardState {
   period: Period;
   weekReportTime: number;
   manager: DashboardManagerState;
+  dashboardView: UserType | null;
 }
 
 export const dashboardState: DashboardState = {
+  dashboardView: null,
   manager: {
     activeProjectFilter: null,
     modeView: ManagerDashboardView.Table,

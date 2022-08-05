@@ -1,7 +1,17 @@
 <header class="dashboard-header">
   <h1 class="dashboard-header-title">My dashboard</h1>
-  <div class="dashboard-header-time">
-    <h2 class="dashboard-header-date">{{ today | date: "EEEE, MMMM dd" }}</h2>
-    <app-clock class="dashboard-header-clock"></app-clock>
+  <div class="dashboard-header-info">
+    <ng-container *ngIf="authTypeUser !== userTypes.Employee">
+      <app-toggle-buttons
+        [labels]="labelsMode"
+        [checked]="viewMode"
+        (changeMode)="changeViewMode.emit($event)"
+      ></app-toggle-buttons>
+    </ng-container>
+
+    <div class="dashboard-header-time">
+      <h2 class="dashboard-header-date">{{ today | date: "EEEE, MMMM dd" }}</h2>
+      <app-clock class="dashboard-header-clock"></app-clock>
+    </div>
   </div>
 </header>
