@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -9,10 +8,14 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import fileXls from '@iconify-icons/ph/file-xls.js';
+import chartArrows from '@iconify/icons-tabler/chart-arrows';
 import chartBar from '@iconify/icons-tabler/chart-bar';
 import checksIcon from '@iconify/icons-tabler/checks';
+import tableIcon from '@iconify/icons-tabler/table';
 import templateIcon from '@iconify/icons-tabler/template';
 import { IconifyIcon } from '@iconify/types';
+
+import { TaskForManager } from '@pages/dashboard/interfaces/interface';
 
 import {
   getInfoFromTaskTracks,
@@ -23,6 +26,7 @@ import {
   ExcelData,
   InfoReportConstructorItem,
 } from '@pages/report-constructor/interfaces/interfaces';
+import { ChartViewMode, ViewMode } from '@pages/report/enums/enum';
 import { DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK } from '@shared/constants/constants';
 import { PeriodType } from '@shared/enums/enum';
 import { getPeriod } from '@shared/helpers/helpers';
@@ -33,6 +37,7 @@ import {
   TaskTrack,
   User,
   Task,
+  GroupBy,
 } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -42,25 +47,37 @@ import {
   templateUrl: './manager-report-constructor.component.html',
 })
 export class ManagerReportConstructorComponent implements OnChanges {
-  @Input() projects: Project[];
+  @Input() readonly projects: Project[];
   @Input() period: Period = getPeriod(new Date(), PeriodType.Week);
-  @Input() taskTracks: TaskTrack[];
-  @Input() users: User[];
-  @Input() tasks: Task[];
+  @Input() readonly taskTracks: TaskTrack[];
+  @Input() readonly users: User[];
+  @Input() readonly tasks: Task[];
+  @Input() readonly viewMode: ViewMode;
+  @Input() readonly chartViewMode: ChartViewMode;
+  @Input() readonly dateForChart: TaskForManager[];
+  @Input() readonly usersInfoByUserId: GroupBy<User>;
 
   @Output() changeStorePeriod: EventEmitter<Period> =
     new EventEmitter<Period>();
   @Output() changeStoreProjectId: EventEmitter<string> =
     new EventEmitter<string>();
   @Output() exportExel: EventEmitter<ExcelData> = new EventEmitter<ExcelData>();
+  @Output() changeViewMode: EventEmitter<ViewMode> =
+    new EventEmitter<ViewMode>();
+  @Output() changeChartViewMode: EventEmitter<ChartViewMode> =
+    new EventEmitter<ChartViewMode>();
 
   labels: string[] = [PeriodType.Week, PeriodType.Month, PeriodType.Custom];
 
   teamProject: User[];
 
+  reportConstructorView: typeof ViewMode = ViewMode;
+  chartView: typeof ChartViewMode = ChartViewMode;
+
   selectProjectOptions: SelectOptions[];
   currentProjectId: string;
   currentProjectName: string;
+  currentProject: Project;
   infoFromTaskTracks: InfoReportConstructorItem[];
 
   readonly TypePeriod = PeriodType;
@@ -70,6 +87,9 @@ export class ManagerReportConstructorComponent implements OnChanges {
   readonly fileXlsIcon: IconifyIcon = fileXls;
   readonly templateIcon: IconifyIcon = templateIcon;
   readonly chartBarIcon: IconifyIcon = chartBar;
+  readonly iconTable: IconifyIcon = tableIcon;
+  readonly iconChartArrows: IconifyIcon = chartArrows;
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.projects && this.projects) {
       this.selectProjectOptions = this.projects.map((project) => ({
@@ -96,6 +116,9 @@ export class ManagerReportConstructorComponent implements OnChanges {
     this.currentProjectName = this.projects.find(
       (project) => project.id === currentProjectId
     )?.name;
+    this.currentProject = this.projects.find(
+      (project) => project.id === currentProjectId
+    );
     this.changeStoreProjectId.emit(currentProjectId);
   }
 

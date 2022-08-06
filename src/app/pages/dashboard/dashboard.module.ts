@@ -17,7 +17,6 @@ import { HeaderContainer } from './components/header/header.container';
 import { ManagerControlsComponent } from './components/manager-controls/manager-controls.component';
 
 import { ManagerControlsContainer } from './components/manager-controls/manager-controls.container';
-import { ManagerDashboardListTasksComponent } from './components/manager-dashboard-list-tasks/manager-dashboard-list-tasks.component';
 import { ManagerDashboardComponent } from './components/manager-dashboard/manager-dashboard.component';
 import { ManagerDashboardContainer } from './components/manager-dashboard/manager-dashboard.container';
 import { UsersCardsComponent } from './components/users-cards/users-cards.component';
@@ -35,6 +34,7 @@ import { ActivityWeekChartComponent } from '@pages/dashboard/components/activity
 import { ActivityWeekChartContainer } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.container';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
+import { ChartProjectsModule } from '@shared/components/chart-projects/chart-projects.module';
 import { ClockModule } from '@shared/components/clock/clock.module';
 import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
@@ -62,7 +62,6 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     HeaderComponent,
     HeaderContainer,
     ManagerControlsComponent,
-    ManagerDashboardListTasksComponent,
     UsersCardsComponent,
     AdminDashboardContainer,
   ],
@@ -87,6 +86,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     HolidaysModule,
     SelectModule,
     DatepickerModule,
+    ChartProjectsModule,
   ],
   providers: [],
 })

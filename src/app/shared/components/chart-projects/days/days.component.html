@@ -1,0 +1,11 @@
+<div class="period" [style.width.px]="width - marginRight" *ngIf="period">
+  <ng-container *ngFor="let day of daysInPeriod['days']">
+    <span
+      class="period-day"
+      [style.width.%]="100 / daysInPeriod['days'].length"
+      [class.period-day-weekend]="isWeekend(day)"
+    >
+      {{ day | date: "dd LLL" }}
+    </span>
+  </ng-container>
+</div>

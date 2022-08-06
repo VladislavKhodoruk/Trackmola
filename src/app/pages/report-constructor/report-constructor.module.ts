@@ -24,6 +24,7 @@ import { ReportConstructorReducer } from './store/report-constructor.reducer';
 import { REPORT_CONSTRUCTOR_STATE_NAME } from './store/report-constructor.selectors';
 
 import { ButtonModule } from '@shared/components/button/button.module';
+import { ChartProjectsModule } from '@shared/components/chart-projects/chart-projects.module';
 import { DateSwitchModule } from '@shared/components/date-switch/date-switch.module';
 import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
 import { SelectModule } from '@shared/components/select/select.module';
@@ -56,6 +57,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     DateSwitchModule,
     DatepickerModule,
     UsersPhotosModule,
+    ChartProjectsModule,
   ],
 })
 export class ReportConstructorModule {}
