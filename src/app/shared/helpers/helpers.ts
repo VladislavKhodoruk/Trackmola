@@ -20,7 +20,10 @@ import {
   TaskByWeekDays,
   GroupBy,
   CalendarDay,
+  Vacation,
+  UserCard,
 } from '@shared/interfaces/interfaces';
+import { Timestamp } from 'firebase/firestore';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
   switch (type) {
@@ -243,7 +246,10 @@ export function urlReplacer(text: string): string {
   return replacer.link(text);
 }
 
-export function getCurrentHolidays(location: string): CalendarDay[] {
+export function getCurrentHolidays(
+  location: string,
+  vacations: Vacation[]
+): Vacation[] {
   if (
     location === 'Minsk' ||
     location === 'Mogilev' ||
@@ -251,6 +257,28 @@ export function getCurrentHolidays(location: string): CalendarDay[] {
   ) {
     return groupByDate.BY.filter(
       (day) => day.date >= new Date().toISOString() && day.dayType === 'holiday'
-    );
+    )
+      .map(
+        (day): Vacation => ({
+          periodStart: new Timestamp(new Date(day.date).valueOf() / 1000, 0),
+          type: day.dayType,
+          holidayInfo: day,
+        })
+      )
+      .concat(vacations)
+      .sort((a, b) => a.periodStart.seconds - b.periodStart.seconds);
   }
+}
+
+export function setUserPhotoInVacations(
+  vacations: Vacation[],
+  users: UserCard[]
+) {
+  return vacations.map((vacation: Vacation) =>
+    users.forEach((user: UserCard) => {
+      if (user.id === vacation.userId) {
+        return user.photo;
+      }
+    })
+  );
 }

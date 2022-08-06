@@ -12,8 +12,9 @@
             <p
               class="vacations-list-item-wrapper-info-day"
               *ngIf="
-                vacation.periodStart.toDate().getDay() !==
-                  vacation.periodEnd.toDate().getDay();
+                vacation.periodEnd &&
+                  vacation.periodStart.toDate().getDay() !==
+                    vacation.periodEnd.toDate().getDay();
                 else unset
               "
             >

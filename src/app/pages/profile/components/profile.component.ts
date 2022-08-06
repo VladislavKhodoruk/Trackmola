@@ -10,14 +10,23 @@ import { User, Vacation, Vacations } from '@shared/interfaces/interfaces';
   styleUrls: ['./profile.component.scss'],
   templateUrl: './profile.component.html',
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   @Input() userInfo: User;
 
   @Output() logoutEmmiter = new EventEmitter<void>();
 
   @Input() vacations: Vacation[];
 
+  vacationsAndHoliday: Vacation[];
+
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
+
+  ngOnInit() {
+    this.vacationsAndHoliday = getCurrentHolidays(
+      this.userInfo?.location,
+      this.vacations
+    );
+  }
 
   logout(event: Event): void {
     event.preventDefault();
