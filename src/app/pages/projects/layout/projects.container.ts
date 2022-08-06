@@ -15,8 +15,8 @@ import {
   User,
   Vacation,
 } from '@shared/interfaces/interfaces';
-import { TrackMolaState } from '@store/trackMola.state';
 import { getUsers, getVacations } from '@store/common/common.selectors';
+import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

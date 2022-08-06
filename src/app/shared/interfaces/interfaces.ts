@@ -114,7 +114,7 @@ export interface GroupBy<T> {
 export interface Vacations {
   vacationDay: Date;
   fullName: string;
-  photo: string;
+  photo: string | IconifyIcon;
 }
 
 export interface UserCard {
@@ -150,11 +150,10 @@ export type TaskByWeekDays = {
 };
 
 export interface Vacation {
-  color?: string;
-  comment?: string;
-  periodStart?: Timestamp;
-  periodEnd?: Timestamp;
+  color: string;
+  comment: string;
+  periodStart: Timestamp;
+  periodEnd: Timestamp;
   type: string;
   userId?: string;
-  holidayInfo?: CalendarDay;
 }

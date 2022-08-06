@@ -17,15 +17,20 @@ export class ProfileComponent implements OnInit {
 
   @Input() vacations: Vacation[];
 
-  vacationsAndHoliday: Vacation[];
+  @Input() users: User[];
+
+  vacationsAndHoliday: Vacations[];
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
 
   ngOnInit() {
-    this.vacationsAndHoliday = getCurrentHolidays(
-      this.userInfo?.location,
-      this.vacations
-    );
+    if (this.userInfo) {
+      this.vacationsAndHoliday = getCurrentHolidays(
+        this.userInfo?.location,
+        this.vacations,
+        this.users
+      );
+    }
   }
 
   logout(event: Event): void {

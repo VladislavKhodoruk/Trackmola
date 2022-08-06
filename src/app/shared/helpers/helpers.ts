@@ -22,8 +22,9 @@ import {
   CalendarDay,
   Vacation,
   UserCard,
+  Vacations,
+  User,
 } from '@shared/interfaces/interfaces';
-import { Timestamp } from 'firebase/firestore';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
   switch (type) {
@@ -246,27 +247,39 @@ export function urlReplacer(text: string): string {
   return replacer.link(text);
 }
 
+export function getUserName(users: User[], id): string {
+  return users.find((user: User) => user.id === id).fullName;
+}
+
+export function getUserPhoto(users: User[], id): string {
+  return users.find((user: User) => user.id === id).photo;
+}
+
 export function getCurrentHolidays(
   location: string,
-  vacations: Vacation[]
-): Vacation[] {
-  if (
-    location === 'Minsk' ||
-    location === 'Mogilev' ||
-    location === 'Bobruisk'
-  ) {
+  vacations: Vacation[],
+  users: User[]
+): Vacations[] {
+  const country = location.split(',')[1];
+  if (country === ' Belarus') {
     return groupByDate.BY.filter(
       (day) => day.date >= new Date().toISOString() && day.dayType === 'holiday'
     )
       .map(
-        (day): Vacation => ({
-          periodStart: new Timestamp(new Date(day.date).valueOf() / 1000, 0),
-          type: day.dayType,
-          holidayInfo: day,
+        (day: CalendarDay): Vacations => ({
+          fullName: day.holidayName,
+          photo: day.holidayImg,
+          vacationDay: new Date(day.date),
         })
       )
-      .concat(vacations)
-      .sort((a, b) => a.periodStart.seconds - b.periodStart.seconds);
+      .concat(
+        vacations.map((vacation: Vacation) => ({
+          fullName: getUserName(users, vacation.userId),
+          photo: getUserPhoto(users, vacation.userId),
+          vacationDay: vacation.periodStart.toDate(),
+        }))
+      )
+      .sort((a, b) => a.vacationDay.valueOf() - b.vacationDay.valueOf());
   }
 }
 

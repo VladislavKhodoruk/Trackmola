@@ -9,39 +9,24 @@
         <div class="vacations-list-item-circle"></div>
         <div class="vacations-list-item-wrapper">
           <div class="vacations-list-item-wrapper-info">
-            <p
-              class="vacations-list-item-wrapper-info-day"
-              *ngIf="
-                vacation.periodEnd &&
-                  vacation.periodStart.toDate().getDay() !==
-                    vacation.periodEnd.toDate().getDay();
-                else unset
-              "
-            >
-              {{ vacation.periodStart.toDate() | date: "d MMM" }} -
-              {{ vacation.periodEnd.toDate() | date: "d MMM" }}
+            <p class="vacations-list-item-wrapper-info-day">
+              {{ vacation.vacationDay | date: "d MMM" }}
             </p>
-            <ng-template #unset>
-              <p class="vacations-list-item-wrapper-info-day">
-                {{ vacation.periodStart.toDate() | date: "d MMM" }}
-              </p>
-            </ng-template>
             <p class="vacations-list-item-wrapper-info-employee">
-              {{ vacation.type }}
+              {{ vacation.fullName }}
             </p>
           </div>
           <img
-            *ngIf="href === '/profile'"
-            src="{{ userPhoto }}"
+            *ngIf="typeOfPhoto(vacation.photo) === 'string'"
+            src="{{ vacation.photo }}"
             class="vacations-list-item-wrapper-photo"
-            alt="photo"
+            alt="{{ defaultPhoto }}"
           />
-          <img
-            *ngIf="href !== '/profile'"
-            src="{{ vacation.userId }}"
-            class="vacations-list-item-wrapper-photo"
-            alt="photo"
-          />
+          <ic-icon
+            *ngIf="typeOfPhoto(vacation.photo) === 'object'"
+            [icon]="vacation.photo"
+            class="holidays-header-icon"
+          ></ic-icon>
         </div>
       </li>
     </ul>
