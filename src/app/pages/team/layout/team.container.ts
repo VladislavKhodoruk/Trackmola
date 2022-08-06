@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { User } from '@shared/interfaces/interfaces';
 
 import { Observable } from 'rxjs';
+
 import { getUser } from '../store/team.selectors';
 import { TeamState } from '../store/team.state';
+
+import { User } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-team-container',

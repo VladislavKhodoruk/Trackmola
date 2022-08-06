@@ -1,5 +1,5 @@
-import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import bellRinging from '@iconify/icons-tabler/bell-ringing';
 import fileImport from '@iconify/icons-tabler/file-import';
