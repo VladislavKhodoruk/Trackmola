@@ -11,9 +11,9 @@ export const mockUsers: User[] = [
     id: 'FyTQtfAXBMPaa3yKJ4TmVVgTA872',
     location: 'Minsk',
     photo: 'https://avatars.githubusercontent.com/u/88663763?v=4',
-    position: 'CTO',
+    position: 'Administrator',
     qualification: 'Senior',
-    role: 'CTO',
+    role: 'admin',
     startDate: new Timestamp(1654030800, 882000000),
     timeZone: '+3',
   },
@@ -27,9 +27,9 @@ export const mockUsers: User[] = [
     photo:
       // eslint-disable-next-line max-len
       'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/62970818a0eafd0069e86612/69cd9846-5c68-482e-bb26-81bf77da957b/128',
-    position: 'Admin',
+    position: 'Frontend Developer',
     qualification: 'middle',
-    role: 'Admin',
+    role: 'employee',
     startDate: new Timestamp(1664030800, 313000000),
 
     timeZone: '+3',
@@ -44,9 +44,9 @@ export const mockUsers: User[] = [
     photo:
       // eslint-disable-next-line max-len
       'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/6298604da0eafd0069e8f7cd/1656ba5b-b78b-4822-846f-ecb40c4e4899/128',
-    position: 'manager',
+    position: 'Frontend Developer',
     qualification: 'Senior',
-    role: 'manager',
+    role: 'employee',
     startDate: new Timestamp(1654030800, 283000000),
 
     timeZone: '+3',
@@ -61,9 +61,9 @@ export const mockUsers: User[] = [
     photo:
       // eslint-disable-next-line max-len
       'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/629860aa1a2bdf007095b9bb/181bf52b-1854-4deb-a661-884a6a376802/128',
-    position: 'Frontend developer',
+    position: 'CTO',
     qualification: 'Student',
-    role: 'employee',
+    role: 'CTO',
     startDate: new Timestamp(1654030800, 517000000),
     timeZone: '+3',
   },
@@ -77,9 +77,9 @@ export const mockUsers: User[] = [
     photo:
       // eslint-disable-next-line max-len
       'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/62985f0ac3dffc0068f5ddff/864cad92-da20-48f3-b5b4-54d2a6c74170/128',
-    position: 'Frontend Developer',
+    position: 'Project Manager',
     qualification: 'Student',
-    role: 'employee',
+    role: 'manager',
     startDate: new Timestamp(1654030800, 259000000),
 
     timeZone: '+3',

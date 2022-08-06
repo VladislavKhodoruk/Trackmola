@@ -25,6 +25,7 @@ html {
       &-bottom {
         overflow: hidden;
         display: flex;
+        gap: var(--offset);
       }
     }
 

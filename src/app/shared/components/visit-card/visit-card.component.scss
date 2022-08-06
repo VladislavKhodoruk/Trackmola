@@ -8,7 +8,7 @@
     margin-left: -1.1rem;
   }
 
-  .mat-autocomplete-panel {
+  .mat-autocomplete-panel.visitClass {
     max-height: 10rem !important;
 
     background-color: var(--white);
@@ -16,7 +16,7 @@
     box-shadow: $border-cdk-select !important;
   }
 
-  .mat-option {
+  .mat-option.visitClass {
     height: 2.5rem !important;
 
     color: var(--gray2);
@@ -29,19 +29,19 @@
     }
   }
 
-  .mat-selected {
+  .mat-selected.visitClass {
     color: var(--primary) !important;
   }
 
-  .mat-select-value-text {
+  .mat-select-value-text.visitClass {
     text-transform: capitalize;
   }
 
-  .mat-option-text {
+  .mat-option-text.visitClass {
     text-transform: capitalize;
   }
 
-  .mat-dialog-title {
+  .mat-dialog-title.visitClass {
     margin: 0 !important;
   }
 
