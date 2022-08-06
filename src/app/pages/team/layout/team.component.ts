@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
 
 import bellRinging from '@iconify/icons-tabler/bell-ringing';
@@ -7,6 +8,7 @@ import angleRight from '@iconify/icons-uil/angle-right';
 import folder from '@iconify/icons-uil/folder-times';
 
 import { UserType } from '@shared/enums/enum';
+import { User } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-team',
@@ -15,6 +17,7 @@ import { UserType } from '@shared/enums/enum';
 })
 export class TeamComponent {
   @Input() userType!: string | null;
+  @Input() user!: User;
 
   types = UserType;
 
@@ -22,4 +25,6 @@ export class TeamComponent {
   readonly iconFileImport = fileImport;
   readonly iconFolder = folder;
   readonly iconBell = bellRinging;
+
+  constructor(public router: Router) {}
 }
