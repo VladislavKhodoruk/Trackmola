@@ -1,17 +1,3 @@
-<header class="dashboard-header">
-  <h1 class="dashboard-header-title">My dashboard</h1>
-  <div class="flex-container">
-    <app-toggle-buttons
-      [labels]="labelsMode"
-      [checked]="checkedMode"
-      (changeMode)="changeMode($event)"
-    ></app-toggle-buttons>
-    <div class="dashboard-header-time">
-      <h2 class="dashboard-header-date">{{ today | date: "EEEE, dd MMM" }}</h2>
-      <app-clock class="dashboard-header-clock"></app-clock>
-    </div>
-  </div>
-</header>
 <div class="dashboard-search-and-sort">
   <input
     class="input dashboard-search"

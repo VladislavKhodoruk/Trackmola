@@ -2,7 +2,7 @@
 @import "mixins";
 
 ::ng-deep {
-  .cdk-overlay-pane {
+  .cdk-overlay-pane.reportClass {
     width: 20.55rem !important;
     margin-top: var(--offset-xs);
     margin-left: -1.1rem;
@@ -35,6 +35,10 @@
 
   .mat-dialog-title {
     margin: 0 !important;
+  }
+
+  .mat-form-field-label-wrapper {
+    display: none;
   }
 
   .icon-x {
@@ -205,6 +209,7 @@
 
         font-size: var(--font-main);
         color: var(--black);
+        text-transform: capitalize;
       }
     }
 
@@ -252,7 +257,7 @@
   }
 
   .cancel-button {
-    margin-right: var(--offset-l);
+    margin-right: var(--offset);
   }
 
   ::ng-deep {
@@ -301,6 +306,8 @@
       }
 
       .mat-form-field-flex {
+        align-items: center;
+
         padding: 0;
 
         background: none;
@@ -389,6 +396,12 @@
     color: var(--primary-hover);
 
     opacity: 0.8;
+  }
+
+  .datepicker {
+    width: 100%;
+    margin-bottom: var(--offset-sm);
+    padding: var(--offset-xs) var(--offset);
   }
 
   .flex-container {

@@ -1,6 +1,22 @@
 <section class="profile-visit-card">
   <div class="profile-visit-card-name">
     <p class="profile-visit-card-name-text">{{ user?.fullName }}</p>
+    <ng-container *ngIf="adminMode" class="profile-visit-card-admin">
+      <app-select
+        [options]="selectRolesOptions"
+        [selectedValue]="selectedRole"
+        (getSelectedValue)="getSelectedRoleValue($event)"
+      ></app-select>
+    </ng-container>
+    <ng-container *ngIf="adminMode && contractEnds">
+      <div class="profile-visit-card-alert">
+        <img
+          class="profile-visit-card-alert-icon"
+          src="assets/img/warning.svg"
+          alt="images"
+        />Contract is coming up
+      </div>
+    </ng-container>
   </div>
   <div class="profile-visit-card-info">
     <div class="profile-visit-card-info-photo">

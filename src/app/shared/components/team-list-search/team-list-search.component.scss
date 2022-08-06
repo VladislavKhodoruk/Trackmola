@@ -2,7 +2,7 @@
 @import "mixins";
 
 ::ng-deep {
-  .cdk-overlay-pane {
+  .cdk-overlay-pane.teamClass {
     width: 20.5rem !important;
     margin-top: var(--offset-xs);
     margin-left: -1.1rem;
@@ -55,6 +55,7 @@
     height: 100%;
 
     &-cards {
+      @include scroll-bar;
       overflow-y: auto;
       display: flex;
       flex: 1;
@@ -156,14 +157,9 @@
             border-radius: var(--border-radius);
 
             &::before {
-              content: url("https://api.iconify.design/tabler/check.svg?color=%237353d0");
+              content: "";
 
               font-size: 1.1rem;
-            }
-
-            &-icon {
-              cursor: pointer;
-              user-select: none;
             }
           }
 
@@ -236,8 +232,6 @@
 
   ::ng-deep {
     .mat-form-field {
-      padding: var(--offset-d) var(--offset);
-
       font-size: var(--font-main);
       line-height: 1;
 
@@ -289,7 +283,7 @@
 
       .mat-form-field-infix {
         @include flex(center, space-between);
-        padding: 0;
+        padding: var(--offset);
 
         border-top: none;
       }

@@ -23,5 +23,6 @@ export class AdminDashboardContainer {
   readonly taskTracksDurationGroupByUser$: Observable<
     GroupBy<{ duration: number; overtimeDuration: number }>
   > = this.store$.select(getTaskTracksDurationGroupByUser);
+
   constructor(private store$: Store<TrackMolaState>) {}
 }

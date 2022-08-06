@@ -1,0 +1,22 @@
+@import "vars/variables";
+@import "mixins";
+
+:host {
+  .period {
+    @include flex(flex-start, flex-start);
+    height: 3.65rem;
+
+    &-day {
+      @include flex(center, center);
+      height: 100%;
+
+      font: var(--font-blocks);
+      font-weight: 400;
+      color: var(--gray3);
+
+      &-weekend {
+        background: var(--pale-blue);
+      }
+    }
+  }
+}

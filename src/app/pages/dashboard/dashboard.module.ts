@@ -1,9 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -16,10 +13,10 @@ import { AdminDashboardContainer } from './components/admin-dashboard/admin-dash
 import { CtoDashboardComponent } from './components/cto-dashboard/cto-dashboard.component';
 import { EmployeeDashboardComponent } from './components/employee-dashboard/employee-dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HeaderContainer } from './components/header/header.container';
 import { ManagerControlsComponent } from './components/manager-controls/manager-controls.component';
 
 import { ManagerControlsContainer } from './components/manager-controls/manager-controls.container';
-import { ManagerDashboardListTasksComponent } from './components/manager-dashboard-list-tasks/manager-dashboard-list-tasks.component';
 import { ManagerDashboardComponent } from './components/manager-dashboard/manager-dashboard.component';
 import { ManagerDashboardContainer } from './components/manager-dashboard/manager-dashboard.container';
 import { UsersCardsComponent } from './components/users-cards/users-cards.component';
@@ -37,10 +34,13 @@ import { ActivityWeekChartComponent } from '@pages/dashboard/components/activity
 import { ActivityWeekChartContainer } from '@pages/dashboard/components/activity-week-chart/activity-week-chart.container';
 import { ButtonModule } from '@shared/components/button/button.module';
 import { CalendarModule } from '@shared/components/calendar/calendar.module';
+import { ChartProjectsModule } from '@shared/components/chart-projects/chart-projects.module';
 import { ClockModule } from '@shared/components/clock/clock.module';
+import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
 import { HighchartsChartModule } from '@shared/components/highcharts-chart/highcharts-chart.module';
 import { HolidaysModule } from '@shared/components/holiday/holidays.module';
 import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
+import { SelectModule } from '@shared/components/select/select.module';
 import { TodayViewModule } from '@shared/components/todayview/todayview.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
@@ -60,8 +60,8 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ActivityWeekChartComponent,
     ManagerControlsContainer,
     HeaderComponent,
+    HeaderContainer,
     ManagerControlsComponent,
-    ManagerDashboardListTasksComponent,
     UsersCardsComponent,
     AdminDashboardContainer,
   ],
@@ -77,9 +77,6 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     TodayViewModule,
     ClockModule,
     VacationsModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
     IconModule,
     FormsModule,
     ReactiveFormsModule,
@@ -87,6 +84,9 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     ProjectLabelModule,
     ToggleButtonsModule,
     HolidaysModule,
+    SelectModule,
+    DatepickerModule,
+    ChartProjectsModule,
   ],
   providers: [],
 })

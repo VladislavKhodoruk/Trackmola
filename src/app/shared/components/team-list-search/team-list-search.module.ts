@@ -10,7 +10,6 @@ import { IconModule } from '@visurel/iconify-angular';
 
 import { TeamListSearchComponent } from './team-list-search.component';
 import { TeamListSearchContainer } from './team-list-search.container';
-
 import { UserCardComponent } from './user-card/user-card.component';
 
 import { ButtonModule } from '../button/button.module';

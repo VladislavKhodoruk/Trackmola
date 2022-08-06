@@ -3,11 +3,9 @@
 
 ::ng-deep {
   .modal {
-    min-width: 61rem;
+    min-width: min-content;
 
     .mat-dialog-container {
-      min-width: 61rem;
-      min-height: 37rem;
       padding: 0;
 
       border-radius: var(--offset);
@@ -22,5 +20,9 @@
       width: 23rem;
       height: 20rem;
     }
+  }
+
+  .mat-dialog-container .form-report {
+    min-width: 61rem;
   }
 }

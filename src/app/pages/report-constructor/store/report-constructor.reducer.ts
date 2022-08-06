@@ -1,6 +1,11 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
-import { setPeriod, setProject } from './report-constructor.actions';
+import {
+  setPeriod,
+  setProject,
+  changeViewMode,
+  changeChartViewMode,
+} from './report-constructor.actions';
 import {
   reportConstructorState,
   ReportConstructorState,
@@ -15,7 +20,19 @@ const reportConstructorReducer = createReducer(
   on(setProject, (state: ReportConstructorState, { projectId }) => ({
     ...state,
     projectId,
-  }))
+  })),
+  on(changeViewMode, (state: ReportConstructorState, { viewMode }) => ({
+    ...state,
+    chartViewMode: reportConstructorState.chartViewMode,
+    viewMode,
+  })),
+  on(
+    changeChartViewMode,
+    (state: ReportConstructorState, { chartViewMode }) => ({
+      ...state,
+      chartViewMode,
+    })
+  )
 );
 
 export function ReportConstructorReducer(

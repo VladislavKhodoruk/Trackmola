@@ -46,6 +46,7 @@ export interface User {
   qualification: string;
   role: string;
   startDate: Timestamp;
+  endDate: Timestamp;
   timeZone: string;
 }
 
@@ -148,6 +149,11 @@ export interface Holiday {
 export type TaskByWeekDays = {
   [key in WeekDays]: TaskTrack[] | [];
 };
+
+export interface TaskTracksByUser {
+  taskTracks: TaskTrack[];
+  userId: User['id'];
+}
 
 export interface Vacation {
   color: string;

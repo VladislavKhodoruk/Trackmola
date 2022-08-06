@@ -2,7 +2,7 @@
 @import "mixins";
 
 :host {
-  .dashboard-main-tasks {
+  .legend {
     @include flex(flex-start, flex-start);
     flex-direction: column;
 

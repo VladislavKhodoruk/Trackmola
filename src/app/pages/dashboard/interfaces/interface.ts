@@ -6,7 +6,6 @@ export interface TaskForManager extends Task {
 }
 
 export interface DataForChartTreemap {
-  color: string;
   id: User['id'];
   name: User['fullName'];
   value: number;

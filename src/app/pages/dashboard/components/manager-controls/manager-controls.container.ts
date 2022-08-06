@@ -10,13 +10,14 @@ import {
   changeManagerMainView,
   setActiveProjectFilter,
   removeProjectFilter,
+  changeManagerPeriod,
 } from '@pages/dashboard/store/dashboard.actions';
 import {
   getManagerProjectsFilter,
   getManadgersProjects,
   getActiveProjectFilter,
 } from '@pages/dashboard/store/dashboard.selectors';
-import { Project } from '@shared/interfaces/interfaces';
+import { Period, Project } from '@shared/interfaces/interfaces';
 
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -34,6 +35,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     (removeActiveProject)="onRemoveActiveProject()"
     (setActiveFilterProject)="onSetActiveFilterProject($event)"
     (changeManagerMainView)="onChangeManagerMainView($event)"
+    (changePeriod)="onChangePeriod($event)"
   ></app-manager-controls>`,
 })
 export class ManagerControlsContainer {
@@ -70,5 +72,9 @@ export class ManagerControlsContainer {
 
   public onChangeManagerMainView(mode: ManagerDashboardView): void {
     this.store$.dispatch(changeManagerMainView({ mode }));
+  }
+
+  public onChangePeriod(period: Period): void {
+    this.store$.dispatch(changeManagerPeriod({ period }));
   }
 }
