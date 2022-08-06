@@ -16,14 +16,12 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
 import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 import pineapple from '@iconify/icons-noto/pineapple';
 import check from '@iconify/icons-tabler/check';
 import filter from '@iconify/icons-tabler/filter';
 import searchIcon from '@iconify/icons-tabler/search';
 import angleLeftB from '@iconify/icons-uil/angle-left-b';
-
 import { map, Observable, startWith } from 'rxjs';
 
 import {
@@ -58,7 +56,7 @@ import {
   providers: [
     {
       provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
-      useValue: { overlayPanelClass: 'teamSearchClass' },
+      useValue: { overlayPanelClass: 'teamClass' },
     },
   ],
   selector: 'app-team-list-search-component',

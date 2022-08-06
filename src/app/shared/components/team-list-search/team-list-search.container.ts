@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { setUser } from '@pages/team/store/team.actions';
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
-
 import {
   getProjects,
   getUsers,
