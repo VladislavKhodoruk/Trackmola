@@ -49,10 +49,6 @@ export class CalendarComponent implements OnChanges, OnDestroy {
     }
   }
 
-  // ngAfterViewChecked() {
-  //   this.changeDetector.detectChanges();
-  // }
-
   ngOnDestroy(): void {
     this.onChangeDate(
       new Date(

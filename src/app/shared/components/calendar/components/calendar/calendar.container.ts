@@ -47,7 +47,7 @@ export class CalendarContainer {
 
   constructor(private store$: Store<TrackMolaState>) {
     this.currentRoute$.pipe(untilDestroyed(this)).subscribe((item) => {
-      if (item.url === StateName.Report) {
+      if (item.url === `/${StateName.Report}`) {
         this.taskTrack$ = this.store$.select(getTaskTrack);
       }
     });
