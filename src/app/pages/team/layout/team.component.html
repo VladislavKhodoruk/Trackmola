@@ -1,9 +1,20 @@
-<container-element [ngSwitch]="userType">
-  <app-cto-team *ngSwitchCase="types.CTO"></app-cto-team>
-  <app-admin-team-container
-    *ngSwitchCase="types.Admin"
-  ></app-admin-team-container>
-  <app-manager-team-container
-    *ngSwitchCase="types.Manager"
-  ></app-manager-team-container>
-</container-element>
+<div class="team">
+  <div class="team-list">
+    <app-team-list-search-container></app-team-list-search-container>
+  </div>
+  <div class="team-right">
+    <app-visit-card-container [user]="pickedUser"></app-visit-card-container>
+    <div class="team-right-bottom">
+      <app-users-projects-component
+        [usersByProject]="usersByProject"
+        [projectsByUsers]="projectsByUsers"
+        [pickedUser]="pickedUser"
+        [trackedTimeByProjects]="trackedTimeByProjects"
+      ></app-users-projects-component>
+      <app-vacations-component
+        *ngIf="vacationsAndHoliday"
+        [vacations]="vacationsAndHoliday"
+      ></app-vacations-component>
+    </div>
+  </div>
+</div>
