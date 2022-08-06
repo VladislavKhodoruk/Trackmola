@@ -15,7 +15,8 @@
         [trackedTimeByProjects]="trackedTimeByProjects"
       ></app-users-projects-component>
       <app-vacations-component
-        [vacations]="vacations"
+        *ngIf="vacationsAndHoliday"
+        [vacations]="vacationsAndHoliday"
       ></app-vacations-component>
     </div>
   </div>
