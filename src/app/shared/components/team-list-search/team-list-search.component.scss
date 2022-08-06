@@ -232,8 +232,6 @@
 
   ::ng-deep {
     .mat-form-field {
-      padding: var(--offset-d) var(--offset);
-
       font-size: var(--font-main);
       line-height: 1;
 
@@ -285,7 +283,7 @@
 
       .mat-form-field-infix {
         @include flex(center, space-between);
-        padding: 0;
+        padding: var(--offset);
 
         border-top: none;
       }
