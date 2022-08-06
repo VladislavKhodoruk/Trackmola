@@ -161,10 +161,8 @@ export const getTasksForManager = createSelector(
   }
 );
 
-export const getUsersWithoutAdminCTO = createSelector(getUsers, (users) =>
-  users.filter(
-    (item) => item.role !== UserType.Admin && item.role !== UserType.CTO
-  )
+export const getUsersWithoutCTO = createSelector(getUsers, (users) =>
+  users.filter((item) => item.role !== UserType.CTO)
 );
 
 export const getTaskTracksByMonth = createSelector(
