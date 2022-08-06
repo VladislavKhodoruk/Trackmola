@@ -1,0 +1,36 @@
+<section class="section-chart">
+  <app-legend
+    class="chart-legend"
+    [project]="project"
+    [tasks]="tasks"
+    [modeView]="modeView"
+    [chartXRangeHeight]="chartXRangeHeight"
+    [activeTask]="activeTask"
+    [colors]="colors"
+    (selectTask)="onSelectTask($event)"
+  ></app-legend>
+
+  <container-element class="chart" [ngSwitch]="modeView">
+    <ng-container *ngSwitchCase="managerDashboardView.Table">
+      <app-treemap
+        *ngIf="project"
+        [tasks]="tasks"
+        [activeTask]="activeTask"
+        [users]="users"
+      ></app-treemap>
+    </ng-container>
+    <ng-container *ngSwitchCase="managerDashboardView.Arrows">
+      <app-range
+        *ngIf="project"
+        [activeTask]="activeTask"
+        [tasks]="tasks"
+        [period]="period"
+        [minWidth]="minChartXRangeWidth"
+        [marginRight]="chartXRangeMarginRight"
+        [chartXRangeHeight]="chartXRangeHeight"
+        [users]="users"
+        [colors]="colors"
+      ></app-range>
+    </ng-container>
+  </container-element>
+</section>

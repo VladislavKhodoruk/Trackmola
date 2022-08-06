@@ -7,25 +7,25 @@ import {
 } from '@angular/core';
 
 import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
-import { taskTracksByUser } from '@pages/dashboard/helpers/helpers';
 
 import { TaskForManager } from '@pages/dashboard/interfaces/interface';
+import { taskTracksByUser } from '@shared/helpers/helpers';
 
-import { Project, TaskTrack } from '@shared/interfaces/interfaces';
+import { GroupBy, Project, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-manager-dashboard-list-tasks',
-  styleUrls: ['./manager-dashboard-list-tasks.component.scss'],
-  templateUrl: './manager-dashboard-list-tasks.component.html',
+  selector: 'app-legend',
+  styleUrls: ['./legend.component.scss'],
+  templateUrl: './legend.component.html',
 })
-export class ManagerDashboardListTasksComponent {
-  @Input() readonly activeProjectFilter: Project;
-  @Input() readonly tasksForManager: TaskForManager[];
-  @Input() readonly activeTask: TaskForManager;
+export class LegendComponent {
+  @Input() readonly project: Project;
+  @Input() readonly tasks: TaskForManager[];
   @Input() readonly modeView: ManagerDashboardView;
-  @Input() readonly colors: string[];
   @Input() readonly chartXRangeHeight: number;
+  @Input() readonly activeTask: TaskForManager;
+  @Input() readonly colors: GroupBy<string>;
 
   @Output() selectTask = new EventEmitter<TaskForManager>();
 

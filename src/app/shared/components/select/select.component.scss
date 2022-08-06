@@ -20,7 +20,7 @@
 }
 
 ::ng-deep {
-  .cdk-overlay-pane {
+  .cdk-overlay-pane.customClass {
     transform: none !important;
   }
 

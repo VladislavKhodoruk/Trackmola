@@ -76,54 +76,5 @@
         }
       }
     }
-
-    .chart-container {
-      overflow: visible !important;
-
-      height: auto !important;
-    }
-
-    .dashboard-main-chart-item-label {
-      @include flex(baseline, flex-start, var(--offset-xs));
-      flex-direction: column;
-
-      margin: 0 var(--offset-d) var(--offset-d) 1.25rem;
-
-      font: var(--font-blocks);
-      font-weight: 400;
-      color: var(--white);
-      word-break: break-word;
-
-      & span:first-child {
-        font: var(--font-calendar);
-      }
-    }
-
-    rect {
-      stroke: var(--white);
-    }
-
-    .x-range-dataLabel {
-      @include flex(center, space-between);
-      padding-right: var(--offset);
-      padding-left: var(--offset-s);
-
-      font: var(--font-blocks);
-      font-weight: 400;
-      color: white;
-      word-break: break-word;
-
-      & div {
-        @include flex(center, flex-start, var(--offset-s));
-      }
-
-      & img {
-        @include profile-photo(2rem, 2rem);
-      }
-    }
-
-    .highcharts-scrolling {
-      @include scroll-bar;
-    }
   }
 }

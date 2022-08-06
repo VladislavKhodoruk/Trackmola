@@ -32,7 +32,9 @@
 </header>
 <container-element [ngSwitch]="userType">
   <app-cto-team *ngSwitchCase="types.CTO"></app-cto-team>
-  <app-admin-team *ngSwitchCase="types.Admin"></app-admin-team>
+  <app-admin-team-container
+    *ngSwitchCase="types.Admin"
+  ></app-admin-team-container>
   <app-manager-team-container
     *ngSwitchCase="types.Manager"
   ></app-manager-team-container>

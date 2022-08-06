@@ -1,0 +1,26 @@
+@import "vars/variables";
+@import "mixins";
+
+:host {
+  ::ng-deep {
+    .treemap-chart-item-label {
+      @include flex(baseline, flex-start, var(--offset-xs));
+      flex-direction: column;
+
+      margin: 0 var(--offset-d) var(--offset-d) 1.25rem;
+
+      font: var(--font-blocks);
+      font-weight: 400;
+      color: var(--white);
+      word-break: break-word;
+
+      & span:first-child {
+        font: var(--font-calendar);
+      }
+    }
+
+    rect {
+      stroke: var(--white);
+    }
+  }
+}

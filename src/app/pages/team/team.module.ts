@@ -8,6 +8,7 @@ import { IconModule } from '@visurel/iconify-angular';
 import { ButtonModule } from './../../shared/components/button/button.module';
 
 import { AdminTeamComponent } from './components/admin-team/admin-team.component';
+import { AdminTeamContainer } from './components/admin-team/admin-team.container';
 import { CtoTeamComponent } from './components/cto-team/cto-team.component';
 import { ManagerTeamComponent } from './components/manager-team/manager-team.component';
 import { ManagerTeamContainer } from './components/manager-team/manager-team.container';
@@ -15,6 +16,7 @@ import { UsersProjectsComponent } from './components/users-projects/users-projec
 import { UsersProjectsContainer } from './components/users-projects/users-projects.container';
 import { TeamComponent } from './layout/team.component';
 import { TeamContainer } from './layout/team.container';
+import { TeamEffects } from './store/team.effects';
 import { TeamReducer } from './store/team.reducer';
 import { TEAM_STATE_NAME } from './store/team.selectors';
 import { TeamRoutes } from './team.router';
@@ -28,6 +30,7 @@ import { VisitCardModule } from '@shared/components/visit-card/visit-card.module
 @NgModule({
   declarations: [
     AdminTeamComponent,
+    AdminTeamContainer,
     CtoTeamComponent,
     ManagerTeamComponent,
     ManagerTeamContainer,
@@ -39,7 +42,7 @@ import { VisitCardModule } from '@shared/components/visit-card/visit-card.module
   exports: [RouterModule],
   imports: [
     CommonModule,
-    EffectsModule.forFeature([]),
+    EffectsModule.forFeature([TeamEffects]),
     StoreModule.forFeature(TEAM_STATE_NAME, TeamReducer),
     RouterModule.forChild(TeamRoutes),
     TeamListSearchModule,

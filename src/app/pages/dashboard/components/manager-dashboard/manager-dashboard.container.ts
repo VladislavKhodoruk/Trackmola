@@ -5,11 +5,9 @@ import { Observable } from 'rxjs';
 
 import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
 import { TaskForManager } from '@pages/dashboard/interfaces/interface';
-import { setActiveTask } from '@pages/dashboard/store/dashboard.actions';
 import {
   getActiveProjectFilter,
   getTasksForManager,
-  getActiveTask,
   getModeView,
   getManagerDashboardPeriod,
 } from '@pages/dashboard/store/dashboard.selectors';
@@ -33,10 +31,8 @@ import { TrackMolaState } from '@store/trackMola.state';
     [activeProjectFilter]="activeProjectFilter$ | async"
     [tasksForManager]="tasksForManager$ | async"
     [usersInfoByUserId]="usersInfoByUserId$ | async"
-    [activeTask]="activeTask$ | async"
     [modeView]="modeView$ | async"
     [period]="period$ | async"
-    (selectTask)="onSelectTask($event)"
   ></app-manager-dashboard>`,
 })
 export class ManagerDashboardContainer {
@@ -76,9 +72,6 @@ export class ManagerDashboardContainer {
   readonly tasksForManager$: Observable<TaskForManager[]> =
     this.store$.select(getTasksForManager);
 
-  readonly activeTask$: Observable<TaskForManager> =
-    this.store$.select(getActiveTask);
-
   readonly usersInfoByUserId$: Observable<GroupBy<User>> =
     this.store$.select(usersInfoByUserId);
 
@@ -90,8 +83,4 @@ export class ManagerDashboardContainer {
   );
 
   constructor(private store$: Store<TrackMolaState>) {}
-
-  protected onSelectTask(task: TaskForManager): void {
-    this.store$.dispatch(setActiveTask({ task }));
-  }
 }
