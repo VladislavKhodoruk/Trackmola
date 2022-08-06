@@ -9,6 +9,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
+import { MAT_SELECT_CONFIG } from '@angular/material/select';
 import fireIcon from '@iconify/icons-emojione/fire';
 import check from '@iconify/icons-mdi/check';
 import microphoneIcon from '@iconify/icons-tabler/microphone';
@@ -36,6 +38,12 @@ import { Task } from '@pages/report/interfaces/interfaces';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
+      useValue: { overlayPanelClass: 'reportClass' },
+    },
+  ],
   selector: 'app-report-input',
   styleUrls: ['./report-input.component.scss'],
   templateUrl: './report-input.component.html',

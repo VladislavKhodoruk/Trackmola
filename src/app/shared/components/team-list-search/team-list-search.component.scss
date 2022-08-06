@@ -2,12 +2,6 @@
 @import "mixins";
 
 ::ng-deep {
-  .cdk-overlay-pane {
-    width: 20.5rem !important;
-    margin-top: var(--offset-xs);
-    margin-left: -1.1rem;
-  }
-
   .mat-autocomplete-panel {
     max-height: 10rem !important;
 
@@ -236,8 +230,6 @@
 
   ::ng-deep {
     .mat-form-field {
-      padding: var(--offset-d) var(--offset);
-
       font-size: var(--font-main);
       line-height: 1;
 
@@ -289,7 +281,7 @@
 
       .mat-form-field-infix {
         @include flex(center, space-between);
-        padding: 0;
+        padding: var(--offset);
 
         border-top: none;
       }
