@@ -114,6 +114,8 @@ export const COLORS_FOR_TASKS = [
   'var(--task-violet3)',
 ];
 
+export const ROLES = ['employee', 'manager', 'admin', 'CTO'];
+
 export const OUTPUT_RATE = 8;
 export const HIGHEST_KPI = 1;
 

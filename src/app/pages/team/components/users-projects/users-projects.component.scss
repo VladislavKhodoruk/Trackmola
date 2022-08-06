@@ -12,6 +12,14 @@
 
     width: calc(100% - var(--offset-s));
 
+    &-text {
+      @include flex(stretch, center, var(--offset-m));
+
+      width: 100%;
+
+      font: var(--font-title);
+    }
+
     &-item {
       @include flex(flex-start, center, var(--offset-d));
 
