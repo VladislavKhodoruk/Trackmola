@@ -1,8 +1,8 @@
 export enum UserType {
   Employee = 'employee',
   CTO = 'CTO',
-  Manager = 'manager',
-  Admin = 'admin',
+  Manager = 'project manager',
+  Admin = 'administrator',
 }
 
 export enum StateName {
