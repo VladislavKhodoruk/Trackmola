@@ -148,3 +148,8 @@ export interface Holiday {
 export type TaskByWeekDays = {
   [key in WeekDays]: TaskTrack[] | [];
 };
+
+export interface TaskTracksByUser {
+  taskTracks: TaskTrack[];
+  userId: User['id'];
+}
