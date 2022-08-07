@@ -1,0 +1,183 @@
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .search-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .icon-pineapple svg {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+:host {
+  @include flex(flex-start, flex-start, var(--offset-l));
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+
+  .vacation-header {
+    @include flex(center, space-between);
+    width: 100%;
+    height: 5rem;
+    max-height: 5rem;
+
+    &-title {
+      font: var(--font-titleBig);
+    }
+  }
+
+  .vacation-main {
+    @include flex(flex-start, flex-start, var(--offset-ml));
+    @include scroll-bar;
+    overflow: auto;
+    flex: 3;
+
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    padding: var(--offset-m);
+
+    border: $border-input;
+    border-radius: var(--border-radius-l);
+  }
+
+  .vacations-list-with-search {
+    @include flex(flex-start, flex-start, var(--offset-m));
+    flex-direction: column;
+
+    width: 30%;
+    max-width: 30%;
+    height: 100%;
+    max-height: 100%;
+  }
+
+  .vacations-list {
+    @include flex(flex-start, flex-start, var(--offset-m));
+    @include scroll-bar;
+
+    $width-scroll: var(--offset-s);
+    $gap-scroll: calc(var(--offset-l) / 2 - #{$width-scroll} / 2);
+    $shadow-y: var(--offset-d);
+    $shadow-left: var(--offset-l);
+    $shadow-right: var(--offset);
+    $shadow-selected: 0 var(--offset-xs) #{$shadow-left} calc(
+        var(--offset-xs) * -1
+      ) var(--shadow-project-selected);
+    scroll-snap-type: y mandatory;
+
+    overflow-y: scroll;
+    flex-direction: column;
+
+    width: calc(
+      100% + #{$shadow-left} + #{$shadow-right} + #{$width-scroll} * 2 - #{$gap-scroll}
+    );
+    max-width: calc(
+      100% + #{$shadow-left} + #{$shadow-right} + #{$width-scroll} * 2 - #{$gap-scroll}
+    );
+    margin: calc(#{$shadow-y} * -1) calc(#{$gap-scroll} * -1)
+      calc(#{$shadow-y} * -1) calc(#{$shadow-left} * -1);
+    padding: #{$shadow-y} #{$gap-scroll} #{$shadow-y} #{$shadow-left};
+
+    &-item {
+      @include flex(flex-start, space-between, var(--offset-d));
+      cursor: pointer;
+      scroll-margin-top: var(--offset-d);
+      scroll-snap-align: start;
+
+      width: calc(100%);
+      max-width: calc(100%);
+      padding: var(--offset) 0 var(--offset) var(--offset-m);
+
+      background-color: var(--white);
+
+      &-photo {
+        @include flex(center, flex-start);
+        flex: 0 1;
+        flex-direction: column;
+
+        &-avatar {
+          @include profile-photo(5rem, 5rem);
+        }
+
+        &-location {
+          font: var(--font-typography);
+          font-weight: 400;
+          color: var(--gray2);
+        }
+      }
+
+      &-info {
+        @include flex(flex-start, flex-start);
+        flex: 1;
+        flex-direction: column;
+
+        &-header {
+          @include flex(flex-start, space-between);
+          width: 100%;
+        }
+
+        &-name {
+          font: var(--font-calendar);
+        }
+
+        &-position {
+          font: var(--font-typography);
+          font-weight: 400;
+          color: var(--gray2);
+        }
+
+        &-days {
+          margin-top: var(--offset);
+
+          font: var(--font-typography);
+          font-weight: 400;
+          color: var(--yellow2);
+        }
+      }
+
+      &-selected {
+        box-shadow: #{$shadow-selected};
+      }
+    }
+  }
+
+  .vacations-chart {
+    width: 70%;
+    max-width: 70%;
+    height: 100%;
+    max-height: 100%;
+
+    background-image: url("../../../../../assets/img/chartVacations.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .vacation-footer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .search {
+    @include flex(center, flex-start);
+    width: 100%;
+
+    &-input {
+      width: 100%;
+      padding-right: 3rem;
+    }
+
+    &-icon {
+      cursor: pointer;
+
+      margin-left: -2.5rem;
+
+      color: var(--gray2);
+    }
+  }
+}

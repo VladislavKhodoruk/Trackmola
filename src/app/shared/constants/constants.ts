@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import pineappleIcon from '@iconify/icons-emojione-monotone/pineapple';
 import peopleTeam20Regular from '@iconify/icons-fluent/people-team-20-regular';
 import chartDonut3 from '@iconify/icons-tabler/chart-donut-3';
 import fileTime from '@iconify/icons-tabler/file-time';
@@ -40,6 +41,11 @@ const NAVIGATION_BASIC_ITEMS: NavigationItem[] = [
     icon: puzzleIcon,
     label: 'Projects',
     routeLink: 'projects',
+  },
+  {
+    icon: pineappleIcon,
+    label: 'Vacations',
+    routeLink: 'vacations',
   },
 ];
 
