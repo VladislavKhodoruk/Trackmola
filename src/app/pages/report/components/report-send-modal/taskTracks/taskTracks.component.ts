@@ -15,20 +15,6 @@ export class TaskTracksComponent {
   @Input() tasksInfoByTaskId!: GroupBy<any>;
   @Input() taskTracks!: TaskTrack[];
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  // console.log(this.projectsInfoByProjectId);
-  // console.log(this.tasksInfoByTaskId);
-  // console.log(this.getFilteredTasksTracks());
-  // console.log(this.groupByDate());
-
-  //   if (changes.taskTracks && this.taskTracks) {
-  //     const t = this.groupByDate(this.taskTracks);
-  //     t.forEach((item) =>
-  //       console.log('date: ', +item[0], ' tasktracks: ', item[1])
-  //     );
-  //   }
-  // }
-
   getFilteredTasksTracks(): TaskTrack[] {
     return this.taskTracks?.filter(
       (curTaskTrack) =>

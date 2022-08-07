@@ -1,75 +1,15 @@
-<app-header></app-header>
-
 <app-manager-controls-container
   [modeView]="modeView"
 ></app-manager-controls-container>
 
 <section class="dashboard-main">
-  <app-manager-dashboard-list-tasks
-    class="dashboard-main-tasks"
-    [activeProjectFilter]="activeProjectFilter"
-    [tasksForManager]="tasksForManager"
-    [colors]="tasksColors"
-    [chartXRangeHeight]="chartXRangeHeight"
+  <app-chart-projects
+    [project]="activeProjectFilter"
+    [tasks]="tasksForManager"
     [modeView]="modeView"
-    [activeTask]="activeTask"
-    (selectTask)="selectTask.emit($event)"
-  ></app-manager-dashboard-list-tasks>
-
-  <container-element class="dashboard-main-chart" [ngSwitch]="modeView">
-    <ng-container *ngSwitchCase="managerDashboardView.Table">
-      <app-highcharts-chart
-        [data]="dataChartTreemap"
-        [options]="basicOptionsChartTreemap"
-        *ngIf="activeProjectFilter"
-      ></app-highcharts-chart>
-    </ng-container>
-    <ng-container *ngSwitchCase="managerDashboardView.Arrows">
-      <ng-container *ngIf="activeProjectFilter">
-        <div
-          class="dashboard-main-chart-period"
-          [style.width.px]="chartXRangeWidth - chartXRangeMarginRight"
-          *ngIf="period"
-        >
-          <ng-container *ngFor="let day of daysInPeriod['days']">
-            <span
-              class="dashboard-main-chart-period-day"
-              [style.width.%]="100 / daysInPeriod['days'].length"
-              [class.dashboard-main-chart-period-day-weekend]="isWeekend(day)"
-            >
-              {{ day | date: "dd LLL" }}
-            </span>
-          </ng-container>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="!activeTask">
-        <ng-container *ngFor="let task of tasksForManager">
-          <ng-container
-            *ngFor="let taskTrack of getTaskTracksByUser(task.taskTracksInTask)"
-          >
-            <app-highcharts-chart
-              [data]="dataXRangeAllTasks(taskTrack)"
-              [options]="basicOptionsChartXRange"
-              *ngIf="activeProjectFilter"
-            ></app-highcharts-chart>
-          </ng-container>
-        </ng-container>
-      </ng-container>
-      <ng-container *ngIf="activeTask">
-        <ng-container
-          *ngFor="
-            let taskTrack of getTaskTracksByUser(activeTask.taskTracksInTask)
-          "
-        >
-          <app-highcharts-chart
-            [data]="dataXRangeAllTasks(taskTrack)"
-            [options]="basicOptionsChartXRange"
-            *ngIf="activeProjectFilter"
-          ></app-highcharts-chart>
-        </ng-container>
-      </ng-container>
-    </ng-container>
-  </container-element>
+    [users]="usersInfoByUserId"
+    [period]="period"
+  ></app-chart-projects>
 </section>
 
 <!-- <app-vacations-component

@@ -35,14 +35,6 @@ export class ReportSendModalContainer {
     private commonStore$: Store<CommonState>
   ) {}
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  // console.log(this.taskTracks$);
-  // console.log(this.currentDate$);
-  // console.log(this.tasksInfoByTaskId);
-  // console.log(this.getFilteredTasksTracks());
-  // console.log(this.groupByDate());
-  // }
-
   putIntoStore(taskTrack: TaskTrack): void {
     this.store$.dispatch(putTaskTrack({ taskTrack }));
   }

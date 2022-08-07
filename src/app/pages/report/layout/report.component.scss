@@ -22,6 +22,64 @@
       }
     }
 
+    &-navigation {
+      @include flex(center, space-between);
+      margin-bottom: var(--offset);
+
+      &-info {
+        @include flex(center, space-between);
+
+        &-bar {
+          &-progress {
+            width: 80%;
+            height: 100%;
+
+            background-color: var(--primary);
+            border: none;
+            border-radius: var(--border-radius-xxl);
+          }
+
+          &-title {
+            margin-top: -0.5rem;
+
+            font: var(--font-currentSmall);
+            color: var(--black);
+            text-align: left;
+            text-transform: capitalize;
+          }
+
+          &-info {
+            @include flex(center, flex-end);
+
+            font: var(--font-currentSmall);
+            color: var(--gray2);
+          }
+
+          &-item {
+            width: 12rem;
+            height: 0.5rem;
+            margin: 0 auto;
+
+            background-color: var(--gray5);
+            border: none;
+            border-radius: var(--offset);
+
+            &-progress {
+              width: 80%;
+              height: 100%;
+
+              border: none;
+              border-radius: var(--border-radius-xxl);
+            }
+          }
+        }
+
+        &-photos {
+          margin-left: var(--offset-ml);
+        }
+      }
+    }
+
     &-calendar {
       flex: 1;
 
@@ -50,5 +108,9 @@
         flex: 1;
       }
     }
+  }
+
+  .flex-container {
+    @include flex(flex-start, space-between);
   }
 }

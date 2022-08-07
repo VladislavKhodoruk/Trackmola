@@ -5,22 +5,16 @@ import {
   Input,
   OnChanges,
   Output,
-  Renderer2,
   SimpleChanges,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import chartArrows from '@iconify/icons-tabler/chart-arrows';
 import pinnedIcon from '@iconify/icons-tabler/pinned';
 import pinnedOff from '@iconify/icons-tabler/pinned-off';
 import tableIcon from '@iconify/icons-tabler/table';
-import angleDown from '@iconify/icons-uil/angle-down';
 import { IconifyIcon } from '@iconify/types';
-import { Observable } from 'rxjs';
-
-import { map, startWith } from 'rxjs/operators';
 
 import { ManagerDashboardView } from '@pages/dashboard/enums/enum';
-import { Project } from '@shared/interfaces/interfaces';
+import { Period, Project, SelectOptions } from '@shared/interfaces/interfaces';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,8 +33,8 @@ export class ManagerControlsComponent implements OnChanges {
   @Output() removeProjectFilter = new EventEmitter<Project>();
   @Output() removeActiveProject = new EventEmitter<void>();
   @Output() changeManagerMainView = new EventEmitter<ManagerDashboardView>();
+  @Output() changePeriod = new EventEmitter<Period>();
 
-  readonly iconAngleDown: IconifyIcon = angleDown;
   readonly iconPinned: IconifyIcon = pinnedIcon;
   readonly iconPinnedOff: IconifyIcon = pinnedOff;
   readonly iconTable: IconifyIcon = tableIcon;
@@ -48,40 +42,29 @@ export class ManagerControlsComponent implements OnChanges {
 
   readonly managerDashboardView = ManagerDashboardView;
 
-  projectInput: FormControl<string> = new FormControl('');
-
-  filteredProjects: Observable<Project[]>;
-
-  constructor(private renderer: Renderer2) {}
-
-  protected focusProjectInput(): void {
-    const projectInput: HTMLElement = this.renderer.selectRootElement(
-      '.dashboard-controls-project-input'
-    );
-    return projectInput.ariaExpanded === 'true'
-      ? projectInput.blur()
-      : projectInput.focus();
-  }
+  selectProjectOptions: SelectOptions[];
+  selectedProject: Project['id'];
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.managerProjects) {
-      this.filteredProjects = this.projectInput.valueChanges.pipe(
-        startWith(''),
-        map((projectInputValue) => this._filter(projectInputValue || ''))
-      );
+    if (changes.managerProjects && this.managerProjects.length) {
+      this.selectProjectOptions = this.managerProjects.map((project) => ({
+        value: project.id,
+        viewValue: project.name,
+      }));
     }
   }
 
-  private _filter(projectInputValue: string): Project[] {
-    return this.managerProjects.filter((project) =>
-      project.name.toLowerCase().includes(projectInputValue.toLowerCase())
-    );
+  protected getSelectedValue(currentProjectId: string): void {
+    this.selectedProject = currentProjectId;
   }
 
   protected addProjectToFilter(): void {
-    if (this.projectInput.value.length) {
-      this.projectFilter.emit(this.projectInput.value);
-      this.projectInput.reset();
+    if (this.selectedProject) {
+      const projectName = this.managerProjects.find(
+        (project) => project.id === this.selectedProject
+      ).name;
+      this.projectFilter.emit(projectName);
+      this.selectedProject = '';
     }
   }
 

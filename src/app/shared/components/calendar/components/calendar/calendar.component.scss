@@ -11,6 +11,8 @@
 
   table,
   th {
+    cursor: pointer;
+
     border-collapse: collapse;
 
     border: $border-table;
@@ -22,5 +24,12 @@
 
     font-size: var(--font-calendar);
     color: #969696;
+  }
+
+  .disabled {
+    cursor: not-allowed;
+    user-select: none;
+
+    opacity: 0.5;
   }
 }

@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { ActiveTasks, TaskTrack } from './../../interfaces/interfaces';
 
+import { putTaskTrack } from '@pages/report/store/report.actions';
 import { getTaskTrack } from '@pages/report/store/report.selectors';
 import { ReportState } from '@pages/report/store/report.state';
 import { AddTasktrackDialogContainer } from '@shared/components/add-tasktrack-dialog/add-tasktrack-dialog.container';
@@ -30,6 +31,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     (addCurTaskTrack)="addCurTaskTrack($event)"
     [formTask]="formTask"
     (closeDialog)="closeDialog()"
+    (taskTrack)="putIntoStore($event)"
   ></app-report-input>`,
 })
 export class ReportInputContainer {
@@ -58,5 +60,9 @@ export class ReportInputContainer {
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  putIntoStore(taskTrack: TaskTrack): void {
+    this.store$.dispatch(putTaskTrack({ taskTrack }));
   }
 }

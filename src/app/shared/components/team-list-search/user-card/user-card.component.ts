@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import pineapple from '@iconify/icons-noto/pineapple';
 
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
-import { User, UserCard } from '@shared/interfaces/interfaces';
+import { UserCard } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-user-card',

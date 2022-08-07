@@ -1,8 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterModule } from '@angular/router';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -10,10 +7,6 @@ import { StoreModule } from '@ngrx/store';
 
 import { IconModule } from '@visurel/iconify-angular';
 
-import { ReportSendModalComponent } from './components/report-send-modal/report-send-modal.component';
-import { ReportSendModalContainer } from './components/report-send-modal/report-send-modal.container';
-import { TaskTracksComponent } from './components/report-send-modal/tasktracks/tasktracks.component';
-import { TaskTracksContainer } from './components/report-send-modal/tasktracks/tasktracks.container';
 import { ReportComponent } from './layout/report.component';
 import { ReportContainer } from './layout/report.container';
 import { ReportRoutes } from './report.router';

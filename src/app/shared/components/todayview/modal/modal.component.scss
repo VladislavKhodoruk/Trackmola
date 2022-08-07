@@ -4,11 +4,9 @@
 ::ng-deep {
   .modalTask {
     .mat-dialog-container {
-      overflow: hidden;
+      overflow: inherit;
 
-      min-width: 25vw;
-      height: 23vh;
-      padding: var(--offset);
+      padding: 0;
 
       border-radius: var(--offset);
     }
@@ -37,6 +35,10 @@
 }
 
 :host {
+  .delete-modal {
+    padding: var(--offset);
+  }
+
   .top {
     @include flex(center, space-between);
     margin-bottom: var(--offset-m);
@@ -51,7 +53,7 @@
   }
 
   .buttons {
-    @include flex(stretch, flex-end);
+    @include flex(center, flex-end);
   }
 
   .buttons-cancel,

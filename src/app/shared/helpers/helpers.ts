@@ -3,6 +3,7 @@ import { Autolinker, AutolinkerConfig } from 'autolinker';
 import { SeriesOptionsType } from 'highcharts';
 
 import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
+import { DaysByPeriod } from '@pages/dashboard/interfaces/interface';
 import {
   COLORS_FOR_TASKS,
   NUMBER_OF_DAYS_IN_A_WEEK,
@@ -18,6 +19,8 @@ import {
   TaskTrack,
   OutOfMain,
   TaskByWeekDays,
+  GroupBy,
+  TaskTracksByUser,
 } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {

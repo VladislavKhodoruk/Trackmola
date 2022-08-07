@@ -2,6 +2,10 @@
 @import "mixins";
 
 :host {
+  .wrapper {
+    padding: var(--offset);
+  }
+
   .top {
     @include flex(center, space-between);
     margin-bottom: var(--offset-m);
@@ -70,6 +74,18 @@
     background-color: var(--primary);
   }
 
+  .icon-x {
+    display: flex;
+  }
+
+  .icon-x:hover {
+    cursor: pointer;
+
+    color: var(--primary-hover);
+
+    opacity: 0.8;
+  }
+
   .buttons-cancel:hover,
   .buttons-add:hover,
   .icons:hover {
@@ -89,42 +105,6 @@
       cursor: no-drop;
 
       opacity: 0.5;
-    }
-  }
-}
-
-::ng-deep {
-  .modalInputTask {
-    .mat-dialog-container {
-      overflow: hidden;
-
-      min-width: 25vw;
-      padding: var(--offset);
-
-      border-radius: var(--offset);
-    }
-
-    .mat-dialog-title {
-      margin: 0;
-
-      text-transform: capitalize;
-    }
-
-    .icon-x {
-      display: flex;
-
-      svg {
-        width: 1.75rem;
-        height: 1.75rem;
-      }
-    }
-
-    .icon-x:hover {
-      cursor: pointer;
-
-      color: var(--primary-hover);
-
-      opacity: 0.8;
     }
   }
 }

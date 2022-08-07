@@ -131,11 +131,6 @@ export const taskTracksGroupByTask = createSelector(
     }, {})
 );
 
-export const getActiveTask = createSelector(
-  getDashboardState,
-  ({ manager }) => manager.selectedTask
-);
-
 export const getActiveProjectFilter = createSelector(
   getDashboardState,
   ({ manager }) => manager.activeProjectFilter
@@ -204,4 +199,9 @@ export const getTaskTracksDurationGroupByUser = createSelector(
       );
       return { ...accum, [user.id]: { duration, overtimeDuration } };
     }, {})
+);
+
+export const getDashboardView = createSelector(
+  getDashboardState,
+  ({ dashboardView }) => dashboardView
 );

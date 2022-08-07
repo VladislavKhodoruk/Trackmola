@@ -27,12 +27,16 @@ export const MY_DATE_FORMATS = {
 export class DatepickerComponent {
   @Output() getFirstandLastDay: EventEmitter<Period> =
     new EventEmitter<Period>();
-  period: Period = getPeriod(new Date(), PeriodType.Week);
+  period: Period = getPeriod(new Date(), PeriodType.TwoWeek);
   start = new Date(this.period.start);
   end = new Date(this.period.end);
 
   onGetFirstandLastDay(): void {
     if (this.end) {
+      this.end.setHours(23);
+      this.end.setMinutes(59);
+      this.end.setSeconds(59);
+
       const firstandLastDay = {
         end: this.end.getTime(),
         start: this.start.getTime(),

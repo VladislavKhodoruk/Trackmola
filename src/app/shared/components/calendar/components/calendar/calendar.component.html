@@ -8,7 +8,7 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let week of currentWeeks">
+    <tr *ngFor="let week of currentWeeks" [class.disabled]="editableTaskTrack">
       <td *ngFor="let day of week.days">
         <app-calendar-item
           [day]="day"

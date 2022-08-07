@@ -37,3 +37,13 @@ export enum Roles {
   QA = 'QA',
   Student = 'Student',
 }
+
+export enum ViewMode {
+  Table = 'table',
+  Chart = 'chart',
+}
+
+export enum ChartViewMode {
+  Table = 'table',
+  Arrows = 'arrows',
+}

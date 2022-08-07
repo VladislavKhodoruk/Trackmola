@@ -1,4 +1,6 @@
-<container-element [ngSwitch]="userType">
+<app-header-container></app-header-container>
+
+<container-element [ngSwitch]="dashboardView">
   <app-employee-dashboard
     *ngSwitchCase="types.Employee"
   ></app-employee-dashboard>
