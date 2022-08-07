@@ -11,16 +11,16 @@
   height: 100%;
 
   .dashboard-header {
-    height: #{$height-header};
-    max-height: #{$height-header};
     width: 100%;
     max-width: 100%;
+    height: #{$height-header};
+    max-height: #{$height-header};
   }
 
   .dashboard-main {
-    height: calc(100% - #{$height-header});
-    max-height: calc(100% - #{$height-header});
     width: 100%;
     max-width: 100%;
+    height: calc(100% - #{$height-header});
+    max-height: calc(100% - #{$height-header});
   }
 }
