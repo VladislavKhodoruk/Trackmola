@@ -3,6 +3,7 @@
 
 :host {
   .report-constructor-table {
+    @include scroll-bar;
     overflow: auto;
 
     height: calc(100% - 16rem);
