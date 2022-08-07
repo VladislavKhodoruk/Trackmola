@@ -7,11 +7,17 @@
         class="projects-team-list-user"
         [class.projects-team-list-user-manager]="user.role === roles.Manager"
       >
-        <img
-          src="{{ user.photo || defaultPhoto }}"
-          class="projects-team-list-user-avatar"
-          alt="user photo"
-        />
+        <div class="report-status-container">
+          <img
+            src="{{ user.photo || defaultPhoto }}"
+            class="projects-team-list-user-avatar"
+            alt="user photo"
+          />
+          <app-report-status
+            [reportStatus]="getUserStatus(user)"
+          ></app-report-status>
+        </div>
+
         <div class="projects-team-list-item-container">
           <p class="projects-team-list-user-name">{{ user.fullName }}</p>
           <p class="projects-team-list-user-role">{{ user.position }}</p>

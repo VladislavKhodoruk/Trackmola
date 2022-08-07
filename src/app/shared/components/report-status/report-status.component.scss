@@ -2,11 +2,19 @@
 @import "mixins";
 
 :host {
-  .status {
-    position: relative;
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
 
+  ic-icon {
+    margin-left: 0.142rem;
+  }
+
+  .status {
     display: inline-block;
 
+    width: 1.5rem;
+    height: 1.5rem;
     margin: var(--offset-l);
 
     border-radius: 50%;
@@ -14,17 +22,20 @@
     &.new,
     &.new::before {
       background: var(--warning);
+      color: var(--warning);
     }
 
-    &.send,
-    &.send::before {
+    &.sended,
+    &.sended::before {
       background: var(--white);
       border: var(--border-xxs) solid var(--primary);
+      color: var(--primary);
     }
 
-    &.approve,
-    &.approve::before {
+    &.approved,
+    &.approved::before {
       background: var(--primary);
+      color: var(--white);
     }
   }
 }

@@ -9,6 +9,7 @@ import {
   HIGHEST_KPI,
   OUTPUT_RATE,
   SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
+  ONE_WEEK_IN_SECONDS,
 } from '@shared/constants/constants';
 import { NumDay, PeriodType } from '@shared/enums/enum';
 import {
@@ -237,6 +238,17 @@ export function outOfNorm(
 export function urlReplacer(text: string): string {
   const options: AutolinkerConfig = { className: 'link' };
   const replacer: Autolinker = new Autolinker(options);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
   return replacer.link(text);
+}
+
+export function getFilteredTasksTracks(
+  taskTracks: TaskTrack[],
+  date: number
+): TaskTrack[] {
+  return taskTracks.filter(
+    (curTaskTrack) =>
+      curTaskTrack.userId &&
+      curTaskTrack.date.seconds * 1000 >= date - ONE_WEEK_IN_SECONDS &&
+      curTaskTrack.date.seconds * 1000 <= date
+  );
 }

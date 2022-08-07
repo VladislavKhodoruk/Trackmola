@@ -3,14 +3,16 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import checksIcon from '@iconify/icons-tabler/checks';
 import messagePlus from '@iconify/icons-tabler/message-plus';
 import angleRight from '@iconify/icons-uil/angle-right';
 
-import { untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { take, filter } from 'rxjs';
 
@@ -19,6 +21,7 @@ import { ProjectMode } from '../enums/enums';
 
 import { dialogOpeningTime } from '@shared/constants/constants';
 import { UserType } from '@shared/enums/enum';
+import { getFilteredTasksTracks } from '@shared/helpers/helpers';
 import {
   GroupBy,
   Project,
@@ -34,12 +37,15 @@ import {
   styleUrls: ['./projects.component.scss'],
   templateUrl: './projects.component.html',
 })
-export class ProjectsComponent {
+@UntilDestroy()
+export class ProjectsComponent implements OnChanges {
   @Input() taskItem!: TaskItem | null;
   @Input() readonly projectByRoute: Project;
   @Input() readonly usersGroupByProject: GroupBy<User[]>;
+  @Input() readonly taskTracks: TaskTrack[];
 
   @Input() readonly project: Project;
+  @Input() readonly currentDate: number;
   @Input() readonly activeTaskGroupByProject: GroupBy<Task[]>;
   @Input() readonly activeTaskTracksGroupByTask: GroupBy<TaskTrack[]>;
   @Input() readonly usersInfoByUserId: GroupBy<User>;
@@ -48,6 +54,7 @@ export class ProjectsComponent {
   @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
 
   panelOpenState = false;
+  filteredTaskTracks: TaskTrack[];
 
   readonly projectMode = ProjectMode;
   currentMode: string = ProjectMode.Tasks;
@@ -91,6 +98,14 @@ export class ProjectsComponent {
   ];
 
   constructor(public dialog: MatDialog) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.taskTracks) {
+      this.filteredTaskTracks = getFilteredTasksTracks(
+        this.taskTracks,
+        this.currentDate
+      );
+    }
+  }
 
   changeMode(mode: string): void {
     this.currentMode = mode;

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import check from '@iconify/icons-tabler/check';
 import { IconifyIcon } from '@iconify/types';
 
@@ -8,6 +8,7 @@ import { IconifyIcon } from '@iconify/types';
   templateUrl: './report-status.component.html',
 })
 export class ReportStatusComponent {
+  @Input() reportStatus: string;
   @Input() icon!: IconifyIcon;
   @Input() iconWidth!: string;
   @Input() iconHeight!: string;

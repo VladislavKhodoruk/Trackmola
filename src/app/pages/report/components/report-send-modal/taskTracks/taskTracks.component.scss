@@ -1,16 +1,30 @@
-@import "vars/variables";
 @import "mixins";
-
-::ng-deep {
-  .icons {
-    svg {
-      @include icon-s;
-    }
-  }
-}
+@import "vars/variables";
 
 :host {
+  $width-scroll: var(--offset-s);
+  $height-header: 4rem;
+  $gap: var(--offset-m);
+  $gap-scroll: calc(var(--offset-l) / 2 - #{$width-scroll} / 2);
+
   --box-shadow-color: rgb(87 74 249 / 25%);
+
+  // display: flex;
+
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  .taskTracks {
+    @include flex(flex-start, flex-start, var(--offset-s));
+    flex-direction: column;
+
+    width: 100%;
+
+    &-date {
+      color: var(--gray2);
+    }
+  }
 
   .task {
     box-sizing: border-box;
@@ -60,6 +74,8 @@
   }
 
   .icons {
+    user-select: none;
+
     display: none;
 
     color: var(--gray);

@@ -1,18 +1,57 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import fireIcon from '@iconify/icons-emojione/fire';
-import { IconifyIcon } from '@iconify/types';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { UntilDestroy } from '@ngneat/until-destroy';
+import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
 
-import { TaskItem } from '@shared/interfaces/interfaces';
+import { GroupBy, TaskTrack, Period } from '@shared/interfaces/interfaces';
 
-@UntilDestroy()
 @Component({
-  selector: 'app-taskTracks',
-  styleUrls: ['./taskTracks.component.scss'],
-  templateUrl: './taskTracks.component.html',
+  selector: 'app-tasktracks',
+  styleUrls: ['./tasktracks.component.scss'],
+  templateUrl: './tasktracks.component.html',
 })
 export class TaskTracksComponent {
-  @Input() taskItem!: TaskItem | null;
-  readonly iconFire: IconifyIcon = fireIcon;
+  @Input() period!: Period;
+  @Input() projectsInfoByProjectId!: GroupBy<any>;
+  @Input() tasksInfoByTaskId!: GroupBy<any>;
+  @Input() taskTracks!: TaskTrack[];
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  // console.log(this.projectsInfoByProjectId);
+  // console.log(this.tasksInfoByTaskId);
+  // console.log(this.getFilteredTasksTracks());
+  // console.log(this.groupByDate());
+
+  //   if (changes.taskTracks && this.taskTracks) {
+  //     const t = this.groupByDate(this.taskTracks);
+  //     t.forEach((item) =>
+  //       console.log('date: ', +item[0], ' tasktracks: ', item[1])
+  //     );
+  //   }
+  // }
+
+  getFilteredTasksTracks(): TaskTrack[] {
+    return this.taskTracks?.filter(
+      (curTaskTrack) =>
+        curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
+        curTaskTrack.date.seconds * 1000 >=
+          this.period.start - ONE_WEEK_IN_SECONDS &&
+        curTaskTrack.date.seconds * 1000 <= this.period.end
+    );
+  }
+
+  protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
+    this.taskTracks = this.getFilteredTasksTracks();
+    const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
+      (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
+        const date = taskTrack.date.seconds * 1000;
+        if (!accum[date]) {
+          accum[date] = [];
+        }
+        accum[date].push(taskTrack);
+        return accum;
+      },
+      {}
+    );
+    return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
+  }
 }

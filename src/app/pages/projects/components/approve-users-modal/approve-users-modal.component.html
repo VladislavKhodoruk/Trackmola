@@ -1,0 +1,58 @@
+<div class="top">
+  <h1 mat-dialog-title class="title">Approve tasks</h1>
+  <ic-icon class="icon-x" [icon]="iconX" mat-button mat-dialog-close></ic-icon>
+</div>
+
+<ng-container *ngIf="project">
+  <ul class="activeTasks-list">
+    <ng-container *ngTemplateOutlet="activeTask"> </ng-container>
+  </ul>
+</ng-container>
+
+<ng-template #activeTask>
+  <ng-container>
+    <li class="activeTasks-list-item">
+      <div
+        class="activeTask"
+        *ngFor="
+          let taskTrack of groupByDate(sendedTaskTracksGroupByUser[data.userId])
+        "
+      >
+        <div class="activeTask-date">
+          {{ taskTrack[0] | date: "dd MMMM" }}
+        </div>
+        <div
+          class="activeTask-container"
+          *ngFor="let taskTrack1 of taskTrack[1]"
+        >
+          <div class="activeTask-description">
+            <div class="activeTask-description-header">
+              <div>{{ tasksInfoByTaskId[taskTrack1.taskId].name }}</div>
+              <span class="activeTask-description-header-duration">
+                {{ taskTrack1.duration + taskTrack1.overtimeDuration }}h
+              </span>
+            </div>
+            <div class="activeTask-description-comment">
+              {{ taskTrack1.comments || "no comments" }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ng-container>
+</ng-template>
+
+<div mat-dialog-actions class="buttons">
+  <app-button
+    type="submit"
+    [buttonClass]="'button-primary'"
+    label=" Approve all"
+    [disabled]="false"
+    iconWidth="2rem"
+    iconHeight="2rem"
+    (buttonClick)="approveUsersTracks()"
+  ></app-button>
+  <button mat-button [mat-dialog-close]="false" class="buttons-cancel">
+    Cancel
+  </button>
+</div>

@@ -1,10 +1,9 @@
-<p>report-approve-modal works!</p>
+<div class="top">
+  <h1 mat-dialog-title class="title">Send report for approval</h1>
+  <ic-icon class="icon-x" [icon]="iconX" mat-button mat-dialog-close></ic-icon>
+</div>
 
-<app-taskTracks></app-taskTracks>
-
-<!-- <app-todayview-container></app-todayview-container> -->
-<!-- *ngFor="let taskItem of taskItems"
-[taskItem]="taskItem" -->
+<app-tasktracks-container></app-tasktracks-container>
 
 <div mat-dialog-actions class="buttons">
   <button mat-button [mat-dialog-close]="false" class="buttons-cancel">
