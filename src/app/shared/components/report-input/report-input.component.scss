@@ -7,24 +7,32 @@
     margin-top: var(--offset-xs);
     margin-left: -1.1rem;
   }
+
   .mat-autocomplete-panel {
     max-height: 10rem !important;
+
     background-color: var(--white);
     border-radius: 0 0 var(--offset-d) var(--offset-d) !important;
     box-shadow: $border-cdk-select !important;
   }
+
   .mat-option {
     height: 2.5rem !important;
+
     color: var(--gray2);
+
     border: $border-input;
+
     &:hover {
       background-color: var(--white) !important;
       box-shadow: $border-input-select;
     }
   }
+
   .mat-selected {
     color: var(--primary) !important;
   }
+
   .mat-dialog-title {
     margin: 0 !important;
   }
