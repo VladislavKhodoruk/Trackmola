@@ -4,21 +4,16 @@
 :host {
   @include scroll-bar;
 
+  --name-font-size: 1.25rem;
+  --cards-gap: 1.4rem;
+
   margin-right: var(--offset);
 
   .projects-list {
-    @include flex(flex-start, flex-start, var(--offset-m));
+    @include flex(flex-start, flex-start, var(--cards-gap));
     flex-direction: column;
 
     width: calc(100% - var(--offset-s));
-
-    &-text {
-      @include flex(stretch, center, var(--offset-m));
-
-      width: 100%;
-
-      font: var(--font-title);
-    }
 
     &-item {
       @include flex(flex-start, center, var(--offset-d));
@@ -50,7 +45,7 @@
           margin-bottom: var(--offset-xs);
 
           font: var(--font-main);
-          font-size: 1.25rem;
+          font-size: var(--name-font-size);
         }
 
         &-tracked-time {
@@ -59,5 +54,13 @@
         }
       }
     }
+  }
+
+  .text {
+    @include flex(stretch, center, var(--offset-m));
+
+    width: 100%;
+
+    font: var(--font-title);
   }
 }
