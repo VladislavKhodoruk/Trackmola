@@ -12,13 +12,12 @@
     flex-wrap: wrap;
 
     width: calc(100% - var(--offset-s));
-    height: 100%;
 
     &-item {
       @include flex(center, space-between, var(--offset-s));
       cursor: pointer;
 
-      flex: 1;
+      flex: 1 1 15rem;
       flex-direction: column;
 
       max-width: 15rem;
