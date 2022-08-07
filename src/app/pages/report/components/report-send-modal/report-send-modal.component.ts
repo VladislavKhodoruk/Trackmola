@@ -2,7 +2,11 @@ import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import x from '@iconify/icons-tabler/x';
 
-import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
+import {
+  DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK,
+  DEFAULT_PHOTO_URL,
+  ONE_WEEK_IN_SECONDS,
+} from '@shared/constants/constants';
 
 import {
   Period,
@@ -25,9 +29,27 @@ export class ReportSendModalComponent {
   @Output() submitTasksTrack = new EventEmitter<TaskTrack[]>();
   @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
 
+  readonly defaultWeekWorkHours = DEFAULT_NUMBER_OF_HOURS_IN_WORKING_WEEK;
+  readonly usersInProject = [
+    { photo: DEFAULT_PHOTO_URL },
+    { photo: DEFAULT_PHOTO_URL },
+    { photo: DEFAULT_PHOTO_URL },
+    { photo: DEFAULT_PHOTO_URL },
+    { photo: DEFAULT_PHOTO_URL },
+  ];
   taskItems: TaskItem[];
   iconX = x;
   panelOpenState = false;
+  get weekReportDuration() {
+    return this.taskTracks
+      ?.filter(
+        (curTaskTrack) =>
+          curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
+          curTaskTrack.date.seconds * 1000 >= this.period.start &&
+          curTaskTrack.date.seconds * 1000 <= this.period.end
+      )
+      .reduce((acc, item) => (acc += item.duration), 0);
+  }
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
