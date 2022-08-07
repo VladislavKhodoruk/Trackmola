@@ -68,5 +68,14 @@ export const AppRoutes: Routes = [
     path: 'authorization',
     title: 'Authorization',
   },
+  {
+    canActivate: [AuthorizationGuard],
+    loadChildren: () =>
+      import('./pages/vacations/vacations.module').then(
+        (x) => x.VacationsModule
+      ),
+    path: 'vacations',
+    title: 'Vacations',
+  },
   { path: '**', redirectTo: 'dashboard' },
 ];

@@ -87,15 +87,9 @@ export const getTaskWithAllParametrs = createSelector(
     }))
 );
 
-export const getManadgersProjects = createSelector(getProjects, (projects) =>
-  projects.filter((project) =>
-    project.managersId.includes(localStorage.getItem('AuthUserId'))
-  )
-);
-
 export const getManagerProjectsFilter = createSelector(
   getDashboardState,
-  getManadgersProjects,
+  getProjects,
   ({ manager }, projects) =>
     projects.filter((project) => manager.projectsFilter.includes(project.name))
 );
