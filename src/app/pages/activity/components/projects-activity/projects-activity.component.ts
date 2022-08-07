@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Options, SeriesOptionsType } from 'highcharts';
 
@@ -34,16 +34,19 @@ export class ProjectsActivityComponent {
   private dataForChart(
     project?: Project[],
     taskTracks?: TaskTrack[]
-  ): [string, number][] {
-    const projectsNames: { id: Project['id']; name: Project['name'] }[] =
-      project.map(({ name, id }) => ({ id, name }));
+  ): { name: string; y: number; color: string }[] {
+    const projectsNames: {
+      id: Project['id'];
+      name: Project['name'];
+      color: Project['color'];
+    }[] = project.map(({ name, id, color }) => ({ color, id, name }));
 
-    return projectsNames.map(({ name, id }) => {
+    return projectsNames.map(({ name, id, color }) => {
       const tasksInProject: TaskTrack[] = taskTracks.filter(
         ({ projectId }) => projectId === id
       );
       const percent: number = tasksInProject.length / taskTracks.length;
-      return [name, percent];
+      return { color: color, name: name, y: percent };
     });
   }
 }
