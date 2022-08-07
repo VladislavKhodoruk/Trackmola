@@ -78,4 +78,15 @@
   .flex-container {
     @include flex(center, center);
   }
+
+  ::ng-deep {
+    .mat-expansion-indicator::after {
+      display: flex;
+
+      margin: 0 var(--offset-xs);
+      padding: var(--offset-xs);
+
+      color: var(--black);
+    }
+  }
 }

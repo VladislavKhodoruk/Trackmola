@@ -14,11 +14,11 @@ import {
 } from '@pages/dashboard/store/dashboard.actions';
 import {
   getManagerProjectsFilter,
-  getManadgersProjects,
   getActiveProjectFilter,
 } from '@pages/dashboard/store/dashboard.selectors';
 import { Period, Project } from '@shared/interfaces/interfaces';
 
+import { getProjects } from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
@@ -26,7 +26,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   selector: 'app-manager-controls-container',
   styleUrls: ['./manager-controls.container.scss'],
   template: `<app-manager-controls
-    [managerProjects]="managerProjects$ | async"
+    [projects]="projects$ | async"
     [managerProjectsFilter]="managerProjectsFilter$ | async"
     [activeProjectFilter]="activeProjectFilter$ | async"
     [modeView]="modeView"
@@ -41,8 +41,7 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class ManagerControlsContainer {
   @Input() readonly modeView: ManagerDashboardView;
 
-  readonly managerProjects$: Observable<Project[]> =
-    this.store$.select(getManadgersProjects);
+  readonly projects$: Observable<Project[]> = this.store$.select(getProjects);
 
   readonly managerProjectsFilter$: Observable<Project[]> = this.store$.select(
     getManagerProjectsFilter

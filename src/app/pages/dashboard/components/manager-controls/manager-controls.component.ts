@@ -23,7 +23,7 @@ import { Period, Project, SelectOptions } from '@shared/interfaces/interfaces';
   templateUrl: './manager-controls.component.html',
 })
 export class ManagerControlsComponent implements OnChanges {
-  @Input() readonly managerProjects: Project[];
+  @Input() readonly projects: Project[];
   @Input() readonly managerProjectsFilter: Project[];
   @Input() readonly modeView: ManagerDashboardView;
   @Input() readonly activeProjectFilter: Project;
@@ -46,8 +46,8 @@ export class ManagerControlsComponent implements OnChanges {
   selectedProject: Project['id'];
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.managerProjects && this.managerProjects.length) {
-      this.selectProjectOptions = this.managerProjects.map((project) => ({
+    if (changes.projects && this.projects.length) {
+      this.selectProjectOptions = this.projects.map((project) => ({
         value: project.id,
         viewValue: project.name,
       }));
@@ -60,7 +60,7 @@ export class ManagerControlsComponent implements OnChanges {
 
   protected addProjectToFilter(): void {
     if (this.selectedProject) {
-      const projectName = this.managerProjects.find(
+      const projectName = this.projects.find(
         (project) => project.id === this.selectedProject
       ).name;
       this.projectFilter.emit(projectName);
