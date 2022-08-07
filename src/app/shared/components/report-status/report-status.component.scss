@@ -3,8 +3,8 @@
 
 :host {
   position: absolute;
-  bottom: -30px;
-  right: -30px;
+  right: -1.3 rem;
+  bottom: -1.3 rem;
 
   ic-icon {
     margin-left: 0.142rem;
@@ -21,21 +21,24 @@
 
     &.new,
     &.new::before {
-      background: var(--warning);
       color: var(--warning);
+
+      background: var(--warning);
     }
 
     &.sended,
     &.sended::before {
+      color: var(--primary);
+
       background: var(--white);
       border: var(--border-xxs) solid var(--primary);
-      color: var(--primary);
     }
 
     &.approved,
     &.approved::before {
-      background: var(--primary);
       color: var(--white);
+
+      background: var(--primary);
     }
   }
 }
