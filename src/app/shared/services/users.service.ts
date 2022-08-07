@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
 import {
   collection,
@@ -9,7 +10,6 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 
-import { Action } from '@ngrx/store';
 import { User as UserFirebase } from 'firebase/auth';
 
 import { setDoc } from 'firebase/firestore';

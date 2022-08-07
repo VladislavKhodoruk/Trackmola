@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import {
   getTaskTracksDurationGroupByUser,
-  getUsersWithoutAdminCTO,
+  getUsersWithoutCTO,
 } from '@pages/dashboard/store/dashboard.selectors';
 import { GroupBy } from '@shared/interfaces/interfaces';
 
@@ -19,7 +19,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-admin-dashboard>`,
 })
 export class AdminDashboardContainer {
-  readonly users$ = this.store$.select(getUsersWithoutAdminCTO);
+  readonly users$ = this.store$.select(getUsersWithoutCTO);
   readonly taskTracksDurationGroupByUser$: Observable<
     GroupBy<{ duration: number; overtimeDuration: number }>
   > = this.store$.select(getTaskTracksDurationGroupByUser);

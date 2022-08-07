@@ -17,12 +17,12 @@
   </div>
 </div>
 <main class="dashboard-main">
-  <div class="dashboard-main-user-cards">
+  <ul class="dashboard-main-user-cards">
     <app-users-cards
       [users]="currentUsers"
       [taskTracksDurationGroupByUser]="taskTracksDurationGroupByUser"
     ></app-users-cards>
-  </div>
+  </ul>
 </main>
 <footer class="dashboard-footer">
   <app-holidays></app-holidays>
