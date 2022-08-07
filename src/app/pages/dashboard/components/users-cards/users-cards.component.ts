@@ -22,12 +22,14 @@ export class UsersCardsComponent {
     duration: number;
     overtimeDuration: number;
   };
+
   @Output() userCardClick: EventEmitter<User> = new EventEmitter<User>();
+
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconBellRinging: IconifyIcon = bellRinging;
   readonly iconFileImport: IconifyIcon = fileImport;
 
-  getWorkMonthDefaultHours(): number {
+  protected get workMonthDefaultHours(): number {
     const date = new Date(
       new Date().getFullYear(),
       new Date().getMonth(),
@@ -35,5 +37,26 @@ export class UsersCardsComponent {
     );
     const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     return endDate.getDate() * HOURS_IN_DAY - getRestMonthDefaultHours();
+  }
+
+  protected getProgressUser(user: User): {
+    workingHours: number;
+    progress: number;
+  } {
+    if (this.taskTracksDurationGroupByUser) {
+      const userInfo: {
+        duration: number;
+        overtimeDuration: number;
+      } = this.taskTracksDurationGroupByUser[user.id];
+      const workingHours: number =
+        userInfo.duration + userInfo.overtimeDuration;
+      const progress: number =
+        (workingHours / this.workMonthDefaultHours) * 100;
+      return {
+        progress,
+        workingHours,
+      };
+    }
+    return null;
   }
 }

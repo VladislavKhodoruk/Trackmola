@@ -2,11 +2,12 @@
 @import "mixins";
 
 :host {
-  @include flex(flex-start, flex-start, var(--offset-l));
-
   $height-header: 5rem;
+  $gap: var(--offset-l);
+
+  @include flex(flex-start, flex-start, #{$gap});
+
   flex-direction: column;
-  gap: var(--offset-l);
 
   height: 100%;
 
@@ -20,7 +21,7 @@
   .dashboard-main {
     width: 100%;
     max-width: 100%;
-    height: calc(100% - #{$height-header});
-    max-height: calc(100% - #{$height-header});
+    height: calc(100% - #{$height-header} - #{$gap});
+    max-height: calc(100% - #{$height-header} - #{$gap});
   }
 }

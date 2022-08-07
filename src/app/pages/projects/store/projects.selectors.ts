@@ -4,7 +4,6 @@ import { ProjectsState } from './projects.state';
 
 import { StateName } from '@shared/enums/enum';
 import {
-  getPeriod,
   getProjects,
   getTasks,
   getTasksTrack,
@@ -34,9 +33,14 @@ export const getProjectByRoute = createSelector(
     projects.find((project) => project.name.toLowerCase() === route.params.name)
 );
 
+export const getProjectPeriod = createSelector(
+  getProjectsState,
+  ({ period }) => period
+);
+
 export const filteredTaskTracksByPeriod = createSelector(
   getTasksTrack,
-  getPeriod,
+  getProjectPeriod,
   (taskTracks, period) =>
     taskTracks.filter(({ date }) => {
       const startDate = period.start;

@@ -181,7 +181,6 @@ export function managerDashboardChartXRange(config: XRangeConfig): Options {
       marginRight: marginRight,
       marginTop: -1,
       type: 'xrange',
-
       width: width,
     },
     credits: {

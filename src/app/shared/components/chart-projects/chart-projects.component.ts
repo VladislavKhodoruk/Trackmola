@@ -27,7 +27,7 @@ export class ChartProjectsComponent implements OnChanges {
   @Input() readonly period: Period;
 
   chartXRangeMarginRight = 24;
-  minChartXRangeWidth = 800;
+  minChartXRangeWidth = 900;
   chartXRangeHeight = 65;
 
   activeTask: TaskForManager;
@@ -43,6 +43,13 @@ export class ChartProjectsComponent implements OnChanges {
         }),
         {}
       );
+    }
+
+    if (
+      changes.modeView &&
+      this.modeView === this.managerDashboardView.Arrows
+    ) {
+      this.activeTask = null;
     }
   }
 

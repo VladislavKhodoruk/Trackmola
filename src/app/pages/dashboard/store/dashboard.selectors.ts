@@ -186,9 +186,13 @@ export const getTaskTracksDurationGroupByUser = createSelector(
       );
 
       const overtimeDuration = activeTaskTracks.reduce(
-        (result, taskTrack) => (result += taskTrack.overtimeDuration),
+        (result, taskTrack) =>
+          taskTrack.overtimeDuration
+            ? (result += taskTrack.overtimeDuration)
+            : 0,
         0
       );
+
       return { ...accum, [user.id]: { duration, overtimeDuration } };
     }, {})
 );
