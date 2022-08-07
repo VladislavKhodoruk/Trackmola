@@ -2,10 +2,10 @@
 @import "mixins";
 
 :host {
+  @include flex(flex-start, flex-start, var(--offset-l));
+
   $height-header: 5rem;
   $gap: var(--offset-l);
-
-  @include flex(flex-start, flex-start, #{$gap});
 
   flex-direction: column;
 
