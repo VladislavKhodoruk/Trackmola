@@ -5,6 +5,7 @@ import {
   EventEmitter,
   OnChanges,
   SimpleChanges,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 import angleLeftB from '@iconify/icons-uil/angle-left-b';
@@ -27,6 +28,7 @@ import { SelectOptions, User } from '@shared/interfaces/interfaces';
   selector: 'app-visit-card-component',
   styleUrls: ['./visit-card.component.scss'],
   templateUrl: './visit-card.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VisitCardComponent implements OnChanges {
   @Input() user!: User;

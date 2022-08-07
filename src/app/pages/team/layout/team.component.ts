@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import bellRinging from '@iconify/icons-tabler/bell-ringing';
 import fileImport from '@iconify/icons-tabler/file-import';
@@ -14,10 +14,13 @@ import { User } from '@shared/interfaces/interfaces';
   selector: 'app-team',
   styleUrls: ['./team.component.scss'],
   templateUrl: './team.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamComponent {
   @Input() userType!: string | null;
   @Input() user!: User;
+
+  isAdmin: boolean = localStorage.getItem('AuthUserType') == 'admin';
 
   readonly types = UserType;
 

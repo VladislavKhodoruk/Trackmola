@@ -27,12 +27,27 @@ html {
         overflow: hidden;
         display: flex;
         gap: var(--offset);
+
+        &-projects {
+          display: flex;
+          flex-direction: column;
+          flex: 3;
+
+          &-text {
+            @include flex(stretch, flex-start, var(--offset-m));
+
+            padding-bottom: var(--offset-s);
+            width: 100%;
+
+            font: var(--font-title);
+          }
+        }
       }
     }
 
     app-users-projects-component {
       overflow-y: auto;
-      flex: 3;
+      flex: 1;
     }
 
     app-vacations-component {

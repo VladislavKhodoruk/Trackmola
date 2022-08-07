@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 
@@ -6,6 +6,7 @@ import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
   selector: 'app-users-projects-component',
   styleUrls: ['./users-projects.component.scss'],
   templateUrl: './users-projects.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersProjectsComponent {
   @Input() pickedUser: User;

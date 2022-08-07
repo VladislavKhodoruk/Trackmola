@@ -55,12 +55,4 @@
       }
     }
   }
-
-  .text {
-    @include flex(stretch, center, var(--offset-m));
-
-    width: 100%;
-
-    font: var(--font-title);
-  }
 }

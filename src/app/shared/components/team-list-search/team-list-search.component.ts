@@ -8,6 +8,7 @@ import {
   trigger,
 } from '@angular/animations';
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -62,6 +63,7 @@ import {
   selector: 'app-team-list-search-component',
   styleUrls: ['./team-list-search.component.scss'],
   templateUrl: './team-list-search.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamListSearchComponent implements OnChanges {
   @Input() allProjects: Project[];

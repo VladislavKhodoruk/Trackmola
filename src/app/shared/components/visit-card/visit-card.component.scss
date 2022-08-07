@@ -51,6 +51,8 @@
     display: flex;
     flex-direction: column;
 
+    padding-bottom: var(--offset-s);
+
     border: $border-input;
     border-radius: var(--border-radius-l);
 
@@ -61,13 +63,15 @@
       margin: var(--offset);
 
       &-text {
-        width: 18rem;
+        flex: 1;
 
         font: var(--font-title);
         color: var(--black);
       }
     }
-
+    &-admin {
+      flex: 1;
+    }
     &-alert {
       display: flex;
       flex: 1;

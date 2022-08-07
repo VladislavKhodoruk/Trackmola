@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import {
   GroupBy,
@@ -10,6 +10,7 @@ import {
   selector: 'app-manager-team-component',
   styleUrls: ['./manager-team.component.scss'],
   templateUrl: './manager-team.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManagerTeamComponent {
   @Input() pickedUser: User;
