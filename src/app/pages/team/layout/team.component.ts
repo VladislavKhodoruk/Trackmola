@@ -11,10 +11,10 @@ import { UserType } from '@shared/enums/enum';
 import { User } from '@shared/interfaces/interfaces';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-team',
   styleUrls: ['./team.component.scss'],
   templateUrl: './team.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamComponent {
   @Input() userType!: string | null;

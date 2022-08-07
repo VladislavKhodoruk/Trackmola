@@ -7,10 +7,10 @@ import {
   Vacations,
 } from '@shared/interfaces/interfaces';
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-manager-team-component',
   styleUrls: ['./manager-team.component.scss'],
   templateUrl: './manager-team.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManagerTeamComponent {
   @Input() pickedUser: User;

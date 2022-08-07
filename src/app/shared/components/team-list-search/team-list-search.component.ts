@@ -54,6 +54,7 @@ import {
       ]),
     ]),
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
@@ -63,7 +64,6 @@ import {
   selector: 'app-team-list-search-component',
   styleUrls: ['./team-list-search.component.scss'],
   templateUrl: './team-list-search.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamListSearchComponent implements OnChanges {
   @Input() allProjects: Project[];

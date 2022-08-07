@@ -19,6 +19,7 @@ import {
 import { SelectOptions, User } from '@shared/interfaces/interfaces';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
@@ -28,7 +29,6 @@ import { SelectOptions, User } from '@shared/interfaces/interfaces';
   selector: 'app-visit-card-component',
   styleUrls: ['./visit-card.component.scss'],
   templateUrl: './visit-card.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VisitCardComponent implements OnChanges {
   @Input() user!: User;

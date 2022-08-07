@@ -12,10 +12,10 @@ import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
 import { UserCard } from '@shared/interfaces/interfaces';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-user-card',
   styleUrls: ['./user-card.component.scss'],
   templateUrl: './user-card.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserCardComponent {
   @Input() userCard: UserCard;
