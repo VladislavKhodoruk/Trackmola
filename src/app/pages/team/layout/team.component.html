@@ -14,23 +14,28 @@
       </div>
     </div>
 
-    <div class="team-header-buttons">
-      <button type="button" class="team-header-buttons-button">
-        <ic-icon class="team-header-buttons-item" [icon]="iconFolder"></ic-icon>
-      </button>
-      <button type="button" class="team-header-buttons-button">
-        <ic-icon class="team-header-buttons-item" [icon]="iconBell"></ic-icon>
-      </button>
-      <app-button
-        (click)="router.navigate(['/report'])"
-        class="team-header-buttons-item-file"
-        buttonClass="button-primary"
-        label="Go to report"
-        [icon]="iconFileImport"
-        iconHeight="1.5rem"
-        iconWidth="1.5rem"
-      ></app-button>
-    </div>
+    <ng-container *ngIf="isAdmin">
+      <div class="team-header-buttons">
+        <button type="button" class="team-header-buttons-button">
+          <ic-icon class="team-header-buttons-item" [icon]="iconBell"></ic-icon>
+        </button>
+        <button type="button" class="team-header-buttons-button">
+          <ic-icon
+            class="team-header-buttons-item"
+            [icon]="iconFolder"
+          ></ic-icon>
+        </button>
+        <app-button
+          (click)="router.navigate(['/report-constructor'])"
+          class="team-header-buttons-item-file"
+          buttonClass="button-primary"
+          label="Go to report"
+          [icon]="iconFileImport"
+          iconHeight="1.5rem"
+          iconWidth="1.5rem"
+        ></app-button>
+      </div>
+    </ng-container>
   </header>
   <div class="team-container">
     <container-element [ngSwitch]="userType">
