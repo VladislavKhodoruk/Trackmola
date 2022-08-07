@@ -2,10 +2,10 @@
 @import "vars/variables";
 
 :host {
+  @include scroll-bar;
+
   --name-font-size: 1.25rem;
   --cards-gap: 1.4rem;
-
-  @include scroll-bar;
 
   margin-right: var(--offset);
 

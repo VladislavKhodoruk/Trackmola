@@ -4,9 +4,11 @@ import bellRinging from '@iconify/icons-tabler/bell-ringing';
 import fileImport from '@iconify/icons-tabler/file-import';
 import angleRight from '@iconify/icons-uil/angle-right';
 import folder from '@iconify/icons-uil/folder-times';
+
+import { IconifyIcon } from '@iconify/types';
+
 import { UserType } from '@shared/enums/enum';
 import { User } from '@shared/interfaces/interfaces';
-import { IconifyIcon } from '@iconify/types';
 
 @Component({
   selector: 'app-team',
