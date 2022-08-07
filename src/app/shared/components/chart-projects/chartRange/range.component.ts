@@ -125,7 +125,7 @@ export class RangeComponent implements OnChanges {
             0
           ),
           userName: userInfo.fullName,
-          userPhoto: userInfo.photo,
+          userPhoto: userInfo.photo || null,
         },
         x: dateFrom,
         x2: dateTo,
