@@ -141,6 +141,10 @@
         }
       }
 
+      &:hover {
+        box-shadow: #{$shadow-selected};
+      }
+
       &-selected {
         box-shadow: #{$shadow-selected};
       }
