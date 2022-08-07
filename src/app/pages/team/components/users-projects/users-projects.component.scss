@@ -2,12 +2,15 @@
 @import "vars/variables";
 
 :host {
+  --name-font-size: 1.25rem;
+  --cards-gap: 1.4rem;
+
   @include scroll-bar;
 
   margin-right: var(--offset);
 
   .projects-list {
-    @include flex(flex-start, flex-start, var(--offset-m));
+    @include flex(flex-start, flex-start, var(--cards-gap));
     flex-direction: column;
 
     width: calc(100% - var(--offset-s));
@@ -42,7 +45,7 @@
           margin-bottom: var(--offset-xs);
 
           font: var(--font-main);
-          font-size: 1.25rem;
+          font-size: var(--name-font-size);
         }
 
         &-tracked-time {

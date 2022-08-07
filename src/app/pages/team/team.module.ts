@@ -4,9 +4,6 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IconModule } from '@visurel/iconify-angular';
-
-import { ButtonModule } from './../../shared/components/button/button.module';
-
 import { AdminTeamComponent } from './components/admin-team/admin-team.component';
 import { AdminTeamContainer } from './components/admin-team/admin-team.container';
 import { CtoTeamComponent } from './components/cto-team/cto-team.component';
@@ -26,6 +23,7 @@ import { TeamListSearchModule } from '@shared/components/team-list-search/team-l
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
 import { VisitCardModule } from '@shared/components/visit-card/visit-card.module';
+import { ButtonModule } from '@shared/components/button/button.module';
 
 @NgModule({
   declarations: [
