@@ -3,31 +3,6 @@
 
 :host {
   .dashboard {
-    &-header {
-      @include flex(center, space-between);
-      height: 5rem;
-      margin-bottom: var(--offset-l);
-
-      &-title {
-        font: var(--font-titleBig);
-      }
-
-      &-date {
-        font: var(--font-title);
-      }
-
-      &-time {
-        @include flex(center, flex-start, var(--offset-l));
-      }
-
-      &-clock {
-        padding: var(--offset-xs);
-
-        background-color: var(--blue2);
-        border-radius: var(--border-radius);
-      }
-    }
-
     &-search-and-sort {
       @include flex(center, flex-start, var(--offset));
       height: 7%;

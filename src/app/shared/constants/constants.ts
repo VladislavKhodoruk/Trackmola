@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import peopleTeam20Regular from '@iconify/icons-fluent/people-team-20-regular';
 import chartDonut3 from '@iconify/icons-tabler/chart-donut-3';
 import fileTime from '@iconify/icons-tabler/file-time';
 import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
@@ -45,7 +46,7 @@ const NAVIGATION_BASIC_ITEMS: NavigationItem[] = [
 const NAVIGATION_MANAGER_ITEMS: NavigationItem[] = [
   ...NAVIGATION_BASIC_ITEMS,
   {
-    icon: puzzleIcon,
+    icon: peopleTeam20Regular,
     label: 'Team',
     routeLink: 'team',
   },

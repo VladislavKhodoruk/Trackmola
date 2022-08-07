@@ -34,7 +34,7 @@ export class ProfileComponent implements OnChanges {
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.userInfo) {
+    if (changes.userInfo && this.userInfo) {
       if (this.userInfo) {
         this.vacationsAndHoliday = getCurrentHolidays(
           this.userInfo?.location,

@@ -1,39 +1,30 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import bellRinging from '@iconify/icons-tabler/bell-ringing';
+import fileImport from '@iconify/icons-tabler/file-import';
+import angleRight from '@iconify/icons-uil/angle-right';
+import folder from '@iconify/icons-uil/folder-times';
+
+import { IconifyIcon } from '@iconify/types';
 
 import { UserType } from '@shared/enums/enum';
-import {
-  GroupBy,
-  Project,
-  User,
-  Vacation,
-  Vacations,
-} from '@shared/interfaces/interfaces';
-import { getCurrentHolidays } from '@shared/helpers/helpers';
+import { User } from '@shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-team-component',
+  selector: 'app-team',
   styleUrls: ['./team.component.scss'],
   templateUrl: './team.component.html',
 })
-export class TeamComponent implements OnChanges {
-  @Input() pickedUser: User;
-  @Input() projectsByUsers: GroupBy<Project[]>;
-  @Input() usersByProject: GroupBy<User[]>;
-  @Input() trackedTimeByProjects: GroupBy<number>;
-  @Input() vacations: Vacation[];
-  @Input() users: User[];
+export class TeamComponent {
+  @Input() userType!: string | null;
+  @Input() user!: User;
 
-  vacationsAndHoliday: Vacations[];
+  readonly types = UserType;
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.pickedUser) {
-      if (this.pickedUser) {
-        this.vacationsAndHoliday = getCurrentHolidays(
-          this.pickedUser?.location,
-          this.vacations,
-          this.users
-        );
-      }
-    }
-  }
+  readonly iconAngleRight: IconifyIcon = angleRight;
+  readonly iconFileImport: IconifyIcon = fileImport;
+  readonly iconFolder: IconifyIcon = folder;
+  readonly iconBell: IconifyIcon = bellRinging;
+
+  constructor(public router: Router) {}
 }

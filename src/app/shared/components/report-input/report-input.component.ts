@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
-import { MAT_SELECT_CONFIG } from '@angular/material/select';
 import fireIcon from '@iconify/icons-emojione/fire';
 import check from '@iconify/icons-mdi/check';
 import microphoneIcon from '@iconify/icons-tabler/microphone';

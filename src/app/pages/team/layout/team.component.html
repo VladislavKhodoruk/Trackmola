@@ -1,20 +1,46 @@
-<div class="team">
-  <div class="team-list">
-    <app-team-list-search-container></app-team-list-search-container>
-  </div>
-  <div class="team-right">
-    <app-visit-card-container [user]="pickedUser"></app-visit-card-container>
-    <div class="team-right-bottom">
-      <app-users-projects-component
-        [usersByProject]="usersByProject"
-        [projectsByUsers]="projectsByUsers"
-        [pickedUser]="pickedUser"
-        [trackedTimeByProjects]="trackedTimeByProjects"
-      ></app-users-projects-component>
-      <app-vacations-component
-        *ngIf="vacationsAndHoliday"
-        [vacations]="vacationsAndHoliday"
-      ></app-vacations-component>
+<section class="team">
+  <header class="team-header">
+    <div class="flex-container">
+      <h2 class="team-header-title">Team</h2>
+      <div class="team-header-item">
+        <ic-icon
+          class="team-header-item-button"
+          class="icon"
+          width="2rem"
+          height="2rem"
+          [icon]="iconAngleRight"
+        ></ic-icon>
+        <p class="team-header-user">{{ user?.fullName }}</p>
+      </div>
     </div>
+
+    <div class="team-header-buttons">
+      <button type="button" class="team-header-buttons-button">
+        <ic-icon class="team-header-buttons-item" [icon]="iconFolder"></ic-icon>
+      </button>
+      <button type="button" class="team-header-buttons-button">
+        <ic-icon class="team-header-buttons-item" [icon]="iconBell"></ic-icon>
+      </button>
+      <app-button
+        (click)="router.navigate(['/report'])"
+        class="team-header-buttons-item-file"
+        buttonClass="button-primary"
+        label="Go to report"
+        [icon]="iconFileImport"
+        iconHeight="1.5rem"
+        iconWidth="1.5rem"
+      ></app-button>
+    </div>
+  </header>
+  <div class="team-container">
+    <container-element [ngSwitch]="userType">
+      <app-cto-team *ngSwitchCase="types.CTO"></app-cto-team>
+      <app-admin-team-container
+        *ngSwitchCase="types.Admin"
+      ></app-admin-team-container>
+      <app-manager-team-container
+        *ngSwitchCase="types.Manager"
+      ></app-manager-team-container>
+    </container-element>
   </div>
-</div>
+</section>
