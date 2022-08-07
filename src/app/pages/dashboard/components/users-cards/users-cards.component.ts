@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 import bellRinging from '@iconify/icons-tabler/bell-ringing';
 import fileImport from '@iconify/icons-tabler/file-import';
@@ -28,6 +29,8 @@ export class UsersCardsComponent {
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconBellRinging: IconifyIcon = bellRinging;
   readonly iconFileImport: IconifyIcon = fileImport;
+
+  constructor(protected router: Router) {}
 
   protected get workMonthDefaultHours(): number {
     const date = new Date(
