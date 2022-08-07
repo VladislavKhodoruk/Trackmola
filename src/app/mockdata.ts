@@ -15,7 +15,7 @@ export const mockUsers: User[] = [
     endDate: new Timestamp(1661050800, 882000000),
     fullName: 'Maria Ivakhnenko',
     id: 'FyTQtfAXBMPaa3yKJ4TmVVgTA872',
-    location: 'Minsk',
+    location: 'Minsk, Belarus',
     photo: 'https://avatars.githubusercontent.com/u/88663763?v=4',
     position: 'Administrator',
     qualification: 'Senior',
@@ -29,7 +29,7 @@ export const mockUsers: User[] = [
     endDate: new Timestamp(1664050800, 313000000),
     fullName: 'Vitalii Chistiakov',
     id: 'P4SeopCIcgbAmGkoS8JE0Rq0t1v1',
-    location: 'Minsk',
+    location: 'Minsk, Belarus',
     photo:
       // eslint-disable-next-line max-len
       'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/62970818a0eafd0069e86612/69cd9846-5c68-482e-bb26-81bf77da957b/128',
@@ -46,7 +46,7 @@ export const mockUsers: User[] = [
     endDate: new Timestamp(1664050800, 283000000),
     fullName: 'Vladislav Khodoruk',
     id: 'Y2nsuR3ejZMJxvxHnVZ1hjQlbV32',
-    location: 'Minsk',
+    location: 'Minsk, Belarus',
     photo:
       // eslint-disable-next-line max-len
       'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/6298604da0eafd0069e8f7cd/1656ba5b-b78b-4822-846f-ecb40c4e4899/128',
@@ -63,7 +63,7 @@ export const mockUsers: User[] = [
     endDate: new Timestamp(1664050800, 517000000),
     fullName: 'Kirill Borisenok',
     id: 'ZI4fLQuaHfduoEdxAj7YevkrSq62',
-    location: 'Bobruisk',
+    location: 'Bobruisk, Belarus',
     photo:
       // eslint-disable-next-line max-len
       'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/629860aa1a2bdf007095b9bb/181bf52b-1854-4deb-a661-884a6a376802/128',
@@ -79,7 +79,7 @@ export const mockUsers: User[] = [
     endDate: new Timestamp(1661050800, 259000000),
     fullName: 'Andrei Shinkarev',
     id: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
-    location: 'Mogilev',
+    location: 'Mogilev, Belarus',
     photo:
       // eslint-disable-next-line max-len
       'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net/62985f0ac3dffc0068f5ddff/864cad92-da20-48f3-b5b4-54d2a6c74170/128',
@@ -96,7 +96,7 @@ export const mockUsers: User[] = [
     endDate: new Timestamp(1661050800, 211000000),
     fullName: 'Elon Mask',
     id: 'oJsHMaprEsZBeyYaAfS8xoR9RP02',
-    location: 'Minsk',
+    location: 'Minsk, Belarus',
     photo:
       'https://www.tadviser.ru/images/thumb/b/bc/Elon-SEC-HGK1DB.jpg/840px-Elon-SEC-HGK1DB.jpg',
     position: 'Frontend developer',

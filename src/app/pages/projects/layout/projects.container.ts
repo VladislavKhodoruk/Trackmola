@@ -27,6 +27,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [projectByRoute]="projectByRoute$ | async"
     [usersGroupByProject]="usersGroupByProject$ | async"
     [users]="allUsers$ | async"
+    [vacations]="allVacations$ | async"
   ></app-projects>`,
 })
 export class ProjectsContainer implements OnDestroy {

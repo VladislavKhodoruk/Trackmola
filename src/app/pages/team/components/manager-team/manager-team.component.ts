@@ -24,7 +24,7 @@ export class ManagerTeamComponent implements OnChanges {
   vacationsAndHoliday: Vacations[];
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.pickedUser && this.pickedUser) {
+    if (changes.pickedUser) {
       if (this.pickedUser) {
         this.vacationsAndHoliday = getCurrentHolidays(
           this.pickedUser?.location,

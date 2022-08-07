@@ -7,27 +7,27 @@ import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import { DaysByPeriod } from '@pages/dashboard/interfaces/interface';
 import {
   COLORS_FOR_TASKS,
-  NUMBER_OF_DAYS_IN_A_WEEK,
   HIGHEST_KPI,
-  OUTPUT_RATE,
-  SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
+  NUMBER_OF_DAYS_IN_A_WEEK,
   ONE_DAY_IN_SECONDS,
   ONE_WEEK_IN_SECONDS,
+  OUTPUT_RATE,
+  SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
 import { NumDay, PeriodType } from '@shared/enums/enum';
 import {
+  CalendarDay,
+  GroupBy,
+  OutOfMain,
   Period,
   Project,
-  TaskTrack,
-  OutOfMain,
   TaskByWeekDays,
+  TaskTrack,
   TaskTracksByUser,
-  GroupBy,
-  CalendarDay,
-  Vacation,
-  UserCard,
-  Vacations,
   User,
+  UserCard,
+  Vacation,
+  Vacations,
 } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
@@ -365,6 +365,14 @@ export function getUserPhoto(users: User[], id): string {
   return users.find((user: User) => user.id === id).photo;
 }
 
+export function getLocation(id: string, users: User[]) {
+  return users.find((user: User) => user.id === id).location;
+}
+
+export function getCurrentVacations(id: string, vacations: Vacation[]) {
+  return vacations.filter((vacation) => vacation.userId === id);
+}
+
 export function getCurrentHolidays(
   location: string,
   vacations: Vacation[],
@@ -391,6 +399,28 @@ export function getCurrentHolidays(
       )
       .sort((a, b) => a.vacationDay.valueOf() - b.vacationDay.valueOf());
   }
+}
+
+export function getVacationsAndHolidaysByProject(
+  team: User[],
+  vacations: Vacation[],
+  users: User[]
+) {
+  const allVacAndHol = team
+    .map((member: User) =>
+      vacations.filter((vacation: Vacation) => vacation.userId === member.id)
+    )
+    .flat()
+    .map((vac: Vacation) =>
+      getCurrentHolidays(
+        getLocation(vac.userId, users),
+        getCurrentVacations(vac.userId, vacations),
+        users
+      )
+    )
+    .flat()
+    .sort((a, b) => a.vacationDay.getTime() - b.vacationDay.getTime());
+  return allVacAndHol;
 }
 
 export function setUserPhotoInVacations(
