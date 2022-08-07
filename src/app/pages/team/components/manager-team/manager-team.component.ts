@@ -16,6 +16,7 @@ export class ManagerTeamComponent {
   @Input() projectsByUsers: GroupBy<Project[]>;
   @Input() usersByProject: GroupBy<User[]>;
   @Input() trackedTimeByProjects: GroupBy<number>;
+
   readonly vacations: Vacations[] = [
     {
       fullName: 'Kirill Borisenok',
