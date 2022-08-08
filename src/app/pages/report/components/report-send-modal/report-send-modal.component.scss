@@ -6,7 +6,15 @@
     transform: none !important;
   }
 
-  .modalApprove {
+  .modal {
+    .mat-dialog-container {
+      overflow: inherit;
+
+      padding: 0;
+
+      border-radius: var(--offset);
+    }
+
     .mat-dialog-title {
       margin: 0;
 
@@ -17,6 +25,9 @@
 
 :host {
   .send-modal {
+    width: 50rem;
+    padding: var(--offset-l);
+
     &-header {
       @include flex(center, space-between);
       gap: var(--offset-d);
