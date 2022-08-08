@@ -114,7 +114,7 @@ export class ProjectsComponent implements OnChanges {
       autoFocus: false,
       data: { project: this.project },
       enterAnimationDuration,
-      panelClass: 'modalApprove',
+      panelClass: 'modal',
     });
     dialogRef
       .afterClosed()

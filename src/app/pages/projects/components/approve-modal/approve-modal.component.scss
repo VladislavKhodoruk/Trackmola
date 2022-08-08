@@ -2,12 +2,11 @@
 @import "mixins";
 
 ::ng-deep {
-  .modalApprove {
+  .modal {
     .mat-dialog-container {
-      overflow: hidden;
+      overflow: inherit;
 
-      min-width: 25vw;
-      padding: var(--offset);
+      padding: 0;
 
       border-radius: var(--offset);
     }
@@ -38,6 +37,16 @@
 }
 
 :host {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 50rem;
+    height: 30rem;
+    padding: var(--offset);
+  }
+
   .approve-modal-header {
     @include flex(center, space-between);
     margin-bottom: var(--offset-m);
@@ -138,5 +147,9 @@
     ::ng-deep .activeTasks-list {
       max-height: 30rem;
     }
+  }
+
+  .wrapper-scroll {
+    height: 17rem;
   }
 }
