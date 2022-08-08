@@ -7,6 +7,7 @@ import { Period } from '@shared/interfaces/interfaces';
 export interface ReportConstructorState {
   period: Period;
   projectId?: string;
+  userId?: string;
   viewMode: ViewMode;
   chartViewMode: ChartViewMode;
 }

@@ -2,7 +2,11 @@
   <thead class="report-constructor-table-head">
     <tr>
       <th
-        *ngFor="let tableHeadItem of tableHeadItems"
+        *ngFor="
+          let tableHeadItem of mode === adminReportConstructorMode.Projects
+            ? tableHeadItems
+            : AdminTableHeadItems
+        "
         class="report-constructor-table-head-item"
       >
         <div
@@ -38,70 +42,138 @@
     </tr>
   </thead>
   <tbody class="report-constructor-table-body">
-    <ng-container *ngIf="infoFromTaskTracksForTable">
-      <tr *ngFor="let infoItem of infoFromTaskTracksForTable">
-        <td class="report-constructor-table-body-item">
-          {{ infoItem.taskName }}
-        </td>
-        <td class="report-constructor-table-body-item">
-          <ng-container *ngFor="let userPosition of infoItem.userPositions">
-            <div class="report-constructor-table-body-item-text">
-              {{ userPosition }}
-            </div>
-          </ng-container>
-        </td>
-        <td class="report-constructor-table-body-item">
-          {{ infoItem.taskDuration }}
-        </td>
-        <td class="report-constructor-table-body-item">
-          <div
-            *ngIf="infoItem.taskOvertimeDuration > 0"
-            class="report-constructor-table-body-overtime"
-          >
-            <div class="report-constructor-table-body-overtime-duration">
-              {{ infoItem.taskOvertimeDuration }}
-            </div>
-            <div>
-              <ic-icon
-                class="calendar-overtime-icon"
-                [icon]="iconFire"
-                width="1.5rem"
-                height="1.5rem"
-              ></ic-icon>
-            </div>
-          </div>
-        </td>
-        <td class="report-constructor-table-body-item">
-          <div class="report-constructor-table-body-percentage">
-            <div class="report-constructor-table-body-percentage-duration">
-              {{ infoItem.taskPercentageWeek }}%
-            </div>
+    <ng-container
+      *ngIf="mode === adminReportConstructorMode.Projects; else adminUserMode"
+    >
+      <ng-container *ngIf="infoFromTaskTracksForTable">
+        <tr *ngFor="let infoItem of infoFromTaskTracksForTable">
+          <td class="report-constructor-table-body-item">
+            {{ infoItem.taskName }}
+          </td>
+          <td class="report-constructor-table-body-item">
+            <ng-container *ngFor="let userPosition of infoItem.userPositions">
+              <div class="report-constructor-table-body-item-text">
+                {{ userPosition }}
+              </div>
+            </ng-container>
+          </td>
+          <td class="report-constructor-table-body-item">
+            {{ infoItem.taskDuration }}
+          </td>
+          <td class="report-constructor-table-body-item">
             <div
-              class="report-constructor-table-body-percentage-bar"
-              [style.width.%]="infoItem.taskPercentageWeek"
-            ></div>
-          </div>
-        </td>
-        <td class="report-constructor-table-body-item">
-          <ng-container *ngFor="let userName of infoItem.userNames">
-            <div class="report-constructor-table-body-item-text">
-              {{ userName }}
+              *ngIf="infoItem.taskOvertimeDuration > 0"
+              class="report-constructor-table-body-overtime"
+            >
+              <div class="report-constructor-table-body-overtime-duration">
+                {{ infoItem.taskOvertimeDuration }}
+              </div>
+              <div>
+                <ic-icon
+                  class="calendar-overtime-icon"
+                  [icon]="iconFire"
+                  width="1.5rem"
+                  height="1.5rem"
+                ></ic-icon>
+              </div>
             </div>
-          </ng-container>
-        </td>
-      </tr>
-      <ng-container *ngIf="+total[2]">
-        <tr>
-          <td
-            *ngFor="let item of total"
-            class="report-constructor-table-body-item"
-          >
-            <div class="report-constructor-table-body-item-text">
-              {{ item }}
+          </td>
+          <td class="report-constructor-table-body-item">
+            <div class="report-constructor-table-body-percentage">
+              <div class="report-constructor-table-body-percentage-duration">
+                {{ infoItem.taskPercentageWeek }}%
+              </div>
+              <div
+                class="report-constructor-table-body-percentage-bar"
+                [style.width.%]="infoItem.taskPercentageWeek"
+              ></div>
             </div>
+          </td>
+          <td class="report-constructor-table-body-item">
+            <ng-container *ngFor="let userName of infoItem.userNames">
+              <div class="report-constructor-table-body-item-text">
+                {{ userName }}
+              </div>
+            </ng-container>
           </td>
         </tr>
       </ng-container>
     </ng-container>
+    <ng-template #adminUserMode>
+      <ng-container *ngIf="infoFromUsers">
+        <tr *ngFor="let infoItem of infoFromUsers">
+          <td class="report-constructor-table-body-item">
+            {{ infoItem.date | date: "d MMM" }}
+          </td>
+          <td class="report-constructor-table-body-item">
+            {{ infoItem.position }}
+          </td>
+          <td class="report-constructor-table-body-item">
+            {{ infoItem.hours }}
+          </td>
+          <td class="report-constructor-table-body-item">
+            <div
+              *ngIf="infoItem.overtimes > 0"
+              class="report-constructor-table-body-overtime"
+            >
+              <div class="report-constructor-table-body-overtime-duration">
+                {{ infoItem.overtimes }}
+              </div>
+              <div>
+                <ic-icon
+                  class="calendar-overtime-icon"
+                  [icon]="iconFire"
+                  width="1.5rem"
+                  height="1.5rem"
+                ></ic-icon>
+              </div>
+            </div>
+          </td>
+          <td class="report-constructor-table-body-item">
+            <div class="report-constructor-table-body-percentage">
+              <div class="report-constructor-table-body-percentage-duration">
+                {{ infoItem.notes }}
+              </div>
+            </div>
+          </td>
+          <td class="report-constructor-table-body-item">
+            <div class="report-constructor-table-body-item-project">
+              <ng-container *ngFor="let project of infoItem.projects">
+                <app-project-label
+                  [projectColor]="project.color"
+                  [projectName]="project.name"
+                ></app-project-label>
+              </ng-container>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </ng-template>
   </tbody>
+  <tfoot class="report-constructor-table-footer">
+    <ng-container
+      *ngIf="mode === adminReportConstructorMode.Projects; else userFooter"
+    >
+      <tr>
+        <td
+          *ngFor="let item of total"
+          class="report-constructor-table-body-item"
+        >
+          <div class="report-constructor-table-body-item-text">
+            {{ item }}
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    <ng-template #userFooter>
+      <tr>
+        <td
+          *ngFor="let item of totalUsers"
+          class="report-constructor-table-footer-item"
+        >
+          {{ item }}
+        </td>
+      </tr>
+    </ng-template>
+  </tfoot>
 </table>

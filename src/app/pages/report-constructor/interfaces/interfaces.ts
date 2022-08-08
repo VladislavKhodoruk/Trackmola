@@ -1,4 +1,4 @@
-import { Period } from '@shared/interfaces/interfaces';
+import { Period, Project } from '@shared/interfaces/interfaces';
 
 export interface InfoReportConstructorItem {
   taskId: string;
@@ -7,6 +7,15 @@ export interface InfoReportConstructorItem {
   taskOvertimeDuration?: number;
   taskPercentageWeek?: number;
   usersInfo?: InfoReportConstructorItemUser[];
+}
+
+export interface InfoReportConstructorUserItem {
+  date: Date;
+  position: string;
+  hours: number;
+  overtimes: number;
+  notes?: string;
+  projects: Project[];
 }
 
 export interface InfoReportConstructorItemUser {

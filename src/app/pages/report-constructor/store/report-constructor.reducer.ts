@@ -5,6 +5,7 @@ import {
   setProject,
   changeViewMode,
   changeChartViewMode,
+  setUser,
 } from './report-constructor.actions';
 import {
   reportConstructorState,
@@ -20,6 +21,10 @@ const reportConstructorReducer = createReducer(
   on(setProject, (state: ReportConstructorState, { projectId }) => ({
     ...state,
     projectId,
+  })),
+  on(setUser, (state: ReportConstructorState, { userId }) => ({
+    ...state,
+    userId,
   })),
   on(changeViewMode, (state: ReportConstructorState, { viewMode }) => ({
     ...state,

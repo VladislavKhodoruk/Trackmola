@@ -4,7 +4,10 @@ import {
   SortOption,
 } from '../interfaces/interfaces';
 
-import { MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY } from '@shared/constants/constants';
+import {
+  MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY,
+  ONE_DAY_IN_SECONDS,
+} from '@shared/constants/constants';
 import { NumDay } from '@shared/enums/enum';
 import { Period, Task, TaskTrack, User } from '@shared/interfaces/interfaces';
 
@@ -128,4 +131,15 @@ export function getTeam(
   return teamProjectId.map((userId) =>
     users.find((user) => user.id === userId)
   );
+}
+
+export function getDates(period: Period): number[] {
+  const dates: number[] = [];
+  let startDate = period.start;
+  const endDate = period.end;
+  while (startDate < endDate) {
+    dates.push(startDate);
+    startDate += ONE_DAY_IN_SECONDS;
+  }
+  return dates;
 }

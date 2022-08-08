@@ -554,6 +554,8 @@ export const mockTaskTracks: TaskTrack[] = [
     date: new Timestamp(1658712903, 0),
     duration: 6,
     id: 'VUW0ERxrxYJlQcU3IhQ7',
+    overtime: true,
+    overtimeDuration: 10,
     projectId: 'pdCsdrXhodWnZieCfp6O',
     status: 'in progress',
     taskId: '0N9SBvw8R48Ybb1rw3T4',
