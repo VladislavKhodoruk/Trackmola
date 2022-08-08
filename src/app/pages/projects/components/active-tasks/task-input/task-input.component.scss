@@ -19,6 +19,8 @@
     }
 
     .icon-x {
+      display: flex;
+
       svg {
         width: 1.75rem;
         height: 1.75rem;
@@ -105,10 +107,6 @@
     color: var(--white);
 
     background-color: var(--primary);
-  }
-
-  .icon-x {
-    display: flex;
   }
 
   .icon-x:hover {
