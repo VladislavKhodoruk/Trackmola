@@ -30,11 +30,18 @@ import { TrackMolaState } from '@store/trackMola.state';
     [taskTracks]="taskTracks$ | async"
     [currentDate]="currentDate$ | async"
     [usersGroupByProject]="usersGroupByProject$ | async"
+    [users]="allUsers$ | async"
+    [vacations]="allVacations$ | async"
   ></app-projects>`,
 })
 export class ProjectsContainer implements OnDestroy {
   readonly projectByRoute$: Observable<Project> =
     this.store$.select(getProjectByRoute);
+
+  readonly allUsers$: Observable<User[]> = this.store$.select(getUsers);
+
+  readonly allVacations$: Observable<Vacation[]> =
+    this.store$.select(getVacations);
 
   readonly usersGroupByProject$: Observable<GroupBy<User>> =
     this.store$.select(usersGroupByProject);

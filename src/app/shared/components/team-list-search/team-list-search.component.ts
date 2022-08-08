@@ -95,14 +95,16 @@ export class TeamListSearchComponent implements OnChanges {
 
   filterState = true;
 
+  user: User;
+
   form = new FormGroup({
     location: new FormControl(''),
     position: new FormControl(''),
     project: new FormControl(''),
   });
   setPickedUser(id: string): void {
-    const user = this.allUsers.find((currentUser) => currentUser.id === id);
-    this.pickUser.emit(user);
+    this.user = this.allUsers.find((currentUser) => currentUser.id === id);
+    this.pickUser.emit(this.user);
   }
   isProject(): void {
     const isProject = this.allProjects?.some(
@@ -240,10 +242,12 @@ export class TeamListSearchComponent implements OnChanges {
       this.filteredUserCards = this.allUserCards.sort((a, b) =>
         a.userName > b.userName ? 1 : -1
       );
-      const defaultUser = this.allUsers.find(
-        (user) => user.fullName === this.filteredUserCards[0].userName
-      );
-      this.pickUser.emit(defaultUser);
+      if (!this.user) {
+        const defaultUser = this.allUsers.find(
+          (user) => user.fullName === this.filteredUserCards[0].userName
+        );
+        this.pickUser.emit(defaultUser);
+      }
     }
   }
 

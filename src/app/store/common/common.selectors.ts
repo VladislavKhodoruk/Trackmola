@@ -32,6 +32,11 @@ export const getLastDay = createSelector(getPeriod, (period) => period.end);
 
 export const getDate = createSelector(getCommonState, (state) => state.date);
 
+export const getVacations = createSelector(
+  getCommonState,
+  (state) => state.vacations
+);
+
 export const getTasksTrack = createSelector(
   getCommonState,
   ({ taskTracks }) => taskTracks
@@ -115,6 +120,45 @@ export const trackedTimeByProjects = createSelector(
       return {
         ...acum,
         [project.id]: trackedTime,
+      };
+    }, {})
+);
+
+export const getCurrentVacations = createSelector(getVacations, (vacations) =>
+  vacations.filter(
+    (vacation) => vacation.userId === localStorage.getItem('AuthUserId')
+  )
+);
+
+export const filteredTaskTracksByPeriod = createSelector(
+  getTasksTrack,
+  getPeriod,
+  (taskTracks, period) =>
+    taskTracks.filter(({ date }) => {
+      const startDate = period.start;
+      const endDate = period.end;
+      return date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate;
+    })
+);
+
+export const usersGroupByProject = createSelector(
+  filteredTaskTracksByPeriod,
+  getProjects,
+  getUsers,
+  (taskTracks, projects, users) =>
+    projects.reduce((acum, project) => {
+      const usersInTaskTracks = taskTracks
+        .sort((a, b) => b.date.seconds - a.date.seconds)
+        .filter(({ projectId }) => projectId === project.id)
+        .map(({ userId }) => userId);
+
+      const filteredUsers = users.filter(({ id }) =>
+        usersInTaskTracks.includes(id)
+      );
+
+      return {
+        ...acum,
+        [project.id]: filteredUsers,
       };
     }, {})
 );

@@ -14,6 +14,7 @@
           ></app-project-label>
         </ng-container>
         <app-users-photos
+          *ngIf="usersByProject[project.id]"
           [users]="usersByProject[project.id]"
           size="2"
         ></app-users-photos>

@@ -173,6 +173,7 @@ export const BASIC_ACTIVITY_CHART_MY_ACTIVITY_PAGE = {
       fontSize: 'var(--offset-sm)',
       fontWeight: '300',
     },
+    marginTop: 80,
     symbolHeight: 26,
   },
   title: {

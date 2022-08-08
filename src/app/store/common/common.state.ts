@@ -6,6 +6,7 @@ import {
   User,
   Task,
   TaskTrack,
+  Vacation,
 } from '@shared/interfaces/interfaces';
 
 export interface CommonState {
@@ -18,6 +19,7 @@ export interface CommonState {
   users: User[];
   period: Period;
   usersInProjects: User[];
+  vacations: Vacation[];
 }
 
 export interface LoadingStatus {
@@ -44,4 +46,5 @@ export const initialState: CommonState = {
   user: null,
   users: [],
   usersInProjects: [],
+  vacations: [],
 };

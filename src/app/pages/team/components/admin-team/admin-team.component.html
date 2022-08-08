@@ -20,7 +20,8 @@
         ></app-users-projects-component>
       </section>
       <app-vacations-component
-        [vacations]="vacations"
+        *ngIf="vacationsAndHoliday.length"
+        [vacations]="vacationsAndHoliday"
       ></app-vacations-component>
     </div>
   </div>

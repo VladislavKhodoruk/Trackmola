@@ -16,6 +16,7 @@ import {
   getAllTaskTracksSuccess,
   getAllUsers,
   getAllUsersSuccess,
+  getAllVacationsSuccess,
 } from '@store/common/common.actions';
 import { TrackMolaState } from '@store/trackMola.state';
 import {
@@ -23,6 +24,7 @@ import {
   mockTasks,
   mockUsers,
   mockTaskTracks,
+  mockVacations,
 } from 'app/mockdata';
 
 @Injectable({
@@ -40,6 +42,7 @@ export class APIService {
     const refTasks = collection(this.firestore, 'tasks');
     const refProjects = collection(this.firestore, 'projects');
     const refUsers = collection(this.firestore, 'users');
+    const refVacations = collection(this.firestore, 'vacations');
 
     onSnapshot(
       query(refTaskTrack),
@@ -97,6 +100,20 @@ export class APIService {
       }
     );
 
+    onSnapshot(
+      query(refVacations),
+      (respons) => {
+        const vacations = [];
+        respons.forEach((item) => {
+          vacations.push(item.data());
+        });
+        this.store$.dispatch(getAllVacationsSuccess({ vacations }));
+      },
+      (error) => {
+        console.log('error :>> ', error);
+      }
+    );
+
     this.store$.dispatch(getAllUsers());
   }
 
@@ -107,5 +124,6 @@ export class APIService {
     this.store$.dispatch(
       getAllTaskTracksSuccess({ taskTracks: mockTaskTracks })
     );
+    this.store$.dispatch(getAllVacationsSuccess({ vacations: mockVacations }));
   }
 }
