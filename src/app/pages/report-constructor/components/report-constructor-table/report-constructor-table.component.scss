@@ -99,15 +99,18 @@
 
     &-footer {
       height: 3rem;
+
       background-color: var(--pale-blue);
 
       &-item {
         padding: var(--offset) 0;
+
         font: var(--font-typography);
         text-align: center;
 
         &:first-child {
           padding-left: var(--offset-s);
+
           text-align: left;
           text-transform: uppercase;
         }
