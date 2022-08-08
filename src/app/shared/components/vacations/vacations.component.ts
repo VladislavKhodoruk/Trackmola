@@ -14,15 +14,13 @@ import { Vacations } from '@shared/interfaces/interfaces';
 export class VacationsComponent {
   @Input() readonly vacations: Vacations[];
 
-  href = this.router.url;
-
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
 
   readonly pineappleIcon: IconifyIcon = pineapple;
 
   constructor(private router: Router) {}
 
-  typeOfPhoto(elem) {
+  typeOfPhoto(elem): string {
     return typeof elem;
   }
 }

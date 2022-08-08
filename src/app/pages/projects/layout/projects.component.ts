@@ -47,7 +47,7 @@ export class ProjectsComponent {
         this.users
       );
     }
-    return null;
+    return [];
   }
 
   changeMode(mode: string): void {

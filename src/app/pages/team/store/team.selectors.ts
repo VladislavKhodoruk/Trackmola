@@ -15,11 +15,8 @@ export const getUser = createSelector(getTeamState, ({ user }) => user);
 export const getVacationsForPickTeamMember = createSelector(
   getUser,
   getVacations,
-  (user: User, vacations: Vacation[]) => {
-    if (user) {
-      return vacations.filter(
-        (vacation: Vacation) => vacation.userId === user.id
-      );
-    }
-  }
+  (user: User, vacations: Vacation[]) =>
+    user
+      ? vacations.filter((vacation: Vacation) => vacation.userId === user.id)
+      : []
 );

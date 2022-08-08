@@ -425,16 +425,3 @@ export function getVacationsAndHolidaysByProject(
     (a, b) => a.vacationDay.getTime() - b.vacationDay.getTime()
   );
 }
-
-export function setUserPhotoInVacations(
-  vacations: Vacation[],
-  users: UserCard[]
-) {
-  return vacations.map((vacation: Vacation) =>
-    users.forEach((user: UserCard) => {
-      if (user.id === vacation.userId) {
-        return user.photo;
-      }
-    })
-  );
-}
