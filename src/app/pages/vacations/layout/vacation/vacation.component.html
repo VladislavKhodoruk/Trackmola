@@ -1,16 +1,19 @@
 <header class="vacation-header">
   <h1 class="vacation-header-title">Vacations</h1>
-  <div class="vacation-header-button">
+  <div class="vacation-header-buttons">
     <app-button
-      *ngIf="authTypeUser === userTypes.Employee"
       label="Request vacation"
-      [buttonClass]="'button-primary'"
+      [buttonClass]="
+        authTypeUser === userTypes.Admin || authTypeUser === userTypes.CTO
+          ? 'button-secondary'
+          : 'button-primary'
+      "
       [icon]="iconCalendarPlus"
       iconWidth="2rem"
       iconHeight="2rem"
     ></app-button>
     <app-button
-      *ngIf="authTypeUser !== userTypes.Employee"
+      *ngIf="authTypeUser === userTypes.Admin || authTypeUser === userTypes.CTO"
       label="Add vacation"
       [buttonClass]="'button-primary'"
       [icon]="iconCalendarPlus"
