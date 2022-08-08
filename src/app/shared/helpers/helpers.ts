@@ -26,7 +26,6 @@ import {
   TaskTrack,
   TaskTracksByUser,
   User,
-  UserCard,
   Vacation,
   Vacations,
 } from '@shared/interfaces/interfaces';

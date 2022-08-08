@@ -8,6 +8,7 @@ import {
   GroupBy,
   TaskTrack,
   Period,
+  Task,
   Project,
 } from '@shared/interfaces/interfaces';
 
@@ -18,8 +19,8 @@ import {
 })
 export class TaskTracksComponent {
   @Input() period!: Period;
-  @Input() projectsInfoByProjectId!: GroupBy<any>;
-  @Input() tasksInfoByTaskId!: GroupBy<any>;
+  @Input() projectsInfoByProjectId!: GroupBy<Project>;
+  @Input() tasksInfoByTaskId!: GroupBy<Task>;
   @Input() taskTracks!: TaskTrack[];
 
   readonly fireIcon = fireIcon;
@@ -52,6 +53,5 @@ export class TaskTracksComponent {
       date: data,
       tasks: taskTracksGroupByDate[data],
     }));
-    // return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
   }
 }
