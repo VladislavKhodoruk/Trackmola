@@ -85,6 +85,8 @@
       flex: 1;
       gap: var(--offset);
 
+      max-height: 24rem;
+
       margin-bottom: var(--offset-l);
     }
 
@@ -200,7 +202,7 @@
       display: flex;
       flex-direction: column;
 
-      margin-bottom: var(--offset-sm);
+      margin-bottom: var(--offset);
 
       &-label {
         cursor: pointer;
