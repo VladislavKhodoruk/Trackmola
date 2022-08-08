@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { Autolinker, AutolinkerConfig } from 'autolinker';
 import { SeriesOptionsType } from 'highcharts';
 
@@ -253,51 +254,41 @@ export function urlReplacer(text: string): string {
 
 export function isWeekend(day: number): boolean {
   const date: Date = new Date(day);
-
   return date.getDay() === NumDay.Saturday || date.getDay() === NumDay.Sunday;
 }
-
 export function daysInPeriod(period: Period): DaysByPeriod {
   const start: Date = new Date(period.start);
-
   const totalDays: number = Math.round(
     (period.end - period.start) / ONE_DAY_IN_SECONDS
   );
   const weekends: DaysByPeriod['weekends'] = [];
   const days: DaysByPeriod['days'] = [];
-
   for (let i = 0; i < totalDays; i++) {
     const date: Date = new Date(
       start.getFullYear(),
       start.getMonth(),
       start.getDate() + i
     );
-
     days.push(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-
     if (isWeekend(date.getTime())) {
       const weekend = {
         from: Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
         to: Date.UTC(date.getFullYear(), date.getMonth(), date.getDate() + 1),
       };
-
       weekends.push(weekend);
     }
   }
-
   return {
     days,
     weekends,
   };
 }
-
 export function weeksInPeriod(period: Period): number {
   return (
     (new Date(period.end).getTime() - new Date(period.start).getTime()) /
     ONE_WEEK_IN_SECONDS
   );
 }
-
 export function taskTracksByUser(taskTracks: TaskTrack[]): TaskTracksByUser[] {
   const taskTracksGroupByUser: GroupBy<TaskTrack[]> = taskTracks.reduce(
     (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
@@ -310,13 +301,11 @@ export function taskTracksByUser(taskTracks: TaskTrack[]): TaskTracksByUser[] {
     },
     {}
   );
-
   return Object.keys(taskTracksGroupByUser).map((key) => ({
     taskTracks: taskTracksGroupByUser[key],
     userId: key,
   }));
 }
-
 export function compareTwoDates(
   dateFirst: number,
   dateSecond: number
@@ -331,7 +320,6 @@ export function compareTwoDates(
   );
   return dateUTC !== date2UTC && dateUTC !== date2UTC + ONE_DAY_IN_SECONDS;
 }
-
 export function taskTracksByPeriods(taskTracks: TaskTrack[]): [TaskTrack?][] {
   const sortedTaskTracks = taskTracks.sort(
     (a, b) => a.date.seconds - b.date.seconds
@@ -349,11 +337,20 @@ export function taskTracksByPeriods(taskTracks: TaskTrack[]): [TaskTrack?][] {
       ) {
         accum.push([]);
       }
-
       accum[accum.length - 1].push(taskTrack);
       return accum;
     },
     []
+  );
+}
+export function getFilteredTasksTracks(
+  taskTracks: TaskTrack[],
+  date: number
+): TaskTrack[] {
+  return taskTracks.filter(
+    (curTaskTrack) =>
+      curTaskTrack.date.seconds * 1000 >= date - ONE_WEEK_IN_SECONDS &&
+      curTaskTrack.date.seconds * 1000 <= date
   );
 }
 

@@ -35,12 +35,14 @@
         iconWidth="1.5rem"
       ></app-button>
       <app-button
+        mat-button
         class="projects-header-buttons-item"
         buttonClass="button-primary"
         label="Approve all hours"
         [icon]="checksIcon"
         iconHeight="1.5rem"
         iconWidth="1.5rem"
+        (click)="modalApproveHours()"
       ></app-button>
     </div>
   </ng-container>
@@ -70,6 +72,7 @@
       <app-projects-team
         [usersGroupByProject]="usersGroupByProject"
         [projectByRoute]="projectByRoute"
+        [taskTracks]="filteredTaskTracks"
       ></app-projects-team>
     </ng-container>
     <app-vacations-component

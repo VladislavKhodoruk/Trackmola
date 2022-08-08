@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
@@ -26,6 +26,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   styleUrls: ['./active-tasks.container.scss'],
   template: `<app-active-tasks
     [project]="project$ | async"
+    [modalView]="modalView"
     [activeTaskGroupByProject]="activeTaskGroupByProject$ | async"
     [activeTaskTracksGroupByTask]="activeTaskTracksGroupByTask$ | async"
     [usersInfoByUserId]="usersInfoByUserId$ | async"
@@ -33,6 +34,8 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-active-tasks>`,
 })
 export class ActiveTasksContainer {
+  @Input() readonly modalView: boolean = false;
+
   readonly project$: Observable<Project> =
     this.store$.select(getProjectByRoute);
 

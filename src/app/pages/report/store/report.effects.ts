@@ -8,12 +8,20 @@ import {
   getAllTasksSuccess,
   getAllProjects,
   getAllProjectsSuccess,
+  addTask,
 } from '@pages/report/store/report.actions';
 import { ProjectsService } from '@shared/services/projects.service';
 import { TasksService } from '@shared/services/tasks.service';
 
 @Injectable()
 export class ReportEffects {
+  addTask$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addTask),
+      switchMap(({ task }) => this.tasksService.setTask(task))
+    )
+  );
+
   getAllTasks$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getAllTasks),

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Period } from './../../../interfaces/interfaces';

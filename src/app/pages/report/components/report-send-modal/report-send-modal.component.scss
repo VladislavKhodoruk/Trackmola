@@ -1,0 +1,36 @@
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .cdk-overlay-pane.reportSendClass {
+    transform: none !important;
+  }
+
+  .modalApprove {
+    .mat-dialog-title {
+      margin: 0;
+
+      text-transform: capitalize;
+    }
+  }
+}
+
+:host {
+  .send-modal {
+    &-header {
+      @include flex(center, space-between);
+      gap: var(--offset-d);
+
+      margin-bottom: var(--offset-l);
+    }
+
+    &-title {
+      font: var(--font-title);
+    }
+  }
+
+  .buttons-send {
+    @include flex(stretch, flex-end);
+    gap: var(--offset-m);
+  }
+}

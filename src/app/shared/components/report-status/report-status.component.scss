@@ -2,28 +2,45 @@
 @import "mixins";
 
 :host {
+  position: absolute;
+  right: var(--offset-xs);
+  bottom: var(--offset-xs);
+
+  ic-icon {
+    display: flex;
+  }
+
   .status {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
 
-    margin: var(--offset-l);
+    // margin: var(--offset-l);
 
     border-radius: 50%;
 
     &.new,
     &.new::before {
+      color: var(--warning);
+
       background: var(--warning);
     }
 
-    &.send,
-    &.send::before {
+    &.sended,
+    &.sended::before {
+      color: var(--primary);
+
       background: var(--white);
       border: var(--border-xxs) solid var(--primary);
     }
 
-    &.approve,
-    &.approve::before {
+    &.approved,
+    &.approved::before {
+      color: var(--white);
+
       background: var(--primary);
     }
   }

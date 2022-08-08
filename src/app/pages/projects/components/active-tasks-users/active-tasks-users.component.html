@@ -18,11 +18,16 @@
         >
           <mat-expansion-panel-header class="project-header">
             <mat-panel-title class="project-header-title">
-              <img
-                src="{{ activeTask.photo || defaultPhoto }}"
-                class="activeTask-image"
-                alt="user photo"
-              />
+              <div class="report-status-container">
+                <img
+                  src="{{ activeTask.photo || defaultPhoto }}"
+                  class="activeTask-image"
+                  alt="user photo"
+                />
+                <app-report-status
+                  [reportStatus]="getUserStatus(activeTask)"
+                ></app-report-status>
+              </div>
               <div class="project-header-user-info">
                 <div class="project-header-user-info-name">
                   {{ activeTask.fullName }}
@@ -41,7 +46,7 @@
                   [icon]="iconCheck"
                   iconWidth="1.5rem"
                   iconHeight="1.5rem"
-                  (buttonClick)="approve($event)"
+                  (buttonClick)="openModal(activeTask.id, $event)"
                 ></app-button>
               </div>
             </mat-panel-description>

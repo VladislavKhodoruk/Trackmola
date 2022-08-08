@@ -1,0 +1,106 @@
+@import "vars/variables";
+@import "mixins";
+
+::ng-deep {
+  .modalApproveUser {
+    .mat-dialog-container {
+      overflow: hidden;
+
+      min-width: 25vw;
+      padding: var(--offset);
+
+      border-radius: var(--offset);
+    }
+
+    .mat-dialog-title {
+      margin: 0;
+
+      text-transform: capitalize;
+    }
+
+    .icon-x {
+      display: flex;
+
+      svg {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
+    }
+
+    .icon-x:hover {
+      cursor: pointer;
+
+      color: var(--primary-hover);
+
+      opacity: 0.8;
+    }
+  }
+}
+
+:host {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  .header {
+    @include flex(center, space-between);
+    margin-bottom: var(--offset-m);
+  }
+
+  .title {
+    font: var(--font-title);
+  }
+
+  .buttons {
+    @include flex(stretch, flex-end);
+    gap: var(--offset-s);
+
+    margin: var(--offset-xxs);
+  }
+
+  .approve-users {
+    @include flex(flex-start, flex-start, var(--offset-s));
+    flex-direction: column;
+
+    width: 100%;
+
+    &-container {
+      @include flex(flex-start, flex-start, var(--offset-s));
+      width: 100%;
+    }
+
+    &-date {
+      color: var(--gray2);
+    }
+
+    &-image {
+      @include profile-photo(5rem, 5rem);
+    }
+
+    &-description {
+      @include flex(flex-start, flex-start, var(--offset-xs));
+      flex-direction: column;
+
+      width: 100%;
+
+      &-header {
+        @include flex(flex-start, space-between);
+        width: 100%;
+
+        &-name {
+          font: var(--font-main);
+        }
+
+        &-duration {
+          color: var(--primary);
+        }
+      }
+
+      &-comment {
+        font: var(--font-currentSmall);
+        text-align: justify;
+        word-break: break-word;
+      }
+    }
+  }
+}

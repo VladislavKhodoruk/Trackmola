@@ -1,29 +1,31 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { putTaskTrack } from '../store/report.actions';
-
+import { putTaskTrack } from '@pages/report/store/report.actions';
 import { TaskTrack } from '@shared/interfaces/interfaces';
 import { updateTaskTrack } from '@store/common/common.actions';
-
 import {
+  getTasksTrack,
   getDate,
   getPeriod,
-  getTasksTrack,
 } from '@store/common/common.selectors';
 import { CommonState } from '@store/common/common.state';
+
 import { TrackMolaState } from '@store/trackMola.state';
 
 @Component({
-  selector: 'app-report-container',
-  template: `<app-report
-    [currentDate]="currentDate$ | async"
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-report-send-modal-container',
+  styleUrls: ['./report-send-modal.component.scss'],
+  template: `<app-report-send-modal
     [taskTracks]="taskTracks$ | async"
     [period]="period$ | async"
+    [currentDate]="currentDate$ | async"
+    (submitTasksTrack)="submitReport($event)"
     (taskTrack)="putIntoStore($event)"
-  ></app-report>`,
+  ></app-report-send-modal>`,
 })
-export class ReportContainer {
+export class ReportSendModalContainer {
   taskTracks$ = this.store$.select(getTasksTrack);
   currentDate$ = this.store$.select(getDate);
   period$ = this.store$.select(getPeriod);
@@ -35,5 +37,11 @@ export class ReportContainer {
 
   putIntoStore(taskTrack: TaskTrack): void {
     this.store$.dispatch(putTaskTrack({ taskTrack }));
+  }
+
+  submitReport(taskstrack: TaskTrack[]): void {
+    taskstrack.forEach((tasktrack) =>
+      this.commonStore$.dispatch(updateTaskTrack({ tasktrack }))
+    );
   }
 }

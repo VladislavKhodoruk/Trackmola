@@ -1,11 +1,18 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import x from '@iconify/icons-tabler/x';
 
 import { Project, Task } from '@shared/interfaces/interfaces';
 
 @Component({
+  providers: [
+    {
+      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
+      useValue: { overlayPanelClass: 'taskInputClass' },
+    },
+  ],
   selector: 'app-task-input',
   styleUrls: ['./task-input.component.scss'],
   templateUrl: './task-input.component.html',

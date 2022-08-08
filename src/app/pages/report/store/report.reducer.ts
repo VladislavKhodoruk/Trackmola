@@ -4,6 +4,7 @@ import {
   getAllTasksSuccess,
   getAllProjectsSuccess,
   putTaskTrack,
+  addTask,
 } from './report.actions';
 import { ReportState, reportState } from './report.state';
 
@@ -20,6 +21,10 @@ const reportReducer = createReducer(
   on(putTaskTrack, (state: ReportState, { taskTrack }) => ({
     ...state,
     taskTrack,
+  })),
+  on(addTask, (state: ReportState, { task }) => ({
+    ...state,
+    task,
   }))
 );
 

@@ -18,6 +18,8 @@ import { ActiveTasksContainer } from './components/active-tasks/active-tasks.con
 import { TaskInputComponent } from './components/active-tasks/task-input/task-input.component';
 import { ApproveModalComponent } from './components/approve-modal/approve-modal.component';
 import { ApproveModalContainer } from './components/approve-modal/approve-modal.container';
+import { ApproveUsersModalComponent } from './components/approve-users-modal/approve-users-modal.component';
+import { ApproveUsersModalContainer } from './components/approve-users-modal/approve-users-modal.container';
 import { ProjectsListComponent } from './components/projects-list/projects-list.component';
 import { ProjectsListContainer } from './components/projects-list/projects-list.container';
 import { ProjectsTeamComponent } from './components/projects-team/projects-team.component';
@@ -31,6 +33,7 @@ import { PROJECTS_STATE_NAME } from './store/projects.selectors';
 
 import { ButtonModule } from '@shared/components/button/button.module';
 import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
+import { ReportStatusModule } from '@shared/components/report-status/report-status.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
 import { VacationsModule } from '@shared/components/vacations/vacations.module';
@@ -50,8 +53,10 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     TaskInputComponent,
     ActiveTasksUserModeComponent,
     ActiveTasksUserModeContainer,
-    ApproveModalContainer,
     ApproveModalComponent,
+    ApproveModalContainer,
+    ApproveUsersModalContainer,
+    ApproveUsersModalComponent,
   ],
   exports: [RouterModule],
   imports: [
@@ -69,6 +74,7 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     VacationsModule,
     MatDialogModule,
     ProjectLabelModule,
+    ReportStatusModule,
   ],
 })
 export class ProjectsModule {}

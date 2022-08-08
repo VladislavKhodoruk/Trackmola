@@ -8,6 +8,7 @@ import { IconifyIcon } from '@iconify/types';
   templateUrl: './report-status.component.html',
 })
 export class ReportStatusComponent {
+  @Input() reportStatus: string;
   @Input() icon!: IconifyIcon;
   @Input() iconWidth!: string;
   @Input() iconHeight!: string;

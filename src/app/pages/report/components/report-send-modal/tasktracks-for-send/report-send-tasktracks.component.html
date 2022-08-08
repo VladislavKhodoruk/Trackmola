@@ -1,0 +1,35 @@
+<div class="taskTracks" *ngFor="let taskTrack of groupByDate()">
+  <div class="taskTracks-date">
+    {{ taskTrack.date | date: "dd MMMM" }}
+  </div>
+  <div class="task" *ngFor="let tasktrack of taskTrack.tasks">
+    <div class="task-top">
+      <div class="task-time-and-overtime">
+        <div class="time">{{ tasktrack.duration }}h</div>
+        <div *ngIf="tasktrack?.overtimeDuration" class="overtime">
+          <div class="overtime-duration">
+            {{ tasktrack?.overtimeDuration }}h
+          </div>
+          <ic-icon
+            [icon]="fireIcon"
+            class="fire"
+            width="1.5rem"
+            height="1.5rem"
+          ></ic-icon>
+        </div>
+      </div>
+      <ng-container *ngIf="tasktrack">
+        <app-project-label
+          [projectColor]="projectsInfoByProjectId[tasktrack.projectId]?.color"
+          [projectName]="projectsInfoByProjectId[tasktrack.projectId]?.name"
+        ></app-project-label>
+      </ng-container>
+      <div class="description">
+        {{ tasksInfoByTaskId[tasktrack.taskId]?.name }}
+      </div>
+    </div>
+    <div class="description-comment">
+      {{ tasktrack.comments || "no comments" }}
+    </div>
+  </div>
+</div>

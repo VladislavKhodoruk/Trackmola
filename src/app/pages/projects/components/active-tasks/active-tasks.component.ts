@@ -47,6 +47,7 @@ export class ActiveTasksComponent {
   @Input() readonly activeTaskGroupByProject: GroupBy<Task[]>;
   @Input() readonly activeTaskTracksGroupByTask: GroupBy<TaskTrack[]>;
   @Input() readonly usersInfoByUserId: GroupBy<User>;
+  @Input() readonly modalView: boolean;
 
   @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
 
@@ -101,7 +102,7 @@ export class ActiveTasksComponent {
         },
       },
       enterAnimationDuration,
-      panelClass: 'modal',
+      panelClass: 'modalAdd',
     });
   }
 
@@ -112,7 +113,7 @@ export class ActiveTasksComponent {
       autoFocus: false,
       data: { project: this.project },
       enterAnimationDuration,
-      panelClass: 'modal',
+      panelClass: 'modalInputTask',
     });
 
     dialogRef
