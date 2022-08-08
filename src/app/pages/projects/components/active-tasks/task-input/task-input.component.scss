@@ -3,32 +3,33 @@
 @import "mixins";
 
 ::ng-deep {
-  .mat-dialog-container.taskInputClass {
-    overflow: hidden;
+  .modal {
+    .mat-dialog-container {
+      overflow: inherit;
 
-    min-width: 25vw;
-    padding: var(--offset);
-    padding: 0;
+      padding: 0;
 
-    border-radius: var(--offset);
-  }
+      border-radius: var(--offset);
+    }
 
-  .mat-dialog-title.taskInputClass {
-    margin: 0;
+    .mat-dialog-title {
+      margin: 0;
 
-    text-transform: capitalize;
-  }
+      text-transform: capitalize;
+    }
 
-  .icon-x {
-    svg {
-      width: 1.75rem;
-      height: 1.75rem;
+    .icon-x {
+      svg {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
     }
   }
 }
 
 :host {
   .wrapper {
+    width: 35rem;
     padding: var(--offset);
   }
 
@@ -43,6 +44,9 @@
   }
 
   .middle {
+    margin-top: var(--offset);
+    margin-bottom: var(--offset-s);
+
     font: var(--font-calendar);
     text-transform: capitalize;
   }
@@ -74,6 +78,8 @@
 
   .buttons {
     @include flex(stretch, flex-end);
+
+    margin-top: var(--offset-s);
   }
 
   .buttons-cancel,
