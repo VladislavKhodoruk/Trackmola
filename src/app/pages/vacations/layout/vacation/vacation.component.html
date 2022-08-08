@@ -1,0 +1,81 @@
+<header class="vacation-header">
+  <h1 class="vacation-header-title">Vacations</h1>
+  <div class="vacation-header-button">
+    <app-button
+      *ngIf="authTypeUser === userTypes.Employee"
+      label="Request vacation"
+      [buttonClass]="'button-primary'"
+      [icon]="iconCalendarPlus"
+      iconWidth="2rem"
+      iconHeight="2rem"
+    ></app-button>
+    <app-button
+      *ngIf="authTypeUser !== userTypes.Employee"
+      label="Add vacation"
+      [buttonClass]="'button-primary'"
+      [icon]="iconCalendarPlus"
+      iconWidth="2rem"
+      iconHeight="2rem"
+    ></app-button>
+  </div>
+</header>
+
+<main class="vacation-main">
+  <section class="vacations-list-with-search">
+    <div class="search">
+      <input
+        class="input search-input"
+        type="text"
+        placeholder="Search..."
+        [(ngModel)]="searchUser"
+        (ngModelChange)="selectedUser = null"
+      />
+      <ic-icon class="icon search-icon" [icon]="iconSearch"></ic-icon>
+    </div>
+    <ng-container *ngIf="users.length">
+      <ul class="vacations-list">
+        <li
+          class="vacations-list-item"
+          *ngFor="let user of users | searchUsers: searchUser"
+          (click)="selectedUser = user"
+          [class.vacations-list-item-selected]="selectedUser?.id === user.id"
+        >
+          <div class="vacations-list-item-photo">
+            <img
+              class="vacations-list-item-photo-avatar"
+              src="{{ user.photo || defaultPhoto }}"
+              alt="{{ user.fullName }}"
+            />
+            <small class="vacations-list-item-photo-location">
+              {{ user.location }}
+            </small>
+          </div>
+          <div class="vacations-list-item-info">
+            <div class="vacations-list-item-info-header">
+              <div>
+                <h2 class="vacations-list-item-info-name">
+                  {{ user.fullName }}
+                </h2>
+                <p class="vacations-list-item-info-position">
+                  {{ user.position }}
+                </p>
+              </div>
+              <ic-icon
+                class="icon icon-pineapple"
+                [icon]="iconPineapple"
+              ></ic-icon>
+            </div>
+            <small class="vacations-list-item-info-days">
+              Vacations left: 22 days
+            </small>
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+  </section>
+  <section class="vacations-chart"></section>
+</main>
+
+<footer class="vacation-footer">
+  <app-holidays></app-holidays>
+</footer>

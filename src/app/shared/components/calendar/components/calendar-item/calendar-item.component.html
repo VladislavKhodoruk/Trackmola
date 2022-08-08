@@ -7,16 +7,22 @@
       <div *ngIf="day.isTasks" class="tooltip">
         <div class="tooltip-text">{{ day.duration }}h</div>
       </div>
-      <div *ngIf="day.overtimeDuration" class="calendar-overtime">
-        <div class="calendar-overtime-duration">
-          {{ day.overtimeDuration }}h
+      <div class="calendar-overtime-and-tooltip-container">
+        <ng-container *ngIf="!selected && day.value <= todayDate">
+          <div *ngIf="day.duration < 7" class="smile"></div>
+        </ng-container>
+
+        <div *ngIf="day.overtimeDuration" class="calendar-overtime">
+          <div class="calendar-overtime-duration">
+            {{ day.overtimeDuration }}h
+          </div>
+          <ic-icon
+            class="calendar-overtime-icon"
+            [icon]="iconFire"
+            width="1.5rem"
+            height="1.5rem"
+          ></ic-icon>
         </div>
-        <ic-icon
-          class="calendar-overtime-icon"
-          [icon]="iconFire"
-          width="1.5rem"
-          height="1.5rem"
-        ></ic-icon>
       </div>
     </div>
   </div>

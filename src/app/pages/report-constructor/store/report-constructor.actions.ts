@@ -19,6 +19,8 @@ export const setProject = createAction(
   props<{ projectId: string }>()
 );
 
+export const setUser = createAction(SET_PROJECT, props<{ userId: string }>());
+
 export const exportExel = createAction(
   EXPORT_EXEL,
   props<{ data: ExcelData }>()

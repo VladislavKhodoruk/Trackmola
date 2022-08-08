@@ -39,7 +39,6 @@ import {
   templateUrl: './range.component.html',
 })
 export class RangeComponent implements OnChanges {
-  @Input() readonly activeTask: TaskForManager;
   @Input() readonly tasks: TaskForManager[];
   @Input() readonly period: Period;
   @Input() readonly minWidth: number;
@@ -61,12 +60,6 @@ export class RangeComponent implements OnChanges {
   protected get chartXRangeWidth(): number {
     const weeks: number = weeksInPeriod(this.period);
     return this.minWidth * weeks;
-  }
-
-  protected get taskTracksByUserFromActiveTask(): TaskTracksByUser[] {
-    if (this.activeTask) {
-      return taskTracksByUser(this.activeTask.taskTracksInTask);
-    }
   }
 
   protected get basicOptionsChartXRange(): Options {
@@ -134,7 +127,7 @@ export class RangeComponent implements OnChanges {
             0
           ),
           userName: userInfo.fullName,
-          userPhoto: userInfo.photo,
+          userPhoto: userInfo.photo || null,
         },
         x: dateFrom,
         x2: dateTo,

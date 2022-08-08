@@ -60,7 +60,7 @@
   >
     <app-active-tasks-users-container></app-active-tasks-users-container>
   </ng-container>
-  <div class="projects-team-and-vacations">
+  <div class="projects-team">
     <ng-container
       *ngIf="
         currentUser !== userType.Employee && currentMode === projectMode.Users
@@ -75,9 +75,5 @@
         [taskTracks]="filteredTaskTracks"
       ></app-projects-team>
     </ng-container>
-    <app-vacations-component
-      class="projects-vacations"
-      [vacations]="vacations"
-    ></app-vacations-component>
   </div>
 </div>

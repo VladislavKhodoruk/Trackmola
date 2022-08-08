@@ -45,6 +45,34 @@ export class ManagerDashboardContainer {
       vacationDay: new Date('2022-07-22T03:24:00'),
     },
     {
+      fullName: 'Kirill Borisenok',
+      photo:
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net' +
+        '/629860aa1a2bdf007095b9bb/181bf52b-1854-4deb-a661-884a6a376802/128',
+      vacationDay: new Date('2022-07-22T03:24:00'),
+    },
+    {
+      fullName: 'Kirill Borisenok',
+      photo:
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net' +
+        '/629860aa1a2bdf007095b9bb/181bf52b-1854-4deb-a661-884a6a376802/128',
+      vacationDay: new Date('2022-07-22T03:24:00'),
+    },
+    {
+      fullName: 'Kirill Borisenok',
+      photo:
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net' +
+        '/629860aa1a2bdf007095b9bb/181bf52b-1854-4deb-a661-884a6a376802/128',
+      vacationDay: new Date('2022-07-22T03:24:00'),
+    },
+    {
+      fullName: 'Kirill Borisenok',
+      photo:
+        'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net' +
+        '/629860aa1a2bdf007095b9bb/181bf52b-1854-4deb-a661-884a6a376802/128',
+      vacationDay: new Date('2022-07-22T03:24:00'),
+    },
+    {
       fullName: 'Andrei Shinkarev',
       photo:
         'https://avatar-management--avatars.us-west-2.prod.public.atl-paas.net' +

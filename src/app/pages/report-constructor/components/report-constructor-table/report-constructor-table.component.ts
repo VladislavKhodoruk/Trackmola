@@ -10,14 +10,18 @@ import sortDescending from '@iconify/icons-tabler/sort-descending';
 
 import { IconifyIcon } from '@iconify/types';
 
+import { AdminReportConstructorMode } from '@pages/report-constructor/enums/enums';
+
 import { getSortInfoReportConstructor } from '@pages/report-constructor/helpers/helpers';
 
 import {
   InfoFromTaskTracksForTable,
   InfoReportConstructorItem,
+  InfoReportConstructorUserItem,
   SortOption,
 } from '@pages/report-constructor/interfaces/interfaces';
 import { TableHeadItem } from '@pages/report-constructor/models/models';
+import { UserType } from '@shared/enums/enum';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,11 +31,16 @@ import { TableHeadItem } from '@pages/report-constructor/models/models';
 })
 export class ReportConstructorTableComponent implements OnChanges {
   @Input() infoFromTaskTracks: InfoReportConstructorItem[];
+  @Input() infoFromUsers: InfoReportConstructorUserItem[];
+  @Input() mode: AdminReportConstructorMode;
   infoFromTaskTracksForTable: InfoFromTaskTracksForTable[];
   total: string[];
+  totalUsers: string[];
 
   readonly iconFire: IconifyIcon = fireIcon;
   readonly sortDescendingIcon: IconifyIcon = sortDescending;
+  readonly userTypes = UserType;
+  readonly adminReportConstructorMode = AdminReportConstructorMode;
 
   readonly tableHeadItems = [
     new TableHeadItem('deliverables', 'taskName', 'string', true),
@@ -40,6 +49,15 @@ export class ReportConstructorTableComponent implements OnChanges {
     new TableHeadItem('overtimes', 'taskOvertimeDuration', 'number', true),
     new TableHeadItem('percentage', 'taskPercentageWeek', 'number', true),
     new TableHeadItem('team', 'userNames', 'string', false),
+  ];
+
+  readonly AdminTableHeadItems = [
+    new TableHeadItem('date', 'date', 'string', true),
+    new TableHeadItem('resource', 'userPositions', 'string', false),
+    new TableHeadItem('hours', 'taskDuration', 'number', true),
+    new TableHeadItem('overtimes', 'taskOvertimeDuration', 'number', true),
+    new TableHeadItem('note', 'note', 'number', true),
+    new TableHeadItem('projects', 'projects', 'string', false),
   ];
 
   selectedSort: SortOption = {
@@ -94,7 +112,17 @@ export class ReportConstructorTableComponent implements OnChanges {
       totalTaskDuration,
       totalTaskOvertimeDuration,
       totalTaskPercentageWeek,
+      '',
     ];
+    const overtimesTotal = `${this.infoFromUsers.reduce(
+      (acc, item) => (acc += item.overtimes ? item.overtimes : 0),
+      0
+    )}`;
+    const durationTotal = `${this.infoFromUsers.reduce(
+      (acc, item) => (acc += item.hours),
+      0
+    )}`;
+    this.totalUsers = ['Total', '', durationTotal, overtimesTotal, '', '', ''];
   }
 
   changeSortOption(

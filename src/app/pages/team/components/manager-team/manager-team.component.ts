@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import {
   GroupBy,
@@ -7,6 +7,7 @@ import {
   Vacations,
 } from '@shared/interfaces/interfaces';
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-manager-team-component',
   styleUrls: ['./manager-team.component.scss'],
   templateUrl: './manager-team.component.html',
@@ -16,6 +17,7 @@ export class ManagerTeamComponent {
   @Input() projectsByUsers: GroupBy<Project[]>;
   @Input() usersByProject: GroupBy<User[]>;
   @Input() trackedTimeByProjects: GroupBy<number>;
+
   readonly vacations: Vacations[] = [
     {
       fullName: 'Kirill Borisenok',

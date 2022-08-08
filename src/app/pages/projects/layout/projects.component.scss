@@ -85,7 +85,7 @@
       max-height: calc(100% - #{$header-height} - #{$gap});
     }
 
-    &-team-and-vacations {
+    &-team {
       @include flex(flex-start, flex-start, var(--offset-l));
       flex-direction: column;
 
@@ -94,16 +94,20 @@
       height: 100%;
       max-height: 100%;
     }
-
-    &-vacations {
-      width: 100%;
-      max-width: 100%;
-      height: 50%;
-      max-height: 50%;
-    }
   }
 
   .flex-container {
     @include flex(center, center);
+  }
+
+  ::ng-deep {
+    .mat-expansion-indicator::after {
+      display: flex;
+
+      margin: 0 var(--offset-xs);
+      padding: var(--offset-xs);
+
+      color: var(--black);
+    }
   }
 }

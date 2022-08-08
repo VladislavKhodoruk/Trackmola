@@ -1,6 +1,6 @@
-<app-header-container></app-header-container>
+<app-header-container class="dashboard-header"></app-header-container>
 
-<container-element [ngSwitch]="dashboardView">
+<container-element class="dashboard-main" [ngSwitch]="dashboardView">
   <app-employee-dashboard
     *ngSwitchCase="types.Employee"
   ></app-employee-dashboard>
