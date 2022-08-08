@@ -36,7 +36,9 @@
     ></app-button>
   </div>
 </header>
-<div>Employee</div>
+<div>
+  {{ mode === adminReportConstructorMode.User ? "Employee" : "Project" }}
+</div>
 <section class="report-constructor-controls">
   <div class="report-constructor-controls-container">
     <div class="report-constructor-controls-project">
@@ -59,16 +61,15 @@
     </div>
     <div class="report-constructor-controls-date-switch">
       <app-date-switch
-        *ngIf="
-          periodType === TypePeriod.Week || periodType === TypePeriod.Month
-        "
+        *ngIf="periodType !== TypePeriod.Custom"
         [date]="period.end"
         [period]="periodType"
         (getFirstandLastDay)="getFirstandLastDay($event)"
       ></app-date-switch>
       <app-datepicker
-        *ngIf="periodType === 'custom'"
+        *ngIf="periodType === TypePeriod.Custom"
         (getFirstandLastDay)="getFirstandLastDay($event)"
+        [period]="period"
       ></app-datepicker>
     </div>
   </div>

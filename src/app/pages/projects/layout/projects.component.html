@@ -46,7 +46,7 @@
   </ng-container>
 </header>
 
-<div class="projects-container">
+<div *ngIf="currentMode !== 'by budget'" class="projects-container">
   <app-projects-list-container></app-projects-list-container>
   <ng-container *ngIf="currentMode === projectMode.Tasks">
     <app-active-tasks-container></app-active-tasks-container>
@@ -74,3 +74,6 @@
     </ng-container>
   </div>
 </div>
+<ng-container *ngIf="currentMode === 'by budget'">
+  <section class="budget"></section>
+</ng-container>

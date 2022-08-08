@@ -25,7 +25,10 @@ export class ProjectsComponent {
   readonly checksIcon = checksIcon;
   readonly messagePlusIcon = messagePlus;
 
-  readonly toggleLabels = [ProjectMode.Tasks, ProjectMode.Users];
+  readonly toggleLabels =
+    localStorage.getItem('AuthUserType') !== UserType.CTO
+      ? [ProjectMode.Tasks, ProjectMode.Users]
+      : [ProjectMode.Tasks, ProjectMode.Users, 'by budget'];
 
   readonly userType = UserType;
   readonly currentUser: string = localStorage.getItem('AuthUserType');
