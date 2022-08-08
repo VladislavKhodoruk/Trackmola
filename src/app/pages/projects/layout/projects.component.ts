@@ -23,13 +23,18 @@ import { ProjectMode } from '../enums/enums';
 
 import { dialogOpeningTime } from '@shared/constants/constants';
 import { UserType } from '@shared/enums/enum';
-import { getFilteredTasksTracks } from '@shared/helpers/helpers';
+import {
+  getFilteredTasksTracks,
+  getVacationsAndHolidaysByProject,
+} from '@shared/helpers/helpers';
 import {
   GroupBy,
   Project,
   TaskItem,
   TaskTrack,
   User,
+  Vacation,
+  Vacations,
 } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -57,6 +62,8 @@ export class ProjectsComponent implements OnChanges {
   @Input() readonly activeTaskGroupByProject: GroupBy<Task[]>;
   @Input() readonly activeTaskTracksGroupByTask: GroupBy<TaskTrack[]>;
   @Input() readonly usersInfoByUserId: GroupBy<User>;
+  @Input() readonly users: User[];
+  @Input() readonly vacations: Vacation[];
 
   @Output() delete = new EventEmitter<string>();
   @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
@@ -75,6 +82,18 @@ export class ProjectsComponent implements OnChanges {
 
   readonly userType = UserType;
   readonly currentUser: string = localStorage.getItem('AuthUserType');
+
+  protected get vacationsAndHolidaysTeam(): Vacations[] {
+    if (this.projectByRoute && this.vacations.length && this.users.length) {
+      return getVacationsAndHolidaysByProject(
+        this.usersGroupByProject[this.projectByRoute.id],
+        this.vacations,
+        this.users
+      );
+    }
+
+    return [];
+  }
 
   constructor(public dialog: MatDialog) {}
 

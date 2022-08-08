@@ -15,8 +15,14 @@ import {
   Project,
   TaskTrack,
   User,
+  Vacation,
 } from '@shared/interfaces/interfaces';
-import { getDate, getTasksTrack } from '@store/common/common.selectors';
+import {
+  getDate,
+  getTasksTrack,
+  getUsers,
+  getVacations,
+} from '@store/common/common.selectors';
 import { TrackMolaState } from '@store/trackMola.state';
 
 @UntilDestroy()
