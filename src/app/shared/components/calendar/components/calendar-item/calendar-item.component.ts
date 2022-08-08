@@ -9,6 +9,7 @@ import {
   MAXIMUM_VALUE_BAR,
   ONE_DIVISION_CALENDAR_BAR,
 } from '@shared/constants/constants';
+import { isWeekend } from '@shared/helpers/helpers';
 import { Day } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -39,5 +40,9 @@ export class CalendarItemComponent implements OnChanges {
       this.timeBar = MAXIMUM_VALUE_BAR;
       this.more = CLASS_DURATION_MORE_THAN_EIGHT;
     }
+  }
+
+  protected isWeekend(date: number): boolean {
+    return isWeekend(date);
   }
 }

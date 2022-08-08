@@ -8,7 +8,9 @@
         <div class="tooltip-text">{{ day.duration }}h</div>
       </div>
       <div class="calendar-overtime-and-tooltip-container">
-        <ng-container *ngIf="!selected && day.value <= todayDate">
+        <ng-container
+          *ngIf="!selected && day.value <= todayDate && !isWeekend(day.value)"
+        >
           <div *ngIf="day.duration < 7" class="smile"></div>
         </ng-container>
 
