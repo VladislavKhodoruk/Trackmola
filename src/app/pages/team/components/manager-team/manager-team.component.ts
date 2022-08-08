@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { getCurrentHolidays } from '@shared/helpers/helpers';
 import {
@@ -20,7 +14,7 @@ import {
   styleUrls: ['./manager-team.component.scss'],
   templateUrl: './manager-team.component.html',
 })
-export class ManagerTeamComponent implements OnChanges {
+export class ManagerTeamComponent {
   @Input() pickedUser: User;
   @Input() projectsByUsers: GroupBy<Project[]>;
   @Input() usersByProject: GroupBy<User[]>;
@@ -28,17 +22,19 @@ export class ManagerTeamComponent implements OnChanges {
   @Input() vacations: Vacation[];
   @Input() users: User[];
 
-  vacationsAndHoliday: Vacations[];
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.pickedUser) {
-      if (this.pickedUser) {
-        this.vacationsAndHoliday = getCurrentHolidays(
-          this.pickedUser?.location,
-          this.vacations,
-          this.users
-        );
-      }
+  protected get vacationsAndHoliday(): Vacations[] {
+    if (
+      this.pickedUser &&
+      this.vacations &&
+      this.vacations.length &&
+      this.users.length
+    ) {
+      return getCurrentHolidays(
+        this.pickedUser.location,
+        this.vacations,
+        this.users
+      );
     }
+    return [];
   }
 }

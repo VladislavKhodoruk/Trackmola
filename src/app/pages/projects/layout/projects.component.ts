@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import checksIcon from '@iconify/icons-tabler/checks';
 import messagePlus from '@iconify/icons-tabler/message-plus';
 import angleRight from '@iconify/icons-uil/angle-right';

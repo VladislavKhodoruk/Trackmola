@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  ChangeDetectionStrategy,
-  SimpleChanges,
-  OnChanges,
-} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { getCurrentHolidays } from '@shared/helpers/helpers';
 import {
@@ -27,20 +21,6 @@ export class AdminTeamComponent {
   @Input() trackedTimeByProjects: GroupBy<number>;
   @Input() vacations: Vacation[];
   @Input() users: User[];
-
-  // vacationsAndHoliday: Vacations[];
-  //
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes.pickedUser) {
-  //     if (this.pickedUser && this.vacations.length && this.users.length) {
-  //       this.vacationsAndHoliday = getCurrentHolidays(
-  //         this.pickedUser.location,
-  //         this.vacations,
-  //         this.users
-  //       );
-  //     }
-  //   }
-  // }
 
   protected get vacationsAndHoliday(): Vacations[] {
     if (
