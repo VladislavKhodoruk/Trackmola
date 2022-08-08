@@ -130,7 +130,7 @@ export const getCurrentVacations = createSelector(getVacations, (vacations) =>
   )
 );
 
-export const filteredTaskTracksByPeriod1 = createSelector(
+export const filteredTaskTracksByPeriod = createSelector(
   getTasksTrack,
   getPeriod,
   (taskTracks, period) =>
@@ -142,7 +142,7 @@ export const filteredTaskTracksByPeriod1 = createSelector(
 );
 
 export const usersGroupByProject = createSelector(
-  filteredTaskTracksByPeriod1,
+  filteredTaskTracksByPeriod,
   getProjects,
   getUsers,
   (taskTracks, projects, users) =>
