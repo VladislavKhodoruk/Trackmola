@@ -35,7 +35,7 @@ export class ProfileComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.userInfo && this.userInfo) {
-      if (this.userInfo) {
+      if (this.userInfo && this.vacations) {
         this.vacationsAndHoliday = getCurrentHolidays(
           this.userInfo?.location,
           this.vacations,

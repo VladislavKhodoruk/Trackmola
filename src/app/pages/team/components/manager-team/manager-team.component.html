@@ -5,12 +5,17 @@
   <div class="team-right">
     <app-visit-card-container [user]="pickedUser"></app-visit-card-container>
     <div class="team-right-bottom">
-      <app-users-projects-component
-        [usersByProject]="usersByProject"
-        [projectsByUsers]="projectsByUsers"
-        [pickedUser]="pickedUser"
-        [trackedTimeByProjects]="trackedTimeByProjects"
-      ></app-users-projects-component>
+      <section class="team-right-bottom-projects">
+        <h2 class="team-right-bottom-projects-text">
+          Activity on projects last month
+        </h2>
+        <app-users-projects-component
+          [usersByProject]="usersByProject"
+          [projectsByUsers]="projectsByUsers"
+          [pickedUser]="pickedUser"
+          [trackedTimeByProjects]="trackedTimeByProjects"
+        ></app-users-projects-component>
+      </section>
       <app-vacations-component
         *ngIf="vacationsAndHoliday"
         [vacations]="vacationsAndHoliday"

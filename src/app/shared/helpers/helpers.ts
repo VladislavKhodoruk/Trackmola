@@ -365,7 +365,7 @@ export function getUserPhoto(users: User[], id): string {
   return users.find((user: User) => user.id === id).photo;
 }
 
-export function getLocation(id: string, users: User[]) {
+export function getLocation(id: string, users: User[]): string {
   return users.find((user: User) => user.id === id).location;
 }
 
@@ -406,8 +406,8 @@ export function getVacationsAndHolidaysByProject(
   vacations: Vacation[],
   users: User[]
 ) {
-  const allVacAndHol = team
-    .map((member: User) =>
+  return team
+    .map((member: User): Vacation[] =>
       vacations.filter((vacation: Vacation) => vacation.userId === member.id)
     )
     .flat()
@@ -420,7 +420,6 @@ export function getVacationsAndHolidaysByProject(
     )
     .flat()
     .sort((a, b) => a.vacationDay.getTime() - b.vacationDay.getTime());
-  return allVacAndHol;
 }
 
 export function setUserPhotoInVacations(

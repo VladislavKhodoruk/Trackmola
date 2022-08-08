@@ -1,4 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 import { getCurrentHolidays } from '@shared/helpers/helpers';
 import {
@@ -9,6 +15,7 @@ import {
   Vacations,
 } from '@shared/interfaces/interfaces';
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-manager-team-component',
   styleUrls: ['./manager-team.component.scss'],
   templateUrl: './manager-team.component.html',
