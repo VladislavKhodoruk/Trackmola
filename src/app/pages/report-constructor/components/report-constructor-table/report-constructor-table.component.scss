@@ -53,6 +53,11 @@
         &-text {
           font: var(--font-current);
         }
+
+        &-project {
+          @include flex(center, center, var(--offset));
+          flex-wrap: wrap;
+        }
       }
 
       &-overtime {
@@ -105,6 +110,9 @@
         text-align: center;
 
         &:first-child {
+          padding-left: var(--offset-s);
+
+          text-align: left;
           text-transform: uppercase;
         }
       }

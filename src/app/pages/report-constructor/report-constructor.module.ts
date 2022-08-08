@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { IconModule } from '@visurel/iconify-angular';
 
 import { AdminReportConstructorComponent } from './components/admin-report-constructor/admin-report-constructor.component';
+import { AdminReportConstructorContainer } from './components/admin-report-constructor/admin-report-constructor.container';
 import { CtoReportConstructorComponent } from './components/cto-report-constructor/cto-report-constructor.component';
 import { ManagerReportConstructorComponent } from './components/manager-report-constructor/manager-report-constructor.component';
 import { ManagerReportConstructorContainer } from './components/manager-report-constructor/manager-report-constructor.container';
@@ -27,6 +28,7 @@ import { ButtonModule } from '@shared/components/button/button.module';
 import { ChartProjectsModule } from '@shared/components/chart-projects/chart-projects.module';
 import { DateSwitchModule } from '@shared/components/date-switch/date-switch.module';
 import { DatepickerModule } from '@shared/components/datepicker/datepicker.module';
+import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
 import { SelectModule } from '@shared/components/select/select.module';
 import { ToggleButtonsModule } from '@shared/components/toggle-buttons/toggle-buttons.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
@@ -37,6 +39,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     ReportConstructorContainer,
     CtoReportConstructorComponent,
     AdminReportConstructorComponent,
+    AdminReportConstructorContainer,
     ManagerReportConstructorComponent,
     ManagerReportConstructorContainer,
     ReportConstructorTableComponent,
@@ -58,6 +61,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     DatepickerModule,
     UsersPhotosModule,
     ChartProjectsModule,
+    ProjectLabelModule,
   ],
 })
 export class ReportConstructorModule {}

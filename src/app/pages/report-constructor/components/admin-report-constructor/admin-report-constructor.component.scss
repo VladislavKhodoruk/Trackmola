@@ -1,0 +1,64 @@
+@import "mixins";
+@import "vars/variables";
+
+:host {
+  .report-constructor-table {
+    overflow: auto;
+
+    height: calc(100% - 16rem);
+  }
+
+  .report-constructor-header {
+    @include flex(center, space-between);
+    height: 5rem;
+    margin-bottom: var(--offset-l);
+
+    &-title {
+      font: var(--font-titleBig);
+    }
+
+    &-buttons {
+      display: flex;
+
+      &-item {
+        margin-left: var(--offset-m);
+      }
+    }
+
+    &-switcher-mode {
+      margin-right: var(--offset-m);
+    }
+  }
+
+  .report-constructor-controls {
+    @include flex(center, space-between);
+    margin-bottom: var(--offset-l);
+
+    &-container {
+      @include flex(center, flex-start, var(--offset-l));
+    }
+
+    &-project {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-view-switcher {
+      @include flex(center, flex-start, 0.375rem);
+    }
+
+    &-view-chart {
+      @include flex(center, flex-start, 0.375rem);
+    }
+  }
+
+  .report-constructor-team {
+    @include flex(center, flex-start);
+    margin: var(--offset) 0;
+  }
+
+  .report-constructor-chart-view,
+  .report-constructor-switcher-mode {
+    @include flex(center, flex-start, 0.375rem);
+  }
+}
