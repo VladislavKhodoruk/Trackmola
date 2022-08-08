@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { catchError, map, of, switchMap, take, tap, mergeMap } from 'rxjs';
 
+import { Route } from '@shared/enums/enum';
 import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import { VacationsService } from '@shared/services/vacations.service';
@@ -56,7 +57,7 @@ export class CommonEffects {
       this.actions$.pipe(
         ofType(getUserDataSuccess),
         tap((): boolean => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate([Route.Dashboard]);
           return true;
         })
       ),

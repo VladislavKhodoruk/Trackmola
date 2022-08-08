@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, UrlTree } from '@angular/router';
+
 import { map, Observable, take, tap } from 'rxjs';
 
 import { AuthorizationService } from './services/authorization.service';
+
+import { Route } from '@shared/enums/enum';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +21,7 @@ export class AuthorizationGuard implements CanActivate {
       map((currentUser) => !!currentUser),
       tap((isAuthorized) => {
         if (!isAuthorized) {
-          this.router.navigate(['/authorization']);
+          this.router.navigate([`/${Route.Authorization}`]);
         }
       })
     );

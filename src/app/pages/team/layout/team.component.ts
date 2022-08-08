@@ -7,7 +7,7 @@ import folder from '@iconify/icons-uil/folder-times';
 
 import { IconifyIcon } from '@iconify/types';
 
-import { UserType } from '@shared/enums/enum';
+import { Route, UserType } from '@shared/enums/enum';
 import { User } from '@shared/interfaces/interfaces';
 
 @Component({
@@ -20,14 +20,15 @@ export class TeamComponent {
   @Input() userType!: string | null;
   @Input() user!: User;
 
-  isAdmin: boolean = localStorage.getItem('AuthUserType') == 'admin';
+  readonly isAdmin: boolean = localStorage.getItem('AuthUserType') === 'admin';
 
   readonly types = UserType;
+  readonly routes: typeof Route = Route;
 
   readonly iconAngleRight: IconifyIcon = angleRight;
   readonly iconFileImport: IconifyIcon = fileImport;
   readonly iconFolder: IconifyIcon = folder;
   readonly iconBell: IconifyIcon = bellRinging;
 
-  constructor(public router: Router) {}
+  constructor(protected router: Router) {}
 }
