@@ -9,7 +9,6 @@
     @include flex(center, center);
     width: 2.5rem;
     height: var(--offset-xm);
-    margin-left: var(--offset-d);
 
     font-size: var(--font-blocks);
     color: var(--white);
@@ -88,12 +87,17 @@
 
     height: 100%;
     min-height: 5.675rem;
+    margin-left: var(--offset-s);
+
+    &-container {
+      @include flex(flex-start, flex-start, var(--offset-s));
+      margin-top: auto;
+    }
   }
 
   .calendar-overtime {
     @include flex(flex-start, flex-end);
     margin-top: auto;
-    margin-left: var(--offset-s);
 
     &-duration {
       font: var(--font-blocks);
@@ -115,5 +119,13 @@
 
   .warning {
     border: $border-input-warning;
+  }
+
+  .smile {
+    width: 1.75rem;
+    height: 1.75rem;
+
+    background-image: url("../../../../../../assets/icons/clarity_sad-face-line.svg");
+    background-size: cover;
   }
 }
