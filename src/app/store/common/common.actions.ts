@@ -6,6 +6,7 @@ import {
   User,
   Task,
   TaskTrack,
+  Vacation,
 } from '@shared/interfaces/interfaces';
 
 export const LOADING = 'loading';
@@ -28,6 +29,8 @@ export const PREVIOUS_WEEK = 'previous week';
 export const DELETE_TASK_TRACK = 'delete task track';
 export const UPDATE_TASK_TRACK = 'update task track';
 export const ADD_TASK_TRACK = 'add task track';
+export const GET_ALL_VACATIONS = 'get all vacations';
+export const GET_ALL_VACATIONS_SUCCESS = 'get all vacations success';
 
 export const loading = createAction(LOADING, props<{ status: boolean }>());
 export const errorMessage = createAction(
@@ -92,4 +95,11 @@ export const updateTaskTrack = createAction(
 export const addTaskTrack = createAction(
   ADD_TASK_TRACK,
   props<{ tasktrack: TaskTrack }>()
+);
+
+export const getAllVacations = createAction(GET_ALL_VACATIONS);
+
+export const getAllVacationsSuccess = createAction(
+  GET_ALL_VACATIONS_SUCCESS,
+  props<{ vacations: Vacation[] }>()
 );

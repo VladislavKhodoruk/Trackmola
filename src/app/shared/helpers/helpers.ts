@@ -1,26 +1,33 @@
 import { Autolinker, AutolinkerConfig } from 'autolinker';
 import { SeriesOptionsType } from 'highcharts';
 
+import { groupByDate } from '../../calendars';
+
 import { ModifiedTask } from '@pages/activity/interfaces/interfaces';
 import { DaysByPeriod } from '@pages/dashboard/interfaces/interface';
 import {
   COLORS_FOR_TASKS,
-  NUMBER_OF_DAYS_IN_A_WEEK,
   HIGHEST_KPI,
-  OUTPUT_RATE,
-  SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
+  NUMBER_OF_DAYS_IN_A_WEEK,
   ONE_DAY_IN_SECONDS,
   ONE_WEEK_IN_SECONDS,
+  OUTPUT_RATE,
+  SHORT_NAMES_OF_THE_WEEK_UPPERCASE,
 } from '@shared/constants/constants';
 import { NumDay, PeriodType } from '@shared/enums/enum';
 import {
+  CalendarDay,
+  GroupBy,
+  OutOfMain,
   Period,
   Project,
-  TaskTrack,
-  OutOfMain,
   TaskByWeekDays,
-  GroupBy,
+  TaskTrack,
   TaskTracksByUser,
+  User,
+  UserCard,
+  Vacation,
+  Vacations,
 } from '@shared/interfaces/interfaces';
 
 export function getPeriod(date: Date, type?: PeriodType): Period {
@@ -347,5 +354,74 @@ export function taskTracksByPeriods(taskTracks: TaskTrack[]): [TaskTrack?][] {
       return accum;
     },
     []
+  );
+}
+
+export function getUserName(users: User[], id): string {
+  return users.find((user: User) => user.id === id).fullName;
+}
+
+export function getUserPhoto(users: User[], id): string {
+  return users.find((user: User) => user.id === id).photo;
+}
+
+export function getLocation(id: string, users: User[]): string {
+  return users.find((user: User) => user.id === id).location;
+}
+
+export function getCurrentVacations(id: string, vacations: Vacation[]) {
+  return vacations.filter((vacation: Vacation) => vacation.userId === id);
+}
+
+export function getCurrentHolidays(
+  location: string,
+  vacations: Vacation[],
+  users: User[]
+): Vacations[] {
+  const country = location.split(',')[1];
+  if (country === ' Belarus') {
+    return groupByDate.BY.filter(
+      (day) => day.date >= new Date().toISOString() && day.dayType === 'holiday'
+    )
+      .map(
+        (day: CalendarDay): Vacations => ({
+          fullName: day.holidayName,
+          photo: day.holidayImg,
+          vacationDay: new Date(day.date),
+        })
+      )
+      .concat(
+        vacations.map((vacation: Vacation) => ({
+          fullName: getUserName(users, vacation.userId),
+          photo: getUserPhoto(users, vacation.userId),
+          vacationDay: vacation.periodStart.toDate(),
+        }))
+      )
+      .sort((a, b) => a.vacationDay.valueOf() - b.vacationDay.valueOf());
+  }
+}
+
+export function getVacationsAndHolidaysByProject(
+  team: User[],
+  vacations: Vacation[],
+  users: User[]
+) {
+  const res = team
+    .flatMap((member: User): Vacation[] =>
+      vacations.filter((vacation: Vacation) => vacation.userId === member.id)
+    )
+    .flatMap((vac: Vacation) =>
+      getCurrentHolidays(
+        getLocation(vac.userId, users),
+        getCurrentVacations(vac.userId, vacations),
+        users
+      )
+    );
+  const key = 'fullName';
+  const arrayUniqueByKey = [
+    ...new Map(res.map((item) => [item[key], item])).values(),
+  ];
+  return arrayUniqueByKey.sort(
+    (a, b) => a.vacationDay.getTime() - b.vacationDay.getTime()
   );
 }

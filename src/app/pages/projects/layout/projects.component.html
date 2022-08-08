@@ -58,7 +58,7 @@
   >
     <app-active-tasks-users-container></app-active-tasks-users-container>
   </ng-container>
-  <div class="projects-team">
+  <div class="projects-team-and-vacations">
     <ng-container
       *ngIf="
         currentUser !== userType.Employee && currentMode === projectMode.Users
@@ -72,5 +72,10 @@
         [projectByRoute]="projectByRoute"
       ></app-projects-team>
     </ng-container>
+    <app-vacations-component
+      *ngIf="vacationsAndHolidaysTeam"
+      class="projects-vacations"
+      [vacations]="vacationsAndHolidaysTeam"
+    ></app-vacations-component>
   </div>
 </div>

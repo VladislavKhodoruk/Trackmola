@@ -17,9 +17,16 @@
             </p>
           </div>
           <img
+            *ngIf="typeOfPhoto(vacation.photo) === 'string'"
             src="{{ vacation.photo }}"
             class="vacations-list-item-wrapper-photo"
+            alt="{{ defaultPhoto }}"
           />
+          <ic-icon
+            *ngIf="typeOfPhoto(vacation.photo) === 'object'"
+            [icon]="vacation.photo"
+            class="holidays-header-icon"
+          ></ic-icon>
         </div>
       </li>
     </ul>
