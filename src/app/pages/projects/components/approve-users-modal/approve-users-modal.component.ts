@@ -7,6 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import checkIcon from '@iconify/icons-tabler/check';
 import x from '@iconify/icons-tabler/x';
@@ -28,11 +29,18 @@ import {
 } from '@shared/interfaces/interfaces';
 
 @Component({
+  providers: [
+    {
+      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
+
+      useValue: { overlayPanelClass: 'modalApproveUser' },
+    },
+  ],
   selector: 'app-approve-users-modal',
   styleUrls: ['./approve-users-modal.component.scss'],
   templateUrl: './approve-users-modal.component.html',
 })
-export class ApproveUsersModalComponent implements OnChanges {
+export class ApproveUsersModalComponent {
   @Input() taskTracks!: TaskTrack[];
   @Input() currentDate!: number;
   @Input() period!: Period;
@@ -55,9 +63,6 @@ export class ApproveUsersModalComponent implements OnChanges {
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: { userId: string }
   ) {}
-  ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
-  }
 
   protected getFilteredTasksTracks(): TaskTrack[] {
     return this.taskTracks?.filter(

@@ -20,7 +20,6 @@ import { TrackMolaState } from '@store/trackMola.state';
     [currentDate]="currentDate$ | async"
     [taskTracks]="taskTracks$ | async"
     [period]="period$ | async"
-    (submitTasksTrack)="submitReport($event)"
     (taskTrack)="putIntoStore($event)"
   ></app-report>`,
 })
@@ -36,11 +35,5 @@ export class ReportContainer {
 
   putIntoStore(taskTrack: TaskTrack): void {
     this.store$.dispatch(putTaskTrack({ taskTrack }));
-  }
-
-  submitReport(taskstrack: TaskTrack[]) {
-    taskstrack.forEach((tasktrack) =>
-      this.commonStore$.dispatch(updateTaskTrack({ tasktrack }))
-    );
   }
 }

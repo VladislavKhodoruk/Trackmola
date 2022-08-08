@@ -342,7 +342,6 @@ export function getFilteredTasksTracks(
 ): TaskTrack[] {
   return taskTracks.filter(
     (curTaskTrack) =>
-      curTaskTrack.userId &&
       curTaskTrack.date.seconds * 1000 >= date - ONE_WEEK_IN_SECONDS &&
       curTaskTrack.date.seconds * 1000 <= date
   );

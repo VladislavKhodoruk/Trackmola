@@ -1,12 +1,19 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 import x from '@iconify/icons-tabler/x';
 
 import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
 
-import { Period, Project, TaskTrack } from '@shared/interfaces/interfaces';
+import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
+  providers: [
+    {
+      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
+
+      useValue: { overlayPanelClass: 'modalApprove' },
+    },
+  ],
   selector: 'app-approve-modal',
   styleUrls: ['./approve-modal.component.scss'],
   templateUrl: './approve-modal.component.html',
@@ -21,11 +28,6 @@ export class ApproveModalComponent {
 
   iconX = x;
   panelOpenState = false;
-
-  constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: { project: Project }
-  ) {}
 
   getFilteredTasksTracks(): TaskTrack[] {
     return this.taskTracks?.filter(

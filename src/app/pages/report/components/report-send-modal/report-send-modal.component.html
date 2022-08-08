@@ -1,23 +1,34 @@
-<div class="top">
-  <h1 mat-dialog-title class="title">Send report for approval</h1>
-  <ic-icon class="icon-x" [icon]="iconX" mat-button mat-dialog-close></ic-icon>
-</div>
+<div class="send-modal">
+  <div class="send-modal-header">
+    <h1 mat-dialog-title class="send-modal-title">Send report for approval</h1>
+    <ic-icon
+      class="icon-x"
+      width="2rem"
+      height="2rem"
+      [icon]="iconX"
+      mat-button
+      mat-dialog-close
+    ></ic-icon>
+  </div>
 
-<app-tasktracks-container></app-tasktracks-container>
+  <app-report-send-tasktracks-container></app-report-send-tasktracks-container>
+  <div mat-dialog-actions class="buttons-send">
+    <app-button
+      mat-button
+      [mat-dialog-close]="false"
+      [buttonClass]="'button-secondary button-m'"
+      type="button"
+      label="Cancel"
+    ></app-button>
 
-<div mat-dialog-actions class="buttons">
-  <button mat-button [mat-dialog-close]="false" class="buttons-cancel">
-    Cancel
-  </button>
-  <app-button
-    mat-button
-    class="'button-primary'"
-    [mat-dialog-close]="false"
-    type="submit"
-    label="Send"
-    [disabled]="false"
-    iconWidth="2rem"
-    iconHeight="2rem"
-    (buttonClick)="submitReport()"
-  ></app-button>
+    <app-button
+      mat-button
+      [buttonClass]="'button-primary button-m'"
+      [mat-dialog-close]="false"
+      type="submit"
+      label="Send"
+      [disabled]="false"
+      (buttonClick)="submitReport()"
+    ></app-button>
+  </div>
 </div>

@@ -1,5 +1,31 @@
 @import "vars/variables";
+
 @import "mixins";
+
+::ng-deep {
+  .mat-dialog-container.taskInputClass {
+    overflow: hidden;
+
+    min-width: 25vw;
+    padding: var(--offset);
+    padding: 0;
+
+    border-radius: var(--offset);
+  }
+
+  .mat-dialog-title.taskInputClass {
+    margin: 0;
+
+    text-transform: capitalize;
+  }
+
+  .icon-x {
+    svg {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+}
 
 :host {
   .wrapper {
@@ -13,6 +39,7 @@
 
   .title {
     font: var(--font-title);
+    text-transform: capitalize;
   }
 
   .middle {

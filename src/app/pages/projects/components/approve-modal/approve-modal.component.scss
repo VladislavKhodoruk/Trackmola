@@ -38,7 +38,7 @@
 }
 
 :host {
-  .top {
+  .approve-modal-header {
     @include flex(center, space-between);
     margin-bottom: var(--offset-m);
   }
@@ -79,6 +79,9 @@
 
   .buttons {
     @include flex(stretch, flex-end);
+    gap: var(--offset);
+
+    margin: 0 var(--offset);
   }
 
   .buttons-cancel,
@@ -125,6 +128,15 @@
       cursor: no-drop;
 
       opacity: 0.5;
+    }
+  }
+
+  .active-tasks {
+    width: calc(100% - var(--offset));
+    max-width: unset;
+
+    ::ng-deep .activeTasks-list {
+      max-height: 30rem;
     }
   }
 }

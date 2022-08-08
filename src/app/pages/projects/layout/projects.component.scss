@@ -1,22 +1,24 @@
 @import "mixins";
 
 ::ng-deep {
-  .mat-dialog-container {
-    padding: 0;
+  .projectsClass {
+    .mat-dialog-container {
+      padding: 0;
 
-    border-radius: var(--offset);
-  }
+      border-radius: var(--offset);
+    }
 
-  .mat-dialog-title {
-    margin: 0;
+    .mat-dialog-title {
+      margin: 0;
 
-    text-transform: capitalize;
-  }
+      text-transform: capitalize;
+    }
 
-  .icon-x {
-    svg {
-      width: 1.75rem;
-      height: 1.75rem;
+    .icon-x {
+      svg {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
     }
   }
 }

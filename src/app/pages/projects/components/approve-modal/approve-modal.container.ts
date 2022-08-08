@@ -40,7 +40,7 @@ export class ApproveModalContainer {
     this.store$.dispatch(putTaskTrack({ taskTrack }));
   }
 
-  submitReport(taskstrack: TaskTrack[]) {
+  submitReport(taskstrack: TaskTrack[]): void {
     taskstrack.forEach((tasktrack) =>
       this.commonStore$.dispatch(updateTaskTrack({ tasktrack }))
     );

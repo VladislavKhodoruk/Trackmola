@@ -1,22 +1,28 @@
-<div class="top">
+<div class="approve-modal-header">
   <h1 mat-dialog-title class="title">Approve all hours</h1>
   <ic-icon class="icon-x" [icon]="iconX" mat-button mat-dialog-close></ic-icon>
 </div>
 
-<app-active-tasks-container [modalView]="true"></app-active-tasks-container>
+<app-active-tasks-container
+  class="active-tasks"
+  [modalView]="true"
+></app-active-tasks-container>
 
 <div mat-dialog-actions class="buttons">
-  <button mat-button [mat-dialog-close]="false" class="buttons-cancel">
-    Cancel
-  </button>
+  <app-button
+    mat-button
+    [mat-dialog-close]="false"
+    [buttonClass]="'button-secondary button-m'"
+    type="button"
+    label="Cancel"
+  ></app-button>
 
   <app-button
+    mat-button
     type="submit"
-    [buttonClass]="'button-primary'"
+    [buttonClass]="'button-primary button-m'"
     label=" Approve"
     [disabled]="false"
-    iconWidth="2rem"
-    iconHeight="2rem"
     (buttonClick)="approveReport()"
   ></app-button>
 </div>

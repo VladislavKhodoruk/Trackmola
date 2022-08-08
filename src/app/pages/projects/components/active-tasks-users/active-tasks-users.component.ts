@@ -82,7 +82,7 @@ export class ActiveTasksUsersComponent {
       });
   }
 
-  getUserStatus(user: User) {
+  getUserStatus(user: User): string {
     const tracksByUser = this.taskTracks.filter(
       (taskTrack) => taskTrack.userId === user.id
     );

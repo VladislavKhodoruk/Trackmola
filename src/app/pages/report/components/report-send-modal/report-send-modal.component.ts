@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_SELECT_CONFIG } from '@angular/material/select';
 import x from '@iconify/icons-tabler/x';
 
 import {
@@ -16,6 +17,12 @@ import {
 } from '@shared/interfaces/interfaces';
 
 @Component({
+  providers: [
+    {
+      provide: MAT_SELECT_CONFIG,
+      useValue: { overlayPanelClass: 'reportSendClass' },
+    },
+  ],
   selector: 'app-report-send-modal',
   styleUrls: ['./report-send-modal.component.scss'],
   templateUrl: './report-send-modal.component.html',

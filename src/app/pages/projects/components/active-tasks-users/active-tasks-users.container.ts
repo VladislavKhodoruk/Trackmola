@@ -66,7 +66,7 @@ export class ActiveTasksUsersContainer {
     this.store$.dispatch(putTaskTrack({ taskTrack }));
   }
 
-  approveAll(taskstrack: TaskTrack[]) {
+  approveAll(taskstrack: TaskTrack[]): void {
     taskstrack.forEach((tasktrack) =>
       this.commonStore$.dispatch(updateTaskTrack({ tasktrack }))
     );

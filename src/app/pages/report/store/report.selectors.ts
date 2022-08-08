@@ -4,15 +4,7 @@ import { ReportState } from './report.state';
 
 import { ProjectsState } from '@pages/projects/store/projects.state';
 import { StateName } from '@shared/enums/enum';
-import { getPeriod } from '@shared/helpers/helpers';
-import {
-  getTasks,
-  getProjects,
-  getTasksTrack,
-  getUsers,
-} from '@store/common/common.selectors';
-import { RouterStateUrl } from '@store/router/custom-serializer';
-import { getCurrentRoute } from '@store/router/router.selector';
+import { getTasks, getProjects } from '@store/common/common.selectors';
 
 export const REPORT_STATE_NAME = StateName.Report;
 

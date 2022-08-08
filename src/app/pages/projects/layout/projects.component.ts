@@ -7,6 +7,8 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+
+import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 import { MatDialog } from '@angular/material/dialog';
 import checksIcon from '@iconify/icons-tabler/checks';
 import messagePlus from '@iconify/icons-tabler/message-plus';
@@ -32,6 +34,13 @@ import {
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
+      useValue: { overlayPanelClass: 'projectsClass' },
+    },
+  ],
+
   selector: 'app-projects',
   styleUrls: ['./projects.component.scss'],
   templateUrl: './projects.component.html',
