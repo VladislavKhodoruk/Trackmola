@@ -40,7 +40,7 @@ export class ReportComponent {
     { photo: DEFAULT_PHOTO_URL },
   ];
 
-  get weekReportDuration() {
+  get weekReportDuration(): number {
     return this.taskTracks
       ?.filter(
         (curTaskTrack) =>
