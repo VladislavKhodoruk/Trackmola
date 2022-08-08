@@ -1,27 +1,29 @@
-<div
-  [style.backgroundColor]="totalCardItem?.backgoundColor"
-  class="total-card-item"
->
-  <div class="total-card-item-img">
-    <img src="{{ totalCardItem?.img }}" alt="images" />
-  </div>
-  <div class="total-card-item-title">{{ totalCardItem?.title }}</div>
-  <p class="total-card-item-hours">{{ totalCardItem?.value }}</p>
-  <div class="total-card-item-bar">
-    <div class="total-card-item-bar-title">
-      out of
-      {{
-        periodType === periodTypes.Week
-          ? totalCardItem?.numberWeekHours
-          : totalCardItem?.numberMonthHours
-      }}
+<ng-container *ngIf="totalCardItem">
+  <div
+    [style.backgroundColor]="totalCardItem.backgroundColor"
+    class="total-card-item"
+  >
+    <div class="total-card-item-img">
+      <img src="{{ totalCardItem.img }}" alt="images" />
     </div>
-    <div class="total-card-item-bar-item">
-      <div
-        [style.backgroundColor]="totalCardItem?.progressBarColor"
-        [style.width.%]="totalCardItem?.progressBarSize"
-        class="total-card-item-bar-item-progress"
-      ></div>
+    <div class="total-card-item-title">{{ totalCardItem.title }}</div>
+    <p class="total-card-item-hours">{{ totalCardItem.value }}</p>
+    <div class="total-card-item-bar">
+      <div class="total-card-item-bar-title">
+        {{ totalCardItem.value }} out of
+        {{
+          periodType === periodTypes.Week
+            ? totalCardItem.numberWeekHours
+            : totalCardItem.numberMonthHours
+        }}
+      </div>
+      <div class="total-card-item-bar-item">
+        <div
+          [style.backgroundColor]="totalCardItem.progressBarColor"
+          [style.width.%]="totalCardItem.progressBarSize"
+          class="total-card-item-bar-item-progress"
+        ></div>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>

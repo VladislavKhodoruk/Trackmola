@@ -5,6 +5,11 @@
     width: 3rem;
     height: 3rem;
   }
+
+  .holidays-header-icon svg {
+    width: 5rem;
+    height: 5rem;
+  }
 }
 
 :host {
@@ -66,7 +71,7 @@
         }
 
         &-wrapper {
-          @include flex(center, space-between);
+          @include flex(center, space-between, var(--offset));
           width: 100%;
           margin-left: var(--offset-s);
           padding: var(--offset-sm) var(--offset) var(--offset-sm)
@@ -88,6 +93,11 @@
 
           &-photo {
             @include profile-photo(5rem, 5rem);
+          }
+
+          &-icon svg {
+            width: 5rem;
+            height: 5rem;
           }
         }
       }

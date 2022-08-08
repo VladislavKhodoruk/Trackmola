@@ -2,13 +2,22 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { usersGroupByProject } from '@pages/projects/store/projects.selectors';
-import { getUser } from '@pages/team/store/team.selectors';
-import { TeamState } from '@pages/team/store/team.state';
-import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 import {
+  getUser,
+  getVacationsForPickTeamMember,
+} from '@pages/team/store/team.selectors';
+import { TeamState } from '@pages/team/store/team.state';
+import {
+  GroupBy,
+  Project,
+  User,
+  Vacation,
+} from '@shared/interfaces/interfaces';
+import {
+  getUsers,
   projectsByUsers,
   trackedTimeByProjects,
+  usersGroupByProject,
 } from '@store/common/common.selectors';
 import { CommonState } from '@store/common/common.state';
 import { TrackMolaState } from '@store/trackMola.state';
@@ -20,6 +29,8 @@ import { TrackMolaState } from '@store/trackMola.state';
     [projectsByUsers]="projectsByUsers$ | async"
     [usersByProject]="usersByProject$ | async"
     [trackedTimeByProjects]="trackedTimeByProjects$ | async"
+    [vacations]="pickUserVacations$ | async"
+    [users]="users$ | async"
   ></app-admin-team-component>`,
 })
 export class AdminTeamContainer {
@@ -33,6 +44,11 @@ export class AdminTeamContainer {
 
   readonly trackedTimeByProjects$: Observable<GroupBy<number>> =
     this.commonStore$.select(trackedTimeByProjects);
+
+  readonly pickUserVacations$: Observable<Vacation[]> =
+    this.commonStore$.select(getVacationsForPickTeamMember);
+
+  readonly users$: Observable<User[]> = this.store$.select(getUsers);
 
   constructor(
     private store$: Store<TrackMolaState>,

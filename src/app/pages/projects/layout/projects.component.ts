@@ -6,7 +6,14 @@ import angleRight from '@iconify/icons-uil/angle-right';
 import { ProjectMode } from '../enums/enums';
 
 import { UserType } from '@shared/enums/enum';
-import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
+import { getVacationsAndHolidaysByProject } from '@shared/helpers/helpers';
+import {
+  GroupBy,
+  Project,
+  User,
+  Vacation,
+  Vacations,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,6 +24,8 @@ import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 export class ProjectsComponent {
   @Input() readonly projectByRoute: Project;
   @Input() readonly usersGroupByProject: GroupBy<User[]>;
+  @Input() readonly users: User[];
+  @Input() readonly vacations: Vacation[];
 
   readonly projectMode = ProjectMode;
   currentMode: string = ProjectMode.Tasks;
@@ -29,6 +38,17 @@ export class ProjectsComponent {
 
   readonly userType = UserType;
   readonly currentUser: string = localStorage.getItem('AuthUserType');
+
+  protected get vacationsAndHolidaysTeam(): Vacations[] {
+    if (this.projectByRoute && this.vacations.length && this.users.length) {
+      return getVacationsAndHolidaysByProject(
+        this.usersGroupByProject[this.projectByRoute.id],
+        this.vacations,
+        this.users
+      );
+    }
+    return [];
+  }
 
   changeMode(mode: string): void {
     this.currentMode = mode;
