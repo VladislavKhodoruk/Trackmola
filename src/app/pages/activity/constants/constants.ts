@@ -126,7 +126,7 @@ export const DEFAULT_MONTH_OVERTIME = 12;
 export const DEFAULT_HOURS_OF_REST_PER_WEEK = 128;
 
 export const WORK_HOURS_TOTAL_CARD = {
-  backgoundColor: 'var(--white)',
+  backgroundColor: 'var(--white)',
   img: 'assets/img/activity/work-hours.svg',
   numberMonthHours: getWorksMonthDefaultHours(),
   numberWeekHours: DEFAULT_HOURS_PER_WEEK,
@@ -137,7 +137,7 @@ export const WORK_HOURS_TOTAL_CARD = {
 };
 
 export const OVERTIME_TOTAL_CARD = {
-  backgoundColor: 'var(--white)',
+  backgroundColor: 'var(--white)',
   img: 'assets/img/activity/overtimes.svg',
   numberMonthHours: DEFAULT_MONTH_OVERTIME,
   numberWeekHours: DEFAULT_WEEK_OVERTIME,
@@ -148,7 +148,7 @@ export const OVERTIME_TOTAL_CARD = {
 };
 
 export const REST_HOURS_TOTAL_CARD = {
-  backgoundColor: 'var(--blue1)',
+  backgroundColor: 'var(--blue1)',
   img: 'assets/img/activity/rest-hours.svg',
   numberMonthHours: getRestMonthDefaultHours(),
   numberWeekHours: DEFAULT_HOURS_OF_REST_PER_WEEK,

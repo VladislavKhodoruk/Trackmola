@@ -15,7 +15,7 @@ import {
   ONE_DAY_IN_SECONDS,
 } from '@shared/constants/constants';
 import { StateName } from '@shared/enums/enum';
-import { Day, Period, TaskTrack, Week } from '@shared/interfaces/interfaces';
+import { Period, TaskTrack, Week } from '@shared/interfaces/interfaces';
 import { RouterStateUrl } from '@store/router/custom-serializer';
 
 @Component({
@@ -36,7 +36,7 @@ export class CalendarComponent implements OnChanges, OnDestroy {
   @Output() taskTrack = new EventEmitter<TaskTrack>();
 
   taskTrack1: TaskTrack;
-  day!: Day;
+
   currentWeeks: Week[] = [];
   namesDaysWeek = NAMES_OF_THE_DAYS_OF_THE_WEEK;
 
@@ -97,7 +97,7 @@ export class CalendarComponent implements OnChanges, OnDestroy {
 
             const overtimeDuration = task?.reduce(
               (result, taskTrack) =>
-                (result = result + taskTrack.overtimeDuration),
+                (result = result + +taskTrack.overtimeDuration || 0),
               0
             );
 
