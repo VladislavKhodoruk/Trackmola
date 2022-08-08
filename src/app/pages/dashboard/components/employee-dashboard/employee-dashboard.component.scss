@@ -54,7 +54,8 @@
       max-width: 100%;
 
       app-activity-week-chart-container {
-        @include width-variables(34%, 1rem);
+        width: calc((100% / 3) * 2);
+        max-width: calc((100% / 3) * 2);
         height: 100%;
       }
     }
@@ -66,14 +67,18 @@
 
     &-todayview {
       @include flex(stretch, flex-start);
-      flex: 1;
+
+      width: calc((100% / 3));
+      max-width: calc((100% / 3));
     }
 
     &-calendar {
       display: flex;
-      flex: 2;
       flex-direction: column;
       gap: var(--offset-l);
+
+      width: calc((100% / 3) * 2);
+      max-width: calc((100% / 3) * 2);
     }
   }
 
@@ -88,7 +93,6 @@
 
   app-todayview-container {
     width: 100%;
-    min-width: 30rem;
   }
 
   app-working-hours-chart-container {
@@ -96,11 +100,12 @@
   }
 
   .working-hours {
-    @include width-variables(66%, 1rem);
     @include flex(normal, center);
-    flex: 1;
+
     flex-direction: column;
 
+    width: calc((100% / 3));
+    max-width: calc((100% / 3));
     height: 100%;
     padding-bottom: 2%;
 
