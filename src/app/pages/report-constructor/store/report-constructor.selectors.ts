@@ -2,22 +2,28 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { ReportConstructorState } from './report-constructor.state';
 
+import { getDates } from '../helpers/helpers';
+
 import { StateName } from '@shared/enums/enum';
-import { getTasks, getTasksTrack } from '@store/common/common.selectors';
+import {
+  getProjects,
+  getTasks,
+  getTasksTrack,
+} from '@store/common/common.selectors';
 
 export const REPORT_CONSTRUCTOR_STATE_NAME = StateName.ReportConstructor;
 
-const getProjectsState = createFeatureSelector<ReportConstructorState>(
+const getReportConstructorState = createFeatureSelector<ReportConstructorState>(
   REPORT_CONSTRUCTOR_STATE_NAME
 );
 
 export const getProject = createSelector(
-  getProjectsState,
+  getReportConstructorState,
   ({ projectId }) => projectId
 );
 
 export const getPeriod = createSelector(
-  getProjectsState,
+  getReportConstructorState,
   ({ period }) => period
 );
 
@@ -35,12 +41,12 @@ export const getTaskTracks = createSelector(
 );
 
 export const getViewMode = createSelector(
-  getProjectsState,
+  getReportConstructorState,
   ({ viewMode }) => viewMode
 );
 
 export const getChartViewMode = createSelector(
-  getProjectsState,
+  getReportConstructorState,
   ({ chartViewMode }) => chartViewMode
 );
 
@@ -100,4 +106,38 @@ export const getDateForChart = createSelector(
       }))
       .sort((a, b) => b.durationInTask - a.durationInTask);
   }
+);
+
+export const projectsInfoByProjectId = createSelector(getProjects, (projects) =>
+  projects.reduce((accum, project) => ({ ...accum, [project.id]: project }), {})
+);
+
+export const getUser = createSelector(
+  getReportConstructorState,
+  ({ userId }) => userId
+);
+
+export const getTaskTracksByUser = createSelector(
+  getUser,
+  getTasksTrackByPeriod,
+  (userId, taskTracks) =>
+    taskTracks.filter((taskTrack) => taskTrack.userId === userId)
+);
+
+export const taskTracksGroupByDate = createSelector(
+  getPeriod,
+  getTaskTracksByUser,
+  (period, taskTracks) =>
+    getDates(period).reduce((accum, date) => {
+      const activeTaskTracks = taskTracks.filter(
+        (taskTrack) =>
+          new Date(taskTrack.date.seconds * 1000).getFullYear() ===
+            new Date(date).getFullYear() &&
+          new Date(taskTrack.date.seconds * 1000).getMonth() ===
+            new Date(date).getMonth() &&
+          new Date(taskTrack.date.seconds * 1000).getDate() ===
+            new Date(date).getDate()
+      );
+      return { ...accum, [date]: activeTaskTracks };
+    }, {})
 );

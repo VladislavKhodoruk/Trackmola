@@ -2,12 +2,6 @@
 @import "mixins";
 
 ::ng-deep {
-  .cdk-overlay-pane.teamClass {
-    width: 20.5rem !important;
-    margin-top: var(--offset-xs);
-    margin-left: -1.1rem;
-  }
-
   .mat-autocomplete-panel {
     max-height: 10rem !important;
 
