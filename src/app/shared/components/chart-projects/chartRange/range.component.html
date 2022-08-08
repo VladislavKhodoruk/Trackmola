@@ -4,18 +4,8 @@
   [marginRight]="marginRight"
 ></app-days>
 
-<ng-container *ngIf="!activeTask">
-  <ng-container *ngFor="let task of tasks; let i = index">
-    <ng-container *ngFor="let taskTrack of taskTracksByUserFromTasks[i]">
-      <app-highcharts-chart
-        [data]="dataXRangeAllTasks(taskTrack)"
-        [options]="basicOptionsChartXRange"
-      ></app-highcharts-chart>
-    </ng-container>
-  </ng-container>
-</ng-container>
-<ng-container *ngIf="activeTask">
-  <ng-container *ngFor="let taskTrack of taskTracksByUserFromActiveTask">
+<ng-container *ngFor="let task of tasks; let i = index">
+  <ng-container *ngFor="let taskTrack of taskTracksByUserFromTasks[i]">
     <app-highcharts-chart
       [data]="dataXRangeAllTasks(taskTrack)"
       [options]="basicOptionsChartXRange"

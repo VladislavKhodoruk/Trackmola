@@ -28,7 +28,9 @@
             ? chartXRangeHeight
             : chartXRangeHeight * taskTracksByUserLength(task.taskTracksInTask)
         "
-        (click)="selectTask.emit(task)"
+        (click)="
+          modeView === managerDashboardView.Table ? selectTask.emit(task) : null
+        "
       >
         <div
           class="legend-list-item-bar"

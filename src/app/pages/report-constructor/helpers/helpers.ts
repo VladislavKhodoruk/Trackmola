@@ -47,7 +47,9 @@ export function getInfoFromTaskTracks(
       );
       const taskOvertimeDuration = filteredTaskTracks.reduce(
         (acc, taskTrack) =>
-          taskTrack.userId === userId ? acc + taskTrack.overtimeDuration : acc,
+          taskTrack.userId === userId && taskTrack.overtimeDuration
+            ? acc + +taskTrack.overtimeDuration
+            : acc,
         0
       );
       const taskPercentageWeek = +((taskDuration / worksTime) * 100).toFixed(2);

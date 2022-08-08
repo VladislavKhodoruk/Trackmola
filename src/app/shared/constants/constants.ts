@@ -181,7 +181,6 @@ export function managerDashboardChartXRange(config: XRangeConfig): Options {
       marginRight: marginRight,
       marginTop: -1,
       type: 'xrange',
-
       width: width,
     },
     credits: {
@@ -200,8 +199,13 @@ export function managerDashboardChartXRange(config: XRangeConfig): Options {
           formatter: function (this) {
             const point = this.point as any;
             if (point.shapeArgs.width > 200) {
-              return `<div style="width: ${point.shapeArgs.width}px;"class="x-range-dataLabel">
-                          <div><img src=${point.custom.userPhoto}>
+              return `<div style="width: ${
+                point.shapeArgs.width
+              }px;"class="x-range-dataLabel">
+                          <div><img src=${
+                            point.custom.userPhoto ||
+                            '../../../assets/img/user.png'
+                          }>
                                ${point.custom.userName}
                           </div>
                           <span>${point.custom.duration}h</span>

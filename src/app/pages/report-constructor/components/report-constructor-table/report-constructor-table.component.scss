@@ -84,10 +84,28 @@
           top: 0;
           left: 0;
 
+          max-width: 100%;
           height: 100%;
 
           background-color: var(--blue2);
           border-radius: var(--border-radius);
+        }
+      }
+    }
+
+    &-footer {
+      height: 3rem;
+
+      background-color: var(--pale-blue);
+
+      &-item {
+        padding: var(--offset) 0;
+
+        font: var(--font-typography);
+        text-align: center;
+
+        &:first-child {
+          text-transform: uppercase;
         }
       }
     }
