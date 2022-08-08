@@ -46,7 +46,7 @@ export class ProjectsActivityComponent {
         ({ projectId }) => projectId === id
       );
       const percent: number = tasksInProject.length / taskTracks.length;
-      return { color: color, name: name, y: percent };
+      return { color, name, y: percent };
     });
   }
 }
