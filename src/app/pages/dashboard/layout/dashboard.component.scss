@@ -1,0 +1,27 @@
+@import "vars/variables";
+@import "mixins";
+
+:host {
+  @include flex(flex-start, flex-start, var(--offset-l));
+
+  $height-header: 5rem;
+  $gap: var(--offset-l);
+
+  flex-direction: column;
+
+  height: 100%;
+
+  .dashboard-header {
+    width: 100%;
+    max-width: 100%;
+    height: #{$height-header};
+    max-height: #{$height-header};
+  }
+
+  .dashboard-main {
+    width: 100%;
+    max-width: 100%;
+    height: calc(100% - #{$height-header} - #{$gap});
+    max-height: calc(100% - #{$height-header} - #{$gap});
+  }
+}

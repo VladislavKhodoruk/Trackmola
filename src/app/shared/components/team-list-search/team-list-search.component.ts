@@ -8,6 +8,7 @@ import {
   trigger,
 } from '@angular/animations';
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -53,6 +54,7 @@ import {
       ]),
     ]),
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,

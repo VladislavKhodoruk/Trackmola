@@ -15,6 +15,7 @@ export enum StateName {
   Report = 'report',
   ReportConstructor = 'report constructor',
   Team = 'team',
+  Vacations = 'vacations',
 }
 
 export enum TaskStatus {

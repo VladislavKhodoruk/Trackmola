@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconModule } from '@visurel/iconify-angular';
 
 import { AdminTeamComponent } from './components/admin-team/admin-team.component';
 import { AdminTeamContainer } from './components/admin-team/admin-team.container';
@@ -18,6 +19,7 @@ import { TeamReducer } from './store/team.reducer';
 import { TEAM_STATE_NAME } from './store/team.selectors';
 import { TeamRoutes } from './team.router';
 
+import { ButtonModule } from '@shared/components/button/button.module';
 import { ProjectLabelModule } from '@shared/components/project-label/project-label.module';
 import { TeamListSearchModule } from '@shared/components/team-list-search/team-list-search.module';
 import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.module';
@@ -47,6 +49,8 @@ import { VisitCardModule } from '@shared/components/visit-card/visit-card.module
     ProjectLabelModule,
     UsersPhotosModule,
     VacationsModule,
+    IconModule,
+    ButtonModule,
   ],
 })
 export class TeamModule {}

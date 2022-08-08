@@ -27,12 +27,15 @@ import { TrackMolaState } from '@store/trackMola.state';
   ></app-team-list-search-component>`,
 })
 export class TeamListSearchContainer {
-  allProjects$: Observable<Project[]> = this.commonStore$.select(getProjects);
-  projectsByUsers$: Observable<GroupBy<Project[]>> =
+  readonly allProjects$: Observable<Project[]> =
+    this.commonStore$.select(getProjects);
+  readonly projectsByUsers$: Observable<GroupBy<Project[]>> =
     this.commonStore$.select(projectsByUsers);
-  locations$: Observable<string[]> = this.commonStore$.select(locations);
-  positions$: Observable<string[]> = this.commonStore$.select(positions);
-  allUsers$: Observable<User[]> = this.commonStore$.select(getUsers);
+  readonly locations$: Observable<string[]> =
+    this.commonStore$.select(locations);
+  readonly positions$: Observable<string[]> =
+    this.commonStore$.select(positions);
+  readonly allUsers$: Observable<User[]> = this.commonStore$.select(getUsers);
 
   constructor(
     private commonStore$: Store<CommonState>,

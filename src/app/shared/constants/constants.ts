@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import pineappleIcon from '@iconify/icons-emojione-monotone/pineapple';
+import peopleTeam20Regular from '@iconify/icons-fluent/people-team-20-regular';
 import chartDonut3 from '@iconify/icons-tabler/chart-donut-3';
 import fileTime from '@iconify/icons-tabler/file-time';
 import layoutDashboard from '@iconify/icons-tabler/layout-dashboard';
@@ -40,12 +42,17 @@ const NAVIGATION_BASIC_ITEMS: NavigationItem[] = [
     label: 'Projects',
     routeLink: 'projects',
   },
+  {
+    icon: pineappleIcon,
+    label: 'Vacations',
+    routeLink: 'vacations',
+  },
 ];
 
 const NAVIGATION_MANAGER_ITEMS: NavigationItem[] = [
   ...NAVIGATION_BASIC_ITEMS,
   {
-    icon: puzzleIcon,
+    icon: peopleTeam20Regular,
     label: 'Team',
     routeLink: 'team',
   },
@@ -174,7 +181,6 @@ export function managerDashboardChartXRange(config: XRangeConfig): Options {
       marginRight: marginRight,
       marginTop: -1,
       type: 'xrange',
-
       width: width,
     },
     credits: {
@@ -193,8 +199,13 @@ export function managerDashboardChartXRange(config: XRangeConfig): Options {
           formatter: function (this) {
             const point = this.point as any;
             if (point.shapeArgs.width > 200) {
-              return `<div style="width: ${point.shapeArgs.width}px;"class="x-range-dataLabel">
-                          <div><img src=${point.custom.userPhoto}>
+              return `<div style="width: ${
+                point.shapeArgs.width
+              }px;"class="x-range-dataLabel">
+                          <div><img src=${
+                            point.custom.userPhoto ||
+                            '../../../assets/img/user.png'
+                          }>
                                ${point.custom.userName}
                           </div>
                           <span>${point.custom.duration}h</span>

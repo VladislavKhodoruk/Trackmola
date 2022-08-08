@@ -2,25 +2,34 @@
 @import "mixins";
 
 :host {
+  width: 100%;
+  height: 100%;
+
   .users-cards {
     @include flex(flex-start, flex-start, var(--offset));
-    overflow: auto;
+    @include scroll-bar;
+
     flex-wrap: wrap;
 
-    width: 100%;
-    padding: var(--offset-xs) 0;
+    width: calc(100% - var(--offset-s));
 
     &-item {
+      @include flex(center, space-between, var(--offset-s));
       cursor: pointer;
 
-      padding: var(--offset);
+      flex: 1 1 15rem;
+      flex-direction: column;
+
+      max-width: 15rem;
+      padding-bottom: var(--offset);
 
       border: $border-input;
       border-radius: var(--border-radius-l);
 
       &-header {
-        @include flex(flex-start, space-between);
-        margin-bottom: var(--offset);
+        @include flex(center, space-between, var(--offset-dl));
+        width: 100%;
+        padding: var(--offset-xs) var(--offset-xs) 0 var(--offset);
 
         font: var(--font-buttonSmall);
 
@@ -31,25 +40,23 @@
 
         &-buttons {
           @include flex(flex-start, space-between, var(--offset-xs));
-          margin-top: -0.5rem;
 
           visibility: hidden;
         }
       }
 
-      &-main {
-        @include flex(center, flex-start, var(--offset-xs));
+      &-info {
+        @include flex(center, flex-start);
         flex-direction: column;
 
-        margin-bottom: var(--offset);
+        width: 100%;
+        padding: 0 var(--offset);
 
-        &-photo {
+        &-avatar {
           @include profile-photo(5rem, 5rem);
         }
 
         &-location {
-          margin-bottom: var(--offset-s);
-
           font: var(--font-buttonMiddle);
           color: var(--gray2);
         }
@@ -57,17 +64,25 @@
         &-name {
           font: var(--font-main);
           color: var(--black);
+          text-align: center;
         }
 
         &-position {
           font: var(--font-main);
           font-weight: 300;
           color: var(--gray2);
+          text-align: center;
         }
       }
 
       &-footer {
-        &-title {
+        width: 100%;
+        padding: 0 var(--offset);
+
+        &-text {
+          @include flex(flex-start, flex-end);
+          width: 100%;
+
           font: var(--font-buttonSmall);
           font-weight: 300;
           color: var(--gray2);
@@ -77,7 +92,6 @@
         &-bar {
           width: 100%;
           height: 0.5rem;
-          margin: 0 auto;
 
           background-color: var(--gray5);
           border: none;
@@ -85,6 +99,7 @@
 
           &-progress {
             width: 0;
+            max-width: 100%;
             height: 100%;
 
             background-color: var(--primary);

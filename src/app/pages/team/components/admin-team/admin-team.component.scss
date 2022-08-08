@@ -26,12 +26,26 @@ html {
         overflow: hidden;
         display: flex;
         gap: var(--offset);
+
+        &-projects {
+          display: flex;
+          flex: 3;
+          flex-direction: column;
+
+          &-text {
+            @include flex(stretch, flex-start, var(--offset-m));
+            width: 100%;
+            padding-bottom: var(--offset-s);
+
+            font: var(--font-title);
+          }
+        }
       }
     }
 
     app-users-projects-component {
       overflow-y: auto;
-      flex: 3;
+      flex: 1;
     }
 
     app-vacations-component {

@@ -60,6 +60,8 @@
               "@iconify/icons-emojione",
               "@iconify/icons-mdi",
               "@iconify/icons-noto",
+              "@iconify/icons-fluent",
+              "@iconify/icons-emojione-monotone",
               "highcharts",
               "file-saver",
               "lodash"

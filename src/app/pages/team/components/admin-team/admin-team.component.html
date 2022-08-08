@@ -8,12 +8,17 @@
       [adminMode]="true"
     ></app-visit-card-container>
     <div class="team-right-bottom">
-      <app-users-projects-component
-        [usersByProject]="usersByProject"
-        [projectsByUsers]="projectsByUsers"
-        [pickedUser]="pickedUser"
-        [trackedTimeByProjects]="trackedTimeByProjects"
-      ></app-users-projects-component>
+      <section class="team-right-bottom-projects">
+        <h2 class="team-right-bottom-projects-text">
+          Activity on projects last month
+        </h2>
+        <app-users-projects-component
+          [usersByProject]="usersByProject"
+          [projectsByUsers]="projectsByUsers"
+          [pickedUser]="pickedUser"
+          [trackedTimeByProjects]="trackedTimeByProjects"
+        ></app-users-projects-component>
+      </section>
       <app-vacations-component
         [vacations]="vacations"
       ></app-vacations-component>

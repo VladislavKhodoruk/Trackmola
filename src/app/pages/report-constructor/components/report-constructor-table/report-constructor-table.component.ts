@@ -112,6 +112,7 @@ export class ReportConstructorTableComponent implements OnChanges {
       totalTaskDuration,
       totalTaskOvertimeDuration,
       totalTaskPercentageWeek,
+      '',
     ];
     const overtimesTotal = `${this.infoFromUsers.reduce(
       (acc, item) => (acc += item.overtimes ? item.overtimes : 0),

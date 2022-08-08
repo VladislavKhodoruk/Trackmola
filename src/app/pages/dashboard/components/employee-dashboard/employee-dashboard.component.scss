@@ -2,11 +2,14 @@
 @import "mixins";
 
 :host {
+  @include flex(flex-start, flex-start, var(--offset-l));
+
   $height-charts: 35rem;
-  display: flex;
+
   flex-direction: column;
 
   height: 100%;
+  max-height: 100%;
 
   .dashboard-header {
     @include flex(center, space-between);
@@ -39,15 +42,20 @@
     flex: 3;
     gap: var(--offset-l);
 
-    margin-bottom: var(--offset-l);
+    width: 100%;
+    max-width: 100%;
 
     &-charts {
       @include flex(flex-start, flex-start, var(--offset-l));
       overflow: auto;
       flex: 2;
 
+      width: 100%;
+      max-width: 100%;
+
       app-activity-week-chart-container {
-        @include width-variables(34%, 1rem);
+        width: calc((100% / 3) * 2);
+        max-width: calc((100% / 3) * 2);
         height: 100%;
       }
     }
@@ -59,14 +67,18 @@
 
     &-todayview {
       @include flex(stretch, flex-start);
-      flex: 1;
+
+      width: calc((100% / 3));
+      max-width: calc((100% / 3));
     }
 
     &-calendar {
       display: flex;
-      flex: 2;
       flex-direction: column;
       gap: var(--offset-l);
+
+      width: calc((100% / 3) * 2);
+      max-width: calc((100% / 3) * 2);
     }
   }
 
@@ -81,7 +93,6 @@
 
   app-todayview-container {
     width: 100%;
-    min-width: 30rem;
   }
 
   app-working-hours-chart-container {
@@ -89,11 +100,12 @@
   }
 
   .working-hours {
-    @include width-variables(66%, 1rem);
     @include flex(normal, center);
-    flex: 1;
+
     flex-direction: column;
 
+    width: calc((100% / 3));
+    max-width: calc((100% / 3));
     height: 100%;
     padding-bottom: 2%;
 

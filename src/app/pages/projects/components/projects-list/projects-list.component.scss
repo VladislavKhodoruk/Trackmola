@@ -95,13 +95,13 @@
 
     &-input {
       width: 100%;
-      padding-right: 3rem;
+      padding-right: var(--offset-ml);
     }
 
     &-icon {
       cursor: pointer;
 
-      margin-left: -2.5rem;
+      margin-left: calc(var(--offset-dl) * -1);
 
       color: var(--gray2);
     }

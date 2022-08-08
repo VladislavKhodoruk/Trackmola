@@ -87,15 +87,9 @@ export const getTaskWithAllParametrs = createSelector(
     }))
 );
 
-export const getManadgersProjects = createSelector(getProjects, (projects) =>
-  projects.filter((project) =>
-    project.managersId.includes(localStorage.getItem('AuthUserId'))
-  )
-);
-
 export const getManagerProjectsFilter = createSelector(
   getDashboardState,
-  getManadgersProjects,
+  getProjects,
   ({ manager }, projects) =>
     projects.filter((project) => manager.projectsFilter.includes(project.name))
 );
@@ -161,10 +155,8 @@ export const getTasksForManager = createSelector(
   }
 );
 
-export const getUsersWithoutAdminCTO = createSelector(getUsers, (users) =>
-  users.filter(
-    (item) => item.role !== UserType.Admin && item.role !== UserType.CTO
-  )
+export const getUsersWithoutCTO = createSelector(getUsers, (users) =>
+  users.filter((item) => item.role !== UserType.CTO)
 );
 
 export const getTaskTracksByMonth = createSelector(
@@ -194,9 +186,13 @@ export const getTaskTracksDurationGroupByUser = createSelector(
       );
 
       const overtimeDuration = activeTaskTracks.reduce(
-        (result, taskTrack) => (result += taskTrack.overtimeDuration),
+        (result, taskTrack) =>
+          taskTrack.overtimeDuration
+            ? (result += taskTrack.overtimeDuration)
+            : 0,
         0
       );
+
       return { ...accum, [user.id]: { duration, overtimeDuration } };
     }, {})
 );
