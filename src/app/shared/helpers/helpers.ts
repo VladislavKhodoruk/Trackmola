@@ -370,7 +370,7 @@ export function getLocation(id: string, users: User[]): string {
 }
 
 export function getCurrentVacations(id: string, vacations: Vacation[]) {
-  return vacations.filter((vacation) => vacation.userId === id);
+  return vacations.filter((vacation: Vacation) => vacation.userId === id);
 }
 
 export function getCurrentHolidays(
@@ -406,20 +406,24 @@ export function getVacationsAndHolidaysByProject(
   vacations: Vacation[],
   users: User[]
 ) {
-  return team
-    .map((member: User): Vacation[] =>
+  const res = team
+    .flatMap((member: User): Vacation[] =>
       vacations.filter((vacation: Vacation) => vacation.userId === member.id)
     )
-    .flat()
-    .map((vac: Vacation) =>
+    .flatMap((vac: Vacation) =>
       getCurrentHolidays(
         getLocation(vac.userId, users),
         getCurrentVacations(vac.userId, vacations),
         users
       )
-    )
-    .flat()
-    .sort((a, b) => a.vacationDay.getTime() - b.vacationDay.getTime());
+    );
+  const key = 'fullName';
+  const arrayUniqueByKey = [
+    ...new Map(res.map((item) => [item[key], item])).values(),
+  ];
+  return arrayUniqueByKey.sort(
+    (a, b) => a.vacationDay.getTime() - b.vacationDay.getTime()
+  );
 }
 
 export function setUserPhotoInVacations(

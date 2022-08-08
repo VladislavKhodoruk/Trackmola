@@ -90,18 +90,19 @@
           </ng-container>
         </td>
       </tr>
-      <ng-container *ngIf="+total[2]">
-        <tr>
-          <td
-            *ngFor="let item of total"
-            class="report-constructor-table-body-item"
-          >
-            <div class="report-constructor-table-body-item-text">
-              {{ item }}
-            </div>
-          </td>
-        </tr>
-      </ng-container>
     </ng-container>
   </tbody>
+
+  <tfoot class="report-constructor-table-footer">
+    <ng-container *ngIf="+total[2]">
+      <tr>
+        <td
+          *ngFor="let item of total"
+          class="report-constructor-table-footer-item"
+        >
+          {{ item }}
+        </td>
+      </tr>
+    </ng-container>
+  </tfoot>
 </table>

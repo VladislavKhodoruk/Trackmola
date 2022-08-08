@@ -4,6 +4,10 @@ import { CommonState } from './common.state';
 
 import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
 import { StateName } from '@shared/enums/enum';
+import {
+  filteredTaskTracksByPeriod,
+  getProjectPeriod,
+} from '@pages/projects/store/projects.selectors';
 
 const getCommonState = createFeatureSelector<CommonState>(StateName.Common);
 
@@ -128,4 +132,37 @@ export const getCurrentVacations = createSelector(getVacations, (vacations) =>
   vacations.filter(
     (vacation) => vacation.userId === localStorage.getItem('AuthUserId')
   )
+);
+
+export const filteredTaskTracksByPeriod1 = createSelector(
+  getTasksTrack,
+  getPeriod,
+  (taskTracks, period) =>
+    taskTracks.filter(({ date }) => {
+      const startDate = period.start;
+      const endDate = period.end;
+      return date.seconds * 1000 >= startDate && date.seconds * 1000 <= endDate;
+    })
+);
+
+export const usersGroupByProject = createSelector(
+  filteredTaskTracksByPeriod1,
+  getProjects,
+  getUsers,
+  (taskTracks, projects, users) =>
+    projects.reduce((acum, project) => {
+      const usersInTaskTracks = taskTracks
+        .sort((a, b) => b.date.seconds - a.date.seconds)
+        .filter(({ projectId }) => projectId === project.id)
+        .map(({ userId }) => userId);
+
+      const filteredUsers = users.filter(({ id }) =>
+        usersInTaskTracks.includes(id)
+      );
+
+      return {
+        ...acum,
+        [project.id]: filteredUsers,
+      };
+    }, {})
 );

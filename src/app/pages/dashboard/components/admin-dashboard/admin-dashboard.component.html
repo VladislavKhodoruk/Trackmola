@@ -1,4 +1,4 @@
-<div class="dashboard-search-and-sort">
+<section class="dashboard-controls">
   <input
     class="input dashboard-search"
     type="text"
@@ -15,15 +15,13 @@
       (buttonClick)="changeSort(label)"
     ></app-button>
   </div>
-</div>
-<main class="dashboard-main">
-  <ul class="dashboard-main-user-cards">
-    <app-users-cards
-      [users]="currentUsers"
-      [taskTracksDurationGroupByUser]="taskTracksDurationGroupByUser"
-    ></app-users-cards>
-  </ul>
-</main>
-<footer class="dashboard-footer">
-  <app-holidays></app-holidays>
-</footer>
+</section>
+
+<section class="dashboard-main">
+  <app-users-cards
+    [users]="currentUsers"
+    [taskTracksDurationGroupByUser]="taskTracksDurationGroupByUser"
+  ></app-users-cards>
+</section>
+
+<app-holidays class="dashboard-holidays"></app-holidays>

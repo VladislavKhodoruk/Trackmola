@@ -34,7 +34,7 @@ export class ProjectsActivityComponent {
   private dataForChart(
     project?: Project[],
     taskTracks?: TaskTrack[]
-  ): [string, number, string][] {
+  ): { name: string; y: number; color: string }[] {
     const projectsNames: {
       id: Project['id'];
       name: Project['name'];
@@ -46,7 +46,7 @@ export class ProjectsActivityComponent {
         ({ projectId }) => projectId === id
       );
       const percent: number = tasksInProject.length / taskTracks.length;
-      return [name, percent, color];
+      return { color, name, y: percent };
     });
   }
 }

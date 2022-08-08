@@ -14,14 +14,15 @@
           ></app-project-label>
         </ng-container>
         <app-users-photos
+          *ngIf="usersByProject[project.id]"
           [users]="usersByProject[project.id]"
           size="2"
         ></app-users-photos>
       </div>
       <div class="projects-list-item-bottom">
-        <p class="projects-list-item-bottom-name">{{ project.fullName }}</p>
+        <p class="projects-list-item-bottom-name">{{ project?.fullName }}</p>
         <p class="projects-list-item-bottom-tracked-time">
-          tracked time {{ trackedTimeByProjects[project.id] }}h
+          tracked time {{ trackedTimeByProjects[project?.id] }}h
         </p>
       </div>
     </li>

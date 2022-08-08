@@ -1,23 +1,22 @@
 <header class="vacation-header">
   <h1 class="vacation-header-title">Vacations</h1>
   <div class="vacation-header-button">
-    <container-element [ngSwitch]="authTypeUser">
-      <app-button
-        *ngSwitchCase="userTypes.Employee"
-        label="Request vacation"
-        [buttonClass]="'button-primary'"
-        [icon]="iconCalendarPlus"
-        iconWidth="2rem"
-        iconHeight="2rem"
-      ></app-button>
-      <app-button
-        label="Add vacation"
-        [buttonClass]="'button-primary'"
-        [icon]="iconCalendarPlus"
-        iconWidth="2rem"
-        iconHeight="2rem"
-      ></app-button>
-    </container-element>
+    <app-button
+      *ngIf="authTypeUser === userTypes.Employee"
+      label="Request vacation"
+      [buttonClass]="'button-primary'"
+      [icon]="iconCalendarPlus"
+      iconWidth="2rem"
+      iconHeight="2rem"
+    ></app-button>
+    <app-button
+      *ngIf="authTypeUser !== userTypes.Employee"
+      label="Add vacation"
+      [buttonClass]="'button-primary'"
+      [icon]="iconCalendarPlus"
+      iconWidth="2rem"
+      iconHeight="2rem"
+    ></app-button>
   </div>
 </header>
 

@@ -94,6 +94,7 @@ export class ReportConstructorTableComponent implements OnChanges {
       totalTaskDuration,
       totalTaskOvertimeDuration,
       totalTaskPercentageWeek,
+      '',
     ];
   }
 

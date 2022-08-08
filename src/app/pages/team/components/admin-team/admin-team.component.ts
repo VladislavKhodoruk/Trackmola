@@ -20,7 +20,7 @@ import {
   styleUrls: ['./admin-team.component.scss'],
   templateUrl: './admin-team.component.html',
 })
-export class AdminTeamComponent implements OnChanges {
+export class AdminTeamComponent {
   @Input() pickedUser: User;
   @Input() projectsByUsers: GroupBy<Project[]>;
   @Input() usersByProject: GroupBy<User[]>;
@@ -28,17 +28,33 @@ export class AdminTeamComponent implements OnChanges {
   @Input() vacations: Vacation[];
   @Input() users: User[];
 
-  vacationsAndHoliday: Vacations[];
+  // vacationsAndHoliday: Vacations[];
+  //
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes.pickedUser) {
+  //     if (this.pickedUser && this.vacations.length && this.users.length) {
+  //       this.vacationsAndHoliday = getCurrentHolidays(
+  //         this.pickedUser.location,
+  //         this.vacations,
+  //         this.users
+  //       );
+  //     }
+  //   }
+  // }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.pickedUser) {
-      if (this.pickedUser) {
-        this.vacationsAndHoliday = getCurrentHolidays(
-          this.pickedUser?.location,
-          this.vacations,
-          this.users
-        );
-      }
+  protected get vacationsAndHoliday(): Vacations[] {
+    if (
+      this.pickedUser &&
+      this.vacations &&
+      this.vacations.length &&
+      this.users.length
+    ) {
+      return getCurrentHolidays(
+        this.pickedUser.location,
+        this.vacations,
+        this.users
+      );
     }
+    return [];
   }
 }

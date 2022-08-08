@@ -27,13 +27,11 @@ import {
   styleUrls: ['./projects.component.scss'],
   templateUrl: './projects.component.html',
 })
-export class ProjectsComponent implements OnChanges {
+export class ProjectsComponent {
   @Input() readonly projectByRoute: Project;
   @Input() readonly usersGroupByProject: GroupBy<User[]>;
   @Input() readonly users: User[];
   @Input() readonly vacations: Vacation[];
-
-  vacationsAndHolidaysTeam: Vacations[];
 
   readonly projectMode = ProjectMode;
   currentMode: string = ProjectMode.Tasks;
@@ -47,14 +45,15 @@ export class ProjectsComponent implements OnChanges {
   readonly userType = UserType;
   readonly currentUser: string = localStorage.getItem('AuthUserType');
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.projectByRoute) {
-      this.vacationsAndHolidaysTeam = getVacationsAndHolidaysByProject(
+  protected get vacationsAndHolidaysTeam(): Vacations[] {
+    if (this.projectByRoute && this.vacations.length && this.users.length) {
+      return getVacationsAndHolidaysByProject(
         this.usersGroupByProject[this.projectByRoute.id],
         this.vacations,
         this.users
       );
     }
+    return null;
   }
 
   changeMode(mode: string): void {

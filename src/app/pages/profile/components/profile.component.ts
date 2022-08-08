@@ -3,10 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
-  OnInit,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
@@ -20,7 +17,7 @@ import { User, Vacation, Vacations } from '@shared/interfaces/interfaces';
   styleUrls: ['./profile.component.scss'],
   templateUrl: './profile.component.html',
 })
-export class ProfileComponent implements OnChanges {
+export class ProfileComponent {
   @Input() userInfo: User;
 
   @Output() logoutEmmiter = new EventEmitter<void>();
@@ -29,20 +26,17 @@ export class ProfileComponent implements OnChanges {
 
   @Input() users: User[];
 
-  vacationsAndHoliday: Vacations[];
-
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.userInfo && this.userInfo) {
-      if (this.userInfo && this.vacations) {
-        this.vacationsAndHoliday = getCurrentHolidays(
-          this.userInfo?.location,
-          this.vacations,
-          this.users
-        );
-      }
+  protected get vacationsAndHoliday(): Vacations[] {
+    if (this.userInfo && this.vacations.length && this.users.length) {
+      return getCurrentHolidays(
+        this.userInfo.location,
+        this.vacations,
+        this.users
+      );
     }
+    return [];
   }
 
   logout(event: Event): void {

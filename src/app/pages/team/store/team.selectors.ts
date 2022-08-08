@@ -3,7 +3,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { TeamState } from './team.state';
 
 import { StateName } from '@shared/enums/enum';
-import { Vacation } from '@shared/interfaces/interfaces';
+import { User, Vacation } from '@shared/interfaces/interfaces';
 import { getVacations } from '@store/common/common.selectors';
 
 export const TEAM_STATE_NAME = StateName.Team;
@@ -15,6 +15,11 @@ export const getUser = createSelector(getTeamState, ({ user }) => user);
 export const getVacationsForPickTeamMember = createSelector(
   getUser,
   getVacations,
-  (user, vacations: Vacation[]) =>
-    vacations.filter((vacation: Vacation) => vacation.userId === user.id)
+  (user: User, vacations: Vacation[]) => {
+    if (user) {
+      return vacations.filter(
+        (vacation: Vacation) => vacation.userId === user.id
+      );
+    }
+  }
 );

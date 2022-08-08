@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { usersGroupByProject } from '@pages/projects/store/projects.selectors';
 import {
   getUser,
   getVacationsForPickTeamMember,
@@ -18,6 +17,7 @@ import {
   getUsers,
   projectsByUsers,
   trackedTimeByProjects,
+  usersGroupByProject,
 } from '@store/common/common.selectors';
 import { CommonState } from '@store/common/common.state';
 import { TrackMolaState } from '@store/trackMola.state';
