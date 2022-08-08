@@ -21,6 +21,10 @@
 
     &-list {
       margin: var(--offset-s) 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
     }
   }
 }
