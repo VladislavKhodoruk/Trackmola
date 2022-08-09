@@ -32,7 +32,8 @@ import { UserType } from '@shared/enums/enum';
 export class ReportConstructorTableComponent implements OnChanges {
   @Input() infoFromTaskTracks: InfoReportConstructorItem[];
   @Input() infoFromUsers: InfoReportConstructorUserItem[];
-  @Input() mode: AdminReportConstructorMode;
+  @Input() mode: AdminReportConstructorMode =
+    AdminReportConstructorMode.Projects;
   infoFromTaskTracksForTable: InfoFromTaskTracksForTable[];
   total: string[];
   totalUsers: string[];
@@ -114,11 +115,11 @@ export class ReportConstructorTableComponent implements OnChanges {
       totalTaskPercentageWeek,
       '',
     ];
-    const overtimesTotal = `${this.infoFromUsers.reduce(
+    const overtimesTotal = `${this.infoFromUsers?.reduce(
       (acc, item) => (acc += item.overtimes ? item.overtimes : 0),
       0
     )}`;
-    const durationTotal = `${this.infoFromUsers.reduce(
+    const durationTotal = `${this.infoFromUsers?.reduce(
       (acc, item) => (acc += item.hours),
       0
     )}`;

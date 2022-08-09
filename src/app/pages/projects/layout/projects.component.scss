@@ -102,8 +102,8 @@
     &-vacations {
       width: 100%;
       max-width: 100%;
-      height: 50%;
-      max-height: 50%;
+      height: calc(50% - var(--offset-l) / 2);
+      max-height: calc(50% - var(--offset-l) / 2);
     }
   }
 
@@ -120,5 +120,14 @@
 
       color: var(--black);
     }
+  }
+
+  .budget {
+    width: 100%;
+    height: 100%;
+
+    background-image: url("../../../../assets/img/CTO-Screen/CTO-Projects-by-budget.png");
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 }

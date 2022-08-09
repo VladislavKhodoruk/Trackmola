@@ -1,6 +1,6 @@
 export enum UserType {
   Employee = 'employee',
-  CTO = 'CTO',
+  CTO = 'cto',
   Manager = 'manager',
   Admin = 'admin',
 }
@@ -63,4 +63,16 @@ export enum WeekDays {
   FRI = 'FRI',
   SAT = 'SAT',
   SUN = 'SUN',
+}
+
+export enum Route {
+  Authorization = 'authorization',
+  Profile = 'profile',
+  Dashboard = 'dashboard',
+  MyReport = 'report',
+  MyActivity = 'activity',
+  Projects = 'projects',
+  Vacations = 'vacations',
+  Team = 'team',
+  ReportConstructor = 'report-constructor',
 }

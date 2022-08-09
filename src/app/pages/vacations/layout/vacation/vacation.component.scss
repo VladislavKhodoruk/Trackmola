@@ -30,6 +30,10 @@
     &-title {
       font: var(--font-titleBig);
     }
+
+    &-buttons {
+      @include flex(flex-start, flex-start, var(--offset));
+    }
   }
 
   .vacation-main {
