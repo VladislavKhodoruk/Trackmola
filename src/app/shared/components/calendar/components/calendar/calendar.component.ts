@@ -14,7 +14,7 @@ import {
   NUMBER_OF_DAYS_IN_A_WEEK,
   ONE_DAY_IN_SECONDS,
 } from '@shared/constants/constants';
-import { StateName } from '@shared/enums/enum';
+import { StateName, TaskTackStatus } from '@shared/enums/enum';
 import { Period, TaskTrack, Week } from '@shared/interfaces/interfaces';
 import { RouterStateUrl } from '@store/router/custom-serializer';
 
@@ -102,7 +102,8 @@ export class CalendarComponent implements OnChanges, OnDestroy {
           const isApproved =
             task.length > 0 &&
             task?.every(
-              (taskTrack) => taskTrack.taskTrackStatus === 'approved'
+              (taskTrack) =>
+                taskTrack.taskTrackStatus === TaskTackStatus.Approved
             );
 
           return {
