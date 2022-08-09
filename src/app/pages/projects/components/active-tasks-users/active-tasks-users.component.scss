@@ -165,6 +165,18 @@
           font: var(--font-main);
         }
 
+        &-durations {
+          @include flex(center, center, var(--offset-s));
+        }
+
+        &-overtime {
+          @include flex(center, center, var(--offset-xs));
+
+          &-icon {
+            display: flex;
+          }
+        }
+
         &-duration {
           color: var(--primary);
         }

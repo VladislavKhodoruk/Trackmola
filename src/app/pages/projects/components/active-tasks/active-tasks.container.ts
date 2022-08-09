@@ -50,7 +50,7 @@ export class ActiveTasksContainer {
 
   constructor(private store$: Store<TrackMolaState>) {}
 
-  addTask(task: Task): void {
+  protected addTask(task: Task): void {
     this.store$.dispatch(addTask({ task }));
   }
 }

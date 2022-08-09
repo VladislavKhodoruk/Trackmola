@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import fireIcon from '@iconify/icons-emojione/fire';
 import checkIcon from '@iconify/icons-tabler/check';
 
 import { IconifyIcon } from '@iconify/types';
@@ -11,8 +12,9 @@ import { take, filter } from 'rxjs';
 import { ApproveUsersModalContainer } from '../approve-users-modal/approve-users-modal.container';
 
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
-import { PeriodType } from '@shared/enums/enum';
+import { PeriodType, TaskTackStatus } from '@shared/enums/enum';
 
+import { urlReplacer } from '@shared/helpers/helpers';
 import {
   GroupBy,
   Project,
@@ -37,20 +39,18 @@ export class ActiveTasksUsersComponent {
 
   @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
 
-  readonly toggleLabels: string[] = [PeriodType.Week, PeriodType.Month];
   panelOpenState = false;
 
+  readonly toggleLabels: string[] = [PeriodType.Week, PeriodType.Month];
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconCheck: IconifyIcon = checkIcon;
+  readonly iconFire: IconifyIcon = fireIcon;
 
   constructor(public dialog: MatDialog) {}
 
   protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
     const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
       (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
-        if (taskTrack.projectId !== this.project.id) {
-          return accum;
-        }
         const date = taskTrack.date.seconds * 1000;
         if (!accum[date]) {
           accum[date] = [];
@@ -82,10 +82,19 @@ export class ActiveTasksUsersComponent {
       });
   }
 
-  getUserStatus(user: User): string {
-    const tracksByUser = this.taskTracks.filter(
+  protected getUserStatus(user: User): string {
+    const taskTracksByUser = this.taskTracks.filter(
       (taskTrack) => taskTrack.userId === user.id
     );
-    return tracksByUser[0]?.taskTrackStatus || 'new';
+
+    const checkStatus = taskTracksByUser.some(
+      (taskTrack) => taskTrack.taskTrackStatus !== TaskTackStatus.Approved
+    );
+
+    return checkStatus ? TaskTackStatus.Sended : TaskTackStatus.Approved;
+  }
+
+  protected searchLink(text: string): string {
+    return urlReplacer(text) || 'no comment';
   }
 }

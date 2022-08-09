@@ -6,6 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import fireIcon from '@iconify/icons-emojione/fire';
 import clipboardPlus from '@iconify/icons-tabler/clipboard-plus';
 import fileZip from '@iconify/icons-tabler/file-zip';
 import pencilIcon from '@iconify/icons-tabler/pencil';
@@ -25,7 +26,7 @@ import {
   DEFAULT_PHOTO_URL,
   dialogOpeningTime,
 } from '@shared/constants/constants';
-import { UserType } from '@shared/enums/enum';
+import { TaskTackStatus, UserType } from '@shared/enums/enum';
 import { urlReplacer } from '@shared/helpers/helpers';
 import {
   GroupBy,
@@ -58,6 +59,7 @@ export class ActiveTasksComponent {
   readonly iconPencil: IconifyIcon = pencilIcon;
   readonly iconFileZip: IconifyIcon = fileZip;
   readonly iconQuestionMark: IconifyIcon = questionMark;
+  readonly iconFire: IconifyIcon = fireIcon;
 
   readonly userType = UserType;
   readonly currentUser: string = localStorage.getItem('AuthUserType');
@@ -65,18 +67,22 @@ export class ActiveTasksComponent {
   constructor(public dialog: MatDialog) {}
 
   protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
-    const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
-      (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
-        const date = taskTrack.date.seconds * 1000;
-        if (!accum[date]) {
-          accum[date] = [];
-        }
-        accum[date].push(taskTrack);
-        return accum;
-      },
-      {}
+    const sendedTaskTracks = taskTracks.filter(
+      (taskTrack) => taskTrack.taskTrackStatus === TaskTackStatus.Sended
     );
-
+    const taskTracksForGroup = this.modalView ? sendedTaskTracks : taskTracks;
+    const taskTracksGroupByDate: GroupBy<TaskTrack[]> =
+      taskTracksForGroup.reduce(
+        (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
+          const date = taskTrack.date.seconds * 1000;
+          if (!accum[date]) {
+            accum[date] = [];
+          }
+          accum[date].push(taskTrack);
+          return accum;
+        },
+        {}
+      );
     return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
   }
 

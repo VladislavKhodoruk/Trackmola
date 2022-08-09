@@ -1,6 +1,6 @@
 export enum UserType {
   Employee = 'employee',
-  CTO = 'cto',
+  CTO = 'CTO',
   Manager = 'manager',
   Admin = 'admin',
 }
@@ -75,4 +75,10 @@ export enum Route {
   Vacations = 'vacations',
   Team = 'team',
   ReportConstructor = 'report-constructor',
+}
+
+export enum TaskTackStatus {
+  New = 'new',
+  Approved = 'approved',
+  Sended = 'sended',
 }

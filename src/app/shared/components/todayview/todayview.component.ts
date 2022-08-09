@@ -13,6 +13,7 @@ import {
   MAXIMUM_NUMBER_OF_HOURS_IN_A_DAY,
   ONE_DAY_IN_SECONDS,
 } from '@shared/constants/constants';
+import { TaskTackStatus } from '@shared/enums/enum';
 import {
   Project,
   TaskItem,
@@ -56,7 +57,7 @@ export class TodayviewComponent implements OnChanges {
       const addTaskTrack = {
         ...tasktrack,
         date: new Timestamp(new Date().getTime() / 1000, 0),
-        taskTrackStatus: 'new',
+        taskTrackStatus: TaskTackStatus.New,
       };
       this.addCurTaskTrack.emit(addTaskTrack);
     });

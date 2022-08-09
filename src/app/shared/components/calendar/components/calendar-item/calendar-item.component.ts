@@ -22,6 +22,7 @@ export class CalendarItemComponent implements OnChanges {
   @Input() selected!: boolean;
 
   readonly iconFire: IconifyIcon = fireIcon;
+
   timeBar = 0;
   more = '';
 

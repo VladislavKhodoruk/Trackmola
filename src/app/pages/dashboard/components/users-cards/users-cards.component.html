@@ -7,7 +7,9 @@
     <ng-container *ngIf="user">
       <div class="users-cards-item-header">
         <div class="users-cards-item-header-kpi">
-          KPI &nbsp;<span class="users-cards-item-header-percentage">0%</span>
+          KPI &nbsp;<span class="users-cards-item-header-percentage">
+            {{ getRandomInt(96) }}%
+          </span>
         </div>
         <div class="users-cards-item-header-buttons">
           <app-button

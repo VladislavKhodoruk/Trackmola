@@ -342,15 +342,30 @@ export function taskTracksByPeriods(taskTracks: TaskTrack[]): [TaskTrack?][] {
     []
   );
 }
+
 export function getFilteredTasksTracks(
   taskTracks: TaskTrack[],
   date: number
 ): TaskTrack[] {
   return taskTracks.filter(
     (curTaskTrack) =>
-      curTaskTrack.date.seconds * 1000 >= date - ONE_WEEK_IN_SECONDS &&
+      curTaskTrack.date.seconds * 1000 >= date - ONE_WEEK_IN_SECONDS * 1000 &&
       curTaskTrack.date.seconds * 1000 <= date
   );
+}
+
+export function getFilteredTasksTracksByPeriod(
+  taskTracks: TaskTrack[],
+  period: Period
+): TaskTrack[] {
+  return taskTracks
+    .filter(
+      (curTaskTrack) =>
+        curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
+        curTaskTrack.date.seconds * 1000 >= period.start &&
+        curTaskTrack.date.seconds * 1000 <= period.end
+    )
+    .sort((a, b) => b.date.seconds - a.date.seconds);
 }
 
 export function getUserName(users: User[], id): string {
