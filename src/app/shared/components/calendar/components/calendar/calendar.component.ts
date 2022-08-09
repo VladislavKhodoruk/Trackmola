@@ -26,7 +26,7 @@ import { RouterStateUrl } from '@store/router/custom-serializer';
 })
 export class CalendarComponent implements OnChanges, OnDestroy {
   @Input() date!: number;
-  @Input() allTasks!: TaskTrack[] | null;
+  @Input() allTasks!: TaskTrack[];
   @Input() firstDay!: Period['start'];
   @Input() numPreviousWeek!: number;
   @Input() editableTaskTrack!: TaskTrack;
@@ -34,8 +34,6 @@ export class CalendarComponent implements OnChanges, OnDestroy {
 
   @Output() changeDate = new EventEmitter<number>();
   @Output() taskTrack = new EventEmitter<TaskTrack>();
-
-  taskTrack1: TaskTrack;
 
   currentWeeks: Week[] = [];
   namesDaysWeek = NAMES_OF_THE_DAYS_OF_THE_WEEK;
@@ -81,33 +79,47 @@ export class CalendarComponent implements OnChanges, OnDestroy {
     );
 
     while (startDayWeek < endDayWeek) {
+      const days = Array(7)
+        .fill(0)
+        .map(() => {
+          const value = startDayWeek.setDate(startDayWeek.getDate() + 1);
+
+          const task = this.onTask(value, this.allTasks);
+
+          const isTasks = task.length > 0;
+
+          const duration = task?.reduce(
+            (result, taskTrack) => (result = result + taskTrack.duration),
+            0
+          );
+
+          const overtimeDuration = task?.reduce(
+            (result, taskTrack) =>
+              (result = result + +taskTrack.overtimeDuration || 0),
+            0
+          );
+
+          const isApproved =
+            task.length > 0 &&
+            task?.every(
+              (taskTrack) => taskTrack.taskTrackStatus === 'approved'
+            );
+
+          return {
+            duration,
+            isApproved,
+            isTasks,
+            overtimeDuration,
+            value,
+          };
+        });
+      const daysWithDuration = days.filter((day) => day.duration > 0);
+      const isWeekApproved =
+        daysWithDuration.length > 0 &&
+        daysWithDuration.every((day) => day.isApproved);
       currentWeeks.push({
-        days: Array(7)
-          .fill(0)
-          .map(() => {
-            const value = startDayWeek.setDate(startDayWeek.getDate() + 1);
-
-            const task = this.onTask(value, this.allTasks);
-            const isTasks = task.length > 0;
-
-            const duration = task?.reduce(
-              (result, taskTrack) => (result = result + taskTrack.duration),
-              0
-            );
-
-            const overtimeDuration = task?.reduce(
-              (result, taskTrack) =>
-                (result = result + +taskTrack.overtimeDuration || 0),
-              0
-            );
-
-            return {
-              duration,
-              isTasks,
-              overtimeDuration,
-              value,
-            };
-          }),
+        days,
+        isWeekApproved,
       });
     }
     this.currentWeeks = currentWeeks;
