@@ -45,7 +45,7 @@ export class UsersCardsComponent {
     const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     return endDate.getDate() * HOURS_IN_DAY - getRestMonthDefaultHours();
   }
-  protected getRandomInt(max) {
+  protected getRandomInt(max): number {
     return Math.floor(Math.random() * max);
   }
   protected getProgressUser(user: User): {
