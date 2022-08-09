@@ -7,7 +7,8 @@ import {
   getTaskTracksDurationGroupByUser,
   getUsersWithoutCTO,
 } from '@pages/dashboard/store/dashboard.selectors';
-import { GroupBy } from '@shared/interfaces/interfaces';
+import { setUser } from '@pages/team/store/team.actions';
+import { GroupBy, User } from '@shared/interfaces/interfaces';
 
 import { TrackMolaState } from '@store/trackMola.state';
 
@@ -16,6 +17,7 @@ import { TrackMolaState } from '@store/trackMola.state';
   template: `<app-admin-dashboard
     [users]="users$ | async"
     [taskTracksDurationGroupByUser]="taskTracksDurationGroupByUser$ | async"
+    (setUser)="setPickedUser($event)"
   ></app-admin-dashboard>`,
 })
 export class AdminDashboardContainer {
@@ -25,4 +27,8 @@ export class AdminDashboardContainer {
   > = this.store$.select(getTaskTracksDurationGroupByUser);
 
   constructor(private store$: Store<TrackMolaState>) {}
+
+  setPickedUser(user: User): void {
+    this.store$.dispatch(setUser({ user }));
+  }
 }

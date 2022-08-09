@@ -1,10 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -31,6 +33,8 @@ export class AdminDashboardComponent implements OnChanges, OnInit, OnDestroy {
     duration: number;
     overtimeDuration: number;
   }>;
+
+  @Output() setUser: EventEmitter<User> = new EventEmitter<User>();
 
   private subscription: Subscription;
 
@@ -77,5 +81,8 @@ export class AdminDashboardComponent implements OnChanges, OnInit, OnDestroy {
     this.sortMode.ascendingSort =
       this.sortMode.sortName === sortName ? !this.sortMode.ascendingSort : true;
     this.sortMode.sortName = sortName;
+  }
+  setPickedUser(user: User) {
+    this.setUser.emit(user);
   }
 }

@@ -28,7 +28,11 @@
         </div>
       </div>
       <div class="users-cards-item-info">
-        <div class="user-container">
+        <div
+          class="user-container"
+          (click)="router.navigate([routes.Team])"
+          (click)="pickUser.emit(user)"
+        >
           <img
             class="users-cards-item-info-avatar"
             src="{{ user.photo || defaultPhoto }}"

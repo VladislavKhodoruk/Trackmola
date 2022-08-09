@@ -24,8 +24,9 @@ export class UsersCardsComponent {
     duration: number;
     overtimeDuration: number;
   };
-  @Output()
-  userCardClick: EventEmitter<User> = new EventEmitter<User>();
+
+  @Output() userCardClick: EventEmitter<User> = new EventEmitter<User>();
+  @Output() pickUser: EventEmitter<User> = new EventEmitter<User>();
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconBellRinging: IconifyIcon = bellRinging;

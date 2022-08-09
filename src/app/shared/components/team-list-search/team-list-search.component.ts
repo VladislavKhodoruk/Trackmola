@@ -71,6 +71,7 @@ export class TeamListSearchComponent implements OnChanges {
   @Input() locations: string[];
   @Input() positions: string[];
   @Input() allUsers: User[];
+  @Input() pickedUser: User;
 
   @Output() pickUser = new EventEmitter<User>();
 
@@ -242,7 +243,7 @@ export class TeamListSearchComponent implements OnChanges {
       this.filteredUserCards = this.allUserCards.sort((a, b) =>
         a.userName > b.userName ? 1 : -1
       );
-      if (!this.user) {
+      if (!this.user && !this.pickedUser) {
         const defaultUser = this.allUsers.find(
           (user) => user.fullName === this.filteredUserCards[0].userName
         );

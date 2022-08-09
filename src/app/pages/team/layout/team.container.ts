@@ -10,14 +10,9 @@ import { User } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-team-container',
-  template: `<app-team
-    [userType]="userType"
-    [user]="pickedUser$ | async"
-  ></app-team>`,
+  template: '<app-team [user]="pickedUser$ | async"></app-team>',
 })
 export class TeamContainer {
-  readonly userType: string = localStorage.getItem('AuthUserType');
-
   readonly pickedUser$: Observable<User> = this.teamStore$.select(getUser);
 
   constructor(private teamStore$: Store<TeamState>) {}
