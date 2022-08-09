@@ -49,7 +49,10 @@
     }
 
     &-half-of-primary {
-      background-color: var(--primary-50);
+      color: var(--grey5);
+
+      background-color: var(--white);
+      border: $border-toggle;
     }
 
     &-default-borders {
