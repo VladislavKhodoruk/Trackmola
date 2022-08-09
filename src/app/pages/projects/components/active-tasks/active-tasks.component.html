@@ -84,21 +84,41 @@
               class="activeTask-container"
               *ngFor="let taskTrack1 of taskTrack[1]"
             >
-              <img
-                src="{{
-                  usersInfoByUserId[taskTrack1.userId]?.photo || defaultPhoto
-                }}"
-                class="activeTask-image"
-                alt="user photo"
-              />
+              <div class="report-status-container">
+                <img
+                  src="{{
+                    usersInfoByUserId[taskTrack1.userId]?.photo || defaultPhoto
+                  }}"
+                  class="activeTask-image"
+                  alt="user photo"
+                />
+                <app-report-status
+                  [reportStatus]="taskTrack1.taskTrackStatus"
+                ></app-report-status>
+              </div>
+
               <div class="activeTask-description">
                 <div class="activeTask-description-header">
                   <span class="activeTask-description-header-name">
                     {{ usersInfoByUserId[taskTrack1.userId]?.fullName }}
                   </span>
-                  <span class="activeTask-description-header-duration">
-                    {{ taskTrack1.duration }}h
-                  </span>
+                  <div class="activeTask-description-header-durations">
+                    <div
+                      class="activeTask-description-header-overtime"
+                      *ngIf="taskTrack1.overtimeDuration"
+                    >
+                      <ic-icon
+                        class="activeTask-description-header-overtime-icon"
+                        [icon]="iconFire"
+                        width="1.5rem"
+                        height="1.5rem"
+                      ></ic-icon>
+                      <span>{{ taskTrack1.overtimeDuration }}h</span>
+                    </div>
+                    <span class="activeTask-description-header-duration">
+                      {{ taskTrack1.duration }}h
+                    </span>
+                  </div>
                 </div>
 
                 <div

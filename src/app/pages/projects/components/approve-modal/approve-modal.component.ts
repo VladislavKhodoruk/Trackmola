@@ -1,10 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
+import { MatDialogRef } from '@angular/material/dialog';
 import x from '@iconify/icons-tabler/x';
 
-import { getFilteredTasksTracksByPeriod } from '@shared/helpers/helpers';
+import { IconifyIcon } from '@iconify/types';
 
-import { Period, TaskTrack } from '@shared/interfaces/interfaces';
+import { ApproveModalContainer } from './approve-modal.container';
+
+import { TaskTackStatus } from '@shared/enums/enum';
+
+import { TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-approve-modal',
@@ -12,25 +16,35 @@ import { Period, TaskTrack } from '@shared/interfaces/interfaces';
   templateUrl: './approve-modal.component.html',
 })
 export class ApproveModalComponent {
-  @Input() taskTracks!: TaskTrack[];
-  @Input() currentDate!: number;
-  @Input() period!: Period;
+  @Input() readonly taskTracks!: TaskTrack[];
+  @Input() readonly currentDate!: number;
 
-  @Output() taskTrack = new EventEmitter<TaskTrack>();
-  @Output() submitTasksTrack = new EventEmitter<TaskTrack[]>();
+  @Output() taskTrack: EventEmitter<TaskTrack> = new EventEmitter<TaskTrack>();
+  @Output() submitTasksTrack: EventEmitter<TaskTrack[]> = new EventEmitter<
+    TaskTrack[]
+  >();
 
-  iconX = x;
+  readonly iconX: IconifyIcon = x;
+
   panelOpenState = false;
+  openModal = true;
 
-  approveReport(): void {
-    const sendedTaskTracks = getFilteredTasksTracksByPeriod(
-      this.taskTracks,
-      this.period
+  constructor(public dialogRef: MatDialogRef<ApproveModalContainer>) {}
+
+  protected approveReport(): void {
+    const filteredTasksTracks = this.taskTracks?.filter(
+      (taskTrack) => taskTrack.taskTrackStatus === TaskTackStatus.Sended
     );
-    const sendedTasksTrack: TaskTrack[] = sendedTaskTracks.map((taskTrack) => ({
-      ...taskTrack,
-      taskTrackStatus: 'approved',
-    }));
-    this.submitTasksTrack.emit(sendedTasksTrack);
+
+    const approvedTasksTrack: TaskTrack[] = filteredTasksTracks.map(
+      (taskTrack) => ({
+        ...taskTrack,
+        taskTrackStatus: TaskTackStatus.Approved,
+      })
+    );
+
+    this.submitTasksTrack.emit(approvedTasksTrack);
+
+    this.openModal = false;
   }
 }

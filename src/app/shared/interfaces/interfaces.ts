@@ -2,7 +2,7 @@ import { IconifyIcon } from '@iconify/types';
 
 import { Timestamp } from 'firebase/firestore';
 
-import { DayType, WeekDays } from '@shared/enums/enum';
+import { DayType, TaskTackStatus, WeekDays } from '@shared/enums/enum';
 
 export interface Project {
   id: string;
@@ -31,7 +31,7 @@ export interface TaskTrack {
   projectId: string;
   status: string;
   taskId: string;
-  taskTrackStatus: string;
+  taskTrackStatus: TaskTackStatus;
   userId: string;
 }
 
@@ -73,11 +73,13 @@ export interface NavigationItem {
 export interface Day {
   value: number;
   isTasks: boolean;
+  isApproved: boolean;
   duration: number;
   overtimeDuration: number;
 }
 
 export interface Week {
+  isWeekApproved: boolean;
   days: Day[];
 }
 

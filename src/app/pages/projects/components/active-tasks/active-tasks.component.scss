@@ -145,6 +145,18 @@
           font: var(--font-main);
         }
 
+        &-durations {
+          @include flex(center, center, var(--offset-s));
+        }
+
+        &-overtime {
+          @include flex(center, center, var(--offset-xs));
+
+          &-icon {
+            display: flex;
+          }
+        }
+
         &-duration {
           color: var(--primary);
         }
@@ -161,5 +173,20 @@
   .flex-container {
     @include flex(center, space-between);
     width: 100%;
+  }
+
+  .report-status-container {
+    position: relative;
+
+    & app-report-status {
+      right: 2px;
+    }
+  }
+
+  ::ng-deep {
+    .status {
+      width: 1rem !important;
+      height: 1rem !important;
+    }
   }
 }

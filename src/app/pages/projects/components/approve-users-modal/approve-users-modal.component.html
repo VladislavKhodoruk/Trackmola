@@ -31,9 +31,23 @@
             <div class="approve-users-description">
               <div class="approve-users-description-header">
                 <div>{{ tasksInfoByTaskId[taskTrack1.taskId].name }}</div>
-                <span class="approve-users-description-header-duration">
-                  {{ taskTrack1.duration + taskTrack1.overtimeDuration }}h
-                </span>
+                <div class="approve-users-description-header-durations">
+                  <div
+                    class="approve-users-description-header-overtime"
+                    *ngIf="taskTrack1.overtimeDuration"
+                  >
+                    <ic-icon
+                      class="approve-users-description-header-overtime-icon"
+                      [icon]="iconFire"
+                      width="1.5rem"
+                      height="1.5rem"
+                    ></ic-icon>
+                    <span>{{ taskTrack1.overtimeDuration }}h</span>
+                  </div>
+                  <span class="approve-users-description-header-duration">
+                    {{ taskTrack1.duration }}h
+                  </span>
+                </div>
               </div>
               <div class="approve-users-description-comment">
                 {{ taskTrack1.comments || "no comments" }}
@@ -49,6 +63,7 @@
 <div mat-dialog-actions class="buttons">
   <app-button
     mat-button
+    [mat-dialog-close]="openModal"
     type="submit"
     [buttonClass]="'button-primary button-m'"
     label=" Approve all"

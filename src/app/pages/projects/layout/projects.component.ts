@@ -3,9 +3,7 @@ import {
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   Output,
-  SimpleChanges,
 } from '@angular/core';
 
 import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
@@ -23,10 +21,7 @@ import { ProjectMode } from '../enums/enums';
 
 import { dialogOpeningTime } from '@shared/constants/constants';
 import { UserType } from '@shared/enums/enum';
-import {
-  getFilteredTasksTracks,
-  getVacationsAndHolidaysByProject,
-} from '@shared/helpers/helpers';
+import { getVacationsAndHolidaysByProject } from '@shared/helpers/helpers';
 import {
   GroupBy,
   Project,
@@ -51,11 +46,12 @@ import {
   templateUrl: './projects.component.html',
 })
 @UntilDestroy()
-export class ProjectsComponent implements OnChanges {
-  @Input() taskItem!: TaskItem | null;
+export class ProjectsComponent {
+  @Input() readonly taskItem!: TaskItem | null;
   @Input() readonly projectByRoute: Project;
   @Input() readonly usersGroupByProject: GroupBy<User[]>;
   @Input() readonly taskTracks: TaskTrack[];
+  @Input() readonly filteredTaskTracksByPeriod: TaskTrack[];
 
   @Input() readonly project: Project;
   @Input() readonly currentDate: number;
@@ -69,11 +65,9 @@ export class ProjectsComponent implements OnChanges {
   @Output() addTask: EventEmitter<Task> = new EventEmitter<Task>();
 
   panelOpenState = false;
-  filteredTaskTracks: TaskTrack[];
-
-  readonly projectMode = ProjectMode;
   currentMode: string = ProjectMode.Tasks;
 
+  readonly projectMode = ProjectMode;
   readonly iconAngleRight = angleRight;
   readonly checksIcon = checksIcon;
   readonly messagePlusIcon = messagePlus;
@@ -100,14 +94,6 @@ export class ProjectsComponent implements OnChanges {
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.taskTracks) {
-      this.filteredTaskTracks = getFilteredTasksTracks(
-        this.taskTracks,
-        this.currentDate
-      );
-    }
-  }
   changeMode(mode: string): void {
     this.currentMode = mode;
   }
