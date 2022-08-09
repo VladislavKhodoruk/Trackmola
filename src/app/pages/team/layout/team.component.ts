@@ -20,7 +20,9 @@ export class TeamComponent {
   @Input() userType!: string | null;
   @Input() user!: User;
 
-  readonly isAdmin: boolean = localStorage.getItem('AuthUserType') === 'admin';
+  isAdmin: boolean =
+    localStorage.getItem('AuthUserType') === UserType.Admin ||
+    localStorage.getItem('AuthUserType') === UserType.CTO;
 
   readonly types = UserType;
   readonly routes: typeof Route = Route;
