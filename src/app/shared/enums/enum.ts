@@ -76,3 +76,9 @@ export enum Route {
   Team = 'team',
   ReportConstructor = 'report-constructor',
 }
+
+export enum TaskTackStatus {
+  New = 'new',
+  Approved = 'approved',
+  Sended = 'sended',
+}

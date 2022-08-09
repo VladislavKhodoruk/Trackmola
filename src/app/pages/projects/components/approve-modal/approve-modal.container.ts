@@ -4,11 +4,7 @@ import { Store } from '@ngrx/store';
 import { putTaskTrack } from '@pages/report/store/report.actions';
 import { TaskTrack } from '@shared/interfaces/interfaces';
 import { updateTaskTrack } from '@store/common/common.actions';
-import {
-  getTasksTrack,
-  getDate,
-  getPeriod,
-} from '@store/common/common.selectors';
+import { getTasksTrack, getDate } from '@store/common/common.selectors';
 import { CommonState } from '@store/common/common.state';
 
 import { TrackMolaState } from '@store/trackMola.state';
@@ -20,7 +16,6 @@ import { TrackMolaState } from '@store/trackMola.state';
   template: `<app-approve-modal
     [currentDate]="currentDate$ | async"
     [taskTracks]="taskTracks$ | async"
-    [period]="period$ | async"
     (submitTasksTrack)="submitReport($event)"
     (taskTrack)="putIntoStore($event)"
   ></app-approve-modal>`,
@@ -28,11 +23,9 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class ApproveModalContainer {
   taskTracks$ = this.store$.select(getTasksTrack);
   currentDate$ = this.store$.select(getDate);
-  period$ = this.store$.select(getPeriod);
 
   constructor(
     private store$: Store<TrackMolaState>,
-
     private commonStore$: Store<CommonState>
   ) {}
 

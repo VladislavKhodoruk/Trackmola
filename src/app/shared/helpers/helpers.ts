@@ -342,6 +342,7 @@ export function taskTracksByPeriods(taskTracks: TaskTrack[]): [TaskTrack?][] {
     []
   );
 }
+
 export function getFilteredTasksTracks(
   taskTracks: TaskTrack[],
   date: number

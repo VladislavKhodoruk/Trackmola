@@ -8,7 +8,7 @@
 </section>
 
 <ng-template #activeTask>
-  <ng-container *ngFor="let activeTask of activeUserGroupByProject[project.id]">
+  <ng-container *ngFor="let activeUser of activeUserGroupByProject[project.id]">
     <li class="activeTasks-list-item">
       <mat-accordion>
         <mat-expansion-panel
@@ -20,25 +20,25 @@
             <mat-panel-title class="project-header-title">
               <div class="report-status-container">
                 <img
-                  src="{{ activeTask.photo || defaultPhoto }}"
+                  src="{{ activeUser.photo || defaultPhoto }}"
                   class="activeTask-image"
                   alt="user photo"
                 />
                 <app-report-status
-                  [reportStatus]="getUserStatus(activeTask)"
+                  [reportStatus]="getUserStatus(activeUser)"
                 ></app-report-status>
               </div>
               <div class="project-header-user-info">
                 <div class="project-header-user-info-name">
-                  {{ activeTask.fullName }}
+                  {{ activeUser.fullName }}
                 </div>
                 <div class="project-header-user-info-position">
-                  {{ activeTask.position }}
+                  {{ activeUser.position }}
                 </div>
               </div>
             </mat-panel-title>
             <mat-panel-description class="project-header-description">
-              {{ activeTask.name }}
+              {{ activeUser.name }}
               <div class="project-header-description-buttons">
                 <app-button
                   class="project-header-description-buttons-item"
@@ -46,7 +46,7 @@
                   [icon]="iconCheck"
                   iconWidth="1.5rem"
                   iconHeight="1.5rem"
-                  (buttonClick)="openModal(activeTask.id, $event)"
+                  (buttonClick)="openModal(activeUser.id, $event)"
                 ></app-button>
               </div>
             </mat-panel-description>
@@ -56,7 +56,7 @@
             class="activeTask"
             *ngFor="
               let taskTrack of groupByDate(
-                activeTaskTracksGroupByUser[activeTask.id]
+                activeTaskTracksGroupByUser[activeUser.id]
               )
             "
           >
@@ -70,13 +70,28 @@
               <div class="activeTask-description">
                 <div class="activeTask-description-header">
                   <div>{{ tasksInfoByTaskId[taskTrack1.taskId].name }}</div>
-                  <span class="activeTask-description-header-duration">
-                    {{ taskTrack1.duration + taskTrack1.overtimeDuration }}h
-                  </span>
+                  <div class="activeTask-description-header-durations">
+                    <div
+                      class="activeTask-description-header-overtime"
+                      *ngIf="taskTrack1.overtimeDuration"
+                    >
+                      <ic-icon
+                        class="activeTask-description-header-overtime-icon"
+                        [icon]="iconFire"
+                        width="1.5rem"
+                        height="1.5rem"
+                      ></ic-icon>
+                      <span>{{ taskTrack1.overtimeDuration }}h</span>
+                    </div>
+                    <span class="activeTask-description-header-duration">
+                      {{ taskTrack1.duration }}h
+                    </span>
+                  </div>
                 </div>
-                <div class="activeTask-description-comment">
-                  {{ taskTrack1.comments || "no comments" }}
-                </div>
+                <div
+                  class="activeTask-description-comment"
+                  [innerHTML]="searchLink(taskTrack1.comments)"
+                ></div>
               </div>
             </div>
           </div>

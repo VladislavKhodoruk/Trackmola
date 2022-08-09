@@ -25,7 +25,7 @@
     border-radius: var(--border-radius);
 
     &-header {
-      @include flex(center, space-between);
+      @include flex(center, space-between, var(--offset-xs));
       width: 100%;
     }
 
@@ -72,7 +72,7 @@
         scroll-snap-align: start;
 
         width: 100%;
-        padding: var(--offset-m) var(--offset-m);
+        padding: var(--offset-m) var(--offset-m) var(--offset-m) var(--offset-s);
 
         border-radius: 0 var(--border-radius) var(--border-radius) 0;
 

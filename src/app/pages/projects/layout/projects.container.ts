@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { clearProjectState } from '../store/projects.actions';
 
 import {
+  filteredTaskTracksByPeriod,
   getProjectByRoute,
   usersGroupByProject,
 } from '@pages/projects/store/projects.selectors';
@@ -34,6 +35,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     class="projects"
     [projectByRoute]="projectByRoute$ | async"
     [taskTracks]="taskTracks$ | async"
+    [filteredTaskTracksByPeriod]="filteredTaskTracksByPeriod$ | async"
     [currentDate]="currentDate$ | async"
     [usersGroupByProject]="usersGroupByProject$ | async"
     [users]="allUsers$ | async"
@@ -54,6 +56,9 @@ export class ProjectsContainer implements OnDestroy {
 
   readonly taskTracks$: Observable<TaskTrack[]> =
     this.store$.select(getTasksTrack);
+
+  readonly filteredTaskTracksByPeriod$: Observable<TaskTrack[]> =
+    this.store$.select(filteredTaskTracksByPeriod);
 
   currentDate$ = this.store$.select(getDate);
 

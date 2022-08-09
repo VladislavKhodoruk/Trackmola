@@ -47,9 +47,9 @@ import { TrackMolaState } from '@store/trackMola.state';
 export class ApproveUsersModalContainer {
   readonly project$: Observable<Project> =
     this.store$.select(getProjectByRoute);
-  taskTracks$ = this.store$.select(getTasksTrack);
-  currentDate$ = this.store$.select(getDate);
-  period$ = this.store$.select(getPeriod);
+  readonly taskTracks$ = this.store$.select(getTasksTrack);
+  readonly currentDate$ = this.store$.select(getDate);
+  readonly period$ = this.store$.select(getPeriod);
 
   readonly sendedTaskTracksGroupByUser$: Observable<GroupBy<TaskTrack[]>> =
     this.store$.select(sendedTaskTracksGroupByUser);
@@ -68,11 +68,11 @@ export class ApproveUsersModalContainer {
     private commonStore$: Store<CommonState>
   ) {}
 
-  putIntoStore(taskTrack: TaskTrack): void {
+  protected putIntoStore(taskTrack: TaskTrack): void {
     this.store$.dispatch(putTaskTrack({ taskTrack }));
   }
 
-  approveAll(taskstrack: TaskTrack[]): void {
+  protected approveAll(taskstrack: TaskTrack[]): void {
     taskstrack.forEach((tasktrack) =>
       this.commonStore$.dispatch(updateTaskTrack({ tasktrack }))
     );

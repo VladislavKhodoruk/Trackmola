@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { ProjectsState } from './projects.state';
 
-import { StateName } from '@shared/enums/enum';
+import { StateName, TaskTackStatus } from '@shared/enums/enum';
 import {
   getProjects,
   getTasks,
@@ -147,7 +147,7 @@ export const sendedTaskTracksGroupByUser = createSelector(
     users.reduce((accum, user) => {
       const activeTasks = taskTracks.filter(
         ({ userId, taskTrackStatus }) =>
-          userId === user.id && taskTrackStatus === 'sended'
+          userId === user.id && taskTrackStatus === TaskTackStatus.Sended
       );
       return { ...accum, [user.id]: activeTasks };
     }, {})

@@ -19,7 +19,7 @@
   <div mat-dialog-actions class="buttons">
     <app-button
       mat-button
-      [mat-dialog-close]="false"
+      mat-dialog-close
       [buttonClass]="'button-secondary button-m'"
       type="button"
       label="Cancel"
@@ -27,6 +27,7 @@
 
     <app-button
       mat-button
+      [mat-dialog-close]="openModal"
       type="submit"
       [buttonClass]="'button-primary button-m'"
       label=" Approve"
