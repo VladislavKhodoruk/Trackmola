@@ -47,11 +47,6 @@ export class TaskTracksComponent {
       },
       {}
     );
-
-    return Object.keys(taskTracksGroupByDate).map((data) => ({
-      date: data,
-      tasks: taskTracksGroupByDate[data],
-    }));
-    // return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
+    return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
   }
 }
