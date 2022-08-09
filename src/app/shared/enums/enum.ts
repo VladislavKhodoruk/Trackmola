@@ -64,3 +64,15 @@ export enum WeekDays {
   SAT = 'SAT',
   SUN = 'SUN',
 }
+
+export enum Route {
+  Authorization = 'authorization',
+  Profile = 'profile',
+  Dashboard = 'dashboard',
+  MyReport = 'report',
+  MyActivity = 'activity',
+  Projects = 'projects',
+  Vacations = 'vacations',
+  Team = 'team',
+  ReportConstructor = 'report-constructor',
+}

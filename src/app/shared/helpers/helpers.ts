@@ -26,7 +26,6 @@ import {
   TaskTrack,
   TaskTracksByUser,
   User,
-  UserCard,
   Vacation,
   Vacations,
 } from '@shared/interfaces/interfaces';
@@ -413,7 +412,8 @@ export function getVacationsAndHolidaysByProject(
         getCurrentVacations(vac.userId, vacations),
         users
       )
-    );
+    )
+    .filter((item: Vacations) => item);
   const key = 'fullName';
   const arrayUniqueByKey = [
     ...new Map(res.map((item) => [item[key], item])).values(),

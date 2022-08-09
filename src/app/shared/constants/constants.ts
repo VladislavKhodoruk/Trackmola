@@ -18,34 +18,34 @@ import {
 
 import { XRangeConfig } from '@pages/dashboard/interfaces/interface';
 
-import { UserType } from '@shared/enums/enum';
+import { Route, UserType } from '@shared/enums/enum';
 import { NavigationItem } from '@shared/interfaces/interfaces';
 
 const NAVIGATION_BASIC_ITEMS: NavigationItem[] = [
   {
     icon: layoutDashboard,
     label: 'Dashboard',
-    routeLink: 'dashboard',
+    routeLink: Route.Dashboard,
   },
   {
     icon: fileTime,
     label: 'My report',
-    routeLink: 'report',
+    routeLink: Route.MyReport,
   },
   {
     icon: chartDonut3,
     label: 'My activity',
-    routeLink: 'activity',
+    routeLink: Route.MyActivity,
   },
   {
     icon: puzzleIcon,
     label: 'Projects',
-    routeLink: 'projects',
+    routeLink: Route.Projects,
   },
   {
     icon: pineappleIcon,
     label: 'Vacations',
-    routeLink: 'vacations',
+    routeLink: Route.Vacations,
   },
 ];
 
@@ -54,12 +54,12 @@ const NAVIGATION_MANAGER_ITEMS: NavigationItem[] = [
   {
     icon: peopleTeam20Regular,
     label: 'Team',
-    routeLink: 'team',
+    routeLink: Route.Team,
   },
   {
     icon: manualGearbox,
     label: 'Report constructor',
-    routeLink: 'report-constructor',
+    routeLink: Route.ReportConstructor,
   },
 ];
 

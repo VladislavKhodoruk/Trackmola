@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { putTaskTrack } from '../store/report.actions';
 
 import { TaskTrack } from '@shared/interfaces/interfaces';
-import { updateTaskTrack } from '@store/common/common.actions';
 
 import {
   getDate,
