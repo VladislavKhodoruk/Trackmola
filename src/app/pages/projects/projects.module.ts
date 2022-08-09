@@ -75,6 +75,8 @@ import { VacationsModule } from '@shared/components/vacations/vacations.module';
     MatDialogModule,
     ProjectLabelModule,
     ReportStatusModule,
+    VacationsModule,
+    VacationsModule,
   ],
 })
 export class ProjectsModule {}
