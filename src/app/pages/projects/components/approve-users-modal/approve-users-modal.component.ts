@@ -59,25 +59,13 @@ export class ApproveUsersModalComponent {
 
   constructor(
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: { userId: string }
+    @Inject(MAT_DIALOG_DATA)
+    public data: { userId: string }
   ) {}
-
-  protected getFilteredTasksTracks(): TaskTrack[] {
-    return this.taskTracks?.filter(
-      (curTaskTrack) =>
-        curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
-        curTaskTrack.date.seconds * 1000 >=
-          this.period.start - ONE_WEEK_IN_SECONDS &&
-        curTaskTrack.date.seconds * 1000 <= this.period.end
-    );
-  }
 
   protected groupByDate(taskTracks: TaskTrack[]): [string, TaskTrack[]][] {
     const taskTracksGroupByDate: GroupBy<TaskTrack[]> = taskTracks.reduce(
       (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
-        if (taskTrack.projectId !== this.project.id) {
-          return accum;
-        }
         const date = taskTrack.date.seconds * 1000;
         if (!accum[date]) {
           accum[date] = [];
@@ -88,15 +76,6 @@ export class ApproveUsersModalComponent {
       {}
     );
     return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
-  }
-
-  approveReport(): void {
-    const sendedTaskTracks = this.getFilteredTasksTracks();
-    const sendedTasksTrack: TaskTrack[] = sendedTaskTracks.map((taskTrack) => ({
-      ...taskTrack,
-      taskTrackStatus: TaskTackStatus.Approved,
-    }));
-    this.submitTasksTrack.emit(sendedTasksTrack);
   }
 
   approveUsersTracks(): void {
