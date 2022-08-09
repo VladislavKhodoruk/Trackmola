@@ -34,10 +34,7 @@ export class CommonEffects {
           map((profileUser) => {
             this.store$.dispatch(loading({ status: false }));
             this.store$.dispatch(errorMessage({ loaded: true, message: '' }));
-            localStorage.setItem(
-              'AuthUserType',
-              profileUser.role.toLowerCase()
-            );
+            localStorage.setItem('AuthUserType', profileUser.role);
             localStorage.setItem('AuthUserPhoto', profileUser.photo);
             localStorage.setItem('AuthUserRole', profileUser.qualification);
             return getUserDataSuccess({ profileUser });

@@ -1,4 +1,10 @@
-import { EventEmitter, Output, Component } from '@angular/core';
+import {
+  EventEmitter,
+  Output,
+  Component,
+  Input,
+  OnChanges,
+} from '@angular/core';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 
 import { PeriodType } from '@shared/enums/enum';
@@ -24,12 +30,17 @@ export const MY_DATE_FORMATS = {
   styleUrls: ['./datepicker.component.scss'],
   templateUrl: './datepicker.component.html',
 })
-export class DatepickerComponent {
+export class DatepickerComponent implements OnChanges {
   @Output() getFirstandLastDay: EventEmitter<Period> =
     new EventEmitter<Period>();
-  period: Period = getPeriod(new Date(), PeriodType.TwoWeek);
+  @Input() period: Period = getPeriod(new Date(), PeriodType.TwoWeek);
   start = new Date(this.period.start);
   end = new Date(this.period.end);
+
+  ngOnChanges() {
+    this.start = new Date(this.period.start);
+    this.end = new Date(this.period.end);
+  }
 
   onGetFirstandLastDay(): void {
     if (this.end) {
