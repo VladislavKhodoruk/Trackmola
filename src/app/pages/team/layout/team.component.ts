@@ -17,9 +17,7 @@ import { User } from '@shared/interfaces/interfaces';
   templateUrl: './team.component.html',
 })
 export class TeamComponent {
-  @Input() userType!: string | null;
   @Input() user!: User;
-
   isAdmin: boolean =
     localStorage.getItem('AuthUserType') === UserType.Admin ||
     localStorage.getItem('AuthUserType') === UserType.CTO;
@@ -31,6 +29,9 @@ export class TeamComponent {
   readonly iconFileImport: IconifyIcon = fileImport;
   readonly iconFolder: IconifyIcon = folder;
   readonly iconBell: IconifyIcon = bellRinging;
+  readonly userType: string;
 
-  constructor(protected router: Router) {}
+  constructor(protected router: Router) {
+    this.userType = localStorage.getItem('AuthUserType');
+  }
 }

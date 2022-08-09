@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { setUser } from '@pages/team/store/team.actions';
+import { getUser } from '@pages/team/store/team.selectors';
+import { TeamState } from '@pages/team/store/team.state';
 import { GroupBy, Project, User } from '@shared/interfaces/interfaces';
 import {
   getProjects,
@@ -24,6 +26,7 @@ import { TrackMolaState } from '@store/trackMola.state';
     [allUsers]="allUsers$ | async"
     (pickUser)="setPickedUser($event)"
     (setDefaultUser)="setPickedUser($event)"
+    [pickedUser]="pickedUser$ | async"
   ></app-team-list-search-component>`,
 })
 export class TeamListSearchContainer {
@@ -36,10 +39,12 @@ export class TeamListSearchContainer {
   readonly positions$: Observable<string[]> =
     this.commonStore$.select(positions);
   readonly allUsers$: Observable<User[]> = this.commonStore$.select(getUsers);
+  readonly pickedUser$: Observable<User> = this.teamStore$.select(getUser);
 
   constructor(
     private commonStore$: Store<CommonState>,
-    private store$: Store<TrackMolaState>
+    private store$: Store<TrackMolaState>,
+    private teamStore$: Store<TeamState>
   ) {}
 
   setPickedUser(user: User): void {

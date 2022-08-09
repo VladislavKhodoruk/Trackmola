@@ -19,6 +19,7 @@
 
 <section class="dashboard-main">
   <app-users-cards
+    (pickUser)="setPickedUser($event)"
     [users]="currentUsers"
     [taskTracksDurationGroupByUser]="taskTracksDurationGroupByUser"
   ></app-users-cards>
