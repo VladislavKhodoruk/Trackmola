@@ -117,4 +117,30 @@
       }
     }
   }
+
+  .user-container {
+    position: relative;
+  }
+
+  .user-status {
+    position: absolute;
+    right: var(--offset-xs);
+    bottom: var(--offset-xs);
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    background-color: var(--white);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    border-radius: 50%;
+
+    &-birthday {
+      background-image: url("https://api.iconify.design/noto/birthday-cake.svg");
+    }
+    &-alert {
+      background-image: url("../../../../../../src/assets/img/warning.svg");
+    }
+  }
 }

@@ -31,6 +31,8 @@ export class UsersCardsComponent {
   readonly iconBellRinging: IconifyIcon = bellRinging;
   readonly iconFileImport: IconifyIcon = fileImport;
   readonly routes: typeof Route = Route;
+  readonly birthdayId = 'P4SeopCIcgbAmGkoS8JE0Rq0t1v1';
+  readonly alertId = 'baepq7VLWRVK2XcOQkMHyZlfd6I2';
 
   constructor(protected router: Router) {}
 
