@@ -6,7 +6,7 @@
   $height-header: 4rem;
   $gap: var(--offset-m);
   $gap-scroll: calc(var(--offset-l) / 2 - #{$width-scroll} / 2);
-  overflow: scroll;
+  overflow: auto;
   display: block;
 
   width: 100%;

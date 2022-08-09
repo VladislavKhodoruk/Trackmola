@@ -4,12 +4,7 @@ import fireIcon from '@iconify/icons-emojione/fire';
 
 import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
 
-import {
-  GroupBy,
-  TaskTrack,
-  Period,
-  Project,
-} from '@shared/interfaces/interfaces';
+import { GroupBy, TaskTrack, Period } from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-report-send-tasktracks',
@@ -52,6 +47,5 @@ export class TaskTracksComponent {
       date: data,
       tasks: taskTracksGroupByDate[data],
     }));
-    // return Object.entries(taskTracksGroupByDate).sort((a, b) => +b[0] - +a[0]);
   }
 }
