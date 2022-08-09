@@ -26,11 +26,21 @@
         </div>
       </div>
       <div class="users-cards-item-info">
-        <img
-          class="users-cards-item-info-avatar"
-          src="{{ user.photo || defaultPhoto }}"
-          alt="user photo"
-        />
+        <div class="user-container">
+          <img
+            class="users-cards-item-info-avatar"
+            src="{{ user.photo || defaultPhoto }}"
+            alt="user photo"
+          />
+          <div
+            class="user-status user-status-birthday"
+            *ngIf="user.id === birthdayId"
+          ></div>
+          <div
+            class="user-status user-status-alert"
+            *ngIf="user.id === alertId"
+          ></div>
+        </div>
         <small class="users-cards-item-info-location">{{
           user.location
         }}</small>
