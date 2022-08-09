@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import fireIcon from '@iconify/icons-emojione/fire';
 
-import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
+import { getFilteredTasksTracksByPeriod } from '@shared/helpers/helpers';
 
 import {
   GroupBy,
@@ -25,18 +25,11 @@ export class TaskTracksComponent {
 
   readonly fireIcon = fireIcon;
 
-  getFilteredTasksTracks(): TaskTrack[] {
-    return this.taskTracks?.filter(
-      (curTaskTrack) =>
-        curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
-        curTaskTrack.date.seconds * 1000 >=
-          this.period.start - ONE_WEEK_IN_SECONDS &&
-        curTaskTrack.date.seconds * 1000 <= this.period.end
-    );
-  }
-
   protected groupByDate(): any {
-    this.taskTracks = this.getFilteredTasksTracks();
+    this.taskTracks = getFilteredTasksTracksByPeriod(
+      this.taskTracks,
+      this.period
+    );
     const taskTracksGroupByDate: GroupBy<TaskTrack[]> = this.taskTracks.reduce(
       (accum: GroupBy<TaskTrack[]>, taskTrack: TaskTrack) => {
         const date = taskTrack.date.seconds * 1000;
@@ -48,7 +41,6 @@ export class TaskTracksComponent {
       },
       {}
     );
-
     return Object.keys(taskTracksGroupByDate).map((data) => ({
       date: data,
       tasks: taskTracksGroupByDate[data],

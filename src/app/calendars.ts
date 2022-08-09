@@ -1,12 +1,12 @@
+import fireworksIcon from '@iconify/icons-emojione/fireworks';
 import butterflyIcon from '@iconify/icons-noto/butterfly';
 import christmasTree from '@iconify/icons-noto/christmas-tree';
-import fireworksIcon from '@iconify/icons-noto/fireworks';
+import sparklerIcon from '@iconify/icons-noto/glowing-star';
 import hammerAndPick from '@iconify/icons-noto/hammer-and-pick';
 import hatchingChick from '@iconify/icons-noto/hatching-chick';
 import jackOLantern from '@iconify/icons-noto/jack-o-lantern';
 import pineappleIcon from '@iconify/icons-noto/pineapple';
 import smilingFaceWithHalo from '@iconify/icons-noto/smiling-face-with-halo';
-import sparklerIcon from '@iconify/icons-noto/sparkler';
 import wrappedGift from '@iconify/icons-noto/wrapped-gift';
 
 import { DayType } from '@shared/enums/enum';

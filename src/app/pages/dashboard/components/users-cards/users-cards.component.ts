@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Pipe } from '@angular/core';
 import { Router } from '@angular/router';
 
 import bellRinging from '@iconify/icons-tabler/bell-ringing';
@@ -24,8 +24,8 @@ export class UsersCardsComponent {
     duration: number;
     overtimeDuration: number;
   };
-
-  @Output() userCardClick: EventEmitter<User> = new EventEmitter<User>();
+  @Output()
+  userCardClick: EventEmitter<User> = new EventEmitter<User>();
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
   readonly iconBellRinging: IconifyIcon = bellRinging;
@@ -45,7 +45,9 @@ export class UsersCardsComponent {
     const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     return endDate.getDate() * HOURS_IN_DAY - getRestMonthDefaultHours();
   }
-
+  protected getRandomInt(max): number {
+    return Math.floor(Math.random() * max);
+  }
   protected getProgressUser(user: User): {
     workingHours: number;
     progress: number;
