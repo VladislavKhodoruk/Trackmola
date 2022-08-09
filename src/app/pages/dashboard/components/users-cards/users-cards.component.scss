@@ -131,14 +131,15 @@
     height: 1.5rem;
 
     background-color: var(--white);
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: center;
     background-size: 80%;
     border-radius: 50%;
 
     &-birthday {
       background-image: url("https://api.iconify.design/noto/birthday-cake.svg");
     }
+
     &-alert {
       background-image: url("../../../../../../src/assets/img/warning.svg");
     }
