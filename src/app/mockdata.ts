@@ -800,7 +800,7 @@ export const mockVacations: Vacation[] = [
     color: '#95CE7A',
     comment: '',
     periodEnd: new Timestamp(1660165199, 0),
-    periodStart: new Timestamp(1660078800, 0),
+    periodStart: new Timestamp(1660424400, 0),
     type: 'sick',
     userId: 'baepq7VLWRVK2XcOQkMHyZlfd6I2',
   },

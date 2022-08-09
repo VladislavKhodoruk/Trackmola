@@ -423,3 +423,13 @@ export function getVacationsAndHolidaysByProject(
     (a, b) => a.vacationDay.getTime() - b.vacationDay.getTime()
   );
 }
+
+export function formationVacations(vacations: Vacation[], users: User[]) {
+  return vacations
+    .map((vacation: Vacation) => ({
+      fullName: getUserName(users, vacation.userId),
+      photo: getUserPhoto(users, vacation.userId),
+      vacationDay: vacation.periodStart.toDate(),
+    }))
+    .sort((a, b) => a.vacationDay.getTime() - b.vacationDay.getTime());
+}
