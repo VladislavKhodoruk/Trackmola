@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 import x from '@iconify/icons-tabler/x';
 
-import { ONE_WEEK_IN_SECONDS } from '@shared/constants/constants';
+import { getFilteredTasksTracksByPeriod } from '@shared/helpers/helpers';
 
 import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 
@@ -29,18 +29,11 @@ export class ApproveModalComponent {
   iconX = x;
   panelOpenState = false;
 
-  getFilteredTasksTracks(): TaskTrack[] {
-    return this.taskTracks?.filter(
-      (curTaskTrack) =>
-        curTaskTrack.userId === localStorage.getItem('AuthUserId') &&
-        curTaskTrack.date.seconds * 1000 >=
-          this.period.start - ONE_WEEK_IN_SECONDS &&
-        curTaskTrack.date.seconds * 1000 <= this.period.end
-    );
-  }
-
   approveReport(): void {
-    const sendedTaskTracks = this.getFilteredTasksTracks();
+    const sendedTaskTracks = getFilteredTasksTracksByPeriod(
+      this.taskTracks,
+      this.period
+    );
     const sendedTasksTrack: TaskTrack[] = sendedTaskTracks.map((taskTrack) => ({
       ...taskTrack,
       taskTrackStatus: 'approved',
