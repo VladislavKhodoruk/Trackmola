@@ -26,7 +26,6 @@ import {
   TaskTrack,
   TaskTracksByUser,
   User,
-  UserCard,
   Vacation,
   Vacations,
 } from '@shared/interfaces/interfaces';
@@ -413,7 +412,8 @@ export function getVacationsAndHolidaysByProject(
         getCurrentVacations(vac.userId, vacations),
         users
       )
-    );
+    )
+    .filter((item: Vacations) => item);
   const key = 'fullName';
   const arrayUniqueByKey = [
     ...new Map(res.map((item) => [item[key], item])).values(),
@@ -421,4 +421,14 @@ export function getVacationsAndHolidaysByProject(
   return arrayUniqueByKey.sort(
     (a, b) => a.vacationDay.getTime() - b.vacationDay.getTime()
   );
+}
+
+export function formationVacations(vacations: Vacation[], users: User[]) {
+  return vacations
+    .map((vacation: Vacation) => ({
+      fullName: getUserName(users, vacation.userId),
+      photo: getUserPhoto(users, vacation.userId),
+      vacationDay: vacation.periodStart.toDate(),
+    }))
+    .sort((a, b) => a.vacationDay.getTime() - b.vacationDay.getTime());
 }

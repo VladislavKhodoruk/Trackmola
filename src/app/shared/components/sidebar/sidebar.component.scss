@@ -99,6 +99,27 @@
     }
   }
 
+  .icon-pineapple {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: var(--offset-xs);
+
+    background-image: url("../../../../assets/icons/pineapple.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &-active {
+      filter: invert(50%) sepia(60%) saturate(7066%) hue-rotate(239deg)
+        brightness(88%) contrast(83%);
+    }
+
+    &:focus,
+    &:hover {
+      filter: invert(50%) sepia(60%) saturate(7066%) hue-rotate(239deg)
+        brightness(88%) contrast(83%);
+    }
+  }
+
   .cursor {
     cursor: pointer;
   }

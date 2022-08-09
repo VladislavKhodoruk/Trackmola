@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 
 import { AuthorizationGuard } from './pages/authorization/authorization.guard';
 
+import { Route } from '@shared/enums/enum';
 import { IsAuthenticated } from '@shared/guards/IsAuthentificated.guard';
 
 export const AppRoutes: Routes = [
@@ -12,42 +13,42 @@ export const AppRoutes: Routes = [
       import('./pages/dashboard/dashboard.module').then(
         (x) => x.DashboardModule
       ),
-    path: 'dashboard',
+    path: Route.Dashboard,
     title: 'Dashboard',
   },
   {
     canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/profile/profile.module').then((x) => x.ProfileModule),
-    path: 'profile',
+    path: Route.Profile,
     title: 'Profile',
   },
   {
     canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/activity/activity.module').then((x) => x.ActivityModule),
-    path: 'activity',
-    title: 'Activity',
+    path: Route.MyActivity,
+    title: 'My Activity',
   },
   {
     canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/projects/projects.module').then((x) => x.ProjectsModule),
-    path: 'projects',
+    path: Route.Projects,
     title: 'Projects',
   },
   {
     canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/report/report.module').then((x) => x.ReportModule),
-    path: 'report',
-    title: 'Report',
+    path: Route.MyReport,
+    title: 'My Report',
   },
   {
     canActivate: [AuthorizationGuard],
     loadChildren: () =>
       import('./pages/team/team.module').then((x) => x.TeamModule),
-    path: 'team',
+    path: Route.Team,
     title: 'Team',
   },
   {
@@ -56,7 +57,7 @@ export const AppRoutes: Routes = [
       import('./pages/report-constructor/report-constructor.module').then(
         (x) => x.ReportConstructorModule
       ),
-    path: 'report-constructor',
+    path: Route.ReportConstructor,
     title: 'Report constructor',
   },
   {
@@ -65,7 +66,7 @@ export const AppRoutes: Routes = [
       import('./pages/authorization/authorization.module').then(
         (x) => x.AuthorizationModule
       ),
-    path: 'authorization',
+    path: Route.Authorization,
     title: 'Authorization',
   },
   {
@@ -74,8 +75,8 @@ export const AppRoutes: Routes = [
       import('./pages/vacations/vacations.module').then(
         (x) => x.VacationsModule
       ),
-    path: 'vacations',
+    path: Route.Vacations,
     title: 'Vacations',
   },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', redirectTo: Route.Dashboard },
 ];
