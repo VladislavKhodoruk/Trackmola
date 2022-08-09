@@ -28,13 +28,14 @@
   .navbar {
     @include flex(flex-start, space-between);
     flex: 1;
+
     width: 100%;
     margin-bottom: var(--offset-s);
   }
 
   .navbar-link-address {
-    letter-spacing: 0;
     text-align: center;
+    letter-spacing: 0;
   }
 
   .vacation-header {
