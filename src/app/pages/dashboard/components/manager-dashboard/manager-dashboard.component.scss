@@ -76,6 +76,8 @@
 
           &-wrapper {
             min-width: 21rem;
+            padding: var(--offset-s) var(--offset) var(--offset-s)
+              var(--offset-m) !important;
           }
         }
       }
