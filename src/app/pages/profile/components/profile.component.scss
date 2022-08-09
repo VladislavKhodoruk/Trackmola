@@ -8,10 +8,11 @@
   }
 
   .profile {
+    margin: var(--offset-m);
+
     .profile-article-weekends {
       height: 32rem;
     }
-    margin: var(--offset-m);
 
     &-header-title {
       font: var(--font-titleBig);
