@@ -56,18 +56,18 @@
     height: 85%;
 
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: contain;
   }
 
   .projects {
-    background-image: url("../../../../../assets/img/CTO-Screen/CTO-report-constructor-projects.png");
+    background-image: url("../../../../../assets/img/CTO-Screen/CTO-Report-constructor-by-projects.png");
   }
 
   .users {
-    background-image: url("../../../../../assets/img/CTO-Screen/CTO-report-constructor-users.png");
+    background-image: url("../../../../../assets/img/CTO-Screen/CTO-Report-constructor-by-users.png");
   }
 
   .chart {
-    background-image: url("../../../../../assets/img/CTO-Screen/CTO-report-constructor-chart.png");
+    background-image: url("../../../../../assets/img/CTO-Screen/CTO-Report-constructor-chart.png");
   }
 }
