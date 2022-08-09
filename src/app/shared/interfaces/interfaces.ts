@@ -73,11 +73,13 @@ export interface NavigationItem {
 export interface Day {
   value: number;
   isTasks: boolean;
+  isApproved: boolean;
   duration: number;
   overtimeDuration: number;
 }
 
 export interface Week {
+  isWeekApproved: boolean;
   days: Day[];
 }
 
