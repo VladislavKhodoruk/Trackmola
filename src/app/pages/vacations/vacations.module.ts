@@ -20,7 +20,7 @@ import { HolidaysModule } from '@shared/components/holiday/holidays.module';
 
 @NgModule({
   declarations: [VacationContainer, VacationComponent, SearchUsersPipe],
-  exports: [RouterModule, VacationComponent],
+  exports: [RouterModule],
   imports: [
     CommonModule,
     FormsModule,

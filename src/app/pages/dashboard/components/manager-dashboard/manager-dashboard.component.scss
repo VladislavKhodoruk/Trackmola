@@ -73,6 +73,10 @@
 
         &-item {
           height: 100%;
+
+          &-wrapper {
+            min-width: 21rem;
+          }
         }
       }
     }
