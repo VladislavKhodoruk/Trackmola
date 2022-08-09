@@ -17,6 +17,7 @@ import {
   DEFAULT_PHOTO_URL,
   ONE_WEEK_IN_SECONDS,
 } from '@shared/constants/constants';
+import { TaskTackStatus } from '@shared/enums/enum';
 import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -76,7 +77,7 @@ export class ReportComponent {
     const sendedTaskTracks = this.getFilteredTasksTracks();
     const sendedTasksTrack: TaskTrack[] = sendedTaskTracks.map((taskTrack) => ({
       ...taskTrack,
-      taskTrackStatus: 'sended',
+      taskTrackStatus: TaskTackStatus.Sended,
     }));
     this.submitTasksTrack.emit(sendedTasksTrack);
   }

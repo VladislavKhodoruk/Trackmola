@@ -34,6 +34,7 @@ import {
   onRightIndex,
 } from '@pages/report/helpers/report-input-helpers';
 import { Task } from '@pages/report/interfaces/interfaces';
+import { TaskTackStatus } from '@shared/enums/enum';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -239,7 +240,7 @@ export class ReportInputComponent implements OnInit, OnChanges {
       projectId: this.currentProjectId,
       status: this.status,
       taskId: this.currentTaskId,
-      taskTrackStatus: 'new',
+      taskTrackStatus: TaskTackStatus.New,
       userId: localStorage.getItem('AuthUserId'),
     };
     if (this.formTask) {

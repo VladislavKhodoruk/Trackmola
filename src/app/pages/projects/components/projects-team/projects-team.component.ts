@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { DEFAULT_PHOTO_URL } from '@shared/constants/constants';
-import { UserType } from '@shared/enums/enum';
+import { TaskTackStatus, UserType } from '@shared/enums/enum';
 import {
   GroupBy,
   Project,
@@ -25,10 +25,15 @@ export class ProjectsTeamComponent {
 
   readonly defaultPhoto: string = DEFAULT_PHOTO_URL;
 
-  getUserStatus(user: User) {
-    const tracksByUser = this.taskTracks.filter(
+  protected getUserStatus(user: User): TaskTackStatus {
+    const taskTracksByUser = this.taskTracks.filter(
       (taskTrack) => taskTrack.userId === user.id
     );
-    return tracksByUser[0]?.taskTrackStatus || 'new';
+
+    const checkStatus = taskTracksByUser.some(
+      (taskTrack) => taskTrack.taskTrackStatus !== TaskTackStatus.Approved
+    );
+
+    return checkStatus ? TaskTackStatus.Sended : TaskTackStatus.Approved;
   }
 }
