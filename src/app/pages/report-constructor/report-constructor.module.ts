@@ -11,6 +11,7 @@ import { IconModule } from '@visurel/iconify-angular';
 import { AdminReportConstructorComponent } from './components/admin-report-constructor/admin-report-constructor.component';
 import { AdminReportConstructorContainer } from './components/admin-report-constructor/admin-report-constructor.container';
 import { CtoReportConstructorComponent } from './components/cto-report-constructor/cto-report-constructor.component';
+import { CTOReportConstructorContainer } from './components/cto-report-constructor/cto-report-constructor.container';
 import { ManagerReportConstructorComponent } from './components/manager-report-constructor/manager-report-constructor.component';
 import { ManagerReportConstructorContainer } from './components/manager-report-constructor/manager-report-constructor.container';
 
@@ -38,6 +39,7 @@ import { UsersPhotosModule } from '@shared/components/users-photos/users-photos.
     ReportConstructorComponent,
     ReportConstructorContainer,
     CtoReportConstructorComponent,
+    CTOReportConstructorContainer,
     AdminReportConstructorComponent,
     AdminReportConstructorContainer,
     ManagerReportConstructorComponent,

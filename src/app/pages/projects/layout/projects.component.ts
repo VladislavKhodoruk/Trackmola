@@ -78,7 +78,10 @@ export class ProjectsComponent implements OnChanges {
   readonly checksIcon = checksIcon;
   readonly messagePlusIcon = messagePlus;
 
-  readonly toggleLabels = [ProjectMode.Tasks, ProjectMode.Users];
+  readonly toggleLabels =
+    localStorage.getItem('AuthUserType') !== UserType.CTO
+      ? [ProjectMode.Tasks, ProjectMode.Users]
+      : [ProjectMode.Tasks, ProjectMode.Users, 'by budget'];
 
   readonly userType = UserType;
   readonly currentUser: string = localStorage.getItem('AuthUserType');
@@ -114,7 +117,7 @@ export class ProjectsComponent implements OnChanges {
       autoFocus: false,
       data: { project: this.project },
       enterAnimationDuration,
-      panelClass: 'modalApprove',
+      panelClass: 'modal',
     });
     dialogRef
       .afterClosed()

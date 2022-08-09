@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 
 import { catchError, map, of, switchMap, take, tap, mergeMap } from 'rxjs';
 
+import { Route } from '@shared/enums/enum';
 import { TasksService } from '@shared/services/tasks.service';
 import { UsersService } from '@shared/services/users.service';
 import { VacationsService } from '@shared/services/vacations.service';
@@ -34,10 +35,7 @@ export class CommonEffects {
           map((profileUser) => {
             this.store$.dispatch(loading({ status: false }));
             this.store$.dispatch(errorMessage({ loaded: true, message: '' }));
-            localStorage.setItem(
-              'AuthUserType',
-              profileUser.role.toLowerCase()
-            );
+            localStorage.setItem('AuthUserType', profileUser.role);
             localStorage.setItem('AuthUserPhoto', profileUser.photo);
             localStorage.setItem('AuthUserRole', profileUser.qualification);
             return getUserDataSuccess({ profileUser });
@@ -56,7 +54,7 @@ export class CommonEffects {
       this.actions$.pipe(
         ofType(getUserDataSuccess),
         tap((): boolean => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate([Route.Dashboard]);
           return true;
         })
       ),

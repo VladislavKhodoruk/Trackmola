@@ -2,12 +2,9 @@
 @import "mixins";
 
 ::ng-deep {
-  .modalApproveUser {
+  .modal {
     .mat-dialog-container {
-      overflow: hidden;
-
-      min-width: 25vw;
-      padding: var(--offset);
+      overflow: inherit;
 
       border-radius: var(--offset);
     }

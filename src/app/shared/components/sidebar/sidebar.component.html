@@ -18,7 +18,13 @@
           width="3rem"
           height="3rem"
           [icon]="item.icon"
+          *ngIf="item.routeLink !== routes.Vacations"
         ></ic-icon>
+        <span
+          *ngIf="item.routeLink === routes.Vacations"
+          routerLinkActive="icon-pineapple-active"
+          class="sidebar-list-item-icon icon-pineapple"
+        ></span>
         <span class="sidebar-list-item-label">
           {{ item.label }}
         </span>
@@ -29,7 +35,7 @@
   <img
     class="sidebar-profile"
     routerLinkActive="sidebar-profile-active"
-    [routerLink]="['profile']"
+    [routerLink]="[routes.Profile]"
     src="{{ photo || defaultPhoto }}"
     alt="photo"
   />

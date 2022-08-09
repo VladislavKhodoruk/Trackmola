@@ -102,7 +102,7 @@ export class ActiveTasksComponent {
         },
       },
       enterAnimationDuration,
-      panelClass: 'modalAdd',
+      panelClass: 'modal',
     });
   }
 
@@ -113,7 +113,7 @@ export class ActiveTasksComponent {
       autoFocus: false,
       data: { project: this.project },
       enterAnimationDuration,
-      panelClass: 'modalInputTask',
+      panelClass: 'modal',
     });
 
     dialogRef

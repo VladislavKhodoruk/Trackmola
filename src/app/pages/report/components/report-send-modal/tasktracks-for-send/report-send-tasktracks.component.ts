@@ -4,7 +4,13 @@ import fireIcon from '@iconify/icons-emojione/fire';
 
 import { getFilteredTasksTracksByPeriod } from '@shared/helpers/helpers';
 
-import { GroupBy, TaskTrack, Period } from '@shared/interfaces/interfaces';
+import {
+  GroupBy,
+  TaskTrack,
+  Period,
+  Task,
+  Project,
+} from '@shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-report-send-tasktracks',
@@ -13,8 +19,8 @@ import { GroupBy, TaskTrack, Period } from '@shared/interfaces/interfaces';
 })
 export class TaskTracksComponent {
   @Input() period!: Period;
-  @Input() projectsInfoByProjectId!: GroupBy<any>;
-  @Input() tasksInfoByTaskId!: GroupBy<any>;
+  @Input() projectsInfoByProjectId!: GroupBy<Project>;
+  @Input() tasksInfoByTaskId!: GroupBy<Task>;
   @Input() taskTracks!: TaskTrack[];
 
   readonly fireIcon = fireIcon;

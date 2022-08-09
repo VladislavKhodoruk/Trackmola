@@ -58,7 +58,9 @@ export class ReportComponent {
   }
 
   modalSendReport(): void {
-    this.dialog.open(ReportSendModalContainer);
+    this.dialog.open(ReportSendModalContainer, {
+      panelClass: 'modal',
+    });
   }
   getFilteredTasksTracks(): TaskTrack[] {
     return this.taskTracks?.filter(

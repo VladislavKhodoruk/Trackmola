@@ -7,13 +7,6 @@ import { getFilteredTasksTracksByPeriod } from '@shared/helpers/helpers';
 import { Period, TaskTrack } from '@shared/interfaces/interfaces';
 
 @Component({
-  providers: [
-    {
-      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
-
-      useValue: { overlayPanelClass: 'modalApprove' },
-    },
-  ],
   selector: 'app-approve-modal',
   styleUrls: ['./approve-modal.component.scss'],
   templateUrl: './approve-modal.component.html',
